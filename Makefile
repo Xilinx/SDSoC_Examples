@@ -1,6 +1,6 @@
 APPSOURCES = host.cpp mmult.cpp
 EXECUTABLE = host.elf
-
+EMU_EXE = host_emu.elf
 PLATFORM = zc706
 SDSFLAGS = -sds-pf ${PLATFORM} \
 	-sds-hw mmult_accel  mmult.cpp -sds-end
@@ -25,10 +25,10 @@ ${EXECUTABLE}: ${OBJECTS}
 
 .PHONY: check
 
-check: ${EXECUTABLE}
-		./run.sh ${EXECUTABLE}
+check: ${EMU_EXE}
+		./run.sh ${EMU_EXE}
 
-${EXECUTABLE}: ${OBJECTS}
+${EMU_EXE}: ${OBJECTS}
 	${CC} ${LFLAGS} -mno-bitstream -emulation optimized ${OBJECTS} -o $@
 
 %.o: %.cpp
@@ -37,8 +37,7 @@ ${EXECUTABLE}: ${OBJECTS}
 
 
 clean:
-	${RM} ${EXECUTABLE} ${OBJECTS} 
-
-ultraclean: clean
-	${RM} ${EXECUTABLE}.bit 
+	${RM} ${EXECUTABLE} ${OBJECTS} ${EMU_EXE}
+	${RM} ${EXECUTABLE}.bit ${EMU_EXE} init.sh 
 	${RM} -rf _sds sd_card *.jou *.log
+
