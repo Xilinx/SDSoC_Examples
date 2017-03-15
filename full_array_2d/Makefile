@@ -25,8 +25,9 @@ ${EXECUTABLE}: ${OBJECTS}
 
 .PHONY: check
 
+
 check: ${EMU_EXE}
-		./run.sh ${EMU_EXE}
+	./run.sh ${EMU_EXE}
 
 ${EMU_EXE}: ${OBJECTS}
 	${CC} ${LFLAGS} -mno-bitstream -emulation optimized ${OBJECTS} -o $@
