@@ -36,7 +36,7 @@ C Kernel Example using AXI4-master interface to access row of data from 2D array
 #include <stdio.h>
 #include <string.h>
 #include "assert.h"
-#include "host.h"
+#include "row_array_2d.h"
 
 // Read data function : Read Data from Global Memory
 void read_data(DTYPE *inx, my_data_fifo &inFifo) {

@@ -32,7 +32,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <stdio.h>
 #include <math.h>
 #include <stdint.h>
-#include "host.h"
+#include "row_array_2d.h"
 #include "sds_lib.h"
 
 class perf_counter

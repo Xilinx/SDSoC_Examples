@@ -4,10 +4,10 @@ cat > "init.sh" <<EOT
 /mnt/$1
 reboot
 EOT
-echo $PWD/init.sh >> "_sds/emulation/sd_card.manifest"
-
-sdsoc_emulator -no-reboot | tee emulator.log
-
-! grep -q "TEST FAIL" emulator.log
-grep -q "TEST PASS" emulator.log
+echo $PWD/_sds/init.sh >> "_sds/emulation/sd_card.manifest"
+mv init.sh _sds
+mv *.jou _sds
+mv *.log _sds
+mv src/*.o _sds
+sdsoc_emulator -no-reboot |tee emulator.log
  

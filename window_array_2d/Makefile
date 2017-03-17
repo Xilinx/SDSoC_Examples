@@ -21,6 +21,7 @@ all: ${EXECUTABLE}
 %.o: %.cpp
 	${CC} ${CFLAGS} $< -o $@
 
+
 .PHONY: check
 
 check: 
