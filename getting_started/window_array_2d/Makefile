@@ -27,7 +27,7 @@ EMULATION_MODE = optimized
 
 check: $(EXECUTABLE)
 ifeq ($(TARGETS), emu)
-	$(COMMON)/utility/run.sh $(EXECUTABLE)
+	$(COMMON)/utility/$(TARGETS)_run.sh $(EXECUTABLE)
 else
 	$(info "Execution of program on hardware must be done outside make")
 endif

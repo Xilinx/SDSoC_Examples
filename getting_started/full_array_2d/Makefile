@@ -27,7 +27,7 @@ EMULATION_MODE = optimized
 
 check: $(EXECUTABLE)
 ifeq ($(TARGETS), emu)
-	$(COMMON)/utility/run.sh $(EXECUTABLE)
+	$(COMMON)/utility/$(TARGETS)_run.sh $(EXECUTABLE)
 else
 	$(info "Execution of program on hardware must be done outside make")
 endif
@@ -35,12 +35,11 @@ endif
 ifeq ($(TARGETS), emu)
 LFLAGS += -mno-bitstream -emulation $(EMULATION_MODE)
 endif
-
 ${EXECUTABLE}: ${OBJECTS}
-	${CC} ${LFLAGS} ${OBJECTS} -o $@ >> sdsoc.log
+	${CC} ${LFLAGS} ${OBJECTS} -o $@ 
 
 %.o: %.cpp
-	${CC} ${CFLAGS} $< -o $@ > sdsoc.log
+	${CC} ${CFLAGS} $< -o $@ 
 
 
 ECHO:= @echo
@@ -65,8 +64,8 @@ help::
 	$(ECHO) ""
 
 clean:
-	${RM} ${EXECUTABLE} ${OBJECTS} ${EMU_EXE}
+	${RM} ${EXECUTABLE} ${OBJECTS} ${EMU_EXE} ${DEPS}
 	${RM} ${EXECUTABLE}.bit ${EMU_EXE} init.sh 
-	${RM} -rf _sds sd_card *.log *.jou *.elf src/*.o src/*.d
+	${RM} -rf _sds sd_card *.log *.jou *.elf 
 
 
