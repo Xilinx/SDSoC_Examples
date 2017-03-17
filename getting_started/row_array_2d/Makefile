@@ -1,19 +1,22 @@
+COMMON = ../..
 SRCS_DIR = src
 APPSOURCES = $(wildcard $(SRCS_DIR)/*.cpp)
 ACCELERATOR = row_array_2d_accel
 TARGETS = emu 
 PLATFORM = zc706
 EXECUTABLE = sdx_$(ACCELERATOR)_$(PLATFORM).elf
-SDSFLAGS = -sds-pf ${PLATFORM} \
+SDSFLAGS = -sds-pf $(PLATFORM) \
 	-sds-hw $(ACCELERATOR) row_array_2d.cpp -sds-end
 
-CC = sds++ ${SDSFLAGS}
+CC = sds++ $(SDSFLAGS)
 
 CFLAGS = -Wall -O3 -c
-
+CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
 LFLAGS = -O3
 
 OBJECTS := $(APPSOURCES:.cpp=.o)
+DEPS := $(OBJECTS:.o=.d)
+
 .PHONY: all
 
 all: ${EXECUTABLE}
@@ -24,7 +27,7 @@ EMULATION_MODE = optimized
 
 check: $(EXECUTABLE)
 ifeq ($(TARGETS), emu)
-	./run.sh $(EXECUTABLE)
+	$(COMMON)/utility/run.sh $(EXECUTABLE)
 else
 	$(info "Execution of program on hardware must be done outside make")
 endif
@@ -34,10 +37,10 @@ LFLAGS += -mno-bitstream -emulation $(EMULATION_MODE)
 endif
 
 ${EXECUTABLE}: ${OBJECTS}
-	${CC} ${LFLAGS} ${OBJECTS} -o $@
+	${CC} ${LFLAGS} ${OBJECTS} -o $@ >> sdsoc.log
 
 %.o: %.cpp
-	${CC} ${CFLAGS} $< -o $@ 
+	${CC} ${CFLAGS} $< -o $@ > sdsoc.log
 
 
 ECHO:= @echo
@@ -64,6 +67,6 @@ help::
 clean:
 	${RM} ${EXECUTABLE} ${OBJECTS} ${EMU_EXE}
 	${RM} ${EXECUTABLE}.bit ${EMU_EXE} init.sh 
-	${RM} -rf _sds sd_card *.log *.elf
+	${RM} -rf _sds sd_card *.log *.jou *.elf src/*.o src/*.d
 
 
