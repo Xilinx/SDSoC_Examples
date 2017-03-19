@@ -91,6 +91,9 @@ def create_mk(target, data, emu_switch):
     target.write("\n")     
     target.write("\n")     
 
+    target.write("EMU_FLAGS := -mno-bitstream -mno-boot-files\n")
+    target.write("\n")
+
     target.write("# Builds Main Executable\n")
     target.write("all: SDx-build\n")
     target.write("\n")
@@ -110,7 +113,7 @@ def create_mk(target, data, emu_switch):
     target.write(executable)
     target.write("\" ")
     if emu_switch == "Yes":
-        target.write("$(OBJS) $(DMCL_CLK) -mno-bitstream -mno-boot-files $(OS) $(PLATFORM) ")
+        target.write("$(OBJS) $(DMCL_CLK) $(EMU_FLAGS) $(OS) $(PLATFORM) ")
     else:
         target.write("$(OBJS) $(DMCL_CLK) $(OS) $(PLATFORM) ")
     target.write("\"")
