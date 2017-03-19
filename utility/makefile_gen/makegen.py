@@ -60,66 +60,13 @@ def create_subdir_mk(target, data):
     target.write("\t @echo ' ' \n")
     return
 
-def create_srcs_mk(target, data):
-    target.write("LD_SRCS := \n")
-    target.write("C_UPPER_SRCS := \n")
-    target.write("CXX_SRCS := \n")
-    target.write("OBJ_SRCS := \n")
-    target.write("CC_SRCS := \n")
-    target.write("C_SRCS := \n")
-    target.write("CPP_SRCS := \n")
-    target.write("O_SRCS := \n")
-    target.write("CC_DEPS := \n")
-    target.write("EXECUTABLES := \n")
-    target.write("C_UPPER_DEPS := \n")
-    target.write("OBJS := \n")
-    target.write("CXX_DEPS := \n")
-    target.write("C_DEPS := \n")
-    target.write("CPP_DEPS := \n")
-    target.write("\n")
-    target.write("SUBDIRS := \\\n")
-    target.write("src \\\n")
-    target.write("\n")
-    return
-
-def create_obj_mk(target, data):
-    target.write("USER_OBJS := \n")
-    target.write("\n")
-    target.write("LIBS := \n")
-    return
-
 def create_mk(target, data, emu_switch):
-    target.write("-include ../makefile.init\n")
     target.write("RM := rm -rf _sds sd_card\n")
     target.write("# All the sources participating in build are defined here\n")
-    target.write("-include source.mk")
-    target.write("\n")
     target.write("-include src/subdir.mk")
     target.write("\n")
     target.write("-include subdir.mk")
     target.write("\n")
-    target.write("-include objects.mk")
-    target.write("\n")
-    
-    target.write("ifneq ($(MAKECMDGOALS),clean)\n")
-    target.write("ifneq ($(strip $(CC_DEPS)),)\n")
-    target.write("-include $(CC_DEPS)\n")
-    target.write("endif\n")
-    target.write("ifneq ($(strip $(C_UPPER_DEPS)),)\n")
-    target.write("-include $(C_UPPER_DEPS)\n")
-    target.write("endif\n")
-    target.write("ifneq ($(strip $(CXX_DEPS)),)\n")
-    target.write("-include $(CXX_DEPS)\n")
-    target.write("endif\n")
-    target.write("ifneq ($(strip $(C_DEPS)),)\n")
-    target.write("-include $(C_DEPS)\n")
-    target.write("endif\n")
-    target.write("ifneq ($(strip $(CPP_DEPS)),)\n")
-    target.write("-include $(CPP_DEPS)\n")
-    target.write("endif\n")
-    target.write("endif\n")
-    
-    target.write("-include ../makefile.defs\n")
     
     target.write("# All Target\n")
     target.write("all: pre-build main-build\n")
@@ -128,6 +75,7 @@ def create_mk(target, data, emu_switch):
     target.write("main-build: ")
     executable = data.get("exe")
     target.write(executable)
+    target.write("\n")
     target.write("\n")
     target.write("# Tool invocations\n")
     target.write(executable)
@@ -153,19 +101,24 @@ def create_mk(target, data, emu_switch):
     target.write("\n")
     target.write("\t @echo 'Finished building target: $@'\n")
     target.write("\t @echo ' '\n")
-
+    target.write("\n")
     target.write("# Other Targets\n")
     target.write("clean:\n")
     target.write("\t -$(RM) $(CC_DEPS) $(EXECUTABLES) $(C_UPPER_DEPS) $(OBJS) $(CXX_DEPS) $(C_DEPS) $(CPP_DEPS) ")
     target.write(executable)
     target.write("\n")
     target.write("\t -@echo ' '\n")
-    
-    target.write("check: all\n")
-    target.write("\t ../../../utility/emu_run.sh ")
-    target.write(executable)
-    target.write("\n")
-    target.write("\t -@echo ' '\n")
+    target.write("\n") 
+    if emu_switch == "Yes": 
+        target.write("check: all\n")
+        target.write("\t ../../../utility/emu_run.sh ")
+        target.write(executable)
+        target.write("\n")
+        target.write("\t -@echo ' '\n")
+        target.write("\n")
+    else:
+        # Hardware check option can be included in future
+        target.write("\n")
 
     target.write("pre-build:\n")
     target.write("\t -sdsoc_make_clean ")
@@ -173,11 +126,11 @@ def create_mk(target, data, emu_switch):
     target.write(build_flow)
     target.write("\n")
     target.write("\t -@echo ' '\n")
-    
+   
+    target.write("\n") 
     target.write(".PHONY: all clean dependents\n")
     target.write(".SECONDARY: main-build pre-build\n")
-
-    target.write("-include ../makefile.targets\n")
+    target.write("\n")
 
     return
 
@@ -196,12 +149,6 @@ if "emulation" == flow:
     create_subdir_mk(sub_target, data)
     sub_target.close
     os.chdir("../")
-    src_target = open("sources.mk", "w")
-    create_srcs_mk(src_target, data)
-    src_target.close
-    obj_target = open("objects.mk", "w")
-    create_obj_mk(obj_target, data)
-    obj_target.close
     emu_switch = "Yes"
     mk_target = open("makefile", "w")
     create_mk(mk_target, data, emu_switch)
@@ -214,12 +161,6 @@ else:
     create_subdir_mk(sub_target, data)
     sub_target.close
     os.chdir("../")
-    src_target = open("source.mk", "w")
-    create_srcs_mk(src_target, data)
-    src_target.close
-    obj_target = open("objects.mk", "w")
-    create_obj_mk(obj_target, data)
-    obj_target.close
     mk_target = open("makefile", "w")
     emu_switch = "No"
     create_mk(mk_target, data, emu_switch)
