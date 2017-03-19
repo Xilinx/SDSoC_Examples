@@ -88,7 +88,7 @@ def create_obj_mk(target, data):
     target.write("LIBS := \n")
     return
 
-def create_mk(target, data):
+def create_mk(target, data, emu_switch):
     target.write("-include ../makefile.init\n")
     target.write("RM := rm -rf _sds sd_card\n")
     target.write("# All the sources participating in build are defined here\n")
@@ -138,13 +138,19 @@ def create_mk(target, data):
     target.write("\"")
     target.write(executable)
     target.write("\" ")
-    target.write("$(OBJS) $(USER_OBJS) $(LIBS) -dmclkid 1 -mno-bitstream -mno-boot-files -sds-sys-config linux -sds-proc a9_0 -sds-pf ")
+    if emu_switch == "Yes":
+        target.write("$(OBJS) $(USER_OBJS) $(LIBS) -dmclkid 1 -mno-bitstream -mno-boot-files -sds-sys-config linux -sds-proc a9_0 -sds-pf ")
+    else:
+        target.write("$(OBJS) $(USER_OBJS) $(LIBS) -dmclkid 1 -sds-sys-config linux -sds-proc a9_0 -sds-pf ")
     target.write("\"")
     device = data.get("device")
     target.write(device)
-    target.write("\" ")
-    target.write("-emulation ")
-    target.write("debug\n")
+    target.write("\"")
+    if emu_switch == "Yes":
+        target.write(" -emulation ")
+        target.write("debug")
+
+    target.write("\n")
     target.write("\t @echo 'Finished building target: $@'\n")
     target.write("\t @echo ' '\n")
 
@@ -156,9 +162,10 @@ def create_mk(target, data):
     target.write("\t -@echo ' '\n")
     
     target.write("check: all\n")
-    target.write("\t ../../utility/emu_run.sh ")
+    target.write("\t ../../../utility/emu_run.sh ")
     target.write(executable)
     target.write("\n")
+    target.write("\t -@echo ' '\n")
 
     target.write("pre-build:\n")
     target.write("\t -sdsoc_make_clean ")
@@ -195,8 +202,24 @@ if "emulation" == flow:
     obj_target = open("objects.mk", "w")
     create_obj_mk(obj_target, data)
     obj_target.close
+    emu_switch = "Yes"
     mk_target = open("makefile", "w")
-    create_mk(mk_target, data)
+    create_mk(mk_target, data, emu_switch)
 else:
-    print "For now only emulation flow"
- 
+    os.makedirs("hardware") 
+    os.chdir("hardware")
+    os.makedirs("src")
+    os.chdir("src")
+    sub_target = open("subdir.mk", "w")
+    create_subdir_mk(sub_target, data)
+    sub_target.close
+    os.chdir("../")
+    src_target = open("source.mk", "w")
+    create_srcs_mk(src_target, data)
+    src_target.close
+    obj_target = open("objects.mk", "w")
+    create_obj_mk(obj_target, data)
+    obj_target.close
+    mk_target = open("makefile", "w")
+    emu_switch = "No"
+    create_mk(mk_target, data, emu_switch)
