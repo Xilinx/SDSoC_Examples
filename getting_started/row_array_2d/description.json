@@ -1,8 +1,10 @@
 {
-    "build_flow": "emulation",
+    "build_flow": "hardware",
+    "emu_mode" : "optimized",
     "src_files" : ["main" , "row_array_2d"],
     "hw_function": "row_array_2d_accel",
     "accel_file" : "row_array_2d.cpp", 
     "device" : "zc706",
+    "os" : "linux",
     "exe" : "row_array_2d.elf"
 }
