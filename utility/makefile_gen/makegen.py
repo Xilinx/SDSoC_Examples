@@ -6,18 +6,18 @@ import subprocess
 
 def create_subdir_mk(target, data):
     elem_count = len(data["src_files"])
-    target.write("CPP_SRCS += \\ \n")
+    target.write("CPP_SRCS += \\\n")
     for result in data["src_files"]:
         elem_count -= 1
         target.write("../src/")
         target.write(result)
         target.write(".cpp")
         if elem_count != 0:
-            target.write(" \\ \n")
+            target.write(" \\\n")
     target.write("\n\n")
     
     obj_count = len(data["src_files"])
-    target.write("OBJS += \\ ")
+    target.write("OBJS += \\")
     target.write("\n")
     for result in data["src_files"]:
         obj_count -= 1
@@ -25,11 +25,11 @@ def create_subdir_mk(target, data):
         target.write(result)
         target.write(".o")
         if obj_count != 0:
-            target.write(" \\ \n")
+            target.write(" \\\n")
     target.write("\n\n")
 
     dep_count = len(data["src_files"])
-    target.write("CPP_DEPS += \\ ")
+    target.write("CPP_DEPS += \\")
     target.write("\n")
     for result in data["src_files"]:
         dep_count -= 1
@@ -37,14 +37,14 @@ def create_subdir_mk(target, data):
         target.write(result)
         target.write(".d")
         if dep_count != 0:
-            target.write(" \\ \n")
+            target.write(" \\\n")
     target.write("\n\n")
     
     target.write("src/%.o: ../src/%.cpp \n")
     target.write("\t @echo 'Building file: $<' \n")
     target.write("\t @echo 'Invoking: SDS++ Compiler' \n")
     target.write("\t")
-    target.write("sds++ -Wall -O0 -g -I\"../src\" -c -fmessage-length=0 -MT \"$@\" -MMD -MP -MF \"$(@:%.o=%.d)\" -MT \"$(@)\" -o \"$@\" \"$<\" -sds-hw ")
+    target.write("sds++ -Wall -O0 -g -I\"../src\" -c -fmessage-length=0 -MT\"$@\" -MMD -MP -MF\"$(@:%.o=%.d)\" -MT\"$(@)\" -o \"$@\" \"$<\" -sds-hw ")
     accel = data.get("hw_function")
     target.write(accel)
     target.write(" ")
