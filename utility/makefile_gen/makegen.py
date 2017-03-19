@@ -145,6 +145,28 @@ def create_mk(target, data):
     target.write("\" ")
     target.write("-emulation ")
     target.write("debug\n")
+    target.write("\t @echo 'Finished building target: $@'\n")
+    target.write("\t @echo ' '\n")
+
+    target.write("# Other Targets\n")
+    target.write("clean:\n")
+    target.write("\t -$(RM) $(CC_DEPS) $(EXECUTABLES) $(C_UPPER_DEPS) $(OBJS) $(CXX_DEPS) $(C_DEPS) $(CPP_DEPS) ")
+    target.write(executable)
+    target.write("\n")
+    target.write("\t -echo ' '\n")
+
+    target.write("pre-build:\n")
+    target.write("\t -sdsoc_make_clean ")
+    build_flow = data.get("build_flow")
+    target.write(build_flow)
+    target.write("\n")
+    target.write("\t -@echo ' '\n")
+    
+    target.write(".PHONY: all clean dependents\n")
+    target.write(".SECONDARY: main-build pre-build\n")
+
+    target.write("-include ../makefile.targets\n")
+
     return
 
 
