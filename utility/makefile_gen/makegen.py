@@ -61,11 +61,33 @@ def create_subdir_mk(target, data):
     return
 
 def create_srcs_mk(target, data):
-    print "srcs i m in"
+    target.write("LD_SRCS := \n")
+    target.write("C_UPPER_SRCS := \n")
+    target.write("CXX_SRCS := \n")
+    target.write("OBJ_SRCS := \n")
+    target.write("CC_SRCS := \n")
+    target.write("C_SRCS := \n")
+    target.write("CPP_SRCS := \n")
+    target.write("O_SRCS := \n")
+    target.write("CC_DEPS := \n")
+    target.write("EXECUTABLES := \n")
+    target.write("C_UPPER_DEPS := \n")
+    target.write("OBJS := \n")
+    target.write("CXX_DEPS := \n")
+    target.write("C_DEPS := \n")
+    target.write("CPP_DEPS := \n")
+    target.write("\n")
+    target.write("SUBDIRS := \\\n")
+    target.write("src \\\n")
+    target.write("\n")
     return
+
 def create_obj_mk(target, data):
-    print "obj i m in"
+    target.write("USER_OBJS := \n")
+    target.write("\n")
+    target.write("LIBS := \n")
     return
+
 def create_mk(target, data):
     print "make i m in"
     return
@@ -89,7 +111,7 @@ if "emulation" == flow:
     create_srcs_mk(src_target, data)
     src_target.close
     obj_target = open("objects.mk", "w")
-    create_obj_mk(src_target, data)
+    create_obj_mk(obj_target, data)
     obj_target.close
     mk_target = open("makefile", "w")
     create_mk(mk_target, data)
