@@ -153,7 +153,12 @@ def create_mk(target, data):
     target.write("\t -$(RM) $(CC_DEPS) $(EXECUTABLES) $(C_UPPER_DEPS) $(OBJS) $(CXX_DEPS) $(C_DEPS) $(CPP_DEPS) ")
     target.write(executable)
     target.write("\n")
-    target.write("\t -echo ' '\n")
+    target.write("\t -@echo ' '\n")
+    
+    target.write("check: all\n")
+    target.write("\t ../../utility/emu_run.sh ")
+    target.write(executable)
+    target.write("\n")
 
     target.write("pre-build:\n")
     target.write("\t -sdsoc_make_clean ")
