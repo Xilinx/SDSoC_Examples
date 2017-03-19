@@ -3,5 +3,6 @@
     "src_files" : ["main" , "row_array_2d"],
     "hw_function": "row_array_2d_accel",
     "accel_file" : "row_array_2d.cpp", 
-    "device" : "zc706"
+    "device" : "zc706",
+    "exe" : "row_array_2d.elf"
 }
