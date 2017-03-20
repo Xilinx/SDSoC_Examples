@@ -7,6 +7,8 @@ import subprocess
 def create_subdir_mk(target, data):
     target.write("SDSCC := sds++\n")
     target.write("\n")
+    target.write("CPPFLAGS := -Wall -O3\n")
+    target.write("\n")
     target.write("OS := -sds-sys-config ")
     os_config = data.get('os')
     target.write(os_config)
@@ -53,7 +55,7 @@ def create_subdir_mk(target, data):
     target.write("\t @echo 'Building file: $<' \n")
     target.write("\t @echo 'Invoking: SDS++ Compiler' \n")
     target.write("\t")
-    target.write("$(SDSCC) -Wall -O0 -g -I\"../src\" -c -fmessage-length=0 -MT\"$@\" -MMD -MP -MF\"$(@:%.o=%.d)\" -MT\"$(@)\" -o \"$@\" \"$<\" -sds-hw ")
+    target.write("$(SDSCC) $(CPPFLAGS) -I\"../src\" -c -MT\"$@\" -MMD -MP -MF\"$(@:%.o=%.d)\" -MT\"$(@)\" -o \"$@\" \"$<\" -sds-hw ")
     accel = data.get("hw_function")
     target.write(accel)
     target.write(" ")

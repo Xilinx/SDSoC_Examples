@@ -1,5 +1,5 @@
 {
-    "build_flow": "emulation",
+    "build_flow": "hardware_1",
     "emu_mode" : "optimized",
     "src_files" : ["main" , "row_array_2d"],
     "hw_function": "row_array_2d_accel",
