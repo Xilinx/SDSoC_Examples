@@ -48,7 +48,7 @@ TARGET = emu
 
 # Current Directory
 pwd = $(CURDIR)
-
+COMMON_REPO = ../../
 # Target OS:
 #    linux, standalone, rtos
 TARGET_OS = linux
@@ -61,8 +61,7 @@ EMU_MODE = optimized
 # Additional sds++ flags - this should be reserved for sds++ flags defined
 # at run-time.  Other sds++ options should be defined in the make file data
 # section below
-ADDL_FLAGS = -poll-mode 1 
-ADDL_FLAGS += -dmclkid 1 
+ADDL_FLAGS =  
 
 # Set to 1 (number one) to enable sds++ verbose output
 VERBOSE =
@@ -73,14 +72,15 @@ EXECUTABLE = add.elf
 # Makefile Data
 #+---------------------------------------------------------------------------
 # Source Files
+SRC_DIR = src
 C_SOURCES =
 CPP_SOURCES += \
-$(pwd)/src/main.cpp \
-$(pwd)/src/add.cpp
+$(pwd)/$(SRC_DIR)/main.cpp \
+$(pwd)/$(SRC_DIR)/add.cpp
 
 # SDS Options
 #
-HW_FLAGS = -sds-hw add add.cpp -clkid 1 -sds-end
+HW_FLAGS = -sds-hw add add.cpp -sds-end
 
 EMU_FLAGS =
 ifeq ($(TARGET),emu)
@@ -120,7 +120,7 @@ $(TARGET)/${EXECUTABLE}: ${OBJECTS}
 	@echo 'SDx Completed Building Target: $@'
 	@echo ' ' 
 
-$(pwd)/$(TARGET)/%.o: $(pwd)/src/%.cpp
+$(pwd)/$(TARGET)/%.o: $(pwd)/$(SRC_DIR)/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: SDS++ Compiler'
 	mkdir -p $(TARGET)
@@ -131,7 +131,8 @@ $(pwd)/$(TARGET)/%.o: $(pwd)/src/%.cpp
 # Check Rule Builds the Sources and Executes on Specified Target 
 check: all
 ifeq ($(TARGET), emu)
-	cd emu ; ../../../utility/emu_run.sh $(TARGET)
+	cp $(COMMON_REPO)/utility/emu_run.sh $(TARGET)/
+	cd $(TARGET) ; ./emu_run.sh $(TARGET)
 else
 	$(info "This Release Doesnt Support Automatic Hardware Execution/Check")
 endif 
