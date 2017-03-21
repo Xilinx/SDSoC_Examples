@@ -61,7 +61,8 @@ EMU_MODE = optimized
 # Additional sds++ flags - this should be reserved for sds++ flags defined
 # at run-time.  Other sds++ options should be defined in the make file data
 # section below
-ADDL_FLAGS = 
+ADDL_FLAGS = -poll-mode 1 
+ADDL_FLAGS += -dmclkid 1 
 
 # Set to 1 (number one) to enable sds++ verbose output
 VERBOSE =
@@ -116,7 +117,7 @@ $(TARGET)/${EXECUTABLE}: ${OBJECTS}
 	@echo 'Building Target: $@'
 	@echo 'Triggering: SDS++ Linker'
 #	cd $(TARGET) ; ${CC} ${LFLAGS} ${OBJECTS} -o $@
-	cd $(TARGET) ; $(CC) -poll-mode 1 -o "add.elf" $(OBJECTS) $(EMU_FLAGS) -dmclkid 1 		
+	cd $(TARGET) ; $(CC) -o "add.elf" $(OBJECTS) $(EMU_FLAGS)  		
 	@echo 'SDx Completed Building Target: $@'
 	@echo ' ' 
 
