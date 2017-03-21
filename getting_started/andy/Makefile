@@ -128,8 +128,13 @@ $(pwd)/$(TARGET)/%.o: $(pwd)/src/%.cpp
 	@echo 'Finished building: $<' 
 	@echo ' ' 
 
-	@echo 'Finished Building: $<'
-	@echo ' ' 
+# Check Rule Builds the Sources and Executes on Specified Target 
+check: all
+ifeq ($(TARGET), emu)
+	cd emu ; ../../../utility/emu_run.sh $(TARGET)
+else
+	$(info "This Release Doesnt Support Automatic Hardware Execution/Check")
+endif 
 
 clean:
 	${RM} ${EXECUTABLE} ${OBJECTS} ${DEPS}
