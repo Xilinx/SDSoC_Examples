@@ -39,32 +39,32 @@
 # not overidden, the defaults defined below will be used. Do not include data
 # you do not want overwridden
 #+---------------------------------------------------------------------------
-PLATFORM = zcu102_es2
+PLATFORM = zc706
 
 # Run Target:
 #   hw  - compile for hardware
 #   emu - compile for emulation
-RUN_TARGET = hw
+TARGET = emu
 
 # Current Directory
 pwd = $(CURDIR)
 
 # Target OS:
 #    linux, standalone, rtos
-SDS_TARGET_OS = linux
+TARGET_OS = linux
 
 # Emulation Mode:
 #   debug     - Include debug data
 #   optimized - Exclude debug data
-SDS_EMU_MODE = optimized
+EMU_MODE = optimized
 
 # Additional sds++ flags - this should be reserved for sds++ flags defined
 # at run-time.  Other sds++ options should be defined in the make file data
 # section below
-SDS_ADDL_FLAGS = 
+ADDL_FLAGS = 
 
 # Set to 1 (number one) to enable sds++ verbose output
-SDS_VERBOSE =
+VERBOSE =
 
 EXECUTABLE = add.elf
 
@@ -74,60 +74,67 @@ EXECUTABLE = add.elf
 # Source Files
 C_SOURCES =
 CPP_SOURCES += \
-$(pwd)/src/add.cpp \
-$(pwd)/src/ main.cpp
+$(pwd)/src/main.cpp \
+$(pwd)/src/add.cpp
 
 # SDS Options
 #
-SDS_HW_FLAGS = -sds-hw add add.cpp -sds-end
+HW_FLAGS = -sds-hw add add.cpp -clkid 1 -sds-end
 
-SDS_EMU_FLAGS =
-ifeq ($(RUN_TARGET),emu)
-   SDS_EMU_FLAGS = -mno-bitstream -emulation ${SDS_EMU_MODE}
+EMU_FLAGS =
+ifeq ($(TARGET),emu)
+   EMU_FLAGS = -mno-bitstream -emulation ${EMU_MODE}
 endif
 
 # Comnpilation and Link Flags
 IFLAGS = -I.
-CFLAGS = -Wall -g -c
-LFLAGS = -g
+CFLAGS = -Wall -O3 -c
+LFLAGS = 
 
 #+---------------------------------------------------------------------------
 
 SDSFLAGS = -sds-pf ${PLATFORM} \
-	${SDS_HW_FLAGS} -target-os ${SDS_TARGET_OS} \
-	${SDS_ADDL_FLAGS} ${SDS_EMU_FLAGS}
+	-target-os ${TARGET_OS} \
+	${ADDL_FLAGS} 
 
 CC = sds++ ${SDSFLAGS}
 
 OBJECTS += \
-$(pwd)/$(RUN_TARGET)/add.o \
-$(pwd)/$(RUN_TARGET)/main.o \
+$(pwd)/$(TARGET)/main.o \
+$(pwd)/$(TARGET)/add.o \
 
-DEPS += 
-$(pwd)/$(TARGETS)/add.d \
-$(pwd)/$(TARGETS)/main.d
+DEPS += \
+$(pwd)/$(TARGET)/main.d \
+$(pwd)/$(TARGET)/add.d
 
 .PHONY: all
 
-all: ${RUN_TARGET}/${EXECUTABLE}
+all: $(TARGET)/${EXECUTABLE}
 
-${RUN_TARGET}/${EXECUTABLE}: ${OBJECTS}
-	mkdir -p ${RUN_TARGET}
-	cd ${RUN_TARGET} ; ${CC} ${LFLAGS} ${OBJECTS} -o $@ 
+$(TARGET)/${EXECUTABLE}: ${OBJECTS}
+	mkdir -p $(TARGET)
+	@echo 'Building Target: $@'
+	@echo 'Triggering: SDS++ Linker'
+#	cd $(TARGET) ; ${CC} ${LFLAGS} ${OBJECTS} -o $@
+	cd $(TARGET) ; $(CC) -poll-mode 1 -o "add.elf" $(OBJECTS) $(EMU_FLAGS) -dmclkid 1 		
+	@echo 'SDx Completed Building Target: $@'
+	@echo ' ' 
 
--include ${DEPS}
+$(pwd)/$(TARGET)/%.o: $(pwd)/src/%.cpp
+	@echo 'Building file: $<'
+	@echo 'Invoking: SDS++ Compiler'
+	mkdir -p $(TARGET)
+#	cd $(TARGET) ; ${CC} ${CFLAGS} ${IFLAGS} $< -o $@
+	cd $(TARGET) ; $(CC) -Wall -O3 -I"../src" -c -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<" $(HW_FLAGS)
+	 @echo 'Finished building: $<' 
+	 @echo ' ' 
 
-${pwd}/${RUN_TARGET}/%.o: ${pwd}/src/%.cpp
-	mkdir -p ${RUN_TARGET}
-	cd ${RUN_TARGET} ; ${CC} ${CFLAGS} ${IFLAGS} $< -o $@
-
-${pwd}/${RUN_TARGET}/%.o: ${pwd}/src/%.c
-	${CC} ${CFLAGS} ${IFLAGS} $< -o $@
+	@echo 'Finished Building: $<'
+	@echo ' ' 
 
 clean:
 	${RM} ${EXECUTABLE} ${OBJECTS} ${DEPS}
 
 ultraclean: clean
-	${RM} ${EXECUTABLE}.bit 
-	${RM} -rf _sds sd_card
+	${RM} -rf ${TARGET} 
 
