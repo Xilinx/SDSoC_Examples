@@ -84,13 +84,14 @@ HW_FLAGS = -sds-hw add add.cpp -clkid 1 -sds-end
 
 EMU_FLAGS =
 ifeq ($(TARGET),emu)
-   EMU_FLAGS = -mno-bitstream -emulation ${EMU_MODE}
+   EMU_FLAGS = -mno-bitstream -mno-boot-files -emulation ${EMU_MODE}
 endif
 
-# Comnpilation and Link Flags
+# Compilation and Link Flags
 IFLAGS = -I.
 CFLAGS = -Wall -O3 -c
-LFLAGS = 
+CFLAGS += -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)"
+LFLAGS = "$@" "$<"
 
 #+---------------------------------------------------------------------------
 
@@ -109,15 +110,13 @@ $(pwd)/$(TARGET)/main.d \
 $(pwd)/$(TARGET)/add.d
 
 .PHONY: all
-
 all: $(TARGET)/${EXECUTABLE}
 
 $(TARGET)/${EXECUTABLE}: ${OBJECTS}
 	mkdir -p $(TARGET)
 	@echo 'Building Target: $@'
 	@echo 'Triggering: SDS++ Linker'
-#	cd $(TARGET) ; ${CC} ${LFLAGS} ${OBJECTS} -o $@
-	cd $(TARGET) ; $(CC) -o "add.elf" $(OBJECTS) $(EMU_FLAGS)  		
+	cd $(TARGET) ; $(CC) -o $(EXECUTABLE) $(OBJECTS) $(EMU_FLAGS)  		
 	@echo 'SDx Completed Building Target: $@'
 	@echo ' ' 
 
@@ -125,10 +124,9 @@ $(pwd)/$(TARGET)/%.o: $(pwd)/src/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: SDS++ Compiler'
 	mkdir -p $(TARGET)
-#	cd $(TARGET) ; ${CC} ${CFLAGS} ${IFLAGS} $< -o $@
-	cd $(TARGET) ; $(CC) -Wall -O3 -I"../src" -c -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<" $(HW_FLAGS)
-	 @echo 'Finished building: $<' 
-	 @echo ' ' 
+	cd $(TARGET) ; $(CC) $(CFLAGS) -o $(LFLAGS) $(HW_FLAGS)
+	@echo 'Finished building: $<' 
+	@echo ' ' 
 
 	@echo 'Finished Building: $<'
 	@echo ' ' 
