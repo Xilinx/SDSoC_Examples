@@ -48,7 +48,6 @@ where the *DEVICES* variable accepts one device.
 ## 4. DESIGN FILE HIERARCHY
 Application code is located in the src directory. Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation directory name is "emu" in case of hardware flow "hw" 
 ```
-.temp.sh.swp
 Makefile
 README.md
 description.json
@@ -59,11 +58,12 @@ src/row_array_2d.h
 
 ## 5. COMPILATION AND EXECUTION
 ### Compiling for Application Emulation
-As part of the capabilities available to an application developer, SDAccel includes environments to test the correctness of an application at both a software functional level and a hardware emulated level.
-These modes, which are named sw_emu and hw_emu, allow the developer to profile and evaluate the performance of a design before compiling for board execution.
-It is recommended that all applications are executed in at least the sw_emu mode before being compiled and executed on an FPGA board.
+As part of capabilities available to an application developer, SDSoC includes emulation environment to check the functional and design compatibility with selected hardware platform.
+SDSoC emulation mode is named as "emu" , this mode allows developer to profile and evaluate the performance of a design before compiling for board deployment. It is highly recommended that all the applications are executed in emulation flow.
 ```
-make TARGETS=<sw_emu|hw_emu> all
+make all TARGET=<emu>
+or
+make check TARGET=<emu>
 ```
 where
 ```
