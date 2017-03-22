@@ -70,7 +70,7 @@ where
 ### Executing Emulated Application 
 ***Recommended Execution Flow for Example Applications in Emulation*** 
 
-The makefile for the application can directly executed the application with the following command:
+The makefile for the application can directly execute with the following command:
 ```
 make check TARGETS=emu
 
@@ -78,12 +78,12 @@ make check TARGETS=emu
 If the application has not been previously compiled, the check makefile rule will compile and execute the application in the emulation mode selected by the user.
 
 ### Compiling for Application Execution in the FPGA Accelerator Card
-The command to compile the application for execution on the FPGA acceleration board is
+The command to deploy hardware function on programmable logic (PL)
 ```
-make all
+make all TARGET=hw
 ```
-The default target for the makefile is to compile for hardware. Therefore, setting the TARGETS option is not required.
-*NOTE:* Compilation for application execution in hardware generates custom logic to implement the functionality of the kernels in an application.
+The default target for the makefile is to compile for emulation. Therefore, setting the TARGET option is required.
+*NOTE:* Compilation for hardware target results in generating custom logic for the specified hardware function in source code. 
 It is typical for hardware compile times to range from 30 minutes to a couple of hours.
 
 ## 6. Execution in Cloud Environments
