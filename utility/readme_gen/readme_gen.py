@@ -164,7 +164,6 @@ def license(target):
     target.write("\n## 7. LICENSE AND CONTRIBUTING TO THE REPOSITORY\n")
     target.write("The source for this project is licensed under the [3-Clause BSD License][]\n\n")
     target.write("To contribute to this project, follow the guidelines in the [Repository Contribution README][]\n")
-
     return
 
 def ack(target,data):
