@@ -62,46 +62,21 @@ As part of capabilities available to an application developer, SDSoC includes em
 SDSoC emulation mode is named as "emu" , this mode allows developer to profile and evaluate the performance of a design before compiling for board deployment. It is highly recommended that all the applications are executed in emulation flow.
 ```
 make all TARGET=emu
-or
-make check TARGET=emu
 ```
 where
 ```
 	make all TARGET=emu   -> Sources are built for emulation flow
-	make check TARGET=emu -> Sources are built and executed in emulation flow
 ```
-*NOTE:* The software emulation flow is a functional correctness check only. It does not estimate the performance of the application in hardware.
-The hardware emulation flow is a cycle accurate simulation of the hardware generated for the application. As such, it is expected for this simulation to take a long time.
-It is recommended that for this example the user skips running hardware emulation or modifies the example to work on a reduced data set.
 ### Executing Emulated Application 
 ***Recommended Execution Flow for Example Applications in Emulation*** 
 
 The makefile for the application can directly executed the application with the following command:
 ```
-make TARGETS=<sw_emu|hw_emu> check
+make check TARGETS=emu
 
-```
-where
-```
-	sw_emu = software emulation
-	hw_emu = hardware emulation
 ```
 If the application has not been previously compiled, the check makefile rule will compile and execute the application in the emulation mode selected by the user.
 
-***Alternative Execution Flow for Example Applications in Emulation*** 
-
-An emulated application can also be executed directly from the command line without using the check makefile rule as long as the user environment has been properly configured.
-To manually configure the environment to run the application, set the following
-```
-export LD_LIBRARY_PATH=$XILINX_SDX/runtime/lib/x86_64/:$LD_LIBRARY_PATH
-export XCL_EMULATION_MODE=<sw_emu|hw_emu>
-emconfigutil --xdevice 'zc706 --nd 1
-```
-Once the environment has been configured, the application can be executed by
-```
-../../utility/emu_run.sh row_array_2d_accel.elf
-```
-This is the same command executed by the check makefile rule
 ### Compiling for Application Execution in the FPGA Accelerator Card
 The command to compile the application for execution on the FPGA acceleration board is
 ```
