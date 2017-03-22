@@ -61,14 +61,14 @@ src/row_array_2d.h
 As part of capabilities available to an application developer, SDSoC includes emulation environment to check the functional and design compatibility with selected hardware platform.
 SDSoC emulation mode is named as "emu" , this mode allows developer to profile and evaluate the performance of a design before compiling for board deployment. It is highly recommended that all the applications are executed in emulation flow.
 ```
-make all TARGET=<emu>
+make all TARGET=emu
 or
-make check TARGET=<emu>
+make check TARGET=emu
 ```
 where
 ```
-	sw_emu = software emulation
-	hw_emu = hardware emulation
+	make all TARGET=emu   -> Sources are built for emulation flow
+	make check TARGET=emu -> Sources are built and executed in emulation flow
 ```
 *NOTE:* The software emulation flow is a functional correctness check only. It does not estimate the performance of the application in hardware.
 The hardware emulation flow is a cycle accurate simulation of the hardware generated for the application. As such, it is expected for this simulation to take a long time.
