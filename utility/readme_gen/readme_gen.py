@@ -5,7 +5,7 @@ import os
 import subprocess
 
 DSA = 'xilinx:xil-accel-rd-ku115:4ddr-xpr:3.2'
-VERSION = 'SDAccel 2016.3'
+VERSION = 'SDx 2016.4'
 DEVICES = {
     'AWS VU9P': ['TBD'],
     'zynq7000 702':['zc702','nx2'],

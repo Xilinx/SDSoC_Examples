@@ -32,9 +32,9 @@ where examples is the name of the directory where the repository will be stored 
 ## 3. SOFTWARE AND SYSTEM REQUIREMENTS
 Board | Device Name | Software Version
 ------|-------------|-----------------
-zynq7000 702|zc702|SDAccel 2016.3
-zynq7000 706|zc706|SDAccel 2016.3
-UltraScale+ 102|zcu102|SDAccel 2016.3
+zynq7000 702|zc702|SDx 2016.4
+zynq7000 706|zc706|SDx 2016.4
+UltraScale+ 102|zcu102|SDx 2016.4
 
 
 Board targeted by default = ***xilinx:xil-accel-rd-ku115:4ddr-xpr:3.2***
