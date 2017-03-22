@@ -1,7 +1,29 @@
 {
+    "example": "Read/Write Window of 2D Array",
+    "overview": [
+        "This is a simple example of accessing each row of data from 2d array"
+    ],
+    "key_concepts": [ "Window of 2D data array access"],
+    "keywords": ["#pragma HLS DATAFLOW", "#pragma HLS PIPELINE", "#pragma HLS stream"],
+    "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
+    "em_cmd": "../../utility/emu_run.sh row_array_2d_accel.elf",
+    "hw_cmd": "./row_array_2d_accel.elf",
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "MAR2017",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
     "hw_function": "window_array_2d_accel",
-    "accel_file" : "window_array_2d.cpp", 
+    "accel_file" : "window_array_2d.cpp",
     "source_dir" : "src/*.cpp",
     "device" : "zc706",
-    "os" : "linux"
+    "os" : "linux" 
 }
