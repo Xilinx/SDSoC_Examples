@@ -4,7 +4,7 @@ import json
 import os
 import subprocess
 
-DSA = 'xilinx:xil-accel-rd-ku115:4ddr-xpr:3.2'
+DSA = 'zc706'
 VERSION = 'SDx 2016.4'
 DEVICES = {
     'AWS VU9P': ['TBD'],
@@ -98,9 +98,9 @@ def requirements(target,data):
     target.write("Board targeted by default = ***%s***\n\n" %DSA)
     target.write("*NOTE:* The board/device used for compilation can be changed by adding the DEVICES variable to the make command as shown below\n")
     target.write("```\n")
-    target.write("make DEVICES=<device name>\n")
+    target.write("make PLATFORM=<device name>\n")
     target.write("```\n")
-    target.write("where the *DEVICES* variable accepts either 1 device from the table above or a comma separated list of device names.\n\n")
+    target.write("where the *DEVICES* variable accepts one device.\n\n")
     try:
       if data['opencv']:
                 target.write("***OpenCV for Example Applications***\n\n")
@@ -115,9 +115,7 @@ def requirements(target,data):
 def hierarchy(target):
     target.write("## 4. DESIGN FILE HIERARCHY\n")
     target.write("Application code is located in the src directory. ")
-    target.write("Accelerator binary files will be compiled to the xclbin directory. ")
-    target.write("The xclbin directory is required by the Makefile and its contents will be filled during compilation. A listing of all the files ")
-    target.write("in this example is shown below\n\n")
+    target.write("Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation directory name is \"emu\" in case of hardware flow \"hw\" \n")
     target.write("```\n")
     tree_cmd = ['git', 'ls-files']
     proc = subprocess.Popen(tree_cmd,stdout=subprocess.PIPE)

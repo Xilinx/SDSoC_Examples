@@ -37,17 +37,16 @@ zynq7000 706|zc706|SDx 2016.4
 UltraScale+ 102|zcu102|SDx 2016.4
 
 
-Board targeted by default = ***xilinx:xil-accel-rd-ku115:4ddr-xpr:3.2***
+Board targeted by default = ***zc706***
 
 *NOTE:* The board/device used for compilation can be changed by adding the DEVICES variable to the make command as shown below
 ```
-make DEVICES=<device name>
+make PLATFORM=<device name>
 ```
-where the *DEVICES* variable accepts either 1 device from the table above or a comma separated list of device names.
+where the *DEVICES* variable accepts one device.
 
 ## 4. DESIGN FILE HIERARCHY
-Application code is located in the src directory. Accelerator binary files will be compiled to the xclbin directory. The xclbin directory is required by the Makefile and its contents will be filled during compilation. A listing of all the files in this example is shown below
-
+Application code is located in the src directory. Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation directory name is "emu" in case of hardware flow "hw" 
 ```
 .temp.sh.swp
 Makefile
@@ -96,7 +95,7 @@ To manually configure the environment to run the application, set the following
 ```
 export LD_LIBRARY_PATH=$XILINX_SDX/runtime/lib/x86_64/:$LD_LIBRARY_PATH
 export XCL_EMULATION_MODE=<sw_emu|hw_emu>
-emconfigutil --xdevice 'xilinx:xil-accel-rd-ku115:4ddr-xpr:3.2 --nd 1
+emconfigutil --xdevice 'zc706 --nd 1
 ```
 Once the environment has been configured, the application can be executed by
 ```
