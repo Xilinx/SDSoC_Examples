@@ -155,21 +155,21 @@ def compilation(target,data):
 
 
 def support(target):
-    target.write("\n## 7. SUPPORT\n")
+    target.write("\n## 6. SUPPORT\n")
     target.write("For more information about SDAccel check the [SDAccel User Guides][]\n\n")
     target.write("For questions and to get help on this project or your own projects, visit the [SDAccel Forums][].\n\n")
     target.write("To execute this example using the SDAccel GUI, follow the setup instructions in [SDAccel GUI README][]\n\n")
     return
 
 def license(target):
-    target.write("\n## 8. LICENSE AND CONTRIBUTING TO THE REPOSITORY\n")
+    target.write("\n## 7. LICENSE AND CONTRIBUTING TO THE REPOSITORY\n")
     target.write("The source for this project is licensed under the [3-Clause BSD License][]\n\n")
     target.write("To contribute to this project, follow the guidelines in the [Repository Contribution README][]\n")
 
     return
 
 def ack(target,data):
-    target.write("\n## 9. ACKNOWLEDGEMENTS\n")
+    target.write("\n## 8. ACKNOWLEDGEMENTS\n")
     target.write("This example is written by developers at\n")
     for contributor in data["contributors"]:
         target.write("- [")
@@ -180,7 +180,7 @@ def ack(target,data):
     return
 
 def revision(target,data):
-    target.write("\n## 10. REVISION HISTORY\n")
+    target.write("\n## 9. REVISION HISTORY\n")
     target.write("Date | README Version | Description\n")
     target.write("-----|----------------|------------\n")
     for rev in data["revision"]:

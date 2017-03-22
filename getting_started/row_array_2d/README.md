@@ -87,7 +87,7 @@ The default target for the makefile is to compile for emulation. Therefore, sett
 It is typical for hardware compile times to range from 30 minutes to a couple of hours.
 
 
-## 7. SUPPORT
+## 6. SUPPORT
 For more information about SDAccel check the [SDAccel User Guides][]
 
 For questions and to get help on this project or your own projects, visit the [SDAccel Forums][].
@@ -95,16 +95,16 @@ For questions and to get help on this project or your own projects, visit the [S
 To execute this example using the SDAccel GUI, follow the setup instructions in [SDAccel GUI README][]
 
 
-## 8. LICENSE AND CONTRIBUTING TO THE REPOSITORY
+## 7. LICENSE AND CONTRIBUTING TO THE REPOSITORY
 The source for this project is licensed under the [3-Clause BSD License][]
 
 To contribute to this project, follow the guidelines in the [Repository Contribution README][]
 
-## 9. ACKNOWLEDGEMENTS
+## 8. ACKNOWLEDGEMENTS
 This example is written by developers at
 - [Xilinx](http://www.xilinx.com)
 
-## 10. REVISION HISTORY
+## 9. REVISION HISTORY
 Date | README Version | Description
 -----|----------------|------------
 DEC2016|1.0|Initial Xilinx Release
