@@ -1,5 +1,5 @@
-# (c) Copyright 2013 - 2016 Xilinx, Inc. All rights reserved. 
-# 
+# (c) Copyright 2013 - 2016 Xilinx, Inc. All rights reserved.
+#
 # This file contains confidential and proprietary information of Xilinx, Inc. and
 # is protected under U.S. and international copyright and other intellectual
 # property laws.
@@ -20,125 +20,131 @@
 # of any action brought by a third party) even if such damage or loss was
 # reasonably foreseeable or Xilinx had been advised of the possibility of the
 # same.
-# 
+#
 # CRITICAL APPLICATIONS
 # Xilinx products are not designed or intended to be fail-safe, or for use in any
 # application requiring fail-safe performance, such as life-support or safety
 # devices or systems, Class III medical devices, nuclear facilities, applications
 # related to the deployment of airbags, or any other applications that could lead
 # to death, personal injury, or severe property or environmental damage
-# (individually and collectively, "Critical Applications"). Customer assumes the
+# (individually and collectively, "Critical Applications").Customer assumes the
 # sole risk and liability of any use of Xilinx products in Critical Applications,
 # subject only to applicable laws and regulations governing limitations on product
 # liability.
-# 
+#
 # THIS COPYRIGHT NOTICE AND DISCLAIMER MUST BE RETAINED AS PART OF THIS FILE AT
-# ALL TIMES. 
-#+---------------------------------------------------------------------------
-# The following Parameters may be overidden through the make command line. If
-# not overidden, the defaults defined below will be used. Do not include data
-# you do not want overwridden
-#+---------------------------------------------------------------------------
-PLATFORM = zc706
+# ALL TIMES.
+#
+#+-------------------------------------------------------------------------------
+# The following Parameters may be overidden through the make command line. If not
+# overidden, the defaults defined below will be used. Do not include data you do
+# not want overwridden
+#+-------------------------------------------------------------------------------
+
+# Device Platform (Default ~ zc706)
+PLATFORM := zc706
 
 # Run Target:
-#   hw  - compile for hardware
-#   emu - compile for emulation
-TARGET = emu
+#   hw  - Compile for hardware
+#   emu - Compile for emulation (Default)
+TARGET := emu
 
 # Current Directory
-pwd = $(CURDIR)
-COMMON_REPO = ../../
+pwd := $(CURDIR)
+
+# Points to Utility Directory
+COMMON_REPO = ../..
+
 # Target OS:
-#    linux, standalone, rtos
-TARGET_OS = linux
+#     linux (Default), standalone, rtos
+TARGET_OS := linux
 
 # Emulation Mode:
-#   debug     - Include debug data
-#   optimized - Exclude debug data
-EMU_MODE = optimized
+#     debug     - Include debug data
+#     optimized - Exclude debug data (Default)
+EMU_MODE := optimized
 
 # Additional sds++ flags - this should be reserved for sds++ flags defined
-# at run-time.  Other sds++ options should be defined in the make file data
+# at run-time. Other sds++ options should be defined in the makefile data section below
 # section below
-ADDL_FLAGS =  
+ADDL_FLAGS := 
 
 # Set to 1 (number one) to enable sds++ verbose output
-VERBOSE =
+VERBOSE := 
+# Build Executable
+EXECUTABLE := row_array_2d_accel.elf
 
-EXECUTABLE = row_array_2d.elf
-
-#+---------------------------------------------------------------------------
+#+--------------------------------------------------------------------------
 # Makefile Data
-#+---------------------------------------------------------------------------
+#+--------------------------------------------------------------------------
+
 # Source Files
-SRC_DIR = src
-C_SOURCES =
-CPP_SOURCES += \
-$(pwd)/$(SRC_DIR)/row_array_2d.cpp \
-$(pwd)/$(SRC_DIR)/main.cpp
-
-# SDS Options
-#
-HW_FLAGS = -sds-hw row_array_2d_accel row_array_2d.cpp -sds-end
-
-EMU_FLAGS =
-ifeq ($(TARGET),emu)
-   EMU_FLAGS = -mno-bitstream -mno-boot-files -emulation ${EMU_MODE}
-endif
-
-# Compilation and Link Flags
-IFLAGS = -I.
-CFLAGS = -Wall -O3 -c
-CFLAGS += -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)"
-LFLAGS = "$@" "$<"
-
-#+---------------------------------------------------------------------------
-
-SDSFLAGS = -sds-pf ${PLATFORM} \
-	-target-os ${TARGET_OS} \
-	${ADDL_FLAGS} 
-
-CC = sds++ ${SDSFLAGS}
+SRC_DIR := src
+CPP_SRCS += \
+$(pwd)/$(SRC_DIR)/main.cpp \
+$(pwd)/$(SRC_DIR)/row_array_2d.cpp
 
 OBJECTS += \
 $(pwd)/$(TARGET)/main.o \
-$(pwd)/$(TARGET)/row_array_2d.o \
+$(pwd)/$(TARGET)/row_array_2d.o
 
-DEPS += \
+CPP_DEPS += \
 $(pwd)/$(TARGET)/main.d \
 $(pwd)/$(TARGET)/row_array_2d.d
 
-.PHONY: all
-all: $(TARGET)/${EXECUTABLE}
+# SDS Options
+#
+HW_FLAGS := -sds-hw row_array_2d_accel row_array_2d.cpp -sds-end
+EMU_FLAGS := 
+ifeq ($(TARGET), emu)
+	EMU_FLAGS := -mno-bitstream -mno-boot-files -emulation $(EMU_MODE)
+endif
 
-$(TARGET)/${EXECUTABLE}: ${OBJECTS}
+# Compilation and Link Flags
+IFLAGS := -I.
+CFLAGS = -Wall -O3 -c
+CFLAGS += -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" 
+LFLAGS = "$@" "$<" 
+#+---------------------------------------------------------------------
+
+SDSFLAGS := -sds-pf $(PLATFORM) \
+	-target-os $(TARGET_OS) \
+	$(ADDL_FLAGS)
+
+# SDS Compiler
+CC := sds++ $(SDSFLAGS)
+
+.PHONY: all
+all: $(TARGET)/$(EXECUTABLE)
+
+$(TARGET)/$(EXECUTABLE): $(OBJECTS)
 	mkdir -p $(TARGET)
 	@echo 'Building Target: $@'
-	@echo 'Triggering: SDS++ Linker'
-	cd $(TARGET) ; $(CC) -o $(EXECUTABLE) $(OBJECTS) $(EMU_FLAGS)  		
+	@echo 'Trigerring: SDS++ Linker'
+	cd $(TARGET) ; $(CC) -o $(EXECUTABLE) $(OBJECTS) $(EMU_FLAGS)
 	@echo 'SDx Completed Building Target: $@'
-	@echo ' ' 
+	@echo ' '
 
 $(pwd)/$(TARGET)/%.o: $(pwd)/$(SRC_DIR)/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: SDS++ Compiler'
 	mkdir -p $(TARGET)
 	cd $(TARGET) ; $(CC) $(CFLAGS) -o $(LFLAGS) $(HW_FLAGS)
-	@echo 'Finished building: $<' 
-	@echo ' ' 
+	@echo 'Finished building: $<'
+	@echo ' '
 
-# Check Rule Builds the Sources and Executes on Specified Target 
+# Check Rule Builds the Sources and Executes on Specified Target
 check: all
 ifeq ($(TARGET), emu)
 	cp $(COMMON_REPO)/utility/emu_run.sh $(TARGET)/
 	cd $(TARGET) ; ./emu_run.sh $(EXECUTABLE)
 else
-	$(info "This Release Doesnt Support Automatic Hardware Execution/Check")
-endif 
+	$(info "This Release Doesn't Support Automated Hardware Execution")
+endif
 
 clean:
-	${RM} ${EXECUTABLE} ${OBJECTS} ${DEPS}
+	$(RM) $(EXECUTABLE) $(OBJECTS) $(CPP_DEPS)
 
-ultraclean: clean
-	${RM} -rf ${TARGET} 
+ultraclean:
+	$(RM) -rf $(TARGET)
+
