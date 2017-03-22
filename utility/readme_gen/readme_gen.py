@@ -214,14 +214,7 @@ def footer(target):
     target.write("[3-Clause BSD License]: " + root + "LICENSE.txt\n")
     target.write("[SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc\n")
     target.write("[SDSoC User Guides]: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2016_4/ug1027-sdsoc-user-guide.pdf\n")
-    target.write("[Nimbix Getting Started Guide]: http://www.xilinx.com/support/documentation/sw_manuals/xilinx2016_2/ug1240-sdaccel-nimbix-getting-started.pdf\n")
-    target.write("[Walkthrough Video]: http://bcove.me/6pp0o482\n")
-    target.write("[Nimbix Application Submission README]: " + root + "utility/nimbix/README.md\n")
     target.write("[Repository Contribution README]: " + root + "CONTRIBUTING.md\n")
-    target.write("[SDaccel GUI README]: " + root + "GUIREADME.md\n")
-    target.write("[AWS F1 Application Execution on Xilinx Virtex UltraScale Devices]: " + root + "README.md\n")
-    target.write("[Nimbix Application Execution on Xilinx Kintex UltraScale Devices]: " + root + "utility/nimbix/README.md\n")
-    target.write("[IBM SuperVessel Research Cloud on Xilinx Virtex Devices]: http://bcove.me/6pp0o482\n")
     return
 
 # Get the argument from the description
