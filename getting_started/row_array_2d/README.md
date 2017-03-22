@@ -8,11 +8,10 @@ This README file contains the following sections:
 3. SOFTWARE TOOLS AND SYSTEM REQUIREMENTS
 4. DESIGN FILE HIERARCHY
 5. COMPILATION AND EXECUTION
-6. EXECUTION IN CLOUD ENVIRONMENTS
-7. SUPPORT
-8. LICENSE AND CONTRIBUTING TO THE REPOSITORY
-9. ACKNOWLEDGEMENTS
-10. REVISION HISTORY
+6. SUPPORT
+7. LICENSE AND CONTRIBUTING TO THE REPOSITORY
+8. ACKNOWLEDGEMENTS
+9. REVISION HISTORY
 
 
 ## 1. OVERVIEW
@@ -83,14 +82,9 @@ The command to deploy hardware function on programmable logic (PL)
 make all TARGET=hw
 ```
 The default target for the makefile is to compile for emulation. Therefore, setting the TARGET option is required.
+
 *NOTE:* Compilation for hardware target results in generating custom logic for the specified hardware function in source code. 
 It is typical for hardware compile times to range from 30 minutes to a couple of hours.
-
-## 6. Execution in Cloud Environments
-FPGA acceleration boards have been deployed to the cloud. For information on how to execute the example within a specific cloud, take a look at the following guides.
-* [AWS F1 Application Execution on Xilinx Virtex UltraScale Devices] (Coming Soon)
-* [Nimbix Application Execution on Xilinx Kintex UltraScale Devices]
-* [IBM SuperVessel Research Cloud on Xilinx Virtex Devices]
 
 
 ## 7. SUPPORT
