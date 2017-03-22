@@ -107,14 +107,14 @@ Date | README Version | Description
 -----|----------------|------------
 MAR2017|1.0|Initial Xilinx Release
 
-[3-Clause BSD License]: ../../../../../../../../../../../../../../../../../../../../../LICENSE.txt
+[3-Clause BSD License]: ../../LICENSE.txt
 [SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc
 [SDSoC User Guides]: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2016_4/ug1027-sdsoc-user-guide.pdf
 [Nimbix Getting Started Guide]: http://www.xilinx.com/support/documentation/sw_manuals/xilinx2016_2/ug1240-sdaccel-nimbix-getting-started.pdf
 [Walkthrough Video]: http://bcove.me/6pp0o482
-[Nimbix Application Submission README]: ../../../../../../../../../../../../../../../../../../../../../utility/nimbix/README.md
-[Repository Contribution README]: ../../../../../../../../../../../../../../../../../../../../../CONTRIBUTING.md
-[SDaccel GUI README]: ../../../../../../../../../../../../../../../../../../../../../GUIREADME.md
-[AWS F1 Application Execution on Xilinx Virtex UltraScale Devices]: ../../../../../../../../../../../../../../../../../../../../../README.md
-[Nimbix Application Execution on Xilinx Kintex UltraScale Devices]: ../../../../../../../../../../../../../../../../../../../../../utility/nimbix/README.md
+[Nimbix Application Submission README]: ../../utility/nimbix/README.md
+[Repository Contribution README]: ../../CONTRIBUTING.md
+[SDaccel GUI README]: ../../GUIREADME.md
+[AWS F1 Application Execution on Xilinx Virtex UltraScale Devices]: ../../README.md
+[Nimbix Application Execution on Xilinx Kintex UltraScale Devices]: ../../utility/nimbix/README.md
 [IBM SuperVessel Research Cloud on Xilinx Virtex Devices]: http://bcove.me/6pp0o482
