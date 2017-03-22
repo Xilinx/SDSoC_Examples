@@ -140,7 +140,7 @@ def compilation(target,data):
     target.write("***Recommended Execution Flow for Example Applications in Emulation*** \n\n")
     target.write("The makefile for the application can directly execute with the following command:\n")
     target.write("```\n")
-    target.write("make check TARGETS=emu\n\n")
+    target.write("make check TARGET=emu\n")
     target.write("```\n")
     target.write("If the application has not been previously compiled, the check makefile rule will compile and execute the application in the emulation mode selected by the user.\n\n")
     target.write("### Compiling for Application Execution in the FPGA Accelerator Card\n")
