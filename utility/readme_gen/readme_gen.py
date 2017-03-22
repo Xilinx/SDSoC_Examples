@@ -156,9 +156,8 @@ def compilation(target,data):
 
 def support(target):
     target.write("\n## 6. SUPPORT\n")
-    target.write("For more information about SDAccel check the [SDAccel User Guides][]\n\n")
-    target.write("For questions and to get help on this project or your own projects, visit the [SDAccel Forums][].\n\n")
-    target.write("To execute this example using the SDAccel GUI, follow the setup instructions in [SDAccel GUI README][]\n\n")
+    target.write("For more information about SDSoC check the [SDSoC User Guides][]\n\n")
+    target.write("For questions and to get help on this project or your own projects, visit the [SDSoC Forums][].\n\n")
     return
 
 def license(target):
@@ -214,8 +213,8 @@ def footer(target):
     relativeLevels = dirTraversal("LICENSE.txt")
     root = relativeTree(relativeLevels)
     target.write("[3-Clause BSD License]: " + root + "LICENSE.txt\n")
-    target.write("[SDAccel Forums]: https://forums.xilinx.com/t5/SDAccel/bd-p/SDx\n")
-    target.write("[SDAccel User Guides]: http://www.xilinx.com/support/documentation-navigation/development-tools/software-development/sdaccel.html?resultsTablePreSelect=documenttype:SeeAll#documentation\n")
+    target.write("[SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc\n")
+    target.write("[SDSoC User Guides]: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2016_4/ug1027-sdsoc-user-guide.pdf\n")
     target.write("[Nimbix Getting Started Guide]: http://www.xilinx.com/support/documentation/sw_manuals/xilinx2016_2/ug1240-sdaccel-nimbix-getting-started.pdf\n")
     target.write("[Walkthrough Video]: http://bcove.me/6pp0o482\n")
     target.write("[Nimbix Application Submission README]: " + root + "utility/nimbix/README.md\n")

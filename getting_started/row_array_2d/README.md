@@ -88,11 +88,9 @@ It is typical for hardware compile times to range from 30 minutes to a couple of
 
 
 ## 6. SUPPORT
-For more information about SDAccel check the [SDAccel User Guides][]
+For more information about SDSoC check the [SDSoC User Guides][]
 
-For questions and to get help on this project or your own projects, visit the [SDAccel Forums][].
-
-To execute this example using the SDAccel GUI, follow the setup instructions in [SDAccel GUI README][]
+For questions and to get help on this project or your own projects, visit the [SDSoC Forums][].
 
 
 ## 7. LICENSE AND CONTRIBUTING TO THE REPOSITORY
@@ -110,8 +108,8 @@ Date | README Version | Description
 DEC2016|1.0|Initial Xilinx Release
 
 [3-Clause BSD License]: ../../../../../../../../../../../../../../../../../../../../../LICENSE.txt
-[SDAccel Forums]: https://forums.xilinx.com/t5/SDAccel/bd-p/SDx
-[SDAccel User Guides]: http://www.xilinx.com/support/documentation-navigation/development-tools/software-development/sdaccel.html?resultsTablePreSelect=documenttype:SeeAll#documentation
+[SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc
+[SDSoC User Guides]: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2016_4/ug1027-sdsoc-user-guide.pdf
 [Nimbix Getting Started Guide]: http://www.xilinx.com/support/documentation/sw_manuals/xilinx2016_2/ug1240-sdaccel-nimbix-getting-started.pdf
 [Walkthrough Video]: http://bcove.me/6pp0o482
 [Nimbix Application Submission README]: ../../../../../../../../../../../../../../../../../../../../../utility/nimbix/README.md
