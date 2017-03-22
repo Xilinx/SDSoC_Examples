@@ -23,18 +23,18 @@ This is a simple example of accessing each row of data from 2d array
 ***KEYWORDS:*** hls::stream
 
 ## 2. HOW TO DOWNLOAD THE REPOSITORY
-To get a local copy of the SDAccel example repository, clone this repository to the local system with the following command:
+To get a local copy of the SDSoC example repository, clone this repository to the local system with the following command:
 ```
-git clone https://github.com/Xilinx/SDAccel_Examples examples
+git clone https://github.com/Xilinx/SDSoC_Examples examples
 ```
 where examples is the name of the directory where the repository will be stored on the local system.This command needs to be executed only once to retrieve the latest version of all SDAccel examples. The only required software is a local installation of git.
 
 ## 3. SOFTWARE AND SYSTEM REQUIREMENTS
 Board | Device Name | Software Version
 ------|-------------|-----------------
-Alpha Data ADM-PCIE-7V3|xilinx:adm-pcie-7v3:1ddr:3.0|SDAccel 2016.3
-Alpha Data ADM-PCIE-KU3|xilinx:adm-pcie-ku3:2ddr-xpr:3.2|SDAccel 2016.3
-Xilinx KU115|xilinx:xil-accel-rd-ku115:4ddr-xpr:3.2|SDAccel 2016.3
+zynq7000 702|zc702|SDAccel 2016.3
+zynq7000 706|zc706|SDAccel 2016.3
+UltraScale+ 102|zcu102|SDAccel 2016.3
 
 
 Board targeted by default = ***xilinx:xil-accel-rd-ku115:4ddr-xpr:3.2***
@@ -51,6 +51,7 @@ Application code is located in the src directory. Accelerator binary files will 
 ```
 .temp.sh.swp
 Makefile
+README.md
 description.json
 src/main.cpp
 src/row_array_2d.cpp
@@ -99,7 +100,7 @@ emconfigutil --xdevice 'xilinx:xil-accel-rd-ku115:4ddr-xpr:3.2 --nd 1
 ```
 Once the environment has been configured, the application can be executed by
 ```
-./host
+../../utility/emu_run.sh row_array_2d_accel.elf
 ```
 This is the same command executed by the check makefile rule
 ### Compiling for Application Execution in the FPGA Accelerator Card

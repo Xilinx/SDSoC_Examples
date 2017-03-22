@@ -8,9 +8,9 @@ DSA = 'xilinx:xil-accel-rd-ku115:4ddr-xpr:3.2'
 VERSION = 'SDAccel 2016.3'
 DEVICES = {
     'AWS VU9P': ['TBD'],
-    'Alpha Data ADM-PCIE-7V3':['xilinx:adm-pcie-7v3:1ddr:3.0','nx2'],
-    'Alpha Data ADM-PCIE-KU3':['xilinx:adm-pcie-ku3:2ddr-xpr:3.2','nx1'],
-    'Xilinx KU115':['xilinx:xil-accel-rd-ku115:4ddr-xpr:3.2','nx3']
+    'zynq7000 702':['zc702','nx2'],
+    'zynq7000 706':['zc706','nx1'],
+    'UltraScale+ 102':['zcu102','nx3']
     }
 
 def header(target,data):
@@ -32,9 +32,9 @@ def header(target,data):
 
 def download(target):
     target.write("## 2. HOW TO DOWNLOAD THE REPOSITORY\n")
-    target.write("To get a local copy of the SDAccel example repository, clone this repository to the local system with the following command:\n")
+    target.write("To get a local copy of the SDSoC example repository, clone this repository to the local system with the following command:\n")
     target.write("```\n")
-    target.write("git clone https://github.com/Xilinx/SDAccel_Examples examples\n")
+    target.write("git clone https://github.com/Xilinx/SDSoC_Examples examples\n")
     target.write("```\n")
     target.write("where examples is the name of the directory where the repository will be stored on the local system.")
     target.write("This command needs to be executed only once to retrieve the latest version of all SDAccel examples. The only required software is a local installation of git.\n\n")
