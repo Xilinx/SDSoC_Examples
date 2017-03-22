@@ -1,8 +1,7 @@
 {
-    "build_flow": "emulation",
-    "src_files" : ["main" , "window_array_2d"],
     "hw_function": "window_array_2d_accel",
     "accel_file" : "window_array_2d.cpp", 
+    "source_dir" : "src/*.cpp",
     "device" : "zc706",
-    "exe" : "window_array_2d.elf"
+    "os" : "linux"
 }
