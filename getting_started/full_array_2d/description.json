@@ -1,0 +1,7 @@
+{
+    "hw_function": "mmult_accel",
+    "accel_file" : "mmult.cpp", 
+    "source_dir" : "src/*.cpp",
+    "device" : "zc706",
+    "os" : "linux"
+}
