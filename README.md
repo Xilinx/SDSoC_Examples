@@ -1,4 +1,4 @@
-SDAccel Example Repository
+SDSoC Example Repository
 ===========================
 
 Welcome to the SDSoC example repository. This repository contains the latest examples to get you started with application optimization targeting Xilinx Embedded FPGA acceleration boards. All examples are ready to be compiled and executed on boards. The repository is organized as follows:
