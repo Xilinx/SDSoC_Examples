@@ -39,95 +39,106 @@
 # not overidden, the defaults defined below will be used. Do not include data
 # you do not want overwridden
 #+---------------------------------------------------------------------------
-PLATFORM = zcu102_es2
+PLATFORM = zc706
 
 # Run Target:
 #   hw  - compile for hardware
 #   emu - compile for emulation
-RUN_TARGET = hw
+TARGET = emu
 
 # Current Directory
 pwd = $(CURDIR)
-
+COMMON_REPO = ../../
 # Target OS:
 #    linux, standalone, rtos
-SDS_TARGET_OS = linux
+TARGET_OS = linux
 
 # Emulation Mode:
 #   debug     - Include debug data
 #   optimized - Exclude debug data
-SDS_EMU_MODE = optimized
+EMU_MODE = optimized
 
 # Additional sds++ flags - this should be reserved for sds++ flags defined
 # at run-time.  Other sds++ options should be defined in the make file data
 # section below
-SDS_ADDL_FLAGS = 
+ADDL_FLAGS =  
 
 # Set to 1 (number one) to enable sds++ verbose output
-SDS_VERBOSE =
+VERBOSE =
 
-EXECUTABLE = add.elf
+EXECUTABLE = row_array_2d.elf
 
 #+---------------------------------------------------------------------------
 # Makefile Data
 #+---------------------------------------------------------------------------
 # Source Files
+SRC_DIR = src
 C_SOURCES =
 CPP_SOURCES += \
-$(pwd)/src/add.cpp \
-$(pwd)/src/ main.cpp
+$(pwd)/$(SRC_DIR)/row_array_2d.cpp \
+$(pwd)/$(SRC_DIR)/main.cpp
 
 # SDS Options
 #
-SDS_HW_FLAGS = -sds-hw add add.cpp -sds-end
+HW_FLAGS = -sds-hw row_array_2d_accel row_array_2d.cpp -sds-end
 
-SDS_EMU_FLAGS =
-ifeq ($(RUN_TARGET),emu)
-   SDS_EMU_FLAGS = -mno-bitstream -emulation ${SDS_EMU_MODE}
+EMU_FLAGS =
+ifeq ($(TARGET),emu)
+   EMU_FLAGS = -mno-bitstream -mno-boot-files -emulation ${EMU_MODE}
 endif
 
-# Comnpilation and Link Flags
+# Compilation and Link Flags
 IFLAGS = -I.
-CFLAGS = -Wall -g -c
-LFLAGS = -g
+CFLAGS = -Wall -O3 -c
+CFLAGS += -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)"
+LFLAGS = "$@" "$<"
 
 #+---------------------------------------------------------------------------
 
 SDSFLAGS = -sds-pf ${PLATFORM} \
-	${SDS_HW_FLAGS} -target-os ${SDS_TARGET_OS} \
-	${SDS_ADDL_FLAGS} ${SDS_EMU_FLAGS}
+	-target-os ${TARGET_OS} \
+	${ADDL_FLAGS} 
 
 CC = sds++ ${SDSFLAGS}
 
 OBJECTS += \
-$(pwd)/$(RUN_TARGET)/add.o \
-$(pwd)/$(RUN_TARGET)/main.o \
+$(pwd)/$(TARGET)/main.o \
+$(pwd)/$(TARGET)/row_array_2d.o \
 
-DEPS += 
-$(pwd)/$(TARGETS)/add.d \
-$(pwd)/$(TARGETS)/main.d
+DEPS += \
+$(pwd)/$(TARGET)/main.d \
+$(pwd)/$(TARGET)/row_array_2d.d
 
 .PHONY: all
+all: $(TARGET)/${EXECUTABLE}
 
-all: ${RUN_TARGET}/${EXECUTABLE}
+$(TARGET)/${EXECUTABLE}: ${OBJECTS}
+	mkdir -p $(TARGET)
+	@echo 'Building Target: $@'
+	@echo 'Triggering: SDS++ Linker'
+	cd $(TARGET) ; $(CC) -o $(EXECUTABLE) $(OBJECTS) $(EMU_FLAGS)  		
+	@echo 'SDx Completed Building Target: $@'
+	@echo ' ' 
 
-${RUN_TARGET}/${EXECUTABLE}: ${OBJECTS}
-	mkdir -p ${RUN_TARGET}
-	cd ${RUN_TARGET} ; ${CC} ${LFLAGS} ${OBJECTS} -o $@ 
+$(pwd)/$(TARGET)/%.o: $(pwd)/$(SRC_DIR)/%.cpp
+	@echo 'Building file: $<'
+	@echo 'Invoking: SDS++ Compiler'
+	mkdir -p $(TARGET)
+	cd $(TARGET) ; $(CC) $(CFLAGS) -o $(LFLAGS) $(HW_FLAGS)
+	@echo 'Finished building: $<' 
+	@echo ' ' 
 
--include ${DEPS}
-
-${pwd}/${RUN_TARGET}/%.o: ${pwd}/src/%.cpp
-	mkdir -p ${RUN_TARGET}
-	cd ${RUN_TARGET} ; ${CC} ${CFLAGS} ${IFLAGS} $< -o $@
-
-${pwd}/${RUN_TARGET}/%.o: ${pwd}/src/%.c
-	${CC} ${CFLAGS} ${IFLAGS} $< -o $@
+# Check Rule Builds the Sources and Executes on Specified Target 
+check: all
+ifeq ($(TARGET), emu)
+	cp $(COMMON_REPO)/utility/emu_run.sh $(TARGET)/
+	cd $(TARGET) ; ./emu_run.sh $(EXECUTABLE)
+else
+	$(info "This Release Doesnt Support Automatic Hardware Execution/Check")
+endif 
 
 clean:
 	${RM} ${EXECUTABLE} ${OBJECTS} ${DEPS}
 
 ultraclean: clean
-	${RM} ${EXECUTABLE}.bit 
-	${RM} -rf _sds sd_card
-
+	${RM} -rf ${TARGET} 
