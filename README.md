@@ -30,7 +30,7 @@ For more information check here:
 [SDSoC User Guides][]
 
 ## 5. SUPPORT
-For questions and to get help on this project or your own projects, visit the [SDAccel Forums][].
+For questions and to get help on this project or your own projects, visit the [SDSoC Forums][].
 
 ## 6. REVISION HISTORY
 
