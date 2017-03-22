@@ -70,7 +70,7 @@ int main(int argc, char** argv)
     size_t vector_size_bytes = sizeof(DTYPE) * BLOCK_SIZE;
     DTYPE* a = (DTYPE*)sds_alloc(vector_size_bytes);// original data set given to device
     DTYPE* c = (DTYPE*)sds_alloc(vector_size_bytes);// results returned from device
-    DTYPE* sw_c = (DTYPE*)sds_alloc(vector_size_bytes);// results returned from software
+    DTYPE* sw_c = (DTYPE*)malloc(vector_size_bytes);// results returned from software
 
     // Create the test data and Software Result
     DTYPE alpha = 3;
@@ -119,7 +119,7 @@ int main(int argc, char** argv)
 
     sds_free(a);
     sds_free(c);
-    sds_free(sw_c);
+    free(sw_c);
 
     if(correct == BLOCK_SIZE){
         std::cout << "TEST PASSED." << std::endl;

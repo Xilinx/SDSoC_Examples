@@ -41,5 +41,5 @@ typedef int DTYPE;
 // use HLS stream library for easy use of AXI-stream interface
 typedef hls::stream<DTYPE> my_data_fifo;
 
-
+#pragma SDS data zero_copy(inx, outx)
 void row_array_2d_accel(DTYPE *inx, DTYPE *outx, DTYPE alpha);
