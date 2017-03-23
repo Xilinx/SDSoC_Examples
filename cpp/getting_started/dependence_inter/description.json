@@ -1,0 +1,29 @@
+{
+    "example": "Loop Iteration Dependency",
+    "overview": [
+        "This is a simple example to demonstrate inter dependence attribute. Using inter dependence attribute user can provide additional dependency details to compiler which allow compiler to perform unrolling/pipelining to get better performance "
+    ],
+    "key_concepts": [ "Inter Dependence"],
+    "keywords": ["DEPENDENCE", "inter"],
+    "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
+    "em_cmd": "../../utility/emu_run.sh mean_value _accel.elf",
+    "hw_cmd": "./row_array_2d_accel.elf",
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "MAR2017",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "hw_function": "mean_value_accel",
+    "accel_file" : "mean_value.cpp",
+    "source_dir" : "src/*.cpp",
+    "device" : "zc706",
+    "os" : "linux" 
+}
