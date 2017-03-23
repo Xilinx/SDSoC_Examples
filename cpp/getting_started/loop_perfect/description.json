@@ -1,0 +1,29 @@
+{
+    "example": "Improve performance using loop perfect or semi-perfect",
+    "overview": [
+        "This nearest neighbor example is to demonstrate how to achieve better performance using perfect loop."
+    ],
+    "key_concepts": [ "Loop perfect"],
+    "keywords": ["#pragma HLS PIPELINE", "#pragma HLS ARRAY_PARTITION"],
+    "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
+    "em_cmd": "../../utility/emu_run.sh nearest_accel.elf",
+    "hw_cmd": "./nearest_accel.elf",
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "MAR2017",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "hw_function": "nearest_accel",
+    "accel_file" : "nearest.cpp",
+    "source_dir" : "src/*.cpp",
+    "device" : "zc706",
+    "os" : "linux" 
+}
