@@ -42,7 +42,6 @@ Description:
 //define array size to access
 #define DATA_SIZE 8
 
-
 void mmult_accel(int a[DATA_SIZE * DATA_SIZE], int b[DATA_SIZE * DATA_SIZE], int c[DATA_SIZE * DATA_SIZE], int size) {
 
 	int bufa[N][N], bufb[N][N], bufc[N][N];

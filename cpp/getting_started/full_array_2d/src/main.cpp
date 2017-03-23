@@ -79,9 +79,9 @@ int main(int argc, char** argv)
 
     size_t vector_size_bytes = sizeof(int) * matrix_size;
 
-    int *source_input_a     = (int *) malloc(vector_size_bytes);
-    int *source_input_b     = (int *) malloc(vector_size_bytes);
-    int *source_hw_results  = (int *) malloc(vector_size_bytes);
+    int *source_input_a     = (int *) sds_alloc(vector_size_bytes);
+    int *source_input_b     = (int *) sds_alloc(vector_size_bytes);
+    int *source_hw_results  = (int *) sds_alloc(vector_size_bytes);
     int *source_sw_results  = (int *) malloc(vector_size_bytes);
 
     // Create the test data and Software Result
@@ -129,9 +129,9 @@ int main(int argc, char** argv)
     }
 
     // Release Memory from Host Memory
-    free(source_input_a);
-    free(source_input_b);
-    free(source_hw_results);
+    sds_free(source_input_a);
+    sds_free(source_input_b);
+    sds_free(source_hw_results);
     free(source_sw_results);
 
     if (match){
