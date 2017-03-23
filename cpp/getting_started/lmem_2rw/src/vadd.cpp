@@ -48,9 +48,9 @@ Description:
         size  (input)     --> Size of Vector in Integer
    */
 void vadd_accel(
-        const unsigned int in1[DATA_SIZE], // Read-Only Vector 1
-        const unsigned int in2[DATA_SIZE], // Read-Only Vector 2
-        unsigned int out[DATA_SIZE],       // Output Result
+        const unsigned int *in1, // Read-Only Vector 1
+        const unsigned int *in2, // Read-Only Vector 2
+        unsigned int *out,       // Output Result
         int size                   // Size in integer
         )
 {

@@ -3,8 +3,7 @@
 
 #define DATA_SIZE 4096
 
-// DMA based
-#pragma SDS data access_pattern(in1:SEQUENTIAL, in2:SEQUENTIAL, out:SEQUENTIAL)
-void vadd_accel(const unsigned int in1[DATA_SIZE], const unsigned int in2[DATA_SIZE], unsigned int out[DATA_SIZE], int size);
+#pragma SDS data zero_copy(in1, in2, out)
+void vadd_accel(const unsigned int *in1, const unsigned int *in2, unsigned int *out, int size);
 
 #endif
