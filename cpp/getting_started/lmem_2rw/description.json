@@ -1,0 +1,29 @@
+{
+    "example": "Two Parallel Read/Write on Local Memory",
+    "overview": [
+        "This is a simple example of vector addition to demonstrate how to utilize both ports of Local Memory "
+    ],
+    "key_concepts": [ "Hardware Function Optimization", "2port BRAM Utilization", "Two read/write Local Memory"],
+    "keywords": ["#pragma HLS UNROLL FACTOR=2"],
+    "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
+    "em_cmd": "../../utility/emu_run.sh vadd_accel.elf",
+    "hw_cmd": "./vadd_accel.elf",
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "MAR2017",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "hw_function": "vadd_accel",
+    "accel_file" : "vadd.cpp",
+    "source_dir" : "src/*.cpp",
+    "device" : "zc706",
+    "os" : "linux" 
+}
