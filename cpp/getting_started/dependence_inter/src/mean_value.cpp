@@ -47,7 +47,7 @@ Description:
         out  (output) --> Output Mean Vector
         size  (input)  --> Size of Vector in Integer
    */
-void mean_value_accel(int in[DATA_SIZE], int out[DATA_SIZE], int size)
+void mean_value_accel(int *in, int *out, int size)
 {
     //Taking double size of MAX_SIZE as same local buffer will be used to store
     //input data as well as result value of mean_value.
