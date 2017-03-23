@@ -1,0 +1,29 @@
+{
+    "example": "Loop Reorder for better Performance",
+    "overview": [
+        "This is a simple example of matrix multiplication (Row x Col) to demonstrate how to achieve better pipeline II factor by loop reordering."
+    ],
+    "key_concepts": [ "Kernel Optimization", "Loop Reorder to Improve II"],
+    "keywords": ["#pragma HLS PIPELINE", "#pragma HLS ARRAY_PARTITION"],
+    "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
+    "em_cmd": "../../utility/emu_run.sh row_array_2d_accel.elf",
+    "hw_cmd": "./mmult_accel.elf",
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "MAR2017",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "hw_function": "mmult_accel",
+    "accel_file" : "mmult.cpp",
+    "source_dir" : "src/*.cpp",
+    "device" : "zc706",
+    "os" : "linux" 
+}
