@@ -81,16 +81,16 @@ EXECUTABLE := mean_value_accel.elf
 # Source Files
 SRC_DIR := src
 CPP_SRCS += \
-$(pwd)/$(SRC_DIR)/host.cpp \
-$(pwd)/$(SRC_DIR)/mean_value.cpp
+$(pwd)/$(SRC_DIR)/mean_value.cpp \
+$(pwd)/$(SRC_DIR)/main.cpp
 
 OBJECTS += \
-$(pwd)/$(TARGET)/host.o \
-$(pwd)/$(TARGET)/mean_value.o
+$(pwd)/$(TARGET)/mean_value.o \
+$(pwd)/$(TARGET)/main.o
 
 CPP_DEPS += \
-$(pwd)/$(TARGET)/host.d \
-$(pwd)/$(TARGET)/mean_value.d
+$(pwd)/$(TARGET)/mean_value.d \
+$(pwd)/$(TARGET)/main.d
 
 # SDS Options
 #
