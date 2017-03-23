@@ -1,0 +1,29 @@
+{
+    "example": "Burst Read/Write",
+    "overview": [
+        "This is simple example of using AXI4-master interface for burst read and write"
+    ],
+    "key_concepts": [ "Burst Access"],
+    "keywords": ["memcpy"],
+    "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
+    "em_cmd": "../../utility/emu_run.sh row_array_2d_accel.elf",
+    "hw_cmd": "./vadd_accel.elf",
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "MAR2017",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "hw_function": "vadd_accel",
+    "accel_file" : "vadd.cpp",
+    "source_dir" : "src/*.cpp",
+    "device" : "zc706",
+    "os" : "linux" 
+}
