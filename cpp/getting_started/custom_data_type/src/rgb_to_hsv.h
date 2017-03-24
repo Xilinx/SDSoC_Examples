@@ -40,6 +40,7 @@ typedef struct RGBcolor_struct
   unsigned char r;
   unsigned char g;
   unsigned char b;
+  unsigned char a;
  } __attribute__ ((packed, aligned(4))) RGBcolor;
 
 
@@ -52,8 +53,10 @@ typedef struct HSVcolor_struct
   unsigned char h;
   unsigned char s;
   unsigned char v;
+  unsigned char a;
  } __attribute__ ((packed, aligned(4))) HSVcolor;
 
+#pragma SDS data zero_copy(in, out)
 void rgb_to_hsv_accel(RGBcolor in[16384],  // Access global memory as RGBcolor struct-wise
                 HSVcolor out[16384], // Access Global Memory as HSVcolor struct-wise
                 int size);
