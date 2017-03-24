@@ -1,0 +1,29 @@
+{
+    "example": "Wide Memory Read/Write",
+    "overview": [
+        "This is a simple example of vector addition to demonstrate Wide Memory Access using ap_uint<512> data type. Based on input argument type, sds++ compiler will figure out the memory bandwidth between global memory and kernel. For this example, ap_uint<512> datatype is used, so memory datawidth will be 16 x (integer bit size) = 16 x 32 = 512bit"
+    ],
+    "key_concepts": [ "Kernel to DDR", "wide memory access", "burst read and write"],
+    "keywords": ["ap_uint<>", "ap_int.h"],
+    "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
+    "em_cmd": "../../utility/emu_run.sh vadd_accel.elf",
+    "hw_cmd": "./vadd_accel.elf",
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "MAR2017",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "hw_function": "vadd_accel",
+    "accel_file" : "vadd.cpp",
+    "source_dir" : "src/*.cpp",
+    "device" : "zc706",
+    "os" : "linux" 
+}
