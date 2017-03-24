@@ -81,16 +81,16 @@ EXECUTABLE := mmult_accel.elf
 # Source Files
 SRC_DIR := src
 CPP_SRCS += \
-$(pwd)/$(SRC_DIR)/host.cpp \
-$(pwd)/$(SRC_DIR)/mmult.cpp
+$(pwd)/$(SRC_DIR)/mmult.cpp \
+$(pwd)/$(SRC_DIR)/main.cpp
 
 OBJECTS += \
-$(pwd)/$(TARGET)/host.o \
-$(pwd)/$(TARGET)/mmult.o
+$(pwd)/$(TARGET)/mmult.o \
+$(pwd)/$(TARGET)/main.o
 
 CPP_DEPS += \
-$(pwd)/$(TARGET)/host.d \
-$(pwd)/$(TARGET)/mmult.d
+$(pwd)/$(TARGET)/mmult.d \
+$(pwd)/$(TARGET)/main.d
 
 # SDS Options
 #
