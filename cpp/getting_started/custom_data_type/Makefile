@@ -81,19 +81,19 @@ EXECUTABLE := rgb_to_hsv_accel.elf
 # Source Files
 SRC_DIR := src
 CPP_SRCS += \
-$(pwd)/$(SRC_DIR)/host.cpp \
 $(pwd)/$(SRC_DIR)/rgb_to_hsv.cpp \
-$(pwd)/$(SRC_DIR)/bitmap.cpp
+$(pwd)/$(SRC_DIR)/bitmap.cpp \
+$(pwd)/$(SRC_DIR)/main.cpp
 
 OBJECTS += \
-$(pwd)/$(TARGET)/host.o \
 $(pwd)/$(TARGET)/rgb_to_hsv.o \
-$(pwd)/$(TARGET)/bitmap.o
+$(pwd)/$(TARGET)/bitmap.o \
+$(pwd)/$(TARGET)/main.o
 
 CPP_DEPS += \
-$(pwd)/$(TARGET)/host.d \
 $(pwd)/$(TARGET)/rgb_to_hsv.d \
-$(pwd)/$(TARGET)/bitmap.d
+$(pwd)/$(TARGET)/bitmap.d \
+$(pwd)/$(TARGET)/main.d
 
 # SDS Options
 #
