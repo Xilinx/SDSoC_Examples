@@ -1,9 +1,9 @@
 SDSoC Example Repository 
 ===========================
 
-Welcome to the SDSoC example repository. This repository contains the latest examples to get you started with application optimization targeting Xilinx Embedded FPGA acceleration boards. All the examples are ready to be compiled and executed on boards. These examples are written in both C/C++ and OpenCL flows. The "cpp" directory of this repository contains SDSoC examples in C/C++ form and "ocl" directory of this repository contains SDSoC examples in OpenCl form.
+Welcome to the SDSoC example repository. This repository contains the latest examples to get you started with application optimization targeting Xilinx Embedded FPGA acceleration boards. All the examples are ready to be compiled and executed on boards. These examples are developed in both C/C++ and OpenCL flows. The "cpp" directory of this repository contains SDSoC examples in C/C++ form and "ocl" directory of this repository contains SDSoC examples in OpenCl form.
 
-Further this repository is organized as follows internally within C/C++ and OpenCL flows.
+This repository is organized as follows internally within C/C++ and OpenCL flows.
 
 1. GETTINGS STARTED
 2. LIBS
