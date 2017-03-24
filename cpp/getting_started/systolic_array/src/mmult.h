@@ -8,7 +8,7 @@
 #define MAX_SIZE 12
 
 // DMA based
-#pragma SDS data access_pattern(a:SEQUENTIAL, b:SEQUENTIAL, c:SEQUENTIAL)
+#pragma SDS data zero_copy(a, b, c)
 void mmult_accel(
 			    const int *a,   // Read-Only Matrix A
 			    const int *b,   // Read-Only Matrix B
