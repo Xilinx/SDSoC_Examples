@@ -12,7 +12,7 @@ typedef ap_uint<DATAWIDTH> uint512_dt;
 //will read 16 integers value.
 #define DATA_SIZE 16384
 
-#pragma SDS data access_pattern(in1:SEQUENTIAL, in2:SEQUENTIAL, out:SEQUENTIAL)
+#pragma SDS data zero_copy(in1, in2, out)
 void vadd_accel(
         const uint512_dt in1[DATA_SIZE/16], // Read-Only Vector 1
         const uint512_dt in2[DATA_SIZE/16], // Read-Only Vector 2
