@@ -1,0 +1,29 @@
+{
+    "example": "Systolic Array Implementation",
+    "overview": [
+        "This is a simple example of matrix multiplication (Row x Col) to help developers learn systolic array based algorithm design. Note : Systolic array based algorithm design is well suited for FPGA."
+    ],
+    "key_concepts": [ "Systolic Array"],
+    "keywords": ["#pragma HLS PIPELINE", "#pragma HLS ARRAY_PARTITION"],
+    "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
+    "em_cmd": "../../utility/emu_run.sh mmult_accel.elf",
+    "hw_cmd": "./mmult_accel.elf",
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "MAR2017",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "hw_function": "mmult_accel",
+    "accel_file" : "mmult.cpp",
+    "source_dir" : "src/*.cpp",
+    "device" : "zc706",
+    "os" : "linux" 
+}
