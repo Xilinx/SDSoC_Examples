@@ -213,6 +213,7 @@ target.write("# Compilation and Link Flags\n")
 target.write("IFLAGS := -I.\n")
 target.write("CFLAGS = -Wall -O3 -c\n")
 target.write("CFLAGS += -MT\"$@\" -MMD -MP -MF\"$(@:%.o=%.d)\" -MT\"$(@)\" \n")
+target.write("CFLAGS += -std=c++0x\n")
 target.write("LFLAGS = \"$@\" \"$<\" \n")
 
 target.write("#+---------------------------------------------------------------------\n")

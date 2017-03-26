@@ -1,0 +1,29 @@
+{
+    "example": "Loop Fusion",
+    "overview": [
+        "This example will demonstrate how to fuse two loops into one to improve the performance of a C/C++ kernel."
+    ],
+    "key_concepts": [ "Hardware Function Optimization", "Loop Fusion", "Loop Pipelining"],
+    "keywords": ["#pragma HLS PIPELINE"],
+    "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
+    "em_cmd": "../../utility/emu_run.sh ./nearest_neighbor_loop_fusion_accel.elf",
+    "hw_cmd": "./nearest_neighbor_loop_fusion_accel.elf",
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "MAR2017",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "hw_function": "nearest_neighbor_loop_fusion_accel",
+    "accel_file" : "nearest_neighbor.cpp",
+    "source_dir" : "src/*.cpp",
+    "device" : "zc706",
+    "os" : "linux" 
+}
