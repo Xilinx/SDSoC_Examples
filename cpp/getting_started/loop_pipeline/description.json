@@ -1,0 +1,29 @@
+{
+    "example": "Loop Pipelining",
+    "overview": [
+        "This example demonstrates how loop pipelining can be used to improve the performance of a kernel"
+    ],
+    "key_concepts": [ "Hardware Function Optimization", "Loop Pipelining"],
+    "keywords": ["#pragma HLS PIPELINE"],
+    "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
+    "em_cmd": "../../utility/emu_run.sh vadd_pipelined_accel.elf",
+    "hw_cmd": "./vadd_pipelined_accel.elf",
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "MAR2017",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "hw_function": "vadd_pipelined_accel",
+    "accel_file" : "vector_addition.cpp",
+    "source_dir" : "src/*.cpp",
+    "device" : "zc706",
+    "os" : "linux" 
+}
