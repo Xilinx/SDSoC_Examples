@@ -1,0 +1,29 @@
+{
+    "example": "Array Partitioning",
+    "overview": [
+        "This example shows how to use array partitioning to improveperformance of a kernel"
+    ],
+    "key_concepts": [ "Hardware Funciton Optimization", "Array Partitioning"],
+    "keywords": ["#pragma HLS ARRAY_PARTITION", "complete"],
+    "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
+    "em_cmd": "../../utility/emu_run.sh matmul_partition_accel.elf",
+    "hw_cmd": "./matmul_partition_accel.elf",
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "MAR2017",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "hw_function": "matmul_partition_accel",
+    "accel_file" : "matmul.cpp",
+    "source_dir" : "src/*.cpp",
+    "device" : "zc706",
+    "os" : "linux" 
+}
