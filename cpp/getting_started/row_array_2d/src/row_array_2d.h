@@ -26,6 +26,8 @@ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABI
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **********/
+#ifndef ROW_ARRAY_2D_H_
+#define ROW_ARRAY_2D_H_
 
 #include <hls_stream.h>
 //Parameters Description:
@@ -43,3 +45,5 @@ typedef hls::stream<DTYPE> my_data_fifo;
 
 #pragma SDS data zero_copy(inx, outx)
 void row_array_2d_accel(DTYPE *inx, DTYPE *outx, DTYPE alpha);
+
+#endif
