@@ -11,12 +11,12 @@ typedef ap_uint<DATAWIDTH> uint512_dt;
 //to read the operands from Global Memory. So every read/write to global memory
 //will read 16 integers value.
 #define DATA_SIZE 16384
+#define BUF_LEN 1024
 
-#pragma SDS data zero_copy(in1, in2, out)
-void vadd_accel(
-        const uint512_dt in1[DATA_SIZE/16], // Read-Only Vector 1
-        const uint512_dt in2[DATA_SIZE/16], // Read-Only Vector 2
-        uint512_dt out[DATA_SIZE/16],       // Output Result
-        int size               // Size in integer
-        );
+#pragma SDS data zero_copy(in1[0:1024],in2[0:1024],out[0:1024])
+void vadd_accel(const uint512_dt *in1, // Read-Only Vector 1
+                const uint512_dt *in2, // Read-Only Vector 2
+                uint512_dt *out,        // Output Result
+                int size               // Size in integer
+               );
 #endif

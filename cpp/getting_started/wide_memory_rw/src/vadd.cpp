@@ -46,12 +46,15 @@ Description:
         size  (input)     --> Size of Vector in Integer
    */
 void vadd_accel(
-        const uint512_dt in1[DATA_SIZE/16], // Read-Only Vector 1
-        const uint512_dt in2[DATA_SIZE/16], // Read-Only Vector 2
-        uint512_dt out[DATA_SIZE/16],       // Output Result
+        const uint512_dt *in1, // Read-Only Vector 1
+        const uint512_dt *in2, // Read-Only Vector 2
+        uint512_dt *out,       // Output Result
         int size               // Size in integer
         )
 {
+    #pragma HLS INTERFACE m_axi port=in1 depth=512 offset=direct bundle=in1
+    #pragma HLS INTERFACE m_axi port=in2 depth=512 offset=direct bundle=in2
+    #pragma HLS INTERFACE m_axi port=out depth=512 offset=direct bundle=out
     uint512_dt v1_local[BUFFER_SIZE];    // Local memory to store vector1
     uint512_dt result_local[BUFFER_SIZE];// Local Memory to store result
 
