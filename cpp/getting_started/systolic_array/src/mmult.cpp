@@ -64,7 +64,7 @@ Kernel Description :
 */
 
 #include <stdio.h>
-
+#include "mmult.h"
 //Maximum Array Size
 #define MAX_SIZE 12
 #define DATA_SIZE 12
