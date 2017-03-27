@@ -35,7 +35,7 @@ Description:
 //Includes
 #include <stdio.h>
 #include <string.h>
-
+#include "vadd.h"
 //define internal buffer max size
 #define BURSTBUFFERSIZE 2048
 

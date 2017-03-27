@@ -81,16 +81,16 @@ EXECUTABLE := vadd_accel.elf
 # Source Files
 SRC_DIR := src
 CPP_SRCS += \
-$(pwd)/$(SRC_DIR)/host.cpp \
-$(pwd)/$(SRC_DIR)/vadd.cpp
+$(pwd)/$(SRC_DIR)/vadd.cpp \
+$(pwd)/$(SRC_DIR)/main.cpp
 
 OBJECTS += \
-$(pwd)/$(TARGET)/host.o \
-$(pwd)/$(TARGET)/vadd.o
+$(pwd)/$(TARGET)/vadd.o \
+$(pwd)/$(TARGET)/main.o
 
 CPP_DEPS += \
-$(pwd)/$(TARGET)/host.d \
-$(pwd)/$(TARGET)/vadd.d
+$(pwd)/$(TARGET)/vadd.d \
+$(pwd)/$(TARGET)/main.d
 
 # SDS Options
 #
@@ -104,6 +104,7 @@ endif
 IFLAGS := -I.
 CFLAGS = -Wall -O3 -c
 CFLAGS += -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" 
+CFLAGS += -std=c++0x
 LFLAGS = "$@" "$<" 
 #+---------------------------------------------------------------------
 
