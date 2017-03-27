@@ -32,7 +32,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <cstdio>
 #include <random>
 #include <vector>
+#include <stdlib.h>
 #include "vector_addition.h"
+#include "sds_lib.h"
+
 using std::default_random_engine;
 using std::generate;
 using std::uniform_int_distribution;
@@ -70,9 +73,9 @@ int main(int argc, char** argv)
     int size_in_bytes = DATA_SIZE * sizeof(int);
 
     // Creates a vector of DATA_SIZE elements with an initial value of 10 and 32
-    int *source_a = (int *)malloc(sizeof(int) * DATA_SIZE);
-    int *source_b = (int *)malloc(sizeof(int) * DATA_SIZE);
-    int *source_results = (int *)malloc(sizeof(int) * DATA_SIZE);
+    int *source_a = (int *) sds_alloc(sizeof(int) * DATA_SIZE);
+    int *source_b = (int *) sds_alloc(sizeof(int) * DATA_SIZE);
+    int *source_results = (int *) sds_alloc(sizeof(int) * DATA_SIZE);
 
     int *gold = (int *)malloc(sizeof(int) * DATA_SIZE);
 
@@ -82,6 +85,11 @@ int main(int argc, char** argv)
     
     verify(gold, source_results);
 
+
+    sds_free(source_a);
+    sds_free(source_b);
+    sds_free(source_results);
+    free(gold);
 
     printf("TEST PASSED.\n");
     return EXIT_SUCCESS;

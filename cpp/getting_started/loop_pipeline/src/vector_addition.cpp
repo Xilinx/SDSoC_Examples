@@ -53,6 +53,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   */
 
 #define N 128
+#include "vector_addition.h"
 
 const int DATA_SIZE = 1<<10;
 // This kernel is optimized to access only one global variable in a pipelined
