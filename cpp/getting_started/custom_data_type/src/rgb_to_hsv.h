@@ -26,6 +26,8 @@ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABI
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **********/
+#ifndef RGB_TO_HSV_H_
+#define RGB_TO_HSV_H_
 
 //Min and Max Macro Function
 #define imin(X, Y) (((X) < (Y)) ? (X) : (Y))
@@ -56,7 +58,8 @@ typedef struct HSVcolor_struct
   unsigned char a;
  } __attribute__ ((packed, aligned(4))) HSVcolor;
 
-#pragma SDS data zero_copy(in, out)
-void rgb_to_hsv_accel(RGBcolor in[16384],  // Access global memory as RGBcolor struct-wise
-                HSVcolor out[16384], // Access Global Memory as HSVcolor struct-wise
-                int size);
+#pragma SDS data zero_copy(in[0:16384],out[0:16384])
+void rgb_to_hsv_accel(RGBcolor *in,  // Access global memory as RGBcolor struct-wise
+                      HSVcolor *out, // Access Global Memory as HSVcolor struct-wise
+                      int size);
+#endif

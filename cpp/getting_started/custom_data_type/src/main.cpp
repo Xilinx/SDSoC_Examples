@@ -82,7 +82,7 @@ int main(int argc, char* argv[])
     	input_bmp[i] = i * 2;
 
     size_t image_size_bytes = sizeof(int) * image_size;
-    int* swHsvImage  = (int*)(sds_alloc(image_size_bytes)) ;
+    int* swHsvImage  = (int*)(malloc(image_size_bytes)) ;
     int* hwHsvImage  = (int*)(sds_alloc(image_size_bytes)) ;
     int* outRgbImage = (int*)(sds_alloc(image_size_bytes)) ;
     RGBcolor *device_input = (RGBcolor *) (sds_alloc(sizeof(RGBcolor) * image_size));
@@ -120,7 +120,7 @@ int main(int argc, char* argv[])
 
     // Release Memory from Host Memory
     sds_free(hwHsvImage);
-    sds_free(swHsvImage);
+    free(swHsvImage);
     sds_free(outRgbImage);
 
     if (match){

@@ -38,9 +38,9 @@ Description:
 #include "rgb_to_hsv.h"
 #define IMAGE_SIZE 128
 
-void rgb_to_hsv_accel(RGBcolor in[16384],  // Access global memory as RGBcolor struct-wise
-                HSVcolor out[16384], // Access Global Memory as HSVcolor struct-wise
-                int size)
+void rgb_to_hsv_accel(RGBcolor *in,  // Access global memory as RGBcolor struct-wise
+                      HSVcolor *out, // Access Global Memory as HSVcolor struct-wise
+                      int size)
 {
     RGBcolor rgb;
 	HSVcolor hsv;
