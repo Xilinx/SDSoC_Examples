@@ -62,7 +62,7 @@ Kernel Description :
 #include <string.h>
 #include <stdio.h>
 #include <limits.h>
-
+#include "nearest.h"
 // Compute distances using unsigned long
 // and to avoid square root operation.
 // Maximum possible distance between two points

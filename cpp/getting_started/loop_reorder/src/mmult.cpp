@@ -59,6 +59,7 @@ Kernel Description :
 
 #include <string.h>
 #include <stdio.h>
+#include "mmult.h"
 //Array Size to access
 #define DATA_SIZE 64
 
@@ -68,9 +69,9 @@ Kernel Description :
 // Computes matrix multiply
 // C = AxB, where A, B and C are square matrices of dimension (sizexsize)
 void mmult_accel(
-				const int in1[DATA_SIZE * DATA_SIZE],     // Read-Only Matrix 1
-				const int in2[DATA_SIZE * DATA_SIZE],     // Read-Only Matrix 2
-				int out[DATA_SIZE * DATA_SIZE],           // Output Result
+				const int *in1,     // Read-Only Matrix 1
+				const int *in2,     // Read-Only Matrix 2
+				int *out,           // Output Result
 				int size            // Size of one dimension of the matrices
 				)
 {
