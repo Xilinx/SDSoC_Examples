@@ -34,6 +34,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <vector>
 #include <stdlib.h>
 #include "matmul.h"
+#include "sds_lib.h"
 using std::default_random_engine;
 using std::generate;
 using std::uniform_int_distribution;
@@ -65,10 +66,10 @@ int main(int argc, char **argv) {
     static const int columns = 64;
     static const int rows = 64;
 
-    int *A    = (int *)malloc(sizeof(int) * columns * rows);
-    int *B    = (int *)malloc(sizeof(int) * columns * rows);
-    int *gold = (int *)malloc(sizeof(int) * columns * rows);
-    int *C    = (int *)malloc(sizeof(int) * columns * rows);
+    int *A    = (int *) sds_alloc(sizeof(int) * columns * rows);
+    int *B    = (int *) sds_alloc(sizeof(int) * columns * rows);
+    int *gold = (int *) malloc(sizeof(int) * columns * rows);
+    int *C    = (int *) sds_alloc(sizeof(int) * columns * rows);
 
     // Data Initialization
     for(int i = 0; i < columns * rows; i++) {
@@ -87,6 +88,12 @@ int main(int argc, char **argv) {
 
     verify(gold, C, columns * rows);
 
+
+    sds_free(A);
+    sds_free(B);
+    sds_free(C);
+    free(gold);
+    
     printf("TEST PASSED\n");
 
     return EXIT_SUCCESS;
