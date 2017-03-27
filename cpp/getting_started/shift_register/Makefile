@@ -72,7 +72,7 @@ ADDL_FLAGS :=
 # Set to 1 (number one) to enable sds++ verbose output
 VERBOSE := 
 # Build Executable
-EXECUTABLE := shift_register_accel.elf
+EXECUTABLE := fir_shift_register_accel.elf
 
 #+--------------------------------------------------------------------------
 # Makefile Data
@@ -94,7 +94,7 @@ $(pwd)/$(TARGET)/main.d
 
 # SDS Options
 #
-HW_FLAGS := -sds-hw shift_register_accel shift_register.cpp -sds-end
+HW_FLAGS := -sds-hw fir_shift_register_accel fir.cpp -sds-end
 EMU_FLAGS := 
 ifeq ($(TARGET), emu)
 	EMU_FLAGS := -mno-bitstream -mno-boot-files -emulation $(EMU_MODE)

@@ -27,10 +27,15 @@ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABI
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **********/
+#ifndef FIR_H_
+#define FIR_H_
 
-#pragma SDS data zero_copy(output, signal, coeff)
+#define N_COEFF 11
+#define SIGNAL_SIZE 32
 
-void fir_shift_register_accel(int *output,
-                        int *signal,
-                        int *coeff,
-                        int signal_length); 
+#pragma SDS data zero_copy(signal,coeff,hw_out)
+void fir_shift_register_accel(int *signal,
+                              int *coeff,
+                              int *hw_out,
+                              int signal_length); 
+#endif

@@ -64,27 +64,27 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-// Number of coefficient components
-#define N_COEFF 11
+#include "fir.h"
+#define COEFF 11
 // FIR using shift register
-void fir_shift_register_accel(int *output,
-                        int *signal,
-                        int *coeff,
-                        int signal_length) 
+void fir_shift_register_accel(int *signal,
+                              int *coeff,
+                              int *hw_out,
+                              int signal_length) 
 {
 
-    int coeff_reg[N_COEFF];
+    int coeff_reg[COEFF];
 
     // Partitioning of this array is required because the shift register
     // operation will need access to each of the values of the array in
     // the same clock. Without partitioning the operation will need to
     // be performed over multiple cycles because of the limited memory
     // ports available to the array.
-    int shift_reg[N_COEFF];
+    int shift_reg[COEFF];
     #pragma HLS ARRAY_PARTITION variable=shift_reg complete dim=0
 
     init_loop:
-    for (int i = 0; i < N_COEFF; i++) {
+    for (int i = 0; i < COEFF; i++) {
         shift_reg[i] = 0;
         coeff_reg[i] = coeff[i];
     }
@@ -100,7 +100,7 @@ void fir_shift_register_accel(int *output,
         // attribute because the outer loop will be automatically pipelined so
         // the compiler will unroll this loop in the process.
         shift_loop:
-        for (int i = N_COEFF-1; i >= 0; i--) {
+        for (int i = COEFF-1; i >= 0; i--) {
             if (i == 0) {
                 acc += x * coeff_reg[0];
                 shift_reg[0] = x;
@@ -109,6 +109,6 @@ void fir_shift_register_accel(int *output,
                 acc += shift_reg[i] * coeff_reg[i];
             }
         }
-        output[j] = acc;
+        hw_out[j] = acc;
     }
 }

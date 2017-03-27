@@ -6,7 +6,7 @@
     "key_concepts": [ "Hardware Function Optimization", "Shift Register", "FIR"],
     "keywords": ["#pragma HLS ARRAY_PARTITION"],
     "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
-    "em_cmd": "../../utility/emu_run.sh ./shift_register_accel.elf",
+    "em_cmd": "../../utility/emu_run.sh ./fir_shift_register_accel.elf",
     "hw_cmd": "./shift_register_accel.elf",
     "contributors" : [
         {
@@ -21,8 +21,8 @@
             "description": "Initial Xilinx Release"
         }
     ],
-    "hw_function": "shift_register_accel",
-    "accel_file" : "shift_register.cpp",
+    "hw_function": "fir_shift_register_accel",
+    "accel_file" : "fir.cpp",
     "source_dir" : "src/*.cpp",
     "device" : "zc706",
     "os" : "linux" 

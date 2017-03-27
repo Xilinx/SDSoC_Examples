@@ -42,13 +42,16 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <vector>
 #include <iostream>
 #include <stdio.h>
+#include <stdlib.h>
+#include "fir.h"
+#include "sds_lib.h"
+
 using std::default_random_engine;
 using std::inner_product;
 using std::string;
 using std::uniform_int_distribution;
 using std::vector;
 
-#define N_COEFF 11
 #define min(x,y) ((x) < (y) ? (x) : (y))
 // Finite Impulse Response Filter
 void fir(int *output, const int *signal, const int *coeff, const int signal_length) {
@@ -94,26 +97,37 @@ void verify(int *gold, const int *out, const int signal_size) {
         exit(EXIT_FAILURE);
     }
 }
-void fir_shift_register_accel(int *output,
-                        int *signal,
-                        int *coeff,
-                        int signal_length); 
 
 int main(int argc, char **argv) {
-    size_t signal_size = 32;
-    int signal[signal_size];
-    int coeff[11] = {53, 0, -91, 0, 313, 500, 313, 0, -91, 0, 53};
-    int gold[signal_size];
-    int pf_out[signal_size];
-
-    fir(gold, signal, coeff, signal_size);
-
-    size_t size_in_bytes = signal_size * sizeof(int);
-    size_t coeff_size_in_bytes = 11 * sizeof(int);
-
-    fir_shift_register_accel(pf_out, signal, coeff, signal_size); 
     
-    verify(gold, pf_out, signal_size);
+    int *signal = (int *) sds_alloc(sizeof(int) * SIGNAL_SIZE);
+    int *coeff  = (int *) sds_alloc(sizeof(int) * N_COEFF);
+    int *hw_out = (int *) sds_alloc(sizeof(int) * SIGNAL_SIZE);
+
+    coeff[0] = 53;
+    coeff[1] =  0;
+    coeff[2] = -91;
+    coeff[3] =  0;
+    coeff[4] = 313;
+    coeff[5] = 500;
+    coeff[6] = 313;
+    coeff[7] =   0;
+    coeff[8] = -91;
+    coeff[9] =   0;
+    coeff[10]=  53;
+
+    int *gold = (int *) malloc(sizeof(int) * SIGNAL_SIZE);
+
+    fir(gold, signal, coeff, SIGNAL_SIZE);
+
+    fir_shift_register_accel(signal, coeff, hw_out, SIGNAL_SIZE); 
+    
+    verify(gold, hw_out, SIGNAL_SIZE);
+
+    sds_free(signal);
+    sds_free(coeff);
+    sds_free(hw_out);
+    free(gold);
     
     std::cout << "TEST PASSED\n";
     return EXIT_SUCCESS;
