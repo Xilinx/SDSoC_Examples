@@ -37,10 +37,11 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <stdlib.h>
 #include <limits.h>
 #include "nearest_neighbor.h"
+
 // This implementation fuses the distance calculation and the iteration through
 // the search space into one loop.
-void nearest_neighbor_loop_fusion_accel(int out[NUM_DIMS], const int points[NUM_POINTS * NUM_DIMS],
-                       const int search_point[NUM_DIMS], const int len,
+void nearest_neighbor_loop_fusion_accel(int *out, const int *points,
+                       const int *search_point, const int len,
                        const int dim) {
 
     int best_i = 0;

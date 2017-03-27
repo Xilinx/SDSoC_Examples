@@ -118,10 +118,6 @@ int main(int argc, char **argv) {
 
   verify(gold, out, num_dims);
   
-  printf("|--------------------------------+-------------------------|\n");
-  printf("Note: Wall Clock Time is meaningful for real hardware execution only, not for emulation.\n");
-  printf("Please refer to profile summary for kernel execution time for hardware emulation.\n");
-    
   sds_free(out);
   sds_free(data);
   sds_free(input);
