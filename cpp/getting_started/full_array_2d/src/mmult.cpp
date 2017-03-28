@@ -29,7 +29,9 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /*******************************************************************************
 Description:
+
     C Kernel Example of Matrix Multiplication to demonstrate 2-D full array access
+
 *******************************************************************************/
 
 //Includes
@@ -42,7 +44,7 @@ Description:
 //define array size to access
 #define DATA_SIZE 8
 
-void mmult_accel(int a[DATA_SIZE * DATA_SIZE], int b[DATA_SIZE * DATA_SIZE], int c[DATA_SIZE * DATA_SIZE], int size) {
+void mmult_accel(int *a, int *b, int *c, int size) {
 
 	int bufa[N][N], bufb[N][N], bufc[N][N];
 	int matrix_size = size*size;

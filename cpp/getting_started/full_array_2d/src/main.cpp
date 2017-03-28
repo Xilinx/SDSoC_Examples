@@ -79,9 +79,12 @@ int main(int argc, char** argv)
 
     size_t vector_size_bytes = sizeof(int) * matrix_size;
 
+    // Allocate PL buffers using sds_alloc
     int *source_input_a     = (int *) sds_alloc(vector_size_bytes);
     int *source_input_b     = (int *) sds_alloc(vector_size_bytes);
     int *source_hw_results  = (int *) sds_alloc(vector_size_bytes);
+
+    // Allocate software output buffer
     int *source_sw_results  = (int *) malloc(vector_size_bytes);
 
     // Create the test data and Software Result
@@ -99,6 +102,7 @@ int main(int argc, char** argv)
     sw_ctr.stop();
 
     hw_ctr.start();
+    // Launch the hardware solution
     mmult_accel(source_input_a, source_input_b, source_hw_results, size);
     hw_ctr.stop();
 
