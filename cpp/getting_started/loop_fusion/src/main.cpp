@@ -27,13 +27,7 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **********/
 
-#include <algorithm>
 #include <cstdio>
-#include <fstream>
-#include <random>
-#include <tuple>
-#include <utility>
-#include <vector>
 #include <iostream>
 #include "nearest_neighbor.h"
 #include <limits.h>
@@ -41,43 +35,42 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #define MAX_DIMS 5
 
-using std::default_random_engine;
-using std::equal;
-using std::generate;
-using std::ifstream;
-using std::ignore;
-using std::make_pair;
-using std::numeric_limits;
-using std::uniform_int_distribution;
-using std::vector;
-
+class perf_counter
+{
+public:
+	uint64_t tot, cnt, calls;
+	perf_counter() : tot(0), cnt(0), calls(0) {};
+	inline void reset() { tot = cnt = calls = 0; }
+	inline void start() { cnt = sds_clock_counter(); calls++; };
+	inline void stop() { tot += (sds_clock_counter() - cnt); };
+	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
+};
 
 void find_nearest_neighbor(int *out, const int dim,
                            const int *search_points,
                            const int *points, const int len);
 
 void verify(int *gold, int *test, int size) {
-  bool match = true;
+    bool match = true;
 
-  for(int i = 0; i < size; i++) {
+    for(int i = 0; i < size; i++) {
     
-    if(gold[i] == test[i])
-        continue;
-    else {
-        match = false;
-        break;
-    }
+        if(gold[i] == test[i])
+            continue;
+        else {
+            match = false;
+            break;
+        }
   
-  }
+    }
 
-  if (!match) {
-    printf("\n TEST FAILED\n");
-    exit(EXIT_FAILURE);
-  }
+    if (!match) {
+        printf("\n TEST FAILED\n");
+        exit(EXIT_FAILURE);
+    }
 }
 
-void
-print_point(int *point, int size) {
+void print_point(int *point, int size) {
     
     for(int i = 0; i < size; i++)
         printf("%d", point[i]);
@@ -89,40 +82,64 @@ print_point(int *point, int size) {
 // point (x, y) from a list of points.
 int main(int argc, char **argv) {
 
-  static const int num_points = 512;
-  static const int num_dims = 2;
+    static const int num_points = 512;
+    static const int num_dims = 2;
 
-  int *data  = (int *)sds_alloc(sizeof(int) * num_points * num_dims);
-  int *input = (int *)sds_alloc(sizeof(int) * num_dims);
-  int *out   = (int *)sds_alloc(sizeof(int) * num_dims);
+    // Allocate PL buffers using sds_alloc
+    int *data  = (int *)sds_alloc(sizeof(int) * num_points * num_dims);
+    int *input = (int *)sds_alloc(sizeof(int) * num_dims);
+    int *out   = (int *)sds_alloc(sizeof(int) * num_dims);
 
-  for(int i = 0; i < num_points * num_dims; i++){
-    data[i] = i  + i;
-    if(i < num_dims)
-      input[i] = i * 2;
-  }
+    for(int i = 0; i < num_points * num_dims; i++){
+        data[i] = i  + i;
+        if(i < num_dims)
+            input[i] = i * 2;
+    }
 
-  printf("Number Of Points: %d\n", num_points);
-  printf("Dimensions: %d\n", num_dims);
-  printf("\nInput Point:      ");
-  print_point(input, num_dims);
+    printf("Number Of Points: %d\n", num_points);
+    printf("Dimensions: %d\n", num_dims);
+    printf("\nInput Point:      ");
+    print_point(input, num_dims);
 
-  int gold[num_dims];
-  find_nearest_neighbor(gold, num_dims, input, data, num_points);
-  printf("Nearest Neighbor: ");
-  print_point(gold, num_dims);
+    perf_counter hw_ctr, sw_ctr;
+    
+    int gold[num_dims];
+    
+    
+    sw_ctr.start();
+    //Launch the Software Solution
+    find_nearest_neighbor(gold, num_dims, input, data, num_points);
+    sw_ctr.stop();
 
-  size_t array_size_bytes = num_points * num_dims * sizeof(int);
-  
-  nearest_neighbor_loop_fusion_accel(out, data, input, num_points, num_dims); 
-
-  verify(gold, out, num_dims);
-  
-  sds_free(out);
-  sds_free(data);
-  sds_free(input);
-  printf("TEST PASSED\n");
-  return EXIT_SUCCESS;
+    size_t array_size_bytes = num_points * num_dims * sizeof(int);
+ 
+     
+    hw_ctr.start();
+    //Launch the Hardware Solution
+    nearest_neighbor_loop_fusion_accel(out, data, input, num_points, num_dims); 
+    hw_ctr.stop();
+    
+    verify(gold, out, num_dims);
+   
+    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
+    uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
+    double speedup = (double) sw_cycles / (double) hw_cycles;
+    
+    std::cout << "Average number of CPU cycles running mmult in software: "
+			 << sw_cycles << std::endl;
+    std::cout << "Average number of CPU cycles running mmult in hardware: "
+				 << hw_cycles << std::endl;
+    std::cout << "Speed up: " << speedup << std::endl;
+    
+    printf("Nearest Neighbor: ");
+    print_point(gold, num_dims);
+    
+    sds_free(out);
+    sds_free(data);
+    sds_free(input);
+   
+    printf("TEST PASSED\n");
+    return EXIT_SUCCESS;
 }
 
 void find_nearest_neighbor(int *out, const int dim,

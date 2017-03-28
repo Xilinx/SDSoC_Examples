@@ -27,12 +27,14 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **********/
 
- /*
-   Loop Fusion
+/******************************************************************************
+   Loop Fusion :
 
    Loop fusion is a technique to combine a nested loop with its parent. This
    technique produces more efficient hardware in some cases.
-  */
+  
+*******************************************************************************/
+
 #define MAX_DIMS 5
 #include <stdlib.h>
 #include <limits.h>
