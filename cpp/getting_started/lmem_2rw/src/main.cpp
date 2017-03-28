@@ -63,10 +63,13 @@ int main(int argc, char** argv)
     //Allocate Memory in Host Memory
     size_t vector_size_bytes = sizeof(unsigned int) * DATA_SIZE;
 
+    // Allocate PL buffers using sds_alloc
     unsigned int *source_in1         = (unsigned int *) sds_alloc(vector_size_bytes);
     unsigned int *source_in2         = (unsigned int *) sds_alloc(vector_size_bytes);
     unsigned int *source_hw_results  = (unsigned int *) sds_alloc(vector_size_bytes);
-    unsigned int *source_sw_results  = (unsigned int *) sds_alloc(vector_size_bytes);
+
+    // Allocate software output buffer
+    unsigned int *source_sw_results  = (unsigned int *) malloc(vector_size_bytes);
 
     // Create the test data and Software Result
     for(int i = 0 ; i < DATA_SIZE ; i++){
@@ -81,11 +84,12 @@ int main(int argc, char** argv)
     int size = DATA_SIZE;
 
     sw_ctr.start();
+    //Launch the Software Solution
     vadd_sw(source_in1,source_in2,source_sw_results, size);
     sw_ctr.stop();
 
-    //Launch the Kernel
     hw_ctr.start();
+    //Launch the Hardware Solution
     vadd_accel(source_in1,source_in2, source_hw_results,size);
     hw_ctr.stop();
 
@@ -116,7 +120,7 @@ int main(int argc, char** argv)
     sds_free(source_in1);
     sds_free(source_in2);
     sds_free(source_hw_results);
-    sds_free(source_sw_results);
+    free(source_sw_results);
 
     if (match){
         std::cout << "TEST FAILED" << std::endl;

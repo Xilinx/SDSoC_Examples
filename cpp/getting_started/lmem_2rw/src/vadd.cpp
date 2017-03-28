@@ -29,9 +29,11 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /*******************************************************************************
 Description:
+
     C Kernel to showcase 2 parallel read/write from  Local Memory
     Description: This is vector addition to demonstrate how to utilized both
     ports of Local Memory.
+
 *******************************************************************************/
 
 #include <string.h>
@@ -46,7 +48,7 @@ Description:
         in2   (input)     --> Input Vector2
         out   (output)    --> Output Vector
         size  (input)     --> Size of Vector in Integer
-   */
+*/
 void vadd_accel(
         const unsigned int *in1, // Read-Only Vector 1
         const unsigned int *in2, // Read-Only Vector 2
@@ -57,7 +59,6 @@ void vadd_accel(
     unsigned int v1_buffer[BUFFER_SIZE];    // Local memory to store vector1
     unsigned int v2_buffer[BUFFER_SIZE];    // Local memory to store vector2
     unsigned int vout_buffer[BUFFER_SIZE];  // Local Memory to store result
-
 
     //Per iteration of this loop perform BUFFER_SIZE vector addition
     for(int i = 0; i < size;  i += BUFFER_SIZE)
