@@ -95,13 +95,17 @@ int main(int argc, char** argv)
     perf_counter hw_ctr, sw_ctr;
 
     hw_ctr.start();
+
     // Launch the Kernel
     vadd_accel(source_input, size, inc_value, source_hw_results);
+
     hw_ctr.stop();
 
     sw_ctr.start();
+
     // Launch the software kernel
     vadd_golden(source_input, size, inc_value, source_sw_results);
+
     sw_ctr.stop();
 
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();

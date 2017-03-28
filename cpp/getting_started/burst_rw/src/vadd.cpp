@@ -42,7 +42,7 @@ Description:
 #define DATA_SIZE 256
 #define INCR_VALUE 10
 
-void vadd_accel(int a[DATA_SIZE], int size, int inc_value, int out[DATA_SIZE]){
+void vadd_accel(int *a, int size, int inc_value, int *out){
 
     int burstbuffer[BURSTBUFFERSIZE];
 

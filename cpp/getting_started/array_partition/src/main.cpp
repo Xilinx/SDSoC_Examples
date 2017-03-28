@@ -26,19 +26,10 @@ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABI
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **********/
-
-
-#include <algorithm>
 #include <cstdio>
-#include <random>
-#include <vector>
 #include <stdlib.h>
 #include "matmul.h"
 #include "sds_lib.h"
-using std::default_random_engine;
-using std::generate;
-using std::uniform_int_distribution;
-using std::vector;
 
 // row major
 void matmul(int *C, int *A, int *B, int M) {
