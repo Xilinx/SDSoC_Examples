@@ -82,15 +82,13 @@ int main(int argc, char** argv)
 
     perf_counter hw_ctr, sw_ctr;
 
-    printf("kernel launched \n");
-    //Launch the Kernel
     hw_ctr.start();
+    //Launch the Hardware Solution
     row_array_2d_accel(a, c, alpha);
     hw_ctr.stop();
 
-    printf("software module launched \n");
-    //Launch the software solution
     sw_ctr.start();
+    //Launch the Software Solution
     row_array_2d_sw(a, sw_c, alpha);
     sw_ctr.stop();
 

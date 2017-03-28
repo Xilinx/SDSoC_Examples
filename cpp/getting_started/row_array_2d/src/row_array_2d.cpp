@@ -27,10 +27,12 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **********/
 
-/*******************************************************************************
+/************************************************************************************
 Description:
-C Kernel Example using AXI4-master interface to access row of data from 2D array
-*******************************************************************************/
+    
+    C Kernel Example using AXI4-master interface to access row of data from 2D array
+
+************************************************************************************/
 
 //Includes
 #include <stdio.h>
@@ -42,7 +44,7 @@ C Kernel Example using AXI4-master interface to access row of data from 2D array
 void read_data(DTYPE *inx, my_data_fifo &inFifo) {
     read_loop_i: for(int i = 0; i < NUM_ROWS; ++i) {
         read_loop_jj: for (int jj = 0; jj < WORD_PER_ROW; ++jj) {
-#pragma HLS PIPELINE
+        #pragma HLS PIPELINE
             inFifo << inx[WORD_PER_ROW*i+jj];;
         }
     }
@@ -52,7 +54,7 @@ void read_data(DTYPE *inx, my_data_fifo &inFifo) {
 void write_data(DTYPE *outx, my_data_fifo &outFifo) {
     write_loop_i: for(int i = 0; i < NUM_ROWS; ++i) {
         write_loop_jj: for (int jj = 0; jj < WORD_PER_ROW; ++jj) {
-#pragma HLS PIPELINE
+        #pragma HLS PIPELINE
             outFifo >> outx[WORD_PER_ROW*i+jj];
         }
     }
@@ -62,7 +64,7 @@ void write_data(DTYPE *outx, my_data_fifo &outFifo) {
 void compute(my_data_fifo &inFifo, my_data_fifo &outFifo, DTYPE alpha) {
     compute_loop_i: for(int i = 0; i < NUM_ROWS; ++i) {
         compute_loop_jj: for (int jj = 0; jj < WORD_PER_ROW; ++jj) {
-#pragma HLS PIPELINE
+        #pragma HLS PIPELINE
             DTYPE inTmp;
             inFifo >> inTmp;
             DTYPE outTmp = inTmp * alpha;
