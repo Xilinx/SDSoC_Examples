@@ -52,9 +52,6 @@ void vadd_accel(
         int size               // Size in integer
         )
 {
-    #pragma HLS INTERFACE m_axi port=in1 depth=512 offset=direct bundle=in1
-    #pragma HLS INTERFACE m_axi port=in2 depth=512 offset=direct bundle=in2
-    #pragma HLS INTERFACE m_axi port=out depth=512 offset=direct bundle=out
     uint512_dt v1_local[BUFFER_SIZE];    // Local memory to store vector1
     uint512_dt result_local[BUFFER_SIZE];// Local Memory to store result
 
