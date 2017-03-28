@@ -64,9 +64,14 @@ int main(int argc, char** argv)
     //Allocate Memory in Host Memory
     size_t vector_size_bytes = sizeof(int) * DATA_SIZE;
 
+
+    // Allocate Input and Output Buffers
+    // sds_alloc must be used to allocate memory for PL buffers
     int *source_input       = (int *) sds_alloc(vector_size_bytes);
     int *source_hw_results  = (int *) sds_alloc(vector_size_bytes);
-    int *source_sw_results  = (int *) sds_alloc(vector_size_bytes);
+    
+    // Allocate memory for PS buffer
+    int *source_sw_results  = (int *) malloc(vector_size_bytes);
 
     // Create the test data and Software Result
     for(int i = 0 ; i < DATA_SIZE ; i++){
@@ -116,7 +121,7 @@ int main(int argc, char** argv)
     /* Release Memory from Host Memory*/
     sds_free(source_input);
     sds_free(source_hw_results);
-    sds_free(source_sw_results);
+    free(source_sw_results);
 
     if (match){
         std::cout << "TEST FAILED." << std::endl;

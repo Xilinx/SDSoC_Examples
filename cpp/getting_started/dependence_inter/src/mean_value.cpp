@@ -46,7 +46,7 @@ Description:
         in   (input)  --> Input Vector
         out  (output) --> Output Mean Vector
         size  (input)  --> Size of Vector in Integer
-   */
+*/
 void mean_value_accel(int *in, int *out, int size)
 {
     //Taking double size of MAX_SIZE as same local buffer will be used to store
@@ -54,13 +54,14 @@ void mean_value_accel(int *in, int *out, int size)
     int local_buffer[2 * MAX_SIZE];
 
     //burst read of input data
-    for (int i = 0 ; i < size ; i++){
+    input_read:for (int i = 0 ; i < size ; i++){
+    #pragma HLS PIPELINE
     #pragma HLS LOOP_TRIPCOUNT min=256 max=256
         local_buffer[i] = in[i];
     }
 
     //Calculating Mean Value
-    for (int i = 1 ; i < size -1 ; i++) {
+    calc_mv:for (int i = 1 ; i < size -1 ; i++) {
     #pragma HLS LOOP_TRIPCOUNT min=254 max=254
     #pragma HLS DEPENDENCE variable=local_buffer inter false
     //HLS Dependence pragma provide extra dependency information to compiler.
@@ -79,7 +80,8 @@ void mean_value_accel(int *in, int *out, int size)
     local_buffer[MAX_SIZE + size-1] = (local_buffer[size-1] + local_buffer[size-2]) /2 ;
 
     //burst Write of result
-    for (int i = 0 ; i < size ; i++){
+    output_write:for (int i = 0 ; i < size ; i++){
+    #pragma HLS PIPELINE
     #pragma HLS LOOP_TRIPCOUNT min=254 max=254
         out[i] = local_buffer[i+MAX_SIZE];
     }
