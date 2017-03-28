@@ -27,7 +27,7 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **********/
 
- /*
+/**********************************************************************************
    Loop Pipelining
 
    Pipelining is a form of parallelism that allows the FPGA to reuse the
@@ -50,12 +50,13 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
    In this example we will demonstrate ways to improve the throughput of a
    vector addition kernel using the xcl_pipeline_loop attribute.
-  */
+************************************************************************************/
 
 #define N 128
 #include "vector_addition.h"
 
 const int DATA_SIZE = 1<<10;
+
 // This kernel is optimized to access only one global variable in a pipelined
 // loop. This will improve the II and increase throughput of the kernel.
 void vadd_pipelined_accel(int a[DATA_SIZE],

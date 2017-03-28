@@ -27,28 +27,24 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **********/
 
-
-#include <algorithm>
+#include <iostream>
 #include <cstdio>
-#include <random>
-#include <vector>
 #include <stdlib.h>
 #include "vector_addition.h"
 #include "sds_lib.h"
 
-using std::default_random_engine;
-using std::generate;
-using std::uniform_int_distribution;
-using std::vector;
+class perf_counter
+{
+public:
+	uint64_t tot, cnt, calls;
+	perf_counter() : tot(0), cnt(0), calls(0) {};
+	inline void reset() { tot = cnt = calls = 0; }
+	inline void start() { cnt = sds_clock_counter(); calls++; };
+	inline void stop() { tot += (sds_clock_counter() - cnt); };
+	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
+};
 
 const int DATA_SIZE = 1<<10;
-
-int gen_random() {
-  static default_random_engine e;
-  static uniform_int_distribution<int> dist(0, 100);
-
-  return dist(e);
-}
 
 void verify(const int *gold, const int *out) {
     for(int i = 0; i < DATA_SIZE; i++){
@@ -78,13 +74,31 @@ int main(int argc, char** argv)
     int *source_results = (int *) sds_alloc(sizeof(int) * DATA_SIZE);
 
     int *gold = (int *)malloc(sizeof(int) * DATA_SIZE);
+    
+    perf_counter hw_ctr, sw_ctr;
 
+
+    sw_ctr.start();
+    //Launch the Software Solution
     vadd(source_a, source_b, gold, DATA_SIZE);
+    sw_ctr.stop();
 
+    hw_ctr.start();
+    //Launch the Hardware Solution
     vadd_pipelined_accel(source_a, source_b, source_results, DATA_SIZE);
+    hw_ctr.stop();
     
     verify(gold, source_results);
 
+    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
+    uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
+    double speedup = (double) sw_cycles / (double) hw_cycles;
+
+    std::cout << "Average number of CPU cycles running mmult in software: "
+			 << sw_cycles << std::endl;
+    std::cout << "Average number of CPU cycles running mmult in hardware: "
+				 << hw_cycles << std::endl;
+    std::cout << "Speed up: " << speedup << std::endl;
 
     sds_free(source_a);
     sds_free(source_b);
