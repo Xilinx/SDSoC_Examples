@@ -44,6 +44,17 @@ Description:
 #include "mmult.h"
 #include "sds_lib.h"
 
+class perf_counter
+{
+public:
+	uint64_t tot, cnt, calls;
+	perf_counter() : tot(0), cnt(0), calls(0) {};
+	inline void reset() { tot = cnt = calls = 0; }
+	inline void start() { cnt = sds_clock_counter(); calls++; };
+	inline void stop() { tot += (sds_clock_counter() - cnt); };
+	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
+};
+
 // Software implementation of Matrix Multiplication
 // The inputs are of the size (DATA_SIZE x DATA_SIZE)
 void m_softwareGold(
@@ -62,17 +73,6 @@ void m_softwareGold(
     }
 }
 
-class perf_counter
-{
-public:
-	uint64_t tot, cnt, calls;
-	perf_counter() : tot(0), cnt(0), calls(0) {};
-	inline void reset() { tot = cnt = calls = 0; }
-	inline void start() { cnt = sds_clock_counter(); calls++; };
-	inline void stop() { tot += (sds_clock_counter() - cnt); };
-	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
-};
-
 int main(int argc, char** argv)
 {
 
@@ -84,9 +84,12 @@ int main(int argc, char** argv)
 
     size_t matrix_size_bytes = sizeof(int) * DATA_SIZE * DATA_SIZE;
 
+    // Allocate PL buffers using sds_alloc
     int *source_in1         = (int *) sds_alloc(matrix_size_bytes);
     int *source_in2         = (int *) sds_alloc(matrix_size_bytes);
     int *source_hw_results  = (int *) sds_alloc(matrix_size_bytes);
+
+    // Allocate software output buffer
     int *source_sw_results  = (int *) malloc(matrix_size_bytes);
 
     // Create the test data and Software Result
@@ -101,12 +104,12 @@ int main(int argc, char** argv)
     perf_counter hw_ctr, sw_ctr;
 
     hw_ctr.start();
-    //Launch the Kernel
+    // Launch Hardware Solution 
     mmult_accel(source_in1, source_in2, source_hw_results, size);
     hw_ctr.stop();
 
     sw_ctr.start();
-    // Compute Software Results
+    // Launch Software Solution
     m_softwareGold(source_in1, source_in2, source_sw_results);
     sw_ctr.stop();
 
