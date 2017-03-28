@@ -27,7 +27,7 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **********/
 
-/*
+/***********************************************************************************
   Finite Impulse Response(FIR) Filter
 
   This example demonstrates how to perform a shift register operation to
@@ -62,7 +62,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   The compiler needs to know the number of registers at compile time so the
   definition of N must be a compile time variable.
 
-*/
+*************************************************************************************/
 
 #include "fir.h"
 #define COEFF 11
@@ -91,6 +91,7 @@ void fir_shift_register_accel(int *signal,
 
     outer_loop:
     for(int j = 0; j < signal_length; j++) {
+    #pragma HLS PIPELINE
         int acc = 0;
         int x = signal[j];
 

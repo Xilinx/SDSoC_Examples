@@ -103,7 +103,6 @@ int main(int argc, char** argv)
 				 << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
 
-
     // Compare the results of the Device to the simulation
     int match = 0;
     for (int i = 0 ; i < DATA_SIZE ; i++){

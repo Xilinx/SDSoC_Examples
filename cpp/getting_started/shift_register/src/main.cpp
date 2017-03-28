@@ -36,23 +36,25 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    NOTE: See the fir.cl file for additional information.
   */
 
-#include <algorithm>
-#include <random>
-#include <string>
-#include <vector>
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include "fir.h"
 #include "sds_lib.h"
 
-using std::default_random_engine;
-using std::inner_product;
-using std::string;
-using std::uniform_int_distribution;
-using std::vector;
-
 #define min(x,y) ((x) < (y) ? (x) : (y))
+
+class perf_counter
+{
+public:
+	uint64_t tot, cnt, calls;
+	perf_counter() : tot(0), cnt(0), calls(0) {};
+	inline void reset() { tot = cnt = calls = 0; }
+	inline void start() { cnt = sds_clock_counter(); calls++; };
+	inline void stop() { tot += (sds_clock_counter() - cnt); };
+	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
+};
+
 // Finite Impulse Response Filter
 void fir(int *output, const int *signal, const int *coeff, const int signal_length) {
 
@@ -117,12 +119,31 @@ int main(int argc, char **argv) {
     coeff[10]=  53;
 
     int *gold = (int *) malloc(sizeof(int) * SIGNAL_SIZE);
+    
+    perf_counter hw_ctr, sw_ctr;
 
+    
+    sw_ctr.start();
+    //Launch the Software Solution
     fir(gold, signal, coeff, SIGNAL_SIZE);
+    sw_ctr.stop();
 
+    hw_ctr.start();
+    //Launch the Hardware Solution
     fir_shift_register_accel(signal, coeff, hw_out, SIGNAL_SIZE); 
+    hw_ctr.stop();
     
     verify(gold, hw_out, SIGNAL_SIZE);
+
+    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
+    uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
+    double speedup = (double) sw_cycles / (double) hw_cycles;
+    
+    std::cout << "Average number of CPU cycles running mmult in software: "
+			 << sw_cycles << std::endl;
+    std::cout << "Average number of CPU cycles running mmult in hardware: "
+				 << hw_cycles << std::endl;
+    std::cout << "Speed up: " << speedup << std::endl;
 
     sds_free(signal);
     sds_free(coeff);
