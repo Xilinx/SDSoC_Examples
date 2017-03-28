@@ -115,8 +115,6 @@ int main(int argc, char** argv)
     int *source_hw_result = (int*) sds_alloc(sizeof(int)*DATA_DIM);
     int *source_sw_result = (int*) sds_alloc(sizeof(int)*DATA_DIM);
 
-   // srand(time(NULL));
-
     // Create the test data
     for(int i = 0 ; i < DATA_SIZE*DATA_DIM; i++){
         source_in[i] = rand()%100;
@@ -126,53 +124,53 @@ int main(int argc, char** argv)
         source_point[i] = rand()%100;
     }
 
-   int size = DATA_SIZE;
-   int dim = DATA_DIM;
+    int size = DATA_SIZE;
+    int dim = DATA_DIM;
 
-   perf_counter hw_ctr, sw_ctr;
+    perf_counter hw_ctr, sw_ctr;
 
-   hw_ctr.start();
-    //Launch the Kernel
-   nearest_accel(source_in, source_point, source_hw_result, size, dim);
-   hw_ctr.stop();
+    hw_ctr.start();
+    // Launch Hardware Solution
+    nearest_accel(source_in, source_point, source_hw_result, size, dim);
+    hw_ctr.stop();
 
-   sw_ctr.start();
-    // Compute Software Results
-   nearest_sw(source_in, source_point, source_sw_result, size, dim);
-   sw_ctr.stop();
+    sw_ctr.start();
+    // Launch Software Solution
+    nearest_sw(source_in, source_point, source_sw_result, size, dim);
+    sw_ctr.stop();
 
-   uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
-   uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
-   double speedup = (double) sw_cycles / (double) hw_cycles;
+    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
+    uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
+    double speedup = (double) sw_cycles / (double) hw_cycles;
 
-   std::cout << "Average number of CPU cycles running mmult in software: "
+    std::cout << "Average number of CPU cycles running mmult in software: "
 			<< sw_cycles << std::endl;
-   std::cout << "Average number of CPU cycles running mmult in hardware: "
+    std::cout << "Average number of CPU cycles running mmult in hardware: "
 			<< hw_cycles << std::endl;
-   std::cout << "Speed up: " << speedup << std::endl;
+    std::cout << "Speed up: " << speedup << std::endl;
 
 
-   // Compare the nearset distances between software and hardware
-   unsigned long dist_sw = 0, dist_hw = 0;
-   for(int i = 0; i < dim; i++) {
-       dist_sw += SQUARE(source_sw_result[i] - source_point[i]);
-       dist_hw += SQUARE(source_sw_result[i] - source_point[i]);
-   }
+    // Compare the nearset distances between software and hardware
+    unsigned long dist_sw = 0, dist_hw = 0;
+    for(int i = 0; i < dim; i++) {
+        dist_sw += SQUARE(source_sw_result[i] - source_point[i]);
+        dist_hw += SQUARE(source_sw_result[i] - source_point[i]);
+    }
 
-   /* Release Memory from Host Memory*/
-   sds_free(source_in);
-   sds_free(source_point);
-   sds_free(source_hw_result);
-   sds_free(source_sw_result);
+    /* Release Memory from Host Memory*/
+    sds_free(source_in);
+    sds_free(source_point);
+    sds_free(source_hw_result);
+    sds_free(source_sw_result);
 
-   if(dist_sw != dist_hw)
-   {
-       std::cout << "TEST FAILED." << std::endl;
-       std::cout << "\tSoftware Min Dist = " << dist_sw << std::endl;
-       std::cout << "\tHardware Min Dist = " << dist_hw << std::endl;
-       return -1;
-   }
+    if(dist_sw != dist_hw)
+    {
+        std::cout << "TEST FAILED." << std::endl;
+        std::cout << "\tSoftware Min Dist = " << dist_sw << std::endl;
+        std::cout << "\tHardware Min Dist = " << dist_hw << std::endl;
+        return -1;
+    }
 
-   std::cout << "TEST PASSED." << std::endl;
-   return 0;
+    std::cout << "TEST PASSED." << std::endl;
+    return 0;
 }
