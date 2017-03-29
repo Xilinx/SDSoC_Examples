@@ -29,12 +29,12 @@ git clone https://github.com/Xilinx/SDSoC_Examples examples
 where examples is the name of the directory where the repository will be stored on the local system.This command needs to be executed only once to retrieve the latest version of all SDAccel examples. The only required software is a local installation of git.
 
 ## 3. SOFTWARE AND SYSTEM REQUIREMENTS
-Board | Family | Part | Flow | SDx
-------|-------------|----------|----------|------------
-zc702|zynq|xc7z020|Emulation / Hardware|SDx 2016.4|
-zc706|zynq|xc7z045|Emulation / Hardware|SDx 2016.4|
-zcu102|zynquplus|xczu9eg|Hardware|SDx 2016.4|
-zcu102_es2|zynquplus|xczu9eg|Hardware|SDx 2016.4|
+Board | Family | Part | Flow | SDx | OS
+------|-------------|----------|----------|-------|--------
+zc702|zynq|xc7z020|Emulation / Hardware|2016.4|linux,standalone,freertos|
+zc706|zynq|xc7z045|Emulation / Hardware|2016.4|linux,standalone,freertos|
+zcu102|zynquplus|xczu9eg|Hardware|2016.4|linux,standalone,freertos|
+zcu102_es2|zynquplus|xczu9eg|Hardware|2016.4|linux,standalone,freertos|
 
 
 Board targeted by default = ***zc706***
