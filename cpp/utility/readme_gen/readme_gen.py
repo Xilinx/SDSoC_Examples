@@ -7,10 +7,10 @@ import subprocess
 DSA = 'zc706'
 VERSION = 'SDx 2016.4'
 DEVICES = {
-    'AWS VU9P': ['TBD'],
-    'zc702':['zc702','xc7z020'],
-    'zc706':['zc706','xc7z045'],
-    'zcu102':['zcu102','xczu9eg']
+    'zc702':['zynq','xc7z020'],
+    'zc706':['zynq','xc7z045'],
+    'zcu102':['zynquplus','xczu9eg'],
+    'zcu102_es2':['zynquplus','xczu9eg']
     }
 
 def header(target,data):

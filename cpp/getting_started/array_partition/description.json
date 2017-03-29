@@ -5,7 +5,7 @@
     ],
     "key_concepts": [ "Hardware Funciton Optimization", "Array Partitioning"],
     "keywords": ["#pragma HLS ARRAY_PARTITION", "complete"],
-    "board": ["zc702", "zc706", "zcu102"],
+    "board": ["zc702", "zc706", "zcu102", "zcu102_es2"],
     "contributors" : [
         {
             "group": "Xilinx",

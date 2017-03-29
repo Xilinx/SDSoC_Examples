@@ -31,9 +31,9 @@ where examples is the name of the directory where the repository will be stored 
 ## 3. SOFTWARE AND SYSTEM REQUIREMENTS
 Board | Family | Part
 ------|-------------|-----------------
-zc702|zc702|xc7z020|
-zc706|zc706|xc7z045|
-zcu102|zcu102|xczu9eg|
+zc702|zynq|xc7z020|
+zc706|zynq|xc7z045|
+zcu102|zynquplus|xczu9eg|
 
 
 Board targeted by default = ***zc706***
