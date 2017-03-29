@@ -5,9 +5,7 @@
     ],
     "key_concepts": [ "Hardware Funciton Optimization", "Array Partitioning"],
     "keywords": ["#pragma HLS ARRAY_PARTITION", "complete"],
-    "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
-    "em_cmd": "../../utility/emu_run.sh matmul_partition_accel.elf",
-    "hw_cmd": "./matmul_partition_accel.elf",
+    "board": ["zc702", "zc706", "zcu102"],
     "contributors" : [
         {
             "group": "Xilinx",

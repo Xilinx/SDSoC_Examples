@@ -8,9 +8,9 @@ DSA = 'zc706'
 VERSION = 'SDx 2016.4'
 DEVICES = {
     'AWS VU9P': ['TBD'],
-    'zynq7000 702':['zc702','nx2'],
-    'zynq7000 706':['zc706','nx1'],
-    'UltraScale+ 102':['zcu102','nx3']
+    'zc702':['zc702','xc7z020'],
+    'zc706':['zc706','xc7z045'],
+    'zcu102':['zcu102','xczu9eg']
     }
 
 def header(target,data):
@@ -81,17 +81,17 @@ def overview(target,data):
 
 def requirements(target,data):
     target.write("## 3. SOFTWARE AND SYSTEM REQUIREMENTS\n")
-    target.write("Board | Device Name | Software Version\n")
+    target.write("Board | Family | Part\n")
     target.write("------|-------------|-----------------\n")
     for board in data["board"]:
         target.write(board)
         target.write("|")
         target.write(DEVICES[board][0])
         target.write("|")
-        for version in VERSION:
-            target.write(version)
-#        target.write("|")
-#        target.write(DEVICES[board][1])
+#        for version in VERSION:
+ #           target.write(version)
+        target.write(DEVICES[board][1])
+        target.write("|")
         target.write("\n")
     target.write("\n\n")
     target.write("Board targeted by default = ***%s***\n\n" %DSA)
