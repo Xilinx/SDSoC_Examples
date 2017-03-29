@@ -1,4 +1,4 @@
-Burst Read/Write
+Loop Pipelining
 ======================
 
 This README file contains the following sections:
@@ -15,11 +15,11 @@ This README file contains the following sections:
 
 
 ## 1. OVERVIEW
-This is simple example of using AXI4-master interface for burst read and write
+This example demonstrates how loop pipelining can be used to improve the performance of a kernel
 
-***KEY CONCEPTS:*** Burst Access
+***KEY CONCEPTS:*** Hardware Function Optimization, Loop Pipelining
 
-***KEYWORDS:*** memcpy
+***KEYWORDS:*** #pragma HLS PIPELINE
 
 ## 2. HOW TO DOWNLOAD THE REPOSITORY
 To get a local copy of the SDSoC example repository, clone this repository to the local system with the following command:
@@ -48,11 +48,10 @@ where the *DEVICES* variable accepts one device.
 Application code is located in the src directory. Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation directory name is "emu" in case of hardware flow "hw" 
 ```
 Makefile
-README.md
 description.json
 src/main.cpp
-src/vadd.cpp
-src/vadd.h
+src/vector_addition.cpp
+src/vector_addition.h
 ```
 
 ## 5. COMPILATION AND EXECUTION

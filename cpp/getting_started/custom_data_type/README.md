@@ -52,7 +52,7 @@ README.md
 description.json
 src/bitmap.cpp
 src/bitmap.h
-src/host.cpp
+src/main.cpp
 src/rgb_to_hsv.cpp
 src/rgb_to_hsv.h
 ```

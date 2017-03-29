@@ -47,6 +47,7 @@ where the *DEVICES* variable accepts one device.
 ## 4. DESIGN FILE HIERARCHY
 Application code is located in the src directory. Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation directory name is "emu" in case of hardware flow "hw" 
 ```
+.nfs0000000000bbd2dd0fb5b396
 Makefile
 README.md
 description.json
@@ -71,8 +72,7 @@ where
 
 The makefile for the application can directly execute with the following command:
 ```
-make check TARGETS=emu
-
+make check TARGET=emu
 ```
 If the application has not been previously compiled, the check makefile rule will compile and execute the application in the emulation mode selected by the user.
 
