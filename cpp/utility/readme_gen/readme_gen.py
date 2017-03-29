@@ -81,18 +81,19 @@ def overview(target,data):
 
 def requirements(target,data):
     target.write("## 3. SOFTWARE AND SYSTEM REQUIREMENTS\n")
-    target.write("Board | Family | Part | Flow\n")
-    target.write("------|-------------|----------|-------\n")
+    target.write("Board | Family | Part | Flow | SDx\n")
+    target.write("------|-------------|----------|----------|------------\n")
     for board in data["board"]:
         target.write(board)
         target.write("|")
         target.write(DEVICES[board][0])
         target.write("|")
-#        for version in VERSION:
- #           target.write(version)
         target.write(DEVICES[board][1])
         target.write("|")
         target.write(DEVICES[board][2])
+        target.write("|")
+        for version in VERSION:
+            target.write(version)
         target.write("|")
         target.write("\n")
     target.write("\n\n")
