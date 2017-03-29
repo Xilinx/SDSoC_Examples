@@ -34,6 +34,17 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "sds_lib.h"
 
 
+class perf_counter
+{
+public:
+	uint64_t tot, cnt, calls;
+	perf_counter() : tot(0), cnt(0), calls(0) {};
+	inline void reset() { tot = cnt = calls = 0; }
+	inline void start() { cnt = sds_clock_counter(); calls++; };
+	inline void stop() { tot += (sds_clock_counter() - cnt); };
+	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
+};
+
 // Golden implementation
 void vadd_golden(int a[DATA_SIZE], int size, int inc_value, int output[DATA_SIZE]){
 
@@ -63,26 +74,17 @@ void vadd_golden(int a[DATA_SIZE], int size, int inc_value, int output[DATA_SIZE
     }
 }
 
-class perf_counter
-{
-public:
-	uint64_t tot, cnt, calls;
-	perf_counter() : tot(0), cnt(0), calls(0) {};
-	inline void reset() { tot = cnt = calls = 0; }
-	inline void start() { cnt = sds_clock_counter(); calls++; };
-	inline void stop() { tot += (sds_clock_counter() - cnt); };
-	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
-};
-
 int main(int argc, char** argv)
 {
     int size = DATA_SIZE;
     int inc_value = INCR_VALUE;
     //Allocate Memory in Host Memory
     size_t vector_size_bytes = sizeof(int) * size;
-
+    
+    // 
     int *source_input       = (int *) sds_alloc(vector_size_bytes);
     int *source_hw_results  = (int *) sds_alloc(vector_size_bytes);
+
     int *source_sw_results  = (int *) malloc(vector_size_bytes);
 
     // Create the test data and Software Result
@@ -95,17 +97,13 @@ int main(int argc, char** argv)
     perf_counter hw_ctr, sw_ctr;
 
     hw_ctr.start();
-
-    // Launch the Kernel
+    //Launch the Hardware Solution
     vadd_accel(source_input, size, inc_value, source_hw_results);
-
     hw_ctr.stop();
 
     sw_ctr.start();
-
-    // Launch the software kernel
+    //Launch the Software Solution
     vadd_golden(source_input, size, inc_value, source_sw_results);
-
     sw_ctr.stop();
 
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
