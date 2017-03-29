@@ -285,7 +285,7 @@ else:
 target.write("\n")
 
 target.write("ultraclean:\n")
-target.write("\t$(RM) -rf $(TARGET)\n")
+target.write("\t$(RM) -rf $(TARGET) .Xil\n")
 target.write("\n")
 
 target.close

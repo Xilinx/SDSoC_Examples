@@ -153,5 +153,5 @@ clean:
 	$(RM) $(EXECUTABLE) $(OBJECTS) $(CPP_DEPS)
 
 ultraclean:
-	$(RM) -rf $(TARGET)
+	$(RM) -rf $(TARGET) .Xil
 
