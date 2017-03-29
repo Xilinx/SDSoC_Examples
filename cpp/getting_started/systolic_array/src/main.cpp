@@ -47,6 +47,17 @@ Description:
 #include "mmult.h"
 #include "sds_lib.h"
 
+class perf_counter
+{
+public:
+	uint64_t tot, cnt, calls;
+	perf_counter() : tot(0), cnt(0), calls(0) {};
+	inline void reset() { tot = cnt = calls = 0; }
+	inline void start() { cnt = sds_clock_counter(); calls++; };
+	inline void stop() { tot += (sds_clock_counter() - cnt); };
+	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
+};
+
 // Software implementation of Matrix Multiplication
 // The inputs are of the size (DATA_SIZE x DATA_SIZE)
 void m_softwareGold(
@@ -65,17 +76,6 @@ void m_softwareGold(
     }
 }
 
-class perf_counter
-{
-public:
-	uint64_t tot, cnt, calls;
-	perf_counter() : tot(0), cnt(0), calls(0) {};
-	inline void reset() { tot = cnt = calls = 0; }
-	inline void start() { cnt = sds_clock_counter(); calls++; };
-	inline void stop() { tot += (sds_clock_counter() - cnt); };
-	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
-};
-
 int main(int argc, char** argv)
 {
     //Allocate Memory in Host Memory
@@ -86,10 +86,13 @@ int main(int argc, char** argv)
 
     size_t matrix_size_bytes = sizeof(int) * DATA_SIZE * DATA_SIZE;
 
+    // Allocate PL buffers using sds_alloc
     int *source_in1         = (int *) sds_alloc(matrix_size_bytes);
     int *source_in2         = (int *) sds_alloc(matrix_size_bytes);
     int *source_hw_results  = (int *) sds_alloc(matrix_size_bytes);
-    int *source_sw_results  = (int *) sds_alloc(matrix_size_bytes);
+
+    // Allocate software output buffer
+    int *source_sw_results  = (int *) malloc(matrix_size_bytes);
 
     // Create the test data and Software Result
     for(int i = 0 ; i < DATA_SIZE * DATA_SIZE ; i++){
@@ -106,12 +109,12 @@ int main(int argc, char** argv)
     perf_counter hw_ctr, sw_ctr;
 
     hw_ctr.start();
-    //Launch the Kernel
+    //Launch the Hardware Solution
     mmult_accel(source_in1, source_in2, source_hw_results, a_row, a_col, b_col);
     hw_ctr.stop();
 
     sw_ctr.start();
-    // Compute Software Results
+    //Launch the Software Solution
     m_softwareGold(source_in1, source_in2, source_sw_results);
     sw_ctr.stop();
 
@@ -141,7 +144,7 @@ int main(int argc, char** argv)
     sds_free(source_in1);
     sds_free(source_in2);
     sds_free(source_hw_results);
-    sds_free(source_sw_results);
+    free(source_sw_results);
 
     if (match){
         std::cout << "TEST FAILED." << std::endl;

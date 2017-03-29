@@ -7,7 +7,7 @@
 //Maximum Array Size
 #define MAX_SIZE 12
 
-// DMA based
+// Zero Copy interface enabled
 #pragma SDS data zero_copy(a, b, c)
 void mmult_accel(
 			    const int *a,   // Read-Only Matrix A

@@ -71,9 +71,9 @@ Kernel Description :
 
 
 void mmult_accel(
-			const int a[DATA_SIZE * DATA_SIZE],   // Read-Only Matrix A
-			const int b[DATA_SIZE * DATA_SIZE],   // Read-Only Matrix B
-			int c[DATA_SIZE * DATA_SIZE],         // Output Result
+			const int *a,   // Read-Only Matrix A
+			const int *b,   // Read-Only Matrix B
+			int *c,         // Output Result
 			int a_row,      // Matrix A Row Size
 			int a_col,      // Matrix A Col Size
 			int b_col       // Matrix B Col Size
