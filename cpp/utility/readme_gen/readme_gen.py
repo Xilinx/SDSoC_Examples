@@ -102,9 +102,9 @@ def requirements(target,data):
         target.write("\n")
     target.write("\n\n")
     target.write("Board targeted by default = ***%s***\n\n" %DSA)
-    target.write("*NOTE:* The board/device used for compilation can be changed by adding the DEVICES variable to the make command as shown below\n")
+    target.write("*NOTE:* The board/platform used for compilation can be changed by adding the PLATFORM environmental variable to the make command as shown below\n")
     target.write("```\n")
-    target.write("make PLATFORM=<device name>\n")
+    target.write("make check PLATFORM=<board name> or make all PLATFORM=<board name>\n")
     target.write("```\n")
     target.write("where the *DEVICES* variable accepts one device.\n\n")
     try:

@@ -39,9 +39,9 @@ zcu102_es2|zynquplus|xczu9eg|Hardware|2016.4|linux/standalone/freertos|SDSoC|
 
 Board targeted by default = ***zc706***
 
-*NOTE:* The board/device used for compilation can be changed by adding the DEVICES variable to the make command as shown below
+*NOTE:* The board/platform used for compilation can be changed by adding the PLATFORM environmental variable to the make command as shown below
 ```
-make PLATFORM=<device name>
+make check PLATFORM=<board name> or make all PLATFORM=<board name>
 ```
 where the *DEVICES* variable accepts one device.
 
