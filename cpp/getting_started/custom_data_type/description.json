@@ -5,9 +5,7 @@
     ],
     "key_concepts": [ "Dataflow", "Custom Datatype"],
     "keywords": ["struct", "#pragma HLS data_pack", "#pragma HLS LOOP_TRIPCOUNT"],
-    "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
-    "em_cmd": "../../utility/emu_run.sh rgb_to_hsv_accel.elf",
-    "hw_cmd": "./rgb_to_hsv_accel.elf",
+    "board": ["zc702", "zc706", "zcu102", "zcu102_es2"],
     "contributors" : [
         {
             "group": "Xilinx",

@@ -5,9 +5,7 @@
     ],
     "key_concepts": [ "Window of 2D data array access"],
     "keywords": ["#pragma HLS DATAFLOW", "#pragma HLS PIPELINE", "#pragma HLS stream"],
-    "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
-    "em_cmd": "../../utility/emu_run.sh row_array_2d_accel.elf",
-    "hw_cmd": "./row_array_2d_accel.elf",
+    "board": ["zc702", "zc706", "zcu102", "zcu102_es2"],
     "contributors" : [
         {
             "group": "Xilinx",

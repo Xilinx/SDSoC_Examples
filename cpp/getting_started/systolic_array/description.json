@@ -5,9 +5,7 @@
     ],
     "key_concepts": [ "Systolic Array"],
     "keywords": ["#pragma HLS PIPELINE", "#pragma HLS ARRAY_PARTITION"],
-    "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
-    "em_cmd": "../../utility/emu_run.sh mmult_accel.elf",
-    "hw_cmd": "./mmult_accel.elf",
+    "board": ["zc702", "zc706", "zcu102", "zcu102_es2"],
     "contributors" : [
         {
             "group": "Xilinx",

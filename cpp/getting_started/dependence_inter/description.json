@@ -5,9 +5,7 @@
     ],
     "key_concepts": [ "Inter Dependence"],
     "keywords": ["DEPENDENCE", "inter"],
-    "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
-    "em_cmd": "../../utility/emu_run.sh mean_value _accel.elf",
-    "hw_cmd": "./row_array_2d_accel.elf",
+    "board": ["zc702", "zc706", "zcu102", "zcu102_es2"],
     "contributors" : [
         {
             "group": "Xilinx",

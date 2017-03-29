@@ -4,10 +4,8 @@
         "This is simple example of using AXI4-master interface for burst read and write"
     ],
     "key_concepts": [ "Burst Access"],
-    "keywords": ["memcpy"],
-    "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
-    "em_cmd": "../../utility/emu_run.sh row_array_2d_accel.elf",
-    "hw_cmd": "./vadd_accel.elf",
+    "keywords": ["Burst Copy"],
+    "board": ["zc702", "zc706", "zcu102","zcu102_es2"],
     "contributors" : [
         {
             "group": "Xilinx",

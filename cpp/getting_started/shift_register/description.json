@@ -5,9 +5,7 @@
     ],
     "key_concepts": [ "Hardware Function Optimization", "Shift Register", "FIR"],
     "keywords": ["#pragma HLS ARRAY_PARTITION"],
-    "board": ["zynq7000 702", "zynq7000 706", "UltraScale+ 102"],
-    "em_cmd": "../../utility/emu_run.sh ./fir_shift_register_accel.elf",
-    "hw_cmd": "./shift_register_accel.elf",
+    "board": ["zc702", "zc706", "zcu102", "zcu102_es2"],
     "contributors" : [
         {
             "group": "Xilinx",
