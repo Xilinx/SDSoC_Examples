@@ -26,10 +26,23 @@ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABI
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **********/
+#include <iostream>
+#include <stdint.h>
 #include <cstdio>
 #include <stdlib.h>
 #include "matmul.h"
 #include "sds_lib.h"
+
+class perf_counter
+{
+public:
+	uint64_t tot, cnt, calls;
+	perf_counter() : tot(0), cnt(0), calls(0) {};
+	inline void reset() { tot = cnt = calls = 0; }
+	inline void start() { cnt = sds_clock_counter(); calls++; };
+	inline void stop() { tot += (sds_clock_counter() - cnt); };
+	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
+};
 
 // row major
 void matmul(int *C, int *A, int *B, int M) {
@@ -57,10 +70,13 @@ int main(int argc, char **argv) {
     static const int columns = 64;
     static const int rows = 64;
 
+    // Allocate PL buffers using sds_alloc
     int *A    = (int *) sds_alloc(sizeof(int) * columns * rows);
     int *B    = (int *) sds_alloc(sizeof(int) * columns * rows);
-    int *gold = (int *) malloc(sizeof(int) * columns * rows);
     int *C    = (int *) sds_alloc(sizeof(int) * columns * rows);
+    
+    // Allocate output buffer for software solution
+    int *gold = (int *) malloc(sizeof(int) * columns * rows);
 
     // Data Initialization
     for(int i = 0; i < columns * rows; i++) {
@@ -70,15 +86,30 @@ int main(int argc, char **argv) {
         C[i] = 0;
     }
 
+    perf_counter hw_ctr, sw_ctr;
+
+    sw_ctr.start();
+    //Launch the Software Solution
     matmul(gold, A, B, columns);
+    sw_ctr.stop();
 
-    // compute the size of array in bytes
-    size_t array_size_bytes = columns * rows * sizeof(int);
-
+    hw_ctr.start();
+    //Launch the Hardware Solution
     matmul_partition_accel(A, B, C, columns); 
+    hw_ctr.stop();
 
+    // Compare the results of the Device to the simulation
     verify(gold, C, columns * rows);
+    
+    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
+    uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
+    double speedup = (double) sw_cycles / (double) hw_cycles;
 
+    std::cout << "Average number of CPU cycles running mmult in software: "
+			 << sw_cycles << std::endl;
+    std::cout << "Average number of CPU cycles running mmult in hardware: "
+				 << hw_cycles << std::endl;
+    std::cout << "Speed up: " << speedup << std::endl;
 
     sds_free(A);
     sds_free(B);
