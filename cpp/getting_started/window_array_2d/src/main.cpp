@@ -69,9 +69,13 @@ int main(int argc, char** argv)
 {
     //Allocate Memory in Host Memory
     size_t vector_size_bytes = sizeof(DTYPE) * BLOCK_SIZE;
+
+    // Allocate PL Buffers using sds_alloc
     DTYPE* a = (DTYPE*)sds_alloc(vector_size_bytes);// original data set given to device
     DTYPE* c = (DTYPE*)sds_alloc(vector_size_bytes);// results returned from device
-    DTYPE* sw_c = (DTYPE*)sds_alloc(vector_size_bytes);// results returned from software
+   
+    // Allocate Software Output Buffer
+    DTYPE* sw_c = (DTYPE*)malloc(vector_size_bytes);// results returned from software
 
     // Create the test data and Software Result
     DTYPE alpha = 3;
@@ -83,13 +87,13 @@ int main(int argc, char** argv)
 
     perf_counter hw_ctr, sw_ctr;
 
-    //Launch the Kernel
     hw_ctr.start();
+    //Launch the Hardware Solution
     window_array_2d_accel(a, c, alpha);
     hw_ctr.stop();
 
-    //Launch software module
     sw_ctr.start();
+    //Launch the Software Solution
     window_array_2d_sw(a, sw_c, alpha);
     sw_ctr.stop();
 
@@ -118,7 +122,7 @@ int main(int argc, char** argv)
 
     sds_free(a);
     sds_free(c);
-    sds_free(sw_c);
+    free(sw_c);
 
     if(correct == BLOCK_SIZE){
         std::cout << "TEST PASSED." << std::endl;
