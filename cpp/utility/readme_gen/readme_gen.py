@@ -7,10 +7,10 @@ import subprocess
 DSA = 'zc706'
 VERSION = '2016.4'
 DEVICES = {
-    'zc702':['zynq','xc7z020', 'Emulation / Hardware','linux/standalone/freertos'],
-    'zc706':['zynq','xc7z045', 'Emulation / Hardware','linux/standalone/freertos'],
-    'zcu102':['zynquplus','xczu9eg', 'Hardware','linux/standalone/freertos'],
-    'zcu102_es2':['zynquplus','xczu9eg', 'Hardware','linux/standalone/freertos']
+    'zc702':['zynq','xc7z020','Emulation/Hardware','linux/standalone/freertos','SDSoC'],
+    'zc706':['zynq','xc7z045','Emulation/Hardware','linux/standalone/freertos','SDSoC'],
+    'zcu102':['zynquplus','xczu9eg','Hardware','linux/standalone/freertos','SDSoC'],
+    'zcu102_es2':['zynquplus','xczu9eg','Hardware','linux/standalone/freertos','SDSoC']
     }
 
 def header(target,data):
@@ -81,8 +81,8 @@ def overview(target,data):
 
 def requirements(target,data):
     target.write("## 3. SOFTWARE AND SYSTEM REQUIREMENTS\n")
-    target.write("Board | Family | Part | Flow | SDx | OS\n")
-    target.write("------|-------------|----------|----------|-------|--------\n")
+    target.write("Board | Family | Part | Flow | SDx | OS | Type\n")
+    target.write("------|-------------|----------|----------|-------|-----|--------\n")
     for board in data["board"]:
         target.write(board)
         target.write("|")
@@ -96,6 +96,8 @@ def requirements(target,data):
             target.write(version)
         target.write("|")
         target.write(DEVICES[board][3])
+        target.write("|")
+        target.write(DEVICES[board][4])
         target.write("|")
         target.write("\n")
     target.write("\n\n")
