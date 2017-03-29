@@ -29,6 +29,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <cstdio>
 #include <iostream>
+#include <stdlib.h>
 #include "nearest_neighbor.h"
 #include <limits.h>
 #include "sds_lib.h"
@@ -50,7 +51,7 @@ void find_nearest_neighbor(int *out, const int dim,
                            const int *search_points,
                            const int *points, const int len);
 
-void verify(int *gold, int *test, int size) {
+int verify(int *gold, int *test, int size) {
     bool match = true;
 
     for(int i = 0; i < size; i++) {
@@ -65,9 +66,10 @@ void verify(int *gold, int *test, int size) {
     }
 
     if (!match) {
-        printf("\n TEST FAILED\n");
-        exit(EXIT_FAILURE);
+        return -1;
     }
+    else
+        return 0;
 }
 
 void print_point(int *point, int size) {
@@ -82,6 +84,7 @@ void print_point(int *point, int size) {
 // point (x, y) from a list of points.
 int main(int argc, char **argv) {
 
+    int test_passed = 0;
     static const int num_points = 512;
     static const int num_dims = 2;
 
@@ -113,13 +116,12 @@ int main(int argc, char **argv) {
 
     size_t array_size_bytes = num_points * num_dims * sizeof(int);
  
-     
     hw_ctr.start();
     //Launch the Hardware Solution
     nearest_neighbor_loop_fusion_accel(out, data, input, num_points, num_dims); 
     hw_ctr.stop();
     
-    verify(gold, out, num_dims);
+    test_passed = verify(gold, out, num_dims);
    
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
@@ -138,8 +140,9 @@ int main(int argc, char **argv) {
     sds_free(data);
     sds_free(input);
    
-    printf("TEST PASSED\n");
-    return EXIT_SUCCESS;
+    std::cout << "TEST " << (test_passed ? "FAILED" : "PASSED") << std::endl;
+
+    return (test_passed ? -1 : 0);
 }
 
 void find_nearest_neighbor(int *out, const int dim,

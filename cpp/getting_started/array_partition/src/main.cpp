@@ -55,18 +55,22 @@ void matmul(int *C, int *A, int *B, int M) {
     }
 }
 
-void verify(int *gold, int *output, int size) {
+int verify(int *gold, int *output, int size) {
     for (int i = 0; i < size; i++) {
         if (output[i] != gold[i]) {
             printf("Mismatch %d: gold: %d device: %d\n", i, gold[i], output[i]);
-            exit(EXIT_FAILURE);
+            return -1;
         }
     }
+    
+    return 0;
 }
 
 // This example illustrates how to use array partitioning attributes in OpenCL
 // kernels for FPGA devices using matmul.
 int main(int argc, char **argv) {
+
+    int test_passed = 0;
     static const int columns = 64;
     static const int rows = 64;
 
@@ -99,7 +103,7 @@ int main(int argc, char **argv) {
     hw_ctr.stop();
 
     // Compare the results of the Device to the simulation
-    verify(gold, C, columns * rows);
+    test_passed = verify(gold, C, columns * rows);
     
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
@@ -116,7 +120,6 @@ int main(int argc, char **argv) {
     sds_free(C);
     free(gold);
     
-    printf("TEST PASSED\n");
-
-    return EXIT_SUCCESS;
+    std::cout << "TEST " << (test_passed ? "FAILED" : "PASSED") << std::endl; 
+    return (test_passed ? -1 : 0);
 }

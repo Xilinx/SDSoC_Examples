@@ -81,16 +81,16 @@ EXECUTABLE := matmul_partition_accel.elf
 # Source Files
 SRC_DIR := src
 CPP_SRCS += \
-$(pwd)/$(SRC_DIR)/matmul.cpp \
-$(pwd)/$(SRC_DIR)/main.cpp
+$(pwd)/$(SRC_DIR)/main.cpp \
+$(pwd)/$(SRC_DIR)/matmul.cpp
 
 OBJECTS += \
-$(pwd)/$(TARGET)/matmul.o \
-$(pwd)/$(TARGET)/main.o
+$(pwd)/$(TARGET)/main.o \
+$(pwd)/$(TARGET)/matmul.o
 
 CPP_DEPS += \
-$(pwd)/$(TARGET)/matmul.d \
-$(pwd)/$(TARGET)/main.d
+$(pwd)/$(TARGET)/main.d \
+$(pwd)/$(TARGET)/matmul.d
 
 # SDS Options
 #
@@ -137,8 +137,14 @@ $(pwd)/$(TARGET)/%.o: $(pwd)/$(SRC_DIR)/%.cpp
 # Check Rule Builds the Sources and Executes on Specified Target
 check: all
 ifeq ($(TARGET), emu)
-	cp $(COMMON_REPO)/utility/emu_run.sh $(TARGET)/
-	cd $(TARGET) ; ./emu_run.sh $(EXECUTABLE)
+
+    ifeq ($(TARGET_OS), linux)
+	    cp $(COMMON_REPO)/utility/emu_run.sh $(TARGET)/
+	    cd $(TARGET) ; ./emu_run.sh $(EXECUTABLE)
+    else
+	    cd $(TARGET) ; sdsoc_emulator -timeout 20
+    endif
+
 else
 	$(info "This Release Doesn't Support Automated Hardware Execution")
 endif

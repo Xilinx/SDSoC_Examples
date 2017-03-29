@@ -85,7 +85,7 @@ def create_mk(target, data):
     elif os == "standalone":
         target.write("TARGET_OS := standalone\n")
     else:
-        target.write("TARGET_OS := rtos\n")
+        target.write("TARGET_OS := freertos\n")
     target.write("\n")
 
     target.write("# Emulation Mode:\n")
@@ -268,7 +268,7 @@ target.write("    ifeq ($(TARGET_OS), linux)\n")
 target.write("\t    cp $(COMMON_REPO)/utility/emu_run.sh $(TARGET)/\n")
 target.write("\t    cd $(TARGET) ; ./emu_run.sh $(EXECUTABLE)\n")
 target.write("    else\n")
-target.write("\t    sdsoc_emulator -timeout 50\n")
+target.write("\t    cd $(TARGET) ; sdsoc_emulator -timeout 20\n")
 target.write("    endif\n\n")
 target.write("else\n")
 target.write("\t$(info \"This Release Doesn't Support Automated Hardware Execution\")\n")
