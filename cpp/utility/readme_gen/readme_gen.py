@@ -7,10 +7,10 @@ import subprocess
 DSA = 'zc706'
 VERSION = '2016.4'
 DEVICES = {
-    'zc702':['zynq','xc7z020', 'Emulation / Hardware','linux,standalone,freertos'],
-    'zc706':['zynq','xc7z045', 'Emulation / Hardware','linux,standalone,freertos'],
-    'zcu102':['zynquplus','xczu9eg', 'Hardware','linux,standalone,freertos'],
-    'zcu102_es2':['zynquplus','xczu9eg', 'Hardware','linux,standalone,freertos']
+    'zc702':['zynq','xc7z020', 'Emulation / Hardware','linux/standalone/freertos'],
+    'zc706':['zynq','xc7z045', 'Emulation / Hardware','linux/standalone/freertos'],
+    'zcu102':['zynquplus','xczu9eg', 'Hardware','linux/standalone/freertos'],
+    'zcu102_es2':['zynquplus','xczu9eg', 'Hardware','linux/standalone/freertos']
     }
 
 def header(target,data):

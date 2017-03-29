@@ -31,10 +31,10 @@ where examples is the name of the directory where the repository will be stored 
 ## 3. SOFTWARE AND SYSTEM REQUIREMENTS
 Board | Family | Part | Flow | SDx | OS
 ------|-------------|----------|----------|-------|--------
-zc702|zynq|xc7z020|Emulation / Hardware|2016.4|linux,standalone,freertos|
-zc706|zynq|xc7z045|Emulation / Hardware|2016.4|linux,standalone,freertos|
-zcu102|zynquplus|xczu9eg|Hardware|2016.4|linux,standalone,freertos|
-zcu102_es2|zynquplus|xczu9eg|Hardware|2016.4|linux,standalone,freertos|
+zc702|zynq|xc7z020|Emulation / Hardware|2016.4|linux/standalone/freertos|
+zc706|zynq|xc7z045|Emulation / Hardware|2016.4|linux/standalone/freertos|
+zcu102|zynquplus|xczu9eg|Hardware|2016.4|linux/standalone/freertos|
+zcu102_es2|zynquplus|xczu9eg|Hardware|2016.4|linux/standalone/freertos|
 
 
 Board targeted by default = ***zc706***
