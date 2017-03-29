@@ -81,10 +81,11 @@ int main(int argc, char** argv)
     //Allocate Memory in Host Memory
     size_t vector_size_bytes = sizeof(int) * size;
     
-    // 
+    // Allocat PL buffers using sds_alloc 
     int *source_input       = (int *) sds_alloc(vector_size_bytes);
     int *source_hw_results  = (int *) sds_alloc(vector_size_bytes);
 
+    // Allocate Software Output Buffer
     int *source_sw_results  = (int *) malloc(vector_size_bytes);
 
     // Create the test data and Software Result
