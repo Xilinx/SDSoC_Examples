@@ -25,5 +25,5 @@
     "accel_file" : "row_array_2d.cpp",
     "source_dir" : "src/*.cpp",
     "device" : "zc706",
-    "os" : "linux" 
+    "os" : "standalone" 
 }

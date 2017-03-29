@@ -57,7 +57,7 @@ COMMON_REPO = ../..
 
 # Target OS:
 #     linux (Default), standalone, rtos
-TARGET_OS := linux
+TARGET_OS := standalone
 
 # Emulation Mode:
 #     debug     - Include debug data
@@ -104,6 +104,7 @@ endif
 IFLAGS := -I.
 CFLAGS = -Wall -O3 -c
 CFLAGS += -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" 
+CFLAGS += -std=c++0x
 LFLAGS = "$@" "$<" 
 #+---------------------------------------------------------------------
 
@@ -136,8 +137,14 @@ $(pwd)/$(TARGET)/%.o: $(pwd)/$(SRC_DIR)/%.cpp
 # Check Rule Builds the Sources and Executes on Specified Target
 check: all
 ifeq ($(TARGET), emu)
-	cp $(COMMON_REPO)/utility/emu_run.sh $(TARGET)/
-	cd $(TARGET) ; ./emu_run.sh $(EXECUTABLE)
+
+    ifeq ($(TARGET_OS), linux)
+	    cp $(COMMON_REPO)/utility/emu_run.sh $(TARGET)/
+	    cd $(TARGET) ; ./emu_run.sh $(EXECUTABLE)
+    else
+		cd $(TARGET) ; sdsoc_emulator -timeout 50
+    endif
+
 else
 	$(info "This Release Doesn't Support Automated Hardware Execution")
 endif

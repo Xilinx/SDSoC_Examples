@@ -78,7 +78,14 @@ def create_mk(target, data):
    
     target.write("# Target OS:\n")
     target.write("#     linux (Default), standalone, rtos\n")
-    target.write("TARGET_OS := linux\n") 
+    
+    os = data.get("os")
+    if os == "linux":
+        target.write("TARGET_OS := linux\n") 
+    elif os == "standalone":
+        target.write("TARGET_OS := standalone\n")
+    else:
+        target.write("TARGET_OS := rtos\n")
     target.write("\n")
 
     target.write("# Emulation Mode:\n")
@@ -256,9 +263,13 @@ target.write("\t@echo ' '\n")
 target.write("\n")
 target.write("# Check Rule Builds the Sources and Executes on Specified Target\n")
 target.write("check: all\n")
-target.write("ifeq ($(TARGET), emu)\n")
-target.write("\tcp $(COMMON_REPO)/utility/emu_run.sh $(TARGET)/\n")
-target.write("\tcd $(TARGET) ; ./emu_run.sh $(EXECUTABLE)\n")
+target.write("ifeq ($(TARGET), emu)\n\n")
+target.write("    ifeq ($(TARGET_OS), linux)\n")
+target.write("\t    cp $(COMMON_REPO)/utility/emu_run.sh $(TARGET)/\n")
+target.write("\t    cd $(TARGET) ; ./emu_run.sh $(EXECUTABLE)\n")
+target.write("    else\n")
+target.write("\t    sdsoc_emulator -timeout 50\n")
+target.write("    endif\n\n")
 target.write("else\n")
 target.write("\t$(info \"This Release Doesn't Support Automated Hardware Execution\")\n")
 target.write("endif\n")
