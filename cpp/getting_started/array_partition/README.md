@@ -43,11 +43,12 @@ Board targeted by default = ***zc706***
 ```
 make check PLATFORM=<board name> or make all PLATFORM=<board name>
 ```
-where the *DEVICES* variable accepts one device.
+where the *PLATFORM* variable accepts one device.
 
 ## 4. DESIGN FILE HIERARCHY
 Application code is located in the src directory. Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation directory name is "emu" in case of hardware flow "hw" 
 ```
+.nfs00000000064607250fe61399
 Makefile
 README.md
 description.json
