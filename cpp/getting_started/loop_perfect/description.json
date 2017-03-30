@@ -1,5 +1,5 @@
 {
-    "example": "Improve performance using loop perfect or semi-perfect",
+    "example": "Loop Perfect",
     "overview": [
         "This nearest neighbor example is to demonstrate how to achieve better performance using perfect loop."
     ],
