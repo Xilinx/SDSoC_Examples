@@ -19,8 +19,13 @@
             "description": "Initial Xilinx Release"
         }
     ],
-    "hw_function": "matmul_partition_accel",
-    "accel_file" : "matmul.cpp",
+    "accelerators": [
+       {
+           "name" : "matmul_partition_accel",
+           "location" : "matmul.cpp"
+       }
+    ],
+
     "source_dir" : "src/*.cpp",
     "device" : "zc706",
     "os" : "linux" 

@@ -105,17 +105,18 @@ def create_mk(target, data):
     
     target.write("# Build Executable\n")
     target.write("EXECUTABLE := ")
-    hf = data.get("hw_function")
-    target.write(hf)
-    target.write(".elf\n")
-    target.write("\n")
+#    hf = data.get("hw_function")
+#    target.write(hf)
+    for acc in data["accelerators"]:
+        target.write(acc["name"])
+        target.write(".elf\n")
+        target.write("\n")
 
     target.write("#+--------------------------------------------------------------------------\n")
     target.write("# Makefile Data\n")
     target.write("#+--------------------------------------------------------------------------\n")
     target.write("\n")
     return
-
 
 script, desc_file = argv
 desc = open(desc_file, 'r')
@@ -203,11 +204,16 @@ target.write("\n\n")
 target.write("# SDS Options\n")
 target.write("#\n")
 target.write("HW_FLAGS := -sds-hw ")
-hw_function = data.get("hw_function")
-target.write(hw_function)
-target.write(" ")
-hf_file = data.get("accel_file")
-target.write(hf_file)
+
+for acc in data["accelerators"]:
+    target.write(acc["name"])
+    target.write(" ")
+    target.write(acc["location"])    
+#hw_function = data.get("hw_function")
+#target.write(hw_function)
+#target.write(" ")
+#hf_file = data.get("accel_file")
+#target.write(hf_file)
 target.write(" -sds-end\n")
 
 target.write("EMU_FLAGS := \n")

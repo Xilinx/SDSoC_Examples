@@ -5,7 +5,7 @@ rm -rf $PWD/_sds/emulation/sd_card
 sdsoc_emulator -no-reboot |tee emulator.log
 else
 cat > "init.sh" <<EOT
-!/bin/sh
+#!/bin/sh
 /mnt/$1
 reboot
 EOT
