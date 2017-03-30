@@ -19,8 +19,12 @@
             "description": "Initial Xilinx Release"
         }
     ],
-    "hw_function": "mmult_accel",
-    "accel_file" : "mmult.cpp",
+    "accelerators": [
+       {
+           "name" : "mmult_accel",
+           "location" : "mmult.cpp"
+       }
+    ],
     "source_dir" : "src/*.cpp",
     "device" : "zc706",
     "os" : "linux" 

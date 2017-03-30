@@ -19,6 +19,12 @@
             "description": "Initial Xilinx Release"
         }
     ],
+    "accelerators": [
+       {
+           "name" : "vadd_accel",
+           "location" : "vadd.cpp"
+       }
+    ],
     "hw_function": "vadd_accel",
     "accel_file" : "vadd.cpp",
     "source_dir" : "src/*.cpp",

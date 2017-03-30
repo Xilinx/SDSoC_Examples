@@ -19,8 +19,12 @@
             "description": "Initial Xilinx Release"
         }
     ],
-    "hw_function": "vadd_pipelined_accel",
-    "accel_file" : "vector_addition.cpp",
+    "accelerators": [
+       {
+           "name" : "vadd_pipelined_accel",
+           "location" : "vector_addition.cpp"
+       }
+    ],
     "source_dir" : "src/*.cpp",
     "device" : "zc706",
     "os" : "linux" 

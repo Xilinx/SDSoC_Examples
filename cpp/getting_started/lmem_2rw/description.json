@@ -19,8 +19,12 @@
             "description": "Initial Xilinx Release"
         }
     ],
-    "hw_function": "vadd_accel",
-    "accel_file" : "vadd.cpp",
+    "accelerators": [
+       {
+           "name" : "vadd_accel",
+           "location" : "vadd.cpp"
+       }
+    ],
     "source_dir" : "src/*.cpp",
     "device" : "zc706",
     "os" : "linux" 

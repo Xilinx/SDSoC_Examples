@@ -19,8 +19,12 @@
             "description": "Initial Xilinx Release"
         }
     ],
-    "hw_function": "nearest_accel",
-    "accel_file" : "nearest.cpp",
+    "accelerators": [
+       {
+           "name" : "nearest_accel",
+           "location" : "nearest.cpp"
+       }
+    ],
     "source_dir" : "src/*.cpp",
     "device" : "zc706",
     "os" : "linux" 

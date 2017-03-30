@@ -19,8 +19,12 @@
             "description": "Initial Xilinx Release"
         }
     ],
-    "hw_function": "fir_shift_register_accel",
-    "accel_file" : "fir.cpp",
+    "accelerators": [
+       {
+           "name" : "fir_shift_register_accel",
+           "location" : "fir.cpp"
+       }
+    ],
     "source_dir" : "src/*.cpp",
     "device" : "zc706",
     "os" : "linux" 

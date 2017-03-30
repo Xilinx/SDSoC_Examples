@@ -19,8 +19,12 @@
             "description": "Initial Xilinx Release"
         }
     ],
-    "hw_function": "window_array_2d_accel",
-    "accel_file" : "window_array_2d.cpp",
+    "accelerators": [
+       {
+           "name" : "window_array_2d_accel",
+           "location" : "window_array_2d.cpp"
+       }
+    ],
     "source_dir" : "src/*.cpp",
     "device" : "zc706",
     "os" : "linux" 

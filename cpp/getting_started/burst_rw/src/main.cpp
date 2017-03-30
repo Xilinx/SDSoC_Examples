@@ -29,6 +29,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <iostream>
 #include <cstring>
+#include <stdlib.h>
 #include <stdint.h>
 #include "vadd.h"
 #include "sds_lib.h"

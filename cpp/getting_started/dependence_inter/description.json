@@ -19,8 +19,12 @@
             "description": "Initial Xilinx Release"
         }
     ],
-    "hw_function": "mean_value_accel",
-    "accel_file" : "mean_value.cpp",
+    "accelerators": [
+       {
+           "name" : "mean_value_accel",
+           "location" : "mean_value.cpp"
+       }
+    ],
     "source_dir" : "src/*.cpp",
     "device" : "zc706",
     "os" : "linux" 

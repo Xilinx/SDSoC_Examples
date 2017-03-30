@@ -19,8 +19,12 @@
             "description": "Initial Xilinx Release"
         }
     ],
-    "hw_function": "row_array_2d_accel",
-    "accel_file" : "row_array_2d.cpp",
+    "accelerators": [
+       {
+           "name" : "row_array_2d_accel",
+           "location" : "row_array_2d.cpp"
+       }
+    ],
     "source_dir" : "src/*.cpp",
     "device" : "zc706",
     "os" : "standalone" 

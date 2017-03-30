@@ -19,8 +19,12 @@
             "description": "Initial Xilinx Release"
         }
     ],
-    "hw_function": "rgb_to_hsv_accel",
-    "accel_file" : "rgb_to_hsv.cpp",
+    "accelerators": [
+       {
+           "name" : "rgb_to_hsv_accel",
+           "location" : "rgb_to_hsv.cpp"
+       }
+    ],
     "source_dir" : "src/*.cpp",
     "device" : "zc706",
     "os" : "linux" 

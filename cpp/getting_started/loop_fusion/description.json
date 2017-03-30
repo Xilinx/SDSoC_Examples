@@ -19,8 +19,12 @@
             "description": "Initial Xilinx Release"
         }
     ],
-    "hw_function": "nearest_neighbor_loop_fusion_accel",
-    "accel_file" : "nearest_neighbor.cpp",
+    "accelerators": [
+       {
+           "name" : "nearest_neighbor_loop_fusion_accel",
+           "location" : "nearest_neighbor.cpp"
+       }
+    ],
     "source_dir" : "src/*.cpp",
     "device" : "zc706",
     "os" : "linux" 
