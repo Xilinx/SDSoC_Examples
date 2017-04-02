@@ -108,14 +108,14 @@ void nearest_sw(
 int main(int argc, char** argv)
 {
     if (DATA_DIM > MAX_DIM) {
-        std::cout << DATA_DIM << "greater than " << MAX_DIM << "!" << " Please use a 
-                                smaller DATA_DIM" << std::endl;
+        std::cout << DATA_DIM << "greater than " << MAX_DIM << "!"<< " Please use a"; 
+        std::cout << "smaller DATA_DIM" << std::endl;
         return EXIT_FAILURE;
     }
 
     if (DATA_SIZE > MAX_SIZE) {
-        std::cout << DATA_SIZE << "greater than " << MAX_SIZE << "!" << " Please use 
-                                 a smaller DATA_SIZE" << std::endl;
+        std::cout << DATA_SIZE << "greater than " << MAX_SIZE << "!"<< " Please use"; 
+        std::cout << "a smaller DATA_SIZE" << std::endl;
         return EXIT_FAILURE;
     }
 
@@ -161,7 +161,14 @@ int main(int argc, char** argv)
 			<< hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
 
-
+    std::cout << "\n";
+    std::cout << "Note : This example is intended to introduce developers to ";
+    std::cout << "best coding practice related to accelerator structure in "; 
+    std::cout << "Programmable Logic."<< std::endl;
+    std::cout << "\tSpeed up comparison between Software Solution doesn't";
+    std::cout << " matter" << std::endl;
+    std::cout << "\n"; 
+   
     // Compare the nearset distances between software and hardware
     unsigned long dist_sw = 0, dist_hw = 0;
     for(int i = 0; i < dim; i++) {
