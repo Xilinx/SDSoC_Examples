@@ -107,6 +107,14 @@ int main(int argc, char** argv)
 				  << hw_cycles << std::endl;
 	std::cout << "Speed up: " << speedup << std::endl;
 
+    std::cout << "\n";
+    std::cout << "Note : This example is intended to introduce developers to ";
+    std::cout << "best coding practice of memory transfers between DDR and "; 
+    std::cout << "Programmable Logic."<< std::endl;
+    std::cout << "\tSpeed up comparison between Software Solution doesn't";
+    std::cout << " matter" << std::endl;
+    std::cout << "\n"; 
+   
     // Compare the results of the Device to the simulation
     int match = 0;
     for (int i = 0 ; i < DATA_SIZE ; i++){

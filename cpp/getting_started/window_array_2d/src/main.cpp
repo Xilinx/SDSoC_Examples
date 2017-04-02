@@ -120,6 +120,14 @@ int main(int argc, char** argv)
 			  << hw_cycles << std::endl;
 	std::cout << "Speed up: " << speedup << std::endl;
 
+    std::cout << "\n";
+    std::cout << "Note : This example is intended to introduce developers to ";
+    std::cout << "best coding practice of memory transfers between DDR and "; 
+    std::cout << "Programmable Logic."<< std::endl;
+    std::cout << "\tSpeed up comparison between Software Solution doesn't";
+    std::cout << " matter" << std::endl;
+    std::cout << "\n"; 
+   
     // Validate
     unsigned int correct = 0;              // number of correct results returned
     for (int i = 0;i < BLOCK_SIZE; i++) {
