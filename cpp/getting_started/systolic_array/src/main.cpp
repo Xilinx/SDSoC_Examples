@@ -91,8 +91,8 @@ int main(int argc, char** argv)
 {
     //Allocate Memory in Host Memory
     if (DATA_SIZE > MAX_SIZE) {
-        std::cout << "Size is bigger than internal buffer size, please use a size 
-                    smaller than " << MAX_SIZE << "!" << std::endl;
+        std::cout << "Size is bigger than internal buffer size, please use a size ";
+        std::cout << "smaller than " << MAX_SIZE << "!" << std::endl;
         return -1;
     }
 
@@ -140,6 +140,14 @@ int main(int argc, char** argv)
 				 << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
 
+    std::cout << "\n";
+    std::cout << "Note : This example is intended to introduce developers to ";
+    std::cout << "best coding practice related to accelerator structure in "; 
+    std::cout << "Programmable Logic."<< std::endl;
+    std::cout << "\tSpeed up comparison between software solution doesn't";
+    std::cout << " matter" << std::endl;
+    std::cout << "\n"; 
+   
     // Compare the results of the Device to the simulation
     int match = 0;
     for (int i = 0 ; i < DATA_SIZE * DATA_SIZE ; i++){

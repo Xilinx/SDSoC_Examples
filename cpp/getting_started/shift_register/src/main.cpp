@@ -159,8 +159,6 @@ int main(int argc, char **argv) {
     std::cout << "Note : This example is intended to introduce developers to ";
     std::cout << "best coding practice of accelerator optimization technique to "; 
     std::cout << "achieve better performance."<< std::endl;
-    std::cout << "\tSpeed up comparison between software solution doesn't";
-    std::cout << " matter" << std::endl;
     std::cout << "\n"; 
    
     sds_free(signal);
