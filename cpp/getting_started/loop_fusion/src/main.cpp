@@ -142,6 +142,15 @@ int main(int argc, char **argv) {
     std::cout << "Average number of CPU cycles running mmult in hardware: "
 				 << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
+ 
+    std::cout << "\n";
+    std::cout << "Note : This example is intended to introduce developers to ";
+    std::cout << "best coding practice related to accelerator structure in "; 
+    std::cout << "Programmable Logic."<< std::endl;
+    std::cout << "\tSpeed up comparison between Software Solution doesn't";
+    std::cout << " matter" << std::endl;
+    std::cout << "\n"; 
+   
     
     printf("Nearest Neighbor: ");
     print_point(gold, num_dims);
@@ -188,7 +197,6 @@ void find_nearest_neighbor(int *out, const int dim,
   }    
     write_best:
     for (int c = 0; c < dim; ++c) {
-    #pragma HLS PIPELINE
         out[c] = points[best_i * dim + c];
     }
 
