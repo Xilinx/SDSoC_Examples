@@ -83,8 +83,8 @@ int main(int argc, char** argv)
     int size = DATA_SIZE;
     int matrix_size = size * size;
     if (size > N) {
-        std::cout << "Size is bigger than internal buffer size, please use a size  
-                    smaller than 256!" << std::endl;
+        std::cout << "Size is bigger than internal buffer size, please use a size";  
+        std::cout << " smaller than 256!" << std::endl;
         return EXIT_FAILURE;
     }
 
@@ -126,7 +126,14 @@ int main(int argc, char** argv)
     std::cout << "Average number of CPU cycles running mmult in hardware: "
                   << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
-
+    std::cout << "\n";
+    std::cout << "Note : This example is intended to introduce developers to ";
+    std::cout << "best coding practice for memory transfers from DDR to "; 
+    std::cout << "Programmable Logic."<< std::endl;
+    std::cout << "\tSpeed up comparison between Software Solution cycles does't";
+    std::cout << " matter" << std::endl;
+    std::cout << "\n"; 
+   
     // Compare the results of the Device to the simulation
     int match = 0;
     std::cout << "Result = " << std::endl;
