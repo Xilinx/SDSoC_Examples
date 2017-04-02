@@ -110,6 +110,14 @@ int main(int argc, char** argv)
 				 << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
 
+    std::cout << "\n";
+    std::cout << "Note : This example is intended to introduce developers to ";
+    std::cout << "best coding practice related to accelerator structure in "; 
+    std::cout << "Programmable Logic."<< std::endl;
+    std::cout << "\tSpeed up comparison between Software Solution doesn't";
+    std::cout << " matter" << std::endl;
+    std::cout << "\n"; 
+   
     sds_free(source_a);
     sds_free(source_b);
     sds_free(source_results);
