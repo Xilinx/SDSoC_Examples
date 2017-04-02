@@ -111,7 +111,13 @@ int main(int argc, char** argv)
 	std::cout << "Average number of CPU cycles running mmult in hardware: "
 				  << hw_cycles << std::endl;
 	std::cout << "Speed up: " << speedup << std::endl;
-
+    std::cout << "\n";
+    std::cout << "Note : This example is intended to introduce developers to ";
+    std::cout << "best coding practice for Programmable Logic Optimization\n"; 
+    std::cout << "\tSpeed up comparison with Software Solution does not";
+    std::cout << " matter" << std::endl;
+    std::cout << "\n"; 
+   
     // Compare the results of the Device to the simulation
     int match = 0;
     std::cout << "Result = " << std::endl;
