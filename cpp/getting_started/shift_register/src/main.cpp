@@ -155,6 +155,14 @@ int main(int argc, char **argv) {
 				 << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
 
+    std::cout << "\n";
+    std::cout << "Note : This example is intended to introduce developers to ";
+    std::cout << "best coding practice of accelerator optimization technique to "; 
+    std::cout << "achieve better performance."<< std::endl;
+    std::cout << "\tSpeed up comparison between software solution doesn't";
+    std::cout << " matter" << std::endl;
+    std::cout << "\n"; 
+   
     sds_free(signal);
     sds_free(coeff);
     sds_free(hw_out);
