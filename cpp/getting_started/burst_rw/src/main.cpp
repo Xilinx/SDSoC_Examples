@@ -77,7 +77,8 @@ void vadd_golden(int a[DATA_SIZE], int size, int inc_value, int output[DATA_SIZE
             burstbuffer[k] = a[i+k];
         }
 
-        //calculate and write results to global memory, the sequential write in a for loop can be inferred to a memory burst access automatically
+        //calculate and write results to global memory, the sequential write in a for
+        //loop can be inferred to a memory burst access automatically
         calc_write: for(int j=0; j < chunk_size; j++){
             burstbuffer[j] = burstbuffer[j] + inc_value;
             output[i+j] = burstbuffer[j];
@@ -126,7 +127,13 @@ int main(int argc, char** argv)
     std::cout << "Average number of CPU cycles running mmult in hardware: "
               << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
-
+    std::cout << "Note : This example is intended to introduce developers to ";
+    std::cout << "best coding practice for memory transfers from DDR to "; 
+    std::cout << "Programmable Logic."<< std::endl;
+    std::cout << "\tSpeed up comparison between Software Solution cycles does't";
+    std::cout << " matter" << std::endl;
+    std::cout << "\n"; 
+    
     // Compare the results of the Device to the simulation
     int match = 0;
     for (int i = 0 ; i < size ; i++){
