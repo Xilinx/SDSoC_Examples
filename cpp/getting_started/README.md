@@ -1,9 +1,12 @@
 Getting Started Examples
 ======================
 
-This is a main repository which contains variety SDSoC coding guidelines related examples which are intended to help users to get exposed to various important features of SDSoC. Xilinx SDx 2017.1 tool is used to develop examples listed below.
+This is a main repository which contains variety of SDSoC coding guidelines related examples which are intended to help users to get exposed to various important features of SDSoC. Xilinx SDx 2017.1 tool is used to develop these examples.
 
 ## SDSoC Examples
+
+Table below presents overall summary of each of these examples present in this repository.
+
 Sl.No | Title | Description | Category
 ------|-------|-------------|----------
 1|Array Partition|This example shows how to use array partitioning to improve performance of a kernel|Optimization|
