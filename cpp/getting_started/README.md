@@ -5,7 +5,7 @@ This is a main repository which contains variety of SDSoC coding guidelines rela
 
 ## SDSoC Examples
 
-Table below presents overall summary of each of these examples present in this repository.
+Table below presents overall summary of each example in a precise manner. These examples are categorized to help users to cover various area that needs to be focused while using SDSoC for their application optimization
 
 Sl.No | Title | Description | Category
 ------|-------|-------------|----------
