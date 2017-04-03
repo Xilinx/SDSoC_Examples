@@ -137,10 +137,10 @@ int main(int argc, char* argv[])
 
     if (match){
         std::cout << "TEST FAILED." << std::endl;
-        return EXIT_FAILURE;
+        return -1;
     }
     std::cout << "TEST PASSED." << std::endl;
-    return EXIT_SUCCESS;
+    return 0;
 }
 
 
@@ -267,9 +267,9 @@ int compareImages(int * _in, int * _out, int image_size)
             cnt++;
             std::cout << "ERROR: Pixel=" << i << " mismatch Expected="
                 << in << " and Got=" << out << std::endl;
-            return EXIT_FAILURE;
+            return -1;
         }
     }
-    return EXIT_SUCCESS;
+    return 0;
 }
 
