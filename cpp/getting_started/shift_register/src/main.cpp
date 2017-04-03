@@ -92,7 +92,7 @@ void print_signal(int *device_output, int signal_size) {
 }
 
 // Verifies the gold and the out data are equal
-void verify(int *gold, const int *out, const int signal_size) {
+int verify(int *gold, const int *out, const int signal_size) {
    
     int match = 1;
     for(int i = 0; i < signal_size; i++){
@@ -105,13 +105,14 @@ void verify(int *gold, const int *out, const int signal_size) {
         }
     } 
     if (!match) {
-        printf("TEST FAILED\n");
-        exit(EXIT_FAILURE);
+        return 1;
     }
+    return 0;
 }
 
 int main(int argc, char **argv) {
     
+    int test_passed = 0;
     int *signal = (int *) sds_alloc(sizeof(int) * SIGNAL_SIZE);
     int *coeff  = (int *) sds_alloc(sizeof(int) * N_COEFF);
     int *hw_out = (int *) sds_alloc(sizeof(int) * SIGNAL_SIZE);
@@ -143,7 +144,7 @@ int main(int argc, char **argv) {
     fir_shift_register_accel(signal, coeff, hw_out, SIGNAL_SIZE); 
     hw_ctr.stop();
     
-    verify(gold, hw_out, SIGNAL_SIZE);
+    test_passed = verify(gold, hw_out, SIGNAL_SIZE);
 
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
@@ -166,6 +167,7 @@ int main(int argc, char **argv) {
     sds_free(hw_out);
     free(gold);
     
-    std::cout << "TEST PASSED\n";
-    return EXIT_SUCCESS;
+    std::cout << "TEST " << (test_passed ? "FAILED" : "PASSED") << std::endl;
+
+    return (test_passed ? -1 : 0);
 }

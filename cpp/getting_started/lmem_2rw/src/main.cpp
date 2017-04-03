@@ -142,8 +142,8 @@ int main(int argc, char** argv)
 
     if (match){
         std::cout << "TEST FAILED" << std::endl;
-        return EXIT_FAILURE;
+        return 1;
     }
     std::cout << "TEST PASSED" << std::endl;
-    return EXIT_SUCCESS;
+    return 0;
 }

@@ -56,13 +56,13 @@ public:
 
 const int DATA_SIZE = 1<<10;
 
-void verify(const int *gold, const int *out) {
+int verify(const int *gold, const int *out) {
     for(int i = 0; i < DATA_SIZE; i++){
         if(gold[i] != out[i]){
-            printf("TEST FAILED\n");
-            exit(EXIT_FAILURE);
+            return 1;
         }
   }
+  return 0;
 }
 
 void vadd(int *a, int *b, int *c, int len){
@@ -75,6 +75,8 @@ void vadd(int *a, int *b, int *c, int len){
 
 int main(int argc, char** argv)
 {
+
+    int test_passed = 0;
     // compute the size of array in bytes
     int size_in_bytes = DATA_SIZE * sizeof(int);
 
@@ -98,7 +100,7 @@ int main(int argc, char** argv)
     vadd_pipelined_accel(source_a, source_b, source_results, DATA_SIZE);
     hw_ctr.stop();
     
-    verify(gold, source_results);
+    test_passed = verify(gold, source_results);
 
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
@@ -123,6 +125,7 @@ int main(int argc, char** argv)
     sds_free(source_results);
     free(gold);
 
-    printf("TEST PASSED.\n");
-    return EXIT_SUCCESS;
+    std::cout << "TEST " << (test_passed ? "FAILED" : "PASSED") << std::endl;
+
+    return (test_passed ? -1 : 0);
 }
