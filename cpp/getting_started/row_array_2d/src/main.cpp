@@ -100,29 +100,13 @@ int main(int argc, char** argv)
     row_array_2d_accel(a, c, alpha);
     hw_ctr.stop();
 
-    sw_ctr.start();
     //Launch the Software Solution
     row_array_2d_sw(a, sw_c, alpha);
-    sw_ctr.stop();
 
-    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
-    double speedup = (double) sw_cycles / (double) hw_cycles;
 
-    std::cout << "Average number of CPU cycles running mmult in software: "
-			 << sw_cycles << std::endl;
     std::cout << "Average number of CPU cycles running mmult in hardware: "
 				 << hw_cycles << std::endl;
-    std::cout << "Speed up: " << speedup << std::endl;
-
-    std::cout << "\n";
-    std::cout << "Note : This example is intended to introduce developers to ";
-    std::cout << "best coding practice of memory transfers between DDR and "; 
-    std::cout << "Programmable Logic."<< std::endl;
-    std::cout << "\tSpeed up comparison with software solution doesn't";
-    std::cout << " matter" << std::endl;
-    std::cout << "\n";  
-
     // Validate
     unsigned int correct = 0;              // number of correct results returned
     for (int i = 0;i < BLOCK_SIZE; i++) {

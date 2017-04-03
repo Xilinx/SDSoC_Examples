@@ -114,25 +114,12 @@ int main(int argc, char** argv)
     vadd_accel(source_input, size, inc_value, source_hw_results);
     hw_ctr.stop();
 
-    sw_ctr.start();
     //Launch the Software Solution
     vadd_golden(source_input, size, inc_value, source_sw_results);
-    sw_ctr.stop();
 
-    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
-    double speedup = (double) sw_cycles / (double) hw_cycles;
-    std::cout << "Average number of CPU cycles running mmult in software: "
-              << sw_cycles << std::endl;
     std::cout << "Average number of CPU cycles running mmult in hardware: "
               << hw_cycles << std::endl;
-    std::cout << "Speed up: " << speedup << std::endl;
-    std::cout << "Note : This example is intended to introduce developers to ";
-    std::cout << "best coding practice for memory transfers from DDR to "; 
-    std::cout << "Programmable Logic."<< std::endl;
-    std::cout << "\tSpeed up comparison between Software Solution cycles does't";
-    std::cout << " matter" << std::endl;
-    std::cout << "\n"; 
     
     // Compare the results of the Device to the simulation
     int match = 0;

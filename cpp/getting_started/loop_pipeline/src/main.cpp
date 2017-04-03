@@ -89,11 +89,8 @@ int main(int argc, char** argv)
     
     perf_counter hw_ctr, sw_ctr;
 
-
-    sw_ctr.start();
     //Launch the Software Solution
     vadd(source_a, source_b, gold, DATA_SIZE);
-    sw_ctr.stop();
 
     hw_ctr.start();
     //Launch the Hardware Solution
@@ -102,23 +99,10 @@ int main(int argc, char** argv)
     
     test_passed = verify(gold, source_results);
 
-    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
-    double speedup = (double) sw_cycles / (double) hw_cycles;
 
-    std::cout << "Average number of CPU cycles running mmult in software: "
-			 << sw_cycles << std::endl;
     std::cout << "Average number of CPU cycles running mmult in hardware: "
 				 << hw_cycles << std::endl;
-    std::cout << "Speed up: " << speedup << std::endl;
-
-    std::cout << "\n";
-    std::cout << "Note : This example is intended to introduce developers to ";
-    std::cout << "best coding practice related to accelerator structure in "; 
-    std::cout << "Programmable Logic."<< std::endl;
-    std::cout << "\tSpeed up comparison between Software Solution doesn't";
-    std::cout << " matter" << std::endl;
-    std::cout << "\n"; 
    
     sds_free(source_a);
     sds_free(source_b);

@@ -107,32 +107,18 @@ int main(int argc, char** argv)
 
     perf_counter hw_ctr, sw_ctr;
 
-    sw_ctr.start();
     // Launch the software solution
     mmult_sw(source_input_a, source_input_b, source_sw_results, size);
-    sw_ctr.stop();
 
     hw_ctr.start();
     // Launch the hardware solution
     mmult_accel(source_input_a, source_input_b, source_hw_results, size);
     hw_ctr.stop();
 
-    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
-    double speedup = (double) sw_cycles / (double) hw_cycles;
 
-    std::cout << "Average number of CPU cycles running mmult in software: "
-              << sw_cycles << std::endl;
     std::cout << "Average number of CPU cycles running mmult in hardware: "
                   << hw_cycles << std::endl;
-    std::cout << "Speed up: " << speedup << std::endl;
-    std::cout << "\n";
-    std::cout << "Note : This example is intended to introduce developers to ";
-    std::cout << "best coding practice for memory transfers from DDR to "; 
-    std::cout << "Programmable Logic."<< std::endl;
-    std::cout << "\tSpeed up comparison between Software Solution cycles does't";
-    std::cout << " matter" << std::endl;
-    std::cout << "\n"; 
    
     // Compare the results of the Device to the simulation
     int match = 0;

@@ -119,10 +119,8 @@ int main(int argc, char **argv) {
     int gold[num_dims];
     
     
-    sw_ctr.start();
     //Launch the Software Solution
     find_nearest_neighbor(gold, num_dims, input, data, num_points);
-    sw_ctr.stop();
 
     size_t array_size_bytes = num_points * num_dims * sizeof(int);
  
@@ -133,25 +131,11 @@ int main(int argc, char **argv) {
     
     test_passed = verify(gold, out, num_dims);
    
-    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
-    double speedup = (double) sw_cycles / (double) hw_cycles;
     
-    std::cout << "Average number of CPU cycles running mmult in software: "
-			 << sw_cycles << std::endl;
     std::cout << "Average number of CPU cycles running mmult in hardware: "
 				 << hw_cycles << std::endl;
-    std::cout << "Speed up: " << speedup << std::endl;
  
-    std::cout << "\n";
-    std::cout << "Note : This example is intended to introduce developers to ";
-    std::cout << "best coding practice related to accelerator structure in "; 
-    std::cout << "Programmable Logic."<< std::endl;
-    std::cout << "\tSpeed up comparison between Software Solution doesn't";
-    std::cout << " matter" << std::endl;
-    std::cout << "\n"; 
-   
-    
     printf("Nearest Neighbor: ");
     print_point(gold, num_dims);
     

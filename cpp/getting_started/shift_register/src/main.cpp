@@ -150,17 +150,11 @@ int main(int argc, char **argv) {
     double speedup = (double) sw_cycles / (double) hw_cycles;
     
     std::cout << "Average number of CPU cycles running mmult in software: "
-			 << sw_cycles << std::endl;
+              << sw_cycles << std::endl;
     std::cout << "Average number of CPU cycles running mmult in hardware: "
 				 << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
 
-    std::cout << "\n";
-    std::cout << "Note : This example is intended to introduce developers to ";
-    std::cout << "best coding practice of accelerator optimization technique to "; 
-    std::cout << "achieve better performance."<< std::endl;
-    std::cout << "\n"; 
-   
     sds_free(signal);
     sds_free(coeff);
     sds_free(hw_out);

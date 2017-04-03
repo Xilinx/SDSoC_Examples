@@ -89,35 +89,21 @@ int main(int argc, char** argv)
         source_sw_results[i] = source_input[i];
         source_hw_results[i] = 0;
     }
-    perf_counter hw_ctr, sw_ctr;
+    perf_counter hw_ctr;
 
-    sw_ctr.start();
     mean_value(source_input,source_sw_results, DATA_SIZE);
-    sw_ctr.stop();
 
     int size = DATA_SIZE;
 
     hw_ctr.start();
-    //Launch the Kernel
+    // Launch the Accelerator
     mean_value_accel(source_input, source_hw_results, size);
     hw_ctr.stop();
 
-    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
-    double speedup = (double) sw_cycles / (double) hw_cycles;
 
-    std::cout << "Average number of CPU cycles running mmult in software: "
-			  << sw_cycles << std::endl;
     std::cout << "Average number of CPU cycles running mmult in hardware: "
 				  << hw_cycles << std::endl;
-    std::cout << "Speed up: " << speedup << std::endl;
-    
-    std::cout << "\n";
-    std::cout << "Note : This example is intended to introduce developers to ";
-    std::cout << "best coding practice for Programmable Logic Optimization\n"; 
-    std::cout << "\tSpeed up comparison with Software Solution does not";
-    std::cout << " matter" << std::endl;
-    std::cout << "\n"; 
    
     // Compare the results of the Device to the simulation
     int match = 0;
