@@ -119,13 +119,15 @@ int main(int argc, char** argv)
         return EXIT_FAILURE;
     }
 
-    //Allocate Memory in Host Memory
     size_t vector_size_bytes = sizeof(int) * DATA_SIZE * DATA_DIM;
 
+    // Allocate PL buffers using sds_alloc
     int *source_in  =       (int*) sds_alloc(vector_size_bytes);
     int *source_point =     (int*) sds_alloc(sizeof(int)*DATA_DIM);
     int *source_hw_result = (int*) sds_alloc(sizeof(int)*DATA_DIM);
-    int *source_sw_result = (int*) sds_alloc(sizeof(int)*DATA_DIM);
+    
+    // Allocate software output buffer
+    int *source_sw_result = (int*) malloc(sizeof(int)*DATA_DIM);
 
     // Create the test data
     for(int i = 0 ; i < DATA_SIZE*DATA_DIM; i++){
@@ -173,14 +175,14 @@ int main(int argc, char** argv)
     unsigned long dist_sw = 0, dist_hw = 0;
     for(int i = 0; i < dim; i++) {
         dist_sw += SQUARE(source_sw_result[i] - source_point[i]);
-        dist_hw += SQUARE(source_sw_result[i] - source_point[i]);
+        dist_hw += SQUARE(source_hw_result[i] - source_point[i]);
     }
 
     /* Release Memory from Host Memory*/
     sds_free(source_in);
     sds_free(source_point);
     sds_free(source_hw_result);
-    sds_free(source_sw_result);
+    free(source_sw_result);
 
     if(dist_sw != dist_hw)
     {
