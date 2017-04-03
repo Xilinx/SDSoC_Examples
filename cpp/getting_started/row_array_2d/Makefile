@@ -57,7 +57,7 @@ COMMON_REPO = ../..
 
 # Target OS:
 #     linux (Default), standalone, rtos
-TARGET_OS := standalone
+TARGET_OS := linux
 
 # Emulation Mode:
 #     debug     - Include debug data
