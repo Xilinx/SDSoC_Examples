@@ -5,3 +5,7 @@ This is a main repository which contains variety SDSoC coding guidelines related
 
 ## SDSoC Examples
 Sl.No | Description | Category
+------|-------------|----------
+1|Array Partition|Accelerator Optimization|
+
+
