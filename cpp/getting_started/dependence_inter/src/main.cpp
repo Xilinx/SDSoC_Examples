@@ -103,14 +103,15 @@ int main(int argc, char** argv)
     hw_ctr.stop();
 
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
-	uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
-	double speedup = (double) sw_cycles / (double) hw_cycles;
+    uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
+    double speedup = (double) sw_cycles / (double) hw_cycles;
 
-	std::cout << "Average number of CPU cycles running mmult in software: "
+    std::cout << "Average number of CPU cycles running mmult in software: "
 			  << sw_cycles << std::endl;
-	std::cout << "Average number of CPU cycles running mmult in hardware: "
+    std::cout << "Average number of CPU cycles running mmult in hardware: "
 				  << hw_cycles << std::endl;
-	std::cout << "Speed up: " << speedup << std::endl;
+    std::cout << "Speed up: " << speedup << std::endl;
+    
     std::cout << "\n";
     std::cout << "Note : This example is intended to introduce developers to ";
     std::cout << "best coding practice for Programmable Logic Optimization\n"; 
