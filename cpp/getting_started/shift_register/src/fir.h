@@ -41,7 +41,7 @@
 #define FIR_H_
 
 #define N_COEFF 11
-#define SIGNAL_SIZE 32
+#define SIGNAL_SIZE 512
 
 #pragma SDS data zero_copy(signal,coeff,hw_out)
 void fir_shift_register_accel(int *signal,

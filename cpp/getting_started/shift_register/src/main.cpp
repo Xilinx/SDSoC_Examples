@@ -133,7 +133,6 @@ int main(int argc, char **argv) {
     
     perf_counter hw_ctr, sw_ctr;
 
-    
     sw_ctr.start();
     //Launch the Software Solution
     fir(gold, signal, coeff, SIGNAL_SIZE);
