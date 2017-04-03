@@ -87,25 +87,26 @@ int main(int argc, char** argv)
 
     perf_counter hw_ctr, sw_ctr;
 
-    //Launch the Kernel
+    
     hw_ctr.start();
+    // Launch Hardware Solution
     vadd_accel(source_in1, source_in2, source_hw_results, size);
     hw_ctr.stop();
 
-    //Launch the software solution
     sw_ctr.start();
+    // Launch Software Solution
     vadd_sw(source_in1, source_in2, source_sw_results, size);
     sw_ctr.stop();
 
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
-	uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
-	double speedup = (double) sw_cycles / (double) hw_cycles;
+    uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
+    double speedup = (double) sw_cycles / (double) hw_cycles;
 
-	std::cout << "Average number of CPU cycles running mmult in software: "
-			  << sw_cycles << std::endl;
-	std::cout << "Average number of CPU cycles running mmult in hardware: "
-				  << hw_cycles << std::endl;
-	std::cout << "Speed up: " << speedup << std::endl;
+    std::cout << "Average number of CPU cycles running mmult in software: "
+    		  << sw_cycles << std::endl;
+    std::cout << "Average number of CPU cycles running mmult in hardware: "
+    			  << hw_cycles << std::endl;
+    std::cout << "Speed up: " << speedup << std::endl;
 
     std::cout << "\n";
     std::cout << "Note : This example is intended to introduce developers to ";
