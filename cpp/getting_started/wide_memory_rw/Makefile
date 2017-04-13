@@ -81,16 +81,16 @@ EXECUTABLE := vadd_accel.elf
 # Source Files
 SRC_DIR := src
 CPP_SRCS += \
-$(pwd)/$(SRC_DIR)/vadd.cpp \
-$(pwd)/$(SRC_DIR)/main.cpp
+$(pwd)/$(SRC_DIR)/main.cpp \
+$(pwd)/$(SRC_DIR)/vadd.cpp
 
 OBJECTS += \
-$(pwd)/$(TARGET)/vadd.o \
-$(pwd)/$(TARGET)/main.o
+$(pwd)/$(TARGET)/main.o \
+$(pwd)/$(TARGET)/vadd.o
 
 CPP_DEPS += \
-$(pwd)/$(TARGET)/vadd.d \
-$(pwd)/$(TARGET)/main.d
+$(pwd)/$(TARGET)/main.d \
+$(pwd)/$(TARGET)/vadd.d
 
 # SDS Options
 #

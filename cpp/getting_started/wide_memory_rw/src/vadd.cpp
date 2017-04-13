@@ -56,14 +56,14 @@ Description:
         size  (input)     --> Size of Vector in Integer
    */
 void vadd_accel(
-        const uint512_dt *in1, // Read-Only Vector 1
-        const uint512_dt *in2, // Read-Only Vector 2
-        uint512_dt *out,       // Output Result
+        const uint128_dt *in1, // Read-Only Vector 1
+        const uint128_dt *in2, // Read-Only Vector 2
+        uint128_dt *out,       // Output Result
         int size               // Size in integer
         )
 {
-    uint512_dt v1_local[BUFFER_SIZE];    // Local memory to store vector1
-    uint512_dt result_local[BUFFER_SIZE];// Local Memory to store result
+    uint128_dt v1_local[BUFFER_SIZE];    // Local memory to store vector1
+    uint128_dt result_local[BUFFER_SIZE];// Local Memory to store result
 
     // Input vector size for interger vectors. However kernel is directly
     // accessing 512bit data (total 16 elements). So total number of read
@@ -83,23 +83,23 @@ void vadd_accel(
         //burst read first vector from global memory to local memory
         v1_rd: for (int j = 0 ; j <  chunk_size; j++){
         #pragma HLS pipeline
-        #pragma HLS LOOP_TRIPCOUNT min=128 max=128
+        #pragma HLS LOOP_TRIPCOUNT min=32 max=32
             v1_local[j] = in1 [i + j];
         }
 
         //burst read second vector and perform vector addition
         v2_rd_add: for (int j = 0 ; j < chunk_size; j++){
         #pragma HLS pipeline
-        #pragma HLS LOOP_TRIPCOUNT min=128 max=128
-            uint512_dt tmpV1     = v1_local[j];
-            uint512_dt tmpV2     = in2[i+j];
+        #pragma HLS LOOP_TRIPCOUNT min=32 max=32
+            uint128_dt tmpV1     = v1_local[j];
+            uint128_dt tmpV2     = in2[i+j];
             result_local[j] = tmpV1 + tmpV2; // Vector Addition Operation
         }
 
         //burst write the result
         out_write: for (int j = 0 ; j < chunk_size; j++){
         #pragma HLS pipeline
-        #pragma HLS LOOP_TRIPCOUNT min=128 max=128
+        #pragma HLS LOOP_TRIPCOUNT min=32 max=32
             out[i+j] = result_local[j];
        }
     }

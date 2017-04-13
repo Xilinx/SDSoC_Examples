@@ -60,7 +60,7 @@ public:
 	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
 };
 
-void vadd_sw(uint512_dt *in1, uint512_dt *in2, uint512_dt *out, int size)
+void vadd_sw(uint128_dt *in1, uint128_dt *in2, uint128_dt *out, int size)
 {
 	for(int i = 0; i < DATA_SIZE / 16; i++)
 		out[i] = in1[i] + in2[i];
@@ -70,10 +70,10 @@ int main(int argc, char** argv)
 {
     //Allocate Memory in Host Memory
     size_t vector_size_bytes = sizeof(int) * DATA_SIZE;
-    uint512_dt *source_in1         = (uint512_dt *) sds_alloc(vector_size_bytes);
-    uint512_dt *source_in2         = (uint512_dt *) sds_alloc(vector_size_bytes);
-    uint512_dt *source_hw_results  = (uint512_dt *) sds_alloc(vector_size_bytes);
-    uint512_dt *source_sw_results  = (uint512_dt *) sds_alloc(vector_size_bytes);
+    uint128_dt *source_in1         = (uint128_dt *) sds_alloc(vector_size_bytes);
+    uint128_dt *source_in2         = (uint128_dt *) sds_alloc(vector_size_bytes);
+    uint128_dt *source_hw_results  = (uint128_dt *) sds_alloc(vector_size_bytes);
+    uint128_dt *source_sw_results  = (uint128_dt *) sds_alloc(vector_size_bytes);
 
     // Create the test data and Software Result
     for(int i = 0 ; i < DATA_SIZE ; i++){
