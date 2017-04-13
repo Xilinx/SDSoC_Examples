@@ -52,6 +52,7 @@ Makefile
 README.md
 description.json
 src/main.cpp
+src/sdx_pid59990.str
 src/vadd.cpp
 src/vadd.h
 ```
