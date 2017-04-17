@@ -31,51 +31,47 @@
 #
 ************/
 
-
 /*******************************************************************************
-    Description:
-    
-        This example demonstrate How a Custom data type can used in Kernel code.
-        Here RGBcolor and HSVcolor two structure is declared and used as global
-        memory access type.
+   
+    This example presents custom data type usage in hardware function.
         
 *******************************************************************************/
-
 
 #include "rgb_to_hsv.h"
 #define IMAGE_SIZE 128
 
-void rgb_to_hsv_accel(RGBcolor *in,  // Access global memory as RGBcolor struct-wise
-                      HSVcolor *out, // Access Global Memory as HSVcolor struct-wise
+void rgb_to_hsv_accel(RGBcolor *in,  // Access DDR memory as RGBcolor struct-wise
+                      HSVcolor *out, // Access DDR Memory as HSVcolor struct-wise
                       int size)
 {
     RGBcolor rgb;
 	HSVcolor hsv;
 
-    //Single loop is sufficient to read each RGB pixel from Global memory,
-    //Converting RGB pixel to HSV Pixel, and writing HSV Pixel Back to Global
-    //Memory.
+    // Single loop is sufficient to read each RGB pixel from DDR memory,
+    // Converting RGB pixel to HSV Pixel, and writing HSV Pixel Back to DDR
+    // Memory.
     rgb2hsv_loop: for(unsigned int i = 0 ; i < size ; i ++){
     #pragma HLS PIPELINE
         // Loop is marked for pipeline. Compiler will be able to get Loop II=1
-        // as a result, Kernel will be able to do burst read and burst write.
-        // Kernel will be performing RGB to HSV conversion per pixel per clock.
+        // as a result, Hardware Function will be able to do burst read and 
+        // burst write.
+        // Hardware Function performs RGB to HSV conversion per pixel per clock.
     #pragma HLS LOOP_TRIPCOUNT min=16384 max=16384
         // LOOP TRIPCOUNT is added so that report estimate can provide estimated
-        //  latency Information
+        // latency Information
 
         unsigned char rgbMin, rgbMax, tempS;
 
         rgb = in[i];
 
-        //Getting Minimum and Maximum value in R, G, and B element of Pixel
+        // Getting Minimum and Maximum value in R, G, and B element of Pixel
         rgbMin = imin(rgb.r, (imin(rgb.g,rgb.b)));
         rgbMax = imax(rgb.r, (imax(rgb.g,rgb.b)));
 
-        //Calculating TempS
+        // Calculating TempS
         tempS = 255 * ((long)(rgbMax - rgbMin)) / rgbMax;
 
-        //Algorithm to Calculate HSV from RSB
+        // Algorithm to Calculate HSV from RSB
         if (rgbMax == 0){
             hsv.h = 0;
             hsv.s = 0;
@@ -98,7 +94,7 @@ void rgb_to_hsv_accel(RGBcolor *in,  // Access global memory as RGBcolor struct-
             hsv.v = rgbMax;
         }
 
-        //Writing computed HSV Pixel value into Global Memory
+        // Writing computed HSV Pixel value into DDR Memory
         out[i] = hsv;
     }
 }

@@ -34,6 +34,8 @@
 #ifndef RGB_TO_HSV_H_
 #define RGB_TO_HSV_H_
 
+#include "../../../libs/profile/sds_timer.h"
+
 //Min and Max Macro Function
 #define imin(X, Y) (((X) < (Y)) ? (X) : (Y))
 #define imax(X, Y) (((X) > (Y)) ? (X) : (Y))

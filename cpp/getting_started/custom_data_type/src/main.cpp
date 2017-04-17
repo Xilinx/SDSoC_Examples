@@ -31,12 +31,21 @@
 #
 ************/
 
+/*****************************************************************************
+
+    This example is intended to demonstrate custom data type usage in hardware
+    function. In this example RGB color and HSV color structures are declared
+    and used directly from hardware function.
+
+*******************************************************************************/
+
+
 #include <iostream>
 #include <stdio.h>
-#include <stdint.h>
 #include "bitmap.h"
 #include "rgb_to_hsv.h"
-#include "sds_lib.h"
+
+using namespace sds_prof;
 
 #define IMAGE_SIZE 128
 
@@ -61,45 +70,35 @@ void pack_output_int(HSVcolor *in, int *out, int size)
 	}
 }
 
-
-class perf_counter
-{
-public:
-     uint64_t tot, cnt, calls;
-     perf_counter() : tot(0), cnt(0), calls(0) {};
-     inline void reset() { tot = cnt = calls = 0; }
-     inline void start() { cnt = sds_clock_counter(); calls++; };
-     inline void stop() { tot += (sds_clock_counter() - cnt); };
-     inline uint64_t avg_cpu_cycles() { return (tot / calls); };
-};
-
-
 int main(int argc, char* argv[])
 {
-    //Allocate Memory in Host Memory
+    // Allocate Memory in Host Memory
     int image_size = IMAGE_SIZE * IMAGE_SIZE;
 
-    int *input_bmp = (int *)sds_alloc(sizeof(int) * image_size);
-
-    // Initialize
+    // Synthetic Image Data
+    int *input_bmp   = (int*)malloc(sizeof(int) * image_size);
+    
+    // Initialize Synthetic Input Data
     for(int i = 0;i < image_size; i++)
     	input_bmp[i] = i * 2;
 
+    // Input Data Size
     size_t image_size_bytes = sizeof(int) * image_size;
-    int* swHsvImage  = (int*)(malloc(image_size_bytes)) ;
-    int* hwHsvImage  = (int*)(sds_alloc(image_size_bytes)) ;
-    int* outRgbImage = (int*)(sds_alloc(image_size_bytes)) ;
-    
-    // Allocate input and output buffers
-    RGBcolor *device_input = (RGBcolor *)(sds_alloc(sizeof(RGBcolor) * image_size));
+
+    // Software Output Data
+    int* swHsvImage  = (int*)malloc(image_size_bytes);
+    int* hwHsvImage  = (int*)malloc(image_size_bytes);
+
+    // Allocate PL buffers using sds_alloc
+    RGBcolor *device_input  = (RGBcolor *)(sds_alloc(sizeof(RGBcolor) * image_size));
     HSVcolor *device_output = (HSVcolor *)(sds_alloc(sizeof(HSVcolor) * image_size));
 
     perf_counter hw_ctr, sw_ctr;
 
-    //Launch the Hardware Funciton
     extract_pixel_data(input_bmp, device_input, image_size);
 
     hw_ctr.start();
+    //Launch the Hardware Funciton
     rgb_to_hsv_accel(device_input, device_output, image_size);
     hw_ctr.stop();
 
@@ -127,7 +126,6 @@ int main(int argc, char* argv[])
     // Release Memory from Host Memory
     sds_free(hwHsvImage);
     free(swHsvImage);
-    sds_free(outRgbImage);
 
     if (match){
         std::cout << "TEST FAILED." << std::endl;
@@ -138,9 +136,9 @@ int main(int argc, char* argv[])
 }
 
 
-//Utility Functions Definitions Start Here
+// Utility Functions Definitions Start Here
 
-//Convert RGB to HSV Format
+// Convert RGB to HSV Format
 void sw_RgbToHsv(int* in, int *out, int image_size)
 {
     RGBcolor rgb;
@@ -180,7 +178,7 @@ void sw_RgbToHsv(int* in, int *out, int image_size)
         }
 }
 
-//Convert RGB to HSV Format
+// Convert RGB to HSV Format
 void sw_HsvToRgb(int *in, int *out, int image_size)
 {
     RGBcolor rgb;
