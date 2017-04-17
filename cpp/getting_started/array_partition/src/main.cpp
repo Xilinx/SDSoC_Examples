@@ -33,12 +33,8 @@
 
 
 /******************************************************************************
- 
-    Description :
-
-        This is simple matrix multiplication example to showcase effectiveness
-        of using array partition feature of SDx.
- 
+    This is simple matrix multiplication example to showcase effectiveness
+    of using array partition feature of SDSoC.
 *******************************************************************************/
 
 #include <iostream>
@@ -48,16 +44,7 @@
 #include "matmul.h"
 #include "sds_lib.h"
 
-class perf_counter
-{
-public:
-	uint64_t tot, cnt, calls;
-	perf_counter() : tot(0), cnt(0), calls(0) {};
-	inline void reset() { tot = cnt = calls = 0; }
-	inline void start() { cnt = sds_clock_counter(); calls++; };
-	inline void stop() { tot += (sds_clock_counter() - cnt); };
-	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
-};
+using namespace sds_prof;
 
 // Software Matrix Multiplication 
 void matmul(int *C, int *A, int *B, int M) {

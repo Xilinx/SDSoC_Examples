@@ -31,6 +31,12 @@
 #
 ************/
 
+/********************************************************************************
+
+    Array partition feature is demonstrated using matrix multiplication as the 
+    base example.  
+
+*********************************************************************************/
 
 // Maximum Array Size
 #define MAX_SIZE 64
@@ -51,7 +57,7 @@ void matmul_partition_accel(int *in1,  // Read-Only Matrix 1
     #pragma HLS ARRAY_PARTITION variable=temp_sum dim=1 complete
     
 
-    // Burst reads on input matrices from global memory
+    // Burst reads on input matrices from DDR memory
     // Burst read for matrix A
     readA:
     for (int itr = 0, i = 0, j = 0; itr < size * size; itr++, j++) {
@@ -101,7 +107,7 @@ void matmul_partition_accel(int *in1,  // Read-Only Matrix 1
     //     }
     // }
 
-    // The above code snippent of the Matrix Multiply kernel in which the loops
+    // The above code snippet of the Matrix Multiply kernel in which the loops
     // lreorder2 and lreorder3 are not interchanged, gives a pipeline initiation
     // interval (II) of 64
 
@@ -124,7 +130,7 @@ void matmul_partition_accel(int *in1,  // Read-Only Matrix 1
         }
     }
 
-    // Burst write from output matrices to global memory
+    // Burst write from output matrices to DDR memory
     // Burst write from matrix C
     writeC:
    for (int itr = 0, i = 0, j = 0; itr < size * size; itr++, j++) {

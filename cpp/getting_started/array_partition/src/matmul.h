@@ -33,6 +33,10 @@
 #ifndef MATMUL_H_
 #define MATMUL_H_
 
+#include "../../../libs/profile/sds_timer.h"
+
+// Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
+// Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(in1, in2, out)
 void matmul_partition_accel(int *in1,  // Read-Only Matrix 1
                             int *in2,  // Read-Only Matrix 2
