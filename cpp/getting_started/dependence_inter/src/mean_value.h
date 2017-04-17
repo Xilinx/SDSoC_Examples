@@ -33,11 +33,13 @@
 #ifndef MEAN_VALUE_H_
 #define MEAN_VALUE_H_
 
+#include "../../../libs/profile/sds_timer.h"
+
 #define DATA_SIZE 256
 #define INCR_VALUE 10
 
-// Zero copy interface enabled between PS & PL
+// Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
+// Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(in, out)
 void mean_value_accel(int *in, int *out, int size);
-
 #endif

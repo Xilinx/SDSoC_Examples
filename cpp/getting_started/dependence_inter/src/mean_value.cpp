@@ -32,61 +32,64 @@
 ************/
 
 /*******************************************************************************
-Description:
-    This Example to demonstrate HLS Dependence Pragma. Using HLS DEPENDECE pragma
-    user can provide additional dependency details to compiler which allow
-    compiler to implement unrolling/pipelining with optimized way.
+    
+    This example intends to demonstrate HLS Dependence Pragma.
+    Using "HLS DEPENDECE" pragma user can provide additional dependency 
+    details to compiler which allows compiler to implement unrolling/pipelining 
+    in optimized manner.
+    
+                "Vector Mean Value Calculation"
+    
+    Arguments:
+        in   (input)  --> Input Vector
+        out  (output) --> Output Mean Vector
+        size (input)  --> Size of Vector in Integer
+
 *******************************************************************************/
 
-//Includes
 #include <hls_stream.h>
 #include <ap_int.h>
 #include "mean_value.h"
 
 #define MAX_SIZE 1024
-/*
-    Vector Mean Value Calculation
-    Arguments:
-        in   (input)  --> Input Vector
-        out  (output) --> Output Mean Vector
-        size  (input)  --> Size of Vector in Integer
-*/
+
 void mean_value_accel(int *in, int *out, int size)
 {
-    //Taking double size of MAX_SIZE as same local buffer will be used to store
-    //input data as well as result value of mean_value.
+    // Local Buffer is declared double to store both input and output data
     int local_buffer[2 * MAX_SIZE];
 
-    //burst read of input data
+    // Burst read of input data from DDR memory
     input_read:for (int i = 0 ; i < size ; i++){
     #pragma HLS PIPELINE
     #pragma HLS LOOP_TRIPCOUNT min=256 max=256
         local_buffer[i] = in[i];
     }
 
-    //Calculating Mean Value
+    // Calculating Mean Value
     calc_mv:for (int i = 1 ; i < size -1 ; i++) {
     #pragma HLS LOOP_TRIPCOUNT min=254 max=254
     #pragma HLS DEPENDENCE variable=local_buffer inter false
-    //HLS Dependence pragma provide extra dependency information to compiler.
-    //For example here local_buffer has false inter dependency. Which means
-    //each iteration of loop is independent for local_buffer access.
-    //It allow compiler to ignore dependency of local_buffer and generate
-    //a pipeline with lower II count. If user do not provide this pragma, compiler
-    //will assume a dependency of local_buffer across iteration and will try to 
-    //schedule accordingly. 
-    //As a result, compiler will increase the loop II and will reduce
-    //the performance.
+    // HLS Dependence pragma provides extra dependency information to compiler.
+    // For example here local_buffer has false inter dependency. Which means
+    // each iteration of loop is independent for local_buffer access.
+    // It allows compiler to ignore dependency of local_buffer and generate
+    // a pipeline with lower II count. 
+
+    // If user fails to provide this pragma, by default compiler assumes
+    // dependency exists on local_buffer for entire iteration. 
+    
+    // As a result, compiler schedules unoptimized design with larger II factor
+    // which in turn leads to drop in performance.
         local_buffer[i + MAX_SIZE] = (local_buffer[i-1] + local_buffer[i] + 
                                      local_buffer[i+1])/3;
     }
 
-    //Calculating Average for Boundary Case values
+    // Calculating average for Boundary Case values
     local_buffer[MAX_SIZE]  = (local_buffer[0] + local_buffer[1]) / 2 ;
     local_buffer[MAX_SIZE + size-1] = (local_buffer[size-1] + 
                                       local_buffer[size-2]) /2 ;
 
-    //burst Write of result
+    // Burst write of results back to DDR memory
     output_write:for (int i = 0 ; i < size ; i++){
     #pragma HLS PIPELINE
     #pragma HLS LOOP_TRIPCOUNT min=254 max=254

@@ -33,24 +33,9 @@
 #include <iostream>
 #include <cstring>
 #include <cstdlib>
-#include <stdint.h>
-// Mean Value header
 #include "mean_value.h"
 
-// SDS library for memory management
-#include "sds_lib.h"
-
-class perf_counter
-{
-public:
-	uint64_t tot, cnt, calls;
-	perf_counter() : tot(0), cnt(0), calls(0) {};
-	inline void reset() { tot = cnt = calls = 0; }
-	inline void start() { cnt = sds_clock_counter(); calls++; };
-	inline void stop() { tot += (sds_clock_counter() - cnt); };
-	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
-};
-
+using namespace sds_prof;
 
 void mean_value(int in[], int out[], int n)
 {
