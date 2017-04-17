@@ -32,9 +32,9 @@
 ************/
 
 /*******************************************************************************
-    Description:
     
-        HLS Example using AXI4-master interface for burst read and write
+    This is a vector addition example to demonstrate burst access between DDR 
+    and programmable logic (PL) using HLS AXI-master Interface 
         
 *******************************************************************************/
 
@@ -57,22 +57,19 @@ void vadd_accel(int *a, int size, int inc_value, int *out){
     {
     #pragma HLS LOOP_TRIPCOUNT min=1 max=64
         int chunk_size = BURSTBUFFERSIZE;
-        //boundary checks
+        // Boundary check
         if ((i + BURSTBUFFERSIZE) > size)
             chunk_size = size - i;
 
-        // memcpy creates a burst access to memory
-        // multiple calls of memcpy cannot be pipelined and will be scheduled 
-        // sequentially
-        // memcpy requires a local buffer to store the results of the memory 
-        // transaction
-
+        // Memory copy creates a burst access to memory
+        // Memory copy requires a local buffer to store the results of 
+        // the memory transaction
         for(int k=0; k < chunk_size; k++){
         #pragma HLS LOOP_TRIPCOUNT min=256 max=2048
             burstbuffer[k] = a[i+k];
         }
 
-        // calculate and write results to global memory, the sequential write in a 
+        // Calculate and write results to global memory, the sequential write in a 
         // for loop can be inferred to a memory burst access automatically
         calc_write: for(int j=0; j < chunk_size; j++){
         #pragma HLS LOOP_TRIPCOUNT min=256 max=2048

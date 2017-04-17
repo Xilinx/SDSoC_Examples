@@ -31,10 +31,11 @@
 #
 ************/
 
-
 /******************************************************************************
+    
     This is simple matrix multiplication example to showcase effectiveness
     of using array partition feature of SDSoC.
+
 *******************************************************************************/
 
 #include <iostream>

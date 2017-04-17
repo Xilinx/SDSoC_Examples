@@ -31,12 +31,17 @@
 #
 ************/
 
+/*****************************************************************************
+    
+    This is a simple vector addition example to demonstrate burst access of 
+    data from DDR to Programmable Logic
+
+******************************************************************************/
+
 #include <iostream>
 #include <cstring>
 #include <stdlib.h>
-#include <stdint.h>
 #include "vadd.h"
-#include "sds_lib.h"
 
 using namespace sds_prof;
 
@@ -49,20 +54,13 @@ void vadd_golden(int a[DATA_SIZE], int size, int inc_value, int output[DATA_SIZE
     for(int i=0; i < size;  i+=BURSTBUFFERSIZE)
     {
         int chunk_size = BURSTBUFFERSIZE;
-        //boundary checks
         if ((i + BURSTBUFFERSIZE) > size)
             chunk_size = size - i;
 
-        //memcpy creates a burst access to memory
-        //multiple calls of memcpy cannot be pipelined and will be scheduled sequentially
-        //memcpy requires a local buffer to store the results of the memory transaction
-        //memcpy(burstbuffer,&a[i],chunk_size * sizeof (int));
         for(int k=0; k < chunk_size; k++){
             burstbuffer[k] = a[i+k];
         }
 
-        //calculate and write results to global memory, the sequential write in a for
-        //loop can be inferred to a memory burst access automatically
         calc_write: for(int j=0; j < chunk_size; j++){
             burstbuffer[j] = burstbuffer[j] + inc_value;
             output[i+j] = burstbuffer[j];
@@ -74,7 +72,8 @@ int main(int argc, char** argv)
 {
     int size = DATA_SIZE;
     int inc_value = INCR_VALUE;
-    //Allocate Memory in Host Memory
+   
+    // Size of the Input Data
     size_t vector_size_bytes = sizeof(int) * size;
     
     // Allocat PL buffers using sds_alloc 

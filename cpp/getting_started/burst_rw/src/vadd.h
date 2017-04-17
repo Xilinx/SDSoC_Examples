@@ -33,12 +33,16 @@
 #ifndef VADD_H_
 #define VADD_H_
 
+#include "../../../libs/profile/sds_timer.h"
+
 #define DATA_SIZE 256
 #define INCR_VALUE 10
 
 // Define Internal Buffer Max Size
 #define BURSTBUFFERSIZE 2048
 
+// Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
+// Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(a,out)
 void vadd_accel(int *a, int size, int inc_value, int *out);
 #endif
