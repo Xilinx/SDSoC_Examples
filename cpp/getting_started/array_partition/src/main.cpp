@@ -38,11 +38,9 @@
 *******************************************************************************/
 
 #include <iostream>
-#include <stdint.h>
 #include <cstdio>
 #include <stdlib.h>
 #include "matmul.h"
-#include "sds_lib.h"
 
 using namespace sds_prof;
 

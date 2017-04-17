@@ -1,6 +1,7 @@
 #ifndef SDS_TIMER_H_
 #define SDS_TIMER_H_
-
+#include <stdint.h>
+#include "sds_lib.h"
 namespace sds_prof {
     class perf_counter
     {
