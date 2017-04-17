@@ -123,7 +123,7 @@ desc = open(desc_file, 'r')
 data = json.load(desc)
 desc.close()
 target = open("Makefile", "w")
-create_xlx_copyright(target)
+#create_xlx_copyright(target)
 create_mk(target, data)
 src_dir = data.get("source_dir")
 extension = " "
