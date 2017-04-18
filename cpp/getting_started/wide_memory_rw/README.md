@@ -26,7 +26,7 @@ To get a local copy of the SDSoC example repository, clone this repository to th
 ```
 git clone https://github.com/Xilinx/SDSoC_Examples examples
 ```
-Here *examples* is the name of the directory which is used to store the repository in local file system.This command needs to be executed only once to retrieve the latest version of all SDSoC examples. The only required software is a local installation of git.
+Here *examples* is the name of the directory which is used to store the repository in local file system. This command needs to be executed only once to retrieve the latest version of all the SDSoC examples. *Git* software needs to installed prior to the execution of command above.
 
 ## 3. SOFTWARE AND SYSTEM REQUIREMENTS
 Board | Family | Part | Flow | OS 
