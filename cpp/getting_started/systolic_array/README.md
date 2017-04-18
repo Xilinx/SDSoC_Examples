@@ -31,7 +31,6 @@ where examples is the name of the directory where the repository will be stored 
 ## 3. SOFTWARE AND SYSTEM REQUIREMENTS
 Board | Family | Part | Flow | OS 
 ------|-------------|----------|----------|----------
-zc702|zynq|xc7z020|Emulation/Hardware|linux/standalone|
 zc706|zynq|xc7z045|Emulation/Hardware|linux/standalone|
 zcu102|zynquplus|xczu9eg|Hardware|linux/standalone|
 zcu102_es2|zynquplus|xczu9eg|Hardware|linux/standalone|
