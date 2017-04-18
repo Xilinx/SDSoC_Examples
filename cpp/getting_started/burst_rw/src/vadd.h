@@ -38,7 +38,7 @@
 #define DATA_SIZE 256
 #define INCR_VALUE 10
 
-// Define Internal Buffer Max Size
+// Define internal max buffer size
 #define BURSTBUFFERSIZE 2048
 
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design

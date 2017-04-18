@@ -46,11 +46,13 @@
 using namespace sds_prof;
 
 // Golden implementation
-void vadd_golden(int a[DATA_SIZE], int size, int inc_value, int output[DATA_SIZE]){
+void vadd_golden(int a[DATA_SIZE], int size, int inc_value, 
+                 int output[DATA_SIZE])
+{
 
     int burstbuffer[BURSTBUFFERSIZE];
 
-    //Per iteration of this loop perform BURSTBUFFERSIZE vector addition
+    // Each iteration of this loop performs BURSTBUFFERSIZE vector additions
     for(int i=0; i < size;  i+=BURSTBUFFERSIZE)
     {
         int chunk_size = BURSTBUFFERSIZE;
@@ -83,10 +85,10 @@ int main(int argc, char** argv)
     // Allocate Software Output Buffer
     int *source_sw_results  = (int *) malloc(vector_size_bytes);
 
-    // Create the test data and Software Result
+    // Create the test data
     for(int i = 0 ; i < size ; i++){
         source_input[i] = i;
-        source_sw_results[i] = 0; //i + inc_value;
+        source_sw_results[i] = 0;
         source_hw_results[i] = 0;
     }
 

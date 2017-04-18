@@ -38,21 +38,15 @@
         
 *******************************************************************************/
 
-//Includes
 #include <stdio.h>
 #include <string.h>
 #include "vadd.h"
-//define internal buffer max size
-#define BURSTBUFFERSIZE 2048
-
-#define DATA_SIZE 256
-#define INCR_VALUE 10
 
 void vadd_accel(int *a, int size, int inc_value, int *out){
 
     int burstbuffer[BURSTBUFFERSIZE];
 
-    //Per iteration of this loop perform BURSTBUFFERSIZE vector addition
+    // Each iteration of this loop performs BURSTBUFFERSIZE vector additions
     for(int i=0; i < size;  i+=BURSTBUFFERSIZE)
     {
     #pragma HLS LOOP_TRIPCOUNT min=1 max=64
@@ -79,4 +73,3 @@ void vadd_accel(int *a, int size, int inc_value, int *out){
         }
     }
 }
-
