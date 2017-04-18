@@ -36,7 +36,7 @@ def download(target):
     target.write("git clone https://github.com/Xilinx/SDSoC_Examples examples\n")
     target.write("```\n")
     target.write("Here *examples* is the name of the directory which is used to store the repository in local file system.")
-    target.write(" This command needs to be executed only once to retrieve the latest version of all the SDSoC examples. *Git* software needs to installed prior to the execution of command above.\n\n")
+    target.write(" This command needs to be executed only once to retrieve the latest version of all the SDSoC examples. *Git* software needs to be installed prior to the execution of command above.\n\n")
     return
 
 def overview(target,data):
@@ -115,8 +115,8 @@ def requirements(target,data):
 
 def hierarchy(target):
     target.write("## 4. DESIGN FILE HIERARCHY\n")
-    target.write("Application code is located in the src directory. ")
-    target.write("Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation directory name is \"emu\" in case of hardware flow \"hw\" \n")
+    target.write("Application code is located in the src/ directory. ")
+    target.write("Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation flow, directory name is \"emu\" and in case of hardware flow it is named as \"hw\" \n")
     target.write("```\n")
     tree_cmd = ['git', 'ls-files']
     proc = subprocess.Popen(tree_cmd,stdout=subprocess.PIPE)

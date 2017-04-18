@@ -26,7 +26,7 @@ To get a local copy of the SDSoC example repository, clone this repository to th
 ```
 git clone https://github.com/Xilinx/SDSoC_Examples examples
 ```
-Here *examples* is the name of the directory which is used to store the repository in local file system. This command needs to be executed only once to retrieve the latest version of all the SDSoC examples. *Git* software needs to installed prior to the execution of command above.
+Here *examples* is the name of the directory which is used to store the repository in local file system. This command needs to be executed only once to retrieve the latest version of all the SDSoC examples. *Git* software needs to be installed prior to the execution of command above.
 
 ## 3. SOFTWARE AND SYSTEM REQUIREMENTS
 Board | Family | Part | Flow | OS 
@@ -46,7 +46,7 @@ make check PLATFORM=<board name> or make all PLATFORM=<board name>
 where the *PLATFORM* variable accepts one device.
 
 ## 4. DESIGN FILE HIERARCHY
-Application code is located in the src directory. Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation directory name is "emu" in case of hardware flow "hw" 
+Application code is located in the src/ directory. Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation flow, directory name is "emu" and in case of hardware flow it is named as "hw" 
 ```
 Makefile
 README.md
