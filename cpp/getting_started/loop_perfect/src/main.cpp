@@ -33,48 +33,33 @@
 
 /*******************************************************************************
 
-Description:
-
-    This is a nearest neighbor of a point example showcases how making a loop
-    nest perfect or semi-perfect can help improve performance.
+    This is a nearest neighbor of a point example which showcases how making 
+    a loop-nest perfect or semi-perfect can help in improving performance.
 
 *******************************************************************************/
 
 #include <iostream>
 #include <cstring>
-#include <stdint.h>
 #include <stdlib.h>
 #include <climits>
 #include <stdio.h>
-
-#include "sds_lib.h"
-
 #include "nearest.h"
+
+using namespace sds_prof;
 
 // Maximum possible distance between two points
 #define INFINITY ULONG_MAX
 
 #define SQUARE(x) ((x)*(x))
 
-class perf_counter
-{
-public:
-	uint64_t tot, cnt, calls;
-	perf_counter() : tot(0), cnt(0), calls(0) {};
-	inline void reset() { tot = cnt = calls = 0; }
-	inline void start() { cnt = sds_clock_counter(); calls++; };
-	inline void stop() { tot += (sds_clock_counter() - cnt); };
-	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
-};
-
 // Software implementation for finding nearest neighbor
 void nearest_sw(
-				    int *in,      // Input Points Array - represented as integer
-				    int *point,   // Current Point for which the neighbor is found
-				    int *out,     // Output Point
-				    int size,     // Size of the input array
-				    int dim       // #Dimensions of the points
-			    )
+			    int *in,      // Input Points Array - represented as integer
+			    int *point,   // Current Point for which the neighbor is found
+			    int *out,     // Output Point
+			    int size,     // Size of the input array
+			    int dim       // #Dimensions of the points
+		       )
 {
     unsigned long curr_dist, min_dist = INFINITY;
 
@@ -113,6 +98,7 @@ int main(int argc, char** argv)
         return EXIT_FAILURE;
     }
 
+    // Size of input data
     size_t vector_size_bytes = sizeof(int) * DATA_SIZE * DATA_DIM;
 
     // Allocate PL buffers using sds_alloc
@@ -157,7 +143,7 @@ int main(int argc, char** argv)
         dist_hw += SQUARE(source_hw_result[i] - source_point[i]);
     }
 
-    /* Release Memory from Host Memory*/
+    // Release Memory 
     sds_free(source_in);
     sds_free(source_point);
     sds_free(source_hw_result);

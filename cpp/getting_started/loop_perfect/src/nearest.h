@@ -34,6 +34,8 @@
 #ifndef NEAREST_H_
 #define NEAREST_H_
 
+#include "../../../libs/profile/sds_timer.h"
+
 // Current #Dimension and size of point array
 #define DATA_DIM 16
 #define DATA_SIZE 1024
@@ -44,6 +46,8 @@
 // Maximum size of point array
 #define MAX_SIZE 1024
 
+// Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
+// Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(in,point,out) 
 void nearest_accel(
 				const int *in,      // Input Points Array

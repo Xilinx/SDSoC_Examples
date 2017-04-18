@@ -33,8 +33,6 @@
 
 /*******************************************************************************
 
-SDx Key Concept :
-
     This is a nearest neighbor of a point example showcases how making a loop
     nest perfect or semi-perfect can help improve performance.
 
@@ -42,7 +40,7 @@ SDx Key Concept :
 
 /*
 
-Kernel Description : 
+Hardware Function Description : 
 
     Finding the nearest neighbor of a point from a given set of points (of up to
     MAX_SIZE points). This example showcases how making a loop nest perfect or
@@ -57,7 +55,7 @@ Kernel Description :
 	    int size    (input )    --> Size of the input array
 	    int dim     (input )    --> #Dimensions of the points
 
-    Kernel Configuration :
+    Hardware Function Configuration :
 
         MAX_DIM     - #Dimensions of the input points can be up to MAX_DIM
         MAX_SIZE    - Size of the input array can be up to MAX_SIZE
@@ -67,6 +65,7 @@ Kernel Description :
 #include <stdio.h>
 #include <limits.h>
 #include "nearest.h"
+
 // Compute distances using unsigned long
 // and to avoid square root operation.
 // Maximum possible distance between two points
@@ -116,7 +115,7 @@ void nearest_accel(
 	// the current point
 	unsigned long curr_dist;
 
-	// Burst reads on input from global memory, Points are read as
+	// Burst reads on input from DDR memory, Points are read as
 	// an array of integers and saved to in_local.
 	readInput: for(int itr = 0, i = 0, j = 0; itr < size*dim; itr++, j++){
 	#pragma HLS LOOP_TRIPCOUNT min=16384*16 max=16384*16
