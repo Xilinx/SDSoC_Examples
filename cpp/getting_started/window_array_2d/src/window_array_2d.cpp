@@ -31,20 +31,20 @@
 #
 ************/
 
-/************************************************************************************
-Description:
+/*******************************************************************************
     
-  C Kernel Example using AXI4-master interface to access window of data from 2D array
+   This example is intended to demonstrate data access pattern using AXI-master
+   interface. In this example a window of two dimensional array data is accessed 
+   in burst mode  
 
-************************************************************************************/
+*******************************************************************************/
 
-//Includes
 #include <stdio.h>
 #include <string.h>
 #include "assert.h"
 #include "window_array_2d.h"
 
-// Read data function : Read tile/window of Data from Global Memory
+// Read data function : Read tile/window of Data from DDR Memory
 void read_data(DTYPE *inx, my_data_fifo &inFifo) {
     DTYPE tile[TILE_HEIGHT][TILE_WIDTH];
     rd_loop_i: for(int i = 0; i < TILE_PER_COLUMN; ++i) {
@@ -53,7 +53,7 @@ void read_data(DTYPE *inx, my_data_fifo &inFifo) {
             rd_buf_loop_m: for (int m = 0; m < TILE_HEIGHT; ++m) {
                 rd_buf_loop_n: for (int n = 0; n < TILE_WIDTH; ++n) {
                 #pragma HLS PIPELINE
-                    // should burst TILE_WIDTH in WORD beat
+                    // Infers burst transfer - TILE_WIDTH 
                     tile[m][n] = inx[TILE_HEIGHT*TILE_PER_ROW*TILE_WIDTH*i
                                     +TILE_PER_ROW*TILE_WIDTH*m+TILE_WIDTH*j+n];
                 }
@@ -68,7 +68,7 @@ void read_data(DTYPE *inx, my_data_fifo &inFifo) {
     }
 }
 
-// Write data function : Write tile/window of Results to Global Memory
+// Write data function : Write tile/window of Results to DDR Memory
 void write_data(DTYPE *outx, my_data_fifo &outFifo) {
     DTYPE tile[TILE_HEIGHT][TILE_WIDTH];
     wr_loop_i: for(int i = 0; i < TILE_PER_COLUMN; ++i) {
@@ -77,7 +77,7 @@ void write_data(DTYPE *outx, my_data_fifo &outFifo) {
             wr_buf_loop_m: for (int m = 0; m < TILE_HEIGHT; ++m) {
                 wr_buf_loop_n: for (int n = 0; n < TILE_WIDTH; ++n) {
                 #pragma HLS PIPELINE
-                    // should burst TILE_WIDTH in WORD beat
+                    // Infers burst transfer - TILE_WIDTH
                     outFifo >> tile[m][n];
                 }
             }
@@ -109,22 +109,21 @@ void compute(my_data_fifo &inFifo, my_data_fifo &outFifo, DTYPE alpha) {
 }
 
 void window_array_2d_accel(DTYPE *inx, DTYPE *outx, DTYPE alpha) {
-	my_data_fifo inFifo;
-#pragma HLS stream variable=inFifo depth=4096
-// User can change the FIFO depth if array size is not 64*64, but currently we have 
-// limitation here due to some issues in tool.
-// The FIFO depth can NOT be smaller than the full array size, namely BLOCK_SIZE 
-// defined in header file "window_array_2d.h"
-	my_data_fifo outFifo;
+    my_data_fifo inFifo;
+    #pragma HLS stream variable=inFifo depth=4096
+    // User can change the FIFO depth if array size is not 64*64.
+    // The FIFO depth can NOT be smaller than the full array size, namely BLOCK_SIZE 
+    // defined in header file "window_array_2d.h"
+    my_data_fifo outFifo;
 
-// Enables task level pipelining, allowing functions and loops to execute 
-// concurrently. Used to minimize interval. More details please refer to UG902.
-#pragma HLS DATAFLOW
-	// Read data from 2D array using tile/window pattern
-	read_data(inx, inFifo);
-	// Do computation with the acquired data
-	compute(inFifo, outFifo, alpha);
-	// Write data to 2D array using tile/window pattern
-	write_data(outx, outFifo);
-	return;
+    // Enables task level pipelining, allowing functions and loops to execute 
+    // concurrently. Used to minimize interval. More details please refer to UG902.
+    #pragma HLS DATAFLOW
+    // Read data from 2D array using tile/window pattern
+    read_data(inx, inFifo);
+    // Do computation with the acquired data
+    compute(inFifo, outFifo, alpha);
+    // Write data to 2D array using tile/window pattern
+    write_data(outx, outFifo);
+    return;
 }

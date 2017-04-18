@@ -34,8 +34,10 @@
 #ifndef WINDOW_ARRAY_2D_H_
 #define WINDOW_ARRAY_2D_H_
 
+#include "../../../libs/profile/sds_timer.h"
+
 #include <hls_stream.h>
-//Parameters Description:
+// Parameters Description:
 //         TILE_PER_ROW:        number of tiles/windows in each matrix row
 //         TILE_WIDTH:          number of words in each tile/window
 //         TILE_PER_COLUMN:     number of tiles/windows in each matrix column
@@ -53,7 +55,8 @@ typedef int DTYPE;
 // use HLS stream library for easy use of AXI-stream interface
 typedef hls::stream<DTYPE> my_data_fifo;
 
+// Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
+// Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(inx, outx)
 void window_array_2d_accel(DTYPE *inx, DTYPE *outx, DTYPE alpha);
-
 #endif

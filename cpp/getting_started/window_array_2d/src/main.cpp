@@ -31,15 +31,22 @@
 #
 ************/
 
+/*******************************************************************************
+    
+   This example is intended to demonstrate data access pattern using AXI-master
+   interface. In this example a window of two dimensional array data is accessed 
+   in burst mode  
+
+*******************************************************************************/
+
 #include <iostream>
 #include <cstring>
 #include <stdio.h>
-#include <stdint.h>
-
-#include "sds_lib.h"
 #include "window_array_2d.h"
 
-//Utilily to print array
+using namespace sds_prof;
+
+// Utilily to print array
 void print_array(DTYPE *mat, const char *name, int size, int dim) {
     int i;
     printf("%s\n", name);
@@ -50,6 +57,7 @@ void print_array(DTYPE *mat, const char *name, int size, int dim) {
     }
 }
 
+// Software solution
 void window_array_2d_sw(DTYPE *a, DTYPE *sw_c, DTYPE alpha)
 {
 	for(int i = 0; i < BLOCK_SIZE; i++){
@@ -57,39 +65,24 @@ void window_array_2d_sw(DTYPE *a, DTYPE *sw_c, DTYPE alpha)
 	}
 }
 
-class perf_counter
-{
-public:
-     uint64_t tot, cnt, calls;
-     perf_counter() : tot(0), cnt(0), calls(0) {};
-     inline void reset() { tot = cnt = calls = 0; }
-     inline void start() { cnt = sds_clock_counter(); calls++; };
-     inline void stop() { tot += (sds_clock_counter() - cnt); };
-     inline uint64_t avg_cpu_cycles() { return (tot / calls); };
-};
-
-
 int main(int argc, char** argv)
 {
-    //Allocate Memory in Host Memory
+    // Size of input data
     size_t vector_size_bytes = sizeof(DTYPE) * BLOCK_SIZE;
 
     // Allocate PL Buffers using sds_alloc
-    // original data set given to device
     DTYPE* a = (DTYPE*)sds_alloc(vector_size_bytes);
-    // results returned from device
     DTYPE* c = (DTYPE*)sds_alloc(vector_size_bytes);
        
-    // Allocate Software Output Buffer
-    // results returned from software
+    // Allocate software output buffer
     DTYPE* sw_c = (DTYPE*)malloc(vector_size_bytes);
 
-    // Create the test data and Software Result
+    // Create the test data
     DTYPE alpha = 3;
     for(int i = 0; i < BLOCK_SIZE; i++) {
       a[i] = i;
       c[i] = 0;
-      sw_c[i] = 0; //alpha*a[i];
+      sw_c[i] = 0;
     }
 
     perf_counter hw_ctr, sw_ctr;
@@ -107,8 +100,8 @@ int main(int argc, char** argv)
     std::cout << "Average number of CPU cycles running mmult in hardware: "
 	    	  << hw_cycles << std::endl;
 
-    // Validate
-    unsigned int correct = 0;              // number of correct results returned
+    // Verifiy correctness of software & hardware results
+    unsigned int correct = 0;              
     for (int i = 0;i < BLOCK_SIZE; i++) {
       if(c[i] == sw_c[i]) {
         correct++;
