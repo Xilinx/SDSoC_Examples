@@ -31,45 +31,47 @@
 #
 ************/
 
-/***********************************************************************************
-  Finite Impulse Response(FIR) Filter
+/*******************************************************************************
 
-  This example demonstrates how to perform a shift register operation to
-  implement a Finite Impulse Response(FIR) filter.
+    Finite Impulse Response(FIR) Filter
 
-  Shift register operation is the cascading of values of an array by one or more
-  places. Here is an example of what a shift register operation looks like on an
-  array of length four:
+    This example demonstrates how to perform a shift register operation to
+    implement a Finite Impulse Response(FIR) filter.
+
+    Shift register operation is the cascading of values of an array by one or 
+    more places. Here is an example of what a shift register operation looks
+    like on an array of length four:
 
                      ___       ___      ___      ___
-  1. shift_reg[N] : | A |  <- | B | <- | C | <- | D |
+    1. shift_reg[N] : | A |  <- | B | <- | C | <- | D |
                      ---       ---      ---      ---
                      ___       ___      ___      ___
-  2. shift_reg[N] : | B |  <- | C | <- | D | <- | D |
+    2. shift_reg[N] : | B |  <- | C | <- | D | <- | D |
                      ---       ---      ---      ---
 
-  Here each of the values are copied into the register on the left. This type of
-  operation is useful when you want to work on a sliding window of data or when
-  the data is being streamed into the kernel.
+    Here each of the values are copied into the register on the left.
+    This type of operation is useful when you want to work on a sliding window
+    of data or when the data is being streamed into the kernel.
 
-  The Xilinx compiler can recognize this type of operation into the appropriate
-  hardware. For example, the previous illustration can be coded using the
-  following loop:
+    The sds++ compiler can recognize and schedule this type of operation
+    into the appropriate hardware. For example, the previous illustration can be
+    coded using the following loop:
 
-  #define N 4
+    #define N 4
 
-  __attribute__((opencl_unroll_hint))
-  for(int i = 0; i < N-1; i++) {
+    __attribute__((opencl_unroll_hint))
+    for(int i = 0; i < N-1; i++) {
       shift_reg[i] = shift_reg[i+1];
-  }
+    }
 
-  The compiler needs to know the number of registers at compile time so the
-  definition of N must be a compile time variable.
+    The compiler needs to know the number of registers at compile time so the
+    definition of N must be a compile time variable.
 
 ************************************************************************************/
 
 #include "fir.h"
 #define COEFF 11
+
 // FIR using shift register
 void fir_shift_register_accel(int *signal,
                               int *coeff,
@@ -102,7 +104,7 @@ void fir_shift_register_accel(int *signal,
         // This is the shift register operation. The N_COEFF variable is defined
         // at compile time so the compiler knows the number of operations
         // performed by the loop. This loop does not require the unroll
-        // attribute because the outer loop will be automatically pipelined so
+        // attribute because the outer loop will be pipelined so
         // the compiler will unroll this loop in the process.
         shift_loop:
         for (int i = COEFF-1; i >= 0; i--) {

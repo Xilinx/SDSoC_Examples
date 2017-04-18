@@ -34,9 +34,13 @@
 #ifndef FIR_H_
 #define FIR_H_
 
+#include "../../../libs/profile/sds_timer.h"
+
 #define N_COEFF 11
 #define SIGNAL_SIZE 512
 
+// Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
+// Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(signal,coeff,hw_out)
 void fir_shift_register_accel(int *signal,
                               int *coeff,

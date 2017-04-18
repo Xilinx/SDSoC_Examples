@@ -31,35 +31,23 @@
 #
 ************/
 
- /*
-   Shift Register
+/******************************************************************************
 
    This example demonstrates how to perform a shift register operation to
    implement a Finite Impulse Response(FIR) filter.
 
-   NOTE: See the fir.cl file for additional information.
-  */
+*******************************************************************************/
 
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include "fir.h"
-#include "sds_lib.h"
+
+using namespace sds_prof;
 
 #define min(x,y) ((x) < (y) ? (x) : (y))
 
-class perf_counter
-{
-public:
-	uint64_t tot, cnt, calls;
-	perf_counter() : tot(0), cnt(0), calls(0) {};
-	inline void reset() { tot = cnt = calls = 0; }
-	inline void start() { cnt = sds_clock_counter(); calls++; };
-	inline void stop() { tot += (sds_clock_counter() - cnt); };
-	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
-};
-
-// Finite Impulse Response Filter
+// Software Finite Impulse Response Filter
 void fir(int *output, const int *signal, const int *coeff, const int signal_length) {
 
     int coeff_reg[N_COEFF];
@@ -77,7 +65,7 @@ void fir(int *output, const int *signal, const int *coeff, const int signal_leng
     
 }
 
-
+// Print signals
 void print_signal(int *device_output, int signal_size) {
     for (int i = 0; i < signal_size; i++ ) {
         printf("%d ", device_output[i]);
@@ -85,7 +73,7 @@ void print_signal(int *device_output, int signal_size) {
     printf("\n");
 }
 
-// Verifies the gold and the out data are equal
+// Verifies the software and hardware results
 int verify(int *gold, const int *out, const int signal_size) {
    
     int match = 1;
@@ -107,6 +95,8 @@ int verify(int *gold, const int *out, const int signal_size) {
 int main(int argc, char **argv) {
     
     int test_passed = 0;
+
+    // Allocate PL buffers using sds_alloc
     int *signal = (int *) sds_alloc(sizeof(int) * SIGNAL_SIZE);
     int *coeff  = (int *) sds_alloc(sizeof(int) * N_COEFF);
     int *hw_out = (int *) sds_alloc(sizeof(int) * SIGNAL_SIZE);
@@ -123,6 +113,7 @@ int main(int argc, char **argv) {
     coeff[9] =   0;
     coeff[10]=  53;
 
+    // Allocate software output buffer
     int *gold = (int *) malloc(sizeof(int) * SIGNAL_SIZE);
     
     perf_counter hw_ctr, sw_ctr;
@@ -137,6 +128,7 @@ int main(int argc, char **argv) {
     fir_shift_register_accel(signal, coeff, hw_out, SIGNAL_SIZE); 
     hw_ctr.stop();
     
+    // Verify software and hardware results
     test_passed = verify(gold, hw_out, SIGNAL_SIZE);
 
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
