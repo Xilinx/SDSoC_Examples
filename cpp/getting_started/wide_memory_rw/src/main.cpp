@@ -32,28 +32,18 @@
 ************/
 
 /*******************************************************************************
-Description: SDx Vector Addition using ap_uint<512> datatype to utilize full
-memory datawidth
+
+    SDx Vector Addition using ap_uint<128> datatype to utilize full
+    memory datawidth
+
 *******************************************************************************/
 #include <iostream>
 #include <cstring>
-#include <stdint.h>
-#include "sds_lib.h"
 #include "vadd.h"
 
+using namespace sds_prof;
 
-
-class perf_counter
-{
-public:
-	uint64_t tot, cnt, calls;
-	perf_counter() : tot(0), cnt(0), calls(0) {};
-	inline void reset() { tot = cnt = calls = 0; }
-	inline void start() { cnt = sds_clock_counter(); calls++; };
-	inline void stop() { tot += (sds_clock_counter() - cnt); };
-	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
-};
-
+// Software solution
 void vadd_sw(uint128_dt *in1, uint128_dt *in2, uint128_dt *out, int size)
 {
 	for(int i = 0; i < DATA_SIZE / 16; i++)
@@ -62,18 +52,22 @@ void vadd_sw(uint128_dt *in1, uint128_dt *in2, uint128_dt *out, int size)
 
 int main(int argc, char** argv)
 {
-    //Allocate Memory in Host Memory
+    // Size of the input data
     size_t vector_size_bytes = sizeof(int) * DATA_SIZE;
+
+    // Allocate PL buffers using sds_alloc
     uint128_dt *source_in1         = (uint128_dt *) sds_alloc(vector_size_bytes);
     uint128_dt *source_in2         = (uint128_dt *) sds_alloc(vector_size_bytes);
     uint128_dt *source_hw_results  = (uint128_dt *) sds_alloc(vector_size_bytes);
+ 
+    // Allocate software output
     uint128_dt *source_sw_results  = (uint128_dt *) sds_alloc(vector_size_bytes);
 
-    // Create the test data and Software Result
+    // Create the test data
     for(int i = 0 ; i < DATA_SIZE ; i++){
         source_in1[i] = i;
         source_in2[i] = i * i;
-        source_sw_results[i] = 0; //i * i + i;
+        source_sw_results[i] = 0; 
         source_hw_results[i] = 0;
     }
 
@@ -81,7 +75,6 @@ int main(int argc, char** argv)
 
     perf_counter hw_ctr, sw_ctr;
 
-    
     hw_ctr.start();
     // Launch Hardware Solution
     vadd_accel(source_in1, source_in2, source_hw_results, size);
@@ -95,7 +88,7 @@ int main(int argc, char** argv)
     std::cout << "Average number of CPU cycles running mmult in hardware: "
     			  << hw_cycles << std::endl;
 
-    // Compare the results of the Device to the simulation
+    // Compare the results of software and hardware
     int match = 0;
     for (int i = 0 ; i < DATA_SIZE ; i++){
         if (source_hw_results[i] != source_sw_results[i]){
@@ -107,7 +100,7 @@ int main(int argc, char** argv)
         }
     }
 
-    /* Release Memory from Host Memory*/
+    // Release Memory
     sds_free(source_in1);
     sds_free(source_in2);
     sds_free(source_hw_results);

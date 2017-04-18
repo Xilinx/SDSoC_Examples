@@ -19,7 +19,7 @@ This is a simple example of vector addition to demonstrate Wide Memory Access us
 
 ***KEY CONCEPTS:*** Kernel to DDR, wide memory access, burst read and write
 
-***KEYWORDS:*** ap_uint<>, ap_int.h
+***KEYWORDS:*** ap_uint<DATAWIDTH>, ap_int.h
 
 ## 2. HOW TO DOWNLOAD THE REPOSITORY
 To get a local copy of the SDSoC example repository, clone this repository to the local system with the following command:
@@ -31,7 +31,6 @@ where examples is the name of the directory where the repository will be stored 
 ## 3. SOFTWARE AND SYSTEM REQUIREMENTS
 Board | Family | Part | Flow | OS 
 ------|-------------|----------|----------|----------
-zc702|zynq|xc7z020|Emulation/Hardware|linux/standalone|
 zc706|zynq|xc7z045|Emulation/Hardware|linux/standalone|
 zcu102|zynquplus|xczu9eg|Hardware|linux/standalone|
 zcu102_es2|zynquplus|xczu9eg|Hardware|linux/standalone|
