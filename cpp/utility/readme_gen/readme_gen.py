@@ -35,8 +35,8 @@ def download(target):
     target.write("```\n")
     target.write("git clone https://github.com/Xilinx/SDSoC_Examples examples\n")
     target.write("```\n")
-    target.write("where examples is the name of the directory where the repository will be stored on the local system.")
-    target.write("This command needs to be executed only once to retrieve the latest version of all SDAccel examples. The only required software is a local installation of git.\n\n")
+    target.write("Here *examples* is the name of the directory which is used to store the repository in local file system.")
+    target.write("This command needs to be executed only once to retrieve the latest version of all SDSoC examples. The only required software is a local installation of git.\n\n")
     return
 
 def overview(target,data):

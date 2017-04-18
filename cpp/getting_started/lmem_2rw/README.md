@@ -26,7 +26,7 @@ To get a local copy of the SDSoC example repository, clone this repository to th
 ```
 git clone https://github.com/Xilinx/SDSoC_Examples examples
 ```
-where examples is the name of the directory where the repository will be stored on the local system.This command needs to be executed only once to retrieve the latest version of all SDAccel examples. The only required software is a local installation of git.
+Here *examples* is the name of the directory which is used to store the repository in local file system.This command needs to be executed only once to retrieve the latest version of all SDSoC examples. The only required software is a local installation of git.
 
 ## 3. SOFTWARE AND SYSTEM REQUIREMENTS
 Board | Family | Part | Flow | OS 
