@@ -34,8 +34,11 @@
 #ifndef ROW_ARRAY_2D_H_
 #define ROW_ARRAY_2D_H_
 
+#include "../../../libs/profile/sds_timer.h"
+
 #include <hls_stream.h>
-//Parameters Description:
+
+// Parameters Description:
 //         NUM_ROWS:            matrix height
 //         WORD_PER_ROW:        number of words in a row
 //         BLOCK_SIZE:          number of words in an array
@@ -48,6 +51,8 @@ typedef int DTYPE;
 // use HLS stream library for easy use of AXI-stream interface
 typedef hls::stream<DTYPE> my_data_fifo;
 
+// Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
+// Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(inx, outx)
 void row_array_2d_accel(DTYPE *inx, DTYPE *outx, DTYPE alpha);
 

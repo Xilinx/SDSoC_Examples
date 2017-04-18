@@ -32,19 +32,18 @@
 ************/
 
 /************************************************************************************
-Description:
     
-    C Kernel Example using AXI4-master interface to access row of data from 2D array
+    Hardware Function demonstrates access of row of a two dimensional array using
+    AXI-master interface in burst mode
 
 ************************************************************************************/
 
-//Includes
 #include <stdio.h>
 #include <string.h>
 #include "assert.h"
 #include "row_array_2d.h"
 
-// Read data function : Read Data from Global Memory
+// Read data function : Read Data from DDR Memory
 void read_data(DTYPE *inx, my_data_fifo &inFifo) {
     read_loop_i: for(int i = 0; i < NUM_ROWS; ++i) {
         read_loop_jj: for (int jj = 0; jj < WORD_PER_ROW; ++jj) {
@@ -54,7 +53,7 @@ void read_data(DTYPE *inx, my_data_fifo &inFifo) {
     }
 }
 
-// Write data function : Write Results to Global Memory
+// Write data function : Write Results to DDR Memory
 void write_data(DTYPE *outx, my_data_fifo &outFifo) {
     write_loop_i: for(int i = 0; i < NUM_ROWS; ++i) {
         write_loop_jj: for (int jj = 0; jj < WORD_PER_ROW; ++jj) {

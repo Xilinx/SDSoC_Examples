@@ -35,21 +35,9 @@
 #include <cstring>
 #include <stdio.h>
 #include <math.h>
-#include <stdint.h>
 #include "row_array_2d.h"
-#include "sds_lib.h"
 
-class perf_counter
-{
-public:
-	uint64_t tot, cnt, calls;
-	perf_counter() : tot(0), cnt(0), calls(0) {};
-	inline void reset() { tot = cnt = calls = 0; }
-	inline void start() { cnt = sds_clock_counter(); calls++; };
-	inline void stop() { tot += (sds_clock_counter() - cnt); };
-	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
-};
-
+using namespace sds_prof;
 
 //Utility to print array
 void print_array(DTYPE *mat, const char *name, int size, int dim) {
@@ -61,6 +49,8 @@ void print_array(DTYPE *mat, const char *name, int size, int dim) {
         printf("\n");
     }
 }
+
+// Software solution
 void row_array_2d_sw(DTYPE *a, DTYPE *sw_c, DTYPE alpha)
 {
 	for(int i = 0; i < BLOCK_SIZE; i++)
@@ -70,13 +60,14 @@ void row_array_2d_sw(DTYPE *a, DTYPE *sw_c, DTYPE alpha)
 int main(int argc, char** argv)
 {
 
-    //Allocate Memory in Host Memory
+    // Size of input data
     size_t vector_size_bytes = sizeof(DTYPE) * BLOCK_SIZE;
-    // original data set given to device
+   
+    // Allocate PL buffers using sds_alloc
     DTYPE* a = (DTYPE*)sds_alloc(vector_size_bytes);
-    // results returned from device
     DTYPE* c = (DTYPE*)sds_alloc(vector_size_bytes);
-    // results returned from software 
+    
+    // Allocate software output buffer
     DTYPE* sw_c = (DTYPE*)malloc(vector_size_bytes);
 
     // Create the test data and Software Result
@@ -84,7 +75,7 @@ int main(int argc, char** argv)
     for(int i = 0; i < BLOCK_SIZE; i++) {
       a[i] = i;
       c[i] = 0;
-      sw_c[i] = 0; //alpha*a[i];
+      sw_c[i] = 0;
     }
 
     perf_counter hw_ctr, sw_ctr;
@@ -101,8 +92,9 @@ int main(int argc, char** argv)
 
     std::cout << "Average number of CPU cycles running mmult in hardware: "
 				 << hw_cycles << std::endl;
-    // Validate
-    unsigned int correct = 0;              // number of correct results returned
+
+    // Validate software & hardware results
+    unsigned int correct = 0;              
     for (int i = 0;i < BLOCK_SIZE; i++) {
       if(c[i] == sw_c[i]) {
         correct++;
@@ -114,6 +106,7 @@ int main(int argc, char** argv)
     // Print a brief summary detailing the results
     printf("Computed '%d/%d' correct values!\n", correct, BLOCK_SIZE);
 
+    // Release memory
     sds_free(a);
     sds_free(c);
     free(sw_c);
