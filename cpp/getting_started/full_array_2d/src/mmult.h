@@ -34,9 +34,9 @@
 #ifndef MMULT_H_
 #define MMULT_H_
 
-//define array size to access
+// Define array size to access
 #define DATA_SIZE 8
-//define max local buffer size
+// Define max local buffer size
 #define N 256
 
 // Zero copy interface enabled

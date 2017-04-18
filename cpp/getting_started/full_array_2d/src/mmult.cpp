@@ -32,27 +32,27 @@
 ************/
 
 /*******************************************************************************
-Description:
 
-    C Kernel Example of Matrix Multiplication to demonstrate 2-D full array access
+    This is simple matrix multiplication example to demonstrate full 2D-array 
+    access
 
 *******************************************************************************/
 
-//Includes
 #include <stdio.h>
 #include <string.h>
 #include "mmult.h"
-//define max local buffer size
+
+// Define max local buffer size
 #define N 256
 
-//define array size to access
+// Define array size to access
 #define DATA_SIZE 8
 
 void mmult_accel(int *a, int *b, int *c, int size) {
 
 	int bufa[N][N], bufb[N][N], bufc[N][N];
 	int matrix_size = size*size;
-	// Read data from global memory and write into local buffer for a, 
+	// Read data from DDR memory and write into local buffer for a, 
 	// loop pipeline will be automatically inferred
 	int x = 0, y = 0;
 	read_data_a: for (int i = 0 ; i < matrix_size ; i++){
@@ -67,7 +67,7 @@ void mmult_accel(int *a, int *b, int *c, int size) {
 		}
 	}
 
-	// Read data from global memory and write into local buffer for b, loop pipeline 
+	// Read data from DDR memory and write into local buffer for b, loop pipeline 
 	// will be automatically inferred
 	read_data_b: for (int i = 0, x=0, y=0; i < matrix_size ; i++){
 	#pragma HLS LOOP_TRIPCOUNT min=1 max=65536

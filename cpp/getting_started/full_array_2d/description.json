@@ -5,7 +5,7 @@
     ],
     "key_concepts": [ "2D data array access"],
     "keywords": ["N/A"],
-    "board": ["zc702", "zc706", "zcu102", "zcu102_es2"],
+    "board": ["zc706", "zcu102", "zcu102_es2"],
     "contributors" : [
         {
             "group": "Xilinx",
