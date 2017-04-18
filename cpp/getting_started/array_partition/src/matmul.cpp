@@ -56,7 +56,6 @@ void matmul_partition_accel(int *in1,  // Read-Only Matrix 1
     int temp_sum[MAX_SIZE];
     #pragma HLS ARRAY_PARTITION variable=temp_sum dim=1 complete
     
-
     // Burst reads on input matrices from DDR memory
     // Burst read for matrix A
     readA:
@@ -133,9 +132,9 @@ void matmul_partition_accel(int *in1,  // Read-Only Matrix 1
     // Burst write from output matrices to DDR memory
     // Burst write from matrix C
     writeC:
-   for (int itr = 0, i = 0, j = 0; itr < size * size; itr++, j++) {
-   #pragma HLS PIPELINE
-   #pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
+    for (int itr = 0, i = 0, j = 0; itr < size * size; itr++, j++) {
+    #pragma HLS PIPELINE
+    #pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
         if (j == size) {
             j = 0;
             i++;

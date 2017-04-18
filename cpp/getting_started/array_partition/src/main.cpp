@@ -64,7 +64,6 @@ int verify(int *gold, int *output, int size) {
             return -1;
         }
     }
-    
     return 0;
 }
 
