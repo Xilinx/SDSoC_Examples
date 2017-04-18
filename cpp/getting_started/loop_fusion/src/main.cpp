@@ -34,27 +34,19 @@
 #include <cstdio>
 #include <iostream>
 #include <stdlib.h>
-#include "nearest_neighbor.h"
 #include <limits.h>
-#include "sds_lib.h"
+#include "nearest_neighbor.h"
 
 #define MAX_DIMS 5
 
-class perf_counter
-{
-public:
-	uint64_t tot, cnt, calls;
-	perf_counter() : tot(0), cnt(0), calls(0) {};
-	inline void reset() { tot = cnt = calls = 0; }
-	inline void start() { cnt = sds_clock_counter(); calls++; };
-	inline void stop() { tot += (sds_clock_counter() - cnt); };
-	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
-};
+using namespace sds_prof;
 
+// Software solution prototype
 void find_nearest_neighbor(int *out, const int dim,
                            const int *search_points,
                            const int *points, const int len);
 
+// Compares software & hardware solutions
 int verify(int *gold, int *test, int size) {
     bool match = true;
 
@@ -76,6 +68,7 @@ int verify(int *gold, int *test, int size) {
         return 0;
 }
 
+// Prints point data
 void print_point(int *point, int size) {
     
     for(int i = 0; i < size; i++)
@@ -97,6 +90,7 @@ int main(int argc, char **argv) {
     int *input = (int *)sds_alloc(sizeof(int) * num_dims);
     int *out   = (int *)sds_alloc(sizeof(int) * num_dims);
 
+    // Initialize input data
     for(int i = 0; i < num_points * num_dims; i++){
         data[i] = i  + i;
         if(i < num_dims)
@@ -112,12 +106,9 @@ int main(int argc, char **argv) {
     
     int gold[num_dims];
     
-    
     //Launch the Software Solution
     find_nearest_neighbor(gold, num_dims, input, data, num_points);
 
-    size_t array_size_bytes = num_points * num_dims * sizeof(int);
- 
     hw_ctr.start();
     //Launch the Hardware Solution
     nearest_neighbor_loop_fusion_accel(out, data, input, num_points, num_dims); 
@@ -144,22 +135,22 @@ int main(int argc, char **argv) {
 
 void find_nearest_neighbor(int *out, const int dim,
                            const int *search_points,
-                           const int *points, const int num_points) {
-  // points is the list of data points that need to be searched for the given
-  // point (x, y)
-  //
-  // output array out has two values - the closest point to given input point
-  int best_i = 0;
-  int best_dist = INT_MAX;
-  int s_point[MAX_DIMS];
-    
-  for(int d = 0; d < dim; ++d) {
-     s_point[d] = search_points[d];
-  }
+                           const int *points, const int num_points) 
+{
+    // points is the list of data points that need to be searched for the given
+    // point (x, y)
+    // output array out has two values - the closest point to given input point
+    int best_i = 0;
+    int best_dist = INT_MAX;
+    int s_point[MAX_DIMS];
 
-  find_best:
-  for(int p = 0; p < num_points; ++p) {
-     int dist = 0;
+    for(int d = 0; d < dim; ++d) {
+        s_point[d] = search_points[d];
+    }
+
+    find_best:
+    for(int p = 0; p < num_points; ++p) {
+        int dist = 0;
      
         // Calculate the distance in a n-dimensional space
         dist_calc:
@@ -172,7 +163,8 @@ void find_nearest_neighbor(int *out, const int dim,
             best_i = p;
             best_dist = dist;
         }   
-  }    
+    }    
+    
     write_best:
     for (int c = 0; c < dim; ++c) {
         out[c] = points[best_i * dim + c];

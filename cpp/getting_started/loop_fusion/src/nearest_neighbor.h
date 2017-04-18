@@ -34,9 +34,13 @@
 #ifndef NEAREST_NEIGHBOR_H_
 #define NEAREST_NEIGHBOR_H_
 
+#include "../../../libs/profile/sds_timer.h"
+
 #define NUM_DIMS 2
 #define NUM_POINTS 512
 
+// Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
+// Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(out, points, search_point)
 void nearest_neighbor_loop_fusion_accel(int *out, const int *points,
                        const int *search_point, const int len,
