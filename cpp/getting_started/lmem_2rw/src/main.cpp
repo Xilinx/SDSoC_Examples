@@ -32,29 +32,18 @@
 ************/
 
 /*******************************************************************************
-Description: SDx Vector Addition to utilize both Ports of BRAM memory
+
+    SDx Vector Addition to utilize both Ports of BRAM memory
+
 *******************************************************************************/
 #include <iostream>
 #include <cstring>
 #include <cstdlib>
-#include <stdint.h>
-
-// SDS library for memory management
-#include "sds_lib.h"
-
 #include "vadd.h"
 
-class perf_counter
-{
-public:
-	uint64_t tot, cnt, calls;
-	perf_counter() : tot(0), cnt(0), calls(0) {};
-	inline void reset() { tot = cnt = calls = 0; }
-	inline void start() { cnt = sds_clock_counter(); calls++; };
-	inline void stop() { tot += (sds_clock_counter() - cnt); };
-	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
-};
+using namespace sds_prof;
 
+// Software Solution
 void vadd_sw(unsigned int *source_in1, unsigned int *source_in2, unsigned int *out, 
             int size)
 {
@@ -65,7 +54,7 @@ void vadd_sw(unsigned int *source_in1, unsigned int *source_in2, unsigned int *o
 
 int main(int argc, char** argv)
 {
-    //Allocate Memory in Host Memory
+    // Size of input data
     size_t vector_size_bytes = sizeof(unsigned int) * DATA_SIZE;
 
     // Allocate PL buffers using sds_alloc
@@ -76,11 +65,11 @@ int main(int argc, char** argv)
     // Allocate software output buffer
     unsigned int *source_sw_results  = (unsigned int *) malloc(vector_size_bytes);
 
-    // Create the test data and Software Result
+    // Create the test data 
     for(int i = 0 ; i < DATA_SIZE ; i++){
         source_in1[i] = i;
         source_in2[i] = i * i;
-        source_sw_results[i] = 0; //i * i + i;
+        source_sw_results[i] = 0; 
         source_hw_results[i] = 0;
     }
 
@@ -101,7 +90,7 @@ int main(int argc, char** argv)
     std::cout << "Average number of CPU cycles running mmult in hardware: "
 				 << hw_cycles << std::endl;
     
-    // Compare the results of the Device to the simulation
+    // Compare the results between PL and Simulation
     int match = 0;
     for (int i = 0 ; i < DATA_SIZE ; i++){
         if (source_hw_results[i] != source_sw_results[i]){
@@ -113,7 +102,7 @@ int main(int argc, char** argv)
         }
     }
 
-    /* Release Memory from Host Memory*/
+    // Release Memory
     sds_free(source_in1);
     sds_free(source_in2);
     sds_free(source_hw_results);
