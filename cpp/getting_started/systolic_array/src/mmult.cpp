@@ -33,8 +33,6 @@
 
 /*******************************************************************************
 
-SDx Key Concept :
-
     This is a matrix multiplication example which showcases the "Systolic Array"
     based algorithm design. Systolic array type of implementation is well suited
     for FPGAs.
@@ -43,12 +41,12 @@ SDx Key Concept :
 
 /*
 
-Kernel Description :
+Hardware Function Description :
 
-    This kernel is a systolic array based matrix multiplication. Though the
-    maximum size of the input matrices are restricted to a smaller MAX_SIZE, it
-    is still possible to use this approach and get better performance for larger
-    matrices by using tiling.
+    This hardware function is a systolic array based matrix multiplication.
+    Though the maximum size of the input matrices are restricted to a smaller
+    MAX_SIZE, it is still possible to use this approach and get better 
+    performance for larger matrices by using tiling.
 
     Arguments :
 
@@ -59,16 +57,13 @@ Kernel Description :
         int  a_col (input )  --> Col Size Matrix A
         int  b_col (input )  --> Col Size Matrix B
 
-    Kernel Configuration :
-
-        Max Size    --> 16
-
     Note :
         Max Size is dependent on the available DSP resources in the FPGA
 */
 
 #include <stdio.h>
 #include "mmult.h"
+
 //Maximum Array Size
 #define MAX_SIZE 12
 #define DATA_SIZE 12
@@ -89,7 +84,6 @@ void mmult_accel(
 
 	// Local memory to store input and output matrices
 	// Local memory is implemented as BRAM memory blocks
-
 	int localA[MAX_SIZE][MAX_SIZE];
 	#pragma HLS ARRAY_PARTITION variable=localA dim=1 complete
 

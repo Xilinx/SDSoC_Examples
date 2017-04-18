@@ -33,11 +33,10 @@
 
 /*******************************************************************************
 
-Description:
-
-    This is a matrix multiplication which showcases the "Systolic Array" based
-    algorithm design. Systolic array type of implementation is well suited for
-    FPGAs. It is a good coding practice to convert base algorithm into Systolic
+    This is a matrix multiplication example which showcases the 
+    "Systolic Array" based algorithm design. 
+    Systolic array type of implementation is well suited for FPGAs.
+    It is a good coding practice to convert base algorithm into Systolic
     Array implementation if it is feasible to do so.
 
 *******************************************************************************/
@@ -45,22 +44,10 @@ Description:
 #include <iostream>
 #include <cstring>
 #include <stdio.h>
-#include <stdint.h>
 #include <stdlib.h>
-
 #include "mmult.h"
-#include "sds_lib.h"
 
-class perf_counter
-{
-public:
-	uint64_t tot, cnt, calls;
-	perf_counter() : tot(0), cnt(0), calls(0) {};
-	inline void reset() { tot = cnt = calls = 0; }
-	inline void start() { cnt = sds_clock_counter(); calls++; };
-	inline void stop() { tot += (sds_clock_counter() - cnt); };
-	inline uint64_t avg_cpu_cycles() {return (tot / calls); };
-};
+using namespace sds_prof;
 
 // Software implementation of Matrix Multiplication
 // The inputs are of the size (DATA_SIZE x DATA_SIZE)
@@ -70,7 +57,7 @@ void m_softwareGold(
                     int *out    //Output Matrix
                    )
 {
-    //Perform Matrix multiply Out = In1 x In2
+    // Perform Matrix multiply Out = In1 x In2
     for(int i = 0; i < DATA_SIZE; i++) {
         for(int j = 0; j < DATA_SIZE; j++) {
             for(int k = 0; k < DATA_SIZE; k++) {
@@ -83,13 +70,14 @@ void m_softwareGold(
 
 int main(int argc, char** argv)
 {
-    //Allocate Memory in Host Memory
+    // Data size boundary check
     if (DATA_SIZE > MAX_SIZE) {
         std::cout << "Size is bigger than internal buffer size, please use a size ";
         std::cout << "smaller than " << MAX_SIZE << "!" << std::endl;
         return -1;
     }
 
+    // Size of input data
     size_t matrix_size_bytes = sizeof(int) * DATA_SIZE * DATA_SIZE;
 
     // Allocate PL buffers using sds_alloc
@@ -100,7 +88,7 @@ int main(int argc, char** argv)
     // Allocate software output buffer
     int *source_sw_results  = (int *) malloc(matrix_size_bytes);
 
-    // Create the test data and Software Result
+    // Create the test data
     for(int i = 0 ; i < DATA_SIZE * DATA_SIZE ; i++){
         source_in1[i] = i % 10;
         source_in2[i] = i % 10;
@@ -139,7 +127,7 @@ int main(int argc, char** argv)
         }
     }
 
-    /* Release Memory from Host Memory*/
+    // Release Memory
     sds_free(source_in1);
     sds_free(source_in2);
     sds_free(source_hw_results);

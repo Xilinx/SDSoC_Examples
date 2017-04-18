@@ -34,13 +34,16 @@
 #ifndef MMULT_H_
 #define MMULT_H_
 
+#include "../../../libs/profile/sds_timer.h"
+
 //Array Size to access
 #define DATA_SIZE 12
 
 //Maximum Array Size
 #define MAX_SIZE 12
 
-// Zero Copy interface enabled
+// Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
+// Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(a, b, c)
 void mmult_accel(
 			    const int *a,   // Read-Only Matrix A
@@ -50,5 +53,4 @@ void mmult_accel(
 			    int a_col,      // Matrix A Col Size
 			    int b_col       // Matrix B Col Size
 		    );
-
 #endif
