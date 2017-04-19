@@ -73,9 +73,15 @@ def create_mk(target, data):
     target.write("\n")
 
     target.write("# Points to Utility Directory\n")
-    target.write("COMMON_REPO = ../..\n") 
+    target.write("PREFIX = ../../\n") 
+    target.write("ABS_COMMON_REPO = $(shell readlink -f $(PREFIX))\n")
+    target.write("COMMON_REPO := $(ABS_COMMON_REPO)\n")
     target.write("\n")
-   
+  
+    target.write("# Include Libraries\n")
+    target.write("include $(COMMON_REPO)/libs/profile/profile.mk\n")
+    target.write("\n")
+ 
     target.write("# Target OS:\n")
     target.write("#     linux (Default), standalone, rtos\n")
     
@@ -227,6 +233,7 @@ target.write("IFLAGS := -I.\n")
 target.write("CFLAGS = -Wall -O3 -c\n")
 target.write("CFLAGS += -MT\"$@\" -MMD -MP -MF\"$(@:%.o=%.d)\" -MT\"$(@)\" \n")
 target.write("CFLAGS += -std=c++0x\n")
+target.write("CFLAGS += -I$(profile_HDRS)\n")
 target.write("LFLAGS = \"$@\" \"$<\" \n")
 
 target.write("#+---------------------------------------------------------------------\n")

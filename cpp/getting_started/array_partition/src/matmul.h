@@ -33,7 +33,7 @@
 #ifndef MATMUL_H_
 #define MATMUL_H_
 
-#include "../../../libs/profile/sds_timer.h"
+#include "sds_timer.h"
 
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
