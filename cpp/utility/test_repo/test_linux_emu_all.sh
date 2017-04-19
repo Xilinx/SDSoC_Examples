@@ -2,7 +2,7 @@
 for d in */ ; do
     cd $d;
     make ultraclean
-    make check PLATFORM=zcu102 
+    make check  
     cd ..
     echo "$d"
 done

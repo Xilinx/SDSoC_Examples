@@ -34,14 +34,16 @@
 #ifndef MMULT_H_
 #define MMULT_H_
 
+#include "sds_timer.h"
 
-//Array Size to access
+// Size of the input array
 #define DATA_SIZE 64
 
-//Maximum Array Size
+// Maximum Supported Size
 #define MAX_SIZE 64
 
-// DMA based
+// Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
+// Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(in1, in2, out)
 void mmult_accel(
 				const int *in1,     // Read-Only Matrix 1
