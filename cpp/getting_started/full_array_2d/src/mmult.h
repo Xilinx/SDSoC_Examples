@@ -34,7 +34,7 @@
 #ifndef MMULT_H_
 #define MMULT_H_
 
-#include "../../../libs/profile/sds_timer.h"
+#include "sds_timer.h"
 
 // Define array size to access
 #define DATA_SIZE 8

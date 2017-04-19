@@ -34,7 +34,7 @@
 #ifndef NEAREST_H_
 #define NEAREST_H_
 
-#include "../../../libs/profile/sds_timer.h"
+#include "sds_timer.h"
 
 // Current #Dimension and size of point array
 #define DATA_DIM 16

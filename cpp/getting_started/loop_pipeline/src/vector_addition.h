@@ -34,6 +34,10 @@
 #ifndef VECTOR_ADDITION_H_
 #define VECTOR_ADDITION_H_
 
+#include "sds_timer.h"
+
+// Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
+// Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(a, b, c)
 void vadd_pipelined_accel(int *a,
                           int *b,

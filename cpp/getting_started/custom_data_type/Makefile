@@ -17,7 +17,12 @@ TARGET := emu
 pwd := $(CURDIR)
 
 # Points to Utility Directory
-COMMON_REPO = ../..
+PREFIX = ../../
+ABS_COMMON_REPO = $(shell readlink -f $(PREFIX))
+COMMON_REPO := $(ABS_COMMON_REPO)
+
+# Include Libraries
+include $(COMMON_REPO)/libs/profile/profile.mk
 
 # Target OS:
 #     linux (Default), standalone, rtos
@@ -45,19 +50,19 @@ EXECUTABLE := rgb_to_hsv_accel.elf
 # Source Files
 SRC_DIR := src
 CPP_SRCS += \
-$(pwd)/$(SRC_DIR)/rgb_to_hsv.cpp \
 $(pwd)/$(SRC_DIR)/bitmap.cpp \
-$(pwd)/$(SRC_DIR)/main.cpp
+$(pwd)/$(SRC_DIR)/main.cpp \
+$(pwd)/$(SRC_DIR)/rgb_to_hsv.cpp
 
 OBJECTS += \
-$(pwd)/$(TARGET)/rgb_to_hsv.o \
 $(pwd)/$(TARGET)/bitmap.o \
-$(pwd)/$(TARGET)/main.o
+$(pwd)/$(TARGET)/main.o \
+$(pwd)/$(TARGET)/rgb_to_hsv.o
 
 CPP_DEPS += \
-$(pwd)/$(TARGET)/rgb_to_hsv.d \
 $(pwd)/$(TARGET)/bitmap.d \
-$(pwd)/$(TARGET)/main.d
+$(pwd)/$(TARGET)/main.d \
+$(pwd)/$(TARGET)/rgb_to_hsv.d
 
 # SDS Options
 #
@@ -72,6 +77,7 @@ IFLAGS := -I.
 CFLAGS = -Wall -O3 -c
 CFLAGS += -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" 
 CFLAGS += -std=c++0x
+CFLAGS += -I$(profile_HDRS)
 LFLAGS = "$@" "$<" 
 #+---------------------------------------------------------------------
 

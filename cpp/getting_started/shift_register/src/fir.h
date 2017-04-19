@@ -34,7 +34,7 @@
 #ifndef FIR_H_
 #define FIR_H_
 
-#include "../../../libs/profile/sds_timer.h"
+#include "sds_timer.h"
 
 #define N_COEFF 11
 #define SIGNAL_SIZE 512

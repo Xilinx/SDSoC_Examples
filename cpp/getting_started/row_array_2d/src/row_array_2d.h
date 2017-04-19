@@ -34,7 +34,7 @@
 #ifndef ROW_ARRAY_2D_H_
 #define ROW_ARRAY_2D_H_
 
-#include "../../../libs/profile/sds_timer.h"
+#include "sds_timer.h"
 
 #include <hls_stream.h>
 

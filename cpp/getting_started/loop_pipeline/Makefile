@@ -17,7 +17,12 @@ TARGET := emu
 pwd := $(CURDIR)
 
 # Points to Utility Directory
-COMMON_REPO = ../..
+PREFIX = ../../
+ABS_COMMON_REPO = $(shell readlink -f $(PREFIX))
+COMMON_REPO := $(ABS_COMMON_REPO)
+
+# Include Libraries
+include $(COMMON_REPO)/libs/profile/profile.mk
 
 # Target OS:
 #     linux (Default), standalone, rtos
@@ -45,16 +50,16 @@ EXECUTABLE := vadd_pipelined_accel.elf
 # Source Files
 SRC_DIR := src
 CPP_SRCS += \
-$(pwd)/$(SRC_DIR)/vector_addition.cpp \
-$(pwd)/$(SRC_DIR)/main.cpp
+$(pwd)/$(SRC_DIR)/main.cpp \
+$(pwd)/$(SRC_DIR)/vector_addition.cpp
 
 OBJECTS += \
-$(pwd)/$(TARGET)/vector_addition.o \
-$(pwd)/$(TARGET)/main.o
+$(pwd)/$(TARGET)/main.o \
+$(pwd)/$(TARGET)/vector_addition.o
 
 CPP_DEPS += \
-$(pwd)/$(TARGET)/vector_addition.d \
-$(pwd)/$(TARGET)/main.d
+$(pwd)/$(TARGET)/main.d \
+$(pwd)/$(TARGET)/vector_addition.d
 
 # SDS Options
 #
@@ -69,6 +74,7 @@ IFLAGS := -I.
 CFLAGS = -Wall -O3 -c
 CFLAGS += -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" 
 CFLAGS += -std=c++0x
+CFLAGS += -I$(profile_HDRS)
 LFLAGS = "$@" "$<" 
 #+---------------------------------------------------------------------
 

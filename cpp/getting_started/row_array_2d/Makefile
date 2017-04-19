@@ -17,7 +17,12 @@ TARGET := emu
 pwd := $(CURDIR)
 
 # Points to Utility Directory
-COMMON_REPO = ../..
+PREFIX = ../../
+ABS_COMMON_REPO = $(shell readlink -f $(PREFIX))
+COMMON_REPO := $(ABS_COMMON_REPO)
+
+# Include Libraries
+include $(COMMON_REPO)/libs/profile/profile.mk
 
 # Target OS:
 #     linux (Default), standalone, rtos
@@ -69,6 +74,7 @@ IFLAGS := -I.
 CFLAGS = -Wall -O3 -c
 CFLAGS += -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" 
 CFLAGS += -std=c++0x
+CFLAGS += -I$(profile_HDRS)
 LFLAGS = "$@" "$<" 
 #+---------------------------------------------------------------------
 

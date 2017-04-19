@@ -17,7 +17,12 @@ TARGET := emu
 pwd := $(CURDIR)
 
 # Points to Utility Directory
-COMMON_REPO = ../..
+PREFIX = ../../
+ABS_COMMON_REPO = $(shell readlink -f $(PREFIX))
+COMMON_REPO := $(ABS_COMMON_REPO)
+
+# Include Libraries
+include $(COMMON_REPO)/libs/profile/profile.mk
 
 # Target OS:
 #     linux (Default), standalone, rtos
@@ -45,16 +50,16 @@ EXECUTABLE := mean_value_accel.elf
 # Source Files
 SRC_DIR := src
 CPP_SRCS += \
-$(pwd)/$(SRC_DIR)/mean_value.cpp \
-$(pwd)/$(SRC_DIR)/main.cpp
+$(pwd)/$(SRC_DIR)/main.cpp \
+$(pwd)/$(SRC_DIR)/mean_value.cpp
 
 OBJECTS += \
-$(pwd)/$(TARGET)/mean_value.o \
-$(pwd)/$(TARGET)/main.o
+$(pwd)/$(TARGET)/main.o \
+$(pwd)/$(TARGET)/mean_value.o
 
 CPP_DEPS += \
-$(pwd)/$(TARGET)/mean_value.d \
-$(pwd)/$(TARGET)/main.d
+$(pwd)/$(TARGET)/main.d \
+$(pwd)/$(TARGET)/mean_value.d
 
 # SDS Options
 #
@@ -69,6 +74,7 @@ IFLAGS := -I.
 CFLAGS = -Wall -O3 -c
 CFLAGS += -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" 
 CFLAGS += -std=c++0x
+CFLAGS += -I$(profile_HDRS)
 LFLAGS = "$@" "$<" 
 #+---------------------------------------------------------------------
 

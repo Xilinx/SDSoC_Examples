@@ -33,7 +33,7 @@
 #ifndef MEAN_VALUE_H_
 #define MEAN_VALUE_H_
 
-#include "../../../libs/profile/sds_timer.h"
+#include "sds_timer.h"
 
 #define DATA_SIZE 256
 #define INCR_VALUE 10
