@@ -1,0 +1,2483 @@
+rm -f -rf emu .Xil
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/src/main.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/emu/main.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/emu/main.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/emu/main.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/emu/main.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/src/main.cpp"  -sds-hw matmul_partition_accel matmul.cpp -sds-end
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+INFO: [SDSoC 0-0] Compiling /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/src/main.cpp
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/emu/_sds/reports/sds_main.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/src/main.cpp
+ 
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/src/matmul.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/emu/matmul.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/emu/matmul.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/emu/matmul.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/emu/matmul.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/src/matmul.cpp"  -sds-hw matmul_partition_accel matmul.cpp -sds-end
+INFO: [SDSoC 0-0] Processing -sds-hw block for matmul_partition_accel
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/src/matmul.cpp:61:5: warning: unused label 'readA' [-Wunused-label]
+    readA:
+    ^~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/src/matmul.cpp:73:5: warning: unused label 'readB' [-Wunused-label]
+    readB:
+    ^~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/src/matmul.cpp:122:13: warning: unused label 'lreorder3' [-Wunused-label]
+            lreorder3:
+            ^~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/src/matmul.cpp:118:9: warning: unused label 'lreorder2' [-Wunused-label]
+        lreorder2 :
+        ^~~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/src/matmul.cpp:115:5: warning: unused label 'lreorder1' [-Wunused-label]
+    lreorder1:
+    ^~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/src/matmul.cpp:134:5: warning: unused label 'writeC' [-Wunused-label]
+    writeC:
+    ^~~~~~~
+INFO: [SDSoC 0-0] Performing accelerator source linting for matmul_partition_accel
+INFO: [SDSoC 0-0] Performing pragma generation
+INFO: [SDSoC 0-0] Successfully generated tcl script: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/emu/_sds/vhls/matmul_partition_accel.tcl
+INFO: [SDSoC 0-0] Moving function matmul_partition_accel to Programmable Logic
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/emu/_sds/reports/sds_matmul.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/src/matmul.cpp
+ 
+mkdir -p emu
+Building Target: emu/matmul_partition_accel.elf
+Trigerring: SDS++ Linker
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -o matmul_partition_accel.elf /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/emu/main.o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/emu/matmul.o -mno-bitstream -mno-boot-files -emulation optimized
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Analyzing object files
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/emu/main.o
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/emu/matmul.o
+INFO: [SDSoC 0-0] Generating data motion network
+INFO: [DMAnalysis 70-0] Analyzing hardware accelerators...
+INFO: [DMAnalysis 70-0] Analyzing callers to hardware accelerators...
+INFO: [DMAnalysis 70-0] Scheduling data transfer graph for partition 0
+INFO: [DMAnalysis 70-0] Creating data motion network hardware for partition 0
+INFO: [DMAnalysis 70-0] Creating software stub functions for partition 0
+INFO: [DMAnalysis 70-0] Generating data motion network report for partition 0
+INFO: [DMAnalysis 70-0] Rewriting caller code
+INFO: [SDSoC 0-0] Creating block diagram (BD), address map, port information and device registration for partition 0 (this may take a few minutes)
+system_linker started at Wed Apr 19 14:34:59 IST 2017
+INFO: [SDSoC 0-0] Copying address map
+INFO: [SDSoC 0-0] Creating emulation files
+... [14:38:55] Starting static elaboration
+... [14:39:50] Starting simulation data flow analysis
+INFO: [SDSoC 0-0] Creating port and device registration data
+system_linker completed at Wed Apr 19 14:40:11 IST 2017
+INFO: [SDSoC 0-0] Software tracing enabled
+INFO: [SDSoC 0-0] Rewrite caller functions
+INFO: [SDSoC 0-0] Compile caller rewrite file /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/emu/_sds/swstubs/main.cpp
+INFO: [SDSoC 0-0] Prepare hardware access API functions
+INFO: [SDSoC 0-0] Create accelerator stub functions
+INFO: [SDSoC 0-0] Compile hardware access API functions
+INFO: [SDSoC 0-0] Compile accelerator stub functions
+matmul.cpp:73:5: warning: label ‘readB’ defined but not used [-Wunused-label]
+     readB:
+     ^~~~~
+matmul.cpp:115:5: warning: label ‘lreorder1’ defined but not used [-Wunused-label]
+     lreorder1:
+     ^~~~~~~~~
+matmul.cpp:118:9: warning: label ‘lreorder2’ defined but not used [-Wunused-label]
+         lreorder2 :
+         ^~~~~~~~~
+matmul.cpp:122:13: warning: label ‘lreorder3’ defined but not used [-Wunused-label]
+             lreorder3:
+             ^~~~~~~~~
+matmul.cpp:134:5: warning: label ‘writeC’ defined but not used [-Wunused-label]
+     writeC:
+     ^~~~~~
+INFO: [SDSoC 0-0] Link application ELF file
+INFO: [SDSoC 0-0] Not creating bitstream due to the -mno-bitstream switch
+INFO: [SDSoC 0-0] Calling system_linker for partition 0
+system_linker started at Wed Apr 19 14:40:13 IST 2017
+system_linker completed at Wed Apr 19 14:40:15 IST 2017
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/array_partition/emu/_sds/reports/sds.log
+
+SDx Completed Building Target: emu/matmul_partition_accel.elf
+ 
+cp /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/utility/emu_run.sh emu/
+cd emu ; ./emu_run.sh matmul_partition_accel.elf
+Starting PL simulation
+Waiting for PL simulation to start........ PL simulation started!
+Starting QEMU
+ - Press <Ctrl-a h> for help 
+
+
+U-Boot 2017.01 (Apr 15 2017 - 14:02:48 -0700)
+
+Model: Zynq ZC706 Development Board
+Board: Xilinx Zynq
+DRAM:  ECC disabled 1 GiB
+MMC:   sdhci@e0100000: 0 (SD)
+SF: Detected n25q128 with page size 256 Bytes, erase size 64 KiB, total 32 MiB
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ZYNQ GEM: e000b000, phyaddr 7, interface rgmii-id
+eth0: ethernet@e000b000
+U-BOOT for zc706
+
+Hit any key to stop autoboot:  4  3  2  1  0 
+Device: sdhci@e0100000
+Manufacturer ID: aa
+OEM: 5859
+Name: QEMU! 
+Tran Speed: 25000000
+Rd Block Len: 512
+SD version 1.0
+High Capacity: No
+Capacity: 488.3 MiB
+Bus Width: 4-bit
+Erase Group Size: 512 Bytes
+reading image.ub
+9940500 bytes read in 930 ms (10.2 MiB/s)
+## Loading kernel from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'kernel@0' kernel subimage
+     Description:  Linux Kernel
+     Type:         Kernel Image
+     Compression:  uncompressed
+     Data Start:   0x100000d4
+     Data Size:    3756728 Bytes = 3.6 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: 0x00008000
+     Entry Point:  0x00008000
+     Hash algo:    sha1
+     Hash value:   645924245114e089dfe8074a489edda9cccab7dd
+   Verifying Hash Integrity ... sha1+ OK
+## Loading ramdisk from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'ramdisk@0' ramdisk subimage
+     Description:  ramdisk
+     Type:         RAMDisk Image
+     Compression:  uncompressed
+     Data Start:   0x10399eac
+     Data Size:    6163320 Bytes = 5.9 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: unavailable
+     Entry Point:  unavailable
+     Hash algo:    sha1
+     Hash value:   a48b3deb4850fd18a02233447413775aa3f0d64c
+   Verifying Hash Integrity ... sha1+ OK
+## Loading fdt from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'fdt@0' fdt subimage
+     Description:  Flattened Device Tree blob
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x10395480
+     Data Size:    18811 Bytes = 18.4 KiB
+     Architecture: ARM
+     Hash algo:    sha1
+     Hash value:   9b7e7520610b155877cfa91cc4c52b6a744da7df
+   Verifying Hash Integrity ... sha1+ OK
+   Booting using the fdt blob at 0x10395480
+   Loading Kernel Image ... OK
+   Loading Ramdisk to 07a1f000, end 07fffb78 ... OK
+   Loading Device Tree to 07a17000, end 07a1e97a ... OK
+
+Starting kernel ...
+
+GIC CPU mask not found - kernel will fail to boot.
+GIC CPU mask not found - kernel will fail to boot.
+Failed to initialize '/amba/timer@f8f00200': -38
+mtd: partition "spare" is out of reach -- disabled
+ULPI integrity check: failed!ci_hdrc ci_hdrc.0: unable to init phy: -19
+cdns-i2c e0004000.i2c: timeout waiting on completion
+rtc-pcf8563 5-0051: pcf8563_write_block_data: err=-110 addr=0e, data=03
+rtc-pcf8563 5-0051: pcf8563_probe: write error
+cdns-i2c e0004000.i2c: timeout waiting on completion
+ucd9000 8-0065: Failed to read device ID
+INIT: version 2.88 booting
+Starting udev
+Populating dev cache
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Sat Apr 15 21:06:32 UTC 2017
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Starting internet superserver: inetd.
+INIT: Entering runlevel: 5
+Configuring network interfaces... udhcpc (v1.24.1) started
+Sending discover...
+Sending select for 10.0.2.15...
+Lease of 10.0.2.15 obtained, lease time 86400
+/etc/udhcpc.d/50default: Adding DNS 10.0.2.3
+done.
+Starting Dropbear SSH server: Generating key, this may take a while...
+Public key portion is:
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCTfZZsoCfcJTOLbXZz0VTu1tasevhdsotJ817tyiAZ6enFUBt+vv4kih8CUjK8XwZG5jRQ/vL3RfCnsEnQGtyzJxkkx09cSQNt2f35ZqAvbNrD8qoyrdWtKEb0bYD+L/Ez+/z28x/jcRi/OGoIohbogHmDda8vou/mStOJT1X8ZFTztZn4k29Im7orRDZbj7oSdSlaijHhw+ihVsFitUMS7CuCBCAysNc5b+WLNDU4X0MtixXorHDjKAKCxlFJpCRaVHqOJHhb5TbOxJ4VsNIJJKilsNwnwy3m7nfTNocfDFd80t6NpYewwLeHCS8ZzkAlp/G26rncL2q9a9dqwtjp root@plnx_arm
+Fingerprint: md5 f8:06:38:2f:b1:1c:32:e1:02:89:77:15:91:c3:74:51
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+attempting to run /mnt/init.sh
+Average number of CPU cycles running mmult in software: 733740
+Average number of CPU cycles running mmult in hardware: 1795635220
+Speed up: 0.000408624
+TEST PASSED
+INIT: Switching to runlevel: 6
+INIT: Sending processes the TERM signal
+Stopping Dropbear SSH server: stopped /usr/sbin/dropbear (pid 1054)
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Stopping syslogd/klogd: no syslogd found; none killed
+Stopping tcf-agent: OK
+Deconfiguring network interfaces... done.
+Sending all processes the TERM signal...
+Sending all processes the KILL signal...
+Unmounting remote filesystems...
+Deactivating swap...
+Unmounting local filesystems...
+Rebooting... reboot: Restarting system
+DONE!
+array_partition/
+rm -f -rf emu .Xil
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/src/main.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/emu/main.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/emu/main.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/emu/main.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/emu/main.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/src/main.cpp"  -sds-hw vadd_accel vadd.cpp -sds-end
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/src/main.cpp:66:9: warning: unused label 'calc_write' [-Wunused-label]
+        calc_write: for(int j=0; j < chunk_size; j++){
+        ^~~~~~~~~~~~
+INFO: [SDSoC 0-0] Compiling /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/src/main.cpp
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/emu/_sds/reports/sds_main.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/src/main.cpp
+ 
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/src/vadd.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/emu/vadd.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/emu/vadd.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/emu/vadd.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/emu/vadd.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/src/vadd.cpp"  -sds-hw vadd_accel vadd.cpp -sds-end
+INFO: [SDSoC 0-0] Processing -sds-hw block for vadd_accel
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/src/vadd.cpp:68:9: warning: unused label 'calc_write' [-Wunused-label]
+        calc_write: for(int j=0; j < chunk_size; j++){
+        ^~~~~~~~~~~~
+INFO: [SDSoC 0-0] Performing accelerator source linting for vadd_accel
+INFO: [SDSoC 0-0] Performing pragma generation
+INFO: [SDSoC 0-0] Successfully generated tcl script: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/emu/_sds/vhls/vadd_accel.tcl
+INFO: [SDSoC 0-0] Moving function vadd_accel to Programmable Logic
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/emu/_sds/reports/sds_vadd.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/src/vadd.cpp
+ 
+mkdir -p emu
+Building Target: emu/vadd_accel.elf
+Trigerring: SDS++ Linker
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -o vadd_accel.elf /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/emu/main.o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/emu/vadd.o -mno-bitstream -mno-boot-files -emulation optimized
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Analyzing object files
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/emu/main.o
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/emu/vadd.o
+INFO: [SDSoC 0-0] Generating data motion network
+INFO: [DMAnalysis 70-0] Analyzing hardware accelerators...
+INFO: [DMAnalysis 70-0] Analyzing callers to hardware accelerators...
+INFO: [DMAnalysis 70-0] Scheduling data transfer graph for partition 0
+INFO: [DMAnalysis 70-0] Creating data motion network hardware for partition 0
+INFO: [DMAnalysis 70-0] Creating software stub functions for partition 0
+INFO: [DMAnalysis 70-0] Generating data motion network report for partition 0
+INFO: [DMAnalysis 70-0] Rewriting caller code
+INFO: [SDSoC 0-0] Creating block diagram (BD), address map, port information and device registration for partition 0 (this may take a few minutes)
+system_linker started at Wed Apr 19 14:42:33 IST 2017
+INFO: [SDSoC 0-0] Copying address map
+INFO: [SDSoC 0-0] Creating emulation files
+... [14:46:27] Starting static elaboration
+... [14:47:21] Starting simulation data flow analysis
+INFO: [SDSoC 0-0] Creating port and device registration data
+system_linker completed at Wed Apr 19 14:47:43 IST 2017
+INFO: [SDSoC 0-0] Software tracing enabled
+INFO: [SDSoC 0-0] Rewrite caller functions
+INFO: [SDSoC 0-0] Compile caller rewrite file /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/emu/_sds/swstubs/main.cpp
+INFO: [SDSoC 0-0] Prepare hardware access API functions
+INFO: [SDSoC 0-0] Create accelerator stub functions
+INFO: [SDSoC 0-0] Compile hardware access API functions
+INFO: [SDSoC 0-0] Compile accelerator stub functions
+INFO: [SDSoC 0-0] Link application ELF file
+INFO: [SDSoC 0-0] Not creating bitstream due to the -mno-bitstream switch
+INFO: [SDSoC 0-0] Calling system_linker for partition 0
+system_linker started at Wed Apr 19 14:47:46 IST 2017
+system_linker completed at Wed Apr 19 14:47:47 IST 2017
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/burst_rw/emu/_sds/reports/sds.log
+
+SDx Completed Building Target: emu/vadd_accel.elf
+ 
+cp /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/utility/emu_run.sh emu/
+cd emu ; ./emu_run.sh vadd_accel.elf
+Starting PL simulation
+Waiting for PL simulation to start........ PL simulation started!
+Starting QEMU
+ - Press <Ctrl-a h> for help 
+
+
+U-Boot 2017.01 (Apr 15 2017 - 14:02:48 -0700)
+
+Model: Zynq ZC706 Development Board
+Board: Xilinx Zynq
+DRAM:  ECC disabled 1 GiB
+MMC:   sdhci@e0100000: 0 (SD)
+SF: Detected n25q128 with page size 256 Bytes, erase size 64 KiB, total 32 MiB
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ZYNQ GEM: e000b000, phyaddr 7, interface rgmii-id
+eth0: ethernet@e000b000
+U-BOOT for zc706
+
+Hit any key to stop autoboot:  4  3  2  1  0 
+Device: sdhci@e0100000
+Manufacturer ID: aa
+OEM: 5859
+Name: QEMU! 
+Tran Speed: 25000000
+Rd Block Len: 512
+SD version 1.0
+High Capacity: No
+Capacity: 488.3 MiB
+Bus Width: 4-bit
+Erase Group Size: 512 Bytes
+reading image.ub
+9940500 bytes read in 923 ms (10.3 MiB/s)
+## Loading kernel from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'kernel@0' kernel subimage
+     Description:  Linux Kernel
+     Type:         Kernel Image
+     Compression:  uncompressed
+     Data Start:   0x100000d4
+     Data Size:    3756728 Bytes = 3.6 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: 0x00008000
+     Entry Point:  0x00008000
+     Hash algo:    sha1
+     Hash value:   645924245114e089dfe8074a489edda9cccab7dd
+   Verifying Hash Integrity ... sha1+ OK
+## Loading ramdisk from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'ramdisk@0' ramdisk subimage
+     Description:  ramdisk
+     Type:         RAMDisk Image
+     Compression:  uncompressed
+     Data Start:   0x10399eac
+     Data Size:    6163320 Bytes = 5.9 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: unavailable
+     Entry Point:  unavailable
+     Hash algo:    sha1
+     Hash value:   a48b3deb4850fd18a02233447413775aa3f0d64c
+   Verifying Hash Integrity ... sha1+ OK
+## Loading fdt from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'fdt@0' fdt subimage
+     Description:  Flattened Device Tree blob
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x10395480
+     Data Size:    18811 Bytes = 18.4 KiB
+     Architecture: ARM
+     Hash algo:    sha1
+     Hash value:   9b7e7520610b155877cfa91cc4c52b6a744da7df
+   Verifying Hash Integrity ... sha1+ OK
+   Booting using the fdt blob at 0x10395480
+   Loading Kernel Image ... OK
+   Loading Ramdisk to 07a1f000, end 07fffb78 ... OK
+   Loading Device Tree to 07a17000, end 07a1e97a ... OK
+
+Starting kernel ...
+
+GIC CPU mask not found - kernel will fail to boot.
+GIC CPU mask not found - kernel will fail to boot.
+Failed to initialize '/amba/timer@f8f00200': -38
+mtd: partition "spare" is out of reach -- disabled
+ULPI integrity check: failed!ci_hdrc ci_hdrc.0: unable to init phy: -19
+cdns-i2c e0004000.i2c: timeout waiting on completion
+rtc-pcf8563 5-0051: pcf8563_write_block_data: err=-110 addr=0e, data=03
+rtc-pcf8563 5-0051: pcf8563_probe: write error
+cdns-i2c e0004000.i2c: timeout waiting on completion
+ucd9000 8-0065: Failed to read device ID
+INIT: version 2.88 booting
+Starting udev
+Populating dev cache
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Sat Apr 15 21:06:32 UTC 2017
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Starting internet superserver: inetd.
+INIT: Entering runlevel: 5
+Configuring network interfaces... udhcpc (v1.24.1) started
+Sending discover...
+Sending select for 10.0.2.15...
+Lease of 10.0.2.15 obtained, lease time 86400
+/etc/udhcpc.d/50default: Adding DNS 10.0.2.3
+done.
+Starting Dropbear SSH server: Generating key, this may take a while...
+Public key portion is:
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzV0FhYVLhEyEQcLUdfusmgNigxvuvtaPAJbiVBzExFqFiijo/UR0UoYjvKO2IKsR2gQh2HOXfHIR43z1LRDFErcKIIzWDbPIFJld0w24QIBK3juJWONzu6PeLn0mzxfB3VHKN+65JctT6ggMoJ2KEi+hrimT8TRV8KLc47mrRUeBbmcGZRGnzf+ojIxSrimGbY5oU7kEFEIYcUuPEx8z39AaPEoxwJH/iSp4m17761KivRvANIXg+Jq4GvDIl5rZRjZ29cvRVzfkkNOy4tUcRDHL7g6Lf+GamcugkJPMBcmxk5Zg8zeymS/7cvid4l2L80hHclO9qo/nb+Ffk2wIR root@plnx_arm
+Fingerprint: md5 c5:b0:f3:e5:f2:ea:c6:8e:d9:65:36:21:9f:39:0e:b7
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+attempting to run /mnt/init.sh
+Average number of CPU cycles running mmult in hardware: 86299076
+10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 
+26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 
+42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 
+58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 
+74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 
+90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 
+106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 
+122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 
+138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 
+154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 
+170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 
+186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 
+202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 
+218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 
+234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 
+250 251 252 253 254 255 256 257 258 259 260 261 262 263 264 265 
+All Device results match CPU results! 
+TEST PASSED.
+INIT: Switching to runlevel: 6
+INIT: Sending processes the TERM signal
+Stopping Dropbear SSH server: stopped /usr/sbin/dropbear (pid 1054)
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Stopping syslogd/klogd: no syslogd found; none killed
+Stopping tcf-agent: OK
+Deconfiguring network interfaces... done.
+Sending all processes the TERM signal...
+Sending all processes the KILL signal...
+Unmounting remote filesystems...
+Deactivating swap...
+Unmounting local filesystems...
+Rebooting... reboot: Restarting system
+DONE!
+burst_rw/
+rm -f -rf emu .Xil
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/src/bitmap.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/bitmap.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/bitmap.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/bitmap.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/bitmap.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/src/bitmap.cpp"  -sds-hw rgb_to_hsv_accel rgb_to_hsv.cpp -sds-end
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+INFO: [SDSoC 0-0] Compiling /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/src/bitmap.cpp
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/_sds/reports/sds_bitmap.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/src/bitmap.cpp
+ 
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/src/main.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/main.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/main.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/main.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/main.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/src/main.cpp"  -sds-hw rgb_to_hsv_accel rgb_to_hsv.cpp -sds-end
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+INFO: [SDSoC 0-0] Compiling /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/src/main.cpp
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/_sds/reports/sds_main.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/src/main.cpp
+ 
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/src/rgb_to_hsv.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/rgb_to_hsv.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/rgb_to_hsv.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/rgb_to_hsv.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/rgb_to_hsv.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/src/rgb_to_hsv.cpp"  -sds-hw rgb_to_hsv_accel rgb_to_hsv.cpp -sds-end
+INFO: [SDSoC 0-0] Processing -sds-hw block for rgb_to_hsv_accel
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/src/rgb_to_hsv.cpp:53:5: warning: unused label 'rgb2hsv_loop' [-Wunused-label]
+    rgb2hsv_loop: for(unsigned int i = 0 ; i < size ; i ++){
+    ^~~~~~~~~~~~~~
+INFO: [SDSoC 0-0] Performing accelerator source linting for rgb_to_hsv_accel
+INFO: [SDSoC 0-0] Performing pragma generation
+INFO: [SDSoC 0-0] Successfully generated tcl script: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/_sds/vhls/rgb_to_hsv_accel.tcl
+INFO: [SDSoC 0-0] Moving function rgb_to_hsv_accel to Programmable Logic
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/_sds/reports/sds_rgb_to_hsv.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/src/rgb_to_hsv.cpp
+ 
+mkdir -p emu
+Building Target: emu/rgb_to_hsv_accel.elf
+Trigerring: SDS++ Linker
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -o rgb_to_hsv_accel.elf /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/bitmap.o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/main.o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/rgb_to_hsv.o -mno-bitstream -mno-boot-files -emulation optimized
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Analyzing object files
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/bitmap.o
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/main.o
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/rgb_to_hsv.o
+INFO: [SDSoC 0-0] Generating data motion network
+INFO: [DMAnalysis 70-0] Analyzing hardware accelerators...
+INFO: [DMAnalysis 70-0] Analyzing callers to hardware accelerators...
+INFO: [DMAnalysis 70-0] Scheduling data transfer graph for partition 0
+INFO: [DMAnalysis 70-0] Creating data motion network hardware for partition 0
+INFO: [DMAnalysis 70-0] Creating software stub functions for partition 0
+INFO: [DMAnalysis 70-0] Generating data motion network report for partition 0
+INFO: [DMAnalysis 70-0] Rewriting caller code
+INFO: [SDSoC 0-0] Creating block diagram (BD), address map, port information and device registration for partition 0 (this may take a few minutes)
+system_linker started at Wed Apr 19 14:49:48 IST 2017
+INFO: [SDSoC 0-0] Copying address map
+INFO: [SDSoC 0-0] Creating emulation files
+... [14:53:42] Starting static elaboration
+... [14:54:38] Starting simulation data flow analysis
+INFO: [SDSoC 0-0] Creating port and device registration data
+system_linker completed at Wed Apr 19 14:54:56 IST 2017
+INFO: [SDSoC 0-0] Software tracing enabled
+INFO: [SDSoC 0-0] Rewrite caller functions
+INFO: [SDSoC 0-0] Compile caller rewrite file /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/_sds/swstubs/main.cpp
+INFO: [SDSoC 0-0] Prepare hardware access API functions
+INFO: [SDSoC 0-0] Create accelerator stub functions
+INFO: [SDSoC 0-0] Compile hardware access API functions
+INFO: [SDSoC 0-0] Compile accelerator stub functions
+rgb_to_hsv.cpp:53:5: warning: label ‘rgb2hsv_loop’ defined but not used [-Wunused-label]
+     rgb2hsv_loop: for(unsigned int i = 0 ; i < size ; i ++){
+     ^~~~~~~~~~~~
+INFO: [SDSoC 0-0] Link application ELF file
+INFO: [SDSoC 0-0] Not creating bitstream due to the -mno-bitstream switch
+INFO: [SDSoC 0-0] Calling system_linker for partition 0
+system_linker started at Wed Apr 19 14:54:59 IST 2017
+system_linker completed at Wed Apr 19 14:55:00 IST 2017
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/custom_data_type/emu/_sds/reports/sds.log
+
+SDx Completed Building Target: emu/rgb_to_hsv_accel.elf
+ 
+cp /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/utility/emu_run.sh emu/
+cd emu ; ./emu_run.sh rgb_to_hsv_accel.elf
+Starting PL simulation
+Waiting for PL simulation to start....... PL simulation started!
+Starting QEMU
+ - Press <Ctrl-a h> for help 
+
+
+U-Boot 2017.01 (Apr 15 2017 - 14:02:48 -0700)
+
+Model: Zynq ZC706 Development Board
+Board: Xilinx Zynq
+DRAM:  ECC disabled 1 GiB
+MMC:   sdhci@e0100000: 0 (SD)
+SF: Detected n25q128 with page size 256 Bytes, erase size 64 KiB, total 32 MiB
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ZYNQ GEM: e000b000, phyaddr 7, interface rgmii-id
+eth0: ethernet@e000b000
+U-BOOT for zc706
+
+Hit any key to stop autoboot:  4  3  2  1  0 
+Device: sdhci@e0100000
+Manufacturer ID: aa
+OEM: 5859
+Name: QEMU! 
+Tran Speed: 25000000
+Rd Block Len: 512
+SD version 1.0
+High Capacity: No
+Capacity: 488.3 MiB
+Bus Width: 4-bit
+Erase Group Size: 512 Bytes
+reading image.ub
+9940500 bytes read in 936 ms (10.1 MiB/s)
+## Loading kernel from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'kernel@0' kernel subimage
+     Description:  Linux Kernel
+     Type:         Kernel Image
+     Compression:  uncompressed
+     Data Start:   0x100000d4
+     Data Size:    3756728 Bytes = 3.6 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: 0x00008000
+     Entry Point:  0x00008000
+     Hash algo:    sha1
+     Hash value:   645924245114e089dfe8074a489edda9cccab7dd
+   Verifying Hash Integrity ... sha1+ OK
+## Loading ramdisk from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'ramdisk@0' ramdisk subimage
+     Description:  ramdisk
+     Type:         RAMDisk Image
+     Compression:  uncompressed
+     Data Start:   0x10399eac
+     Data Size:    6163320 Bytes = 5.9 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: unavailable
+     Entry Point:  unavailable
+     Hash algo:    sha1
+     Hash value:   a48b3deb4850fd18a02233447413775aa3f0d64c
+   Verifying Hash Integrity ... sha1+ OK
+## Loading fdt from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'fdt@0' fdt subimage
+     Description:  Flattened Device Tree blob
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x10395480
+     Data Size:    18811 Bytes = 18.4 KiB
+     Architecture: ARM
+     Hash algo:    sha1
+     Hash value:   9b7e7520610b155877cfa91cc4c52b6a744da7df
+   Verifying Hash Integrity ... sha1+ OK
+   Booting using the fdt blob at 0x10395480
+   Loading Kernel Image ... OK
+   Loading Ramdisk to 07a1f000, end 07fffb78 ... OK
+   Loading Device Tree to 07a17000, end 07a1e97a ... OK
+
+Starting kernel ...
+
+GIC CPU mask not found - kernel will fail to boot.
+GIC CPU mask not found - kernel will fail to boot.
+Failed to initialize '/amba/timer@f8f00200': -38
+mtd: partition "spare" is out of reach -- disabled
+ULPI integrity check: failed!ci_hdrc ci_hdrc.0: unable to init phy: -19
+cdns-i2c e0004000.i2c: timeout waiting on completion
+rtc-pcf8563 5-0051: pcf8563_write_block_data: err=-110 addr=0e, data=03
+rtc-pcf8563 5-0051: pcf8563_probe: write error
+cdns-i2c e0004000.i2c: timeout waiting on completion
+ucd9000 8-0065: Failed to read device ID
+INIT: version 2.88 booting
+Starting udev
+Populating dev cache
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Sat Apr 15 21:06:32 UTC 2017
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Starting internet superserver: inetd.
+INIT: Entering runlevel: 5
+Configuring network interfaces... udhcpc (v1.24.1) started
+Sending discover...
+Sending discover...
+Sending select for 10.0.2.15...
+Lease of 10.0.2.15 obtained, lease time 86400
+/etc/udhcpc.d/50default: Adding DNS 10.0.2.3
+done.
+Starting Dropbear SSH server: Generating key, this may take a while...
+Public key portion is:
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6I4PxM6/G6LR8vKsRlBm/EOh8KzHyrmrCGRFIyLRTkeO4CCok6TC/9eLkc1WX7RX9QT6+2ZVJGVmVikxDfqZdgQWk70joafR0TSyjAsEljaNLR7W8Yw+JYVaIG8uZdsUUUCi4DKClUQou/9vkp0T/gPmNvCBlM9W/XMtq7FDWMcVqYzZrLWCQPYN9Ua82A0vSv2oSlk0XXdmTUhM6SGUb/EK/oIOh2vZaA67KF/Q2zosGifoVTmUNhXCiiGCYjaCXgCMK66fEs4rK+oKgSrmpofrOAgKMwNPZIqcYdcYNErdd5vr9r80EYpE4Pk7bLj+Hcxy7bgWGpKLYndW1FAz7 root@plnx_arm
+Fingerprint: md5 2f:96:f7:5f:23:5b:8d:a3:7d:74:c4:3f:3e:bb:72:38
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+attempting to run /mnt/init.sh
+Average number of CPU cycles running mmult in software: 3114476
+Average number of CPU cycles running mmult in hardware: 10144926342
+Speed up: 0.000306998
+TEST PASSED.
+INIT: Switching to runlevel: 6
+INIT: Sending processes the TERM signal
+Stopping Dropbear SSH server: stopped /usr/sbin/dropbear (pid 1054)
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Stopping syslogd/klogd: no syslogd found; none killed
+Stopping tcf-agent: OK
+Deconfiguring network interfaces... done.
+Sending all processes the TERM signal...
+Sending all processes the KILL signal...
+Unmounting remote filesystems...
+Deactivating swap...
+Unmounting local filesystems...
+Rebooting... reboot: Restarting system
+DONE!
+custom_data_type/
+rm -f -rf emu .Xil
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/src/main.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/main.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/main.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/main.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/main.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/src/main.cpp"  -sds-hw mean_value_accel mean_value.cpp -sds-end
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+INFO: [SDSoC 0-0] Compiling /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/src/main.cpp
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/_sds/reports/sds_main.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/src/main.cpp
+ 
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/src/mean_value.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/mean_value.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/mean_value.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/mean_value.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/mean_value.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/src/mean_value.cpp"  -sds-hw mean_value_accel mean_value.cpp -sds-end
+INFO: [SDSoC 0-0] Processing -sds-hw block for mean_value_accel
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/include/hls_fpo.h:62:2: warning: "Xilinx Floating Point Operator IP core does not provide simulation models for ARM architecture.  Automatically defining HLS_NO_XIL_FPO_LIB in order to avoid this library dependency, although bit-accurate simulation of some functions is no longer possible.  You can make this warning go away by adding this define yourself before including any other files."  [-W#warnings]
+#warning "Xilinx Floating Point Operator IP core does not provide simulation models for ARM architecture.  Automatically defining HLS_NO_XIL_FPO_LIB in order to avoid this library dependency, although bit-accurate simulation of some functions is no longer possible.  You can make this warning go away by adding this define yourself before including any other files." 
+ ^
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/src/mean_value.cpp:93:5: warning: unused label 'output_write' [-Wunused-label]
+    output_write:for (int i = 0 ; i < size ; i++){
+    ^~~~~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/src/mean_value.cpp:62:5: warning: unused label 'input_read' [-Wunused-label]
+    input_read:for (int i = 0 ; i < size ; i++){
+    ^~~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/src/mean_value.cpp:69:5: warning: unused label 'calc_mv' [-Wunused-label]
+    calc_mv:for (int i = 1 ; i < size -1 ; i++) {
+    ^~~~~~~~
+INFO: [SDSoC 0-0] Performing accelerator source linting for mean_value_accel
+INFO: [SDSoC 0-0] Performing pragma generation
+INFO: [SDSoC 0-0] Successfully generated tcl script: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/_sds/vhls/mean_value_accel.tcl
+INFO: [SDSoC 0-0] Moving function mean_value_accel to Programmable Logic
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/_sds/reports/sds_mean_value.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/src/mean_value.cpp
+ 
+mkdir -p emu
+Building Target: emu/mean_value_accel.elf
+Trigerring: SDS++ Linker
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -o mean_value_accel.elf /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/main.o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/mean_value.o -mno-bitstream -mno-boot-files -emulation optimized
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Analyzing object files
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/main.o
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/mean_value.o
+INFO: [SDSoC 0-0] Generating data motion network
+INFO: [DMAnalysis 70-0] Analyzing hardware accelerators...
+INFO: [DMAnalysis 70-0] Analyzing callers to hardware accelerators...
+INFO: [DMAnalysis 70-0] Scheduling data transfer graph for partition 0
+INFO: [DMAnalysis 70-0] Creating data motion network hardware for partition 0
+INFO: [DMAnalysis 70-0] Creating software stub functions for partition 0
+INFO: [DMAnalysis 70-0] Generating data motion network report for partition 0
+INFO: [DMAnalysis 70-0] Rewriting caller code
+INFO: [SDSoC 0-0] Creating block diagram (BD), address map, port information and device registration for partition 0 (this may take a few minutes)
+system_linker started at Wed Apr 19 14:57:59 IST 2017
+INFO: [SDSoC 0-0] Copying address map
+INFO: [SDSoC 0-0] Creating emulation files
+... [15:01:54] Starting static elaboration
+... [15:02:49] Starting simulation data flow analysis
+INFO: [SDSoC 0-0] Creating port and device registration data
+system_linker completed at Wed Apr 19 15:03:08 IST 2017
+INFO: [SDSoC 0-0] Software tracing enabled
+INFO: [SDSoC 0-0] Rewrite caller functions
+INFO: [SDSoC 0-0] Compile caller rewrite file /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/_sds/swstubs/main.cpp
+INFO: [SDSoC 0-0] Prepare hardware access API functions
+INFO: [SDSoC 0-0] Create accelerator stub functions
+INFO: [SDSoC 0-0] Compile hardware access API functions
+INFO: [SDSoC 0-0] Compile accelerator stub functions
+                 from /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/include/ap_int.h:74,
+                 from mean_value.cpp:51:
+/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/include/hls_fpo.h:62:2: warning: #warning "Xilinx Floating Point Operator IP core does not provide simulation models for ARM architecture.  Automatically defining HLS_NO_XIL_FPO_LIB in order to avoid this library dependency, although bit-accurate simulation of some functions is no longer possible.  You can make this warning go away by adding this define yourself before including any other files." [-Wcpp]
+ #warning "Xilinx Floating Point Operator IP core does not provide simulation models for ARM architecture.  Automatically defining HLS_NO_XIL_FPO_LIB in order to avoid this library dependency, although bit-accurate simulation of some functions is no longer possible.  You can make this warning go away by adding this define yourself before including any other files."
+  ^~~~~~~
+mean_value.cpp:69:5: warning: label ‘calc_mv’ defined but not used [-Wunused-label]
+     calc_mv:for (int i = 1 ; i < size -1 ; i++) {
+     ^~~~~~~
+mean_value.cpp:93:5: warning: label ‘output_write’ defined but not used [-Wunused-label]
+     output_write:for (int i = 0 ; i < size ; i++){
+     ^~~~~~~~~~~~
+INFO: [SDSoC 0-0] Link application ELF file
+INFO: [SDSoC 0-0] Not creating bitstream due to the -mno-bitstream switch
+INFO: [SDSoC 0-0] Calling system_linker for partition 0
+system_linker started at Wed Apr 19 15:03:13 IST 2017
+system_linker completed at Wed Apr 19 15:03:15 IST 2017
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/_sds/reports/sds.log
+
+SDx Completed Building Target: emu/mean_value_accel.elf
+ 
+cp /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/utility/emu_run.sh emu/
+cd emu ; ./emu_run.sh mean_value_accel.elf
+Starting PL simulation
+Waiting for PL simulation to start....... PL simulation started!
+Starting QEMU
+ - Press <Ctrl-a h> for help 
+
+
+U-Boot 2017.01 (Apr 15 2017 - 14:02:48 -0700)
+
+Model: Zynq ZC706 Development Board
+Board: Xilinx Zynq
+DRAM:  ECC disabled 1 GiB
+MMC:   sdhci@e0100000: 0 (SD)
+SF: Detected n25q128 with page size 256 Bytes, erase size 64 KiB, total 32 MiB
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ZYNQ GEM: e000b000, phyaddr 7, interface rgmii-id
+eth0: ethernet@e000b000
+U-BOOT for zc706
+
+Hit any key to stop autoboot:  4  3  2  1  0 
+Device: sdhci@e0100000
+Manufacturer ID: aa
+OEM: 5859
+Name: QEMU! 
+Tran Speed: 25000000
+Rd Block Len: 512
+SD version 1.0
+High Capacity: No
+Capacity: 488.3 MiB
+Bus Width: 4-bit
+Erase Group Size: 512 Bytes
+reading image.ub
+9940500 bytes read in 922 ms (10.3 MiB/s)
+## Loading kernel from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'kernel@0' kernel subimage
+     Description:  Linux Kernel
+     Type:         Kernel Image
+     Compression:  uncompressed
+     Data Start:   0x100000d4
+     Data Size:    3756728 Bytes = 3.6 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: 0x00008000
+     Entry Point:  0x00008000
+     Hash algo:    sha1
+     Hash value:   645924245114e089dfe8074a489edda9cccab7dd
+   Verifying Hash Integrity ... sha1+ OK
+## Loading ramdisk from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'ramdisk@0' ramdisk subimage
+     Description:  ramdisk
+     Type:         RAMDisk Image
+     Compression:  uncompressed
+     Data Start:   0x10399eac
+     Data Size:    6163320 Bytes = 5.9 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: unavailable
+     Entry Point:  unavailable
+     Hash algo:    sha1
+     Hash value:   a48b3deb4850fd18a02233447413775aa3f0d64c
+   Verifying Hash Integrity ... sha1+ OK
+## Loading fdt from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'fdt@0' fdt subimage
+     Description:  Flattened Device Tree blob
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x10395480
+     Data Size:    18811 Bytes = 18.4 KiB
+     Architecture: ARM
+     Hash algo:    sha1
+     Hash value:   9b7e7520610b155877cfa91cc4c52b6a744da7df
+   Verifying Hash Integrity ... sha1+ OK
+   Booting using the fdt blob at 0x10395480
+   Loading Kernel Image ... OK
+   Loading Ramdisk to 07a1f000, end 07fffb78 ... OK
+   Loading Device Tree to 07a17000, end 07a1e97a ... OK
+
+Starting kernel ...
+
+GIC CPU mask not found - kernel will fail to boot.
+GIC CPU mask not found - kernel will fail to boot.
+Failed to initialize '/amba/timer@f8f00200': -38
+mtd: partition "spare" is out of reach -- disabled
+ULPI integrity check: failed!ci_hdrc ci_hdrc.0: unable to init phy: -19
+cdns-i2c e0004000.i2c: timeout waiting on completion
+rtc-pcf8563 5-0051: pcf8563_write_block_data: err=-110 addr=0e, data=03
+rtc-pcf8563 5-0051: pcf8563_probe: write error
+cdns-i2c e0004000.i2c: timeout waiting on completion
+ucd9000 8-0065: Failed to read device ID
+INIT: version 2.88 booting
+Starting udev
+Populating dev cache
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Sat Apr 15 21:06:32 UTC 2017
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Starting internet superserver: inetd.
+INIT: Entering runlevel: 5
+Configuring network interfaces... udhcpc (v1.24.1) started
+Sending discover...
+Sending discover...
+Sending select for 10.0.2.15...
+Lease of 10.0.2.15 obtained, lease time 86400
+/etc/udhcpc.d/50default: Adding DNS 10.0.2.3
+done.
+Starting Dropbear SSH server: Generating key, this may take a while...
+Public key portion is:
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCFh4eNKlh664zfRYgMnjXV/2vv1NgnPDHETj55BX7ieVnVry5IfXoLScGEtnsjt8fs9Ydlrfiu2XzVXDABHXHgoy+utlJE1VYMpCfy0EKEpfH6I7QaIIINctBMIzXSoKbfTntewy5Psz3Z7wdKlc3ouvUhGxPB0gYwnXzzLQxtDb+G9Iusih14N6OWsrhXTxfgSVvZm+r1TLg+6I7D/W4qrKpST/JccpNC2bnIRIQWfIWUQ3rXtuiRv7FiZuUE0YCVm4rd9AKnb7JKoac9vMNMlBcjC8zF4LLB3LLsh/dE48yG7d3VEtRB+fNlJWezAVJWtE3FlV3IlVnV18FG70+f root@plnx_arm
+Fingerprint: md5 f6:c6:e8:3e:bb:37:f1:1c:ae:97:4d:5a:8a:94:9e:4f
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+attempting to run /mnt/init.sh
+Average number of CPU cycles running mmult in hardware: 213039940
+Result = 
+150 135 139 100 150 136 188 117 160 144 187 199 221 240 182 140 
+129 134 175 119 169 163 201 163 116 84 78 65 103 137 171 152 
+102 55 82 81 106 100 113 96 73 45 40 38 114 138 179 159 
+187 184 193 186 177 139 93 38 53 86 103 71 53 104 138 155 
+160 135 152 96 150 180 193 139 55 63 92 170 201 187 159 133 
+116 97 63 123 151 157 162 120 158 95 106 126 114 159 111 104 
+40 94 115 190 189 223 159 159 116 167 160 148 98 63 110 129 
+160 174 167 141 161 159 176 149 169 112 105 113 187 217 218 141 
+141 163 162 160 131 150 149 163 147 138 140 161 117 81 120 106 
+85 32 77 75 106 83 140 105 110 75 134 127 122 96 98 93 
+90 90 82 51 70 61 129 133 200 184 208 147 95 72 83 95 
+105 161 170 126 74 54 61 100 130 110 56 81 122 155 175 127 
+160 87 93 60 63 136 108 179 151 146 70 75 134 153 170 154 
+144 86 110 133 140 86 63 100 111 120 97 149 190 187 105 95 
+103 113 70 82 79 93 91 145 154 161 136 118 59 51 102 119 
+137 127 167 193 213 231 208 155 95 50 48 115 152 153 125 123 
+TEST PASSED.
+INIT: Switching to runlevel: 6
+INIT: Sending processes the TERM signal
+Stopping Dropbear SSH server: stopped /usr/sbin/dropbear (pid 1054)
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Stopping syslogd/klogd: no syslogd found; none killed
+Stopping tcf-agent: OK
+Deconfiguring network interfaces... done.
+Sending all processes the TERM signal...
+Sending all processes the KILL signal...
+Unmounting remote filesystems...
+Deactivating swap...
+Unmounting local filesystems...
+Rebooting... reboot: Restarting system
+DONE!
+dependence_inter/
+rm -f -rf emu .Xil
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/main.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/main.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/main.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/main.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/main.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/main.cpp"  -sds-hw mmult_accel mmult.cpp -sds-end
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+INFO: [SDSoC 0-0] Compiling /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/main.cpp
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/reports/sds_main.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/main.cpp
+ 
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/mmult.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/mmult.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/mmult.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/mmult.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp"  -sds-hw mmult_accel mmult.cpp -sds-end
+INFO: [SDSoC 0-0] Processing -sds-hw block for mmult_accel
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp:58:2: warning: unused label 'read_data_a' [-Wunused-label]
+        read_data_a: for (int i = 0 ; i < matrix_size ; i++){
+        ^~~~~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp:72:2: warning: unused label 'read_data_b' [-Wunused-label]
+        read_data_b: for (int i = 0, x=0, y=0; i < matrix_size ; i++){
+        ^~~~~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp:86:2: warning: unused label 'matrix_mult' [-Wunused-label]
+        matrix_mult: for (int row = 0; row < size; row++) {
+        ^~~~~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp:102:2: warning: unused label 'write_data' [-Wunused-label]
+        write_data: for (int i = 0 ; i < matrix_size ; i++){
+        ^~~~~~~~~~~~
+INFO: [SDSoC 0-0] Performing accelerator source linting for mmult_accel
+INFO: [SDSoC 0-0] Performing pragma generation
+INFO: [SDSoC 0-0] Successfully generated tcl script: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel.tcl
+INFO: [SDSoC 0-0] Moving function mmult_accel to Programmable Logic
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/reports/sds_mmult.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp
+ 
+mkdir -p emu
+Building Target: emu/mmult_accel.elf
+Trigerring: SDS++ Linker
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -o mmult_accel.elf /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/main.o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/mmult.o -mno-bitstream -mno-boot-files -emulation optimized
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Analyzing object files
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/main.o
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/mmult.o
+INFO: [SDSoC 0-0] Generating data motion network
+INFO: [DMAnalysis 70-0] Analyzing hardware accelerators...
+INFO: [DMAnalysis 70-0] Analyzing callers to hardware accelerators...
+INFO: [DMAnalysis 70-0] Scheduling data transfer graph for partition 0
+INFO: [DMAnalysis 70-0] Creating data motion network hardware for partition 0
+INFO: [DMAnalysis 70-0] Creating software stub functions for partition 0
+INFO: [DMAnalysis 70-0] Generating data motion network report for partition 0
+INFO: [DMAnalysis 70-0] Rewriting caller code
+INFO: [SDSoC 0-0] Creating block diagram (BD), address map, port information and device registration for partition 0 (this may take a few minutes)
+system_linker started at Wed Apr 19 15:05:18 IST 2017
+INFO: [SDSoC 0-0] Copying address map
+INFO: [SDSoC 0-0] Creating emulation files
+... [15:09:13] Starting static elaboration
+... [15:10:08] Starting simulation data flow analysis
+INFO: [SDSoC 0-0] Creating port and device registration data
+system_linker completed at Wed Apr 19 15:10:29 IST 2017
+INFO: [SDSoC 0-0] Software tracing enabled
+INFO: [SDSoC 0-0] Rewrite caller functions
+INFO: [SDSoC 0-0] Compile caller rewrite file /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/swstubs/main.cpp
+INFO: [SDSoC 0-0] Prepare hardware access API functions
+INFO: [SDSoC 0-0] Create accelerator stub functions
+INFO: [SDSoC 0-0] Compile hardware access API functions
+INFO: [SDSoC 0-0] Compile accelerator stub functions
+mmult.cpp:72:2: warning: label ‘read_data_b’ defined but not used [-Wunused-label]
+  read_data_b: for (int i = 0, x=0, y=0; i < matrix_size ; i++){
+  ^~~~~~~~~~~
+mmult.cpp:86:2: warning: label ‘matrix_mult’ defined but not used [-Wunused-label]
+  matrix_mult: for (int row = 0; row < size; row++) {
+  ^~~~~~~~~~~
+mmult.cpp:102:2: warning: label ‘write_data’ defined but not used [-Wunused-label]
+  write_data: for (int i = 0 ; i < matrix_size ; i++){
+  ^~~~~~~~~~
+INFO: [SDSoC 0-0] Link application ELF file
+INFO: [SDSoC 0-0] Not creating bitstream due to the -mno-bitstream switch
+INFO: [SDSoC 0-0] Calling system_linker for partition 0
+system_linker started at Wed Apr 19 15:10:32 IST 2017
+system_linker completed at Wed Apr 19 15:10:33 IST 2017
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/reports/sds.log
+
+SDx Completed Building Target: emu/mmult_accel.elf
+ 
+cp /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/utility/emu_run.sh emu/
+cd emu ; ./emu_run.sh mmult_accel.elf
+Starting PL simulation
+Waiting for PL simulation to start....... PL simulation started!
+Starting QEMU
+ - Press <Ctrl-a h> for help 
+
+
+U-Boot 2017.01 (Apr 15 2017 - 14:02:48 -0700)
+
+Model: Zynq ZC706 Development Board
+Board: Xilinx Zynq
+DRAM:  ECC disabled 1 GiB
+MMC:   sdhci@e0100000: 0 (SD)
+SF: Detected n25q128 with page size 256 Bytes, erase size 64 KiB, total 32 MiB
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ZYNQ GEM: e000b000, phyaddr 7, interface rgmii-id
+eth0: ethernet@e000b000
+U-BOOT for zc706
+
+Hit any key to stop autoboot:  4  3  2  1  0 
+Device: sdhci@e0100000
+Manufacturer ID: aa
+OEM: 5859
+Name: QEMU! 
+Tran Speed: 25000000
+Rd Block Len: 512
+SD version 1.0
+High Capacity: No
+Capacity: 488.3 MiB
+Bus Width: 4-bit
+Erase Group Size: 512 Bytes
+reading image.ub
+9940500 bytes read in 919 ms (10.3 MiB/s)
+## Loading kernel from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'kernel@0' kernel subimage
+     Description:  Linux Kernel
+     Type:         Kernel Image
+     Compression:  uncompressed
+     Data Start:   0x100000d4
+     Data Size:    3756728 Bytes = 3.6 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: 0x00008000
+     Entry Point:  0x00008000
+     Hash algo:    sha1
+     Hash value:   645924245114e089dfe8074a489edda9cccab7dd
+   Verifying Hash Integrity ... sha1+ OK
+## Loading ramdisk from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'ramdisk@0' ramdisk subimage
+     Description:  ramdisk
+     Type:         RAMDisk Image
+     Compression:  uncompressed
+     Data Start:   0x10399eac
+     Data Size:    6163320 Bytes = 5.9 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: unavailable
+     Entry Point:  unavailable
+     Hash algo:    sha1
+     Hash value:   a48b3deb4850fd18a02233447413775aa3f0d64c
+   Verifying Hash Integrity ... sha1+ OK
+## Loading fdt from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'fdt@0' fdt subimage
+     Description:  Flattened Device Tree blob
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x10395480
+     Data Size:    18811 Bytes = 18.4 KiB
+     Architecture: ARM
+     Hash algo:    sha1
+     Hash value:   9b7e7520610b155877cfa91cc4c52b6a744da7df
+   Verifying Hash Integrity ... sha1+ OK
+   Booting using the fdt blob at 0x10395480
+   Loading Kernel Image ... OK
+   Loading Ramdisk to 07a1f000, end 07fffb78 ... OK
+   Loading Device Tree to 07a17000, end 07a1e97a ... OK
+
+Starting kernel ...
+
+GIC CPU mask not found - kernel will fail to boot.
+GIC CPU mask not found - kernel will fail to boot.
+Failed to initialize '/amba/timer@f8f00200': -38
+mtd: partition "spare" is out of reach -- disabled
+ULPI integrity check: failed!ci_hdrc ci_hdrc.0: unable to init phy: -19
+cdns-i2c e0004000.i2c: timeout waiting on completion
+rtc-pcf8563 5-0051: pcf8563_write_block_data: err=-110 addr=0e, data=03
+rtc-pcf8563 5-0051: pcf8563_probe: write error
+cdns-i2c e0004000.i2c: timeout waiting on completion
+ucd9000 8-0065: Failed to read device ID
+INIT: version 2.88 booting
+Starting udev
+Populating dev cache
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Sat Apr 15 21:06:32 UTC 2017
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Starting internet superserver: inetd.
+INIT: Entering runlevel: 5
+Configuring network interfaces... udhcpc (v1.24.1) started
+Sending discover...
+Sending discover...
+Sending select for 10.0.2.15...
+Lease of 10.0.2.15 obtained, lease time 86400
+/etc/udhcpc.d/50default: Adding DNS 10.0.2.3
+done.
+Starting Dropbear SSH server: Generating key, this may take a while...
+Public key portion is:
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzCF2FmaPpUHJBUULLWz2dTwCUQabY5Ys0Dt/YtCfC2p8npTPkdZR7TD07FHQELmL7rfa1EUpMdT6NOT7qXVNSP1jcn4bfN5prVfU8h+VvFVLGJWgbO7K8i4esVPAWProOpO+JdorV1DVt0Qh30De6rsOQTVgKUxJ4NJNOvsknuzWHGoxxu0uNMF289lYiwnpTDU/EvqoI7/KjB9N9355NqQqSDUVzVwKuqfyi/hTVu2ppNw9yBkbfVsDnoKnQtj9zn7WQuJOUYjYZkXhlOT7sRcIuQRw9Y77QasFz3Xq7ZJdxScRLEkfbrx1UAzrE2e660/jMh5khqo2moWfE05eP root@plnx_arm
+Fingerprint: md5 a8:56:4a:c8:88:0a:5a:e8:76:7c:28:d5:54:ef:38:9a
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+attempting to run /mnt/init.sh
+Average number of CPU cycles running mmult in hardware: 140900558
+Result = 
+1120 1148 1176 1204 1232 1260 1288 1316 2912 3004 3096 3188 3280 3372 3464 3556 
+4704 4860 5016 5172 5328 5484 5640 5796 6496 6716 6936 7156 7376 7596 7816 8036 
+8288 8572 8856 9140 9424 9708 9992 10276 10080 10428 10776 11124 11472 11820 12168 12516 
+11872 12284 12696 13108 13520 13932 14344 14756 13664 14140 14616 15092 15568 16044 16520 16996 
+TEST PASSED.
+INIT: Switching to runlevel: 6
+INIT: Sending processes the TERM signal
+Stopping Dropbear SSH server: stopped /usr/sbin/dropbear (pid 1054)
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Stopping syslogd/klogd: no syslogd found; none killed
+Stopping tcf-agent: OK
+Deconfiguring network interfaces... done.
+Sending all processes the TERM signal...
+Sending all processes the KILL signal...
+Unmounting remote filesystems...
+Deactivating swap...
+Unmounting local filesystems...
+Rebooting... reboot: Restarting system
+DONE!
+full_array_2d/
+rm -f -rf emu .Xil
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/src/main.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/emu/main.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/emu/main.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/emu/main.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/emu/main.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/src/main.cpp"  -sds-hw vadd_accel vadd.cpp -sds-end
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+INFO: [SDSoC 0-0] Compiling /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/src/main.cpp
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/emu/_sds/reports/sds_main.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/src/main.cpp
+ 
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/src/vadd.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/emu/vadd.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/emu/vadd.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/emu/vadd.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/emu/vadd.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/src/vadd.cpp"  -sds-hw vadd_accel vadd.cpp -sds-end
+INFO: [SDSoC 0-0] Processing -sds-hw block for vadd_accel
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/src/vadd.cpp:89:9: warning: unused label 'vadd' [-Wunused-label]
+        vadd: for (int j = 0 ; j < chunk_size; j ++){
+        ^~~~~~
+INFO: [SDSoC 0-0] Performing accelerator source linting for vadd_accel
+INFO: [SDSoC 0-0] Performing pragma generation
+INFO: [SDSoC 0-0] Successfully generated tcl script: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/emu/_sds/vhls/vadd_accel.tcl
+INFO: [SDSoC 0-0] Moving function vadd_accel to Programmable Logic
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/emu/_sds/reports/sds_vadd.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/src/vadd.cpp
+ 
+mkdir -p emu
+Building Target: emu/vadd_accel.elf
+Trigerring: SDS++ Linker
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -o vadd_accel.elf /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/emu/main.o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/emu/vadd.o -mno-bitstream -mno-boot-files -emulation optimized
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Analyzing object files
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/emu/main.o
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/emu/vadd.o
+INFO: [SDSoC 0-0] Generating data motion network
+INFO: [DMAnalysis 70-0] Analyzing hardware accelerators...
+INFO: [DMAnalysis 70-0] Analyzing callers to hardware accelerators...
+INFO: [DMAnalysis 70-0] Scheduling data transfer graph for partition 0
+INFO: [DMAnalysis 70-0] Creating data motion network hardware for partition 0
+INFO: [DMAnalysis 70-0] Creating software stub functions for partition 0
+INFO: [DMAnalysis 70-0] Generating data motion network report for partition 0
+INFO: [DMAnalysis 70-0] Rewriting caller code
+INFO: [SDSoC 0-0] Creating block diagram (BD), address map, port information and device registration for partition 0 (this may take a few minutes)
+system_linker started at Wed Apr 19 15:12:32 IST 2017
+INFO: [SDSoC 0-0] Copying address map
+INFO: [SDSoC 0-0] Creating emulation files
+... [15:16:23] Starting static elaboration
+... [15:17:18] Starting simulation data flow analysis
+INFO: [SDSoC 0-0] Creating port and device registration data
+system_linker completed at Wed Apr 19 15:17:38 IST 2017
+INFO: [SDSoC 0-0] Software tracing enabled
+INFO: [SDSoC 0-0] Rewrite caller functions
+INFO: [SDSoC 0-0] Compile caller rewrite file /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/emu/_sds/swstubs/main.cpp
+INFO: [SDSoC 0-0] Prepare hardware access API functions
+INFO: [SDSoC 0-0] Create accelerator stub functions
+INFO: [SDSoC 0-0] Compile hardware access API functions
+INFO: [SDSoC 0-0] Compile accelerator stub functions
+INFO: [SDSoC 0-0] Link application ELF file
+INFO: [SDSoC 0-0] Not creating bitstream due to the -mno-bitstream switch
+INFO: [SDSoC 0-0] Calling system_linker for partition 0
+system_linker started at Wed Apr 19 15:17:41 IST 2017
+system_linker completed at Wed Apr 19 15:17:42 IST 2017
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/lmem_2rw/emu/_sds/reports/sds.log
+
+SDx Completed Building Target: emu/vadd_accel.elf
+ 
+cp /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/utility/emu_run.sh emu/
+cd emu ; ./emu_run.sh vadd_accel.elf
+Starting PL simulation
+Waiting for PL simulation to start....... PL simulation started!
+Starting QEMU
+ - Press <Ctrl-a h> for help 
+
+
+U-Boot 2017.01 (Apr 15 2017 - 14:02:48 -0700)
+
+Model: Zynq ZC706 Development Board
+Board: Xilinx Zynq
+DRAM:  ECC disabled 1 GiB
+MMC:   sdhci@e0100000: 0 (SD)
+SF: Detected n25q128 with page size 256 Bytes, erase size 64 KiB, total 32 MiB
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ZYNQ GEM: e000b000, phyaddr 7, interface rgmii-id
+eth0: ethernet@e000b000
+U-BOOT for zc706
+
+Hit any key to stop autoboot:  4  3  2  1  0 
+Device: sdhci@e0100000
+Manufacturer ID: aa
+OEM: 5859
+Name: QEMU! 
+Tran Speed: 25000000
+Rd Block Len: 512
+SD version 1.0
+High Capacity: No
+Capacity: 488.3 MiB
+Bus Width: 4-bit
+Erase Group Size: 512 Bytes
+reading image.ub
+9940500 bytes read in 905 ms (10.5 MiB/s)
+## Loading kernel from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'kernel@0' kernel subimage
+     Description:  Linux Kernel
+     Type:         Kernel Image
+     Compression:  uncompressed
+     Data Start:   0x100000d4
+     Data Size:    3756728 Bytes = 3.6 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: 0x00008000
+     Entry Point:  0x00008000
+     Hash algo:    sha1
+     Hash value:   645924245114e089dfe8074a489edda9cccab7dd
+   Verifying Hash Integrity ... sha1+ OK
+## Loading ramdisk from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'ramdisk@0' ramdisk subimage
+     Description:  ramdisk
+     Type:         RAMDisk Image
+     Compression:  uncompressed
+     Data Start:   0x10399eac
+     Data Size:    6163320 Bytes = 5.9 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: unavailable
+     Entry Point:  unavailable
+     Hash algo:    sha1
+     Hash value:   a48b3deb4850fd18a02233447413775aa3f0d64c
+   Verifying Hash Integrity ... sha1+ OK
+## Loading fdt from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'fdt@0' fdt subimage
+     Description:  Flattened Device Tree blob
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x10395480
+     Data Size:    18811 Bytes = 18.4 KiB
+     Architecture: ARM
+     Hash algo:    sha1
+     Hash value:   9b7e7520610b155877cfa91cc4c52b6a744da7df
+   Verifying Hash Integrity ... sha1+ OK
+   Booting using the fdt blob at 0x10395480
+   Loading Kernel Image ... OK
+   Loading Ramdisk to 07a1f000, end 07fffb78 ... OK
+   Loading Device Tree to 07a17000, end 07a1e97a ... OK
+
+Starting kernel ...
+
+GIC CPU mask not found - kernel will fail to boot.
+GIC CPU mask not found - kernel will fail to boot.
+Failed to initialize '/amba/timer@f8f00200': -38
+mtd: partition "spare" is out of reach -- disabled
+ULPI integrity check: failed!ci_hdrc ci_hdrc.0: unable to init phy: -19
+cdns-i2c e0004000.i2c: timeout waiting on completion
+rtc-pcf8563 5-0051: pcf8563_write_block_data: err=-110 addr=0e, data=03
+rtc-pcf8563 5-0051: pcf8563_probe: write error
+cdns-i2c e0004000.i2c: timeout waiting on completion
+ucd9000 8-0065: Failed to read device ID
+INIT: version 2.88 booting
+Starting udev
+Populating dev cache
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Sat Apr 15 21:06:32 UTC 2017
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Starting internet superserver: inetd.
+INIT: Entering runlevel: 5
+Configuring network interfaces... udhcpc (v1.24.1) started
+Sending discover...
+Sending select for 10.0.2.15...
+Lease of 10.0.2.15 obtained, lease time 86400
+/etc/udhcpc.d/50default: Adding DNS 10.0.2.3
+done.
+Starting Dropbear SSH server: Generating key, this may take a while...
+Public key portion is:
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGyMtzHQ1OMc2z+8xJgylMe6rYC1UNfRF2G2G6F1OjTzl/vk0au17bJ3dlZj1MZnHfpL5Z8EsOyVCgg5/ZOMLuVBRx7XVw6MD4wRAknSpYk4KB2Hl7cTSSuwmVmGX9//oqLHn521B2T0hObuRnLTfkQqcp/98jD4BGnIek57gbq4r1p7GoLVMjDxcaZ9QL/9pXG2lrgxTeeAliZ5bGiV9+iHCSkXDtcsZj5w6+5I6WAj/lKiaSryUaNrdJRlL1bPWydyltOGLM9J6cqUZjxoMg4yVMChBTYTc97eVIt96MHUe3/jwiBHxbJYSo7/6knVtien0e2Zxja5w/RQvaz/5P root@plnx_arm
+Fingerprint: md5 ab:2e:9a:1c:4f:55:ef:f4:ec:c9:ce:ef:b6:7b:2f:08
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+attempting to run /mnt/init.sh
+Average number of CPU cycles running mmult in hardware: 2887545716
+TEST PASSED
+INIT: Switching to runlevel: 6
+INIT: Sending processes the TERM signal
+Stopping Dropbear SSH server: stopped /usr/sbin/dropbear (pid 1054)
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Stopping syslogd/klogd: no syslogd found; none killed
+Stopping tcf-agent: OK
+Deconfiguring network interfaces... done.
+Sending all processes the TERM signal...
+Sending all processes the KILL signal...
+Unmounting remote filesystems...
+Deactivating swap...
+Unmounting local filesystems...
+Rebooting... reboot: Restarting system
+DONE!
+lmem_2rw/
+rm -f -rf emu .Xil
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/src/main.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/main.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/main.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/main.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/main.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/src/main.cpp"  -sds-hw nearest_neighbor_loop_fusion_accel nearest_neighbor.cpp -sds-end
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/src/main.cpp:156:9: warning: unused label 'dist_calc' [-Wunused-label]
+        dist_calc:
+        ^~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/src/main.cpp:168:5: warning: unused label 'write_best' [-Wunused-label]
+    write_best:
+    ^~~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/src/main.cpp:151:5: warning: unused label 'find_best' [-Wunused-label]
+    find_best:
+    ^~~~~~~~~~
+INFO: [SDSoC 0-0] Compiling /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/src/main.cpp
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/src/main.cpp:156:9: warning: label ‘dist_calc’ defined but not used [-Wunused-label]
+         dist_calc:
+         ^~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/src/main.cpp:168:5: warning: label ‘write_best’ defined but not used [-Wunused-label]
+     write_best:
+     ^~~~~~~~~~
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/_sds/reports/sds_main.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/src/main.cpp
+ 
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/src/nearest_neighbor.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/nearest_neighbor.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/nearest_neighbor.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/nearest_neighbor.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/nearest_neighbor.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/src/nearest_neighbor.cpp"  -sds-hw nearest_neighbor_loop_fusion_accel nearest_neighbor.cpp -sds-end
+INFO: [SDSoC 0-0] Processing -sds-hw block for nearest_neighbor_loop_fusion_accel
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/src/nearest_neighbor.cpp:69:5: warning: unused label 'find_best' [-Wunused-label]
+    find_best:
+    ^~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/src/nearest_neighbor.cpp:88:5: warning: unused label 'write_best' [-Wunused-label]
+    write_best:
+    ^~~~~~~~~~~
+INFO: [SDSoC 0-0] Performing accelerator source linting for nearest_neighbor_loop_fusion_accel
+INFO: [SDSoC 0-0] Performing pragma generation
+INFO: [SDSoC 0-0] Successfully generated tcl script: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/_sds/vhls/nearest_neighbor_loop_fusion_accel.tcl
+INFO: [SDSoC 0-0] Moving function nearest_neighbor_loop_fusion_accel to Programmable Logic
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/_sds/reports/sds_nearest_neighbor.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/src/nearest_neighbor.cpp
+ 
+mkdir -p emu
+Building Target: emu/nearest_neighbor_loop_fusion_accel.elf
+Trigerring: SDS++ Linker
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -o nearest_neighbor_loop_fusion_accel.elf /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/main.o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/nearest_neighbor.o -mno-bitstream -mno-boot-files -emulation optimized
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Analyzing object files
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/main.o
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/nearest_neighbor.o
+INFO: [SDSoC 0-0] Generating data motion network
+INFO: [DMAnalysis 70-0] Analyzing hardware accelerators...
+INFO: [DMAnalysis 70-0] Analyzing callers to hardware accelerators...
+INFO: [DMAnalysis 70-0] Scheduling data transfer graph for partition 0
+INFO: [DMAnalysis 70-0] Creating data motion network hardware for partition 0
+INFO: [DMAnalysis 70-0] Creating software stub functions for partition 0
+INFO: [DMAnalysis 70-0] Generating data motion network report for partition 0
+INFO: [DMAnalysis 70-0] Rewriting caller code
+INFO: [SDSoC 0-0] Creating block diagram (BD), address map, port information and device registration for partition 0 (this may take a few minutes)
+system_linker started at Wed Apr 19 15:19:51 IST 2017
+INFO: [SDSoC 0-0] Copying address map
+INFO: [SDSoC 0-0] Creating emulation files
+... [15:23:46] Starting static elaboration
+... [15:24:41] Starting simulation data flow analysis
+INFO: [SDSoC 0-0] Creating port and device registration data
+system_linker completed at Wed Apr 19 15:25:00 IST 2017
+INFO: [SDSoC 0-0] Software tracing enabled
+INFO: [SDSoC 0-0] Rewrite caller functions
+INFO: [SDSoC 0-0] Compile caller rewrite file /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/_sds/swstubs/main.cpp
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/_sds/swstubs/main.cpp:157:9: warning: label ‘dist_calc’ defined but not used [-Wunused-label]
+         dist_calc:
+         ^~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/_sds/swstubs/main.cpp:169:5: warning: label ‘write_best’ defined but not used [-Wunused-label]
+     write_best:
+     ^~~~~~~~~~
+INFO: [SDSoC 0-0] Prepare hardware access API functions
+INFO: [SDSoC 0-0] Create accelerator stub functions
+INFO: [SDSoC 0-0] Compile hardware access API functions
+INFO: [SDSoC 0-0] Compile accelerator stub functions
+nearest_neighbor.cpp:88:5: warning: label ‘write_best’ defined but not used [-Wunused-label]
+     write_best:
+     ^~~~~~~~~~
+INFO: [SDSoC 0-0] Link application ELF file
+INFO: [SDSoC 0-0] Not creating bitstream due to the -mno-bitstream switch
+INFO: [SDSoC 0-0] Calling system_linker for partition 0
+system_linker started at Wed Apr 19 15:25:04 IST 2017
+system_linker completed at Wed Apr 19 15:25:05 IST 2017
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_fusion/emu/_sds/reports/sds.log
+
+SDx Completed Building Target: emu/nearest_neighbor_loop_fusion_accel.elf
+ 
+cp /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/utility/emu_run.sh emu/
+cd emu ; ./emu_run.sh nearest_neighbor_loop_fusion_accel.elf
+Starting PL simulation
+Waiting for PL simulation to start....... PL simulation started!
+Starting QEMU
+ - Press <Ctrl-a h> for help 
+
+
+U-Boot 2017.01 (Apr 15 2017 - 14:02:48 -0700)
+
+Model: Zynq ZC706 Development Board
+Board: Xilinx Zynq
+DRAM:  ECC disabled 1 GiB
+MMC:   sdhci@e0100000: 0 (SD)
+SF: Detected n25q128 with page size 256 Bytes, erase size 64 KiB, total 32 MiB
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ZYNQ GEM: e000b000, phyaddr 7, interface rgmii-id
+eth0: ethernet@e000b000
+U-BOOT for zc706
+
+Hit any key to stop autoboot:  4  3  2  1  0 
+Device: sdhci@e0100000
+Manufacturer ID: aa
+OEM: 5859
+Name: QEMU! 
+Tran Speed: 25000000
+Rd Block Len: 512
+SD version 1.0
+High Capacity: No
+Capacity: 488.3 MiB
+Bus Width: 4-bit
+Erase Group Size: 512 Bytes
+reading image.ub
+9940500 bytes read in 967 ms (9.8 MiB/s)
+## Loading kernel from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'kernel@0' kernel subimage
+     Description:  Linux Kernel
+     Type:         Kernel Image
+     Compression:  uncompressed
+     Data Start:   0x100000d4
+     Data Size:    3756728 Bytes = 3.6 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: 0x00008000
+     Entry Point:  0x00008000
+     Hash algo:    sha1
+     Hash value:   645924245114e089dfe8074a489edda9cccab7dd
+   Verifying Hash Integrity ... sha1+ OK
+## Loading ramdisk from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'ramdisk@0' ramdisk subimage
+     Description:  ramdisk
+     Type:         RAMDisk Image
+     Compression:  uncompressed
+     Data Start:   0x10399eac
+     Data Size:    6163320 Bytes = 5.9 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: unavailable
+     Entry Point:  unavailable
+     Hash algo:    sha1
+     Hash value:   a48b3deb4850fd18a02233447413775aa3f0d64c
+   Verifying Hash Integrity ... sha1+ OK
+## Loading fdt from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'fdt@0' fdt subimage
+     Description:  Flattened Device Tree blob
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x10395480
+     Data Size:    18811 Bytes = 18.4 KiB
+     Architecture: ARM
+     Hash algo:    sha1
+     Hash value:   9b7e7520610b155877cfa91cc4c52b6a744da7df
+   Verifying Hash Integrity ... sha1+ OK
+   Booting using the fdt blob at 0x10395480
+   Loading Kernel Image ... OK
+   Loading Ramdisk to 07a1f000, end 07fffb78 ... OK
+   Loading Device Tree to 07a17000, end 07a1e97a ... OK
+
+Starting kernel ...
+
+GIC CPU mask not found - kernel will fail to boot.
+GIC CPU mask not found - kernel will fail to boot.
+Failed to initialize '/amba/timer@f8f00200': -38
+mtd: partition "spare" is out of reach -- disabled
+ULPI integrity check: failed!ci_hdrc ci_hdrc.0: unable to init phy: -19
+cdns-i2c e0004000.i2c: timeout waiting on completion
+rtc-pcf8563 5-0051: pcf8563_write_block_data: err=-110 addr=0e, data=03
+rtc-pcf8563 5-0051: pcf8563_probe: write error
+cdns-i2c e0004000.i2c: timeout waiting on completion
+ucd9000 8-0065: Failed to read device ID
+INIT: version 2.88 booting
+Starting udev
+Populating dev cache
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Sat Apr 15 21:06:32 UTC 2017
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Starting internet superserver: inetd.
+INIT: Entering runlevel: 5
+Configuring network interfaces... udhcpc (v1.24.1) started
+Sending discover...
+Sending discover...
+Sending select for 10.0.2.15...
+Lease of 10.0.2.15 obtained, lease time 86400
+/etc/udhcpc.d/50default: Adding DNS 10.0.2.3
+done.
+Starting Dropbear SSH server: Generating key, this may take a while...
+Public key portion is:
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCWwWQ+PbbjNYPyPtXyI6IVjudJud0i2NokSg1Djx/azmchJDHResm6sU2FHnupf2RBqQmT9VwppEL0nWNnShRUKp9pRNmjfGXIAv/KD3AJbXhrrFd93rke1xUTHQ74LQNQNPPTWWRGUAzY4Vh+lz+BD3CNYabsEbNqFcJWH2wfTjA4ihuncd2f77wj9lD0i4OwTZAeaSAu7WnKm6pmnFHZ370lGELWyt9kjdiwubKKEMD5gml7+JKEymCUv9CcMNW0ogP4ESTudFc9x3uWUef5FbJPCW0M9ue4Vv50ZZdbhsmGUvZlPQ280zI8//yQVDzVeWnX5VukNNOnqrImobgL root@plnx_arm
+Fingerprint: md5 31:27:ec:f4:00:5c:36:9b:c3:9e:5b:ba:6e:ee:b3:54
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+attempting to run /mnt/init.sh
+Number Of Points: 512
+Dimensions: 2
+
+Input Point:      02
+Average number of CPU cycles running mmult in hardware: 922252140
+Nearest Neighbor: 02
+TEST PASSED
+INIT: Switching to runlevel: 6
+INIT: Sending processes the TERM signal
+Stopping Dropbear SSH server: stopped /usr/sbin/dropbear (pid 1054)
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Stopping syslogd/klogd: no syslogd found; none killed
+Stopping tcf-agent: OK
+Deconfiguring network interfaces... done.
+Sending all processes the TERM signal...
+Sending all processes the KILL signal...
+Unmounting remote filesystems...
+Deactivating swap...
+Unmounting local filesystems...
+Rebooting... reboot: Restarting system
+DONE!
+loop_fusion/
+rm -f -rf emu .Xil
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/src/main.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/emu/main.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/emu/main.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/emu/main.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/emu/main.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/src/main.cpp"  -sds-hw nearest_accel nearest.cpp -sds-end
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+INFO: [SDSoC 0-0] Compiling /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/src/main.cpp
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/emu/_sds/reports/sds_main.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/src/main.cpp
+ 
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/src/nearest.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/emu/nearest.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/emu/nearest.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/emu/nearest.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/emu/nearest.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/src/nearest.cpp"  -sds-hw nearest_accel nearest.cpp -sds-end
+INFO: [SDSoC 0-0] Processing -sds-hw block for nearest_accel
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/src/nearest.cpp:120:2: warning: unused label 'readInput' [-Wunused-label]
+        readInput: for(int itr = 0, i = 0, j = 0; itr < size*dim; itr++, j++){
+        ^~~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/src/nearest.cpp:128:2: warning: unused label 'readCurrPt' [-Wunused-label]
+        readCurrPt: for(int i = 0; i < dim; i++){
+        ^~~~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/src/nearest.cpp:154:5: warning: unused label 'nearest3' [-Wunused-label]
+                                nearest3: for(int k = 0; k < MAX_DIM; k++) {
+                                ^~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/src/nearest.cpp:145:3: warning: unused label 'nearest2' [-Wunused-label]
+                nearest2: for(int j = 0; j < dim; j++) {
+                ^~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/src/nearest.cpp:143:2: warning: unused label 'nearest1' [-Wunused-label]
+        nearest1: for(int i = 0; i < size; i++) {
+        ^~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/src/nearest.cpp:162:2: warning: unused label 'wirteOuput' [-Wunused-label]
+        wirteOuput: for(int i = 0; i < dim; i++) {
+        ^~~~~~~~~~~~
+INFO: [SDSoC 0-0] Performing accelerator source linting for nearest_accel
+INFO: [SDSoC 0-0] Performing pragma generation
+INFO: [SDSoC 0-0] Successfully generated tcl script: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/emu/_sds/vhls/nearest_accel.tcl
+INFO: [SDSoC 0-0] Moving function nearest_accel to Programmable Logic
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/emu/_sds/reports/sds_nearest.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/src/nearest.cpp
+ 
+mkdir -p emu
+Building Target: emu/nearest_accel.elf
+Trigerring: SDS++ Linker
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -o nearest_accel.elf /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/emu/main.o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/emu/nearest.o -mno-bitstream -mno-boot-files -emulation optimized
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Analyzing object files
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/emu/main.o
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/emu/nearest.o
+INFO: [SDSoC 0-0] Generating data motion network
+INFO: [DMAnalysis 70-0] Analyzing hardware accelerators...
+INFO: [DMAnalysis 70-0] Analyzing callers to hardware accelerators...
+INFO: [DMAnalysis 70-0] Scheduling data transfer graph for partition 0
+INFO: [DMAnalysis 70-0] Creating data motion network hardware for partition 0
+INFO: [DMAnalysis 70-0] Creating software stub functions for partition 0
+INFO: [DMAnalysis 70-0] Generating data motion network report for partition 0
+INFO: [DMAnalysis 70-0] Rewriting caller code
+INFO: [SDSoC 0-0] Creating block diagram (BD), address map, port information and device registration for partition 0 (this may take a few minutes)
+system_linker started at Wed Apr 19 15:27:07 IST 2017
+INFO: [SDSoC 0-0] Copying address map
+INFO: [SDSoC 0-0] Creating emulation files
+... [15:30:53] Starting static elaboration
+... [15:31:48] Starting simulation data flow analysis
+INFO: [SDSoC 0-0] Creating port and device registration data
+system_linker completed at Wed Apr 19 15:32:08 IST 2017
+INFO: [SDSoC 0-0] Software tracing enabled
+INFO: [SDSoC 0-0] Rewrite caller functions
+INFO: [SDSoC 0-0] Compile caller rewrite file /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/emu/_sds/swstubs/main.cpp
+INFO: [SDSoC 0-0] Prepare hardware access API functions
+INFO: [SDSoC 0-0] Create accelerator stub functions
+INFO: [SDSoC 0-0] Compile hardware access API functions
+INFO: [SDSoC 0-0] Compile accelerator stub functions
+nearest.cpp:128:2: warning: label ‘readCurrPt’ defined but not used [-Wunused-label]
+  readCurrPt: for(int i = 0; i < dim; i++){
+  ^~~~~~~~~~
+nearest.cpp:143:2: warning: label ‘nearest1’ defined but not used [-Wunused-label]
+  nearest1: for(int i = 0; i < size; i++) {
+  ^~~~~~~~
+nearest.cpp:145:3: warning: label ‘nearest2’ defined but not used [-Wunused-label]
+   nearest2: for(int j = 0; j < dim; j++) {
+   ^~~~~~~~
+nearest.cpp:154:5: warning: label ‘nearest3’ defined but not used [-Wunused-label]
+     nearest3: for(int k = 0; k < MAX_DIM; k++) {
+     ^~~~~~~~
+nearest.cpp:162:2: warning: label ‘wirteOuput’ defined but not used [-Wunused-label]
+  wirteOuput: for(int i = 0; i < dim; i++) {
+  ^~~~~~~~~~
+INFO: [SDSoC 0-0] Link application ELF file
+INFO: [SDSoC 0-0] Not creating bitstream due to the -mno-bitstream switch
+INFO: [SDSoC 0-0] Calling system_linker for partition 0
+system_linker started at Wed Apr 19 15:32:11 IST 2017
+system_linker completed at Wed Apr 19 15:32:12 IST 2017
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_perfect/emu/_sds/reports/sds.log
+
+SDx Completed Building Target: emu/nearest_accel.elf
+ 
+cp /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/utility/emu_run.sh emu/
+cd emu ; ./emu_run.sh nearest_accel.elf
+Starting PL simulation
+Waiting for PL simulation to start....... PL simulation started!
+Starting QEMU
+ - Press <Ctrl-a h> for help 
+
+
+U-Boot 2017.01 (Apr 15 2017 - 14:02:48 -0700)
+
+Model: Zynq ZC706 Development Board
+Board: Xilinx Zynq
+DRAM:  ECC disabled 1 GiB
+MMC:   sdhci@e0100000: 0 (SD)
+SF: Detected n25q128 with page size 256 Bytes, erase size 64 KiB, total 32 MiB
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ZYNQ GEM: e000b000, phyaddr 7, interface rgmii-id
+eth0: ethernet@e000b000
+U-BOOT for zc706
+
+Hit any key to stop autoboot:  4  3  2  1  0 
+Device: sdhci@e0100000
+Manufacturer ID: aa
+OEM: 5859
+Name: QEMU! 
+Tran Speed: 25000000
+Rd Block Len: 512
+SD version 1.0
+High Capacity: No
+Capacity: 488.3 MiB
+Bus Width: 4-bit
+Erase Group Size: 512 Bytes
+reading image.ub
+9940500 bytes read in 925 ms (10.2 MiB/s)
+## Loading kernel from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'kernel@0' kernel subimage
+     Description:  Linux Kernel
+     Type:         Kernel Image
+     Compression:  uncompressed
+     Data Start:   0x100000d4
+     Data Size:    3756728 Bytes = 3.6 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: 0x00008000
+     Entry Point:  0x00008000
+     Hash algo:    sha1
+     Hash value:   645924245114e089dfe8074a489edda9cccab7dd
+   Verifying Hash Integrity ... sha1+ OK
+## Loading ramdisk from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'ramdisk@0' ramdisk subimage
+     Description:  ramdisk
+     Type:         RAMDisk Image
+     Compression:  uncompressed
+     Data Start:   0x10399eac
+     Data Size:    6163320 Bytes = 5.9 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: unavailable
+     Entry Point:  unavailable
+     Hash algo:    sha1
+     Hash value:   a48b3deb4850fd18a02233447413775aa3f0d64c
+   Verifying Hash Integrity ... sha1+ OK
+## Loading fdt from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'fdt@0' fdt subimage
+     Description:  Flattened Device Tree blob
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x10395480
+     Data Size:    18811 Bytes = 18.4 KiB
+     Architecture: ARM
+     Hash algo:    sha1
+     Hash value:   9b7e7520610b155877cfa91cc4c52b6a744da7df
+   Verifying Hash Integrity ... sha1+ OK
+   Booting using the fdt blob at 0x10395480
+   Loading Kernel Image ... OK
+   Loading Ramdisk to 07a1f000, end 07fffb78 ... OK
+   Loading Device Tree to 07a17000, end 07a1e97a ... OK
+
+Starting kernel ...
+
+GIC CPU mask not found - kernel will fail to boot.
+GIC CPU mask not found - kernel will fail to boot.
+Failed to initialize '/amba/timer@f8f00200': -38
+mtd: partition "spare" is out of reach -- disabled
+ULPI integrity check: failed!ci_hdrc ci_hdrc.0: unable to init phy: -19
+cdns-i2c e0004000.i2c: timeout waiting on completion
+rtc-pcf8563 5-0051: pcf8563_write_block_data: err=-110 addr=0e, data=03
+rtc-pcf8563 5-0051: pcf8563_probe: write error
+cdns-i2c e0004000.i2c: timeout waiting on completion
+ucd9000 8-0065: Failed to read device ID
+INIT: version 2.88 booting
+Starting udev
+Populating dev cache
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Sat Apr 15 21:06:32 UTC 2017
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Starting internet superserver: inetd.
+INIT: Entering runlevel: 5
+Configuring network interfaces... udhcpc (v1.24.1) started
+Sending discover...
+Sending discover...
+Sending select for 10.0.2.15...
+Lease of 10.0.2.15 obtained, lease time 86400
+/etc/udhcpc.d/50default: Adding DNS 10.0.2.3
+done.
+Starting Dropbear SSH server: Generating key, this may take a while...
+Public key portion is:
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCbVHQM/jJJcPs59paMEi0UJQPn0TWH1kG8SLtmFqIHPLVvRfaok3wlT/6ilmazPiVliG5xSSjb9dVPf8HUNtw2lsGy8qhPVfQueH5a71wOiBpAvAtrvGH6nFYQA5U97zO7leaO5XccZa/sKzaPagjIpSRcyzc5P37G1XWXl+sZ3opb/v28FSmZjOy3bEXsZsgr5rlGnc+TZwiJpHOY0MSv9f0WnvwXtGhGIrZdjVO2MACBIfZG5D4K+sM3OeEbiUaEZ3lQkSEPjEo5T8qlr/DqKqgHjNrNUWhkVEmMtnTqJposlXwJ/gQrp11fqM96OX89cfHwYalFDL2+qG8MgD29 root@plnx_arm
+Fingerprint: md5 25:6b:d8:86:f0:78:55:60:66:0f:53:d5:cb:cc:b6:11
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+attempting to run /mnt/init.sh
+Average number of CPU cycles running mmult in hardware: 3222056432
+TEST PASSED.
+INIT: Switching to runlevel: 6
+INIT: Sending processes the TERM signal
+Stopping Dropbear SSH server: stopped /usr/sbin/dropbear (pid 1053)
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Stopping syslogd/klogd: no syslogd found; none killed
+Stopping tcf-agent: OK
+Deconfiguring network interfaces... done.
+Sending all processes the TERM signal...
+Sending all processes the KILL signal...
+Unmounting remote filesystems...
+Deactivating swap...
+Unmounting local filesystems...
+Rebooting... reboot: Restarting system
+DONE!
+loop_perfect/
+rm -f -rf emu .Xil
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/src/main.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/main.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/main.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/main.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/main.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/src/main.cpp"  -sds-hw vadd_pipelined_accel vector_addition.cpp -sds-end
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/src/main.cpp:54:5: warning: unused label 'vadd_loop' [-Wunused-label]
+    vadd_loop:
+    ^~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/src/main.cpp:65:9: warning: unused variable 'size_in_bytes' [-Wunused-variable]
+    int size_in_bytes = DATA_SIZE * sizeof(int);
+        ^
+INFO: [SDSoC 0-0] Compiling /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/src/main.cpp
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/src/main.cpp: In function ‘int main(int, char**)’:
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/src/main.cpp:65:9: warning: unused variable ‘size_in_bytes’ [-Wunused-variable]
+     int size_in_bytes = DATA_SIZE * sizeof(int);
+         ^~~~~~~~~~~~~
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/_sds/reports/sds_main.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/src/main.cpp
+ 
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/src/vector_addition.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/vector_addition.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/vector_addition.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/vector_addition.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/vector_addition.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/src/vector_addition.cpp"  -sds-hw vadd_pipelined_accel vector_addition.cpp -sds-end
+INFO: [SDSoC 0-0] Processing -sds-hw block for vadd_pipelined_accel
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/src/vector_addition.cpp:82:9: warning: unused label 'read_a' [-Wunused-label]
+        read_a:
+        ^~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/src/vector_addition.cpp:87:9: warning: unused label 'read_b' [-Wunused-label]
+        read_b:
+        ^~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/src/vector_addition.cpp:92:9: warning: unused label 'write' [-Wunused-label]
+        write:
+        ^~~~~~
+INFO: [SDSoC 0-0] Performing accelerator source linting for vadd_pipelined_accel
+INFO: [SDSoC 0-0] Performing pragma generation
+INFO: [SDSoC 0-0] Successfully generated tcl script: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/_sds/vhls/vadd_pipelined_accel.tcl
+INFO: [SDSoC 0-0] Moving function vadd_pipelined_accel to Programmable Logic
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/_sds/reports/sds_vector_addition.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/src/vector_addition.cpp
+ 
+mkdir -p emu
+Building Target: emu/vadd_pipelined_accel.elf
+Trigerring: SDS++ Linker
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -o vadd_pipelined_accel.elf /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/main.o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/vector_addition.o -mno-bitstream -mno-boot-files -emulation optimized
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Analyzing object files
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/main.o
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/vector_addition.o
+INFO: [SDSoC 0-0] Generating data motion network
+INFO: [DMAnalysis 70-0] Analyzing hardware accelerators...
+INFO: [DMAnalysis 70-0] Analyzing callers to hardware accelerators...
+INFO: [DMAnalysis 70-0] Scheduling data transfer graph for partition 0
+INFO: [DMAnalysis 70-0] Creating data motion network hardware for partition 0
+INFO: [DMAnalysis 70-0] Creating software stub functions for partition 0
+INFO: [DMAnalysis 70-0] Generating data motion network report for partition 0
+INFO: [DMAnalysis 70-0] Rewriting caller code
+INFO: [SDSoC 0-0] Creating block diagram (BD), address map, port information and device registration for partition 0 (this may take a few minutes)
+system_linker started at Wed Apr 19 15:34:33 IST 2017
+INFO: [SDSoC 0-0] Copying address map
+INFO: [SDSoC 0-0] Creating emulation files
+... [15:38:20] Starting static elaboration
+... [15:39:15] Starting simulation data flow analysis
+INFO: [SDSoC 0-0] Creating port and device registration data
+system_linker completed at Wed Apr 19 15:39:35 IST 2017
+INFO: [SDSoC 0-0] Software tracing enabled
+INFO: [SDSoC 0-0] Rewrite caller functions
+INFO: [SDSoC 0-0] Compile caller rewrite file /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/_sds/swstubs/main.cpp
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/_sds/swstubs/main.cpp: In function ‘int main(int, char**)’:
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/_sds/swstubs/main.cpp:66:9: warning: unused variable ‘size_in_bytes’ [-Wunused-variable]
+     int size_in_bytes = DATA_SIZE * sizeof(int);
+         ^~~~~~~~~~~~~
+INFO: [SDSoC 0-0] Prepare hardware access API functions
+INFO: [SDSoC 0-0] Create accelerator stub functions
+INFO: [SDSoC 0-0] Compile hardware access API functions
+INFO: [SDSoC 0-0] Compile accelerator stub functions
+vector_addition.cpp:87:9: warning: label ‘read_b’ defined but not used [-Wunused-label]
+         read_b:
+         ^~~~~~
+vector_addition.cpp:92:9: warning: label ‘write’ defined but not used [-Wunused-label]
+         write:
+         ^~~~~
+INFO: [SDSoC 0-0] Link application ELF file
+INFO: [SDSoC 0-0] Not creating bitstream due to the -mno-bitstream switch
+INFO: [SDSoC 0-0] Calling system_linker for partition 0
+system_linker started at Wed Apr 19 15:39:37 IST 2017
+system_linker completed at Wed Apr 19 15:39:39 IST 2017
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_pipeline/emu/_sds/reports/sds.log
+
+SDx Completed Building Target: emu/vadd_pipelined_accel.elf
+ 
+cp /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/utility/emu_run.sh emu/
+cd emu ; ./emu_run.sh vadd_pipelined_accel.elf
+Starting PL simulation
+Waiting for PL simulation to start....... PL simulation started!
+Starting QEMU
+ - Press <Ctrl-a h> for help 
+
+
+U-Boot 2017.01 (Apr 15 2017 - 14:02:48 -0700)
+
+Model: Zynq ZC706 Development Board
+Board: Xilinx Zynq
+DRAM:  ECC disabled 1 GiB
+MMC:   sdhci@e0100000: 0 (SD)
+SF: Detected n25q128 with page size 256 Bytes, erase size 64 KiB, total 32 MiB
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ZYNQ GEM: e000b000, phyaddr 7, interface rgmii-id
+eth0: ethernet@e000b000
+U-BOOT for zc706
+
+Hit any key to stop autoboot:  4  3  2  1  0 
+Device: sdhci@e0100000
+Manufacturer ID: aa
+OEM: 5859
+Name: QEMU! 
+Tran Speed: 25000000
+Rd Block Len: 512
+SD version 1.0
+High Capacity: No
+Capacity: 488.3 MiB
+Bus Width: 4-bit
+Erase Group Size: 512 Bytes
+reading image.ub
+9940500 bytes read in 922 ms (10.3 MiB/s)
+## Loading kernel from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'kernel@0' kernel subimage
+     Description:  Linux Kernel
+     Type:         Kernel Image
+     Compression:  uncompressed
+     Data Start:   0x100000d4
+     Data Size:    3756728 Bytes = 3.6 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: 0x00008000
+     Entry Point:  0x00008000
+     Hash algo:    sha1
+     Hash value:   645924245114e089dfe8074a489edda9cccab7dd
+   Verifying Hash Integrity ... sha1+ OK
+## Loading ramdisk from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'ramdisk@0' ramdisk subimage
+     Description:  ramdisk
+     Type:         RAMDisk Image
+     Compression:  uncompressed
+     Data Start:   0x10399eac
+     Data Size:    6163320 Bytes = 5.9 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: unavailable
+     Entry Point:  unavailable
+     Hash algo:    sha1
+     Hash value:   a48b3deb4850fd18a02233447413775aa3f0d64c
+   Verifying Hash Integrity ... sha1+ OK
+## Loading fdt from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'fdt@0' fdt subimage
+     Description:  Flattened Device Tree blob
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x10395480
+     Data Size:    18811 Bytes = 18.4 KiB
+     Architecture: ARM
+     Hash algo:    sha1
+     Hash value:   9b7e7520610b155877cfa91cc4c52b6a744da7df
+   Verifying Hash Integrity ... sha1+ OK
+   Booting using the fdt blob at 0x10395480
+   Loading Kernel Image ... OK
+   Loading Ramdisk to 07a1f000, end 07fffb78 ... OK
+   Loading Device Tree to 07a17000, end 07a1e97a ... OK
+
+Starting kernel ...
+
+GIC CPU mask not found - kernel will fail to boot.
+GIC CPU mask not found - kernel will fail to boot.
+Failed to initialize '/amba/timer@f8f00200': -38
+mtd: partition "spare" is out of reach -- disabled
+ULPI integrity check: failed!ci_hdrc ci_hdrc.0: unable to init phy: -19
+cdns-i2c e0004000.i2c: timeout waiting on completion
+rtc-pcf8563 5-0051: pcf8563_write_block_data: err=-110 addr=0e, data=03
+rtc-pcf8563 5-0051: pcf8563_probe: write error
+cdns-i2c e0004000.i2c: timeout waiting on completion
+ucd9000 8-0065: Failed to read device ID
+INIT: version 2.88 booting
+Starting udev
+Populating dev cache
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Sat Apr 15 21:06:32 UTC 2017
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Starting internet superserver: inetd.
+INIT: Entering runlevel: 5
+Configuring network interfaces... udhcpc (v1.24.1) started
+Sending discover...
+Sending discover...
+Sending select for 10.0.2.15...
+Lease of 10.0.2.15 obtained, lease time 86400
+/etc/udhcpc.d/50default: Adding DNS 10.0.2.3
+done.
+Starting Dropbear SSH server: Generating key, this may take a while...
+Public key portion is:
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfTZJpXeT2OtCF0LZsUw4j1XYG4Ru6jKcv9mgVvrCmuvYD3QeeXHkZ0qAM9wzIg76EuPtCzYexwBM4tC8QDwvc/2CRX0YNwaj+TYqDS//ICyWkDkMUog2ckqHlWhwEmp+BexLuh2QuneTQO58REeWDEC432HdW2SOX3MxXnV24nuA9ok8FtyWtsdWt/wzjH2IGzx75oE1M+RTiMGXu2FbeY4dTzYpOlUeZUTJdnsV9/g1VgNM56pE7xvglJWScyfEoDRxO1yr5ypf5EpPdsM/xsj1L6gfu9F6iwZE4pajbI89b75qEPP84CmqDUjwNLlqTct/xEZNoSWeBmxkfz6BF root@plnx_arm
+Fingerprint: md5 9c:01:1b:71:90:66:58:50:96:50:db:20:33:f4:2d:a0
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+attempting to run /mnt/init.sh
+Average number of CPU cycles running mmult in hardware: 328309178
+TEST PASSED
+INIT: Switching to runlevel: 6
+INIT: Sending processes the TERM signal
+Stopping Dropbear SSH server: stopped /usr/sbin/dropbear (pid 1054)
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Stopping syslogd/klogd: no syslogd found; none killed
+Stopping tcf-agent: OK
+Deconfiguring network interfaces... done.
+Sending all processes the TERM signal...
+Sending all processes the KILL signal...
+Unmounting remote filesystems...
+Deactivating swap...
+Unmounting local filesystems...
+Rebooting... reboot: Restarting system
+DONE!
+loop_pipeline/
+rm -f -rf emu .Xil
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/src/main.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/emu/main.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/emu/main.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/emu/main.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/emu/main.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/src/main.cpp"  -sds-hw mmult_accel mmult.cpp -sds-end
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/src/main.cpp:46:17: error: expected namespace name
+using namespace sds_prof;
+                ^
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/src/main.cpp:80:39: error: use of undeclared identifier 'sds_alloc'
+    int *source_in1         = (int *) sds_alloc(matrix_size_bytes);
+                                      ^
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/src/main.cpp:81:39: error: use of undeclared identifier 'sds_alloc'
+    int *source_in2         = (int *) sds_alloc(matrix_size_bytes);
+                                      ^
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/src/main.cpp:82:39: error: use of undeclared identifier 'sds_alloc'
+    int *source_hw_results  = (int *) sds_alloc(matrix_size_bytes);
+                                      ^
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/src/main.cpp:96:5: error: unknown type name 'perf_counter'
+    perf_counter hw_ctr, sw_ctr;
+    ^
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/src/main.cpp:103:5: error: use of undeclared identifier 'sw_ctr'; did you mean 'hw_ctr'?
+    sw_ctr.start();
+    ^~~~~~
+    hw_ctr
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/src/main.cpp:96:18: note: 'hw_ctr' declared here
+    perf_counter hw_ctr, sw_ctr;
+                 ^
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/src/main.cpp:106:5: error: use of undeclared identifier 'sw_ctr'; did you mean 'hw_ctr'?
+    sw_ctr.stop();
+    ^~~~~~
+    hw_ctr
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/src/main.cpp:96:18: note: 'hw_ctr' declared here
+    perf_counter hw_ctr, sw_ctr;
+                 ^
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/src/main.cpp:108:26: error: use of undeclared identifier 'sw_ctr'
+    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
+                         ^
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/src/main.cpp:131:5: error: use of undeclared identifier 'sds_free'
+    sds_free(source_in1);
+    ^
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/src/main.cpp:132:5: error: use of undeclared identifier 'sds_free'
+    sds_free(source_in2);
+    ^
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/src/main.cpp:133:5: error: use of undeclared identifier 'sds_free'
+    sds_free(source_hw_results);
+    ^
+ERROR: [SDSoC 0-0] clang exited with non-zero code processing /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/src/main.cpp
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/loop_reorder/emu/_sds/reports/sds_main.log
+ERROR: [SDSoC 0-0] Build failed
+
+loop_reorder/
+rm -f -rf emu .Xil
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/src/main.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/emu/main.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/emu/main.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/emu/main.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/emu/main.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/src/main.cpp"  -sds-hw row_array_2d_accel row_array_2d.cpp -sds-end
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+INFO: [SDSoC 0-0] Compiling /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/src/main.cpp
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/emu/_sds/reports/sds_main.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/src/main.cpp
+ 
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/src/row_array_2d.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/emu/row_array_2d.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/emu/row_array_2d.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/emu/row_array_2d.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/emu/row_array_2d.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/src/row_array_2d.cpp"  -sds-hw row_array_2d_accel row_array_2d.cpp -sds-end
+INFO: [SDSoC 0-0] Processing -sds-hw block for row_array_2d_accel
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/src/row_array_2d.cpp:49:9: warning: unused label 'read_loop_jj' [-Wunused-label]
+        read_loop_jj: for (int jj = 0; jj < WORD_PER_ROW; ++jj) {
+        ^~~~~~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/src/row_array_2d.cpp:48:5: warning: unused label 'read_loop_i' [-Wunused-label]
+    read_loop_i: for(int i = 0; i < NUM_ROWS; ++i) {
+    ^~~~~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/src/row_array_2d.cpp:58:5: warning: unused label 'write_loop_i' [-Wunused-label]
+    write_loop_i: for(int i = 0; i < NUM_ROWS; ++i) {
+    ^~~~~~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/src/row_array_2d.cpp:59:9: warning: unused label 'write_loop_jj' [-Wunused-label]
+        write_loop_jj: for (int jj = 0; jj < WORD_PER_ROW; ++jj) {
+        ^~~~~~~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/src/row_array_2d.cpp:70:9: warning: unused label 'compute_loop_jj' [-Wunused-label]
+        compute_loop_jj: for (int jj = 0; jj < WORD_PER_ROW; ++jj) {
+        ^~~~~~~~~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/src/row_array_2d.cpp:69:5: warning: unused label 'compute_loop_i' [-Wunused-label]
+    compute_loop_i: for(int i = 0; i < NUM_ROWS; ++i) {
+    ^~~~~~~~~~~~~~~~
+INFO: [SDSoC 0-0] Performing accelerator source linting for row_array_2d_accel
+INFO: [SDSoC 0-0] Performing pragma generation
+INFO: [SDSoC 0-0] Successfully generated tcl script: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/emu/_sds/vhls/row_array_2d_accel.tcl
+INFO: [SDSoC 0-0] Moving function row_array_2d_accel to Programmable Logic
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/emu/_sds/reports/sds_row_array_2d.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/src/row_array_2d.cpp
+ 
+mkdir -p emu
+Building Target: emu/row_array_2d_accel.elf
+Trigerring: SDS++ Linker
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -o row_array_2d_accel.elf /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/emu/main.o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/emu/row_array_2d.o -mno-bitstream -mno-boot-files -emulation optimized
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Analyzing object files
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/emu/main.o
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/emu/row_array_2d.o
+INFO: [SDSoC 0-0] Generating data motion network
+INFO: [DMAnalysis 70-0] Analyzing hardware accelerators...
+INFO: [DMAnalysis 70-0] Analyzing callers to hardware accelerators...
+INFO: [DMAnalysis 70-0] Scheduling data transfer graph for partition 0
+INFO: [DMAnalysis 70-0] Creating data motion network hardware for partition 0
+INFO: [DMAnalysis 70-0] Creating software stub functions for partition 0
+INFO: [DMAnalysis 70-0] Generating data motion network report for partition 0
+INFO: [DMAnalysis 70-0] Rewriting caller code
+INFO: [SDSoC 0-0] Creating block diagram (BD), address map, port information and device registration for partition 0 (this may take a few minutes)
+system_linker started at Wed Apr 19 15:41:44 IST 2017
+INFO: [SDSoC 0-0] Copying address map
+INFO: [SDSoC 0-0] Creating emulation files
+... [15:45:28] Starting static elaboration
+... [15:46:22] Starting simulation data flow analysis
+INFO: [SDSoC 0-0] Creating port and device registration data
+system_linker completed at Wed Apr 19 15:46:41 IST 2017
+INFO: [SDSoC 0-0] Software tracing enabled
+INFO: [SDSoC 0-0] Rewrite caller functions
+INFO: [SDSoC 0-0] Compile caller rewrite file /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/emu/_sds/swstubs/main.cpp
+INFO: [SDSoC 0-0] Prepare hardware access API functions
+INFO: [SDSoC 0-0] Create accelerator stub functions
+INFO: [SDSoC 0-0] Compile hardware access API functions
+INFO: [SDSoC 0-0] Compile accelerator stub functions
+row_array_2d.cpp:49:9: warning: label ‘read_loop_jj’ defined but not used [-Wunused-label]
+         read_loop_jj: for (int jj = 0; jj < WORD_PER_ROW; ++jj) {
+         ^~~~~~~~~~~~
+row_array_2d.cpp: In function ‘void write_data(DTYPE*, my_data_fifo&)’:
+row_array_2d.cpp:58:5: warning: label ‘write_loop_i’ defined but not used [-Wunused-label]
+     write_loop_i: for(int i = 0; i < NUM_ROWS; ++i) {
+     ^~~~~~~~~~~~
+row_array_2d.cpp:59:9: warning: label ‘write_loop_jj’ defined but not used [-Wunused-label]
+         write_loop_jj: for (int jj = 0; jj < WORD_PER_ROW; ++jj) {
+         ^~~~~~~~~~~~~
+row_array_2d.cpp: In function ‘void compute(my_data_fifo&, my_data_fifo&, DTYPE)’:
+row_array_2d.cpp:69:5: warning: label ‘compute_loop_i’ defined but not used [-Wunused-label]
+     compute_loop_i: for(int i = 0; i < NUM_ROWS; ++i) {
+     ^~~~~~~~~~~~~~
+row_array_2d.cpp:70:9: warning: label ‘compute_loop_jj’ defined but not used [-Wunused-label]
+         compute_loop_jj: for (int jj = 0; jj < WORD_PER_ROW; ++jj) {
+         ^~~~~~~~~~~~~~~
+INFO: [SDSoC 0-0] Link application ELF file
+INFO: [SDSoC 0-0] Not creating bitstream due to the -mno-bitstream switch
+INFO: [SDSoC 0-0] Calling system_linker for partition 0
+system_linker started at Wed Apr 19 15:46:45 IST 2017
+system_linker completed at Wed Apr 19 15:46:46 IST 2017
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/row_array_2d/emu/_sds/reports/sds.log
+
+SDx Completed Building Target: emu/row_array_2d_accel.elf
+ 
+cp /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/utility/emu_run.sh emu/
+cd emu ; ./emu_run.sh row_array_2d_accel.elf
+Starting PL simulation
+Waiting for PL simulation to start....... PL simulation started!
+Starting QEMU
+ - Press <Ctrl-a h> for help 
+
+
+U-Boot 2017.01 (Apr 15 2017 - 14:02:48 -0700)
+
+Model: Zynq ZC706 Development Board
+Board: Xilinx Zynq
+DRAM:  ECC disabled 1 GiB
+MMC:   sdhci@e0100000: 0 (SD)
+SF: Detected n25q128 with page size 256 Bytes, erase size 64 KiB, total 32 MiB
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+Net:   ZYNQ GEM: e000b000, phyaddr 7, interface rgmii-id
+eth0: ethernet@e000b000
+U-BOOT for zc706
+
+Hit any key to stop autoboot:  4  3  2  1  0 
+Device: sdhci@e0100000
+Manufacturer ID: aa
+OEM: 5859
+Name: QEMU! 
+Tran Speed: 25000000
+Rd Block Len: 512
+SD version 1.0
+High Capacity: No
+Capacity: 488.3 MiB
+Bus Width: 4-bit
+Erase Group Size: 512 Bytes
+reading image.ub
+9940500 bytes read in 908 ms (10.4 MiB/s)
+## Loading kernel from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'kernel@0' kernel subimage
+     Description:  Linux Kernel
+     Type:         Kernel Image
+     Compression:  uncompressed
+     Data Start:   0x100000d4
+     Data Size:    3756728 Bytes = 3.6 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: 0x00008000
+     Entry Point:  0x00008000
+     Hash algo:    sha1
+     Hash value:   645924245114e089dfe8074a489edda9cccab7dd
+   Verifying Hash Integrity ... sha1+ OK
+## Loading ramdisk from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'ramdisk@0' ramdisk subimage
+     Description:  ramdisk
+     Type:         RAMDisk Image
+     Compression:  uncompressed
+     Data Start:   0x10399eac
+     Data Size:    6163320 Bytes = 5.9 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: unavailable
+     Entry Point:  unavailable
+     Hash algo:    sha1
+     Hash value:   a48b3deb4850fd18a02233447413775aa3f0d64c
+   Verifying Hash Integrity ... sha1+ OK
+## Loading fdt from FIT Image at 10000000 ...
+   Using 'conf@1' configuration
+   Trying 'fdt@0' fdt subimage
+     Description:  Flattened Device Tree blob
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x10395480
+     Data Size:    18811 Bytes = 18.4 KiB
+     Architecture: ARM
+     Hash algo:    sha1
+     Hash value:   9b7e7520610b155877cfa91cc4c52b6a744da7df
+   Verifying Hash Integrity ... sha1+ OK
+   Booting using the fdt blob at 0x10395480
+   Loading Kernel Image ... OK
+   Loading Ramdisk to 07a1f000, end 07fffb78 ... OK
+   Loading Device Tree to 07a17000, end 07a1e97a ... OK
+
+Starting kernel ...
+
+GIC CPU mask not found - kernel will fail to boot.
+GIC CPU mask not found - kernel will fail to boot.
+Failed to initialize '/amba/timer@f8f00200': -38
+mtd: partition "spare" is out of reach -- disabled
+ULPI integrity check: failed!ci_hdrc ci_hdrc.0: unable to init phy: -19
+cdns-i2c e0004000.i2c: timeout waiting on completion
+rtc-pcf8563 5-0051: pcf8563_write_block_data: err=-110 addr=0e, data=03
+rtc-pcf8563 5-0051: pcf8563_probe: write error
+cdns-i2c e0004000.i2c: timeout waiting on completion
+ucd9000 8-0065: Failed to read device ID
+INIT: version 2.88 booting
+Starting udev
+Populating dev cache
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Sat Apr 15 21:06:32 UTC 2017
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Starting internet superserver: inetd.
+INIT: Entering runlevel: 5
+Configuring network interfaces... udhcpc (v1.24.1) started
+Sending discover...
+Sending select for 10.0.2.15...
+Lease of 10.0.2.15 obtained, lease time 86400
+/etc/udhcpc.d/50default: Adding DNS 10.0.2.3
+done.
+Starting Dropbear SSH server: Generating key, this may take a while...
+Public key portion is:
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCMYgDbtxRUefc+XUGGojAXsdONiFp+4C3vtUgq/K9caJJ+s8eeCfzEHAJRGwTQB/Krc4yq62MY/WFw876YfEg7vF7aR+AF9gfY8iy0d3WYphxYi6XJo4Mqot/gaCA3xbtBE4tk1Ys8LMLmCCekq8P9nZFYtL8tZE7rwLZeBvE5JQL+BvXWvUHeaCPaTL3vtW8fNH4d+9U6u0/pBDFziglMMWZC5KqCHZZ7KruDRNDrcA0u7xZ1OtUOh4gZ7NSAD/qFiIqqsB1xg4hVR7dbk+CeJy34j3ig4ZSYMOeWXqRl8tqSIJqQ7X0rAYpiARkP75ji+JHIauqMGUL1AVeAfW/n root@plnx_arm
+Fingerprint: md5 65:34:8c:a7:5b:33:f2:97:d2:6b:06:f7:b4:8f:50:f0
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+attempting to run /mnt/init.sh
+Average number of CPU cycles running mmult in hardware: 492961838
+Computed '4096/4096' correct values!
+TEST PASSED.
+INIT: Switching to runlevel: 6
+INIT: Sending processes the TERM signal
+Stopping Dropbear SSH server: stopped /usr/sbin/dropbear (pid 1054)
+dropbear.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Stopping syslogd/klogd: no syslogd found; none killed
+Stopping tcf-agent: OK
+Deconfiguring network interfaces... done.
+Sending all processes the TERM signal...
+Sending all processes the KILL signal...
+Unmounting remote filesystems...
+Deactivating swap...
+Unmounting local filesystems...
+Rebooting... reboot: Restarting system
+DONE!
+row_array_2d/
+rm -f -rf emu .Xil
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/src/fir.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/emu/fir.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/emu/fir.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/emu/fir.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/emu/fir.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/src/fir.cpp"  -sds-hw fir_shift_register_accel fir.cpp -sds-end
+INFO: [SDSoC 0-0] Processing -sds-hw block for fir_shift_register_accel
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/src/fir.cpp:92:5: warning: unused label 'init_loop' [-Wunused-label]
+    init_loop:
+    ^~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/src/fir.cpp:109:9: warning: unused label 'shift_loop' [-Wunused-label]
+        shift_loop:
+        ^~~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/src/fir.cpp:98:5: warning: unused label 'outer_loop' [-Wunused-label]
+    outer_loop:
+    ^~~~~~~~~~~
+INFO: [SDSoC 0-0] Performing accelerator source linting for fir_shift_register_accel
+INFO: [SDSoC 0-0] Performing pragma generation
+INFO: [SDSoC 0-0] Successfully generated tcl script: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/emu/_sds/vhls/fir_shift_register_accel.tcl
+INFO: [SDSoC 0-0] Moving function fir_shift_register_accel to Programmable Logic
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/emu/_sds/reports/sds_fir.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/src/fir.cpp
+ 
+Building file: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/src/main.cpp
+Invoking: SDS++ Compiler
+mkdir -p emu
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -Wall -O3 -c -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/emu/main.o" -MMD -MP -MF"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/emu/main.d" -MT"/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/emu/main.o"  -std=c++0x -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/profile/ -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/emu/main.o" "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/src/main.cpp"  -sds-hw fir_shift_register_accel fir.cpp -sds-end
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Create data motion intermediate representation
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/src/main.cpp:54:5: warning: unused label 'read_coef' [-Wunused-label]
+    read_coef: for (int i = 0 ; i < N_COEFF ; i++) coeff_reg[i] = coeff[i];
+    ^~~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/src/main.cpp:59:9: warning: unused label 'shift_loop' [-Wunused-label]
+        shift_loop:
+        ^~~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/src/main.cpp:56:5: warning: unused label 'outer_loop' [-Wunused-label]
+    outer_loop:
+    ^~~~~~~~~~~
+INFO: [SDSoC 0-0] Compiling /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/src/main.cpp
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/src/main.cpp:56:5: warning: label ‘outer_loop’ defined but not used [-Wunused-label]
+     outer_loop:
+     ^~~~~~~~~~
+/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/src/main.cpp:59:9: warning: label ‘shift_loop’ defined but not used [-Wunused-label]
+         shift_loop:
+         ^~~~~~~~~~
+sds++ log file saved as /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/emu/_sds/reports/sds_main.log
+
+Finished building: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/src/main.cpp
+ 
+mkdir -p emu
+Building Target: emu/fir_shift_register_accel.elf
+Trigerring: SDS++ Linker
+cd emu ; sds++ -sds-pf zc706 -target-os linux  -o fir_shift_register_accel.elf /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/emu/fir.o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/emu/main.o -mno-bitstream -mno-boot-files -emulation optimized
+INFO: [SDSoC 0-0] Platform system configuration option -sds-sys-config was not specified, searching for a configuration that uses the specified OS linux
+INFO: [SDSoC 0-0] Using system configuration -sds-sys-config linux
+INFO: [SDSoC 0-0] Analyzing object files
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/emu/fir.o
+... /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/shift_register/emu/main.o
+INFO: [SDSoC 0-0] Generating data motion network
+INFO: [DMAnalysis 70-0] Analyzing hardware accelerators...
+INFO: [DMAnalysis 70-0] Analyzing callers to hardware accelerators...
+INFO: [DMAnalysis 70-0] Scheduling data transfer graph for partition 0
+INFO: [DMAnalysis 70-0] Creating data motion network hardware for partition 0
+INFO: [DMAnalysis 70-0] Creating software stub functions for partition 0
+INFO: [DMAnalysis 70-0] Generating data motion network report for partition 0
+INFO: [DMAnalysis 70-0] Rewriting caller code
+INFO: [SDSoC 0-0] Creating block diagram (BD), address map, port information and device registration for partition 0 (this may take a few minutes)
+system_linker started at Wed Apr 19 15:48:46 IST 2017
