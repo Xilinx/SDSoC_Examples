@@ -36,7 +36,7 @@
 #include <stdlib.h>
 #include "vector_addition.h"
 
-using namespace sds_prof;
+using namespace sds_utils;
 
 const int DATA_SIZE = 1<<10;
 
@@ -54,7 +54,7 @@ void vadd(int *a, int *b, int *c, int len){
 
     vadd_loop:
     for (int x=0; x<len; ++x) {
-        c[x] = a[x] + b[x] + 1;
+        c[x] = a[x] + b[x];
     }
 }
 

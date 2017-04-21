@@ -34,7 +34,7 @@
 #ifndef VECTOR_ADDITION_H_
 #define VECTOR_ADDITION_H_
 
-#include "sds_timer.h"
+#include "sds_utils.h"
 
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
