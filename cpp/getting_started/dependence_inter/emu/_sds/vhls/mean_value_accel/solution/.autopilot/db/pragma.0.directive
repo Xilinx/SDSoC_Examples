@@ -1,0 +1,35 @@
+<AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
+<sourceFile name="">
+<directive functionLabel="" functionName="mean_value_accel" label="">
+<pragma name="PIPELINE"/>
+</directive>
+<directive functionLabel="" functionName="mean_value_accel" label="">
+<pragma name="LOOP_TRIPCOUNT">
+<option name="min" value="256"/>
+<option name="max" value="256"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="mean_value_accel" label="">
+<pragma name="LOOP_TRIPCOUNT">
+<option name="min" value="254"/>
+<option name="max" value="254"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="mean_value_accel" label="">
+<pragma name="DEPENDENCE">
+<option name="variable" value="local_buffer"/>
+<option name="inter" positionalBoolean="type" value=""/>
+<option name="false" positionalBoolean="dependent" value=""/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="mean_value_accel" label="">
+<pragma name="PIPELINE"/>
+</directive>
+<directive functionLabel="" functionName="mean_value_accel" label="">
+<pragma name="LOOP_TRIPCOUNT">
+<option name="min" value="254"/>
+<option name="max" value="254"/>
+</pragma>
+</directive>
+</sourceFile>
+</AutoPilot:ProjectResources>

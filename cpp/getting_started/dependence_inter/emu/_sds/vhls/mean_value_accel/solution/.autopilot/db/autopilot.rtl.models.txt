@@ -1,0 +1,5 @@
+mean_value_accel_cud
+mean_value_accel_bkb
+mean_value_accel_in_r_m_axi
+mean_value_accel_out_r_m_axi
+mean_value_accel

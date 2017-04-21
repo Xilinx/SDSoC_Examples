@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table, th, td
+    {
+      border-collapse:collapse;
+      border:1px solid black;
+    }
+    th, td
+    {
+      padding:5px;
+    }
+    p
+    {
+      font-size:200%
+    }
+  </style>
+  <title> Data Motion Network Report </title>
+</head>
+<body>
+<p>Partition 0</p>
+<table>
+<caption><b><font size="5">Data Motion Network</font></b></caption>
+<tr>
+<th>Accelerator</th>
+<th>Argument</th>
+<th>IP Port</th>
+<th>Direction</th>
+<th>Declared Size(bytes)</th>
+<th>Pragmas</th>
+<th>Connection</th>
+</tr>
+<tr>
+<td>mmult_accel_1</td>
+<td>a</td>
+<td>a_offset</td>
+<td>IN</td>
+<td>0*4</td>
+<td><ul>
+<li>length:(64)</li>
+<li>data_mover:zero_copy</li>
+</ul>
+</td>
+<td>ps7_S_AXI_ACP:AXIMM:0xC</td>
+</tr>
+<td></td>
+<td>b</td>
+<td>b_offset</td>
+<td>IN</td>
+<td>0*4</td>
+<td><ul>
+<li>length:(64)</li>
+<li>data_mover:zero_copy</li>
+</ul>
+</td>
+<td>ps7_S_AXI_ACP:AXIMM:0x10</td>
+</tr>
+<td></td>
+<td>c</td>
+<td>c_offset</td>
+<td>OUT</td>
+<td>0*4</td>
+<td><ul>
+<li>length:(64)</li>
+<li>data_mover:zero_copy</li>
+</ul>
+</td>
+<td>ps7_S_AXI_ACP:AXIMM:0x14</td>
+</tr>
+<td></td>
+<td>size</td>
+<td>size</td>
+<td>IN</td>
+<td>4</td>
+<td><ul>
+</ul>
+</td>
+<td>ps7_M_AXI_GP0:AXILITE:0x18</td>
+</tr>
+</table>
+
+<table>
+<caption><b><font size="5">Accelerator Callsites</font></b></caption>
+<tr>
+<th>Accelerator</th>
+<th>Callsite</th>
+<th>IP Port</th>
+<th>Transfer Size(bytes)</th>
+<th>Paged or Contiguous</th>
+<th>Datamover Setup Time(CPU cycles)</th>
+<th>Transfer Time(CPU cycles)</th>
+</tr>
+<tr>
+<td>mmult_accel_1</td>
+<td>main.cpp:99:5</td>
+<td>a_offset</td>
+<td>(64) * 4</td>
+<td>contiguous</td>
+<td>502</td>
+<td>1608</td>
+</tr>
+<td></td>
+<td></td>
+<td>b_offset</td>
+<td>(64) * 4</td>
+<td>contiguous</td>
+<td>502</td>
+<td>1608</td>
+</tr>
+<td></td>
+<td></td>
+<td>c_offset</td>
+<td>(64) * 4</td>
+<td>contiguous</td>
+<td>502</td>
+<td>1608</td>
+</tr>
+<td></td>
+<td></td>
+<td>size</td>
+<td>4</td>
+<td>paged</td>
+<td>0</td>
+<td>13</td>
+</tr>
+</table>
+</body>
+</html>

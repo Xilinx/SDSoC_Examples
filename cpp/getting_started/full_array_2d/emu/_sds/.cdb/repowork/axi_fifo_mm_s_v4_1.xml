@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xd:repository xd:vendor="xilinx.com" xd:library="xd" xd:name="xd_ip" xd:version="2.01.a"
+               xmlns:xd="http://www.xilinx.com/xd" >
+  
+    <xd:component xd:vendor="xilinx.com" xd:library="ip" xd:name="axi_fifo_mm_s" xd:version="4.1" xd:type="datamover">
+        <xd:busInterface xd:name="S_AXI" xd:busTypeRef="aximm" xd:mode="slave" xd:regionSize="0x1000" xd:dataWidth="32"  xd:clockRef="s_axi_aclk" xd:resetRef="s_axi_aresetn"/>
+        <xd:busInterface xd:name="AXI_STR_TXD" xd:busTypeRef="axis" xd:mode="master" xd:hasTlast="true" xd:direction="out" xd:clockRef="s_axi_aclk" xd:resetRef="mm2s_prmry_reset_out_n"/>
+        <xd:busInterface xd:name="AXI_STR_RXD" xd:busTypeRef="axis" xd:mode="slave" xd:hasTlast="true" xd:direction="in" xd:clockRef="s_axi_aclk" xd:resetRef="s2mm_prmry_reset_out_n"/>
+        <xd:busInterface xd:name="s_axi_aclk" xd:busTypeRef="clock" xd:mode="slave" xd:direction="in" xd:library="signal" />
+        <xd:busInterface xd:name="s_axi_aresetn" xd:busTypeRef="reset" xd:mode="slave" xd:direction="in" xd:library="signal" />
+        <xd:busInterface xd:name="mm2s_prmry_reset_out_n" xd:busTypeRef="reset" xd:mode="master" xd:direction="out" xd:library="signal" />
+        <xd:busInterface xd:name="s2mm_prmry_reset_out_n" xd:busTypeRef="reset" xd:mode="master" xd:direction="out" xd:library="signal" />
+        <xd:busInterface xd:name="interrupt" xd:busTypeRef="interrupt" xd:mode="master" xd:direction="out" xd:library="signal"/>
+    </xd:component>
+
+</xd:repository>

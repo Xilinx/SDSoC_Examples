@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xd:repository xmlns:xd="http://www.xilinx.com/xd">
+  <xd:component xd:vendor="xilinx.com" xd:library="xd" xd:name="mmult_accel_if" xd:version="1.0" xd:componentRef="adapter_v3_0" xd:adapteeCompRef="mmult_accel" xd:type="accelerator">
+    <xd:busInterface xd:name="S_AXI" xd:busTypeRef="aximm" xd:mode="slave" xd:clockRef="s_axi_aclk" xd:resetRef="s_axi_aresetn" xd:dataWidth="32">
+       <xd:reg xd:name="ap_ctrl" xd:offset="0x8" xd:dataWidth="4"/>
+       <xd:reg xd:name="a_offset" xd:offset="0xC" xd:dataWidth="32"/>
+       <xd:reg xd:name="b_offset" xd:offset="0x10" xd:dataWidth="32"/>
+       <xd:reg xd:name="c_offset" xd:offset="0x14" xd:dataWidth="32"/>
+       <xd:reg xd:name="size" xd:offset="0x18" xd:dataWidth="32"/>
+    </xd:busInterface>
+    <xd:busInterface xd:name="s_axi_aclk" xd:busTypeRef="clock" xd:mode="slave" xd:library="signal" xd:direction="in" xd:port="s_axi_aclk"/>
+    <xd:busInterface xd:name="acc_aclk" xd:busTypeRef="clock" xd:mode="slave" xd:library="signal" xd:direction="in" xd:port="acc_aclk"/>
+    <xd:busInterface xd:name="s_axi_aresetn" xd:busTypeRef="reset" xd:mode="slave" xd:library="signal" xd:direction="in" xd:port="s_axi_aresetn"/>
+    <xd:busInterface xd:name="acc_aresetn" xd:busTypeRef="reset" xd:mode="slave" xd:library="signal" xd:direction="in" xd:port="acc_aresetn"/>
+    <xd:busInterface xd:name="m_axi_a" xd:componentRef="mmult_accel" xd:busTypeRef="aximm" xd:mode="master" xd:clockRef="s_axi_aclk" xd:resetRef="s_axi_aresetn" xd:dataWidth="32">
+       <xd:reg xd:name="a_offset" xd:offset="0xC" xd:dataWidth="32"/>
+    </xd:busInterface>
+    <xd:busInterface xd:name="M_AXIMM_0" xd:componentRef="mmult_accel" xd:busTypeRef="aximm" xd:mode="master" xd:clockRef="acc_aclk" xd:resetRef="acc_aresetn" xd:dataWidth="32">
+    </xd:busInterface>
+    <xd:busInterface xd:name="AP_AXIMM_0" xd:componentRef="mmult_accel" xd:busTypeRef="aximm" xd:mode="slave" xd:clockRef="acc_aclk" xd:resetRef="acc_aresetn" xd:dataWidth="32">
+    </xd:busInterface>
+    <xd:busInterface xd:name="m_axi_b" xd:componentRef="mmult_accel" xd:busTypeRef="aximm" xd:mode="master" xd:clockRef="s_axi_aclk" xd:resetRef="s_axi_aresetn" xd:dataWidth="32">
+       <xd:reg xd:name="b_offset" xd:offset="0x10" xd:dataWidth="32"/>
+    </xd:busInterface>
+    <xd:busInterface xd:name="M_AXIMM_1" xd:componentRef="mmult_accel" xd:busTypeRef="aximm" xd:mode="master" xd:clockRef="acc_aclk" xd:resetRef="acc_aresetn" xd:dataWidth="32">
+    </xd:busInterface>
+    <xd:busInterface xd:name="AP_AXIMM_1" xd:componentRef="mmult_accel" xd:busTypeRef="aximm" xd:mode="slave" xd:clockRef="acc_aclk" xd:resetRef="acc_aresetn" xd:dataWidth="32">
+    </xd:busInterface>
+    <xd:busInterface xd:name="m_axi_c" xd:componentRef="mmult_accel" xd:busTypeRef="aximm" xd:mode="master" xd:clockRef="s_axi_aclk" xd:resetRef="s_axi_aresetn" xd:dataWidth="32">
+       <xd:reg xd:name="c_offset" xd:offset="0x14" xd:dataWidth="32"/>
+    </xd:busInterface>
+    <xd:busInterface xd:name="M_AXIMM_2" xd:componentRef="mmult_accel" xd:busTypeRef="aximm" xd:mode="master" xd:clockRef="acc_aclk" xd:resetRef="acc_aresetn" xd:dataWidth="32">
+    </xd:busInterface>
+    <xd:busInterface xd:name="AP_AXIMM_2" xd:componentRef="mmult_accel" xd:busTypeRef="aximm" xd:mode="slave" xd:clockRef="acc_aclk" xd:resetRef="acc_aresetn" xd:dataWidth="32">
+    </xd:busInterface>
+  </xd:component>
+</xd:repository>

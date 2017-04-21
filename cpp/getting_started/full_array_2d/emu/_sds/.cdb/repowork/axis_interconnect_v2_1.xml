@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xd:repository xmlns:xd="http://www.xilinx.com/xd" xd:vendor="xilinx.com" xd:library="ip" xd:name="axis_interconnect" xd:version="2.1">
+    <xd:component xd:vendor="xilinx.com" xd:library="ip" xd:name="axis_interconnect" xd:version="2.1" xd:type="interconnect">
+    <xd:parameter xd:name="NUM_MI" 
+                  xd:value="number(count($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and starts-with(substring(@xd:name, 1, 1), 'M') and starts-with(substring(@xd:name, 4, 5), '_AXIS')]))"
+                  xd:isValid="'TRUE'"/>
+    <xd:parameter xd:name="NUM_SI" 
+                  xd:value="number(count($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and starts-with(substring(@xd:name, 1, 1), 'S') and starts-with(substring(@xd:name, 4, 5), '_AXIS')]))"
+                  xd:isValid="'TRUE'"/>
+
+    <xd:parameter xd:name="S00_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='S00_AXIS'])"/>
+    <xd:parameter xd:name="S01_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='S01_AXIS'])"/>
+    <xd:parameter xd:name="S02_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='S02_AXIS'])"/>
+    <xd:parameter xd:name="S03_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='S03_AXIS'])"/>
+    <xd:parameter xd:name="S04_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='S04_AXIS'])"/>
+    <xd:parameter xd:name="S05_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='S05_AXIS'])"/>
+    <xd:parameter xd:name="S06_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='S06_AXIS'])"/>
+    <xd:parameter xd:name="S07_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='S07_AXIS'])"/>
+    <xd:parameter xd:name="S08_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='S08_AXIS'])"/>
+    <xd:parameter xd:name="S09_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='S09_AXIS'])"/>
+    <xd:parameter xd:name="S10_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='S10_AXIS'])"/>
+    <xd:parameter xd:name="S11_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='S11_AXIS'])"/>
+    <xd:parameter xd:name="S12_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='S12_AXIS'])"/>
+    <xd:parameter xd:name="S13_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='S13_AXIS'])"/>
+    <xd:parameter xd:name="S14_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='S14_AXIS'])"/>
+    <xd:parameter xd:name="S15_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='S15_AXIS'])"/>
+
+    <xd:parameter xd:name="M00_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='M00_AXIS'])"/>
+    <xd:parameter xd:name="M01_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='M01_AXIS'])"/>
+    <xd:parameter xd:name="M02_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='M02_AXIS'])"/>
+    <xd:parameter xd:name="M03_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='M03_AXIS'])"/>
+    <xd:parameter xd:name="M04_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='M04_AXIS'])"/>
+    <xd:parameter xd:name="M05_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='M05_AXIS'])"/>
+    <xd:parameter xd:name="M06_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='M06_AXIS'])"/>
+    <xd:parameter xd:name="M07_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='M07_AXIS'])"/>
+    <xd:parameter xd:name="M08_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='M08_AXIS'])"/>
+    <xd:parameter xd:name="M09_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='M09_AXIS'])"/>
+    <xd:parameter xd:name="M10_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='M10_AXIS'])"/>
+    <xd:parameter xd:name="M11_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='M11_AXIS'])"/>
+    <xd:parameter xd:name="M12_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='M12_AXIS'])"/>
+    <xd:parameter xd:name="M13_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='M13_AXIS'])"/>
+    <xd:parameter xd:name="M14_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='M14_AXIS'])"/>
+    <xd:parameter xd:name="M15_HAS_REGSLICE" xd:value="1"
+                  xd:isValid="boolean($designComponent/xd:connection/xd:busInterface[@xd:instanceRef=$instance and @xd:name='M15_AXIS'])"/>
+
+    <xd:busInterface xd:name="M00_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:clockRef="M00_AXIS_ACLK" xd:resetRef="M00_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="M01_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:clockRef="M01_AXIS_ACLK" xd:resetRef="M01_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="M02_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:clockRef="M02_AXIS_ACLK" xd:resetRef="M02_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="M03_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:clockRef="M03_AXIS_ACLK" xd:resetRef="M03_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="M04_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:clockRef="M04_AXIS_ACLK" xd:resetRef="M04_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="M05_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:clockRef="M05_AXIS_ACLK" xd:resetRef="M05_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="M06_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:clockRef="M06_AXIS_ACLK" xd:resetRef="M06_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="M07_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:clockRef="M07_AXIS_ACLK" xd:resetRef="M07_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="M08_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:clockRef="M08_AXIS_ACLK" xd:resetRef="M08_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="M09_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:clockRef="M09_AXIS_ACLK" xd:resetRef="M09_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="M10_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:clockRef="M10_AXIS_ACLK" xd:resetRef="M10_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="M11_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:clockRef="M11_AXIS_ACLK" xd:resetRef="M11_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="M12_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:clockRef="M12_AXIS_ACLK" xd:resetRef="M12_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="M13_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:clockRef="M13_AXIS_ACLK" xd:resetRef="M13_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="M14_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:clockRef="M14_AXIS_ACLK" xd:resetRef="M14_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="M15_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:clockRef="M15_AXIS_ACLK" xd:resetRef="M15_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="S00_AXIS" xd:busTypeRef="axis" xd:mode="slave" xd:clockRef="S00_AXIS_ACLK" xd:resetRef="S00_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="S01_AXIS" xd:busTypeRef="axis" xd:mode="slave" xd:clockRef="S01_AXIS_ACLK" xd:resetRef="S01_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="S02_AXIS" xd:busTypeRef="axis" xd:mode="slave" xd:clockRef="S02_AXIS_ACLK" xd:resetRef="S02_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="S03_AXIS" xd:busTypeRef="axis" xd:mode="slave" xd:clockRef="S03_AXIS_ACLK" xd:resetRef="S03_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="S04_AXIS" xd:busTypeRef="axis" xd:mode="slave" xd:clockRef="S04_AXIS_ACLK" xd:resetRef="S04_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="S05_AXIS" xd:busTypeRef="axis" xd:mode="slave" xd:clockRef="S05_AXIS_ACLK" xd:resetRef="S05_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="S06_AXIS" xd:busTypeRef="axis" xd:mode="slave" xd:clockRef="S06_AXIS_ACLK" xd:resetRef="S06_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="S07_AXIS" xd:busTypeRef="axis" xd:mode="slave" xd:clockRef="S07_AXIS_ACLK" xd:resetRef="S07_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="S08_AXIS" xd:busTypeRef="axis" xd:mode="slave" xd:clockRef="S08_AXIS_ACLK" xd:resetRef="S08_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="S09_AXIS" xd:busTypeRef="axis" xd:mode="slave" xd:clockRef="S09_AXIS_ACLK" xd:resetRef="S09_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="S10_AXIS" xd:busTypeRef="axis" xd:mode="slave" xd:clockRef="S10_AXIS_ACLK" xd:resetRef="S10_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="S11_AXIS" xd:busTypeRef="axis" xd:mode="slave" xd:clockRef="S11_AXIS_ACLK" xd:resetRef="S11_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="S12_AXIS" xd:busTypeRef="axis" xd:mode="slave" xd:clockRef="S12_AXIS_ACLK" xd:resetRef="S12_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="S13_AXIS" xd:busTypeRef="axis" xd:mode="slave" xd:clockRef="S13_AXIS_ACLK" xd:resetRef="S13_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="S14_AXIS" xd:busTypeRef="axis" xd:mode="slave" xd:clockRef="S14_AXIS_ACLK" xd:resetRef="S14_AXIS_ARESETN" xd:hasTlast="true" />
+    <xd:busInterface xd:name="S15_AXIS" xd:busTypeRef="axis" xd:mode="slave" xd:clockRef="S15_AXIS_ACLK" xd:resetRef="S15_AXIS_ARESETN" xd:hasTlast="true" />
+
+    <xd:busInterface xd:name="ACLK" xd:busTypeRef="clock" xd:mode="slave" xd:direction="in" xd:library="signal"/>
+    <xd:busInterface xd:name="ARESETN" xd:busTypeRef="reset" xd:mode="slave" xd:direction="in" xd:library="signal"/>
+    </xd:component>
+</xd:repository>
+
+

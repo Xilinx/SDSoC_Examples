@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<cf:model cf:cpu="cortex_a9" cf:partition="0" cf:prefix="_p0_" cf:name="top" xd:type="design" xmlns:xd="http://www.xilinx.com/xd" xmlns:cf="http://www.xilinx.com/connections">
+  <cf:block cf:name="hwblk_mmult_accel">
+    <cf:port cf:name="cmd_mmult_accel" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="a_offset" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="b_offset" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="c_offset" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="size" cf:portType="stream" cf:direction="in"/>
+  </cf:block>
+  <cf:block cf:name="swblk_mmult_accel">
+    <cf:port cf:name="cmd_mmult_accel" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="a_offset" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="b_offset" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="c_offset" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="size" cf:portType="stream" cf:direction="out"/>
+  </cf:block>
+  <cf:comp cf:name="zc706" xd:componentRef="zc706" xd:clockId="1"/>
+  <cf:comp cf:name="mmult_accel_1" xd:componentRef="mmult_accel" xd:clockId="1"/>
+  <cf:instance cf:name="hwinst_mmult_accel_1" cf:blockName="hwblk_mmult_accel" cf:compName="mmult_accel_1">
+    <cf:portMap cf:blockPort="cmd_mmult_accel" cf:compPort="ap_ctrl" xd:register="0x8"/>
+    <cf:portMap cf:blockPort="a_offset" cf:compPort="m_axi_a" xd:paddedWidth="32" cf:ctrlPort="ap_ctrl" xd:register="0xC"/>
+    <cf:portMap cf:blockPort="b_offset" cf:compPort="m_axi_b" xd:paddedWidth="32" cf:ctrlPort="ap_ctrl" xd:register="0x10"/>
+    <cf:portMap cf:blockPort="c_offset" cf:compPort="m_axi_c" xd:paddedWidth="32" cf:ctrlPort="ap_ctrl" xd:register="0x14"/>
+    <cf:portMap cf:blockPort="size" cf:compPort="size" xd:paddedWidth="32" xd:register="0x18"/>
+  </cf:instance>
+  <cf:instance cf:name="swinst_mmult_accel_1" cf:blockName="swblk_mmult_accel" cf:compName="zc706">
+    <cf:portMap cf:blockPort="cmd_mmult_accel" cf:compPort="ps7_M_AXI_GP0"/>
+    <cf:portMap cf:blockPort="a_offset" cf:compPort="ps7_S_AXI_ACP" cf:ctrlPort="ps7_M_AXI_GP0"/>
+    <cf:portMap cf:blockPort="b_offset" cf:compPort="ps7_S_AXI_ACP" cf:ctrlPort="ps7_M_AXI_GP0"/>
+    <cf:portMap cf:blockPort="c_offset" cf:compPort="ps7_S_AXI_ACP" cf:ctrlPort="ps7_M_AXI_GP0"/>
+    <cf:portMap cf:blockPort="size" cf:compPort="ps7_M_AXI_GP0"/>
+  </cf:instance>
+  <cf:connection cf:srcInst="swinst_mmult_accel_1" cf:srcPort="cmd_mmult_accel" cf:dstInst="hwinst_mmult_accel_1" cf:dstPort="cmd_mmult_accel">
+    <cf:dataMover cf:compName="zc706" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_mmult_accel_1" cf:srcPort="a_offset" cf:dstInst="hwinst_mmult_accel_1" cf:dstPort="a_offset">
+    <cf:dataMover cf:compName="mmult_accel_1" cf:softwareLib="zero_copy"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_mmult_accel_1" cf:srcPort="b_offset" cf:dstInst="hwinst_mmult_accel_1" cf:dstPort="b_offset">
+    <cf:dataMover cf:compName="mmult_accel_1" cf:softwareLib="zero_copy"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_mmult_accel_1" cf:srcPort="c_offset" cf:dstInst="hwinst_mmult_accel_1" cf:dstPort="c_offset">
+    <cf:dataMover cf:compName="mmult_accel_1" cf:softwareLib="zero_copy"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_mmult_accel_1" cf:srcPort="size" cf:dstInst="hwinst_mmult_accel_1" cf:dstPort="size">
+    <cf:dataMover cf:compName="zc706" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+</cf:model>

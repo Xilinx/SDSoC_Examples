@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xd" xd:fcnName="mmult_accel" xd:type="hls_adapter" xd:adapterCompRef="mmult_accel_if" xd:clockId="1" xd:templateInstantiation="__NA__" xd:componentRef="mmult_accel" xd:initiationInterval="17629719" xd:clockPeriod="7.000001" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:controlReg xd:name="control" xd:busInterfaceRef="ap_ctrl" xd:portInterfaceType="acc_handshake" xd:type="axis_acc_adapter" xd:offset="0x8" xd:bufferDepth="16" xd:dataWidth="4"/>
+  <xd:arg xd:name="a" xd:swRootName="a" xd:direction="inout" xd:busInterfaceRef="m_axi_a" xd:hwName="m_axi_a" xd:portInterfaceType="aximm" xd:dataWidth="32" xd:bufferDirection="in"/>
+  <xd:arg xd:name="b" xd:swRootName="b" xd:direction="inout" xd:busInterfaceRef="m_axi_b" xd:hwName="m_axi_b" xd:portInterfaceType="aximm" xd:dataWidth="32" xd:bufferDirection="in"/>
+  <xd:arg xd:name="c" xd:swRootName="c" xd:direction="inout" xd:busInterfaceRef="m_axi_c" xd:hwName="m_axi_c" xd:portInterfaceType="aximm" xd:dataWidth="32" xd:bufferDirection="out"/>
+  <xd:arg xd:name="a" xd:swRootName="a" xd:direction="in" xd:busInterfaceRef="a_offset" xd:hwName="a_offset" xd:portInterfaceType="register" xd:handshakeRef="ap_none" xd:aximmInterfaceRef="m_axi_a" xd:dataWidth="32" xd:instanceRef="mmult_accel_if" xd:index="0" xd:offset="0xC" xd:bufferDepth="16"/>
+  <xd:arg xd:name="b" xd:swRootName="b" xd:direction="in" xd:busInterfaceRef="b_offset" xd:hwName="b_offset" xd:portInterfaceType="register" xd:handshakeRef="ap_none" xd:aximmInterfaceRef="m_axi_b" xd:dataWidth="32" xd:instanceRef="mmult_accel_if" xd:index="1" xd:offset="0x10" xd:bufferDepth="16"/>
+  <xd:arg xd:name="c" xd:swRootName="c" xd:direction="in" xd:busInterfaceRef="c_offset" xd:hwName="c_offset" xd:portInterfaceType="register" xd:handshakeRef="ap_none" xd:aximmInterfaceRef="m_axi_c" xd:dataWidth="32" xd:instanceRef="mmult_accel_if" xd:index="2" xd:offset="0x14" xd:bufferDepth="16"/>
+  <xd:arg xd:name="size" xd:swRootName="size" xd:direction="in" xd:busInterfaceRef="size" xd:hwName="size" xd:portInterfaceType="register" xd:handshakeRef="ap_none" xd:dataWidth="32" xd:instanceRef="mmult_accel_if" xd:index="3" xd:offset="0x18" xd:bufferDepth="16"/>
+  <xd:latencyEstimates xd:best-case="38" xd:worst-case="17629718" xd:average-case="2425110"/>
+  <xd:resourceEstimates xd:LUT="3157" xd:FF="4502" xd:BRAM="195" xd:DSP="8"/>
+</xd:acceleratorMap>

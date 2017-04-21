@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xd:repository xmlns:xd="http://www.xilinx.com/xd" xd:vendor="xilinx.com" xd:library="ip" xd:name="Trace_Monitor_Accelerator" xd:version="3.0">
+    <xd:component xd:vendor="xilinx.com" xd:library="ip" xd:name="Trace_Monitor_Accelerator" xd:version="3.0">
+        <xd:busInterface xd:name="ap_clk" xd:busTypeRef="clock" xd:mode="slave" xd:direction="in" xd:library="signal" xd:port="ap_clk"/>
+        <xd:busInterface xd:name="trace_clk" xd:busTypeRef="clock" xd:mode="slave" xd:direction="in" xd:library="signal" xd:port="trace_clk"/>
+        <xd:busInterface xd:name="MON_AP_CTRL" xd:busTypeRef="acc_handshake" xd:mode="slave" xd:direction="in"/>
+        <xd:busInterface xd:name="TRACE_OUT" xd:busTypeRef="sdsoc_trace" xd:mode="master" xd:clockPort="trace_clk"/>
+    </xd:component>
+</xd:repository>

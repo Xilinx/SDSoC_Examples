@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xd:repository xmlns:xd="http://www.xilinx.com/xd" xd:vendor="xilinx.com" xd:library="ip" xd:name="axi_fifo_register" xd:version="3.0">
+    <xd:component xd:vendor="xilinx.com" xd:library="ip" xd:name="axi_fifo_register" xd:version="3.0">
+        <xd:busInterface xd:name="S_AXI" xd:busTypeRef="aximm" xd:mode="slave" xd:clockRef="AXI_ACLK" xd:resetRef="AXI_ARESETN"/>
+        <xd:busInterface xd:name="AXI_ARESETN" xd:busTypeRef="reset" xd:mode="slave" xd:direction="in" xd:library="signal" xd:port="AXI_ARESETN"/>
+        <xd:busInterface xd:name="AXI_ACLK" xd:busTypeRef="clock" xd:mode="slave" xd:direction="in" xd:library="signal" xd:port="AXI_ACLK"/>
+        <xd:busInterface xd:name="S_AXIS" xd:busTypeRef="axis" xd:mode="slave" xd:direction="in" xd:hasTlast="false" xd:clockRef="AXI_ACLK" xd:resetRef="AXI_ARESETN"/>
+        <xd:busInterface xd:name="M_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:direction="out" xd:hasTlast="true" xd:clockRef="AXI_ACLK" xd:resetRef="AXI_ARESETN"/>
+        <xd:port xd:name="S_AXIS_count" xd:direction="in" xd:size="32"/>
+        <xd:port xd:name="M_AXIS_count" xd:direction="in" xd:size="32"/>
+    </xd:component>
+</xd:repository>

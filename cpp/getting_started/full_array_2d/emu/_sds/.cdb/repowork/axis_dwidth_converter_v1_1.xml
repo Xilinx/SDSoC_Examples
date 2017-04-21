@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xd:repository xmlns:xd="http://www.xilinx.com/xd" xd:vendor="xilinx.com" xd:library="ip" xd:name="axis_dwidth_converter" xd:version="1.0">
+    <xd:component xd:vendor="xilinx.com" xd:library="ip" xd:name="axis_dwidth_converter" xd:version="1.1">
+        <xd:busInterface xd:name="S_AXIS" xd:busTypeRef="axis" xd:mode="slave" xd:hasTlast="true" xd:direction="in"/>
+        <xd:busInterface xd:name="M_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:hasTlast="true" xd:direction="out"/>
+        <xd:busInterface xd:name="RSTIF" xd:busTypeRef="reset" xd:mode="slave" xd:direction="in" xd:library="signal" xd:port="aresetn"/>
+        <xd:busInterface xd:name="CLKIF" xd:busTypeRef="clock" xd:mode="slave" xd:direction="in" xd:library="signal" xd:port="aclk"/>
+    </xd:component>
+</xd:repository>

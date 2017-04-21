@@ -1,0 +1,26 @@
+<AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
+    <sourceFile name="">
+        <directive functionName="mean_value_accel" label="" functionLabel="">
+            <pragma name="INTERFACE">
+                <option name="m_axi" value="" positionalBoolean="mode"/>
+                <option name="port" value="out" positionalBoolean="4"/>
+                <option name="offset" value="direct"/>
+                <option name="bundle" value="out"/>
+            </pragma>
+        </directive>
+        <directive functionName="mean_value_accel" label="" functionLabel="">
+            <pragma name="INTERFACE">
+                <option name="m_axi" value="" positionalBoolean="mode"/>
+                <option name="port" value="in" positionalBoolean="4"/>
+                <option name="offset" value="direct"/>
+                <option name="bundle" value="in"/>
+            </pragma>
+        </directive>
+        <directive functionName="mean_value_accel" label="" functionLabel="">
+            <pragma name="LATENCY">
+                <option name="min" value="1"/>
+            </pragma>
+        </directive>
+    </sourceFile>
+</AutoPilot:ProjectResources>
+

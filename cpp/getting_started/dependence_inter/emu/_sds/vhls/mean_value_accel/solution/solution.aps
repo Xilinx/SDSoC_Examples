@@ -1,0 +1,26 @@
+<AutoPilot:solution xmlns:AutoPilot="com.autoesl.autopilot.solution">
+    <name>
+        <value string="solution"/>
+    </name>
+    <project>
+        <value string="mean_value_accel"/>
+    </project>
+    <targetInfo>
+        <TargetInfo value="xc7z045:ffg900:-2"/>
+    </targetInfo>
+    <libraryList>
+        <library value="xilinx/zynq/zynq" name="DefaultPlatform"/>
+        <library value="xilinx/zynq/zynq_fpv6" name="DefaultPlatform"/>
+    </libraryList>
+    <clockList>
+        <clock name="default" period="7.000001" default="false"/>
+    </clockList>
+    <config>
+        <config_rtl reset_level="low"/>
+        <schedule model="mean_value_accel"/>
+    </config>
+    <ExportDesign askAgain="true" evaluate="false" rtl="verilog" formatName="ipcatalog">
+        <Format formatName="ipcatalog"/>
+    </ExportDesign>
+</AutoPilot:solution>
+

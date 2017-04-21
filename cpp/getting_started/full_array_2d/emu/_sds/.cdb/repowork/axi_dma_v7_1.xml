@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xd:repository xd:vendor="xilinx.com" xd:library="xd" xd:name="xd_ip" xd:version="2.01.a"
+               xmlns:xd="http://www.xilinx.com/xd" >
+    
+    <xd:component xd:vendor="xilinx.com" xd:library="ip" xd:name="axi_dma" xd:version="7.1" xd:type="datamover">
+        <xd:busInterface xd:name="S_AXI_LITE" xd:busTypeRef="aximm" xd:mode="slave" xd:regionSize="0x10000" xd:clockRef="s_axi_lite_aclk" xd:resetRef="axi_resetn"/>
+        <xd:busInterface xd:name="M_AXI_SG" xd:busTypeRef="aximm" xd:mode="master" xd:clockRef="m_axi_sg_aclk" />
+        <xd:busInterface xd:name="M_AXI_MM2S" xd:busTypeRef="aximm" xd:mode="master" xd:clockRef="m_axi_mm2s_aclk" />
+        <xd:busInterface xd:name="M_AXI_S2MM" xd:busTypeRef="aximm" xd:mode="master" xd:clockRef="m_axi_s2mm_aclk" />
+        <xd:busInterface xd:name="M_AXIS_MM2S" xd:busTypeRef="axis" xd:mode="master" xd:hasTlast="true" xd:direction="out" />
+        <xd:busInterface xd:name="S_AXIS_S2MM" xd:busTypeRef="axis" xd:mode="slave" xd:hasTlast="true" xd:direction="in" />
+        <xd:busInterface xd:name="M_AXIS_CNTRL" xd:busTypeRef="axis" xd:mode="master" xd:hasTlast="true" xd:direction="out" />
+        <xd:busInterface xd:name="S_AXIS_STS" xd:busTypeRef="axis" xd:mode="slave" xd:hasTlast="true" xd:direction="in" />
+        <xd:busInterface xd:name="axi_resetn" xd:busTypeRef="reset" xd:mode="slave" xd:direction="in" xd:library="signal"/>
+        <xd:busInterface xd:name="mm2s_introut" xd:busTypeRef="interrupt" xd:mode="master" xd:direction="out" xd:library="signal"/>
+        <xd:busInterface xd:name="s2mm_introut" xd:busTypeRef="interrupt" xd:mode="master" xd:direction="out" xd:library="signal"/>
+        <xd:resourceEstimates xd:type="axi_dma_sg" xd:channel="1:1" xd:axi_width="64" xd:channel_width="64:64" xd:LUT="4207"  xd:FF="5598"  xd:BRAM="8"  xd:DSP="0"/>
+    </xd:component>
+    
+</xd:repository>

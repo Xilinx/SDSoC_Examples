@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xd:data xmlns:xd="http://www.xilinx.com/xd">
+  <xd:source name="main.cpp" compiler="g++" objfile="/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/main.o" srcpath="/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/src" flags="-I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/src -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/sds_utils -Wall -O3 -MMD -MP -std=c++0x -D __SDSCC__"/>
+</xd:data>

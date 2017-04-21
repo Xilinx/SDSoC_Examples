@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xd:repository xmlns:xd="http://www.xilinx.com/xd" xd:vendor="xilinx.com" xd:library="ip" xd:name="mdm" xd:version="3.2">
+    <xd:component xd:vendor="xilinx.com" xd:library="ip" xd:name="mdm" xd:version="3.2">
+        <xd:busInterface xd:name="S_AXI" xd:busTypeRef="aximm" xd:mode="slave" xd:dataWidth="32" xd:clockRef="S_AXI_ACLK" xd:resetRef="S_AXI_ARESETN"/>
+        <xd:busInterface xd:name="M_AXI" xd:busTypeRef="aximm" xd:mode="master" xd:dataWidth="32" xd:clockRef="M_AXI_ACLK" xd:resetRef="M_AXI_ARESETN"/>
+        <xd:busInterface xd:name="LMB_0" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_1" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_2" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_3" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_4" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_5" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_6" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_7" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_8" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_9" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_10" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_11" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_12" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_13" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_14" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_15" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_16" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_17" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_18" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_19" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_20" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_21" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_22" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_23" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_24" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_25" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_26" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_27" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_28" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_29" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_30" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="LMB_31" xd:busTypeRef="lmb" xd:mode="master" xd:clockPort="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="M_AXIS" xd:busTypeRef="axis" xd:mode="master" xd:direction="out" xd:clockRef="M_AXIS_ACLK" xd:resetRef="M_AXIS_ARESETN"/>
+        <xd:busInterface xd:name="TRACE" xd:busTypeRef="zynq_trace" xd:mode="master" xd:dataWidth="32"/>
+        <xd:busInterface xd:name="S_AXI_ACLK" xd:busTypeRef="clock" xd:mode="slave" xd:direction="in" xd:library="signal" xd:port="S_AXI_ACLK"/>
+        <xd:busInterface xd:name="S_AXI_ARESETN" xd:busTypeRef="reset" xd:mode="slave" xd:direction="in" xd:library="signal" xd:port="S_AXI_ARESETN"/>
+        <xd:busInterface xd:name="M_AXI_ACLK" xd:busTypeRef="clock" xd:mode="slave" xd:direction="in" xd:library="signal" xd:port="M_AXI_ACLK"/>
+        <xd:busInterface xd:name="M_AXI_ARESETN" xd:busTypeRef="reset" xd:mode="slave" xd:direction="in" xd:library="signal" xd:port="M_AXI_ARESETN"/>
+        <xd:busInterface xd:name="M_AXIS_ACLK" xd:busTypeRef="clock" xd:mode="slave" xd:direction="in" xd:library="signal" xd:port="M_AXIS_ACLK"/>
+        <xd:busInterface xd:name="M_AXIS_ARESETN" xd:busTypeRef="reset" xd:mode="slave" xd:direction="in" xd:library="signal" xd:port="M_AXIS_ARESETN"/>
+        <xd:busInterface xd:name="Debug_SYS_Rst" xd:busTypeRef="reset" xd:mode="master" xd:direction="out" xd:library="signal" xd:port="Debug_SYS_Rst"/>
+        <xd:busInterface xd:name="MBDEBUG_0" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_1" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_2" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_3" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_4" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_5" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_6" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_7" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_8" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_9" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_10" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_11" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_12" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_13" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_14" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_15" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_16" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_17" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_18" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_19" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_20" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_21" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_22" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_23" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_24" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_25" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_26" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_27" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_28" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_29" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_30" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="MBDEBUG_31" xd:busTypeRef="mbdebug" xd:mode="master"/>
+        <xd:busInterface xd:name="XMTC" xd:busTypeRef="bscan" xd:mode="master"/>
+        <xd:busInterface xd:name="INTERRUPT" xd:busTypeRef="interrupt" xd:mode="master" xd:direction="out" xd:library="signal" xd:port="Interrupt"/>
+        <xd:busInterface xd:name="TRIG_IN_0" xd:busTypeRef="trigger" xd:mode="slave"/>
+        <xd:busInterface xd:name="TRIG_OUT_0" xd:busTypeRef="trigger" xd:mode="master"/>
+        <xd:busInterface xd:name="TRIG_IN_1" xd:busTypeRef="trigger" xd:mode="slave"/>
+        <xd:busInterface xd:name="TRIG_OUT_1" xd:busTypeRef="trigger" xd:mode="master"/>
+        <xd:busInterface xd:name="TRIG_IN_2" xd:busTypeRef="trigger" xd:mode="slave"/>
+        <xd:busInterface xd:name="TRIG_OUT_2" xd:busTypeRef="trigger" xd:mode="master"/>
+        <xd:busInterface xd:name="TRIG_IN_3" xd:busTypeRef="trigger" xd:mode="slave"/>
+        <xd:busInterface xd:name="TRIG_OUT_3" xd:busTypeRef="trigger" xd:mode="master"/>
+        <xd:port xd:name="Config_Reset" xd:direction="in"/>
+        <xd:port xd:name="Scan_Reset" xd:direction="in"/>
+        <xd:port xd:name="Scan_Reset_Sel" xd:direction="in"/>
+        <xd:port xd:name="Ext_BRK" xd:direction="out"/>
+        <xd:port xd:name="Ext_NM_BRK" xd:direction="out"/>
+        <xd:port xd:name="bscan_ext_tdi" xd:direction="in"/>
+        <xd:port xd:name="bscan_ext_reset" xd:direction="in"/>
+        <xd:port xd:name="bscan_ext_shift" xd:direction="in"/>
+        <xd:port xd:name="bscan_ext_update" xd:direction="in"/>
+        <xd:port xd:name="bscan_ext_capture" xd:direction="in"/>
+        <xd:port xd:name="bscan_ext_sel" xd:direction="in"/>
+        <xd:port xd:name="bscan_ext_drck" xd:direction="in"/>
+        <xd:port xd:name="bscan_ext_tdo" xd:direction="out"/>
+    </xd:component>
+</xd:repository>

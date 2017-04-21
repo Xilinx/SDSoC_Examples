@@ -39,7 +39,7 @@
 
 #define MAX_DIMS 5
 
-using namespace sds_prof;
+using namespace sds_utils;
 
 // Software solution prototype
 void find_nearest_neighbor(int *out, const int dim,

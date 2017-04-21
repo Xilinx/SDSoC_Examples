@@ -1,0 +1,72 @@
+================================================================
+  Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC
+  Version 2017.1
+  Build 1846317 on Tue Apr 18 19:02:30 MDT 2017
+  Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
+================================================================
+INFO: [HLS 200-10] Running '/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/bin/unwrapped/lnx64.o/vivado_hls'
+INFO: [HLS 200-10] For user 'kalib' on host 'xhdrdevl102' (Linux_x86_64 version 2.6.32-431.el6.x86_64) on Fri Apr 21 15:15:23 IST 2017
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux Workstation release 6.5 (Santiago)"
+INFO: [HLS 200-10] In directory '/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/_sds/vhls'
+INFO: [HLS 200-10] Creating and opening project '/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/_sds/vhls/mean_value_accel'.
+INFO: [HLS 200-10] Adding design file '/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/src/mean_value.cpp' to the project
+INFO: [HLS 200-10] Creating and opening solution '/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/emu/_sds/vhls/mean_value_accel/solution'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-10] Setting target device to ' xc7z045ffg900-2 '
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 7ns.
+INFO: [HLS 200-10] Analyzing design file '/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/src/mean_value.cpp' ... 
+INFO: [HLS 200-10] Validating synthesis directives ...
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:25 ; elapsed = 00:00:11 . Memory (MB): peak = 435.051 ; gain = 12.648 ; free physical = 146945 ; free virtual = 251729
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:26 ; elapsed = 00:00:11 . Memory (MB): peak = 435.051 ; gain = 12.648 ; free physical = 146944 ; free virtual = 251731
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:26 ; elapsed = 00:00:11 . Memory (MB): peak = 435.156 ; gain = 12.754 ; free physical = 146938 ; free virtual = 251726
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:26 ; elapsed = 00:00:11 . Memory (MB): peak = 435.156 ; gain = 12.754 ; free physical = 146935 ; free virtual = 251724
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:26 ; elapsed = 00:00:11 . Memory (MB): peak = 562.988 ; gain = 140.586 ; free physical = 146910 ; free virtual = 251703
+INFO: [XFORM 203-811] Inferring bus burst read of variable length on port 'in' (/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/src/mean_value.cpp:65:2).
+INFO: [XFORM 203-811] Inferring bus burst write of variable length on port 'out' (/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/src/mean_value.cpp:96:2).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'local_buffer' (/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/dependence_inter/src/mean_value.cpp:59).
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:26 ; elapsed = 00:00:12 . Memory (MB): peak = 562.988 ; gain = 140.586 ; free physical = 146913 ; free virtual = 251710
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'mean_value_accel' ...
+WARNING: [SYN 201-107] Renaming port name 'mean_value_accel/in' to 'mean_value_accel/in_r' to avoid the conflict with HDL keywords or other object names.
+WARNING: [SYN 201-107] Renaming port name 'mean_value_accel/out' to 'mean_value_accel/out_r' to avoid the conflict with HDL keywords or other object names.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'mean_value_accel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'input_read'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 3.
+INFO: [SCHED 204-61] Pipelining loop 'output_write'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 3.
+WARNING: [SCHED 204-71] Latency directive discarded for region mean_value_accel since it contains subloops.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 11.62 seconds; current allocated memory: 0.319 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.12 seconds; current allocated memory: 0.319 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mean_value_accel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'mean_value_accel/in_r' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mean_value_accel/out_r' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mean_value_accel/in_offset' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mean_value_accel/out_offset' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mean_value_accel/size' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'mean_value_accel' to 'ap_ctrl_hs'.
+INFO: [SYN 201-210] Renamed object name 'mean_value_accel_local_buffer' to 'mean_value_accel_bkb' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'mean_value_accel_mul_34ns_32s_65_2' to 'mean_value_accel_cud' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'mean_value_accel_cud': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mean_value_accel'.
+INFO: [HLS 200-111]  Elapsed time: 0.11 seconds; current allocated memory: 0.319 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'mean_value_accel_cud_MulnS_0'
+INFO: [RTMG 210-278] Implementing memory 'mean_value_accel_bkb_ram (RAM)' using block RAMs.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:27 ; elapsed = 00:00:13 . Memory (MB): peak = 562.988 ; gain = 140.586 ; free physical = 146894 ; free virtual = 251702
+INFO: [SYSC 207-301] Generating SystemC RTL for mean_value_accel.
+INFO: [VHDL 208-304] Generating VHDL RTL for mean_value_accel.
+INFO: [VLOG 209-307] Generating Verilog RTL for mean_value_accel.
+INFO: [IMPL 213-8] Exporting RTL as an IP in IP-XACT.
+

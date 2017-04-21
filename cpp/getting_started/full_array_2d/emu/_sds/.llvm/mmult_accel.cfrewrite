@@ -1,0 +1,22 @@
+void _p0_mmult_accel_1_noasync(int * a, int * b, int * c, int size);
+void _p0_mmult_accel_1_noasync(int * a, int * b, int * c, int size)
+{
+  switch_to_next_partition(0);
+  int start_seq[1];
+  start_seq[0] = 0;
+  cf_request_handle_t _p0_swinst_mmult_accel_1_cmd;
+  cf_send_i(&(_p0_swinst_mmult_accel_1.cmd_mmult_accel), start_seq, 1 * sizeof(int), &_p0_swinst_mmult_accel_1_cmd);
+  cf_wait(_p0_swinst_mmult_accel_1_cmd);
+
+  cf_send_ref_i(&(_p0_swinst_mmult_accel_1.a_offset), &a, (64) * 4, &_p0_request_0);
+  cf_send_ref_i(&(_p0_swinst_mmult_accel_1.b_offset), &b, (64) * 4, &_p0_request_1);
+  cf_send_ref_i(&(_p0_swinst_mmult_accel_1.c_offset), &c, (64) * 4, &_p0_request_2);
+  cf_send_i(&(_p0_swinst_mmult_accel_1.size), &size, 4, &_p0_request_3);
+
+
+  cf_wait(_p0_request_0);
+  cf_wait(_p0_request_1);
+  cf_wait(_p0_request_2);
+  cf_wait(_p0_request_3);
+}
+

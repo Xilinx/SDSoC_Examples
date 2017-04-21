@@ -1,0 +1,1114 @@
+INFO: [HLS 200-0] Workspace /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution opened at Fri Apr 21 15:18:18 IST 2017
+INFO: [HLS 200-100] Command   open_solution returned 0; 0.03 sec.
+INFO: [HLS 200-100] Execute   set_part  xc7z045ffg900-2  
+INFO: [HLS 200-100] Execute     add_library xilinx/zynq/zynq:xc7z045:ffg900:-2 
+INFO: [HLS 200-100] Execute       get_default_platform 
+INFO: [HLS 200-100] Command       get_default_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       license_isbetapart xc7z045-ffg900 
+INFO: [HLS 200-100] Command       license_isbetapart returned 1; 0.02 sec.
+INFO: [HLS 200-100] Execute       open_platform DefaultPlatform 
+INFO: [HLS 200-100] Command       open_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       import_lib /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq 
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx.lib 
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/xilinx_interface.lib 
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/plb46.lib 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/fsl.lib 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/axi4.lib 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/maxi.lib 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/saxilite.lib 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/dsp48.lib 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/dds_compiler.lib 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfft.lib 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfir.lib 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.02 sec.
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx_old.lib 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx_vivado.lib 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx.hlp 
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/target_info.tcl 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/xilinx_interface.hlp 
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/maxi.hlp 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/saxilite.hlp 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/dsp48.hlp 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/dsp48e1.hlp 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute         get_default_platform 
+INFO: [HLS 200-100] Command         get_default_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Execute         config_chip_info -quiet -resource  {SLICE 13300}  {LUT 53200}     {FF 106400} {DSP48E 220}   {BRAM 280}  
+INFO: [HLS 200-100] Command         config_chip_info returned 0; 0 sec.
+INFO: [HLS 200-100] Execute         config_chip_info -quiet -speed medium 
+INFO: [HLS 200-100] Command         config_chip_info returned 0; 0 sec.
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx.hlp 
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/target_info.tcl 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/xilinx_interface.hlp 
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/maxi.hlp 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/saxilite.hlp 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/dsp48.hlp 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command       import_lib returned 0; 0.05 sec.
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq.gen 
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/virtex.gen 
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx.gen 
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/plb46.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/fsl.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/axi4.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/nativeAXI4.gen 
+INFO: [HLS 200-100] Execute               source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/saxilite.gen 
+INFO: [HLS 200-100] Command               ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute               source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/maxi.gen 
+INFO: [HLS 200-100] Command               ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/scripts/xilinxcoregen.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/dds_compiler.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/util.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfft.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.07 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfir.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.12 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/dsp48.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.12 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.12 sec.
+INFO: [HLS 200-100] Execute       get_default_platform 
+INFO: [HLS 200-100] Command       get_default_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       config_chip_info -quiet -resource  {SLICE 54650}  {LUT 218600}    {FF 437200} {DSP48E 900}   {BRAM 1090}  
+INFO: [HLS 200-100] Command       config_chip_info returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       config_chip_info -quiet -speed medium 
+INFO: [HLS 200-100] Command       config_chip_info returned 0; 0 sec.
+INFO: [HLS 200-100] Command     add_library returned 0; 0.2 sec.
+INFO: [HLS 200-100] Execute     add_library xilinx/zynq/zynq_fpv6 
+INFO: [HLS 200-100] Execute       get_default_platform 
+INFO: [HLS 200-100] Command       get_default_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       open_platform DefaultPlatform 
+INFO: [HLS 200-100] Command       open_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       import_lib /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq_fpv6 
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx_fpv7.lib 
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx_hp.lib 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx_fpv.hlp 
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx.hlp 
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/target_info.tcl 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/xilinx_interface.hlp 
+INFO: [HLS 200-100] Execute               source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/maxi.hlp 
+INFO: [HLS 200-100] Command               ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute               source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/saxilite.hlp 
+INFO: [HLS 200-100] Command               ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/dsp48.hlp 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq_hp.hlp 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command       import_lib returned 0; 0.03 sec.
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq_fpv6.gen 
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx_fpv6.gen 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command     add_library returned 0; 0.03 sec.
+INFO: [HLS 200-10] Setting target device to ' xc7z045ffg900-2 '
+INFO: [HLS 200-100] Execute     get_default_platform 
+INFO: [HLS 200-100] Command     get_default_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Command   set_part returned 0; 0.27 sec.
+INFO: [HLS 200-100] Execute   create_clock -period 7.000001 
+INFO: [HLS 200-100] Execute     config_clock -quiet -name default -period 7.000001 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 7ns.
+INFO: [HLS 200-100] Command     config_clock returned 0; 0 sec.
+INFO: [HLS 200-100] Command   create_clock returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute   config_rtl -reset_level low 
+INFO: [HLS 200-100] Command   config_rtl returned 0; 0 sec.
+INFO: [HLS 200-100] Execute   source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel.tcl 
+INFO: [HLS 200-100] Execute     set_directive_interface -mode m_axi -offset direct mmult_accel b -bundle=b 
+INFO: [HLS 200-0] Setting directive 'INTERFACE' m_axi=positionBoolean0mode port=positionBooleanTextRequiredb offset=direct bundle=b 
+INFO: [HLS 200-100] Command     set_directive_interface returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     set_directive_interface -mode m_axi -offset direct mmult_accel c -bundle=c 
+INFO: [HLS 200-0] Setting directive 'INTERFACE' m_axi=positionBoolean0mode port=positionBooleanTextRequiredb offset=direct bundle=b 
+INFO: [HLS 200-0] Setting directive 'INTERFACE' m_axi=positionBoolean0mode port=positionBooleanTextRequiredc offset=direct bundle=c 
+INFO: [HLS 200-100] Command     set_directive_interface returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute     set_directive_interface -mode m_axi -offset direct mmult_accel a -bundle=a 
+INFO: [HLS 200-0] Setting directive 'INTERFACE' m_axi=positionBoolean0mode port=positionBooleanTextRequiredb offset=direct bundle=b 
+INFO: [HLS 200-0] Setting directive 'INTERFACE' m_axi=positionBoolean0mode port=positionBooleanTextRequiredc offset=direct bundle=c 
+INFO: [HLS 200-0] Setting directive 'INTERFACE' m_axi=positionBoolean0mode port=positionBooleanTextRequireda offset=direct bundle=a 
+INFO: [HLS 200-100] Command     set_directive_interface returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     set_directive_latency -min 1 mmult_accel 
+INFO: [HLS 200-0] Setting directive 'INTERFACE' m_axi=positionBoolean0mode port=positionBooleanTextRequiredb offset=direct bundle=b 
+INFO: [HLS 200-0] Setting directive 'INTERFACE' m_axi=positionBoolean0mode port=positionBooleanTextRequiredc offset=direct bundle=c 
+INFO: [HLS 200-0] Setting directive 'INTERFACE' m_axi=positionBoolean0mode port=positionBooleanTextRequireda offset=direct bundle=a 
+INFO: [HLS 200-0] Setting directive 'LATENCY' min=1 
+INFO: [HLS 200-100] Command     set_directive_latency returned 0; 0 sec.
+INFO: [HLS 200-100] Command   ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute   csynth_design 
+INFO: [HLS 200-100] Execute     elaborate -effort=medium -skip_syncheck=0 -keep_printf=0 -lm=0 -skip_cdt=0 -skip_transform=0 -ng=0 -g=0 -opt_fp=0 -enable_clang39=0 
+INFO: [HLS 200-10] Analyzing design file '/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp' ... 
+INFO: [HLS 200-0] Compiling one TU...
+INFO: [HLS 200-100] Execute       is_m_axi_addr64 
+INFO: [HLS 200-100] Command       is_m_axi_addr64 returned 0; 0 sec.
+INFO: [HLS 200-0] Handling /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp as C++
+INFO: [HLS 200-0] Syntax Checking before pre-processing...
+INFO: [HLS 200-100] Execute       clang  -fno-limit-debug-info -gcc-toolchain "/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/lnx64/tools/gcc" -hls  -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/sds_utils -Wall -O3 -std=c++0x -D__SDSCC__ -m32 -I/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/target/aarch32-linux/include -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src -D__SDSVHLS__ -D__SDSVHLS_SYNTHESIS__ -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu -w  -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -fno-threadsafe-statics  -fno-use-cxa-atexit  -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__   -I "/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/lnx64/tools/systemc/include" -I "/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/include" -I "/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/include/ap_sysc" -fexceptions -I "/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/autopilot" -include etc/autopilot_ssdm_op.h "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp"  -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pp.00.o" 
+INFO: [HLS 200-0] exec clang -fno-limit-debug-info -gcc-toolchain /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/lnx64/tools/gcc -hls -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/sds_utils -Wall -O3 -std=c++0x -D__SDSCC__ -m32 -I/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/target/aarch32-linux/include -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src -D__SDSVHLS__ -D__SDSVHLS_SYNTHESIS__ -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu -w -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -fno-threadsafe-statics -fno-use-cxa-atexit -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -I /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/lnx64/tools/systemc/include -I /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/include -I /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/include/ap_sysc -fexceptions -I /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/autopilot -include etc/autopilot_ssdm_op.h /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pp.00.o
+INFO: [HLS 200-100] Command       clang returned 0; 0.09 sec.
+INFO: [HLS 200-100] Execute       is_encrypted /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pp.00.o 
+INFO: [HLS 200-100] Command       is_encrypted returned 0; 0 sec.
+INFO: [HLS 200-0] Source preprocessing
+INFO: [HLS 200-100] Execute       clang  -fno-limit-debug-info -gcc-toolchain "/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/lnx64/tools/gcc" -hls -fno-exceptions  -D__llvm__  -CC -E "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp"   -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/sds_utils -Wall -O3 -std=c++0x -D__SDSCC__ -m32 -I/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/target/aarch32-linux/include -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src -D__SDSVHLS__ -D__SDSVHLS_SYNTHESIS__ -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu -w  -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -fno-threadsafe-statics  -fno-use-cxa-atexit  -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/autopilot" -I "/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h  -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pp.0.cpp" 
+INFO: [HLS 200-0] exec clang -fno-limit-debug-info -gcc-toolchain /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/lnx64/tools/gcc -hls -fno-exceptions -D__llvm__ -CC -E /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/sds_utils -Wall -O3 -std=c++0x -D__SDSCC__ -m32 -I/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/target/aarch32-linux/include -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src -D__SDSVHLS__ -D__SDSVHLS_SYNTHESIS__ -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu -w -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -fno-threadsafe-statics -fno-use-cxa-atexit -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/autopilot -I /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pp.0.cpp
+INFO: [HLS 200-100] Command       clang returned 0; 0.06 sec.
+INFO: [HLS 200-0] GCC PP time: 0 seconds per iteration
+INFO: [HLS 200-0] Setting directive 'INTERFACE' m_axi=positionBoolean0mode port=positionBooleanTextRequiredb offset=direct bundle=b 
+INFO: [HLS 200-0] Setting directive 'INTERFACE' m_axi=positionBoolean0mode port=positionBooleanTextRequiredc offset=direct bundle=c 
+INFO: [HLS 200-0] Setting directive 'INTERFACE' m_axi=positionBoolean0mode port=positionBooleanTextRequireda offset=direct bundle=a 
+INFO: [HLS 200-0] Setting directive 'LATENCY' min=1 
+INFO: [HLS 200-100] Execute       list_core -type functional_unit 
+INFO: [HLS 200-100] Command       list_core returned 0; 0 sec.
+INFO: [HLS 200-0] CDT Preprocessing...
+INFO: [HLS 200-0] Marker-Pragma convertor: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pp.0.cpp /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pp.0.cpp.ap-line.cpp /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pp.0.cpp.ap-line.cpp.CXX 1
+INFO: [HLS 200-0] Converting Markers to Pragmas...
+INFO: [HLS 200-100] Execute       cdt  "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pp.0.cpp.ap-line.cpp"  -m "mmult_accel" -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pp.0.cpp.ap-cdt.cpp" --pp --directive /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/solution.directive --source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp --error /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db --funcunit "AddSub AddSub_DSP AddSubnS DAddSub_fulldsp DAddSub_nodsp DDiv DExp_fulldsp DExp_meddsp DExp_nodsp DLog_fulldsp DLog_meddsp DLog_nodsp DMul_fulldsp DMul_maxdsp DMul_meddsp DMul_nodsp DRSqrt DRecip DSqrt DivnS FAddSub_fulldsp FAddSub_nodsp FDiv FExp_fulldsp FExp_meddsp FExp_nodsp FLog_fulldsp FLog_meddsp FLog_nodsp FMul_fulldsp FMul_maxdsp FMul_meddsp FMul_nodsp FRSqrt_fulldsp FRSqrt_nodsp FRecip_fulldsp FRecip_nodsp FSqrt HAddSub_fulldsp HAddSub_meddsp HAddSub_nodsp HDiv HMul_fulldsp HMul_maxdsp HMul_nodsp HSqrt Mul Mul2S Mul3S Mul4S Mul5S Mul6S Mul_LUT MulnS MuxnS" --ve --vetcl /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db --ca --es --gf --pd --p2d /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db --sd --scff /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/.systemc_flag --ad 
+INFO: [HLS 200-100] Command       cdt returned 0; 0.88 sec.
+INFO: [HLS 200-0] Marker-Pragma convertor: /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pp.0.cpp.ap-cdt.cpp /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pragma.0.cpp /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pragma.0.cpp.ap-line.CXX 0
+INFO: [HLS 200-0] Converting Pragmas to Markers...
+INFO: [HLS 200-100] Execute       source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/pragma.status.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-0] Pragma Handling...
+INFO: [HLS 200-0] Source preprocessing
+INFO: [HLS 200-100] Execute       clang  -fno-limit-debug-info -gcc-toolchain "/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/lnx64/tools/gcc" -hls -fno-exceptions  -D__llvm__  -CC -E "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pragma.1.cpp"   -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/sds_utils -Wall -O3 -std=c++0x -D__SDSCC__ -m32 -I/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/target/aarch32-linux/include -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src -D__SDSVHLS__ -D__SDSVHLS_SYNTHESIS__ -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu -w  -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -fno-threadsafe-statics  -fno-use-cxa-atexit  -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/autopilot" -I "/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h  -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pragma.2.cpp" 
+INFO: [HLS 200-0] exec clang -fno-limit-debug-info -gcc-toolchain /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/lnx64/tools/gcc -hls -fno-exceptions -D__llvm__ -CC -E /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pragma.1.cpp -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/sds_utils -Wall -O3 -std=c++0x -D__SDSCC__ -m32 -I/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/target/aarch32-linux/include -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src -D__SDSVHLS__ -D__SDSVHLS_SYNTHESIS__ -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu -w -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -fno-threadsafe-statics -fno-use-cxa-atexit -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/autopilot -I /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pragma.2.cpp
+INFO: [HLS 200-100] Command       clang returned 0; 0.07 sec.
+INFO: [HLS 200-0] Processing labels
+INFO: [HLS 200-100] Execute       clang  -fno-limit-debug-info -gcc-toolchain /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/lnx64/tools/gcc -hls -hls-analyze-label -hls-analyze-pragma -fno-exceptions  -D__llvm__  -w  "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pragma.2.cpp"  -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/sds_utils -Wall -O3 -std=c++0x -D__SDSCC__ -m32 -I/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/target/aarch32-linux/include -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src -D__SDSVHLS__ -D__SDSVHLS_SYNTHESIS__ -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu -w  -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -fno-threadsafe-statics  -fno-use-cxa-atexit -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/autopilot" -I "/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h -g -o "/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.g.bc" 
+INFO: [HLS 200-0] exec clang -fno-limit-debug-info -gcc-toolchain /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/lnx64/tools/gcc -hls -hls-analyze-label -hls-analyze-pragma -fno-exceptions -D__llvm__ -w /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.pragma.2.cpp -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/libs/sds_utils -Wall -O3 -std=c++0x -D__SDSCC__ -m32 -I/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/target/aarch32-linux/include -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src -D__SDSVHLS__ -D__SDSVHLS_SYNTHESIS__ -I/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu -w -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -fno-threadsafe-statics -fno-use-cxa-atexit -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/autopilot -I /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -g -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.g.bc
+INFO: [HLS 200-100] Command       clang returned 0; 0.07 sec.
+INFO: [HLS 200-100] Execute       source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/ve_warning.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-10] Validating synthesis directives ...
+INFO: [HLS 200-100] Execute       source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/pragma.status.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 435.059 ; gain = 12.648 ; free physical = 146981 ; free virtual = 251781
+INFO: [HLS 200-0] Linking Release ...
+INFO: [HLS 200-100] Execute       llvm-ld /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.bc -disable-opt -L/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/lnx64/lib -lm_basic -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.o 
+INFO: [HLS 200-100] Command       llvm-ld returned 0; 0.03 sec.
+INFO: [HLS 200-100] Execute       disassemble /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.o 
+INFO: [HLS 200-100] Execute         is_encrypted /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.o.bc 
+INFO: [HLS 200-100] Command         is_encrypted returned 0; 0 sec.
+INFO: [HLS 200-100] Command       disassemble returned 0; 0.03 sec.
+INFO: [HLS 200-0] Disassemble time: 0 seconds per iteration
+INFO: [HLS 200-0] Linking Debug ...
+INFO: [HLS 200-100] Execute       llvm-ld /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult.g.bc -disable-opt -L/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/lnx64/lib -lm_basic -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.g 
+INFO: [HLS 200-100] Command       llvm-ld returned 0; 0.04 sec.
+INFO: [HLS 200-100] Execute       disassemble /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.g /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.g 
+INFO: [HLS 200-100] Execute         is_encrypted /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.g.bc 
+INFO: [HLS 200-100] Command         is_encrypted returned 0; 0 sec.
+INFO: [HLS 200-100] Command       disassemble returned 0; 0.03 sec.
+INFO: [HLS 200-0] Disassemble time: 0 seconds per iteration
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 435.059 ; gain = 12.648 ; free physical = 146981 ; free virtual = 251780
+INFO: [HLS 200-100] Execute       opt_and_import_c a -opt_level=2 -skip_syncheck=0 -ng=0 -keep_printf=0 -enable_clang39=0 
+INFO: [HLS 200-100] Execute         cleanup_all_models 
+INFO: [HLS 200-100] Command         cleanup_all_models returned 0; 0 sec.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-100] Execute         transform -promote-dbg-pointer /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.pp.bc -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.pp.0.bc -f 
+INFO: [HLS 200-100] Command         transform returned 0; 0 sec.
+INFO: [HLS 200-100] Execute         llvm-ld /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.pp.0.bc -disable-opt -L/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/lnx64/lib -lfloatconversion -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.g.0 
+INFO: [HLS 200-100] Command         llvm-ld returned 0; 0.04 sec.
+INFO: [HLS 200-0] Running Standard Transforms...
+INFO: [HLS 200-100] Execute         transform -hls -share-std-xform -demangle-name -inline-byval-memcpy -always-inline -promote-dbg-pointer -interface-preproc -scalarrepl -mem2reg -keep-read-access -instcombine -dce -promote-dbg-pointer -bitop-raise -loop-simplify -indvarspre -indvars -loop-simplify -xunroll -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -basicaa -simplifycfg -mem2reg -globalopt -global-constprop -deadargelim -instcombine -simplifycfg -prune-eh -simplifycfg -scalarrepl -instcombine -reassociate -licm -simplifycfg -loop-simplify -indvars -instcombine -simplifycfg -mem2reg -loop-simplify -indvars -instcombine -gvn -gvn -instcombine -adce -break-crit-edges -simplifycfg -loop-delete -global-array-opt -dce -dse -adce -find-syn-modules -top mmult_accel -deadargelim -mem2reg -instcombine -dce -presyn-prepare -auto-rom-infer -interface-preproc -syn-check -check-rec-only -find-region -simplifycfg -func-extr -function-inline -globaldce -mem2reg -instcombine -dce -gvn -globaldce -adce -adse -constprop -instcombine -bit-constprop -instcombine -dce -simplifycfg -bitop-raise -simplifycfg -dce -loop-delete -reassociate -globalopt -global-privatize -mem2reg -dce -global-constprop -pointer-simplify -constprop -dce -func-inst -deadargelim -auto-shift-reg-idiom -promote-dbg-pointer -norm-name /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.g.0.bc -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.g.1.bc -f -phase std-opt 
+INFO: [HLS 200-100] Command         transform returned 0; 0.02 sec.
+INFO: [HLS 200-100] Execute         disassemble /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.g.1 /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.g.1 
+INFO: [HLS 200-100] Execute           is_encrypted /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.g.1.bc 
+INFO: [HLS 200-100] Command           is_encrypted returned 0; 0 sec.
+INFO: [HLS 200-100] Command         disassemble returned 0; 0.03 sec.
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 435.059 ; gain = 12.648 ; free physical = 146980 ; free virtual = 251779
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-0] Checking Synthesizability 1/2..
+INFO: [HLS 200-100] Execute         transform -hls -syn-check -check-rec-only -disaggr -scalarrepl -norm-name -dce -mem2reg -instcombine -function-uniquify -directive-preproc -mem2reg -dse -dce -auto-rom-infer -dce -array-normalize -instcombine -dce -warn-fifo-pointer -array-seg-normalize -instcombine -dce -array-flatten -instcombine -dce -array-burst -dce -deadargelim -promote-global-argument -simplifycfg -mem2reg -globaldce -resolve-double-ptr -dce -deadargelim -dce -instcombine -function-inline -globaldce -dce -doublePtrSimplify -doublePtrElim -dce -doublePtrSimplify -promote-dbg-pointer -dce -scalarrepl -dse -adse -instcombine -ptrLegalization -simplifycfg -dce -instcombine -pointer-simplify -ptrArgReplace -dce -instcombine -disaggr -scalarrepl -norm-name -dce -mem2reg -instcombine -ptrLegalization -simplifycfg -deadargelim -instcombine -dce -inst-simplify -function-uniquify -directive-preproc -mem2reg -dse -dce -globaldce /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.g.1.bc -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.g.2.prechk.bc -f 
+INFO: [HLS 200-100] Command         transform returned 0; 0.02 sec.
+INFO: [HLS 200-0] Checking Synthesizability 2/2..
+INFO: [HLS 200-100] Execute         transform -syn-check /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.g.2.prechk.bc -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.g.2.bc -f -phase syn-check 
+INFO: [HLS 200-100] Command         transform returned 0; 0.01 sec.
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 435.059 ; gain = 12.648 ; free physical = 146980 ; free virtual = 251779
+INFO: [HLS 200-0] Compiler optimizing ...
+INFO: [HLS 200-0] Share syncheck's 1.bc for syn flow: copy /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.g.1.bc to /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.o.1.bc
+INFO: [HLS 200-0] Presyn 1...
+INFO: [HLS 200-100] Execute         transform -hls -tmp /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db -interface-port-rename -type-info -function-uniquify -directive-preproc -mem2reg -dse -dce -disaggr -scalarrepl -norm-name -deadargelim -mem2reg -instcombine -dce -auto-rom-infer -dce -function-uniquify -resource-proc -simplifycfg -mem2reg -globaldce -resolve-double-ptr -dce -deadargelim -dce -instcombine -clib-intrinsic-prepare -dce -func-buffer -dce -array-normalize -func-legal -instcombine -gvn -constprop -dce -ptrArgReplace -mem2reg -instcombine -dce -array-seg-normalize -deadargelim -instcombine -dce -pointer-simplify -dce -port-alignment -dce -interface-preproc -data-pack -instcombine -dce -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -loop-simplify -indvars -instcombine -gvn -loop-simplify -mem2reg -dce -simplifycfg -find-region -instcombine -auto-loop-pipeline -inst-simplify -interface-preproc -cfgopt -instcombine -indvars -auto-loop-unroll -loop-simplify -loop-bound -xunroll -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -clean-region -attach-range -gvn -inst-simplify -constprop -simplifycfg -dce -pointer-simplify -dce -globalopt -constprop -dce -array-promote -constprop -instcombine -dce -ptrArgReplace -mem2reg -instcombine -simplifycfg -dce -auto-par -instcombine -dce -array-transform-check -array-reshape -instcombine -simplifycfg -dce -ptrArgReplace -deadargelim -mem2reg -instcombine -simplifycfg -dce -indvars -loop-simplify -loop-bound -xunroll -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -duplicate-dataflow-processes -globaldce -instcombine -array-partition -instcombine -simplifycfg -dce -ptrArgReplace -global-constprop -deadargelim -mem2reg -func-legal -instcombine -dce -global-constprop -deadargelim -mem2reg -instcombine -simplifycfg -dce -globalopt -constprop -dce -array-promote -constprop -instcombine -dce -ptrArgReplace -mem2reg -instcombine -simplifycfg -dce -mem-intrinsic-preproc -dce -global-privatize -mem2reg -globaldce -promote-global-argument -ptrArgReplace -mem2reg -instcombine -dce -globalopt -mergereturn -simplify-global-access -mem2reg -dce -pointer-simplify -dce -functionattrs -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -inst-simplify -dce -norm-name -function-inline -globaldce -func-inst -constprop -instcombine -simplifycfg -dce -func-legal -dce -loop-bound -arraycheck -bitwidthmin -on-by-dataflow -loop-delete -instcombine -simplifycfg -globaldce -dce -gvn -deadargelim -dce -loop-simplify -clean-region -simplifycfg -propagate-stable-arguments -loop-stream -instcombine -simplifycfg -dce -globaldce -stream-intrinsic-preproc -dce -check-ap-stream -loop-simplify -eliminate-keepreads -extract-dataflow-in-loop -loop-simplify -dce -gvn -deadargelim -dse -check-dataflow-syntax -legalize-stream-variable -legalize-global -extract-subproc -dce -dead-channel-elimination -canonicalize-gep -globaldce -dce -gvn -deadargelim -annotate-dataflow-channels -scalar-propagation -deadargelim -globaldce -mem2reg -check-dataflow-channels -function-stream -dce -globaldce -prop-fifo-spec -internal-stream-gen -canonicalize-gep -globaldce -dce -gvn -deadargelim -mergereturn -indvars -loop-simplify -instcombine -array-stream -array-seg-normalize -array-partition -func-legal -instcombine -simplifycfg -dce -bundle-memfifo-ops -deadargelim -function-uniquify -directive-preproc -mem2reg -dse -dce -group-axi-access -licm -simplifycfg -dce -loop-delete -norm-name /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.o.1.bc -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.o.1.tmp.bc -f 
+INFO: [HLS 200-100] Command         transform returned 0; 0.08 sec.
+INFO: [HLS 200-0] Presyn 2...
+INFO: [HLS 200-100] Execute         transform -hls -keep-callgraph -scalarrepl -mem2reg -port-alignment -attach-range -dce -pipe-mux-gen -indvars -loop-bound -inst-simplify -instcombine -dce -merge-array-access -mem2reg -dce -clean-region -mergereturn -if-conv -instcombine -dce -constprop -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -scalarrepl -mem2reg -global-constprop -deadargelim -deadargelim -instcombine -dce -simplifycfg -ptrArgReplace -mem2reg -function-inline -globaldce -mem2reg -instcombine -dce -expr-balance -instcombine -dce -bitwidthmin -interface-preproc -directive-preproc -inst-rectify -instcombine -dce -functionattrs -constprop -instcombine -bit-constprop -simplify-global-access -globalopt -globaldce -inst-simplify -instcombine -elimdeaddata -dce -loop-delete -simplifycfg -loop-simplify -auto-burst -norm-name /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.o.1.tmp.bc -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.o.2.bc -f -phase presyn 
+INFO: [HLS 200-100] Command         transform returned 0; 0.04 sec.
+INFO: [HLS 200-100] Execute         disassemble /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.o.2 /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.o.2 
+INFO: [HLS 200-100] Execute           is_encrypted /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.o.2.bc 
+INFO: [HLS 200-100] Command           is_encrypted returned 0; 0 sec.
+INFO: [HLS 200-100] Command         disassemble returned 0; 0.03 sec.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 562.996 ; gain = 140.586 ; free physical = 146959 ; free virtual = 251758
+INFO: [HLS 200-0] Building ssdm...
+INFO: [HLS 200-100] Execute         transform -hls -function-uniquify -auto-function-inline -globaldce -ptrArgReplace -mem2reg -instcombine -dce -reset-lda -loop-simplify -indvars -licm -loop-dep -loop-bound -licm -loop-simplify -flattenloopnest -array-flatten -gvn -instcombine -dce -array-map -dce -func-legal -gvn -adce -instcombine -cfgopt -simplifycfg -loop-simplify -array-burst -promote-global-argument -dce -axi4-lower -array-seg-normalize -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -gvn -gvn -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -dse -adse -adce -licm -inst-simplify -dce -globaldce -instcombine -array-stream -eliminate-keepreads -instcombine -dce -deadargelim -doublePtrSimplify -doublePtrElim -dce -doublePtrSimplify -promote-dbg-pointer -dce -scalarrepl -mem2reg -disaggr -norm-name -mem2reg -instcombine -dse -adse -adce -ptrLegalization -dce -auto-rom-infer -array-flatten -dce -instcombine -loop-rot -constprop -cfgopt -simplifycfg -loop-simplify -indvars -pointer-simplify -dce -loop-bound -loop-simplify -loop-preproc -constprop -global-constprop -gvn -mem2reg -instcombine -dce -loop-bound -loop-merge -dce -bitwidthmin -deadargelim -dce -canonicalize-dataflow -dce -scalar-propagation -deadargelim -globaldce -mem2reg -licm -interface-preproc -interface-gen -deadargelim -directive-preproc -inst-simplify -dce -gvn -mem2reg -instcombine -dce -adse -loop-bound -instcombine -cfgopt -simplifycfg -loop-simplify -clean-region -io-protocol -find-region -mem2reg -bitop-raise -inst-simplify -inst-rectify -instcombine -adce -deadargelim -loop-simplify -phi-opt -bitop-raise -cfgopt -simplifycfg -strip-dead-prototypes -interface-lower -bitop-lower -intrinsic-lower -auto-function-inline -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -inst-simplify -simplifycfg -loop-simplify -mergereturn -inst-simplify -inst-rectify -dce -bitop-lower -loop-rewind -pointer-simplify -dce -cfgopt -read-loop-dep -dce -bitwidth -loop-dep -norm-name -legalize -validate-dataflow -cdfg-build /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.o.2.bc -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.o.3.bc -f -phase build-ssdm 
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'Loop-3.1' (/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp:88:18) in function 'mmult_accel' : 
+                         the outer loop is not a perfect loop because there is nontrivial logic in the loop latch.
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'matrix_mult' (/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp:86:53) in function 'mmult_accel' : 
+                         the outer loop is not a perfect loop because either the parent loop or the sub loop has no computeable trip count.
+WARNING: [XFORM 203-803] Argument name  'a' (/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp:52:1) is equal to bundle name 'a.
+' WARNING: [XFORM 203-803] Argument name  'b' (/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp:52:1) is equal to bundle name 'b.
+' WARNING: [XFORM 203-803] Argument name  'c' (/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp:52:1) is equal to bundle name 'c.
+' INFO: [XFORM 203-811] Inferring bus burst read of variable length on port 'a' (/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp:60:22).
+INFO: [XFORM 203-811] Inferring bus burst read of variable length on port 'b' (/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp:74:22).
+INFO: [XFORM 203-811] Inferring bus burst write of variable length on port 'c' (/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp:105:3).
+INFO: [HLS 200-100] Command         transform returned 0; 0.09 sec.
+INFO: [HLS 200-100] Execute         disassemble /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.o.3 /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.o.3 
+INFO: [HLS 200-100] Execute           is_encrypted /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.o.3.bc 
+INFO: [HLS 200-100] Command           is_encrypted returned 0; 0 sec.
+INFO: [HLS 200-100] Command         disassemble returned 0; 0.03 sec.
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 562.996 ; gain = 140.586 ; free physical = 146967 ; free virtual = 251768
+INFO: [HLS 200-0] Finish building internal data model.
+INFO: [HLS 200-100] Command       opt_and_import_c returned 0; 0.41 sec.
+INFO: [HLS 200-100] Command     elaborate returned 0; 1.86 sec.
+INFO: [HLS 200-100] Execute     autosyn 
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-0] Synthesizing C/C++ design ...
+INFO: [HLS 200-10] Synthesizing 'mmult_accel' ...
+INFO: [HLS 200-100] Execute       ap_set_top_model mmult_accel 
+INFO: [HLS 200-100] Command       ap_set_top_model returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       get_model_list mmult_accel -filter all-wo-channel -topdown 
+INFO: [HLS 200-100] Command       get_model_list returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       preproc_iomode -model mmult_accel 
+INFO: [HLS 200-100] Command       preproc_iomode returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       get_model_list mmult_accel -filter all-wo-channel 
+INFO: [HLS 200-100] Command       get_model_list returned 0; 0 sec.
+INFO: [HLS 200-0] Model list for configure: mmult_accel
+INFO: [HLS 200-0] Configuring Module : mmult_accel ...
+INFO: [HLS 200-100] Execute       set_default_model mmult_accel 
+INFO: [HLS 200-100] Command       set_default_model returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       apply_spec_resource_limit mmult_accel 
+INFO: [HLS 200-100] Command       apply_spec_resource_limit returned 0; 0 sec.
+INFO: [HLS 200-0] Model list for preprocess: mmult_accel
+INFO: [HLS 200-0] Preprocessing Module: mmult_accel ...
+INFO: [HLS 200-100] Execute       set_default_model mmult_accel 
+INFO: [HLS 200-100] Command       set_default_model returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       cdfg_preprocess -model mmult_accel 
+INFO: [HLS 200-100] Command       cdfg_preprocess returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       rtl_gen_preprocess mmult_accel 
+INFO: [HLS 200-100] Command       rtl_gen_preprocess returned 0; 0 sec.
+INFO: [HLS 200-0] Model list for synthesis: mmult_accel
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'mmult_accel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-100] Execute       set_default_model mmult_accel 
+INFO: [HLS 200-100] Command       set_default_model returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       schedule -model mmult_accel 
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'matrix_mult.1.1'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 5.
+WARNING: [SCHED 204-71] Latency directive discarded for region mmult_accel since it contains subloops.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-100] Command       schedule returned 0; 0.12 sec.
+INFO: [HLS 200-111]  Elapsed time: 2.88 seconds; current allocated memory: 0.319 MB.
+INFO: [HLS 200-100] Execute       report -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.verbose.sched.rpt -verbose -f 
+INFO: [HLS 200-100] Command       report returned 0; 0.05 sec.
+INFO: [HLS 200-100] Execute       db_write -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.sched.adb -f 
+INFO: [HLS 200-100] Command       db_write returned 0; 0.01 sec.
+INFO: [HLS 200-0] Finish scheduling mmult_accel.
+INFO: [HLS 200-100] Execute       set_default_model mmult_accel 
+INFO: [HLS 200-100] Command       set_default_model returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       bind -model mmult_accel 
+INFO: [BIND 205-110] clear=
+INFO: [BIND 205-110] debug=
+INFO: [BIND 205-110] drf=
+INFO: [BIND 205-110] effort=
+INFO: [BIND 205-110] fast_refine=
+INFO: [BIND 205-110] fu_weight=[ 0.0 -- 1.0 ]
+INFO: [BIND 205-110] global_opt=
+INFO: [BIND 205-110] gsearch=
+INFO: [BIND 205-110] help=
+INFO: [BIND 205-110] help-hidden=
+INFO: [BIND 205-110] min_mem_port=
+INFO: [BIND 205-110] min_op=
+INFO: [BIND 205-110] minreg=
+INFO: [BIND 205-110] ml=
+INFO: [BIND 205-110] model=mmult_accel
+INFO: [BIND 205-110] no_false_path=
+INFO: [BIND 205-110] no_min_op=
+INFO: [BIND 205-110] normalize=
+INFO: [BIND 205-110] quiet=
+INFO: [BIND 205-110] refine=
+INFO: [BIND 205-110] reg_weight=[ 0.0 -- 1.0 ]
+INFO: [BIND 205-110] search=
+INFO: [BIND 205-110] tight_delay=
+INFO: [BIND 205-110] verbose=
+INFO: [BIND 205-110] wFF=
+INFO: [BIND 205-110] wFU=
+INFO: [BIND 205-110] wMUX=
+INFO: [BIND 205-110] wNET=
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-100] Command       bind returned 0; 0.05 sec.
+INFO: [HLS 200-111]  Elapsed time: 0.12 seconds; current allocated memory: 0.319 MB.
+INFO: [HLS 200-100] Execute       report -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.verbose.bind.rpt -verbose -f 
+INFO: [HLS 200-100] Command       report returned 0; 0.07 sec.
+INFO: [HLS 200-100] Execute       db_write -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.bind.adb -f 
+INFO: [HLS 200-100] Command       db_write returned 0; 0.02 sec.
+INFO: [HLS 200-0] Finish binding mmult_accel.
+INFO: [HLS 200-100] Execute       get_model_list mmult_accel -filter all-wo-channel 
+INFO: [HLS 200-100] Command       get_model_list returned 0; 0 sec.
+INFO: [HLS 200-0] Preprocessing for RTLGen ...
+INFO: [HLS 200-100] Execute       rtl_gen_preprocess mmult_accel 
+INFO: [HLS 200-100] Command       rtl_gen_preprocess returned 0; 0 sec.
+INFO: [HLS 200-0] Model list for RTL generation: mmult_accel
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mmult_accel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-100] Execute       create_rtl_model mmult_accel -vendor xilinx -mg_file /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.compgen.tcl 
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_accel/a' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_accel/b' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_accel/c' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_accel/a_offset' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_accel/b_offset' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_accel/c_offset' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_accel/size' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'mmult_accel' to 'ap_ctrl_hs'.
+INFO: [SYN 201-210] Renamed object name 'mmult_accel_mul_32s_32s_32_2' to 'mmult_accel_mul_3bkb' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'mmult_accel_mul_3bkb': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mmult_accel'.
+INFO: [HLS 200-100] Command       create_rtl_model returned 0; 0.05 sec.
+INFO: [HLS 200-111]  Elapsed time: 0.14 seconds; current allocated memory: 0.319 MB.
+INFO: [HLS 200-100] Execute       source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.rtl_wrap.cfg.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       gen_rtl mmult_accel -istop -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/syn/systemc/mmult_accel -synmodules mmult_accel 
+INFO: [HLS 200-100] Command       gen_rtl returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute       gen_rtl mmult_accel -istop -style xilinx -f -lang vhdl -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/syn/vhdl/mmult_accel 
+INFO: [HLS 200-100] Command       gen_rtl returned 0; 0.06 sec.
+INFO: [HLS 200-100] Execute       gen_rtl mmult_accel -istop -style xilinx -f -lang vlog -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/syn/verilog/mmult_accel 
+INFO: [HLS 200-100] Command       gen_rtl returned 0; 0.04 sec.
+INFO: [HLS 200-100] Execute       export_constraint_db -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.constraint.tcl -f -tool general 
+INFO: [HLS 200-100] Command       export_constraint_db returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       report -model mmult_accel -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.design.xml -verbose -f -dv 
+INFO: [HLS 200-100] Command       report returned 0; 0.06 sec.
+INFO: [HLS 200-100] Execute       report -model mmult_accel -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.sdaccel.xml -verbose -f -sdaccel 
+INFO: [HLS 200-100] Command       report returned 0; 0.1 sec.
+INFO: [HLS 200-100] Execute       gen_tb_info mmult_accel -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel -p /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db 
+INFO: [HLS 200-100] Command       gen_tb_info returned 0; 0.03 sec.
+INFO: [HLS 200-100] Execute       report -model mmult_accel -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/syn/report/mmult_accel_csynth.rpt -f 
+INFO: [HLS 200-100] Command       report returned 0; 0.04 sec.
+INFO: [HLS 200-100] Execute       report -model mmult_accel -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/syn/report/mmult_accel_csynth.xml -f -x 
+INFO: [HLS 200-100] Command       report returned 0; 0.03 sec.
+INFO: [HLS 200-100] Execute       report -model mmult_accel -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.verbose.rpt -verbose -f 
+INFO: [HLS 200-100] Command       report returned 0; 0.11 sec.
+INFO: [HLS 200-100] Execute       db_write -model mmult_accel -o /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.adb -f 
+INFO: [HLS 200-100] Command       db_write returned 0; 0.04 sec.
+INFO: [HLS 200-100] Execute       sc_get_clocks mmult_accel 
+INFO: [HLS 200-100] Command       sc_get_clocks returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       sc_get_portdomain mmult_accel 
+INFO: [HLS 200-100] Command       sc_get_portdomain returned 0; 0 sec.
+INFO: [HLS 200-0] Model list for RTL component generation: mmult_accel
+INFO: [HLS 200-0] Handling components in module [mmult_accel] ... 
+INFO: [HLS 200-100] Execute       source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.compgen.tcl 
+INFO: [HLS 200-0] Found component mmult_accel_mul_3bkb.
+INFO: [HLS 200-0] Append model mmult_accel_mul_3bkb
+INFO: [HLS 200-0] Found component mmult_accel_bufa.
+INFO: [HLS 200-0] Append model mmult_accel_bufa
+INFO: [HLS 200-0] Found component mmult_accel_a_m_axi.
+INFO: [HLS 200-0] Append model mmult_accel_a_m_axi
+INFO: [HLS 200-0] Found component mmult_accel_b_m_axi.
+INFO: [HLS 200-0] Append model mmult_accel_b_m_axi
+INFO: [HLS 200-0] Found component mmult_accel_c_m_axi.
+INFO: [HLS 200-0] Append model mmult_accel_c_m_axi
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-0] Append model mmult_accel
+INFO: [HLS 200-0] Generating RTL model list ...
+INFO: [HLS 200-0] All models in this session: mmult_accel_mul_3bkb mmult_accel_bufa mmult_accel_a_m_axi mmult_accel_b_m_axi mmult_accel_c_m_axi mmult_accel
+INFO: [HLS 200-0] To file: write model mmult_accel_mul_3bkb
+INFO: [HLS 200-0] To file: write model mmult_accel_bufa
+INFO: [HLS 200-0] To file: write model mmult_accel_a_m_axi
+INFO: [HLS 200-0] To file: write model mmult_accel_b_m_axi
+INFO: [HLS 200-0] To file: write model mmult_accel_c_m_axi
+INFO: [HLS 200-0] To file: write model mmult_accel
+INFO: [HLS 200-0] Finished generating RTL model list.
+
+
+INFO: [HLS 200-0] RTL Generation done.
+INFO: [HLS 200-0] CAS Generation done.
+INFO: [HLS 200-0] CBC Generation done.
+INFO: [HLS 200-100] Execute       export_ssdm /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/a.export.ll 
+INFO: [HLS 200-100] Command       export_ssdm returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/common.gen 
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/APCoreGen.gen 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op_simcore.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/interface.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq.gen 
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/virtex.gen 
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx.gen 
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/plb46.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/fsl.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/axi4.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/nativeAXI4.gen 
+INFO: [HLS 200-100] Execute               source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/saxilite.gen 
+INFO: [HLS 200-100] Command               ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute               source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/maxi.gen 
+INFO: [HLS 200-100] Command               ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/scripts/xilinxcoregen.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/dds_compiler.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/util.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfft.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.07 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfir.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.11 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/dsp48.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.11 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.11 sec.
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq_fpv6.gen 
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx_fpv6.gen 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute       source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.compgen.tcl 
+INFO: [RTMG 210-282] Generating pipelined core: 'mmult_accel_mul_3bkb_MulnS_0'
+INFO: [RTMG 210-278] Implementing memory 'mmult_accel_bufa_ram (RAM)' using block RAMs.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.15 sec.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 562.996 ; gain = 140.586 ; free physical = 146953 ; free virtual = 251756
+INFO: [SYSC 207-301] Generating SystemC RTL for mmult_accel.
+INFO: [VHDL 208-304] Generating VHDL RTL for mmult_accel.
+INFO: [VLOG 209-307] Generating Verilog RTL for mmult_accel.
+INFO: [HLS 200-100] Command     autosyn returned 0; 1.32 sec.
+INFO: [HLS 200-100] Command   csynth_design returned 0; 3.18 sec.
+INFO: [HLS 200-100] Execute   export_design -acc 
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/common.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/APCoreGen.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op_simcore.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/interface.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/virtex.gen 
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx.gen 
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/plb46.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/fsl.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/axi4.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/nativeAXI4.gen 
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/saxilite.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/maxi.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.02 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/scripts/xilinxcoregen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/dds_compiler.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/util.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfft.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.07 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfir.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.1 sec.
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/dsp48.gen 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.12 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.12 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq_fpv6.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx_fpv6.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [IMPL 213-8] Exporting RTL as an IP in IP-XACT.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/common.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/APCoreGen.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op_simcore.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/interface.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/virtex.gen 
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx.gen 
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/plb46.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/fsl.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/axi4.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/nativeAXI4.gen 
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/saxilite.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/maxi.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.02 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/scripts/xilinxcoregen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/dds_compiler.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/util.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfft.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.07 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfir.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.11 sec.
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/dsp48.gen 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.11 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.11 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq_fpv6.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx_fpv6.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.compgen.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.compgen.tcl 
+INFO: [HLS 200-100] Execute       source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.rtl_wrap.cfg.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.rtl_wrap.cfg.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.rtl_wrap.cfg.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.tbgen.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.tbgen.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.13 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.compgen.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.constraint.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.rtl_wrap.cfg.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.rtl_wrap.cfg.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.rtl_wrap.cfg.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.tbgen.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.tbgen.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.tbgen.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.tbgen.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.tbgen.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.tbgen.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.rtl_wrap.cfg.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.rtl_wrap.cfg.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.tbgen.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.tbgen.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.rtl_wrap.cfg.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.rtl_wrap.cfg.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.tbgen.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.tbgen.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.constraint.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.constraint.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.constraint.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/common.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/APCoreGen.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op_simcore.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/interface.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/virtex.gen 
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx.gen 
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/plb46.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/fsl.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/axi4.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/nativeAXI4.gen 
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/saxilite.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/maxi.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/scripts/xilinxcoregen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/dds_compiler.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/util.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfft.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.08 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfir.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.12 sec.
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/dsp48.gen 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.12 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.12 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq_fpv6.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx_fpv6.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/common.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/APCoreGen.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op_simcore.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/interface.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/virtex.gen 
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx.gen 
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/plb46.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/fsl.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/axi4.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/nativeAXI4.gen 
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/saxilite.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/maxi.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/scripts/xilinxcoregen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/dds_compiler.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/util.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfft.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.07 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfir.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.11 sec.
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/dsp48.gen 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.12 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.12 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq_fpv6.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx_fpv6.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/common.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/APCoreGen.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op_simcore.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/interface.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/virtex.gen 
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx.gen 
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/plb46.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/fsl.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/axi4.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/nativeAXI4.gen 
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/saxilite.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/maxi.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/scripts/xilinxcoregen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/dds_compiler.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/util.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfft.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.07 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfir.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.11 sec.
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/dsp48.gen 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.12 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.12 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq_fpv6.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx_fpv6.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.compgen.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.constraint.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/common.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/APCoreGen.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op_simcore.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/interface.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/virtex.gen 
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx.gen 
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/plb46.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/fsl.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/axi4.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/nativeAXI4.gen 
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/saxilite.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/maxi.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.02 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/scripts/xilinxcoregen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/dds_compiler.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/util.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfft.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.07 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfir.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.12 sec.
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/dsp48.gen 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.12 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.14 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq_fpv6.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx_fpv6.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/common.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/APCoreGen.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op_simcore.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/interface.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/virtex.gen 
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx.gen 
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/plb46.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/fsl.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/axi4.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/nativeAXI4.gen 
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/saxilite.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/maxi.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/scripts/xilinxcoregen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/dds_compiler.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/util.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfft.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.09 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfir.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.14 sec.
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/dsp48.gen 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.14 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.14 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq_fpv6.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx_fpv6.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/common.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/APCoreGen.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op_simcore.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/interface.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/virtex.gen 
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx.gen 
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/plb46.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/fsl.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/axi4.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/nativeAXI4.gen 
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/saxilite.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/maxi.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/scripts/xilinxcoregen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/dds_compiler.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/util.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfft.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.07 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfir.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.1 sec.
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/dsp48.gen 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.11 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.11 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq_fpv6.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx_fpv6.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.compgen.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/mmult_accel.constraint.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/common.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/APCoreGen.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/op_simcore.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/generic/autopilot/interface.gen 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/virtex.gen 
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx.gen 
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/plb46.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/fsl.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/axi4.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/nativeAXI4.gen 
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/saxilite.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/maxi.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/scripts/xilinxcoregen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/dds_compiler.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/util.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfft.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.08 sec.
+INFO: [HLS 200-100] Execute           source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/ip/xfir.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.12 sec.
+INFO: [HLS 200-100] Execute         source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/dsp48.gen 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.12 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.12 sec.
+INFO: [HLS 200-100] Execute     source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/zynq/zynq_fpv6.gen 
+INFO: [HLS 200-100] Execute       source /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/common/technology/xilinx/common/xilinx_fpv6.gen 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     source /proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution/.autopilot/db/global.setting.tcl 
+INFO: [HLS 200-100] Command     ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command   export_design returned 0; 41.83 sec.
+INFO: [HLS 200-100] Execute   cleanup_all 
+INFO: [HLS 200-100] Command   cleanup_all returned 0; 0.01 sec.

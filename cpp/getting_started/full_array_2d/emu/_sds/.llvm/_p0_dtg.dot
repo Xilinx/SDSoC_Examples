@@ -1,0 +1,26 @@
+digraph dm_graph {
+v0 [label = "v0:main" ,style=filled];
+v1 [label = "v1:XFER(IN):a @99, ARRAY\n" ,style=filled,fillcolor = green];
+v2 [label = "v2:XFER(IN):b @99, ARRAY\n" ,style=filled,fillcolor = green];
+v3 [label = "v3:XFER(IN):size @99, SCALAR\n" ,style=filled,fillcolor = green];
+v4 [label = "v4:call 'mmult_accel' in 'main.cpp' @99 (async_id:-1) (resource id:-1)\n" ,style=filled,fillcolor = red];
+v5 [label = "v5:XFER(OUT):c @99, ARRAY\n" ,style=filled,fillcolor = yellow];
+v6 [label = "v6:cf_wait(): \nXFER(IN):a @99, ARRAY\nXFER(IN):b @99, ARRAY\nXFER(OUT):c @99, ARRAY\nXFER(IN):size @99, SCALAR\n\n" ,style=filled,fillcolor = cyan];
+subgraph cluster0 {
+v1;
+v2;
+v3;
+v4;
+v5;
+v6;
+label = "call 'mmult_accel' in 'main.cpp' @99 (async_id:-1) (resource id:-1)\n";
+}
+v1 -> v4 [label = "0"];
+v2 -> v4 [label = "0"];
+v3 -> v4 [label = "0"];
+v4 -> v5 [label = "0"];
+v5 -> v6 [label = "", style = dotted];
+v0 -> v1 [label = "", style = dotted];
+v0 -> v2 [label = "", style = dotted];
+v0 -> v3 [label = "", style = dotted];
+}

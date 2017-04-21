@@ -1,0 +1,89 @@
+================================================================
+  Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC
+  Version 2017.1
+  Build 1846317 on Tue Apr 18 19:02:30 MDT 2017
+  Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
+================================================================
+INFO: [HLS 200-10] Running '/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado_HLS/bin/unwrapped/lnx64.o/vivado_hls'
+INFO: [HLS 200-10] For user 'kalib' on host 'xhdrdevl102' (Linux_x86_64 version 2.6.32-431.el6.x86_64) on Fri Apr 21 15:18:18 IST 2017
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux Workstation release 6.5 (Santiago)"
+INFO: [HLS 200-10] In directory '/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls'
+INFO: [HLS 200-10] Creating and opening project '/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel'.
+INFO: [HLS 200-10] Adding design file '/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp' to the project
+INFO: [HLS 200-10] Creating and opening solution '/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/emu/_sds/vhls/mmult_accel/solution'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-10] Setting target device to ' xc7z045ffg900-2 '
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 7ns.
+INFO: [HLS 200-10] Analyzing design file '/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp' ... 
+INFO: [HLS 200-10] Validating synthesis directives ...
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 435.059 ; gain = 12.648 ; free physical = 146981 ; free virtual = 251781
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 435.059 ; gain = 12.648 ; free physical = 146981 ; free virtual = 251780
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 435.059 ; gain = 12.648 ; free physical = 146980 ; free virtual = 251779
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 435.059 ; gain = 12.648 ; free physical = 146980 ; free virtual = 251779
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 562.996 ; gain = 140.586 ; free physical = 146959 ; free virtual = 251758
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'Loop-3.1' (/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp:88:18) in function 'mmult_accel' : 
+WARNING: [XFORM 203-542] the outer loop is not a perfect loop because there is nontrivial logic in the loop latch.
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'matrix_mult' (/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp:86:53) in function 'mmult_accel' : 
+WARNING: [XFORM 203-542] the outer loop is not a perfect loop because either the parent loop or the sub loop has no computeable trip count.
+INFO: [XFORM 203-811] Inferring bus burst read of variable length on port 'a' (/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp:60:22).
+INFO: [XFORM 203-811] Inferring bus burst read of variable length on port 'b' (/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp:74:22).
+INFO: [XFORM 203-811] Inferring bus burst write of variable length on port 'c' (/proj/xhdhdstaff2/kalib/sprite_makefile_dev/apps/cpp/getting_started/full_array_2d/src/mmult.cpp:105:3).
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 562.996 ; gain = 140.586 ; free physical = 146967 ; free virtual = 251768
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'mmult_accel' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'mmult_accel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'matrix_mult.1.1'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 5.
+WARNING: [SCHED 204-71] Latency directive discarded for region mmult_accel since it contains subloops.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 2.88 seconds; current allocated memory: 0.319 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.12 seconds; current allocated memory: 0.319 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mmult_accel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_accel/a' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_accel/b' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_accel/c' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_accel/a_offset' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_accel/b_offset' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_accel/c_offset' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_accel/size' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'mmult_accel' to 'ap_ctrl_hs'.
+INFO: [SYN 201-210] Renamed object name 'mmult_accel_mul_32s_32s_32_2' to 'mmult_accel_mul_3bkb' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'mmult_accel_mul_3bkb': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mmult_accel'.
+INFO: [HLS 200-111]  Elapsed time: 0.14 seconds; current allocated memory: 0.319 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'mmult_accel_mul_3bkb_MulnS_0'
+INFO: [RTMG 210-278] Implementing memory 'mmult_accel_bufa_ram (RAM)' using block RAMs.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 562.996 ; gain = 140.586 ; free physical = 146953 ; free virtual = 251756
+INFO: [SYSC 207-301] Generating SystemC RTL for mmult_accel.
+INFO: [VHDL 208-304] Generating VHDL RTL for mmult_accel.
+INFO: [VLOG 209-307] Generating Verilog RTL for mmult_accel.
+INFO: [IMPL 213-8] Exporting RTL as an IP in IP-XACT.
+
+
+****** Vivado v2017.1_sdx (64-bit)
+  **** SW Build 1849166 on Tue Apr 18 18:34:12 MDT 2017
+  **** IP Build 1846667 on Tue Apr 18 20:18:31 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+INFO: [Common 17-1460] Use of init.tcl in /proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado/scripts/init.tcl is deprecated. Please use Vivado_init.tcl 
+Sourcing tcl script '/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado/scripts/init.tcl'
+0 Beta devices matching pattern found, 0 enabled.
+Loaded SDSoC Platform Tcl Library
+source run_ippack.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/proj/xbuilds/2017.1_sdx_0419_1/installs/lin64/SDx/2017.1/Vivado/data/ip'.
+INFO: [Common 17-206] Exiting Vivado at Fri Apr 21 15:18:36 2017...
+INFO: [HLS 200-112] Total elapsed time: 45.92 seconds; peak allocated memory: 0.319 MB.

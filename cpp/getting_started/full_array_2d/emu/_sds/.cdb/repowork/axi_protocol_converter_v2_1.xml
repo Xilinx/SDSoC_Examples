@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xd:repository xmlns:xd="http://www.xilinx.com/xd" xd:vendor="xilinx.com" xd:library="ip" xd:name="axi_protocol_converter" xd:version="2.1">
+    <xd:component xd:vendor="xilinx.com" xd:library="ip" xd:name="axi_protocol_converter" xd:version="2.1">
+        <xd:busInterface xd:name="S_AXI" xd:busTypeRef="aximm" xd:mode="slave" xd:clockRef="" xd:resetRef=""/>
+        <xd:busInterface xd:name="M_AXI" xd:busTypeRef="aximm" xd:mode="master" xd:clockRef="" xd:resetRef=""/>
+        <xd:busInterface xd:name="CLK" xd:busTypeRef="clock" xd:mode="slave" xd:direction="in" xd:library="signal" xd:port="aclk"/>
+        <xd:busInterface xd:name="RST" xd:busTypeRef="reset" xd:mode="slave" xd:direction="in" xd:library="signal" xd:port="aresetn"/>
+    </xd:component>
+</xd:repository>

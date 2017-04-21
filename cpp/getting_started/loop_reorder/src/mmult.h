@@ -34,7 +34,7 @@
 #ifndef MMULT_H_
 #define MMULT_H_
 
-#include "sds_timer.h"
+#include "sds_utils.h"
 
 // Size of the input array
 #define DATA_SIZE 64

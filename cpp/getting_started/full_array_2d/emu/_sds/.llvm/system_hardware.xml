@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xd:sdsoc xmlns:xd="http://www.xilinx.com/xd">
+  <xd:debug xd:trace="0" xd:apm="0"/>
+  <xd:vivado xd:synth_strategy="default" xd:impl_strategy="default"/>
+</xd:sdsoc>

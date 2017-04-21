@@ -1,0 +1,7 @@
+digraph defuse_graph {
+v0 [label = "use: (bb6),sw(45)@95"];
+v1 [label = "use: (bb6),sw(45)@95"];
+v2 [label = "use: (bb6),hw, call:mmult_accel"];
+v3 [label = "use: (bb6),hw, call:mmult_accel"];
+v4 [label = "def: (bb6),hw, call:mmult_accel"];
+}
