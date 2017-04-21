@@ -35,7 +35,7 @@
 #include <cstdlib>
 #include "mean_value.h"
 
-using namespace sds_prof;
+using namespace sds_utils;
 
 void mean_value(int in[], int out[], int n)
 {

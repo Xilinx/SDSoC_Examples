@@ -34,7 +34,7 @@
 #ifndef VADD_H_
 #define VADD_H_
 
-#include "sds_timer.h"
+#include "sds_utils.h"
 
 #define DATA_SIZE 4096
 

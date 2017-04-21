@@ -36,7 +36,7 @@
 #include <stdlib.h>
 #include "mmult.h"
 
-using namespace sds_prof;
+using namespace sds_utils;
 
 
 // Software Implementation

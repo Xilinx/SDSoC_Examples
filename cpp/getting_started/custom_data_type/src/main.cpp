@@ -45,7 +45,7 @@
 #include "bitmap.h"
 #include "rgb_to_hsv.h"
 
-using namespace sds_prof;
+using namespace sds_utils;
 
 #define IMAGE_SIZE 128
 

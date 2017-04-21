@@ -41,7 +41,7 @@
 #include <cstdlib>
 #include "vadd.h"
 
-using namespace sds_prof;
+using namespace sds_utils;
 
 // Software Solution
 void vadd_sw(unsigned int *source_in1, unsigned int *source_in2, unsigned int *out, 
