@@ -56,6 +56,7 @@ int verify(int *gold, int *test, int size) {
             continue;
         else {
             match = false;
+            std::cout<< "Results: CPU " << gold[i] << " Device" << test[i] << std::endl;
             break;
         }
   
