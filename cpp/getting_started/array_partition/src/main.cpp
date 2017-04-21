@@ -43,7 +43,7 @@
 #include <stdlib.h>
 #include "matmul.h"
 
-using namespace sds_prof;
+using namespace sds_utils;
 
 // Software Matrix Multiplication 
 void matmul(int *C, int *A, int *B, int M) {

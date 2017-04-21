@@ -79,7 +79,7 @@ def create_mk(target, data):
     target.write("\n")
   
     target.write("# Include Libraries\n")
-    target.write("include $(COMMON_REPO)/libs/profile/profile.mk\n")
+    target.write("include $(COMMON_REPO)/libs/sds_utils/sds_utils.mk\n")
     target.write("\n")
  
     target.write("# Target OS:\n")

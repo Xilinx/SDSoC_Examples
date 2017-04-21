@@ -22,7 +22,7 @@ ABS_COMMON_REPO = $(shell readlink -f $(PREFIX))
 COMMON_REPO := $(ABS_COMMON_REPO)
 
 # Include Libraries
-include $(COMMON_REPO)/libs/profile/profile.mk
+include $(COMMON_REPO)/libs/sds_utils/sds_utils.mk
 
 # Target OS:
 #     linux (Default), standalone, rtos
@@ -74,7 +74,7 @@ IFLAGS := -I.
 CFLAGS = -Wall -O3 -c
 CFLAGS += -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" 
 CFLAGS += -std=c++0x
-CFLAGS += -I$(profile_HDRS)
+CFLAGS += -I$(sds_utils_HDRS)
 LFLAGS = "$@" "$<" 
 #+---------------------------------------------------------------------
 

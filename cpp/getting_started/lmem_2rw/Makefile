@@ -22,7 +22,7 @@ ABS_COMMON_REPO = $(shell readlink -f $(PREFIX))
 COMMON_REPO := $(ABS_COMMON_REPO)
 
 # Include Libraries
-include $(COMMON_REPO)/libs/profile/profile.mk
+include $(COMMON_REPO)/libs/sds_utils/sds_utils.mk
 
 # Target OS:
 #     linux (Default), standalone, rtos
