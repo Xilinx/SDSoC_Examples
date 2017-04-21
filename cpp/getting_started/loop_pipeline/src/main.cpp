@@ -40,9 +40,10 @@ using namespace sds_prof;
 
 const int DATA_SIZE = 1<<10;
 
-int verify(const int *gold, const int *out) {
+int verify(int *gold, int *out) {
     for(int i = 0; i < DATA_SIZE; i++){
         if(gold[i] != out[i]){
+            std::cout<< "Results: CPU " << gold[i] << " Device" << out[i] << std::endl;
             return 1;
         }
   }
@@ -53,7 +54,7 @@ void vadd(int *a, int *b, int *c, int len){
 
     vadd_loop:
     for (int x=0; x<len; ++x) {
-        c[x] = a[x] + b[x];
+        c[x] = a[x] + b[x] + 1;
     }
 }
 
@@ -61,14 +62,13 @@ int main(int argc, char** argv)
 {
 
     int test_passed = 0;
-    // compute the size of array in bytes
-    int size_in_bytes = DATA_SIZE * sizeof(int);
 
     // Create PL buffers using sds_alloc  
     int *source_a = (int *) sds_alloc(sizeof(int) * DATA_SIZE);
     int *source_b = (int *) sds_alloc(sizeof(int) * DATA_SIZE);
     int *source_results = (int *) sds_alloc(sizeof(int) * DATA_SIZE);
 
+    // Software output buffer
     int *gold = (int *)malloc(sizeof(int) * DATA_SIZE);
     
     perf_counter hw_ctr, sw_ctr;
