@@ -1,5 +1,5 @@
-#ifndef SDS_TIMER_H_
-#define SDS_TIMER_H_
+#ifndef SDS_UTILS_H_
+#define SDS_UTILS_H_
 #include <stdint.h>
 #include "sds_lib.h"
 namespace sds_utils {
