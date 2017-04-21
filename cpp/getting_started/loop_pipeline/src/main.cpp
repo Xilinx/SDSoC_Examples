@@ -64,7 +64,7 @@ int main(int argc, char** argv)
     // compute the size of array in bytes
     int size_in_bytes = DATA_SIZE * sizeof(int);
 
-    // Creates a vector of DATA_SIZE elements with an initial value of 10 and 32
+    // Create PL buffers using sds_alloc  
     int *source_a = (int *) sds_alloc(sizeof(int) * DATA_SIZE);
     int *source_b = (int *) sds_alloc(sizeof(int) * DATA_SIZE);
     int *source_results = (int *) sds_alloc(sizeof(int) * DATA_SIZE);
