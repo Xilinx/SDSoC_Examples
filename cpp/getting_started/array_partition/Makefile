@@ -49,20 +49,11 @@ EXECUTABLE := matmul_partition_accel.elf
 
 # Source Files
 SRC_DIR := src
-CPP_SRCS += \
-$(pwd)/$(SRC_DIR)/main.cpp \
-$(pwd)/$(SRC_DIR)/matmul.cpp
-
 OBJECTS += \
 $(pwd)/$(TARGET)/main.o \
 $(pwd)/$(TARGET)/matmul.o
 
-CPP_DEPS += \
-$(pwd)/$(TARGET)/main.d \
-$(pwd)/$(TARGET)/matmul.d
-
 # SDS Options
-#
 HW_FLAGS := -sds-hw matmul_partition_accel matmul.cpp -sds-end
 EMU_FLAGS := 
 ifeq ($(TARGET), emu)

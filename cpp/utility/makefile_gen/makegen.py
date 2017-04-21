@@ -157,20 +157,20 @@ os.chdir(final_dir)
 count = 0
 for file in glob.glob(extension):
     count = count + 1
-temp = count
-if extension == "*.cpp":
-    target.write("CPP_SRCS += \\")
-else:
-    target.write("C_SRCS += \\")
+#temp = count
+#if extension == "*.cpp":
+#    target.write("CPP_SRCS += \\")
+#else:
+#    target.write("C_SRCS += \\")
     
-target.write("\n")
-for result in glob.glob(extension):
-    temp -= 1
-    target.write("$(pwd)/$(SRC_DIR)/")
-    target.write(result)
-    if temp != 0:
-        target.write(" \\\n")
-target.write("\n\n")
+#target.write("\n")
+#for result in glob.glob(extension):
+#   temp -= 1
+#    target.write("$(pwd)/$(SRC_DIR)/")
+#    target.write(result)
+#    if temp != 0:
+#        target.write(" \\\n")
+#target.write("\n\n")
 
 temp = count
 target.write("OBJECTS += \\")
@@ -187,28 +187,28 @@ for result in glob.glob(extension):
         target.write(" \\\n")
 target.write("\n\n")
 
-temp = count
-if extension == "*.cpp":
-    target.write("CPP_DEPS += \\")
-    target.write("\n")
-else:
-    target.write("C_DEPS += \\")
-    target.write("\n")
+#temp = count
+#if extension == "*.cpp":
+#    target.write("CPP_DEPS += \\")
+#    target.write("\n")
+#else:
+#    target.write("C_DEPS += \\")
+#    target.write("\n")
 
-for result in glob.glob(extension):
-    temp -= 1
-    target.write("$(pwd)/$(TARGET)/")
-    if extension == "*.cpp":
-        obj = result.replace(".cpp", ".d")
-    else:
-        obj = result.replace(".c", ".d")
-    target.write(obj)
-    if temp != 0:
-        target.write(" \\\n")
-target.write("\n\n")
+#for result in glob.glob(extension):
+#    temp -= 1
+#    target.write("$(pwd)/$(TARGET)/")
+#    if extension == "*.cpp":
+#        obj = result.replace(".cpp", ".d")
+#    else:
+#        obj = result.replace(".c", ".d")
+#    target.write(obj)
+#    if temp != 0:
+#        target.write(" \\\n")
+#target.write("\n\n")
 
 target.write("# SDS Options\n")
-target.write("#\n")
+#target.write("#\n")
 target.write("HW_FLAGS := -sds-hw ")
 
 for acc in data["accelerators"]:
