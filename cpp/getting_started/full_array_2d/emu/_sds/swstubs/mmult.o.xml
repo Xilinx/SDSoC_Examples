@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xd:data xd:num_accels="1" xd:format="1" xmlns:xd="http://www.xilinx.com/xd">
-  <xd:accel name="mmult_accel" id="0"/>
-</xd:data>

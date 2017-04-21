@@ -1,6 +1,0 @@
-mmult_accel_mul_3bkb
-mmult_accel_bufa
-mmult_accel_a_m_axi
-mmult_accel_b_m_axi
-mmult_accel_c_m_axi
-mmult_accel
