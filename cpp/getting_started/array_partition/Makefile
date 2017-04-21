@@ -17,12 +17,11 @@ TARGET := emu
 pwd := $(CURDIR)
 
 # Points to Utility Directory
-PREFIX = ../../
-ABS_COMMON_REPO = $(shell readlink -f $(PREFIX))
-COMMON_REPO := $(ABS_COMMON_REPO)
+COMMON_REPO = ../../
+ABS_COMMON_REPO = $(shell readlink -f $(COMMON_REPO))
 
 # Include Libraries
-include $(COMMON_REPO)/libs/sds_utils/sds_utils.mk
+include $(ABS_COMMON_REPO)/libs/sds_utils/sds_utils.mk
 
 # Target OS:
 #     linux (Default), standalone, rtos
@@ -100,7 +99,7 @@ check: all
 ifeq ($(TARGET), emu)
 
     ifeq ($(TARGET_OS), linux)
-	    cp $(COMMON_REPO)/utility/emu_run.sh $(TARGET)/
+	    cp $(ABS_COMMON_REPO)/utility/emu_run.sh $(TARGET)/
 	    cd $(TARGET) ; ./emu_run.sh $(EXECUTABLE)
     else
 	    cd $(TARGET) ; sdsoc_emulator -timeout 120

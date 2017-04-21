@@ -73,13 +73,12 @@ def create_mk(target, data):
     target.write("\n")
 
     target.write("# Points to Utility Directory\n")
-    target.write("PREFIX = ../../\n") 
-    target.write("ABS_COMMON_REPO = $(shell readlink -f $(PREFIX))\n")
-    target.write("COMMON_REPO := $(ABS_COMMON_REPO)\n")
+    target.write("COMMON_REPO = ../../\n") 
+    target.write("ABS_COMMON_REPO = $(shell readlink -f $(COMMON_REPO))\n")
     target.write("\n")
   
     target.write("# Include Libraries\n")
-    target.write("include $(COMMON_REPO)/libs/sds_utils/sds_utils.mk\n")
+    target.write("include $(ABS_COMMON_REPO)/libs/sds_utils/sds_utils.mk\n")
     target.write("\n")
  
     target.write("# Target OS:\n")
@@ -278,7 +277,7 @@ target.write("# Check Rule Builds the Sources and Executes on Specified Target\n
 target.write("check: all\n")
 target.write("ifeq ($(TARGET), emu)\n\n")
 target.write("    ifeq ($(TARGET_OS), linux)\n")
-target.write("\t    cp $(COMMON_REPO)/utility/emu_run.sh $(TARGET)/\n")
+target.write("\t    cp $(ABS_COMMON_REPO)/utility/emu_run.sh $(TARGET)/\n")
 target.write("\t    cd $(TARGET) ; ./emu_run.sh $(EXECUTABLE)\n")
 target.write("    else\n")
 target.write("\t    cd $(TARGET) ; sdsoc_emulator -timeout 120\n")

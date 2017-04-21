@@ -17,12 +17,11 @@ TARGET := emu
 pwd := $(CURDIR)
 
 # Points to Utility Directory
-PREFIX = ../../
-ABS_COMMON_REPO = $(shell readlink -f $(PREFIX))
-COMMON_REPO := $(ABS_COMMON_REPO)
+COMMON_REPO = ../../
+ABS_COMMON_REPO = $(shell readlink -f $(COMMON_REPO))
 
 # Include Libraries
-include $(COMMON_REPO)/libs/sds_utils/sds_utils.mk
+include $(ABS_COMMON_REPO)/libs/sds_utils/sds_utils.mk
 
 # Target OS:
 #     linux (Default), standalone, rtos
@@ -49,20 +48,11 @@ EXECUTABLE := nearest_accel.elf
 
 # Source Files
 SRC_DIR := src
-CPP_SRCS += \
-$(pwd)/$(SRC_DIR)/main.cpp \
-$(pwd)/$(SRC_DIR)/nearest.cpp
-
 OBJECTS += \
 $(pwd)/$(TARGET)/main.o \
 $(pwd)/$(TARGET)/nearest.o
 
-CPP_DEPS += \
-$(pwd)/$(TARGET)/main.d \
-$(pwd)/$(TARGET)/nearest.d
-
 # SDS Options
-#
 HW_FLAGS := -sds-hw nearest_accel nearest.cpp -sds-end
 EMU_FLAGS := 
 ifeq ($(TARGET), emu)
@@ -109,7 +99,7 @@ check: all
 ifeq ($(TARGET), emu)
 
     ifeq ($(TARGET_OS), linux)
-	    cp $(COMMON_REPO)/utility/emu_run.sh $(TARGET)/
+	    cp $(ABS_COMMON_REPO)/utility/emu_run.sh $(TARGET)/
 	    cd $(TARGET) ; ./emu_run.sh $(EXECUTABLE)
     else
 	    cd $(TARGET) ; sdsoc_emulator -timeout 120
