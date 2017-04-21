@@ -37,7 +37,7 @@
 #include <math.h>
 #include "row_array_2d.h"
 
-using namespace sds_prof;
+using namespace sds_utils;
 
 //Utility to print array
 void print_array(DTYPE *mat, const char *name, int size, int dim) {

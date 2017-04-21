@@ -43,7 +43,7 @@
 #include <stdlib.h>
 #include "fir.h"
 
-using namespace sds_prof;
+using namespace sds_utils;
 
 #define min(x,y) ((x) < (y) ? (x) : (y))
 

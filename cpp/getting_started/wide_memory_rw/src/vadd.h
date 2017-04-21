@@ -34,7 +34,7 @@
 #ifndef VADD_H_
 #define VADD_H_
 
-#include "sds_timer.h"
+#include "sds_utils.h"
 
 #include <ap_int.h>
 #define BUFFER_SIZE 32 

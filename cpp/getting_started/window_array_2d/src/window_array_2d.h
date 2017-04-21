@@ -34,7 +34,7 @@
 #ifndef WINDOW_ARRAY_2D_H_
 #define WINDOW_ARRAY_2D_H_
 
-#include "sds_timer.h"
+#include "sds_utils.h"
 
 #include <hls_stream.h>
 // Parameters Description:

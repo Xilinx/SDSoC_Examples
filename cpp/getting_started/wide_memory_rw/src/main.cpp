@@ -45,7 +45,7 @@
 #include <cstring>
 #include "vadd.h"
 
-using namespace sds_prof;
+using namespace sds_utils;
 
 // Software solution
 void vadd_sw(uint128_dt *in1, uint128_dt *in2, uint128_dt *out, int size)
