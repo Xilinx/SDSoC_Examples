@@ -43,7 +43,7 @@
 #include <stdlib.h>
 #include "vadd.h"
 
-using namespace sds_prof;
+using namespace sds_utils;
 
 // Golden implementation
 void vadd_golden(int a[DATA_SIZE], int size, int inc_value, 
