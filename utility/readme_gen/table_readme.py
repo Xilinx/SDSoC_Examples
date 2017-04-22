@@ -247,3 +247,5 @@ target.write("[Systolic Array Implementation]:https://gitenterprise.xilinx.com/S
 target.write("[Wide Memory Read/Write]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/wide_memory_rw\n")
 target.write("[Read/Write Window of 2D Array]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/window_array_2d\n")
 target.write("[Burst Read/Write]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/burst_rw\n")
+target.write("[Full 2D Array Read/Write]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/full_array_2d\n")
+target.write("[Read/Write Row of 2D Array]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/row_array_2d\n")
