@@ -23,7 +23,9 @@ Collection of common libraries used across all examples to assist in the quick d
 
 ### 3. UTILITY
 
-Collection of utility functions used as part of the Makefiles in all of the examples. This set includes Makefile rules and scripts to launch SDSoC compiled applications onto SDSoC emulation flow. It also contains makefile and Readme generation scripts. 
+Collection of utility functions used as part of the Makefiles in all of the
+examples. This set includes Makefile rules and scripts to launch SDSoC compiled
+applications onto SDSoC emulation flow. It also contains Makefile and Readme generation scripts. 
 
 
 ## 4. OTHER INFORMATION
