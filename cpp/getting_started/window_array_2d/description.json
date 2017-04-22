@@ -25,9 +25,14 @@
            "location" : "window_array_2d.cpp"
        }
     ],
+    "libs": [
+            "sds_utils"
+    ],
+    "os" : [
+            "linux",
+            "standalone"
+    ],
     "source_dir" : "src/*.cpp",
-    "device" : "zc706",
-    "os" : "linux", 
     "pass_string" : "TEST PASSED",
     "fail_string" : "TEST FAILED" 
 }
