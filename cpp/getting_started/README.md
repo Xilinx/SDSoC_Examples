@@ -38,3 +38,4 @@ Sl.No | Title | Overview |Key Concept | Key Words | Category
 [Systolic Array Implementation]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/systolic_array
 [Wide Memory Read/Write]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/wide_memory_rw
 [Read/Write Window of 2D Array]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/window_array_2d
+[Burst Read/Write]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/burst_rw
