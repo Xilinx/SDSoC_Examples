@@ -32,3 +32,4 @@ Sl.No | Title | Overview |Key Concept | Key Words | Category
 [Two Parallel Read/Write on Local Memory]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/lmem_2rw
 [Loop Fusion]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_fusion
 [Loop Perfect]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_perfect
+[Loop Pipeline]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_pipeline
