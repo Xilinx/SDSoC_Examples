@@ -239,3 +239,4 @@ target.write("[Custom Data Type]:https://gitenterprise.xilinx.com/SDSoC-Examples
 target.write("[Loop Iteration Dependency]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/dependence_inter\n")
 target.write("[Two Parallel Read/Write on Local Memory]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/lmem_2rw\n")
 target.write("[Loop Fusion]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_fusion\n")
+target.write("[Loop Perfect]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_perfect\n")

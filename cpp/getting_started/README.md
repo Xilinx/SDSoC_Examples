@@ -31,3 +31,4 @@ Sl.No | Title | Overview |Key Concept | Key Words | Category
 [Loop Iteration Dependency]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/dependence_inter
 [Two Parallel Read/Write on Local Memory]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/lmem_2rw
 [Loop Fusion]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_fusion
+[Loop Perfect]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_perfect
