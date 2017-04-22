@@ -17,14 +17,14 @@ TARGET := emu
 pwd := $(CURDIR)
 
 # Points to Utility Directory
-COMMON_REPO = ../../
+COMMON_REPO = ../../../
 ABS_COMMON_REPO = $(shell readlink -f $(COMMON_REPO))
 
 # Include Libraries
 include $(ABS_COMMON_REPO)/libs/sds_utils/sds_utils.mk
 
 # Target OS:
-#     linux (Default), standalone, rtos
+#     linux (Default), standalone
 TARGET_OS := linux
 
 # Emulation Mode:

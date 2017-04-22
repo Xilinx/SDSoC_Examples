@@ -29,9 +29,9 @@
             "sds_utils"
     ],
     "source_dir" : "src/*.cpp",
-    "device" : "zc706",
     "os" : [
-            "linux"
+            "linux",
+            "standalone"
     ],
     "pass_string" : "TEST PASSED",
     "fail_string" : "TEST FAILED" 

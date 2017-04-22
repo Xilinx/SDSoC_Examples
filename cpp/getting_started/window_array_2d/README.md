@@ -107,7 +107,7 @@ Date | README Version | Description
 -----|----------------|------------
 MAR2017|1.0|Initial Xilinx Release
 
-[3-Clause BSD License]: ../../LICENSE.txt
+[3-Clause BSD License]: ../../../LICENSE.txt
 [SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc
 [SDSoC User Guides]: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2016_4/ug1027-sdsoc-user-guide.pdf
-[Repository Contribution README]: ../../CONTRIBUTING.md
+[Repository Contribution README]: ../../../CONTRIBUTING.md

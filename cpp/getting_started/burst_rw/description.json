@@ -25,11 +25,14 @@
            "location" : "vadd.cpp"
        }
     ],
-    "hw_function": "vadd_accel",
-    "accel_file" : "vadd.cpp",
+    "libs": [
+            "sds_utils"
+    ],
     "source_dir" : "src/*.cpp",
-    "device" : "zc706",
-    "os" : "linux",
+    "os" : [
+            "linux",
+            "standalone"
+    ],
     "pass_string" : "TEST PASSED",
     "fail_string" : "TEST FAILED" 
 }
