@@ -19,13 +19,15 @@ Collection of examples geared at teaching the user best practices in how to use 
 
 ### 2. LIBS
 
-Collection of common libraries used across all examples to assist in the quick development of application non-hardware targeted code. 
+Collection of common libraries used across all examples to assist in the quick
+development of source code which is not targeted to programmable logic (PL).
 
 ### 3. UTILITY
 
 Collection of utility functions used as part of the Makefiles in all of the
 examples. This set includes Makefile rules and scripts to launch SDSoC compiled
-applications onto SDSoC emulation flow. It also contains Makefile and Readme generation scripts. 
+applications onto SDSoC emulation flow. It also contains Makefile and Readme
+generation scripts. 
 
 
 ## 4. OTHER INFORMATION
