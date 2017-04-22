@@ -5,7 +5,7 @@ Welcome to the SDSoC example repository. This repository contains the latest exa
 
 This repository is organized as follows internally.
 
-1. GETTING STARTED
+1. CPP 
 2. LIBS
 3. UTILITY
 4. OTHER INFORMATION
@@ -13,9 +13,10 @@ This repository is organized as follows internally.
 6. REVISION HISTORY
 
 
-### 1. GETTING STARTED
+### 1. CPP
 
-Collection of examples geared at teaching the user best practices in how to use different features of SDSoC and start on their own application. 
+Collection of examples geared at teaching the user best practices in how to use
+different features of SDSoC (C/C++) and start on their own application. 
 
 ### 2. LIBS
 
