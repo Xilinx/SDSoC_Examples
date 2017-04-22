@@ -32,4 +32,8 @@ Sl.No | Title | Overview |Key Concept | Key Words | Category
 [Two Parallel Read/Write on Local Memory]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/lmem_2rw
 [Loop Fusion]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_fusion
 [Loop Perfect]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_perfect
-[Loop Pipeline]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_pipeline
+[Loop Pipelining]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_pipeline
+[Loop Reorder for Better Performance]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_reorder
+[Shift Register]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/shift_register
+[Systolic Array Implementation]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/systolic_array
+[Wide Memory Read/Write]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/wide_memory_rw
