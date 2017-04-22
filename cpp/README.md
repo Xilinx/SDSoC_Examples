@@ -1,7 +1,7 @@
 SDSoC (C/C++) Example Repository
 ===============================
 
-Welcome to the SDSoC (C/C++) example repository. This repository contains the
+Welcome to the SDSoC (C/C++) example repository. This repository contains 
 latest examples to get you started with application optimization targeting
 Xilinx Embedded FPGA acceleration boards. All examples are ready to be compiled
 and executed on boards. The "getting_started" directory contains latest SDSoC
