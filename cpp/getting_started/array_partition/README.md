@@ -17,7 +17,7 @@ This README file contains the following sections:
 ## 1. OVERVIEW
 This example shows how to use array partitioning to improve performance of a kernel
 
-***KEY CONCEPTS:*** Hardware Funciton Optimization, Array Partitioning
+***KEY CONCEPTS:*** Hardware Function Optimization, Array Partitioning
 
 ***KEYWORDS:*** #pragma HLS ARRAY_PARTITION, complete
 

@@ -15,7 +15,7 @@ This README file contains the following sections:
 
 
 ## 1. OVERVIEW
-This is a simple example of vector addition to demonstrate Wide Memory Access using ap_uint<512> data type. Based on input argument type, sds++ compiler will figure out the memory bandwidth between global memory and kernel. For this example, ap_uint<512> datatype is used, so memory datawidth will be 16 x (integer bit size) = 16 x 32 = 512bit
+This is a simple example of vector addition to demonstrate Wide Memory Access using ap_uint<128> data type. Based on input argument type, sds++ compiler will figure out the memory bandwidth between DDR and PL.
 
 ***KEY CONCEPTS:*** Kernel to DDR, wide memory access, burst read and write
 

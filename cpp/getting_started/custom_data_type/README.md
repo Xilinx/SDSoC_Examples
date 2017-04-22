@@ -17,7 +17,7 @@ This README file contains the following sections:
 ## 1. OVERVIEW
 This is a simple example of RGB to HSV conversion to demonstrate Custom DATA Type usage in hardware accelerator. Xilinx HLS compiler supports custom data type to operate within the kernel and also it acts as a memory interface between PL to DDR
 
-***KEY CONCEPTS:*** Dataflow, Custom Datatype
+***KEY CONCEPTS:*** Dataflow, Custom Data type
 
 ***KEYWORDS:*** struct, #pragma HLS data_pack, #pragma HLS LOOP_TRIPCOUNT
 

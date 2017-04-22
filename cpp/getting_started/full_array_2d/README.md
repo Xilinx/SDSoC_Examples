@@ -15,7 +15,7 @@ This README file contains the following sections:
 
 
 ## 1. OVERVIEW
-This is a simple example of accessing full data from 2d array
+This is a simple example of accessing full data from 2D array
 
 ***KEY CONCEPTS:*** 2D data array access
 
