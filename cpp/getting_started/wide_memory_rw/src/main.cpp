@@ -45,8 +45,6 @@
 #include <cstring>
 #include "vadd.h"
 
-using namespace sds_utils;
-
 // Software solution
 void vadd_sw(uint128_dt *in1, uint128_dt *in2, uint128_dt *out, int size)
 {
@@ -77,7 +75,7 @@ int main(int argc, char** argv)
 
     int size = DATA_SIZE;
 
-    perf_counter hw_ctr, sw_ctr;
+    sds_utils::perf_counter hw_ctr, sw_ctr;
 
     hw_ctr.start();
     // Launch Hardware Solution

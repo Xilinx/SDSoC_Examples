@@ -43,8 +43,6 @@
 #include <stdlib.h>
 #include "mmult.h"
 
-using namespace sds_utils;
-
 // Software implementation of Matrix Multiplication
 // The inputs are of the size (DATA_SIZE x DATA_SIZE)
 void m_softwareGold(
@@ -93,7 +91,7 @@ int main(int argc, char** argv)
     }
     int size = DATA_SIZE;
 
-    perf_counter hw_ctr, sw_ctr;
+    sds_utils::perf_counter hw_ctr, sw_ctr;
 
     hw_ctr.start();
     // Launch Hardware Solution 

@@ -45,8 +45,6 @@
 #include "bitmap.h"
 #include "rgb_to_hsv.h"
 
-using namespace sds_utils;
-
 #define IMAGE_SIZE 128
 
 //Utility Function Declaration
@@ -93,7 +91,7 @@ int main(int argc, char* argv[])
     RGBcolor *device_input  = (RGBcolor *)(sds_alloc(sizeof(RGBcolor) * image_size));
     HSVcolor *device_output = (HSVcolor *)(sds_alloc(sizeof(HSVcolor) * image_size));
 
-    perf_counter hw_ctr, sw_ctr;
+    sds_utils::perf_counter hw_ctr, sw_ctr;
 
     extract_pixel_data(input_bmp, device_input, image_size);
 

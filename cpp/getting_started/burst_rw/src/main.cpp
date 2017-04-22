@@ -43,8 +43,6 @@
 #include <stdlib.h>
 #include "vadd.h"
 
-using namespace sds_utils;
-
 // Golden implementation
 void vadd_golden(int a[DATA_SIZE], int size, int inc_value, 
                  int output[DATA_SIZE])
@@ -92,7 +90,7 @@ int main(int argc, char** argv)
         source_hw_results[i] = 0;
     }
 
-    perf_counter hw_ctr, sw_ctr;
+    sds_utils::perf_counter hw_ctr, sw_ctr;
 
     hw_ctr.start();
     //Launch the Hardware Solution

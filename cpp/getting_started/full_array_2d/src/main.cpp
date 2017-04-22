@@ -36,9 +36,6 @@
 #include <stdlib.h>
 #include "mmult.h"
 
-using namespace sds_utils;
-
-
 // Software Implementation
 void mmult_sw(int *a, int *b, int *c, int size)
 {
@@ -89,7 +86,7 @@ int main(int argc, char** argv)
         source_sw_results[i] = 0;
     }
 
-    perf_counter hw_ctr, sw_ctr;
+    sds_utils::perf_counter hw_ctr, sw_ctr;
 
     // Launch the software solution
     mmult_sw(source_input_a, source_input_b, source_sw_results, size);

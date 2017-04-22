@@ -36,8 +36,6 @@
 #include <stdlib.h>
 #include "vector_addition.h"
 
-using namespace sds_utils;
-
 const int DATA_SIZE = 1<<10;
 
 int verify(int *gold, int *out) {
@@ -71,7 +69,7 @@ int main(int argc, char** argv)
     // Software output buffer
     int *gold = (int *)malloc(sizeof(int) * DATA_SIZE);
     
-    perf_counter hw_ctr, sw_ctr;
+    sds_utils::perf_counter hw_ctr, sw_ctr;
 
     //Launch the Software Solution
     vadd(source_a, source_b, gold, DATA_SIZE);

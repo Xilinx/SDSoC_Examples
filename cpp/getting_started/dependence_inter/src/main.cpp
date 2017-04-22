@@ -35,8 +35,6 @@
 #include <cstdlib>
 #include "mean_value.h"
 
-using namespace sds_utils;
-
 void mean_value(int in[], int out[], int n)
 {
     out[0] = ( in[0] + in[1] ) / 2;
@@ -67,7 +65,7 @@ int main(int argc, char** argv)
         source_sw_results[i] = source_input[i];
         source_hw_results[i] = 0;
     }
-    perf_counter hw_ctr;
+    sds_utils::perf_counter hw_ctr;
 
     mean_value(source_input,source_sw_results, DATA_SIZE);
 

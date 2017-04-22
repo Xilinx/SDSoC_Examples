@@ -41,8 +41,6 @@
 #include <cstdlib>
 #include "vadd.h"
 
-using namespace sds_utils;
-
 // Software Solution
 void vadd_sw(unsigned int *source_in1, unsigned int *source_in2, unsigned int *out, 
             int size)
@@ -73,7 +71,7 @@ int main(int argc, char** argv)
         source_hw_results[i] = 0;
     }
 
-    perf_counter hw_ctr, sw_ctr;
+    sds_utils::perf_counter hw_ctr, sw_ctr;
 
     int size = DATA_SIZE;
 

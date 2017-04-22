@@ -43,8 +43,6 @@
 #include <stdlib.h>
 #include "matmul.h"
 
-using namespace sds_utils;
-
 // Software Matrix Multiplication 
 void matmul(int *C, int *A, int *B, int M) {
     for (int k = 0; k < M; k++) {
@@ -89,7 +87,7 @@ int main(int argc, char **argv) {
         C[i] = 0;
     }
 
-    perf_counter hw_ctr, sw_ctr;
+    sds_utils::perf_counter hw_ctr, sw_ctr;
 
     sw_ctr.start();
     //Launch the Software Solution

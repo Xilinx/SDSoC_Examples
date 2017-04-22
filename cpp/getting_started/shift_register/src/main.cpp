@@ -43,8 +43,6 @@
 #include <stdlib.h>
 #include "fir.h"
 
-using namespace sds_utils;
-
 #define min(x,y) ((x) < (y) ? (x) : (y))
 
 // Software Finite Impulse Response Filter
@@ -116,7 +114,7 @@ int main(int argc, char **argv) {
     // Allocate software output buffer
     int *gold = (int *) malloc(sizeof(int) * SIGNAL_SIZE);
     
-    perf_counter hw_ctr, sw_ctr;
+    sds_utils::perf_counter hw_ctr, sw_ctr;
 
     sw_ctr.start();
     //Launch the Software Solution

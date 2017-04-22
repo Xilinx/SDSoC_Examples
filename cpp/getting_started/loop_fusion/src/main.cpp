@@ -39,8 +39,6 @@
 
 #define MAX_DIMS 5
 
-using namespace sds_utils;
-
 // Software solution prototype
 void find_nearest_neighbor(int *out, const int dim,
                            const int *search_points,
@@ -103,7 +101,7 @@ int main(int argc, char **argv) {
     printf("\nInput Point:      ");
     print_point(input, num_dims);
 
-    perf_counter hw_ctr, sw_ctr;
+    sds_utils::perf_counter hw_ctr, sw_ctr;
     
     int gold[num_dims];
     

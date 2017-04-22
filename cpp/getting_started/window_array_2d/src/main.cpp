@@ -44,8 +44,6 @@
 #include <stdio.h>
 #include "window_array_2d.h"
 
-using namespace sds_utils;
-
 // Utilily to print array
 void print_array(DTYPE *mat, const char *name, int size, int dim) {
     int i;
@@ -85,7 +83,7 @@ int main(int argc, char** argv)
       sw_c[i] = 0;
     }
 
-    perf_counter hw_ctr, sw_ctr;
+    sds_utils::perf_counter hw_ctr, sw_ctr;
 
     hw_ctr.start();
     //Launch the Hardware Solution
