@@ -1,8 +1,7 @@
-#
+
 #+-------------------------------------------------------------------------------
-# The following Parameters may be overidden through the make command line. If not
-# overidden, the defaults defined below will be used. Do not include data you do
-# not want overwridden
+# The following parameters are assigned with default values. These parameters can
+# be overridden through the make command line
 #+-------------------------------------------------------------------------------
 
 # Device Platform (Default ~ zc706)
@@ -111,7 +110,7 @@ else
 endif
 
 clean:
-	$(RM) $(EXECUTABLE) $(OBJECTS) $(CPP_DEPS)
+	$(RM) $(EXECUTABLE) $(OBJECTS)
 
 ultraclean:
 	$(RM) -rf $(TARGET) .Xil

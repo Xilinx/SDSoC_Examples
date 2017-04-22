@@ -47,11 +47,10 @@ def create_xlx_copyright(target):
 
 
 def create_mk(target, data):
-    target.write("#\n") 
+    target.write("\n") 
     target.write("#+-------------------------------------------------------------------------------\n")
-    target.write("# The following Parameters may be overidden through the make command line. If not\n")
-    target.write("# overidden, the defaults defined below will be used. Do not include data you do\n")
-    target.write("# not want overwridden\n")
+    target.write("# The following parameters are assigned with default values. These parameters can\n")
+    target.write("# be overridden through the make command line\n")
     target.write("#+-------------------------------------------------------------------------------\n")
     target.write("\n")
     
@@ -281,11 +280,7 @@ target.write("endif\n")
 target.write("\n")
 
 target.write("clean:\n")
-target.write("\t$(RM) $(EXECUTABLE) $(OBJECTS) ")
-if extension == "*.cpp":
-    target.write("$(CPP_DEPS)\n")
-else:
-    target.write("$(C_DEPS)\n")
+target.write("\t$(RM) $(EXECUTABLE) $(OBJECTS)\n")
 
 target.write("\n")
 
