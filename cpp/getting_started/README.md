@@ -26,4 +26,5 @@ Sl.No | Title | Overview |Key Concept | Key Words | Category
 15|[Read/Write Row of 2D Array][]|This is a simple example of accessing each row of data from 2d array|Row of 2D data array access|hls::stream|Memory Transfer (DDR to PL)|
 
 
-[Array Partition]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/array_partition[Custom Data Type]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/custom_data_type
+[Array Partition]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/array_partition
+[Custom Data Type]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/custom_data_type

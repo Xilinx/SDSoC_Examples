@@ -234,5 +234,5 @@ target.write("|")
 target.write("\n")
 target.write("\n\n")
 
-target.write("[Array Partition]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/array_partition")
-target.write("[Custom Data Type]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/custom_data_type")
+target.write("[Array Partition]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/array_partition\n")
+target.write("[Custom Data Type]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/custom_data_type\n")
