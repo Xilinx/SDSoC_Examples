@@ -240,4 +240,4 @@ target.write("[Loop Iteration Dependency]:https://gitenterprise.xilinx.com/SDSoC
 target.write("[Two Parallel Read/Write on Local Memory]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/lmem_2rw\n")
 target.write("[Loop Fusion]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_fusion\n")
 target.write("[Loop Perfect]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_perfect\n")
-target.write("[Loop Pipeline]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_pipeline\n")
+target.write("[Loop Pipeling]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_pipeline\n")
