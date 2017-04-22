@@ -245,3 +245,4 @@ target.write("[Loop Reorder for Better Performance]:https://gitenterprise.xilinx
 target.write("[Shift Register]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/shift_register\n")
 target.write("[Systolic Array Implementation]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/systolic_array\n")
 target.write("[Wide Memory Read/Write]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/wide_memory_rw\n")
+target.write("[Read/Write Window of 2D Array]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/window_array_2d\n")
