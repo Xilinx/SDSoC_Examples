@@ -39,21 +39,12 @@
    processing. This maximizes the utilization of the FPGA fabric and allows the
    processing of multiple elements of data at the same time.
 
-   The xocc compiler automatically performs this optimization on loops so no
+   The sds++ compiler automatically performs this optimization on loops so no
    user intervention is required for most cases. The outer most loops will be
    pipelined and inner loops will be unrolled if possible.
 
-   There are instances where this technique will not yield the best performance.
-   For example, if you access two or more global cl_mem objects from within a
-   pipelined loop. By default xocc will assign one global memory port to each
-   kernel. Because the operations within a pipelined loop are executing in
-   parallel different stages of the pipeline will need access to the memory
-   port. In order to accommodate this design, xocc will need to serialize the
-   access to these ports and therefore increase the initiation interval(II)
-   and by extension reduce the throughput.
-
    In this example we will demonstrate ways to improve the throughput of a
-   vector addition kernel using the xcl_pipeline_loop attribute.
+   vector addition hardware function using the HLS PIPELINE attribute.
 ************************************************************************************/
 
 #define N 128
@@ -61,8 +52,8 @@
 
 const int DATA_SIZE = 1<<10;
 
-// This kernel is optimized to access only one global variable in a pipelined
-// loop. This will improve the II and increase throughput of the kernel.
+// This hardware function is optimized to access only one global variable in a pipelined
+// loop. This will improve the II and increase throughput of the hardware function.
 void vadd_pipelined_accel(int a[DATA_SIZE],
                           int b[DATA_SIZE],
                           int c[DATA_SIZE],
@@ -71,14 +62,14 @@ void vadd_pipelined_accel(int a[DATA_SIZE],
     int result[N];
     int iterations = len / N;
 
-    // Default behavior of xocc will pipeline the outer loop. Since we have
+    // Default behavior of sds++ will pipeline the outer loop. Since we have
     // multiple inner loops, the pipelining will fail. We can instead pipeline
-    // the inner loops using the xcl_pipeline_loop attribute to guide the
+    // the inner loops using the HLS PIPELINE attribute to guide the
     // compiler.
     for(int i = 0; i < iterations; i++) {
 
         // Pipelining loops that access only one variable is the ideal way to
-        // increase the global memory bandwidth.
+        // increase the DDR memory bandwidth.
         read_a:
         for (int x=0; x<N; ++x) {
         #pragma HLS PIPELINE
