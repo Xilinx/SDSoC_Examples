@@ -96,7 +96,7 @@ int main(int argc, char* argv[])
     extract_pixel_data(input_bmp, device_input, image_size);
 
     hw_ctr.start();
-    //Launch the Hardware Funciton
+    //Launch the Hardware Function
     rgb_to_hsv_accel(device_input, device_output, image_size);
     hw_ctr.stop();
 
