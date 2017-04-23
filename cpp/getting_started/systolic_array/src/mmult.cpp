@@ -92,7 +92,7 @@ void mmult_accel(
 	int localC[MAX_SIZE][MAX_SIZE];
 	#pragma HLS ARRAY_PARTITION variable=localC dim=0 complete
 
-	// Burst reads on input matrices from global memory
+	// Burst reads on input matrices from DDR memory
 	// Read Input A
 	readA: for(int loc = 0, i = 0, j = 0; loc < a_row*a_col; loc++, j++) {
 	#pragma HLS LOOP_TRIPCOUNT min=21*21 max=21*21
@@ -169,7 +169,7 @@ void mmult_accel(
 		}
 	}
 
-	// Burst write from output matrices to global memory
+	// Burst write from output matrices to DDR memory
 	// Burst write from matrix C
 	writeC: for(int loc = 0, i = 0, j = 0; loc < c_row*c_col; loc++, j++) {
 	#pragma HLS LOOP_TRIPCOUNT min=256 max=256
