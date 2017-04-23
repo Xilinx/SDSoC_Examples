@@ -85,7 +85,7 @@ void vadd_accel(
         //    vout_buffer[j+1] = v1_buffer[j+1] + v2_buffer[j+1];
         //  }
         // Which means two iterations of loop will be executed together and as a 
-        // resutl it will double the improvement in performance.
+        // result it will double the improvement in performance.
         vadd: for (int j = 0 ; j < chunk_size; j ++){
         #pragma HLS PIPELINE
         #pragma HLS UNROLL FACTOR=2
