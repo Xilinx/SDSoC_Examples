@@ -77,7 +77,6 @@ void compute(my_data_fifo &inFifo, my_data_fifo &outFifo, DTYPE alpha) {
     }
 }
 
-
 void row_array_2d_accel(DTYPE *inx, DTYPE *outx, DTYPE alpha) {
 	my_data_fifo inFifo;
 	// By default the FIFO depth is 2, user can change the depth by using such 
