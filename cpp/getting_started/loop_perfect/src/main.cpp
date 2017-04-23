@@ -134,7 +134,7 @@ int main(int argc, char** argv)
     std::cout << "Average number of CPU cycles running mmult in hardware: "
 			<< hw_cycles << std::endl;
 
-    // Compare the nearset distances between software and hardware
+    // Compare the nearest distances between software and hardware
     unsigned long dist_sw = 0, dist_hw = 0;
     for(int i = 0; i < dim; i++) {
         dist_sw += SQUARE(source_sw_result[i] - source_point[i]);
