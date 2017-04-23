@@ -33,10 +33,10 @@
 
 /*******************************************************************************
     
-    Wide Memory Access Example using ap_uint<Width> datatype
+    Wide Memory Access Example using ap_uint<Width> data type
     
     This is vector addition example to demonstrate Wide Memory
-    access of 128bit Datawidth using ap_uint<128> datatype which is defined
+    access of 128bit data width using ap_uint<128> data type which is defined
     inside 'ap_int.h' file.
 
 *******************************************************************************/
@@ -53,7 +53,7 @@ void vadd_accel(
     uint128_dt v1_local[BUFFER_SIZE];       // Local memory to store vector1
     uint128_dt result_local[BUFFER_SIZE];   // Local Memory to store result
 
-    // Input vector size for interger vectors. However kernel is directly
+    // Input vector size for integer vectors. However kernel is directly
     // accessing 128bit data (total 16 elements). So total number of read
     // from DDR memory is calculated here:
     int size_in16 = (size-1) / VECTOR_SIZE + 1;

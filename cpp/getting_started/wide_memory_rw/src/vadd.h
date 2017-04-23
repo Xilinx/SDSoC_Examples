@@ -43,8 +43,8 @@
 typedef ap_uint<DATAWIDTH> uint128_dt;
 
 // DATA_SIZE should be multiple of 16 as accelerator code is using
-// int16 vector datatype to read the operands from Global Memory.
-// So every read/write to global memory will read 16 integers value.
+// int16 vector data type to read the operands from Global Memory.
+// So every read/write to DDR memory will read 16 integers value.
 #define DATA_SIZE 16384
 
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design

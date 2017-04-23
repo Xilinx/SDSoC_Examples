@@ -33,11 +33,11 @@
 
 /*******************************************************************************
 
-    SDx Vector Addition using ap_uint<128> datatype to utilize full
+    Vector Addition using ap_uint<128> datatype to utilize full
     memory datawidth
 
     Note : This example is preset to 128bit and it is the highest width 
-           supported in zcu102. It is mainly targetted to Zynq Ultrascale
+           supported in zcu102. It is mainly targeted to Zynq Ultrascale
            devices. 
 
 *******************************************************************************/
