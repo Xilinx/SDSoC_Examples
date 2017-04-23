@@ -55,5 +55,4 @@ typedef hls::stream<DTYPE> my_data_fifo;
 // Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(inx, outx)
 void row_array_2d_accel(DTYPE *inx, DTYPE *outx, DTYPE alpha);
-
 #endif
