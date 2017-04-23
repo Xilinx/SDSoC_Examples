@@ -33,9 +33,8 @@
 
 /*******************************************************************************
 
-SDx Key Concept :
 
-    This is a matrix multiplication based example which showcases the how
+    This is a matrix multiplication based example which showcases how
     reordering the loops helps achieve better pipeline initiation interval(II)
     and better performance.
 
@@ -43,9 +42,9 @@ SDx Key Concept :
 
 /*
 
-Kernel Description :
+Description :
 
-    Matrix multiply for matrices upto sizes (MAX_SIZE x MAX_SIZE) 
+    Matrix multiply for matrices up to sizes (MAX_SIZE x MAX_SIZE) 
     [MAX_SIZE defined below].
     This example showcases how reordering the loops helps achieve a better
     pipeline initiation interval (II) and better performance.
@@ -57,9 +56,6 @@ Kernel Description :
         int *out   (output)    --> Output Matrix
         int  size  (input)     --> Size of one dimension of the matrices
 
-    Kernel Configuration :
-
-        Matrices of upto size (MAX_SIZE x MAX_SIZE) [MAX_SIZE = 64 defined below]
 */
 
 #include <string.h>
@@ -72,7 +68,7 @@ Kernel Description :
 #define MAX_SIZE 64
 
 // Computes matrix multiply
-// C = AxB, where A, B and C are square matrices of dimension (sizexsize)
+// C = A x B, where A, B and C are square matrices of dimension (size x size)
 void mmult_accel(
 				const int *in1,     // Read-Only Matrix 1
 				const int *in2,     // Read-Only Matrix 2
@@ -90,7 +86,7 @@ void mmult_accel(
 	#pragma HLS ARRAY_PARTITION variable=C dim=2 complete
 	#pragma HLS ARRAY_PARTITION variable=temp_sum dim=1 complete
 
-	// Burst reads on input matrices from global memory
+	// Burst reads on input matrices from DDR memory
 	// Burst read for matrix A
 	readA: for(int itr = 0 , i = 0 , j =0; itr < size * size; itr++, j++){
 	#pragma HLS PIPELINE
@@ -132,12 +128,12 @@ void mmult_accel(
 	//     }
 	// }
 
-	// The above code snippet of the Matrix Multiply kernel in which the loops
-	// lreorder2 and lreorder3 are not interchanged, gives a pipeline initiation
-	// interval (II) of 64
+	// The above code snippet of the Matrix Multiply 
+	// hardware function in which the loops lreorder2 and lreorder3 are not
+	// interchanged, gives a pipeline initiation interval (II) of 64
 
-	// Calculate matrix multiplication using local data buffer based on input size
-	// and write results into local buffer for C
+	// Calculate matrix multiplication using local data buffer 
+	// based on input size and write results into local buffer for C
 	lreorder1: for (int i = 0; i < size; i++) {
 	#pragma HLS LOOP_TRIPCOUNT min=64 max=64
 		lreorder2: for (int k = 0; k < size; k++) {
@@ -152,7 +148,7 @@ void mmult_accel(
 		}
 	}
 
-	// Burst write from output matrices to global memory
+	// Burst write from output matrices to DDR memory
 	// Burst write from matrix C
 	writeC: for(int itr = 0 , i = 0, j = 0; itr < size * size; itr++, j++) {
 		#pragma HLS PIPELINE

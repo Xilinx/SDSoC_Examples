@@ -65,13 +65,13 @@ void m_softwareGold(
 int main(int argc, char** argv)
 {
 
-    //Allocate Memory in Host Memory
     if (DATA_SIZE > MAX_SIZE) {
         std::cout << "Size is bigger than internal buffer size, please use a size"; 
         std::cout << " smaller than " << MAX_SIZE << "!" << std::endl;
         return 1;
     }
 
+    // Size of the matrix
     size_t matrix_size_bytes = sizeof(int) * DATA_SIZE * DATA_SIZE;
 
     // Allocate PL buffers using sds_alloc
