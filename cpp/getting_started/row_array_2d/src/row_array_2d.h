@@ -46,7 +46,7 @@
 #define WORD_PER_ROW 64
 #define BLOCK_SIZE (WORD_PER_ROW*NUM_ROWS)
 
-// default datatype is integer
+// Default data type is integer
 typedef int DTYPE;
 // use HLS stream library for easy use of AXI-stream interface
 typedef hls::stream<DTYPE> my_data_fifo;
