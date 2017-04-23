@@ -44,7 +44,7 @@
 #include <stdio.h>
 #include "window_array_2d.h"
 
-// Utilily to print array
+// Utility to print array
 void print_array(DTYPE *mat, const char *name, int size, int dim) {
     int i;
     printf("%s\n", name);
@@ -98,7 +98,7 @@ int main(int argc, char** argv)
     std::cout << "Average number of CPU cycles running mmult in hardware: "
 	    	  << hw_cycles << std::endl;
 
-    // Verifiy correctness of software & hardware results
+    // Verify correctness of software & hardware results
     unsigned int correct = 0;              
     for (int i = 0;i < BLOCK_SIZE; i++) {
       if(c[i] == sw_c[i]) {
