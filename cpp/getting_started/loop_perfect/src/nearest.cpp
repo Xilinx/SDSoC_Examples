@@ -83,8 +83,6 @@ Hardware Function Description :
 #define DATA_DIM 16
 #define DATA_SIZE 1024
 
-
-
 void nearest_accel(
 				const int in[DATA_SIZE*DATA_DIM],      // Input Points Array
 				const int point[DATA_DIM],             // Current Point
@@ -166,5 +164,3 @@ void nearest_accel(
 	}
 
 }
-
-
