@@ -50,7 +50,6 @@ int main(int argc, char** argv)
     //Allocate Memory in Host Memory
     size_t vector_size_bytes = sizeof(int) * DATA_SIZE;
 
-
     // Allocate Input and Output Buffers
     // sds_alloc must be used to allocate memory for PL buffers
     int *source_input       = (int *) sds_alloc(vector_size_bytes);
