@@ -71,7 +71,7 @@ void rgb_to_hsv_accel(RGBcolor *in,  // Access DDR memory as RGBcolor struct-wis
         // Calculating TempS
         tempS = 255 * ((long)(rgbMax - rgbMin)) / rgbMax;
 
-        // Algorithm to Calculate HSV from RSB
+        // Algorithm to Calculate HSV from RGB
         if (rgbMax == 0){
             hsv.h = 0;
             hsv.s = 0;

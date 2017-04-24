@@ -42,7 +42,7 @@
 
 //Custom Data Type for RGB Image Pixel containing Red(r), Green(g) and Blue(b)
 //element. Extra Pad element is added to make struct size to 32bit.
-// It is recommended to make custom datatype multiple of 32 bit to use global
+// It is recommended to make custom data type multiple of 32 bit to use global
 // memory access efficiently.
 typedef struct RGBcolor_struct
 {
@@ -55,7 +55,7 @@ typedef struct RGBcolor_struct
 
 //Custom Data Type for HSV Image Pixel containing Hue(h), Saturation(s),
 //and Value(v) element. Extra pad element is added to make struct size to 32bit.
-// It is recommended to make custom datatype multiple of 32 bit to use global
+// It is recommended to make custom data type multiple of 32 bit to use global
 // memory access efficiently.
 typedef struct HSVcolor_struct
 {
@@ -66,7 +66,7 @@ typedef struct HSVcolor_struct
  } __attribute__ ((packed, aligned(4))) HSVcolor;
 
 #pragma SDS data zero_copy(in[0:16384],out[0:16384])
-void rgb_to_hsv_accel(RGBcolor *in,  // Access global memory as RGBcolor struct-wise
+void rgb_to_hsv_accel(RGBcolor *in,  // Access DDR memory as RGBcolor struct-wise
                       HSVcolor *out, // Access Global Memory as HSVcolor struct-wise
                       int size);
 #endif
