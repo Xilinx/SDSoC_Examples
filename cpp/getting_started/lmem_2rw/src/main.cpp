@@ -33,7 +33,8 @@
 
 /*******************************************************************************
 
-    SDx Vector Addition to utilize both Ports of BRAM memory
+    This is a vector addition example to demonstrate utilization of both ports 
+    of BRAM memory
 
 *******************************************************************************/
 #include <iostream>
