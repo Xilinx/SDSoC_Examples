@@ -15,7 +15,7 @@ This README file contains the following sections:
 
 
 ## 1. OVERVIEW
-This example shows how to use array partitioning to improve performance of a kernel
+This example shows how to use array partitioning to improve performance of a hardware function
 
 ***KEY CONCEPTS:*** Hardware Function Optimization, Array Partitioning
 

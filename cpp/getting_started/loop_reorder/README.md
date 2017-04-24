@@ -17,7 +17,7 @@ This README file contains the following sections:
 ## 1. OVERVIEW
 This is a simple example of matrix multiplication (Row x Col) to demonstrate how to achieve better pipeline II factor by loop reordering.
 
-***KEY CONCEPTS:*** Kernel Optimization, Loop Reorder to Improve II
+***KEY CONCEPTS:*** Hardware Function Optimization, Loop Reorder to Improve II
 
 ***KEYWORDS:*** #pragma HLS PIPELINE, #pragma HLS ARRAY_PARTITION
 

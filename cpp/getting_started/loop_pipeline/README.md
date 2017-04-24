@@ -15,7 +15,7 @@ This README file contains the following sections:
 
 
 ## 1. OVERVIEW
-This example demonstrates how loop pipelining can be used to improve the performance of a kernel
+This example demonstrates how loop pipelining can be used to improve the performance of a hardware function
 
 ***KEY CONCEPTS:*** Hardware Function Optimization, Loop Pipelining
 

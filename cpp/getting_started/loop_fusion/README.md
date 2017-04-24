@@ -15,7 +15,7 @@ This README file contains the following sections:
 
 
 ## 1. OVERVIEW
-This example will demonstrate how to fuse two loops into one to improve the performance of a C/C++ kernel.
+This example will demonstrate how to fuse two loops into one to improve the performance of a C/C++ hardware function.
 
 ***KEY CONCEPTS:*** Hardware Function Optimization, Loop Fusion, Loop Pipelining
 
