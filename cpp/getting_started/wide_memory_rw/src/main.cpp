@@ -34,7 +34,7 @@
 /*******************************************************************************
 
     Vector Addition using ap_uint<128> datatype to utilize full
-    memory datawidth
+    memory data width
 
     Note : This example is preset to 128bit and it is the highest width 
            supported in zcu102. It is mainly targeted to Zynq Ultrascale
