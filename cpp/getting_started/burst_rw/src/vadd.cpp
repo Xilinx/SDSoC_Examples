@@ -63,7 +63,7 @@ void vadd_accel(int *a, int size, int inc_value, int *out){
             burstbuffer[k] = a[i+k];
         }
 
-        // Calculate and write results to global memory, the sequential write in a 
+        // Calculate and write results to DDR memory, the sequential write in a 
         // for loop can be inferred to a memory burst access automatically
         calc_write: for(int j=0; j < chunk_size; j++){
         #pragma HLS LOOP_TRIPCOUNT min=256 max=2048
