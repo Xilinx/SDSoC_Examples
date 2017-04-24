@@ -1,7 +1,7 @@
 {
     "example": "Loop Fusion",
     "overview": [
-        "This example will demonstrate how to fuse two loops into one to improve the performance of a C/C++ kernel."
+        "This example will demonstrate how to fuse two loops into one to improve the performance of a C/C++ hardware function."
     ],
     "key_concepts": [ "Hardware Function Optimization", "Loop Fusion", "Loop Pipelining"],
     "keywords": ["#pragma HLS PIPELINE"],

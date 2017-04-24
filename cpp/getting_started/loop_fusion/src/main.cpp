@@ -31,6 +31,13 @@
 #
 ************/
 
+/******************************************************************************
+
+    This is a nearest neighbour example to showcase loop fusion feature of
+    SDx tool chain.
+
+******************************************************************************/
+
 #include <cstdio>
 #include <iostream>
 #include <stdlib.h>

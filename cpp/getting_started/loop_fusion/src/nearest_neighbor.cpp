@@ -32,7 +32,6 @@
 ************/
 
 /******************************************************************************
-   Loop Fusion :
 
    Loop fusion is a technique to combine a nested loop with its parent. This
    technique produces more efficient hardware in some cases.
