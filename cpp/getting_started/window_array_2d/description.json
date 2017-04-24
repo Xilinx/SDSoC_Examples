@@ -1,7 +1,7 @@
 {
     "example": "Read/Write Window of 2D Array",
     "overview": [
-        "This is a simple example of accessing each row of data from 2D array"
+        "This is a simple example of accessing window of data from 2D array"
     ],
     "key_concepts": [ "Window of 2D data array access"],
     "keywords": ["#pragma HLS DATAFLOW", "#pragma HLS PIPELINE", "#pragma HLS stream"],
