@@ -31,6 +31,16 @@
 #
 ************/
 
+
+/******************************************************************************
+
+    This is a simple vector addition based example which showcases loop 
+    pipelining feature of SDx tool chain.
+
+******************************************************************************/
+
+
+
 #include <iostream>
 #include <cstdio>
 #include <stdlib.h>
@@ -38,6 +48,7 @@
 
 const int DATA_SIZE = 1<<10;
 
+// Compare software and hardware solutions
 int verify(int *gold, int *out) {
     for(int i = 0; i < DATA_SIZE; i++){
         if(gold[i] != out[i]){
@@ -48,6 +59,7 @@ int verify(int *gold, int *out) {
   return 0;
 }
 
+// Software solution
 void vadd(int *a, int *b, int *c, int len){
 
     vadd_loop:
