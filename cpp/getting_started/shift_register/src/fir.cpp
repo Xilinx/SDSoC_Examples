@@ -51,7 +51,7 @@
 
     Here each of the values are copied into the register on the left.
     This type of operation is useful when you want to work on a sliding window
-    of data or when the data is being streamed into the kernel.
+    of data or when the data is being streamed into the hardware function.
 
     The sds++ compiler can recognize and schedule this type of operation
     into the appropriate hardware. For example, the previous illustration can be
@@ -59,7 +59,6 @@
 
     #define N 4
 
-    __attribute__((opencl_unroll_hint))
     for(int i = 0; i < N-1; i++) {
       shift_reg[i] = shift_reg[i+1];
     }
