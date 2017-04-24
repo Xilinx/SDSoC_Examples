@@ -31,6 +31,12 @@
 #
 ************/
 
+/************************************************************************************
+    
+    Hardware Function demonstrates access of row of a two dimensional array using
+    AXI-master interface in burst mode
+
+************************************************************************************/
 #include <iostream>
 #include <cstring>
 #include <stdio.h>
