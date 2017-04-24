@@ -96,7 +96,7 @@ void mmult_accel(int *a, int *b, int *c, int size) {
 			bufc[row][col] = result;
 		}
 	}
-	// Write results from local buffer to global memory for c, loop pipeline will be 
+	// Write results from local buffer to DDR memory for c, loop pipeline will be 
 	// automatically inferred
 	int m = 0, n = 0;
 	write_data: for (int i = 0 ; i < matrix_size ; i++){
