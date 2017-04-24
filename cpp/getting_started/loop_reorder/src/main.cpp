@@ -33,8 +33,9 @@
 
 /*******************************************************************************
 
-    This is Vector Addition example which showcases the how reordering the loops
-    helps achieve better pipeline initiation interval(II) and better performance.
+    This is a vector addition example which showcases effectiveness of 
+    reordering the loops helps in achieving better pipeline initiation 
+    interval(II) and better performance.
 
 *******************************************************************************/
 
@@ -82,7 +83,7 @@ int main(int argc, char** argv)
     // Allocate software output buffer
     int *source_sw_results  = (int *) malloc(matrix_size_bytes);
 
-    // Create the test data and Software Result
+    // Create the test data 
     for(int i = 0 ; i < DATA_SIZE * DATA_SIZE ; i++){
         source_in1[i] = i;
         source_in2[i] = i * i;
@@ -113,7 +114,7 @@ int main(int argc, char** argv)
               << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
 
-    // Compare the results of the Device to the simulation
+    // Compare the results 
     int match = 0;
     for (int i = 0 ; i < DATA_SIZE * DATA_SIZE ; i++){
         if (source_hw_results[i] != source_sw_results[i]){
@@ -125,7 +126,7 @@ int main(int argc, char** argv)
         }
     }
 
-    /* Release Memory from Host Memory*/
+    // Release memory
     sds_free(source_in1);
     sds_free(source_in2);
     sds_free(source_hw_results);
