@@ -36,10 +36,10 @@
 
 #include "sds_utils.h"
 
-//Array Size to access
+// Array Size to access
 #define DATA_SIZE 12
 
-//Maximum Array Size
+// Maximum Array Size
 #define MAX_SIZE 12
 
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
