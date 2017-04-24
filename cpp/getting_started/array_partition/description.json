@@ -1,7 +1,7 @@
 {
     "example": "Array Partitioning",
     "overview": [
-        "This example shows how to use array partitioning to improve performance of a kernel"
+        "This example shows how to use array partitioning to improve performance of a hardware function"
     ],
     "key_concepts": [ "Hardware Function Optimization", "Array Partitioning"],
     "keywords": ["#pragma HLS ARRAY_PARTITION", "complete"],

@@ -106,12 +106,12 @@ void matmul_partition_accel(int *in1,  // Read-Only Matrix 1
     //     }
     // }
 
-    // The above code snippet of the Matrix Multiply kernel in which the loops
-    // lreorder2 and lreorder3 are not interchanged, gives a pipeline initiation
-    // interval (II) of 64
+    // The above code snippet of the Matrix Multiply hardware function in which
+    // the loops lreorder2 and lreorder3 are not interchanged, gives a 
+    // pipeline initiation interval (II) of 64
 
-    // Calculate matrix multiplication using local data buffer based on input size
-    // and write results into local buffer for C
+    // Calculate matrix multiplication using local data buffer based on 
+    // input size and write results into local buffer for C
     lreorder1:
     for (int i = 0; i < size; i++) {
     #pragma HLS LOOP_TRIPCOUNT min=64 max=64
