@@ -5,8 +5,11 @@
 namespace sds_utils {
     class perf_counter
     {
-    public:
+
+    private:
         uint64_t tot, cnt, calls;
+    
+    public:
         perf_counter() : tot(0), cnt(0), calls(0) {};
         inline void reset() { tot = cnt = calls = 0; }
         inline void start() { cnt = sds_clock_counter(); calls++; };
