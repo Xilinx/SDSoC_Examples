@@ -44,30 +44,25 @@
 #include "vadd.h"
 
 void vadd_accel(
-        const uint128_dt *in1, // Read-Only Vector 1
-        const uint128_dt *in2, // Read-Only Vector 2
-        uint128_dt *out,       // Output Result
+        const wide_dt *in1, // Read-Only Vector 1
+        const wide_dt *in2, // Read-Only Vector 2
+        wide_dt *out,       // Output Result
         int size               // Size in integer
         )
 {
-    uint128_dt v1_local[BUFFER_SIZE];       // Local memory to store vector1
-    uint128_dt result_local[BUFFER_SIZE];   // Local Memory to store result
-
-    // Input vector size for integer vectors. However hardware function is 
-    // directly accessing 128bit data (total 16 elements). 
-    // So total number of read from DDR memory is calculated here:
-    int size_in16 = (size-1) / VECTOR_SIZE + 1;
+    wide_dt v1_local[BUFFER_SIZE];       // Local memory to store vector1
+    wide_dt result_local[BUFFER_SIZE];   // Local Memory to store result
 
     // Each iteration of this loop performs BUFFER_SIZE vector addition
     // operations
-    for(int i = 0; i < size_in16;  i += BUFFER_SIZE)
+    for(int i = 0; i < size;  i += BUFFER_SIZE)
     {
         #pragma HLS LOOP_TRIPCOUNT min=8 max=8
         int chunk_size = BUFFER_SIZE;
 
         // Boundary checks
-        if ((i + BUFFER_SIZE) > size_in16)
-            chunk_size = size_in16 - i;
+        if ((i + BUFFER_SIZE) > size)
+            chunk_size = size - i;
 
         // Burst read first vector from DDR memory to local memory
         v1_rd: for (int j = 0 ; j <  chunk_size; j++){
@@ -80,8 +75,8 @@ void vadd_accel(
         v2_rd_add: for (int j = 0 ; j < chunk_size; j++){
         #pragma HLS pipeline
         #pragma HLS LOOP_TRIPCOUNT min=32 max=32
-            uint128_dt tmpV1     = v1_local[j];
-            uint128_dt tmpV2     = in2[i+j];
+            wide_dt tmpV1     = v1_local[j];
+            wide_dt tmpV2     = in2[i+j];
             // Vector addition 
             result_local[j] = tmpV1 + tmpV2;
         }

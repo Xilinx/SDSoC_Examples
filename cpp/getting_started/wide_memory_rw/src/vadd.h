@@ -39,20 +39,16 @@
 #include <ap_int.h>
 #define BUFFER_SIZE 32 
 #define DATAWIDTH   128
-#define VECTOR_SIZE (DATAWIDTH / 8) // vector size is 16 (128/8 = 16)
-typedef ap_uint<DATAWIDTH> uint128_dt;
+typedef ap_uint<DATAWIDTH> wide_dt;
 
-// DATA_SIZE should be multiple of 16 as accelerator code is using
-// int16 vector data type to read the operands from Global Memory.
-// So every read/write to DDR memory will read 16 integers value.
 #define DATA_SIZE 16384
 
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(in1[0:1024],in2[0:1024],out[0:1024])
-void vadd_accel(const uint128_dt *in1, // Read-Only Vector 1
-                const uint128_dt *in2, // Read-Only Vector 2
-                uint128_dt *out,       // Output Result
+void vadd_accel(const wide_dt *in1, // Read-Only Vector 1
+                const wide_dt *in2, // Read-Only Vector 2
+                wide_dt *out,       // Output Result
                 int size               // Size in integer
                );
 #endif

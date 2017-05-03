@@ -36,9 +36,9 @@
     Vector Addition using ap_uint<128> datatype to utilize full
     memory data width
 
-    Note : This example is preset to 128bit and it is the highest width 
-           supported in zcu102. It is mainly targeted to Zynq Ultrascale
-           devices. 
+    Note : This example is to demonstrate Wide Memory access of 128 bit data width  
+           using ap_uint<128> and it is the highest width supported by Zynq 
+           Utrascale devices. 
 
 *******************************************************************************/
 #include <iostream>
@@ -46,34 +46,34 @@
 #include "vadd.h"
 
 // Software solution
-void vadd_sw(uint128_dt *in1, uint128_dt *in2, uint128_dt *out, int size)
+void vadd_sw(wide_dt *in1, wide_dt *in2, wide_dt *out, int size)
 {
-	for(int i = 0; i < DATA_SIZE / 16; i++)
+	for(int i = 0; i < size ; i++)
 		out[i] = in1[i] + in2[i];
 }
 
 int main(int argc, char** argv)
 {
     // Size of the input data
-    size_t vector_size_bytes = sizeof(int) * DATA_SIZE;
+    int size = DATA_SIZE;
+    size_t vector_size_bytes = sizeof(wide_dt) * size;
 
     // Allocate PL buffers using sds_alloc
-    uint128_dt *source_in1         = (uint128_dt *) sds_alloc(vector_size_bytes);
-    uint128_dt *source_in2         = (uint128_dt *) sds_alloc(vector_size_bytes);
-    uint128_dt *source_hw_results  = (uint128_dt *) sds_alloc(vector_size_bytes);
+    wide_dt *source_in1         = (wide_dt *) sds_alloc(vector_size_bytes);
+    wide_dt *source_in2         = (wide_dt *) sds_alloc(vector_size_bytes);
+    wide_dt *source_hw_results  = (wide_dt *) sds_alloc(vector_size_bytes);
  
     // Allocate software output
-    uint128_dt *source_sw_results  = (uint128_dt *) sds_alloc(vector_size_bytes);
+    wide_dt *source_sw_results  = (wide_dt *) sds_alloc(vector_size_bytes);
 
     // Create the test data
-    for(int i = 0 ; i < DATA_SIZE ; i++){
+    for(int i = 0 ; i < size; i++){
         source_in1[i] = i;
         source_in2[i] = i * i;
         source_sw_results[i] = 0; 
         source_hw_results[i] = 0;
     }
 
-    int size = DATA_SIZE;
 
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
