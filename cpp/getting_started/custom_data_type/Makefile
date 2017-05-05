@@ -110,8 +110,8 @@ else
 endif
 
 clean:
-	$(RM) $(EXECUTABLE) $(OBJECTS)
+	$(RM) $(TARGET)/$(EXECUTABLE) $(OBJECTS)
 
-ultraclean:
+ultraclean:clean
 	$(RM) -rf $(TARGET) .Xil
 
