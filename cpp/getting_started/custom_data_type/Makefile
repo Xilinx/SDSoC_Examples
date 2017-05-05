@@ -115,3 +115,5 @@ clean:
 ultraclean:clean
 	$(RM) -rf $(TARGET) .Xil
 
+cleanall:ultraclean
+

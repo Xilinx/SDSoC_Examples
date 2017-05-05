@@ -280,12 +280,16 @@ target.write("endif\n")
 target.write("\n")
 
 target.write("clean:\n")
-target.write("\t$(RM) $(EXECUTABLE) $(OBJECTS)\n")
+target.write("\t$(RM) $(TARGET)/$(EXECUTABLE) $(OBJECTS)\n")
 
 target.write("\n")
 
-target.write("ultraclean:\n")
+target.write("ultraclean:clean\n")
 target.write("\t$(RM) -rf $(TARGET) .Xil\n")
+
+target.write("\n")
+
+target.write("cleanall:ultraclean\n")
 target.write("\n")
 
 target.close
