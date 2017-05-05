@@ -1,0 +1,272 @@
+{
+    "name": ".", 
+    "displayName": "", 
+    "description": "", 
+    "categories": [
+        {
+            "name": "cpp", 
+            "displayName": "", 
+            "description": "", 
+            "categories": [
+                {
+                    "name": "getting_started", 
+                    "displayName": "", 
+                    "description": "", 
+                    "categories": [], 
+                    "examples": [
+                        {
+                            "name": "array_partition", 
+                            "description": [
+                                "This example shows how to use array partitioning to improve performance of a hardware function"
+                            ], 
+                            "displayName": "Array Partitioning", 
+                            "keywords": [
+                                "#pragma HLS ARRAY_PARTITION", 
+                                "complete"
+                            ], 
+                            "key_concepts": [
+                                "Hardware Function Optimization", 
+                                "Array Partitioning"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "burst_rw", 
+                            "description": [
+                                "This is simple example of using AXI4-master interface for burst read and write"
+                            ], 
+                            "displayName": "Burst Read/Write", 
+                            "keywords": [
+                                "Burst Copy"
+                            ], 
+                            "key_concepts": [
+                                "Burst Access"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "custom_data_type", 
+                            "description": [
+                                "This is a simple example of RGB to HSV conversion to demonstrate Custom Data Type usage in hardware accelerator. Xilinx HLS compiler supports custom data type to operate within the hardware function and also it acts as a memory interface between PL to DDR"
+                            ], 
+                            "displayName": "Custom Data Type", 
+                            "keywords": [
+                                "struct", 
+                                "#pragma HLS data_pack", 
+                                "#pragma HLS LOOP_TRIPCOUNT"
+                            ], 
+                            "key_concepts": [
+                                "Dataflow", 
+                                "Custom Data type"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "dependence_inter", 
+                            "description": [
+                                "This is a simple example to demonstrate inter dependence attribute. Using inter dependence attribute user can provide additional dependency details to compiler which allow compiler to perform unrolling/pipelining to get better performance "
+                            ], 
+                            "displayName": "Loop Iteration Dependency", 
+                            "keywords": [
+                                "DEPENDENCE", 
+                                "inter"
+                            ], 
+                            "key_concepts": [
+                                "Inter Dependence"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "full_array_2d", 
+                            "description": [
+                                "This is a simple example of accessing full data from 2D array"
+                            ], 
+                            "displayName": "Full 2D Array Read/Write", 
+                            "keywords": [
+                                "N/A"
+                            ], 
+                            "key_concepts": [
+                                "2D data array access"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "lmem_2rw", 
+                            "description": [
+                                "This is a simple example of vector addition to demonstrate how to utilize both ports of Local Memory "
+                            ], 
+                            "displayName": "Two Parallel Read/Write on Local Memory", 
+                            "keywords": [
+                                "#pragma HLS UNROLL FACTOR=2"
+                            ], 
+                            "key_concepts": [
+                                "Hardware Function Optimization", 
+                                "2port BRAM Utilization", 
+                                "Two read/write Local Memory"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "loop_fusion", 
+                            "description": [
+                                "This example will demonstrate how to fuse two loops into one to improve the performance of a C/C++ hardware function."
+                            ], 
+                            "displayName": "Loop Fusion", 
+                            "keywords": [
+                                "#pragma HLS PIPELINE"
+                            ], 
+                            "key_concepts": [
+                                "Hardware Function Optimization", 
+                                "Loop Fusion", 
+                                "Loop Pipelining"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "loop_perfect", 
+                            "description": [
+                                "This nearest neighbor example is to demonstrate how to achieve better performance using perfect loop."
+                            ], 
+                            "displayName": "Loop Perfect", 
+                            "keywords": [
+                                "#pragma HLS PIPELINE", 
+                                "#pragma HLS ARRAY_PARTITION"
+                            ], 
+                            "key_concepts": [
+                                "Loop perfect"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "loop_pipeline", 
+                            "description": [
+                                "This example demonstrates how loop pipelining can be used to improve the performance of a hardware function"
+                            ], 
+                            "displayName": "Loop Pipelining", 
+                            "keywords": [
+                                "#pragma HLS PIPELINE"
+                            ], 
+                            "key_concepts": [
+                                "Hardware Function Optimization", 
+                                "Loop Pipelining"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "loop_reorder", 
+                            "description": [
+                                "This is a simple example of matrix multiplication (Row x Col) to demonstrate how to achieve better pipeline II factor by loop reordering."
+                            ], 
+                            "displayName": "Loop Reorder for better Performance", 
+                            "keywords": [
+                                "#pragma HLS PIPELINE", 
+                                "#pragma HLS ARRAY_PARTITION"
+                            ], 
+                            "key_concepts": [
+                                "Hardware Function Optimization", 
+                                "Loop Reorder to Improve II"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "row_array_2d", 
+                            "description": [
+                                "This is a simple example of accessing each row of data from 2D array"
+                            ], 
+                            "displayName": "Read/Write Row of 2D Array", 
+                            "keywords": [
+                                "hls::stream"
+                            ], 
+                            "key_concepts": [
+                                "Row of 2D data array access"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "shift_register", 
+                            "description": [
+                                "This example demonstrates how to shift values in each clock cycle"
+                            ], 
+                            "displayName": "Shift Register", 
+                            "keywords": [
+                                "#pragma HLS ARRAY_PARTITION"
+                            ], 
+                            "key_concepts": [
+                                "Hardware Function Optimization", 
+                                "Shift Register", 
+                                "FIR"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "systolic_array", 
+                            "description": [
+                                "This is a simple example of matrix multiplication (Row x Col) to help developers learn systolic array based algorithm design. Note : Systolic array based algorithm design is well suited for FPGA."
+                            ], 
+                            "displayName": "Systolic Array Implementation", 
+                            "keywords": [
+                                "#pragma HLS PIPELINE", 
+                                "#pragma HLS ARRAY_PARTITION"
+                            ], 
+                            "key_concepts": [
+                                "Systolic Array"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "wide_memory_rw", 
+                            "description": [
+                                "This is a simple example of vector addition to demonstrate Wide Memory Access using ap_uint<128> data type. Based on input argument type, sds++ compiler will figure out the memory bandwidth between DDR and PL."
+                            ], 
+                            "displayName": "Wide Memory Read/Write", 
+                            "keywords": [
+                                "ap_uint<DATAWIDTH>", 
+                                "ap_int.h"
+                            ], 
+                            "key_concepts": [
+                                "Accelerator to Memory Access", 
+                                "wide memory access", 
+                                "burst read and write"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "window_array_2d", 
+                            "description": [
+                                "This is a simple example of accessing window of data from 2D array"
+                            ], 
+                            "displayName": "Read/Write Window of 2D Array", 
+                            "keywords": [
+                                "#pragma HLS DATAFLOW", 
+                                "#pragma HLS PIPELINE", 
+                                "#pragma HLS stream"
+                            ], 
+                            "key_concepts": [
+                                "Window of 2D data array access"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }
+                    ]
+                }
+            ], 
+            "examples": []
+        }
+    ], 
+    "examples": [], 
+    "branch": "master"
+}
