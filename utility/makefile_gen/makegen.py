@@ -257,6 +257,7 @@ if extension == "*.cpp":
     target.write("$(pwd)/$(TARGET)/%.o: $(pwd)/$(SRC_DIR)/%.cpp\n")
 else:
     target.write("$(pwd)/$(TARGET)/%.o: $(pwd)/$(SRC_DIR)/%.c\n")
+
 target.write("\t@echo 'Building file: $<'\n")
 target.write("\t@echo 'Invoking: SDS++ Compiler'\n")
 target.write("\tmkdir -p $(TARGET)\n")
@@ -279,17 +280,43 @@ target.write("\t$(info \"This Release Doesn't Support Automated Hardware Executi
 target.write("endif\n")
 target.write("\n")
 
+target.write(".PHONY: cleanall clean ultraclean\n");
 target.write("clean:\n")
 target.write("\t$(RM) $(TARGET)/$(EXECUTABLE) $(OBJECTS)\n")
 
 target.write("\n")
 
-target.write("ultraclean:clean\n")
+target.write("cleanall:clean\n")
 target.write("\t$(RM) -rf $(TARGET) .Xil\n")
 
 target.write("\n")
 
-target.write("cleanall:ultraclean\n")
+target.write(".PHONY: docs\n")
+target.write("docs: README.md\n")
+target.write("\n")
+
+target.write("README.md: description.json\n")
+target.write("\t$(ABS_COMMON_REPO)/utility/readme_gen/readme_gen.py description.json\n")
+target.write("\n")
+
+target.write("ECHO:= @echo\n")
+target.write("\n")
+target.write(".PHONY: help\n")
+target.write("\n")
+target.write("help::\n")
+target.write("\t$(ECHO) \"Makefile Usage:\"\n")
+target.write("\t$(ECHO) \"	make all TARGET=<emu/hw> TARGET_OS=<linux/standalone>\"\n");
+target.write("\t$(ECHO) \"		Command to generate the design for specified Target and OS.\"\n")
+target.write("\t$(ECHO) \"\"\n")
+target.write("\t$(ECHO) \"	make clean TARGET=<emu/hw> TARGET_OS=<linux/standalone>\"\n");
+target.write("\t$(ECHO) \"		Command to remove the generated non-hardware files.\"\n")
+target.write("\t$(ECHO) \"\"\n")
+target.write("\t$(ECHO) \"	make cleanall\"\n")
+target.write("\t$(ECHO) \"		Command to remove all the generated files.\"\n")
+target.write("\t$(ECHO) \"\"\n")
+target.write("\t$(ECHO) \"	make check TARGET=<emu/hw> TARGET_OS=<linux/standalone>\"\n");
+target.write("\t$(ECHO) \"		Command to run application in emulation.\"\n")
+target.write("\t$(ECHO) \"\"\n")
 target.write("\n")
 
 target.close

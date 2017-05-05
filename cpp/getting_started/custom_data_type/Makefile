@@ -109,11 +109,35 @@ else
 	$(info "This Release Doesn't Support Automated Hardware Execution")
 endif
 
+.PHONY: cleanall clean ultraclean
 clean:
 	$(RM) $(TARGET)/$(EXECUTABLE) $(OBJECTS)
 
-ultraclean:clean
+cleanall:clean
 	$(RM) -rf $(TARGET) .Xil
 
-cleanall:ultraclean
+.PHONY: docs
+docs: README.md
+
+README.md: description.json
+	$(ABS_COMMON_REPO)/utility/readme_gen/readme_gen.py description.json
+
+ECHO:= @echo
+
+.PHONY: help
+
+help::
+	$(ECHO) "Makefile Usage:"
+	$(ECHO) "	make all TARGET=<emu/hw> TARGET_OS=<linux/standalone>"
+	$(ECHO) "		Command to generate the design for specified Target and OS."
+	$(ECHO) ""
+	$(ECHO) "	make clean TARGET=<emu/hw> TARGET_OS=<linux/standalone>"
+	$(ECHO) "		Command to remove the generated non-hardware files."
+	$(ECHO) ""
+	$(ECHO) "	make cleanall"
+	$(ECHO) "		Command to remove all the generated files."
+	$(ECHO) ""
+	$(ECHO) "	make check TARGET=<emu/hw> TARGET_OS=<linux/standalone>"
+	$(ECHO) "		Command to run application in emulation."
+	$(ECHO) ""
 
