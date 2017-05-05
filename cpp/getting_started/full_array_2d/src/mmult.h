@@ -42,6 +42,6 @@
 #define N 256
 
 // Zero copy interface enabled
-#pragma SDS data zero_copy(a[0:64], b[0:64], c[0:64])
+#pragma SDS data zero_copy(a[0:size], b[0:size], c[0:size])
 void mmult_accel(int *a, int *b, int *c, int size);
 #endif

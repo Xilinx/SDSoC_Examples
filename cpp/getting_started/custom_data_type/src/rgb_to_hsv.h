@@ -65,7 +65,7 @@ typedef struct HSVcolor_struct
   unsigned char a;
  } __attribute__ ((packed, aligned(4))) HSVcolor;
 
-#pragma SDS data zero_copy(in[0:16384],out[0:16384])
+#pragma SDS data zero_copy(in,out)
 void rgb_to_hsv_accel(RGBcolor *in,  // Access DDR memory as RGBcolor struct-wise
                       HSVcolor *out, // Access Global Memory as HSVcolor struct-wise
                       int size);
