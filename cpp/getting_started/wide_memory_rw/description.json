@@ -3,7 +3,7 @@
     "overview": [
         "This is a simple example of vector addition to demonstrate Wide Memory Access using ap_uint<128> data type. Based on input argument type, sds++ compiler will figure out the memory bandwidth between DDR and PL." 
     ],
-    "key_concepts": [ "Kernel to DDR", "wide memory access", "burst read and write"],
+    "key_concepts": [ "Accelerator to Memory Access", "wide memory access", "burst read and write"],
     "keywords": ["ap_uint<DATAWIDTH>", "ap_int.h"],
     "board": ["zc706", "zcu102", "zcu102_es2"],
     "contributors" : [

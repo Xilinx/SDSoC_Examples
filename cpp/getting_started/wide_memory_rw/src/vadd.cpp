@@ -43,11 +43,14 @@
 
 #include "vadd.h"
 
+//Memory Datawidth of accelerator is calculated based on argument type.
+//Here argument type of in1 and in2 is wide_dt which is 128bit wide, so memory
+//interface will be created to 128bit wide. 
 void vadd_accel(
         const wide_dt *in1, // Read-Only Vector 1
         const wide_dt *in2, // Read-Only Vector 2
         wide_dt *out,       // Output Result
-        int size               // Size in integer
+        int size            // Size of total elements
         )
 {
     wide_dt v1_local[BUFFER_SIZE];       // Local memory to store vector1

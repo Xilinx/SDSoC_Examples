@@ -45,7 +45,7 @@ typedef ap_uint<DATAWIDTH> wide_dt;
 
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
-#pragma SDS data zero_copy(in1[0:1024],in2[0:1024],out[0:1024])
+#pragma SDS data zero_copy(in1[0:size],in2[0:size],out[0:size])
 void vadd_accel(const wide_dt *in1, // Read-Only Vector 1
                 const wide_dt *in2, // Read-Only Vector 2
                 wide_dt *out,       // Output Result
