@@ -42,73 +42,57 @@
 #include <string.h>
 #include "mmult.h"
 
-// Define max local buffer size
-#define N 256
 
-// Define array size to access
-#define DATA_SIZE 8
+void mmult_accel(int *a, int *b, int *c, int dim) {
 
-void mmult_accel(int *a, int *b, int *c, int size) {
+    //2D Array is used to store input and output matrices
+    int bufa[MAX_MATRIX_DIM][MAX_MATRIX_DIM];
+    int bufb[MAX_MATRIX_DIM][MAX_MATRIX_DIM];
+    int bufc[MAX_MATRIX_DIM][MAX_MATRIX_DIM];
 
-	int bufa[N][N], bufb[N][N], bufc[N][N];
-	int matrix_size = size*size;
-	// Read data from DDR memory and write into local buffer for a, 
-	// loop pipeline will be automatically inferred
-	int x = 0, y = 0;
-	read_data_a: for (int i = 0 ; i < matrix_size ; i++){
-	#pragma HLS LOOP_TRIPCOUNT min=1 max=65536
-		int tmpData_a = a[i];
-		bufa[x][y] = tmpData_a;
-		if (y == size-1){
-			x++;
-			y = 0;
-		}else{
-			y++;
-		}
-	}
+    int matrix_size = dim*dim;
+    // Burst Read data from DDR memory and write into 2D local buffer for a, 
+    int x = 0, y = 0;
+    read_data_a: for (int i = 0 ; i < matrix_size ; i++){
+        #pragma HLS PIPELINE
+        #pragma HLS LOOP_TRIPCOUNT min=1 max=65536
+        int tmpData_a = a[i];
+        bufa[x][y] = tmpData_a;
+        if (y == dim-1){ x++; y = 0; } else{ y++; }
+    }
 
-	// Read data from DDR memory and write into local buffer for b, loop pipeline 
-	// will be automatically inferred
-	read_data_b: for (int i = 0, x=0, y=0; i < matrix_size ; i++){
-	#pragma HLS LOOP_TRIPCOUNT min=1 max=65536
-		int tmpData_b = b[i];
-		bufb[x][y] = tmpData_b;
-		if (y == size-1){
-			x++;
-			y = 0;
-		}else{
-			y++;
-		}
-	}
+    // Burst Read data from DDR memory and write into 2D local buffer for b, 
+    read_data_b: for (int i = 0, x=0, y=0; i < matrix_size ; i++){
+        #pragma HLS PIPELINE
+        #pragma HLS LOOP_TRIPCOUNT min=1 max=65536
+        int tmpData_b = b[i];
+        bufb[x][y] = tmpData_b;
+        if (y == dim-1){ x++; y = 0;} else{ y++;}
+    }
 
-	// Calculate matrix multiplication using local data buffer based on input size, 
-	// and write results into local buffer for c
-	matrix_mult: for (int row = 0; row < size; row++) {
-	#pragma HLS LOOP_TRIPCOUNT min=1 max=256
-		for (int col = 0; col < size; col++) {
-		#pragma HLS LOOP_TRIPCOUNT min=1 max=256
-			int result = 0;
-			for (int k = 0; k < size; k++) {
-			#pragma HLS LOOP_TRIPCOUNT min=1 max=256
-			#pragma HLS pipeline
-				result += bufa[row][k] * bufb[k][col];
-			}
-			bufc[row][col] = result;
-		}
-	}
-	// Write results from local buffer to DDR memory for c, loop pipeline will be 
-	// automatically inferred
-	int m = 0, n = 0;
-	write_data: for (int i = 0 ; i < matrix_size ; i++){
-	#pragma HLS LOOP_TRIPCOUNT min=1 max=65536
-		int tmpData_c = bufc[m][n];
-		c[i] = tmpData_c;
-		if (n == size-1){
-			m++;
-			n = 0;
-		}else{
-			n++;
-		}
-	}
+    // Calculate matrix multiplication using local data buffers 
+    // and write result into local buffer for c
+    matrix_mult: for (int row = 0; row < dim; row++) {
+        #pragma HLS LOOP_TRIPCOUNT min=1 max=256
+        for (int col = 0; col < dim; col++) {
+            #pragma HLS LOOP_TRIPCOUNT min=1 max=256
+            int result = 0;
+            for (int k = 0; k < dim; k++) {
+                #pragma HLS LOOP_TRIPCOUNT min=1 max=256
+                #pragma HLS pipeline
+                result += bufa[row][k] * bufb[k][col];
+            }
+            bufc[row][col] = result;
+        }
+    }
+    // Burst Write result to DDR memory from local buffer 
+    int m = 0, n = 0;
+    write_data: for (int i = 0 ; i < matrix_size ; i++){
+        #pragma HLS LOOP_TRIPCOUNT min=1 max=65536
+        #pragma HLS PIPELINE
+        int tmpData_c = bufc[m][n];
+        c[i] = tmpData_c;
+        if (n == dim-1){ m++; n = 0; }else{ n++; }
+    }
 }
 

@@ -36,12 +36,13 @@
 
 #include "sds_utils.h"
 
-// Define array size to access
-#define DATA_SIZE 8
-// Define max local buffer size
-#define N 256
+// Define Test Matrix Size
+#define TEST_MATRIX_DIM 64
+
+// Define max matrix dimension supported by accelerator 
+#define MAX_MATRIX_DIM 128
 
 // Zero copy interface enabled
-#pragma SDS data zero_copy(a[0:size], b[0:size], c[0:size])
-void mmult_accel(int *a, int *b, int *c, int size);
+#pragma SDS data zero_copy(a[0:dim*dim], b[0:dim*dim], c[0:dim*dim])
+void mmult_accel(int *a, int *b, int *c, int dim);
 #endif

@@ -37,46 +37,39 @@
 #include "mmult.h"
 
 // Software Implementation
-void mmult_sw(int *a, int *b, int *c, int size)
+void mmult_sw(int *a, int *b, int *c, int dim)
 {
-  int bufa[N][N], bufb[N][N], bufc[N][N];
-  for (int i = 0 ; i < size ; i++) {
-      memcpy(bufa[i], (int *) &a[i*size], size*sizeof(int));
-      memcpy(bufb[i], (int *) &b[i*size], size*sizeof(int));
-  }
-
-  for (int row = 0; row < size; row++) {
-    for (int col = 0; col < size; col++) {
+  for (int row = 0; row < dim; row++) {
+    for (int col = 0; col < dim; col++) {
       int result = 0;
-      for (int k = 0; k < size; k++) {
-        result += bufa[row][k] * bufb[k][col];
+      for (int k = 0; k < dim; k++) {
+        result += a[row*dim + k] * b[k*dim + col];
       }
-      bufc[row][col] = result;
+      c[row*dim + col] = result;
     }
   }
-  for (int i = 0 ; i < size ; i++)
-      memcpy((int *) &c[i*size], bufc[i], size*sizeof(int));
 }
 
 int main(int argc, char** argv)
 {
-    int size = DATA_SIZE;
-    int matrix_size = size * size;
-    if (size > N) {
-        std::cout << "Size is bigger than internal buffer size, please use a size";  
-        std::cout << " smaller than 256!" << std::endl;
+    int dim = TEST_MATRIX_DIM;
+    int matrix_size = dim * dim;
+    if (dim > MAX_MATRIX_DIM) {
+        std::cout << "Test Matrix Dimension is bigger than"
+           << " supported by Accelerator, please use smaller"  
+           << " than " << MAX_MATRIX_DIM << "\n";
         return EXIT_FAILURE;
     }
 
-    size_t vector_size_bytes = sizeof(int) * matrix_size;
+    size_t matrix_size_in_bytes = sizeof(int) * matrix_size;
 
     // Allocate PL buffers using sds_alloc
-    int *source_input_a     = (int *) sds_alloc(vector_size_bytes);
-    int *source_input_b     = (int *) sds_alloc(vector_size_bytes);
-    int *source_hw_results  = (int *) sds_alloc(vector_size_bytes);
+    int *source_input_a     = (int *) sds_alloc(matrix_size_in_bytes);
+    int *source_input_b     = (int *) sds_alloc(matrix_size_in_bytes);
+    int *source_hw_results  = (int *) sds_alloc(matrix_size_in_bytes);
 
     // Allocate software output buffer
-    int *source_sw_results  = (int *) malloc(vector_size_bytes);
+    int *source_sw_results  = (int *) malloc(matrix_size_in_bytes);
 
     // Create the test data and Software Result
     for(int i = 0 ; i < matrix_size ; i++){
@@ -89,11 +82,11 @@ int main(int argc, char** argv)
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
     // Launch the software solution
-    mmult_sw(source_input_a, source_input_b, source_sw_results, size);
+    mmult_sw(source_input_a, source_input_b, source_sw_results, dim);
 
     hw_ctr.start();
     // Launch the hardware solution
-    mmult_accel(source_input_a, source_input_b, source_hw_results, size);
+    mmult_accel(source_input_a, source_input_b, source_hw_results, dim);
     hw_ctr.stop();
 
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
@@ -103,7 +96,6 @@ int main(int argc, char** argv)
    
     // Compare the results of the Device to the simulation
     int match = 0;
-    std::cout << "Result = " << std::endl;
     for (int i = 0 ; i < matrix_size ; i++){
         if (source_hw_results[i] != source_sw_results[i]){
             std::cout << "Error: Result mismatch" << std::endl;
@@ -111,9 +103,6 @@ int main(int argc, char** argv)
                 << " Device result = " << source_hw_results[i] << std::endl;
             match = 1;
             break;
-        }else{
-            std::cout << source_hw_results[i] << " " ;
-            if ( ( (i+1) % 16) == 0) std::cout << std::endl;
         }
     }
 
@@ -123,10 +112,6 @@ int main(int argc, char** argv)
     sds_free(source_hw_results);
     free(source_sw_results);
 
-    if (match){
-        std::cout << "TEST FAILED." << std::endl;
-        return 1;
-    }
-    std::cout << "TEST PASSED." << std::endl;
-    return 0;
+    std::cout << "TEST " << (match? "FAILED." :"PASSED.") << "\n";
+    return(match?-1:0);
 }
