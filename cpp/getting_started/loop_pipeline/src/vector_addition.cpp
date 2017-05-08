@@ -39,47 +39,48 @@
    processing. This maximizes the utilization of the FPGA fabric and allows the
    processing of multiple elements of data at the same time.
 
-   The sds++ compiler automatically performs this optimization on loops so no
-   user intervention is required for most cases. The outer most loops will be
-   pipelined and inner loops will be unrolled if possible.
-
    In this example we will demonstrate ways to improve the throughput of a
-   vector addition hardware function using the HLS PIPELINE attribute.
+   vector addition hardware function using the HLS PIPELINE pragma.
 ************************************************************************************/
 
 #define N 128
 #include "vector_addition.h"
 
-const int DATA_SIZE = 1<<10;
-
-// This hardware function is optimized to access only one global variable in a pipelined
-// loop. This will improve the II and increase throughput of the hardware function.
-void vadd_pipelined_accel(int a[DATA_SIZE],
-                          int b[DATA_SIZE],
-                          int c[DATA_SIZE],
-                          const int len)
+void vadd_pipelined_accel(int *a, int *b, int *c, const int len)
 {
+    //Local buffer size is restricted to N size
     int result[N];
+    
     int iterations = len / N;
-
     for(int i = 0; i < iterations; i++) {
-        #pragma HLS LOOP_TRIPCOUNT min=1024 max=1024
-
-        // Pipelining loops that access only one variable is the ideal way to
-        // increase the DDR memory bandwidth.
-        read_a:
-        for (int x=0; x<N; ++x) {
         #pragma HLS PIPELINE
+        #pragma HLS LOOP_TRIPCOUNT min=1 max=8
+        int chunk_size = N;
+
+        //Boundary Check
+        if (i + chunk_size > len) chunk_size = len-i;
+
+        read_a:
+        for (int x=0; x<chunk_size; ++x) {
+            #pragma HLS LOOP_TRIPCOUNT min=128 max=128
+            #pragma HLS PIPELINE
+            //Loop will do burst read from A due to pipeline pragma
             result[x] = a[i*N+x];
         }
+        
         read_b:
-        for (int x=0; x<N; ++x) {
-        #pragma HLS PIPELINE
+        for (int x=0; x<chunk_size; ++x) {
+            #pragma HLS LOOP_TRIPCOUNT min=128 max=128
+            #pragma HLS PIPELINE
+            //Loop will do burst read from B due to pipeline pragma
             result[x] += b[i*N+x];
         }
+
         write:
-        for (int x=0; x<N; ++x) {
-        #pragma HLS PIPELINE
+        for (int x=0; x<chunk_size; ++x) {
+            #pragma HLS LOOP_TRIPCOUNT min=128 max=128
+            #pragma HLS PIPELINE
+            //Loop will do burst write to C due to pipeline pragma
             c[i*N+x] = result[x];
         }
     }
