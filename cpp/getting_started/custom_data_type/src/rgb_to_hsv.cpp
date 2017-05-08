@@ -42,7 +42,7 @@
 
 void rgb_to_hsv_accel(RGBcolor *in,  // Access DDR memory as RGBcolor struct-wise
                       HSVcolor *out, // Access DDR Memory as HSVcolor struct-wise
-                      int size)
+                      int image_size)
 {
     RGBcolor rgb;
 	HSVcolor hsv;
@@ -50,7 +50,7 @@ void rgb_to_hsv_accel(RGBcolor *in,  // Access DDR memory as RGBcolor struct-wis
     // Single loop is sufficient to read each RGB pixel from DDR memory,
     // Converting RGB pixel to HSV Pixel, and writing HSV Pixel Back to DDR
     // Memory.
-    rgb2hsv_loop: for(unsigned int i = 0 ; i < size ; i ++){
+    rgb2hsv_loop: for(unsigned int i = 0 ; i < image_size; i ++){
     #pragma HLS PIPELINE
         // Loop is marked for pipeline. Compiler will be able to get Loop II=1
         // as a result, Hardware Function will be able to do burst read and 

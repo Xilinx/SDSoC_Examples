@@ -44,12 +44,12 @@
 
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
-#pragma SDS data zero_copy(in1, in2, out)
+#pragma SDS data zero_copy(in1[0:dim*dim], in2[0:dim*dim], out[0:dim*dim])
 void mmult_accel(
 				const int *in1,     // Read-Only Matrix 1
 				const int *in2,     // Read-Only Matrix 2
 				int *out,           // Output Result
-				int size            // Size of one dimension of the matrices
+				int dim             // Size of one dimension of the matrices
 				);
 
 #endif

@@ -45,7 +45,7 @@
 void matmul_partition_accel(int *in1,  // Read-Only Matrix 1
                             int *in2,  // Read-Only Matrix 2
                             int *out,  // Output Result
-                            int size)  // Size 
+                            int mat_dim)  // Matrix Dimension 
 {               
     // Local memory is implemented as BRAM memory blocks
     int A[MAX_SIZE][MAX_SIZE];
@@ -59,72 +59,35 @@ void matmul_partition_accel(int *in1,  // Read-Only Matrix 1
     // Burst reads on input matrices from DDR memory
     // Burst read for matrix A
     readA:
-    for (int itr = 0, i = 0, j = 0; itr < size * size; itr++, j++) {
+    for (int itr = 0, i = 0, j = 0; itr < mat_dim * mat_dim; itr++, j++) {
     #pragma HLS PIPELINE
     #pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
-        if (j == size) {
-            j = 0;
-            i++;
-        }
+        if (j == mat_dim) { j = 0; i++; }
         A[i][j] = in1[itr];
     }
 
     // Burst read for matrix B
     readB:
-    for (int itr = 0, i = 0, j = 0; itr < size * size; itr++, j++) {
+    for (int itr = 0, i = 0, j = 0; itr < mat_dim * mat_dim; itr++, j++) {
     #pragma HLS PIPELINE
     #pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
-        if (j == size) {
-            j = 0;
-            i++;
-        }
+        if (j == mat_dim) { j = 0; i++; }
         B[i][j] = in2[itr];
     }
 
-    // Performs matrix multiply over matrices A and B and stores the result
-    // in C. All the matrices are square matrices of the form (size x size)
-
-    // Pipeline attribute is specified for the innermost loop (lreorder3)
-    // and the order of the loops lreorder2 and lreorder 3 are changed here.
-
-    // When the iteration variables j and k are interchanged between the loops,
-    // lreoder2 and lreorder3, the pipeline initiation interval (II) improves
-    // and becomes 1 (ideal).
-
-    // Also the reordering avoids creating an adder tree for calculating the
-    // sum(output) of a single output element
-
-    // lreorder1: for (int i = 0; i < size; i++) {
-    //     lreorder2: for (int j = 0; j < size; j++) {
-    //     __attribute__((xcl_pipeline_loop))
-    //         lreorder3: for (int k = 0; k < MAX_SIZE; k++) {
-    //             int result = (k == 0) ? 0 : temp_sum[j];
-    //             result += A[i][k] * B[k][j];
-    //             temp_sum[j] = result;
-    //             if (k== size -1) C[i][j] = result;
-    //         }
-    //     }
-    // }
-
-    // The above code snippet of the Matrix Multiply hardware function in which
-    // the loops lreorder2 and lreorder3 are not interchanged, gives a 
-    // pipeline initiation interval (II) of 64
-
-    // Calculate matrix multiplication using local data buffer based on 
-    // input size and write results into local buffer for C
-    lreorder1:
-    for (int i = 0; i < size; i++) {
+    arraypart1:
+    for (int i = 0; i < mat_dim; i++) {
     #pragma HLS LOOP_TRIPCOUNT min=64 max=64
-        lreorder2 :
-        for (int k = 0; k < size; k++) {
+        arraypart2:
+        for (int k = 0; k < mat_dim; k++) {
         #pragma HLS LOOP_TRIPCOUNT min=64 max=64
         #pragma HLS PIPELINE
-            lreorder3:
+            arraypart3:
             for (int j = 0; j < MAX_SIZE; j++) {
                 int result = (k == 0) ? 0 : temp_sum[j];
                 result += A[i][k] * B[k][j];
                 temp_sum[j] = result;
-                if (k == size - 1) C[i][j] = result;
+                if (k == mat_dim - 1) C[i][j] = result;
             }
         }
     }
@@ -132,10 +95,10 @@ void matmul_partition_accel(int *in1,  // Read-Only Matrix 1
     // Burst write from output matrices to DDR memory
     // Burst write from matrix C
     writeC:
-    for (int itr = 0, i = 0, j = 0; itr < size * size; itr++, j++) {
+    for (int itr = 0, i = 0, j = 0; itr < mat_dim * mat_dim; itr++, j++) {
     #pragma HLS PIPELINE
     #pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
-        if (j == size) {
+        if (j == mat_dim) {
             j = 0;
             i++;
         }

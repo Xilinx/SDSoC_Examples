@@ -41,7 +41,7 @@
 
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
-#pragma SDS data zero_copy(signal,coeff,hw_out)
+#pragma SDS data zero_copy(signal[0:signal_length],coeff[0:N_COEFF],hw_out[0:signal_length])
 void fir_shift_register_accel(int *signal,
                               int *coeff,
                               int *hw_out,

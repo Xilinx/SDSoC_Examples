@@ -44,7 +44,7 @@
 
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
-#pragma SDS data zero_copy(a, b, c)
+#pragma SDS data zero_copy(a[0:a_row*a_col], b[0:a_col*b_col], c[0:a_row*b_col])
 void mmult_accel(
 			    const int *a,   // Read-Only Matrix A
 			    const int *b,   // Read-Only Matrix B

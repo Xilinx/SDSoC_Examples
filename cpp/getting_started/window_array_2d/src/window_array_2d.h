@@ -57,6 +57,6 @@ typedef hls::stream<DTYPE> my_data_fifo;
 
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
-#pragma SDS data zero_copy(inx, outx)
+#pragma SDS data zero_copy(inx[0:BLOCK_SIZE], outx[0:BLOCK_SIZE])
 void window_array_2d_accel(DTYPE *inx, DTYPE *outx, DTYPE alpha);
 #endif

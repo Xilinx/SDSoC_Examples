@@ -42,12 +42,12 @@
     more places. Here is an example of what a shift register operation looks
     like on an array of length four:
 
-                     ___       ___      ___      ___
+                       ___       ___      ___      ___
     1. shift_reg[N] : | A |  <- | B | <- | C | <- | D |
-                     ---       ---      ---      ---
-                     ___       ___      ___      ___
+                       ---       ---      ---      ---
+                       ___       ___      ___      ___
     2. shift_reg[N] : | B |  <- | C | <- | D | <- | D |
-                     ---       ---      ---      ---
+                       ---       ---      ---      ---
 
     Here each of the values are copied into the register on the left.
     This type of operation is useful when you want to work on a sliding window
@@ -69,7 +69,6 @@
 ************************************************************************************/
 
 #include "fir.h"
-#define COEFF 11
 
 // FIR using shift register
 void fir_shift_register_accel(int *signal,
@@ -78,18 +77,18 @@ void fir_shift_register_accel(int *signal,
                               int signal_length) 
 {
 
-    int coeff_reg[COEFF];
+    int coeff_reg[N_COEFF];
 
     // Partitioning of this array is required because the shift register
     // operation will need access to each of the values of the array in
     // the same clock. Without partitioning the operation will need to
     // be performed over multiple cycles because of the limited memory
     // ports available to the array.
-    int shift_reg[COEFF];
+    int shift_reg[N_COEFF];
     #pragma HLS ARRAY_PARTITION variable=shift_reg complete dim=0
 
     init_loop:
-    for (int i = 0; i < COEFF; i++) {
+    for (int i = 0; i < N_COEFF; i++) {
         shift_reg[i] = 0;
         coeff_reg[i] = coeff[i];
     }
@@ -100,13 +99,13 @@ void fir_shift_register_accel(int *signal,
         int acc = 0;
         int x = signal[j];
 
-        // This is the shift register operation. The N_COEFF variable is defined
+        // This is the shift register operation. The N_N_COEFF variable is defined
         // at compile time so the compiler knows the number of operations
         // performed by the loop. This loop does not require the unroll
         // attribute because the outer loop will be pipelined so
         // the compiler will unroll this loop in the process.
         shift_loop:
-        for (int i = COEFF-1; i >= 0; i--) {
+        for (int i = N_COEFF-1; i >= 0; i--) {
             if (i == 0) {
                 acc += x * coeff_reg[0];
                 shift_reg[0] = x;
