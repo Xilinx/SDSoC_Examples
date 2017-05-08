@@ -62,11 +62,8 @@ void vadd_pipelined_accel(int a[DATA_SIZE],
     int result[N];
     int iterations = len / N;
 
-    // Default behavior of sds++ will pipeline the outer loop. Since we have
-    // multiple inner loops, the pipelining will fail. We can instead pipeline
-    // the inner loops using the HLS PIPELINE attribute to guide the
-    // compiler.
     for(int i = 0; i < iterations; i++) {
+        #pragma HLS LOOP_TRIPCOUNT min=1024 max=1024
 
         // Pipelining loops that access only one variable is the ideal way to
         // increase the DDR memory bandwidth.
