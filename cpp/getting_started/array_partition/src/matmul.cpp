@@ -75,6 +75,17 @@ void matmul_partition_accel(int *in1,  // Read-Only Matrix 1
         B[i][j] = in2[itr];
     }
 
+    // By Default VHLS create single Memory with two ports for each local buffer
+    // which allows maximum two read/write from buffer per clock.
+    // Due to this restriction, lowest loop of mmmult can be unroll by 2 times only.
+    // 
+    // However Partition gives instruction to VHLS Complier to split a large array
+    // into small-small memory which allow user to get multiple concurrent accesses.
+    //
+    // To completely unroll the lowest loop of Mmult, B buffer is completely 
+    // partitioned for 1st dimension, and C buffer is completely partitioned
+    // for 1st dimension. Which eventually will improve the overall performance of 
+    // matrix multiplication. 
     arraypart1:
     for (int i = 0; i < mat_dim; i++) {
     #pragma HLS LOOP_TRIPCOUNT min=64 max=64
