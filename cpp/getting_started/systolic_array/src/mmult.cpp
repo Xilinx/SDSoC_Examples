@@ -82,7 +82,6 @@ void mmult_accel(
 	int c_col = b_col;
 
 	// Local memory to store input and output matrices
-	// Local memory is implemented as BRAM memory blocks
 	int localA[MAX_SIZE][MAX_SIZE];
 	#pragma HLS ARRAY_PARTITION variable=localA dim=1 complete
 
