@@ -61,8 +61,24 @@ void nearest_neighbor_loop_fusion_accel(int *out, const int *points,
     int dist = 0;
     int iterations = len * dim;
 
+    // Naive Appraoch:
+    // Naive approach is Two cascaded for-loop appraoch as below:
+    // upper_loop:for(int p = 0 ; p < len; ++p){
+    //    int dist = 0;
+    //    lower_loop:for(int c = 0 ; c < dim ; c++){
+    //       int dx = points[dim*p + c] - s_point[c];
+    //       dist +=dx * dx;
+    //    }
+    //    if (dist < best_dist){
+    //       best_i = p;
+    //       best_dist = dist;
+    //    }
+    // }
     // This loop iterates through each point and through each of the dimension.
-    // The combined loop performs the same number of iterations as the previous
+    // 
+    // Optimized Approach: Loop Fusion
+    // Loop Fusion approach is to merge cascaded loops into one loop.
+    // The combined loop performs the same number of iterations as the naive
     // implementation but this approach give the compiler more opportunity to
     // optimize the operations.
     find_best:
