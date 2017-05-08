@@ -68,7 +68,7 @@ void nearest_neighbor_loop_fusion_accel(int *out, const int *points,
     find_best:
     for (int p = 0, c = 0, itr = 0; itr < iterations; itr++) {
     #pragma HLS PIPELINE
-        int dx = abs(points[dim * p + c] - s_point[c]);
+        int dx = points[dim * p + c] - s_point[c];
         dist += dx * dx;
         // Defines the end of the dimension calculation(The inner loop in the
         // previous example)
