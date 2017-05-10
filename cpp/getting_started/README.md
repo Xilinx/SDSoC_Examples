@@ -1,43 +1,47 @@
-Getting Started
-======================
-
-This is a main directory which contains variety of SDSoC coding guidelines related examples which are intended to help users to get exposed to various important features of SDSoC. Xilinx SDx 2017.1 tool is used to develop these examples.
-
-## SDSoC Examples
-
-Table below presents overall summary of each example in a precise manner. These examples are categorized to help users to cover various areas that needs to be focused while using SDSoC for their application optimization
-
-Sl.No | Title | Overview |Key Concept | Key Words | Category
-------|-------|----------|---|-----------|---------
-1|[Array Partition][]|This example shows how to use array partitioning to improve performance of a hardware function|Hardware Function Optimization, Array Partitioning|#pragma HLS ARRAY PARTITION, complete|Optimization|
-2|[Custom Data Type][]|This is a simple example of RGB to HSV conversion to demonstrate Custom DATA Type usage in hardware accelerator. Xilinx HLS compiler supports custom data type to operate within the hardware function and also it acts as a memory interface between PL to DDR|Dataflow, Custom Datatype|struct, #pragma HLS LOOP_TRIPCOUNT|Optimization|
-3|[Loop Iteration Dependency][]|This is a simple example to demonstrate inter dependence attribute. Using inter dependence attribute user can provide additional dependency details to the compiler which allows the compiler to perform unrolling/pipelining to get better performance|Inter Dependence|DEPENDENCE, inter|Optimization|
-4|[Two Parallel Read/Write on Local Memory][]|This is a simple example of vector addition to demonstrate maximum utilization of local memory ports|Hardware Function Optimization, 2port BRAM Utilization, Two read/write local memory|#pragma HLS UNROLL FACTOR=2|Optimization|
-5|[Loop Fusion][]|This example will demonstrate how to fuse two loops into one to improve the performance of a C/C++ accelerator.|Hardware Function Optimization, loop fusion, loop pipelining|#pragma HLS PIPELINE|Optimization|
-6|[Loop Perfect][]|This nearest neighbor example is to demonstrate how to achieve better performance using perfect loop.|Loop perfect|#pragma HLS PIPELINE, #pragma HLS ARRAY_PARTITION|Optimization|
-7|[Loop Pipelining][]|This example demonstrates how loop pipelining can be used to improve the performance of a hardware function|Hardware Function Optimization, Loop pipelining|#pragma HLS PIPELINE|Optimization|
-8|[Loop Reorder for Better Performance][]|This is a simple example of matrix multiplication (Row x Col) to demonstrate how to achieve better pipeline II factor by loop reordering|Hardware Optimization, Loop Reorder to Improve II factor|#pragma HLS PIPELINE, #pragma HLS ARRAY_PARTITION|Optimization|
-9|[Shift Register][]|This example demonstrates how to shift values in each clock cycle|Hardware Function Optimization, Shift register, FIR|#pragma HLS ARRAY_PARTITION|Optimization|
-10|[Systolic Array Implementation][]|This is a simple example of matrix multiplication (Row x Col) to help developers learn systolic array based algorithm design. Note : Systolic array based algorithm design is well suited for FPGA.|Systolic Array|#pragma HLS PIPELINE, #pragma HLS ARRAY_PARTITION|Optimization|
-11|[Wide Memory Read/Write][]|This is a simple example of vector addition to demonstrate Wide Memory Access using ap_uint<128> data type. Based on input argument type, sds++ compiler will figure out the memory bandwidth between DDR memory and PL.|PL to DDR, wide memory access, burst read and write|ap_uint<DATAWIDTH>, ap_int.h (HLS Header)|Memory Transfer (DDR to PL)|
-12|[Read/Write Window of 2D Array][]|This is a simple example of accessing each row of data from 2d array|Window of 2D data array access|#pragma HLS DATAFLOW, #pragma HLS PIPELINE, #pragma HLS stream|Memory Transfer (DDR to PL)|
-13|[Burst Read/Write][]|This is a simple example of using AXI4-master interface for burst read and write|Burst Access|Burst Copy|Memory Transfer (DDR to PL)|
-14|[Full 2D Array Read/Write][]|This is a simple example of accessing full data from 2d array|2D data array access|N/A|Memory Transfer (DDR to PL)|
-15|[Read/Write Row of 2D Array][]|This is a simple example of accessing each row of data from 2d array|Row of 2D data array access|hls::stream|Memory Transfer (DDR to PL)|
+Getting Started Examples
+==================================
+This page contains examples for users who are new to Xilinx SDx OpenCL Flows. The focus of the examples is towards code optimization for Xilinx devices.The table lists various categories of examples in suggested order which users can follow.
 
 
-[Array Partition]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/array_partition
-[Custom Data Type]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/custom_data_type
-[Loop Iteration Dependency]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/dependence_inter
-[Two Parallel Read/Write on Local Memory]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/lmem_2rw
-[Loop Fusion]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_fusion
-[Loop Perfect]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_perfect
-[Loop Pipelining]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_pipeline
-[Loop Reorder for Better Performance]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/loop_reorder
-[Shift Register]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/shift_register
-[Systolic Array Implementation]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/systolic_array
-[Wide Memory Read/Write]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/wide_memory_rw
-[Read/Write Window of 2D Array]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/window_array_2d
-[Burst Read/Write]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/burst_rw
-[Full 2D Array Read/Write]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/full_array_2d
-[Read/Write Row of 2D Array]:https://gitenterprise.xilinx.com/SDSoC-Examples/apps/tree/master/cpp/getting_started/row_array_2d
+__Prerequisites__
+ - User is familiar with basics of OpenCL flow.
+ - User has gone through SDx tutorial and is familiar with basics of tool functionality and terminology.
+
+ __Examples Table__ 
+
+Example        | Description           | Key Concepts / Keywords 
+---------------|-----------------------|-------------------------
+[array_partition/][]|This example shows how to use array partitioning to improve performance of a hardware function|__Key__ __Concepts__<br> - Hardware Function Optimization<br> - Array Partitioning<br>__Keywords__<br> - #pragma HLS ARRAY_PARTITION<br> - complete
+[burst_rw/][]|This is simple example of using AXI4-master interface for burst read and write|__Key__ __Concepts__<br> - Burst Access<br>
+[custom_data_type/][]|This is a simple example of RGB to HSV conversion to demonstrate Custom Data Type usage in hardware accelerator. Xilinx HLS compiler supports custom data type to operate within the hardware function and also it acts as a memory interface between PL to DDR|__Key__ __Concepts__<br> - Dataflow<br> - Custom Data type<br>__Keywords__<br> - struct<br> - #pragma HLS data_pack<br> - #pragma HLS LOOP_TRIPCOUNT
+[dependence_inter/][]|This is a simple example to demonstrate inter dependence attribute. Using inter dependence attribute user can provide additional dependency details to compiler which allow compiler to perform unrolling/pipelining to get better performance |__Key__ __Concepts__<br> - Inter Dependence<br>__Keywords__<br> - DEPENDENCE<br> - inter
+[full_array_2d/][]|This is a simple example of accessing full data from 2D array|__Key__ __Concepts__<br> - 2D data array access<br>__Keywords__<br> - N/A
+[lmem_2rw/][]|This is a simple example of vector addition to demonstrate how to utilize both ports of Local Memory |__Key__ __Concepts__<br> - Hardware Function Optimization<br> - 2port BRAM Utilization<br> - Two read/write Local Memory<br>__Keywords__<br> - #pragma HLS UNROLL FACTOR=2
+[loop_fusion/][]|This example will demonstrate how to fuse two loops into one to improve the performance of a C/C++ hardware function.|__Key__ __Concepts__<br> - Hardware Function Optimization<br> - Loop Fusion<br> - Loop Pipelining<br>__Keywords__<br> - #pragma HLS PIPELINE
+[loop_perfect/][]|This nearest neighbor example is to demonstrate how to achieve better performance using perfect loop.|__Key__ __Concepts__<br> - Loop perfect<br>__Keywords__<br> - #pragma HLS PIPELINE<br> - #pragma HLS ARRAY_PARTITION
+[loop_pipeline/][]|This example demonstrates how loop pipelining can be used to improve the performance of a hardware function|__Key__ __Concepts__<br> - Hardware Function Optimization<br> - Loop Pipelining<br>__Keywords__<br> - #pragma HLS PIPELINE
+[loop_reorder/][]|This is a simple example of matrix multiplication (Row x Col) to demonstrate how to achieve better pipeline II factor by loop reordering.|__Key__ __Concepts__<br> - Hardware Function Optimization<br> - Loop Reorder to Improve II<br>__Keywords__<br> - #pragma HLS PIPELINE<br> - #pragma HLS ARRAY_PARTITION
+[row_array_2d/][]|This is a simple example of accessing each row of data from 2D array|__Key__ __Concepts__<br> - Row of 2D data array access<br>__Keywords__<br> - hls::stream
+[shift_register/][]|This example demonstrates how to shift values in each clock cycle|__Key__ __Concepts__<br> - Hardware Function Optimization<br> - Shift Register<br> - FIR<br>__Keywords__<br> - #pragma HLS ARRAY_PARTITION
+[systolic_array/][]|This is a simple example of matrix multiplication (Row x Col) to help developers learn systolic array based algorithm design. Note : Systolic array based algorithm design is well suited for FPGA.|__Key__ __Concepts__<br> - Systolic Array<br>__Keywords__<br> - #pragma HLS PIPELINE<br> - #pragma HLS ARRAY_PARTITION
+[wide_memory_rw/][]|This is a simple example of vector addition to demonstrate Wide Memory Access using ap_uint<128> data type. Based on input argument type, sds++ compiler will figure out the memory bandwidth between DDR and PL.|__Key__ __Concepts__<br> - Accelerator to Memory Access<br> - wide memory access<br> - burst read and write<br>__Keywords__<br> - ap_uint<DATAWIDTH><br> - ap_int.h
+[window_array_2d/][]|This is a simple example of accessing window of data from 2D array|__Key__ __Concepts__<br> - Window of 2D data array access<br>__Keywords__<br> - #pragma HLS DATAFLOW<br> - #pragma HLS PIPELINE<br> - #pragma HLS stream
+[full_array_2d_bkup/][]|This is a simple example of accessing full data from 2D array|__Key__ __Concepts__<br> - 2D data array access<br>__Keywords__<br> - N/A
+
+[.]:.
+[array_partition/]:array_partition/
+[burst_rw/]:burst_rw/
+[custom_data_type/]:custom_data_type/
+[dependence_inter/]:dependence_inter/
+[full_array_2d/]:full_array_2d/
+[lmem_2rw/]:lmem_2rw/
+[loop_fusion/]:loop_fusion/
+[loop_perfect/]:loop_perfect/
+[loop_pipeline/]:loop_pipeline/
+[loop_reorder/]:loop_reorder/
+[row_array_2d/]:row_array_2d/
+[shift_register/]:shift_register/
+[systolic_array/]:systolic_array/
+[wide_memory_rw/]:wide_memory_rw/
+[window_array_2d/]:window_array_2d/
+[full_array_2d_bkup/]:full_array_2d_bkup/
