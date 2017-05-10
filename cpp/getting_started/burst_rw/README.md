@@ -19,8 +19,6 @@ This is simple example of using AXI4-master interface for burst read and write
 
 ***KEY CONCEPTS:*** Burst Access
 
-***KEYWORDS:*** Burst Copy
-
 ## 2. HOW TO DOWNLOAD THE REPOSITORY
 To get a local copy of the SDSoC example repository, clone this repository to the local system with the following command:
 ```

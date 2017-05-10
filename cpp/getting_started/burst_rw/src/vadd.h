@@ -35,11 +35,11 @@
 
 #include "sds_utils.h"
 
-#define DATA_SIZE 256
+#define DATA_SIZE 2048
 #define INCR_VALUE 10
 
 // Define internal max buffer size
-#define BURSTBUFFERSIZE 2048
+#define BURSTBUFFERSIZE 256
 
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
