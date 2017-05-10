@@ -19,8 +19,6 @@ This is a simple example of accessing full data from 2D array
 
 ***KEY CONCEPTS:*** 2D data array access
 
-***KEYWORDS:*** N/A
-
 ## 2. HOW TO DOWNLOAD THE REPOSITORY
 To get a local copy of the SDSoC example repository, clone this repository to the local system with the following command:
 ```
