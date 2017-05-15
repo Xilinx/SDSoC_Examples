@@ -83,9 +83,9 @@ void row_array_2d_accel(DTYPE *inx, DTYPE *outx, DTYPE alpha) {
 	// pragma: #pragma HLS stream variable=inFifo depth=256
 	my_data_fifo outFifo;
 
-// Dataflow enables task level pipelining, allowing functions and loops to execute 
-// concurrently. Used to minimize interval. More details please refer to UG902.
-#pragma HLS DATAFLOW
+    // Dataflow enables task level pipelining, allowing functions and loops to execute 
+    // concurrently. Used to minimize interval. 
+    #pragma HLS DATAFLOW
 	// Read data from each row of 2D array
 	read_data(inx, inFifo);
 	// Do computation with the acquired data
