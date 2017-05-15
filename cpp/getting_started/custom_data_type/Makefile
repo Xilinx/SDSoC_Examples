@@ -41,6 +41,8 @@ VERBOSE :=
 # Build Executable
 EXECUTABLE := rgb_to_hsv_accel.elf
 
+# Build Directory
+BUILD_DIR := $(TARGET_OS)_$(TARGET)
 #+--------------------------------------------------------------------------
 # Makefile Data
 #+--------------------------------------------------------------------------
@@ -48,9 +50,9 @@ EXECUTABLE := rgb_to_hsv_accel.elf
 # Source Files
 SRC_DIR := src
 OBJECTS += \
-$(pwd)/$(TARGET)/bitmap.o \
-$(pwd)/$(TARGET)/main.o \
-$(pwd)/$(TARGET)/rgb_to_hsv.o
+$(pwd)/$(BUILD_DIR)/bitmap.o \
+$(pwd)/$(BUILD_DIR)/main.o \
+$(pwd)/$(BUILD_DIR)/rgb_to_hsv.o
 
 # SDS Options
 HW_FLAGS := -sds-hw rgb_to_hsv_accel rgb_to_hsv.cpp -sds-end
@@ -76,21 +78,21 @@ SDSFLAGS := -sds-pf $(PLATFORM) \
 CC := sds++ $(SDSFLAGS)
 
 .PHONY: all
-all: $(TARGET)/$(EXECUTABLE)
+all: $(BUILD_DIR)/$(EXECUTABLE)
 
-$(TARGET)/$(EXECUTABLE): $(OBJECTS)
-	mkdir -p $(TARGET)
+$(BUILD_DIR)/$(EXECUTABLE): $(OBJECTS)
+	mkdir -p $(BUILD_DIR)
 	@echo 'Building Target: $@'
 	@echo 'Trigerring: SDS++ Linker'
-	cd $(TARGET) ; $(CC) -o $(EXECUTABLE) $(OBJECTS) $(EMU_FLAGS)
+	cd $(BUILD_DIR) ; $(CC) -o $(EXECUTABLE) $(OBJECTS) $(EMU_FLAGS)
 	@echo 'SDx Completed Building Target: $@'
 	@echo ' '
 
-$(pwd)/$(TARGET)/%.o: $(pwd)/$(SRC_DIR)/%.cpp
+$(pwd)/$(BUILD_DIR)/%.o: $(pwd)/$(SRC_DIR)/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: SDS++ Compiler'
-	mkdir -p $(TARGET)
-	cd $(TARGET) ; $(CC) $(CFLAGS) -o $(LFLAGS) $(HW_FLAGS)
+	mkdir -p $(BUILD_DIR)
+	cd $(BUILD_DIR) ; $(CC) $(CFLAGS) -o $(LFLAGS) $(HW_FLAGS)
 	@echo 'Finished building: $<'
 	@echo ' '
 
@@ -99,10 +101,10 @@ check: all
 ifeq ($(TARGET), emu)
 
     ifeq ($(TARGET_OS), linux)
-	    cp $(ABS_COMMON_REPO)/utility/emu_run.sh $(TARGET)/
-	    cd $(TARGET) ; ./emu_run.sh $(EXECUTABLE)
+	    cp $(ABS_COMMON_REPO)/utility/emu_run.sh $(BUILD_DIR)/
+	    cd $(BUILD_DIR) ; ./emu_run.sh $(EXECUTABLE)
     else
-	    cd $(TARGET) ; sdsoc_emulator -timeout 120
+	    cd $(BUILD_DIR) ; sdsoc_emulator -timeout 120
     endif
 
 else
@@ -111,10 +113,10 @@ endif
 
 .PHONY: cleanall clean ultraclean
 clean:
-	$(RM) $(TARGET)/$(EXECUTABLE) $(OBJECTS)
+	$(RM) $(BUILD_DIR)/$(EXECUTABLE) $(OBJECTS)
 
 cleanall:clean
-	$(RM) -rf $(TARGET) .Xil
+	$(RM) -rf $(BUILD_DIR) .Xil
 
 .PHONY: docs
 docs: README.md

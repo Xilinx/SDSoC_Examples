@@ -113,6 +113,10 @@ def create_mk(target, data):
         target.write(".elf\n")
         target.write("\n")
 
+    target.write("# Build Directory\n")
+    target.write("BUILD_DIR := $(TARGET_OS)_$(TARGET)")
+    target.write("\n")
+
     target.write("#+--------------------------------------------------------------------------\n")
     target.write("# Makefile Data\n")
     target.write("#+--------------------------------------------------------------------------\n")
@@ -172,7 +176,7 @@ target.write("OBJECTS += \\")
 target.write("\n")
 for result in glob.glob(extension):
     temp -= 1
-    target.write("$(pwd)/$(TARGET)/")
+    target.write("$(pwd)/$(BUILD_DIR)/")
     if extension == "*.cpp":
         obj = result.replace(".cpp", ".o")
     else:
@@ -192,7 +196,7 @@ target.write("\n\n")
 
 #for result in glob.glob(extension):
 #    temp -= 1
-#    target.write("$(pwd)/$(TARGET)/")
+#    target.write("$(pwd)/$(BUILD_DIR)/")
 #    if extension == "*.cpp":
 #        obj = result.replace(".cpp", ".d")
 #    else:
@@ -245,28 +249,28 @@ target.write("CC := sds++ $(SDSFLAGS)\n")
 target.write("\n")
 
 target.write(".PHONY: all\n")
-target.write("all: $(TARGET)/$(EXECUTABLE)\n")
+target.write("all: $(BUILD_DIR)/$(EXECUTABLE)\n")
 target.write("\n")
 
-target.write("$(TARGET)/$(EXECUTABLE): $(OBJECTS)\n")
-target.write("\tmkdir -p $(TARGET)\n")
+target.write("$(BUILD_DIR)/$(EXECUTABLE): $(OBJECTS)\n")
+target.write("\tmkdir -p $(BUILD_DIR)\n")
 target.write("\t@echo 'Building Target: $@'\n")
 target.write("\t@echo 'Trigerring: SDS++ Linker'\n")
-target.write("\tcd $(TARGET) ; $(CC) -o $(EXECUTABLE) $(OBJECTS) $(EMU_FLAGS)\n")
+target.write("\tcd $(BUILD_DIR) ; $(CC) -o $(EXECUTABLE) $(OBJECTS) $(EMU_FLAGS)\n")
 target.write("\t@echo 'SDx Completed Building Target: $@'\n")
 target.write("\t@echo ' '\n")
 
 target.write("\n")
 
 if extension == "*.cpp":
-    target.write("$(pwd)/$(TARGET)/%.o: $(pwd)/$(SRC_DIR)/%.cpp\n")
+    target.write("$(pwd)/$(BUILD_DIR)/%.o: $(pwd)/$(SRC_DIR)/%.cpp\n")
 else:
-    target.write("$(pwd)/$(TARGET)/%.o: $(pwd)/$(SRC_DIR)/%.c\n")
+    target.write("$(pwd)/$(BUILD_DIR)/%.o: $(pwd)/$(SRC_DIR)/%.c\n")
 
 target.write("\t@echo 'Building file: $<'\n")
 target.write("\t@echo 'Invoking: SDS++ Compiler'\n")
-target.write("\tmkdir -p $(TARGET)\n")
-target.write("\tcd $(TARGET) ; $(CC) $(CFLAGS) -o $(LFLAGS) $(HW_FLAGS)\n")
+target.write("\tmkdir -p $(BUILD_DIR)\n")
+target.write("\tcd $(BUILD_DIR) ; $(CC) $(CFLAGS) -o $(LFLAGS) $(HW_FLAGS)\n")
 target.write("\t@echo 'Finished building: $<'\n")
 target.write("\t@echo ' '\n")
 
@@ -275,10 +279,10 @@ target.write("# Check Rule Builds the Sources and Executes on Specified Target\n
 target.write("check: all\n")
 target.write("ifeq ($(TARGET), emu)\n\n")
 target.write("    ifeq ($(TARGET_OS), linux)\n")
-target.write("\t    cp $(ABS_COMMON_REPO)/utility/emu_run.sh $(TARGET)/\n")
-target.write("\t    cd $(TARGET) ; ./emu_run.sh $(EXECUTABLE)\n")
+target.write("\t    cp $(ABS_COMMON_REPO)/utility/emu_run.sh $(BUILD_DIR)/\n")
+target.write("\t    cd $(BUILD_DIR) ; ./emu_run.sh $(EXECUTABLE)\n")
 target.write("    else\n")
-target.write("\t    cd $(TARGET) ; sdsoc_emulator -timeout 120\n")
+target.write("\t    cd $(BUILD_DIR) ; sdsoc_emulator -timeout 120\n")
 target.write("    endif\n\n")
 target.write("else\n")
 target.write("\t$(info \"This Release Doesn't Support Automated Hardware Execution\")\n")
@@ -287,12 +291,12 @@ target.write("\n")
 
 target.write(".PHONY: cleanall clean ultraclean\n");
 target.write("clean:\n")
-target.write("\t$(RM) $(TARGET)/$(EXECUTABLE) $(OBJECTS)\n")
+target.write("\t$(RM) $(BUILD_DIR)/$(EXECUTABLE) $(OBJECTS)\n")
 
 target.write("\n")
 
 target.write("cleanall:clean\n")
-target.write("\t$(RM) -rf $(TARGET) .Xil\n")
+target.write("\t$(RM) -rf $(BUILD_DIR) .Xil\n")
 
 target.write("\n")
 
