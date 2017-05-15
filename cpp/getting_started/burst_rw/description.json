@@ -18,6 +18,9 @@
             "description": "Initial Xilinx Release"
         }
     ],
+    "compiler" : {
+        "options" : "-Wno-unused-label"
+    },
     "accelerators": [
        {
            "name" : "vadd_accel",

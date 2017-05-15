@@ -19,6 +19,9 @@
             "description": "Initial Xilinx Release"
         }
     ],
+    "compiler" : {
+        "options" : "-Wno-unused-label"
+    },
     "accelerators": [
        {
            "name" : "window_array_2d_accel",

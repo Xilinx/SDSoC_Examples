@@ -34,7 +34,7 @@ EMU_MODE := optimized
 # Additional sds++ flags - this should be reserved for sds++ flags defined
 # at run-time. Other sds++ options should be defined in the makefile data section below
 # section below
-ADDL_FLAGS := 
+ADDL_FLAGS := -Wno-unused-label
 
 # Set to 1 (number one) to enable sds++ verbose output
 VERBOSE := 
@@ -65,12 +65,12 @@ CFLAGS = -Wall -O3 -c
 CFLAGS += -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" 
 CFLAGS += -std=c++0x
 CFLAGS += -I$(sds_utils_HDRS)
+CFLAGS += $(ADDL_FLAGS)
 LFLAGS = "$@" "$<" 
 #+---------------------------------------------------------------------
 
 SDSFLAGS := -sds-pf $(PLATFORM) \
-	-target-os $(TARGET_OS) \
-	$(ADDL_FLAGS)
+	-target-os $(TARGET_OS) 
 
 # SDS Compiler
 CC := sds++ $(SDSFLAGS)
