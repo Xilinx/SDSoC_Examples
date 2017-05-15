@@ -5,7 +5,6 @@
     ],
     "key_concepts": [ "Inter Dependence"],
     "keywords": ["DEPENDENCE", "inter"],
-    "board": ["zc702", "zc706", "zcu102", "zcu102_es2"],
     "contributors" : [
         {
             "group": "Xilinx",

@@ -5,7 +5,6 @@
     ],
     "key_concepts": [ "Window of 2D data array access"],
     "keywords": ["#pragma HLS DATAFLOW", "#pragma HLS PIPELINE", "#pragma HLS stream"],
-    "board": ["zc702", "zc706", "zcu102", "zcu102_es2"],
     "contributors" : [
         {
             "group": "Xilinx",

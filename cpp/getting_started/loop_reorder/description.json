@@ -5,7 +5,6 @@
     ],
     "key_concepts": [ "Hardware Function Optimization", "Loop Reorder to Improve II"],
     "keywords": ["#pragma HLS PIPELINE", "#pragma HLS ARRAY_PARTITION"],
-    "board": ["zc702", "zc706", "zcu102", "zcu102_es2"],
     "contributors" : [
         {
             "group": "Xilinx",

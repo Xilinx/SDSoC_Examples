@@ -5,7 +5,6 @@
     ],
     "key_concepts": [ "Dataflow", "Custom Data type"],
     "keywords": ["struct", "#pragma HLS data_pack", "#pragma HLS LOOP_TRIPCOUNT"],
-    "board": ["zc702", "zc706", "zcu102", "zcu102_es2"],
     "contributors" : [
         {
             "group": "Xilinx",

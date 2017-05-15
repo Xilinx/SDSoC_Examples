@@ -4,7 +4,7 @@
         "This is a simple example of accessing full data from 2D array"
     ],
     "key_concepts": [ "2D data array access"],
-    "board": ["zc706", "zcu102", "zcu102_es2"],
+    "nboards": ["zc702", "microzed", "zed", "zybo"],
     "contributors" : [
         {
             "group": "Xilinx",

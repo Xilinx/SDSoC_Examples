@@ -94,9 +94,13 @@ def create_mk(target, data):
     target.write("# Additional sds++ flags - this should be reserved for sds++ flags defined\n")
     target.write("# at run-time. Other sds++ options should be defined in the makefile data section below\n")
     target.write("# section below\n")
-    target.write("ADDL_FLAGS := \n")
+    target.write("ADDL_FLAGS := ")
+    if 'compiler' in data:
+        compiler = data["compiler"]
+        if 'options' in compiler:
+            target.write(compiler["options"])
     target.write("\n")
-
+    target.write("\n")
     target.write("# Set to 1 (number one) to enable sds++ verbose output\n")
     target.write("VERBOSE := \n")
     
@@ -206,6 +210,7 @@ for acc in data["accelerators"]:
     target.write(acc["name"])
     target.write(" ")
     target.write(acc["location"])    
+
 #hw_function = data.get("hw_function")
 #target.write(hw_function)
 #target.write(" ")
@@ -225,14 +230,14 @@ target.write("CFLAGS = -Wall -O3 -c\n")
 target.write("CFLAGS += -MT\"$@\" -MMD -MP -MF\"$(@:%.o=%.d)\" -MT\"$(@)\" \n")
 target.write("CFLAGS += -std=c++0x\n")
 target.write("CFLAGS += -I$(sds_utils_HDRS)\n")
+target.write("CFLAGS += $(ADDL_FLAGS)\n")
 target.write("LFLAGS = \"$@\" \"$<\" \n")
 
 target.write("#+---------------------------------------------------------------------\n")
 target.write("\n")
 
 target.write("SDSFLAGS := -sds-pf $(PLATFORM) \\\n")
-target.write("\t-target-os $(TARGET_OS) \\\n")
-target.write("\t$(ADDL_FLAGS)\n")
+target.write("\t-target-os $(TARGET_OS) \n")
 target.write("\n")
 
 target.write("# SDS Compiler\n")

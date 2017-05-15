@@ -5,7 +5,6 @@
     ],
     "key_concepts": [ "Row of 2D data array access"],
     "keywords": ["hls::stream"],
-    "board": ["zc702", "zc706", "zcu102", "zcu102_es2"],
     "contributors" : [
         {
             "group": "Xilinx",

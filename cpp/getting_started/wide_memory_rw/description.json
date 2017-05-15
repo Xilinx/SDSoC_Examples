@@ -5,7 +5,7 @@
     ],
     "key_concepts": [ "Accelerator to Memory Access", "wide memory access", "burst read and write"],
     "keywords": ["ap_uint<DATAWIDTH>", "ap_int.h"],
-    "board": ["zc706", "zcu102", "zcu102_es2"],
+    "nboards": ["zc702", "microzed", "zed", "zybo"],
     "contributors" : [
         {
             "group": "Xilinx",

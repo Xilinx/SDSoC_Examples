@@ -5,7 +5,6 @@
     ],
     "key_concepts": [ "Hardware Function Optimization", "Loop Pipelining"],
     "keywords": ["#pragma HLS PIPELINE"],
-    "board": ["zc702", "zc706", "zcu102", "zcu102_es2"],
     "contributors" : [
         {
             "group": "Xilinx",
