@@ -80,11 +80,11 @@ def overview(target,data):
     return
 
 def requirements(target,data):
-    nboards = []
-    if 'nboards' in data:
-        nboards = data['nboards']
+    nboard = []
+    if 'nboard' in data:
+        nboard = data['nboard']
     
-    boards = [word for word in DEVICES if word not in nboards]
+    boards = [word for word in DEVICES if word not in nboard]
 
     target.write("## 3. SOFTWARE AND SYSTEM REQUIREMENTS\n")
     target.write("Board | Family | Part | Flow | OS \n")
