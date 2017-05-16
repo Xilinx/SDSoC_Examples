@@ -114,7 +114,7 @@ def create_mk(target, data):
         target.write("\n")
 
     target.write("# Build Directory\n")
-    target.write("BUILD_DIR := $(TARGET_OS)_$(TARGET)")
+    target.write("BUILD_DIR := build/$(PLATFORM)_$(TARGET_OS)_$(TARGET)")
     target.write("\n")
 
     target.write("#+--------------------------------------------------------------------------\n")
@@ -296,7 +296,7 @@ target.write("\t$(RM) $(BUILD_DIR)/$(EXECUTABLE) $(OBJECTS)\n")
 target.write("\n")
 
 target.write("cleanall:clean\n")
-target.write("\t$(RM) -rf $(BUILD_DIR) .Xil\n")
+target.write("\t$(RM) -rf ./build .Xil\n")
 
 target.write("\n")
 

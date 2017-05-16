@@ -42,7 +42,7 @@ VERBOSE :=
 EXECUTABLE := rgb_to_hsv_accel.elf
 
 # Build Directory
-BUILD_DIR := $(TARGET_OS)_$(TARGET)
+BUILD_DIR := build/$(PLATFORM)_$(TARGET_OS)_$(TARGET)
 #+--------------------------------------------------------------------------
 # Makefile Data
 #+--------------------------------------------------------------------------
@@ -116,7 +116,7 @@ clean:
 	$(RM) $(BUILD_DIR)/$(EXECUTABLE) $(OBJECTS)
 
 cleanall:clean
-	$(RM) -rf $(BUILD_DIR) .Xil
+	$(RM) -rf ./build .Xil
 
 .PHONY: docs
 docs: README.md
