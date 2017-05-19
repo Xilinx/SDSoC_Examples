@@ -21,6 +21,8 @@ Example        | Description           | Key Concepts / Keywords
 [systolic_array/][]|This is a simple example of matrix multiplication (Row x Col) to help developers learn systolic array based algorithm design. Note : Systolic array based algorithm design is well suited for FPGA.|__Key__ __Concepts__<br> - Systolic Array<br>__Keywords__<br> - #pragma HLS PIPELINE<br> - #pragma HLS ARRAY_PARTITION
 [wide_memory_rw/][]|This is a simple example of vector addition to demonstrate Wide Memory Access using ap_uint<128> data type. Based on input argument type, sds++ compiler will figure out the memory bandwidth between DDR and PL.|__Key__ __Concepts__<br> - Accelerator to Memory Access<br> - wide memory access<br> - burst read and write<br>__Keywords__<br> - ap_uint<DATAWIDTH><br> - ap_int.h
 [window_array_2d/][]|This is a simple example of accessing window of data from 2D array|__Key__ __Concepts__<br> - Window of 2D data array access<br>__Keywords__<br> - #pragma HLS DATAFLOW<br> - #pragma HLS PIPELINE<br> - #pragma HLS stream
+[dma_sg/][]|This example demonstrates how to use Scatter-Gather DMAs for data transfer to/from hardware accelerator|__Key__ __Concepts__<br> - Scatter Gather DMA<br>__Keywords__<br> - #pragma SDS access_parttern(a:SEQUENTIAL)<br> - #pragma SDS data_mover(a:AXIDMA_SG)<br> - #pragma SDS data copy
+[dma_simple/][]|This example demonstrates how to insert Simple DMAs for data transfer between User program and hardware accelerator|__Key__ __Concepts__<br> - Simple DMA<br>__Keywords__<br> - #pragma SDS access_parttern(a:SEQUENTIAL)<br> - #pragma SDS data_mover(a:AXIDMA_SIMPLE)<br> - #pragma SDS data copy
 
 [.]:.
 [array_partition/]:array_partition/
@@ -38,3 +40,5 @@ Example        | Description           | Key Concepts / Keywords
 [systolic_array/]:systolic_array/
 [wide_memory_rw/]:wide_memory_rw/
 [window_array_2d/]:window_array_2d/
+[dma_sg/]:dma_sg/
+[dma_simple/]:dma_simple/
