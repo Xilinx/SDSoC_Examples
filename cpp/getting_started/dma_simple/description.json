@@ -1,0 +1,42 @@
+{
+    "example": "DMA Simple",
+    "overview": [
+        "This example demonstrates how to insert Simple DMAs for data transfer between User program and hardware accelerator"
+    ],
+    "key_concepts": [ "Simple DMA"],
+    "keywords": ["#pragma SDS access_parttern(a:SEQUENTIAL)", 
+                 "#pragma SDS data_mover(a:AXIDMA_SIMPLE)",
+                 "#pragma SDS data copy"],
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "MAY2017",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "compiler" : {
+        "options" : "-Wno-unused-label"
+    },
+    "accelerators": [
+       {
+           "name" : "vadd_hw",
+           "location" : "vadd.cpp"
+       }
+    ],
+    "libs": [
+            "sds_utils"
+    ],
+    "source_dir" : "src/*.cpp",
+    "os" : [
+            "linux",
+            "standalone"
+    ],
+    "pass_string" : "TEST PASSED",
+    "fail_string" : "TEST FAILED" 
+}
