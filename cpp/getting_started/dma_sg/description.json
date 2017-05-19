@@ -1,0 +1,42 @@
+{
+    "example": "DMA SG(scatter-Gather)",
+    "overview": [
+        "This example demonstrates how to use Scatter-Gather DMAs for data transfer to/from hardware accelerator"
+    ],
+    "key_concepts": [ "Scatter Gather DMA"],
+    "keywords": ["#pragma SDS access_parttern(a:SEQUENTIAL)", 
+                 "#pragma SDS data_mover(a:AXIDMA_SG)",
+                 "#pragma SDS data copy"],
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "MAY2017",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "compiler" : {
+        "options" : "-Wno-unused-label"
+    },
+    "accelerators": [
+       {
+           "name" : "vadd_hw",
+           "location" : "vadd.cpp"
+       }
+    ],
+    "libs": [
+            "sds_utils"
+    ],
+    "source_dir" : "src/*.cpp",
+    "os" : [
+            "linux",
+            "standalone"
+    ],
+    "pass_string" : "TEST PASSED",
+    "fail_string" : "TEST FAILED" 
+}
