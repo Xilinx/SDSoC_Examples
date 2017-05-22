@@ -33,7 +33,7 @@ Board | Family | Part | Flow | OS
 ------|-------------|----------|----------|----------
 zc706|zynq|xc7z045|Emulation/Hardware|linux/standalone|
 zcu102_es2|zynquplus|xczu9eg|Hardware|linux/standalone|
-zcu102|zynquplus|xczu9eg|Emulation/Hardware|linux/standalone|
+zcu102_es1|zynquplus|xczu9eg|Emulation/Hardware|linux/standalone|
 zc702|zynq|xc7z020|Emulation/Hardware|linux/standalone|
 
 
@@ -48,6 +48,12 @@ where the *PLATFORM* variable accepts one device.
 ## 4. DESIGN FILE HIERARCHY
 Application code is located in the src/ directory. Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation flow, directory name is "emu" and in case of hardware flow it is named as "hw" 
 ```
+Makefile
+README.md
+description.json
+src/main.cpp
+src/vadd.cpp
+src/vadd.h
 ```
 
 ## 5. COMPILATION AND EXECUTION

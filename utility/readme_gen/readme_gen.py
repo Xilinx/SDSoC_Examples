@@ -5,11 +5,10 @@ import os
 import subprocess
 
 DSA = 'zc706'
-VERSION = '2016.4'
 DEVICES = {
     'zc702':['zynq','xc7z020','Emulation/Hardware','linux/standalone'],
     'zc706':['zynq','xc7z045','Emulation/Hardware','linux/standalone'],
-    'zcu102':['zynquplus','xczu9eg','Emulation/Hardware','linux/standalone'],
+    'zcu102_es1':['zynquplus','xczu9eg','Emulation/Hardware','linux/standalone'],
     'zcu102_es2':['zynquplus','xczu9eg','Hardware','linux/standalone']
     }
 
