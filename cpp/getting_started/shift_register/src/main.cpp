@@ -93,11 +93,12 @@ int verify(int *gold, const int *out, const int signal_size) {
 int main(int argc, char **argv) {
     
     int test_passed = 0;
+    int signal_size = SIGNAL_SIZE;
 
     // Allocate PL buffers using sds_alloc
-    int *signal = (int *) sds_alloc(sizeof(int) * SIGNAL_SIZE);
+    int *signal = (int *) sds_alloc(sizeof(int) * signal_size);
     int *coeff  = (int *) sds_alloc(sizeof(int) * N_COEFF);
-    int *hw_out = (int *) sds_alloc(sizeof(int) * SIGNAL_SIZE);
+    int *hw_out = (int *) sds_alloc(sizeof(int) * signal_size);
 
     coeff[0] = 53;
     coeff[1] =  0;
@@ -111,23 +112,29 @@ int main(int argc, char **argv) {
     coeff[9] =   0;
     coeff[10]=  53;
 
+    //Creating Test Data 
+    for (int i = 0 ; i < signal_size; i++){
+        signal[i] = rand();
+        hw_out[i] = 0 ;     
+    }
+
     // Allocate software output buffer
-    int *gold = (int *) malloc(sizeof(int) * SIGNAL_SIZE);
+    int *gold = (int *) malloc(sizeof(int) * signal_size);
     
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
     sw_ctr.start();
     //Launch the Software Solution
-    fir(gold, signal, coeff, SIGNAL_SIZE);
+    fir(gold, signal, coeff, signal_size);
     sw_ctr.stop();
 
     hw_ctr.start();
     //Launch the Hardware Solution
-    fir_shift_register_accel(signal, coeff, hw_out, SIGNAL_SIZE); 
+    fir_shift_register_accel(signal, coeff, hw_out, signal_size); 
     hw_ctr.stop();
     
     // Verify software and hardware results
-    test_passed = verify(gold, hw_out, SIGNAL_SIZE);
+    test_passed = verify(gold, hw_out, signal_size);
 
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
