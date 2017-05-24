@@ -46,61 +46,61 @@
 #include <stdlib.h>
 #include "vector_addition.h"
 
-const int DATA_SIZE = 1<<10;
+const int TEST_DATA_SIZE = 1<<10;
 
 // Compare software and hardware solutions
-int verify(int *gold, int *out) {
-    for(int i = 0; i < DATA_SIZE; i++){
+static int verify(int *gold, int *out, int size) {
+    for(int i = 0; i < size; i++){
         if(gold[i] != out[i]){
-            std::cout<< "Results: CPU " << gold[i] << " Device" << out[i] << std::endl;
+            std::cout<< "Result Mismatch at index=" << size
+                << " Expected=" << gold[i] 
+                << " Actual=" << out[i] << "\n";
             return 1;
         }
   }
   return 0;
 }
 
-// Software solution
-void vadd(int *a, int *b, int *c, int len){
-
-    vadd_loop:
-    for (int x=0; x<len; ++x) {
-        c[x] = a[x] + b[x];
-    }
-}
 
 int main(int argc, char** argv)
 {
 
     int test_passed = 0;
+    int test_size = TEST_DATA_SIZE;
 
     // Create PL buffers using sds_alloc  
-    int *source_a = (int *) sds_alloc(sizeof(int) * DATA_SIZE);
-    int *source_b = (int *) sds_alloc(sizeof(int) * DATA_SIZE);
-    int *source_results = (int *) sds_alloc(sizeof(int) * DATA_SIZE);
+    int *a = (int *) sds_alloc(sizeof(int) * test_size);
+    int *b = (int *) sds_alloc(sizeof(int) * test_size);
+    int *hw_results = (int *) sds_alloc(sizeof(int) * test_size);
 
     // Software output buffer
-    int *gold = (int *)malloc(sizeof(int) * DATA_SIZE);
+    int *gold = (int *)malloc(sizeof(int) * test_size);
+
+    //Creating Test Data and golden data
+    for (int i = 0 ; i < test_size ; i++){
+       a[i] = rand();
+       b[i] = rand();
+       gold[i] = a[i] + b[i]; // Calculating Golden value
+       hw_results[i] = 0 ;     
+    }
     
     sds_utils::perf_counter hw_ctr;
 
-    //Launch the Software Solution
-    vadd(source_a, source_b, gold, DATA_SIZE);
-
     hw_ctr.start();
     //Launch the Hardware Solution
-    vadd_pipelined_accel(source_a, source_b, source_results, DATA_SIZE);
+    vadd_pipelined_accel(a, b, hw_results, test_size);
     hw_ctr.stop();
     
-    test_passed = verify(gold, source_results);
+    test_passed = verify(gold, hw_results, test_size);
 
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 
     std::cout << "Average number of CPU cycles running vadd in hardware: "
 				 << hw_cycles << std::endl;
    
-    sds_free(source_a);
-    sds_free(source_b);
-    sds_free(source_results);
+    sds_free(a);
+    sds_free(b);
+    sds_free(hw_results);
     free(gold);
 
     std::cout << "TEST " << (test_passed ? "FAILED" : "PASSED") << std::endl;
