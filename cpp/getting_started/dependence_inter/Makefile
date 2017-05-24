@@ -39,8 +39,7 @@ ADDL_FLAGS := -Wno-unused-label
 # Set to 1 (number one) to enable sds++ verbose output
 VERBOSE := 
 # Build Executable
-EXECUTABLE := mean_value_accel.elf
-
+EXECUTABLE := run.elf 
 # Build Directory
 BUILD_DIR := build/$(PLATFORM)_$(TARGET_OS)_$(TARGET)
 #+--------------------------------------------------------------------------
@@ -51,10 +50,12 @@ BUILD_DIR := build/$(PLATFORM)_$(TARGET_OS)_$(TARGET)
 SRC_DIR := src
 OBJECTS += \
 $(pwd)/$(BUILD_DIR)/main.o \
-$(pwd)/$(BUILD_DIR)/vconv.o
+$(pwd)/$(BUILD_DIR)/mean_value.o
 
 # SDS Options
-HW_FLAGS := -sds-hw mean_value_accel mean_value.cpp -sds-end
+HW_FLAGS :=
+HW_FLAGS += -sds-hw mean_value_accel mean_value.cpp -sds-end
+
 EMU_FLAGS := 
 ifeq ($(TARGET), emu)
 	EMU_FLAGS := -mno-bitstream -mno-boot-files -emulation $(EMU_MODE)
