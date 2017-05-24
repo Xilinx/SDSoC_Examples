@@ -43,45 +43,18 @@
    vector addition hardware function using the HLS PIPELINE pragma.
 ************************************************************************************/
 
-#define N 128
 #include "vector_addition.h"
 
 void vadd_pipelined_accel(int *a, int *b, int *c, const int len)
 {
-    //Local buffer size is restricted to N size
-    int result[N];
-    
-    int iterations = len / N;
-    for(int i = 0; i < iterations; i++) {
+	//Loop will do burst read from A and B and will do burst write
+    //to C due to pipeline pragma
+    vadd: for(int i = 0; i < len; i++) {
+        //By-Default SDSoC accelerators will create separate AXI master interface
+        //for each memory accessing arguments (here it is a,b, and c), so 
+        //accelerator can initiate burst request to all interfaces concurrently. 
         #pragma HLS PIPELINE
-        #pragma HLS LOOP_TRIPCOUNT min=1 max=8
-        int chunk_size = N;
-
-        //Boundary Check
-        if (i + chunk_size > len) chunk_size = len-i;
-
-        read_a:
-        for (int x=0; x<chunk_size; ++x) {
-            #pragma HLS LOOP_TRIPCOUNT min=128 max=128
-            #pragma HLS PIPELINE
-            //Loop will do burst read from A due to pipeline pragma
-            result[x] = a[i*N+x];
-        }
-        
-        read_b:
-        for (int x=0; x<chunk_size; ++x) {
-            #pragma HLS LOOP_TRIPCOUNT min=128 max=128
-            #pragma HLS PIPELINE
-            //Loop will do burst read from B due to pipeline pragma
-            result[x] += b[i*N+x];
-        }
-
-        write:
-        for (int x=0; x<chunk_size; ++x) {
-            #pragma HLS LOOP_TRIPCOUNT min=128 max=128
-            #pragma HLS PIPELINE
-            //Loop will do burst write to C due to pipeline pragma
-            c[i*N+x] = result[x];
-        }
+        #pragma HLS LOOP_TRIPCOUNT min=1024 max=1024
+        c[i] = a[i] + b[i];
     }
 }

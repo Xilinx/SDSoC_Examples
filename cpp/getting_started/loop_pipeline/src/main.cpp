@@ -81,7 +81,7 @@ int main(int argc, char** argv)
     // Software output buffer
     int *gold = (int *)malloc(sizeof(int) * DATA_SIZE);
     
-    sds_utils::perf_counter hw_ctr, sw_ctr;
+    sds_utils::perf_counter hw_ctr;
 
     //Launch the Software Solution
     vadd(source_a, source_b, gold, DATA_SIZE);
@@ -95,7 +95,7 @@ int main(int argc, char** argv)
 
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 
-    std::cout << "Average number of CPU cycles running mmult in hardware: "
+    std::cout << "Average number of CPU cycles running vadd in hardware: "
 				 << hw_cycles << std::endl;
    
     sds_free(source_a);
