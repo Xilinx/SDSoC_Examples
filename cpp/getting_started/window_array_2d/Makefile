@@ -39,8 +39,7 @@ ADDL_FLAGS := -Wno-unused-label
 # Set to 1 (number one) to enable sds++ verbose output
 VERBOSE := 
 # Build Executable
-EXECUTABLE := window_array_2d_accel.elf
-
+EXECUTABLE := run.elf 
 # Build Directory
 BUILD_DIR := build/$(PLATFORM)_$(TARGET_OS)_$(TARGET)
 #+--------------------------------------------------------------------------
@@ -54,7 +53,9 @@ $(pwd)/$(BUILD_DIR)/main.o \
 $(pwd)/$(BUILD_DIR)/window_array_2d.o
 
 # SDS Options
-HW_FLAGS := -sds-hw window_array_2d_accel window_array_2d.cpp -sds-end
+HW_FLAGS :=
+HW_FLAGS += -sds-hw window_array_2d_accel window_array_2d.cpp -sds-end
+
 EMU_FLAGS := 
 ifeq ($(TARGET), emu)
 	EMU_FLAGS := -mno-bitstream -mno-boot-files -emulation $(EMU_MODE)

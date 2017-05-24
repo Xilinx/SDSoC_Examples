@@ -39,8 +39,7 @@ ADDL_FLAGS := -Wno-unused-label
 # Set to 1 (number one) to enable sds++ verbose output
 VERBOSE := 
 # Build Executable
-EXECUTABLE := matmul_partition_accel.elf
-
+EXECUTABLE := run.elf 
 # Build Directory
 BUILD_DIR := build/$(PLATFORM)_$(TARGET_OS)_$(TARGET)
 #+--------------------------------------------------------------------------
@@ -54,7 +53,9 @@ $(pwd)/$(BUILD_DIR)/main.o \
 $(pwd)/$(BUILD_DIR)/matmul.o
 
 # SDS Options
-HW_FLAGS := -sds-hw matmul_partition_accel matmul.cpp -sds-end
+HW_FLAGS :=
+HW_FLAGS += -sds-hw matmul_partition_accel matmul.cpp -sds-end
+
 EMU_FLAGS := 
 ifeq ($(TARGET), emu)
 	EMU_FLAGS := -mno-bitstream -mno-boot-files -emulation $(EMU_MODE)

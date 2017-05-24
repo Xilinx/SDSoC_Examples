@@ -105,13 +105,8 @@ def create_mk(target, data):
     target.write("VERBOSE := \n")
     
     target.write("# Build Executable\n")
-    target.write("EXECUTABLE := ")
-#    hf = data.get("hw_function")
-#    target.write(hf)
-    for acc in data["accelerators"]:
-        target.write(acc["name"])
-        target.write(".elf\n")
-        target.write("\n")
+    target.write("EXECUTABLE := run.elf ")
+    target.write("\n")
 
     target.write("# Build Directory\n")
     target.write("BUILD_DIR := build/$(PLATFORM)_$(TARGET_OS)_$(TARGET)")
@@ -207,20 +202,21 @@ target.write("\n\n")
 #target.write("\n\n")
 
 target.write("# SDS Options\n")
-#target.write("#\n")
-target.write("HW_FLAGS := -sds-hw ")
-
+target.write("HW_FLAGS :=")
+target.write("\n")
 for acc in data["accelerators"]:
+    target.write("HW_FLAGS += -sds-hw ")
     target.write(acc["name"])
     target.write(" ")
     target.write(acc["location"])    
+    target.write(" -sds-end\n")
+target.write("\n")
 
 #hw_function = data.get("hw_function")
 #target.write(hw_function)
 #target.write(" ")
 #hf_file = data.get("accel_file")
 #target.write(hf_file)
-target.write(" -sds-end\n")
 
 target.write("EMU_FLAGS := \n")
 target.write("ifeq ($(TARGET), emu)\n")

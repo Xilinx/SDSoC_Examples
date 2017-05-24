@@ -39,8 +39,7 @@ ADDL_FLAGS := -Wno-unused-label
 # Set to 1 (number one) to enable sds++ verbose output
 VERBOSE := 
 # Build Executable
-EXECUTABLE := rgb_to_hsv_accel.elf
-
+EXECUTABLE := run.elf 
 # Build Directory
 BUILD_DIR := build/$(PLATFORM)_$(TARGET_OS)_$(TARGET)
 #+--------------------------------------------------------------------------
@@ -55,7 +54,9 @@ $(pwd)/$(BUILD_DIR)/main.o \
 $(pwd)/$(BUILD_DIR)/rgb_to_hsv.o
 
 # SDS Options
-HW_FLAGS := -sds-hw rgb_to_hsv_accel rgb_to_hsv.cpp -sds-end
+HW_FLAGS :=
+HW_FLAGS += -sds-hw rgb_to_hsv_accel rgb_to_hsv.cpp -sds-end
+
 EMU_FLAGS := 
 ifeq ($(TARGET), emu)
 	EMU_FLAGS := -mno-bitstream -mno-boot-files -emulation $(EMU_MODE)
