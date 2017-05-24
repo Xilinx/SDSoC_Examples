@@ -105,7 +105,7 @@ ifeq ($(TARGET), emu)
 	    cp $(ABS_COMMON_REPO)/utility/emu_run.sh $(BUILD_DIR)/
 	    cd $(BUILD_DIR) ; ./emu_run.sh $(EXECUTABLE)
     else
-	    cd $(BUILD_DIR) ; sdsoc_emulator -timeout 120
+	    cd $(BUILD_DIR) ; sdsoc_emulator -timeout 300
     endif
 
 else
