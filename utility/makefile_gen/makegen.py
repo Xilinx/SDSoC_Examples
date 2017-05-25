@@ -54,9 +54,9 @@ def create_mk(target, data):
     target.write("#+-------------------------------------------------------------------------------\n")
     target.write("\n")
     
-    target.write("# Device Platform (Default ~ zc706)\n")
+    target.write("# Device Platform (Default ~ zcu102_es2)\n")
     target.write("PLATFORM := ")
-    target.write("zc706")
+    target.write("zcu102_es2")
     target.write("\n")
     target.write("\n")
     

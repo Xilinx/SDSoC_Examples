@@ -4,8 +4,8 @@
 # be overridden through the make command line
 #+-------------------------------------------------------------------------------
 
-# Device Platform (Default ~ zc706)
-PLATFORM := zc706
+# Device Platform (Default ~ zcu102_es2)
+PLATFORM := zcu102_es2
 
 # Run Target:
 #   hw  - Compile for hardware
