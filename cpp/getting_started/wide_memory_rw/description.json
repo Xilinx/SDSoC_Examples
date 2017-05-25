@@ -33,8 +33,7 @@
     ],
     "source_dir" : "src/*.cpp",
     "os" : [
-            "linux",
-            "standalone"
+            "linux"
     ],
     "pass_string" : "TEST PASSED",
     "fail_string" : "TEST FAILED" 
