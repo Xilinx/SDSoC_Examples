@@ -47,8 +47,6 @@
 
 *******************************************************************************/
 
-#include <hls_stream.h>
-#include <ap_int.h>
 #include "mean_value.h"
 
 #define MAX_SIZE 1024
