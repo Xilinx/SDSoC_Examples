@@ -77,6 +77,13 @@ int main(int argc, char** argv)
     int *gold   = (int *)malloc(sizeof(int) * test_size);
     int *hw_results = (int *) malloc(sizeof(int) * test_size);
 
+    //Checking for failed allocation
+    if ( (a == NULL) || (b == NULL) || (gold == NULL)  || (hw_results == NULL)){
+        std::cout  << "TEST FAILED: Failed to allocate Memory" << std::endl;
+        return -1;
+    }
+
+
     //Creating Test Data and golden data
     for (int i = 0 ; i < test_size ; i++){
         a[i] = rand();
@@ -99,9 +106,9 @@ int main(int argc, char** argv)
   
     test_passed = verify(gold, hw_results, test_size);
 
-    sds_free(a);
-    sds_free(b);
-    sds_free(hw_results);
+    free(a);
+    free(b);
+    free(hw_results);
     free(gold);
 
     std::cout << "TEST " << (test_passed ? "FAILED" : "PASSED") << std::endl;
