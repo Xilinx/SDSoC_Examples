@@ -106,7 +106,7 @@ int main(int argc, char** argv)
         }
     }
 
-    // Release Memory from Host Memory
+    // Release Memory  
     sds_free(source_input_a);
     sds_free(source_input_b);
     sds_free(source_hw_results);

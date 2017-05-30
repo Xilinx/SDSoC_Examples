@@ -47,7 +47,7 @@ void mean_value(int in[], int out[], int n)
 
 int main(int argc, char** argv)
 {
-    //Allocate Memory in Host Memory
+    // Size of vector
     size_t vector_size_bytes = sizeof(int) * DATA_SIZE;
 
     // Allocate Input and Output Buffers
@@ -96,7 +96,7 @@ int main(int argc, char** argv)
         }
     }
 
-    /* Release Memory from Host Memory*/
+    // Release Memory 
     sds_free(source_input);
     sds_free(source_hw_results);
     free(source_sw_results);

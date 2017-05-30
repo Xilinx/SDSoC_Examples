@@ -70,7 +70,7 @@ void pack_output_int(HSVcolor *in, int *out, int size)
 
 int main(int argc, char* argv[])
 {
-    // Allocate Memory in Host Memory
+    // Size of synthetic image
     int image_size = IMAGE_SIZE * IMAGE_SIZE;
 
     // Synthetic Image Data
@@ -121,7 +121,7 @@ int main(int argc, char* argv[])
     //Compare the results of the Device to the Sw Based
     int match= compareImages(swHsvImage, hwHsvImage, image_size);
 
-    // Release Memory from Host Memory
+    // Release Memory 
     sds_free(hwHsvImage);
     free(swHsvImage);
 
