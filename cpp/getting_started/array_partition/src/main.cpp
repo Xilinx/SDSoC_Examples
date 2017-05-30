@@ -58,7 +58,7 @@ void matmul(int *C, int *A, int *B, int M) {
 int verify(int *gold, int *output, int size) {
     for (int i = 0; i < size; i++) {
         if (output[i] != gold[i]) {
-            printf("Mismatch %d: gold: %d device: %d\n", i, gold[i], output[i]);
+            printf("Mismatch %d: gold: %d hardware: %d\n", i, gold[i], output[i]);
             return -1;
         }
     }
@@ -99,7 +99,7 @@ int main(int argc, char **argv) {
     matmul_partition_accel(A, B, C, columns); 
     hw_ctr.stop();
 
-    // Compare the results of the Device to the simulation
+    // Compare the results of hardware to the simulation
     test_passed = verify(gold, C, columns * rows);
     
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();

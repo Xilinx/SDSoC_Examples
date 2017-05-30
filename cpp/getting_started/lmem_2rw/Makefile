@@ -4,7 +4,7 @@
 # be overridden through the make command line
 #+-------------------------------------------------------------------------------
 
-# Device Platform (Default ~ zcu102_es2)
+# FPGA Board Platform (Default ~ zcu102_es2)
 PLATFORM := zcu102_es2
 
 # Run Target:

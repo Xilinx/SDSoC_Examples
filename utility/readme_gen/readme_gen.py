@@ -107,7 +107,7 @@ def requirements(target,data):
     target.write("```\n")
     target.write("make check PLATFORM=<board name> or make all PLATFORM=<board name>\n")
     target.write("```\n")
-    target.write("where the *PLATFORM* variable accepts one device.\n\n")
+    target.write("where the *PLATFORM* variable accepts one board.\n\n")
     try:
       if data['opencv']:
                 target.write("***OpenCV for Example Applications***\n\n")

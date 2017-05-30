@@ -64,9 +64,9 @@ void fir(int *output, const int *signal, const int *coeff, const int signal_leng
 }
 
 // Print signals
-void print_signal(int *device_output, int signal_size) {
+void print_signal(int *hardware_output, int signal_size) {
     for (int i = 0; i < signal_size; i++ ) {
-        printf("%d ", device_output[i]);
+        printf("%d ", hardware_output[i]);
     }
     printf("\n");
 }
