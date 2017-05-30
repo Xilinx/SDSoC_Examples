@@ -10,8 +10,12 @@
             "categories": [
                 {
                     "name": "getting_started", 
-                    "displayName": "", 
-                    "description": "", 
+                    "displayName": [
+                        "Getting Started Examples"
+                    ], 
+                    "description": [
+                        "This page contains examples for users who are new to Xilinx SDx SDSoC Flows."
+                    ], 
                     "categories": [], 
                     "examples": [
                         {
@@ -37,9 +41,6 @@
                                 "This is simple example of using AXI4-master interface for burst read and write"
                             ], 
                             "displayName": "Burst Read/Write", 
-                            "keywords": [
-                                "Burst Copy"
-                            ], 
                             "key_concepts": [
                                 "Burst Access"
                             ], 
@@ -81,14 +82,45 @@
                             "author": "Xilinx"
                         }, 
                         {
+                            "name": "dma_sg", 
+                            "description": [
+                                "This example demonstrates how to use Scatter-Gather DMAs for data transfer to/from hardware accelerator"
+                            ], 
+                            "displayName": "DMA SG(scatter-Gather)", 
+                            "keywords": [
+                                "#pragma SDS access_parttern(a:SEQUENTIAL)", 
+                                "#pragma SDS data_mover(a:AXIDMA_SG)", 
+                                "#pragma SDS data copy"
+                            ], 
+                            "key_concepts": [
+                                "Scatter Gather DMA"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "dma_simple", 
+                            "description": [
+                                "This example demonstrates how to insert Simple DMAs for data transfer between User program and hardware accelerator"
+                            ], 
+                            "displayName": "DMA Simple", 
+                            "keywords": [
+                                "#pragma SDS access_parttern(a:SEQUENTIAL)", 
+                                "#pragma SDS data_mover(a:AXIDMA_SIMPLE)", 
+                                "#pragma SDS data copy"
+                            ], 
+                            "key_concepts": [
+                                "Simple DMA"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
                             "name": "full_array_2d", 
                             "description": [
                                 "This is a simple example of accessing full data from 2D array"
                             ], 
                             "displayName": "Full 2D Array Read/Write", 
-                            "keywords": [
-                                "N/A"
-                            ], 
                             "key_concepts": [
                                 "2D data array access"
                             ], 
