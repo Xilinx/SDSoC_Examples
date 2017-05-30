@@ -52,7 +52,7 @@ const int TEST_DATA_SIZE = 1<<10;
 static int verify(int *gold, int *out, int size) {
     for(int i = 0; i < size; i++){
         if(gold[i] != out[i]){
-            std::cout<< "Result Mismatch at index=" << size
+            std::cout<< "Result Mismatch at index=" << i
                 << " Expected=" << gold[i] 
                 << " Actual=" << out[i] << "\n";
             return 1;
