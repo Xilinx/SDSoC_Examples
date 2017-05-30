@@ -113,9 +113,6 @@ int main(int argc, char** argv)
                 << " Hardware result = " << source_hw_results[i] << std::endl;
             match = 1;
             break;
-        }else{
-            std::cout << source_hw_results[i] << " " ;
-            if ( ( (i+1) % 16) == 0) std::cout << std::endl;
         }
     }
 

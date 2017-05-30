@@ -47,8 +47,9 @@ void mean_value(int in[], int out[], int n)
 
 int main(int argc, char** argv)
 {
+    int size = DATA_SIZE;
     // Size of vector
-    size_t vector_size_bytes = sizeof(int) * DATA_SIZE;
+    size_t vector_size_bytes = sizeof(int) * size;
 
     // Allocate Input and Output Buffers
     // sds_alloc must be used to allocate memory for PL buffers
@@ -59,16 +60,15 @@ int main(int argc, char** argv)
     int *source_sw_results  = (int *) malloc(vector_size_bytes);
 
     // Create the test data and Software Result
-    for(int i = 0 ; i < DATA_SIZE ; i++){
-        source_input[i] = rand() % DATA_SIZE;
+    for(int i = 0 ; i < size ; i++){
+        source_input[i] = rand() % size;
         source_sw_results[i] = source_input[i];
         source_hw_results[i] = 0;
     }
     sds_utils::perf_counter hw_ctr;
 
-    mean_value(source_input,source_sw_results, DATA_SIZE);
+    mean_value(source_input,source_sw_results, size);
 
-    int size = DATA_SIZE;
 
     hw_ctr.start();
     // Launch the Accelerator
@@ -83,16 +83,13 @@ int main(int argc, char** argv)
     // Compare the results of the Hardware to the simulation
     int match = 0;
     std::cout << "Result = " << std::endl;
-    for (int i = 0 ; i < DATA_SIZE ; i++){
+    for (int i = 0 ; i < size; i++){
         if (source_hw_results[i] != source_sw_results[i]){
             std::cout << "Error: Result mismatch" << std::endl;
             std::cout << "i = " << i << " CPU result = " << source_sw_results[i]
                 << " Hardware result = " << source_hw_results[i] << std::endl;
             match = 1;
             break;
-        }else{
-            std::cout << source_hw_results[i] << " " ;
-            if ( ( (i+1) % 16) == 0) std::cout << std::endl;
         }
     }
 
