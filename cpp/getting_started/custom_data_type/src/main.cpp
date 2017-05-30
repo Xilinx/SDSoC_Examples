@@ -52,12 +52,12 @@ void sw_RgbToHsv(int* in, int *out, int image_size);
 void sw_HsvToRgb(int *in, int *out, int image_size);
 int compareImages(int * _in, int * _out, int image_size);
 
-void extract_pixel_data(int *in, RGBcolor *device_input, int size)
+void extract_pixel_data(int *in, RGBcolor *hardware_input, int size)
 {
 	for(int i = 0;i < size; i++){
-		device_input[i].r = (in[i]) & 0xff;
-		device_input[i].g = ( (in[i]) & 0xff00 ) >> 8;
-		device_input[i].b = ( (in[i]) & 0xff0000 ) >> 16;
+		hardware_input[i].r = (in[i]) & 0xff;
+		hardware_input[i].g = ( (in[i]) & 0xff00 ) >> 8;
+		hardware_input[i].b = ( (in[i]) & 0xff0000 ) >> 16;
 	}
 }
 
@@ -88,20 +88,20 @@ int main(int argc, char* argv[])
     int* hwHsvImage  = (int*)malloc(image_size_bytes);
 
     // Allocate PL buffers using sds_alloc
-    RGBcolor *device_input  = (RGBcolor *)(sds_alloc(sizeof(RGBcolor) * image_size));
-    HSVcolor *device_output = (HSVcolor *)(sds_alloc(sizeof(HSVcolor) * image_size));
+    RGBcolor *hardware_input  = (RGBcolor *)(sds_alloc(sizeof(RGBcolor) * image_size));
+    HSVcolor *hardware_output = (HSVcolor *)(sds_alloc(sizeof(HSVcolor) * image_size));
 
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
-    extract_pixel_data(input_bmp, device_input, image_size);
+    extract_pixel_data(input_bmp, hardware_input, image_size);
 
     hw_ctr.start();
     //Launch the Hardware Function
-    rgb_to_hsv_accel(device_input, device_output, image_size);
+    rgb_to_hsv_accel(hardware_input, hardware_output, image_size);
     hw_ctr.stop();
 
     // Pack the data
-    pack_output_int(device_output, hwHsvImage, image_size);
+    pack_output_int(hardware_output, hwHsvImage, image_size);
 
     //Calculating sw based HSV Image
     sw_ctr.start();
@@ -118,7 +118,7 @@ int main(int argc, char* argv[])
 		   << hw_cycles << std::endl;
 	std::cout << "Speed up: " << speedup << std::endl;
 
-    //Compare the results of the Device to the Sw Based
+    //Compare the results of the Hardware to the Sw Solution
     int match= compareImages(swHsvImage, hwHsvImage, image_size);
 
     // Release Memory 

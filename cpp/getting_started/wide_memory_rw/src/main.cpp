@@ -38,7 +38,7 @@
 
     Note : This example is to demonstrate Wide Memory access of 128 bit data width  
            using ap_uint<128> and it is the highest width supported by Zynq 
-           Utrascale devices. 
+           Ultrascale boards. 
 
 *******************************************************************************/
 #include <iostream>
@@ -96,7 +96,7 @@ int main(int argc, char** argv)
         if (source_hw_results[i] != source_sw_results[i]){
             std::cout << "Error: Result mismatch" << std::endl;
             std::cout << "i = " << i << " CPU result = " << source_sw_results[i]
-                << " Device result = " << source_hw_results[i] << std::endl;
+                << " Hardware result = " << source_hw_results[i] << std::endl;
             match = 1;
             break;
         }
