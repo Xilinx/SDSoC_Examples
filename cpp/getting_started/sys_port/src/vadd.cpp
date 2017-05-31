@@ -42,9 +42,9 @@
 #include <string.h>
 #include "vadd.h"
 
-void vadd_accel(int a[DATA_SIZE], 
-                int b[DATA_SIZE], 
-                int out[DATA_SIZE], 
+void vadd_accel(int *a, 
+                int *b, 
+                int *out, 
                 const int size) {
     
     vadd: for(int i = 0; i < size; i++) {

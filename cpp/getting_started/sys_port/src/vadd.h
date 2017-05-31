@@ -47,17 +47,18 @@
 // AFI (HP) port is recommended to use with non-cached allocation of buffers
 // In this example buffers (a & out) are allocated using sds_alloc_non_cached()
 // API to make it compatible with sys_port AFI port specification
-#pragma SDS data sys_port(a:AFI, out:AFI)
+#pragma SDS data sys_port(a:AFI, b:AFI, out:AFI)
 
 // SDSoC "access_pattern" pragma below intimates sds++ compiler about the 
 // access pattern of input and output buffers
 // In this example the access pattern is sequential
 #pragma SDS data access_pattern(a:SEQUENTIAL)
+#pragma SDS data access_pattern(b:SEQUENTIAL)
 #pragma SDS data access_pattern(out:SEQUENTIAL)
 
 // SDSoC "copy" pragma below maps the argument onto a stream
 // It requires array elements needs to be accessed in index order. 
-#pragma SDS data copy(a[0:size], out[0:size])
-void vadd_accel(int a[DATA_SIZE], int b[DATA_SIZE], int out[DATA_SIZE], int size);
+#pragma SDS data copy(a[0:size], b[0:size], out[0:size])
+void vadd_accel(int *a, int *b, int *out, int size);
 #endif
 

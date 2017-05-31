@@ -73,7 +73,7 @@ int main(int argc, char** argv)
     // Size of the Input Data
     size_t vector_size_bytes = sizeof(int) * size;
     
-    // Allocate PL buffers using sds_alloc_non_cacheble
+    // Allocate buffers using sds_alloc_non_cacheble
     // Memory is allocated using non-cached form to comply with "sys_port"
     // pragma AFI port selection.  
     int *source_input1       = (int *) sds_alloc_non_cacheable(vector_size_bytes);
