@@ -55,34 +55,20 @@
 #include "vadd.h"
 
 // Golden implementation
-void vadd_golden(int a[DATA_SIZE], int size, int inc_value, 
-                 int output[DATA_SIZE])
+void vadd_golden(int a[DATA_SIZE], 
+                 int b[DATA_SIZE],   
+                 int output[DATA_SIZE],
+                 int size)
 {
-
-    int buffer[BUFFERSIZE];
-
-    // Vector addition
-    for(int i=0; i < size;  i+=BUFFERSIZE)
-    {
-        int chunk_size = BUFFERSIZE;
-        if ((i + BUFFERSIZE) > size)
-            chunk_size = size - i;
-
-        for(int k=0; k < chunk_size; k++){
-            buffer[k] = a[i+k];
+        for(int i = 0; i < size; i++) {
+            output[i] = a[i] + b [i]; 
         }
 
-        calc_write: for(int j=0; j < chunk_size; j++){
-            buffer[j] = buffer[j] + inc_value;
-            output[i+j] = buffer[j];
-        }
-    }
 }
 
 int main(int argc, char** argv)
 {
     int size = DATA_SIZE;
-    int inc_value = INCR_VALUE;
    
     // Size of the Input Data
     size_t vector_size_bytes = sizeof(int) * size;
@@ -90,16 +76,17 @@ int main(int argc, char** argv)
     // Allocate PL buffers using sds_alloc_non_cacheble
     // Memory is allocated using non-cached form to comply with "sys_port"
     // pragma AFI port selection.  
-    int *source_input       = (int *) sds_alloc_non_cacheable(vector_size_bytes);
-    int *source_hw_results  = (int *) sds_alloc_non_cacheable(vector_size_bytes);
-    
+    int *source_input1       = (int *) sds_alloc_non_cacheable(vector_size_bytes);
+    int *source_input2       = (int *) sds_alloc_non_cacheable(vector_size_bytes);
+    int *source_hw_results   = (int *) sds_alloc_non_cacheable(vector_size_bytes);
 
     // Allocate Software Output Buffer
     int *source_sw_results  = (int *) malloc(vector_size_bytes);
 
     // Create the test data
     for(int i = 0 ; i < size ; i++){
-        source_input[i] = i;
+        source_input1[i] = i;
+        source_input2[i] = i;
         source_sw_results[i] = 0;
         source_hw_results[i] = 0;
     }
@@ -108,11 +95,11 @@ int main(int argc, char** argv)
 
     hw_ctr.start();
     //Launch the Hardware Solution
-    vadd_accel(source_input, size, inc_value, source_hw_results);
+    vadd_accel(source_input1, source_input2, source_hw_results, size);
     hw_ctr.stop();
 
     //Launch the Software Solution
-    vadd_golden(source_input, size, inc_value, source_sw_results);
+    vadd_golden(source_input1, source_input2, source_sw_results, size);
 
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
     std::cout << "Average number of CPU cycles running mmult in hardware: "
@@ -134,7 +121,8 @@ int main(int argc, char** argv)
     }
 
     // Release Memory 
-    sds_free(source_input);
+    sds_free(source_input1);
+    sds_free(source_input2);
     sds_free(source_hw_results);
     free(source_sw_results);
 

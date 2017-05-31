@@ -58,6 +58,6 @@
 // SDSoC "copy" pragma below maps the argument onto a stream
 // It requires array elements needs to be accessed in index order. 
 #pragma SDS data copy(a[0:size], out[0:size])
-void vadd_accel(int a[DATA_SIZE], int size, int inc_value, int out[DATA_SIZE]);
+void vadd_accel(int a[DATA_SIZE], int b[DATA_SIZE], int out[DATA_SIZE], int size);
 #endif
 

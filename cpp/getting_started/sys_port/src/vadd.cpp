@@ -42,34 +42,17 @@
 #include <string.h>
 #include "vadd.h"
 
-void vadd_accel(int a[DATA_SIZE], int size, int inc_value, int out[DATA_SIZE]){
-
-    int buffer[BUFFERSIZE];
-
-    // Each iteration of this loop performs BUFFERSIZE vector additions
-    for(int i=0; i < size;  i+=BUFFERSIZE)
-    {
-    #pragma HLS LOOP_TRIPCOUNT min=1 max=64
-        int chunk_size = BUFFERSIZE;
-        // Boundary check
-        if ((i + BUFFERSIZE) > size)
-            chunk_size = size - i;
-
-        // Memory copy creates a burst access to memory
-        // Memory copy requires a local buffer to store the results of 
-        // the memory transaction
-        for(int k=0; k < chunk_size; k++){
-        #pragma HLS LOOP_TRIPCOUNT min=256 max=2048
-            buffer[k] = a[i+k];
-        }
-
-        // Calculate and write results to DDR memory, the sequential write in a 
-        // for loop can be inferred to a memory burst access automatically
-        calc_write: for(int j=0; j < chunk_size; j++){
-        #pragma HLS LOOP_TRIPCOUNT min=256 max=2048
+void vadd_accel(int a[DATA_SIZE], 
+                int b[DATA_SIZE], 
+                int out[DATA_SIZE], 
+                const int size) {
+    
+    vadd: for(int i = 0; i < size; i++) {
+        // By-default SDSoC accelerators generates separate
+        // AXI master interface for each array arguments (i.e., a,b and out).
+        // This helps in burst access of all the memory interfaces concurrently.
         #pragma HLS PIPELINE
-            buffer[j] = buffer[j] + inc_value;
-            out[i+j] = buffer[j];
-        }
+        #pragma HLS LOOP_TRIPCOUNT min=1024 max=1024
+        out[i] = a[i] + b[i];
     }
 }
