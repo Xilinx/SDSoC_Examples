@@ -34,7 +34,7 @@ zcu102_es2|zynquplus|xczu9eg|Hardware|linux/standalone|
 zcu102_es1|zynquplus|xczu9eg|Emulation/Hardware|linux/standalone|
 
 
-Board targeted by default = ***zc706***
+Board targeted by default = ***zcu102_es2***
 
 *NOTE:* The board/platform used for compilation can be changed by adding the PLATFORM environmental variable to the make command as shown below
 ```

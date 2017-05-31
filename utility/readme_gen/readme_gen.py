@@ -4,7 +4,7 @@ import json
 import os
 import subprocess
 
-DSA = 'zc706'
+DSA = 'zcu102_es2'
 DEVICES = {
     'zc702':['zynq','xc7z020','Emulation/Hardware','linux/standalone'],
     'zc706':['zynq','xc7z045','Emulation/Hardware','linux/standalone'],
