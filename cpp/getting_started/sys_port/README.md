@@ -19,7 +19,7 @@ This is simple example which demonstrates sys_port usage
 
 ***KEY CONCEPTS:*** sys_port, memory interface, memory non-caching
 
-***KEYWORDS:*** #pragma SDS data sys_port, sds_alloc_non_cacheable
+***KEYWORDS:*** #pragma SDS data sys_port, #pragms HLS PIPELINE, sds_alloc_non_cacheable
 
 ## 2. HOW TO DOWNLOAD THE REPOSITORY
 To get a local copy of the SDSoC example repository, clone this repository to the local system with the following command:

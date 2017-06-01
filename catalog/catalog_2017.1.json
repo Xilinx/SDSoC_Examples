@@ -292,6 +292,24 @@
                             ], 
                             "version": "1.0", 
                             "author": "Xilinx"
+                        },
+                        {
+                           "name": "Sysport",
+                           "description": [
+                        
+                                "This is simple example which demonstrates sys_port usage"
+
+                            ], 
+                            "key_concepts": [
+                                    "sys_port", "memory interface", "memory non-caching" 
+                            ],
+                            "keywords": [
+                                "#pragma SDS data sys_port",
+                                "#pragms HLS PIPELINE",
+                                "sds_alloc_non_cacheable"
+                            ],
+                            "version": "1.0", 
+                            "author": "Xilinx"
                         }
                     ]
                 }
