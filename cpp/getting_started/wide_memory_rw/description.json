@@ -1,10 +1,10 @@
 {
     "example": "Wide Memory Read/Write",
     "overview": [
-        "This is a simple example of vector addition to demonstrate Wide Memory Access using ap_uint<128> data type. Based on input argument type, sds++ compiler will figure out the memory bandwidth between DDR and PL." 
+        "This is a simple example of vector addition to demonstrate Wide Memory Access using structure data type of 128bit wide. Based on input argument type, sds++ compiler will figure out the memory interface datawidth of hardware accelerator." 
     ],
-    "key_concepts": [ "Accelerator to Memory Access", "wide memory access", "burst read and write"],
-    "keywords": ["ap_uint<DATAWIDTH>", "ap_int.h"],
+    "key_concepts": [ "wide memory access", "burst read and write", "custom datatype"],
+    "keywords": ["struct"],
     "nboard": ["zc702", "microzed", "zed", "zybo"],
     "contributors" : [
         {

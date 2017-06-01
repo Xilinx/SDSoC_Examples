@@ -36,10 +36,12 @@
 
 #include "sds_utils.h"
 
-#include <ap_int.h>
-#define BUFFER_SIZE 32 
-#define DATAWIDTH   128
-typedef ap_uint<DATAWIDTH> wide_dt;
+#define NUM_ELEMENTS   4 // To make structure size 128bit
+//Structure overall width is set to 4 Integers = 4 *32 = 128bit to match to maximum
+//datawidth supported by zynq ultrascale memory interfaces
+typedef struct wide_dt_struct{
+    int data[NUM_ELEMENTS];
+} __attribute__ ((packed, aligned(4))) wide_dt;
 
 #define DATA_SIZE 16384
 

@@ -33,11 +33,11 @@
 
 /*******************************************************************************
 
-    Vector Addition using ap_uint<128> datatype to utilize full
+    Vector Addition using struct datatype of 128bit wide to utilize full
     memory data width
 
     Note : This example is to demonstrate Wide Memory access of 128 bit data width  
-           using ap_uint<128> and it is the highest width supported by Zynq 
+           using struct datatype. 128bit is the highest width supported by Zynq 
            Ultrascale boards. 
 
 *******************************************************************************/
@@ -46,7 +46,7 @@
 #include "vadd.h"
 
 // Software solution
-void vadd_sw(wide_dt *in1, wide_dt *in2, wide_dt *out, int size)
+void vadd_sw(int *in1, int *in2, int *out, int size)
 {
 	for(int i = 0; i < size ; i++)
 		out[i] = in1[i] + in2[i];
@@ -56,20 +56,18 @@ int main(int argc, char** argv)
 {
     // Size of the input data
     int size = DATA_SIZE;
-    size_t vector_size_bytes = sizeof(wide_dt) * size;
+    size_t vector_size_bytes = sizeof(int) * size;
 
-    // Allocate PL buffers using sds_alloc
-    wide_dt *source_in1         = (wide_dt *) sds_alloc(vector_size_bytes);
-    wide_dt *source_in2         = (wide_dt *) sds_alloc(vector_size_bytes);
-    wide_dt *source_hw_results  = (wide_dt *) sds_alloc(vector_size_bytes);
- 
-    // Allocate software output
-    wide_dt *source_sw_results  = (wide_dt *) sds_alloc(vector_size_bytes);
+    // Allocate buffers using sds_alloc
+    int *source_in1         = (int *) sds_alloc(vector_size_bytes);
+    int *source_in2         = (int *) sds_alloc(vector_size_bytes);
+    int *source_hw_results  = (int *) sds_alloc(vector_size_bytes);
+    int *source_sw_results  = (int *) sds_alloc(vector_size_bytes);
 
     // Create the test data
     for(int i = 0 ; i < size; i++){
-        source_in1[i] = i;
-        source_in2[i] = i * i;
+        source_in1[i] = rand();
+        source_in2[i] = rand();
         source_sw_results[i] = 0; 
         source_hw_results[i] = 0;
     }
@@ -78,12 +76,19 @@ int main(int argc, char** argv)
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
     hw_ctr.start();
+
+    //Type-Casting int* datatype to wide_dt * as Hardware Function expect 
+    //pointers to Wide DataType 
     // Launch Hardware Solution
-    vadd_accel(source_in1, source_in2, source_hw_results, size);
+    vadd_accel( (wide_dt *)source_in1, 
+                (wide_dt *)source_in2, 
+                (wide_dt *)source_sw_results, 
+                size/NUM_ELEMENTS //changing size to number of wide_dt
+                );
     hw_ctr.stop();
 
     // Launch Software Solution
-    vadd_sw(source_in1, source_in2, source_sw_results, size);
+    vadd_sw(source_in1, source_in2, source_hw_results, size);
 
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 
@@ -92,7 +97,7 @@ int main(int argc, char** argv)
 
     // Compare the results of software and hardware
     int match = 0;
-    for (int i = 0 ; i < DATA_SIZE ; i++){
+    for (int i = 0 ; i < size; i++){
         if (source_hw_results[i] != source_sw_results[i]){
             std::cout << "Error: Result mismatch" << std::endl;
             std::cout << "i = " << i << " CPU result = " << source_sw_results[i]
@@ -108,10 +113,6 @@ int main(int argc, char** argv)
     sds_free(source_hw_results);
     sds_free(source_sw_results);
 
-    if (match){
-        std::cout << "TEST FAILED." << std::endl;
-        return -1;
-    }
-    std::cout << "TEST PASSED." << std::endl;
-    return 0;
+    std::cout << "TEST " << (match? "FAILED":"PASSED") << std::endl;
+    return (match?-1:0);
 }

@@ -33,11 +33,10 @@
 
 /*******************************************************************************
     
-    Wide Memory Access Example using ap_uint<Width> data type
+    Wide Memory Access Example using struct data type of 128bit size
     
-    This is vector addition example to demonstrate Wide Memory
-    access of 128bit data width using ap_uint<128> data type which is defined
-    inside 'ap_int.h' file.
+    This is vector addition example to demonstrate Wide Memory access of 128bit 
+    data width using struct datatype of 128bit size
 
 *******************************************************************************/
 
@@ -53,42 +52,19 @@ void vadd_accel(
         int size            // Size of total elements
         )
 {
-    wide_dt v1_local[BUFFER_SIZE];       // Local memory to store vector1
-    wide_dt result_local[BUFFER_SIZE];   // Local Memory to store result
-
-    // Each iteration of this loop performs BUFFER_SIZE vector addition
-    // operations
-    for(int i = 0; i < size;  i += BUFFER_SIZE)
+    vadd:for(int i = 0; i < size;  ++i)
     {
-        #pragma HLS LOOP_TRIPCOUNT min=8 max=8
-        int chunk_size = BUFFER_SIZE;
-
-        // Boundary checks
-        if ((i + BUFFER_SIZE) > size)
-            chunk_size = size - i;
-
-        // Burst read first vector from DDR memory to local memory
-        v1_rd: for (int j = 0 ; j <  chunk_size; j++){
-        #pragma HLS pipeline
-        #pragma HLS LOOP_TRIPCOUNT min=32 max=32
-            v1_local[j] = in1 [i + j];
+        #pragma HLS LOOP_TRIPCOUNT min=256 max=256
+		#pragma HLS pipeline
+        wide_dt tmpV1     = in1[i];
+        wide_dt tmpV2     = in2[i];
+        wide_dt tmpOut;
+        for (int k = 0 ; k < NUM_ELEMENTS ; k++){
+            //Unrolling lower loop to do parallel vector addition for 
+            //all elements of struct.
+            #pragma HLS UNROLL
+            tmpOut.data[k] = tmpV1.data[k] + tmpV2.data[k];
         }
-
-        // Burst read second vector and perform vector addition
-        v2_rd_add: for (int j = 0 ; j < chunk_size; j++){
-        #pragma HLS pipeline
-        #pragma HLS LOOP_TRIPCOUNT min=32 max=32
-            wide_dt tmpV1     = v1_local[j];
-            wide_dt tmpV2     = in2[i+j];
-            // Vector addition 
-            result_local[j] = tmpV1 + tmpV2;
-        }
-
-        // Burst write the result to DDR memory
-        out_write: for (int j = 0 ; j < chunk_size; j++){
-        #pragma HLS pipeline
-        #pragma HLS LOOP_TRIPCOUNT min=32 max=32
-            out[i+j] = result_local[j];
-       }
+        out[i] = tmpOut;
     }
 }

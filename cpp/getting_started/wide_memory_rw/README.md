@@ -15,11 +15,11 @@ This README file contains the following sections:
 
 
 ## 1. OVERVIEW
-This is a simple example of vector addition to demonstrate Wide Memory Access using ap_uint<128> data type. Based on input argument type, sds++ compiler will figure out the memory bandwidth between DDR and PL.
+This is a simple example of vector addition to demonstrate Wide Memory Access using structure data type of 128bit wide. Based on input argument type, sds++ compiler will figure out the memory interface datawidth of hardware accelerator.
 
-***KEY CONCEPTS:*** Accelerator to Memory Access, wide memory access, burst read and write
+***KEY CONCEPTS:*** wide memory access, burst read and write, custom datatype
 
-***KEYWORDS:*** ap_uint<DATAWIDTH>, ap_int.h
+***KEYWORDS:*** struct
 
 ## 2. HOW TO DOWNLOAD THE REPOSITORY
 To get a local copy of the SDSoC example repository, clone this repository to the local system with the following command:
