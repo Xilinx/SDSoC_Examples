@@ -45,7 +45,7 @@
 // a design which uses AFI (HP) ports for memory interfacing.
 // In this example both input and output buffers uses AFI ports.
 // AFI (HP) port is recommended to use with non-cached allocation of buffers
-// In this example buffers (a & out) are allocated using sds_alloc_non_cached()
+// In this example buffers (a, b & out) are allocated using sds_alloc_non_cached()
 // API to make it compatible with sys_port AFI port specification
 #pragma SDS data sys_port(a:AFI, b:AFI, out:AFI)
 
