@@ -87,7 +87,7 @@ int main(int argc, char* argv[])
     int* swHsvImage  = (int*)malloc(image_size_bytes);
     int* hwHsvImage  = (int*)malloc(image_size_bytes);
 
-    // Allocate PL buffers using sds_alloc
+    // Allocate buffers using sds_alloc
     RGBcolor *hardware_input  = (RGBcolor *)(sds_alloc(sizeof(RGBcolor) * image_size));
     HSVcolor *hardware_output = (HSVcolor *)(sds_alloc(sizeof(HSVcolor) * image_size));
 

@@ -75,7 +75,7 @@ int main(int argc, char** argv)
     // Size of the matrix
     size_t matrix_size_bytes = sizeof(int) * DATA_SIZE * DATA_SIZE;
 
-    // Allocate PL buffers using sds_alloc
+    // Allocate buffers using sds_alloc
     int *source_in1         = (int *) sds_alloc(matrix_size_bytes);
     int *source_in2         = (int *) sds_alloc(matrix_size_bytes);
     int *source_hw_results  = (int *) sds_alloc(matrix_size_bytes);

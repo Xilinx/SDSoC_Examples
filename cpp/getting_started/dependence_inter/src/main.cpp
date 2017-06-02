@@ -52,11 +52,11 @@ int main(int argc, char** argv)
     size_t vector_size_bytes = sizeof(int) * size;
 
     // Allocate Input and Output Buffers
-    // sds_alloc must be used to allocate memory for PL buffers
+    // sds_alloc must be used to allocate memory for buffers
     int *source_input       = (int *) sds_alloc(vector_size_bytes);
     int *source_hw_results  = (int *) sds_alloc(vector_size_bytes);
     
-    // Allocate memory for PS buffer
+    // Allocate memory for buffer
     int *source_sw_results  = (int *) malloc(vector_size_bytes);
 
     // Create the test data and Software Result

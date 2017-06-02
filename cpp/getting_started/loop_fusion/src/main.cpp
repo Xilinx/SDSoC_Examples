@@ -86,12 +86,11 @@ void print_point(int *point, int size) {
 // This example illustrates the algorithm of nearest neighbor search for a given
 // point (x, y) from a list of points.
 int main(int argc, char **argv) {
-
     int test_passed = 0;
     static const int num_points = 512;
     static const int num_dims = 2;
 
-    // Allocate PL buffers using sds_alloc
+    // Allocate buffers using sds_alloc
     int *data  = (int *)sds_alloc(sizeof(int) * num_points * num_dims);
     int *input = (int *)sds_alloc(sizeof(int) * num_dims);
     int *out   = (int *)sds_alloc(sizeof(int) * num_dims);

@@ -63,11 +63,10 @@ void row_array_2d_sw(DTYPE *a, DTYPE *sw_c, DTYPE alpha)
 
 int main(int argc, char** argv)
 {
-
     // Size of input data
     size_t vector_size_bytes = sizeof(DTYPE) * BLOCK_SIZE;
    
-    // Allocate PL buffers using sds_alloc
+    // Allocate buffers using sds_alloc
     DTYPE* a = (DTYPE*)sds_alloc(vector_size_bytes);
     DTYPE* c = (DTYPE*)sds_alloc(vector_size_bytes);
     

@@ -56,7 +56,7 @@ int main(int argc, char** argv)
     // Size of input data
     size_t vector_size_bytes = sizeof(unsigned int) * DATA_SIZE;
 
-    // Allocate PL buffers using sds_alloc
+    // Allocate buffers using sds_alloc
     unsigned int *source_in1         = (unsigned int *) sds_alloc(vector_size_bytes);
     unsigned int *source_in2         = (unsigned int *) sds_alloc(vector_size_bytes);
     unsigned int *source_hw_results  = (unsigned int *) sds_alloc(vector_size_bytes);
