@@ -95,7 +95,7 @@ int main(int argc, char **argv) {
     int test_passed = 0;
     int signal_size = SIGNAL_SIZE;
 
-    // Allocate PL buffers using sds_alloc
+    // Allocate buffers using sds_alloc
     int *signal = (int *) sds_alloc(sizeof(int) * signal_size);
     int *coeff  = (int *) sds_alloc(sizeof(int) * N_COEFF);
     int *hw_out = (int *) sds_alloc(sizeof(int) * signal_size);

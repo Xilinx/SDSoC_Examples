@@ -99,7 +99,7 @@ int main(int argc, char** argv)
     // Size of input data
     size_t vector_size_bytes = sizeof(int) * DATA_SIZE * DATA_DIM;
 
-    // Allocate PL buffers using sds_alloc
+    // Allocate buffers using sds_alloc
     int *source_in  =       (int*) sds_alloc(vector_size_bytes);
     int *source_point =     (int*) sds_alloc(sizeof(int)*DATA_DIM);
     int *source_hw_result = (int*) sds_alloc(sizeof(int)*DATA_DIM);

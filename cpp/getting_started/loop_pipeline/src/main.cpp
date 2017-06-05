@@ -68,7 +68,7 @@ int main(int argc, char** argv)
     int test_passed = 0;
     int test_size = TEST_DATA_SIZE;
 
-    // Create PL buffers using sds_alloc  
+    // Create buffers using sds_alloc  
     int *a = (int *) sds_alloc(sizeof(int) * test_size);
     int *b = (int *) sds_alloc(sizeof(int) * test_size);
     int *hw_results = (int *) sds_alloc(sizeof(int) * test_size);
@@ -78,10 +78,11 @@ int main(int argc, char** argv)
 
     //Creating Test Data and golden data
     for (int i = 0 ; i < test_size ; i++){
-       a[i] = rand();
-       b[i] = rand();
-       gold[i] = a[i] + b[i]; // Calculating Golden value
-       hw_results[i] = 0 ;     
+        a[i] = rand();  
+        b[i] = rand();
+        // Calculate Golden value
+        gold[i] = a[i] + b[i]; 
+        hw_results[i] = 0 ;     
     }
     
     sds_utils::perf_counter hw_ctr;

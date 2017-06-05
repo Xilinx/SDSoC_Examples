@@ -71,7 +71,7 @@ int main(int argc, char **argv) {
     static const int columns = 64;
     static const int rows = 64;
 
-    // Allocate PL buffers using sds_alloc
+    // Allocate buffers using sds_alloc
     int *A    = (int *) sds_alloc(sizeof(int) * columns * rows);
     int *B    = (int *) sds_alloc(sizeof(int) * columns * rows);
     int *C    = (int *) sds_alloc(sizeof(int) * columns * rows);
