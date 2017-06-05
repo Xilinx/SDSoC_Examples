@@ -55,7 +55,7 @@ void vadd_accel(
     vadd:for(int i = 0; i < size;  ++i)
     {
         #pragma HLS LOOP_TRIPCOUNT min=256 max=256
-		#pragma HLS pipeline
+        #pragma HLS pipeline
         wide_dt tmpV1     = in1[i];
         wide_dt tmpV2     = in2[i];
         wide_dt tmpOut;

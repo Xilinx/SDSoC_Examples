@@ -82,13 +82,13 @@ int main(int argc, char** argv)
     // Launch Hardware Solution
     vadd_accel( (wide_dt *)source_in1, 
                 (wide_dt *)source_in2, 
-                (wide_dt *)source_sw_results, 
+                (wide_dt *)source_hw_results, 
                 size/NUM_ELEMENTS //changing size to number of wide_dt
                 );
     hw_ctr.stop();
 
     // Launch Software Solution
-    vadd_sw(source_in1, source_in2, source_hw_results, size);
+    vadd_sw(source_in1, source_in2, source_sw_results, size);
 
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 
