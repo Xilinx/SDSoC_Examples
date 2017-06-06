@@ -33,7 +33,7 @@
 
 /*****************************************************************************
     
-    This is a simple vector addition example to demonstrate burst access of 
+    This is a simple vector increment example to demonstrate burst access of 
     data from DDR to Programmable Logic
 
 ******************************************************************************/
