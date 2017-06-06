@@ -54,15 +54,17 @@ void vadd_accel(
 {
     vadd:for(int i = 0; i < size;  ++i)
     {
-        #pragma HLS LOOP_TRIPCOUNT min=256 max=256
+        //Pipelined this loop which will eventually infer burst read/write
+        //for in1, in2 and out as access pattern is sequential
         #pragma HLS pipeline
+        #pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
         wide_dt tmpV1     = in1[i];
         wide_dt tmpV2     = in2[i];
         wide_dt tmpOut;
         for (int k = 0 ; k < NUM_ELEMENTS ; k++){
-            //Unrolling lower loop to do parallel vector addition for 
-            //all elements of struct.
-            #pragma HLS UNROLL
+            //As Upper loop "vadd" is marked for Pipeline so this loop 
+            //will be unrolled and will do parallel vector addition for 
+            //all elements of structure.
             tmpOut.data[k] = tmpV1.data[k] + tmpV2.data[k];
         }
         out[i] = tmpOut;
