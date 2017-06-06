@@ -57,10 +57,12 @@ void mmult_accel(int *a, int *b, int *c, int dim) {
         #pragma HLS PIPELINE
         #pragma HLS LOOP_TRIPCOUNT min=1 max=65536
         int tmpData_a = a[i];
+        int tmpData_b = b[i];
         bufa[x][y] = tmpData_a;
+        bufb[x][y] = tmpData_b;
         if (y == dim-1){ x++; y = 0; } else{ y++; }
     }
-
+#if 0
     // Burst Read data from DDR memory and write into 2D local buffer for b, 
     read_data_b: for (int i = 0, x=0, y=0; i < matrix_size ; i++){
         #pragma HLS PIPELINE
@@ -69,7 +71,7 @@ void mmult_accel(int *a, int *b, int *c, int dim) {
         bufb[x][y] = tmpData_b;
         if (y == dim-1){ x++; y = 0;} else{ y++;}
     }
-
+#endif 
     // Calculate matrix multiplication using local data buffers 
     // and write result into local buffer for c
     matrix_mult: for (int row = 0; row < dim; row++) {
