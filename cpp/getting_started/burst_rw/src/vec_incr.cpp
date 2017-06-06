@@ -30,20 +30,23 @@
 # OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 ************/
-#ifndef VADD_H_
-#define VADD_H_
 
-#include "sds_utils.h"
+/*******************************************************************************
+    
+    This is a vector increment example to demonstrate burst access between DDR 
+    and programmable logic (PL) using HLS AXI-master Interface 
+        
+*******************************************************************************/
+#include "vec_incr.h"
 
-#define DATA_SIZE 2048
-#define INCR_VALUE 10
+void vec_incr_accel(int *in, int *out, int size, int inc_value){
 
-// Define internal max buffer size
-#define BURSTBUFFERSIZE 256
-
-// Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
-// Which has Direct Memory Interface with DDR and PL.  
-#pragma SDS data zero_copy(a[0:size],out[0:size])
-void vadd_accel(int *a, int size, int inc_value, int *out);
-#endif
-
+    // Variables in and out utilizes multiple memory interfaces that are
+    // available. Burst read and writes can be inferred by default with the
+    // logic below. 
+    calc_write: for(int j=0; j < size; j++){
+    #pragma HLS LOOP_TRIPCOUNT min=1 max=2048
+    #pragma HLS PIPELINE
+        out[j] = in[j] + inc_value;
+    }
+}

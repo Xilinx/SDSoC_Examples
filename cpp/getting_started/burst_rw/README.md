@@ -15,7 +15,7 @@ This README file contains the following sections:
 
 
 ## 1. OVERVIEW
-This is simple example of using AXI4-master interface for burst read and write
+This is a simple vector increment example which demonstrates usage of  AXI4-master interface for burst read and write
 
 ***KEY CONCEPTS:*** Burst Access
 
@@ -50,8 +50,8 @@ Makefile
 README.md
 description.json
 src/main.cpp
-src/vadd.cpp
-src/vadd.h
+src/vec_incr.cpp
+src/vec_incr.h
 ```
 
 ## 5. COMPILATION AND EXECUTION

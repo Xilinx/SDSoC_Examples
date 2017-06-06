@@ -30,46 +30,15 @@
 # OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 ************/
+#ifndef VEC_INCR_H_
+#define VEC_INCR_H_
 
-/*******************************************************************************
-    
-    This is a vector addition example to demonstrate burst access between DDR 
-    and programmable logic (PL) using HLS AXI-master Interface 
-        
-*******************************************************************************/
+#define DATA_SIZE 2048
+#define INCR_VALUE 10
 
-#include <stdio.h>
-#include <string.h>
-#include "vadd.h"
+// Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
+// Which has Direct Memory Interface with DDR and PL.  
+#pragma SDS data zero_copy(in[0:size],out[0:size])
+void vec_incr_accel(int *in, int *out, int size, int inc_value);
+#endif
 
-void vadd_accel(int *a, int size, int inc_value, int *out){
-
-    int burstbuffer[BURSTBUFFERSIZE];
-
-    // Each iteration of this loop performs BURSTBUFFERSIZE vector additions
-    for(int i=0; i < size;  i+=BURSTBUFFERSIZE)
-    {
-    #pragma HLS LOOP_TRIPCOUNT min=1 max=64
-        int chunk_size = BURSTBUFFERSIZE;
-        // Boundary check
-        if ((i + BURSTBUFFERSIZE) > size)
-            chunk_size = size - i;
-
-        // Memory copy creates a burst access to memory
-        // Memory copy requires a local buffer to store the results of 
-        // the memory transaction
-        for(int k=0; k < chunk_size; k++){
-        #pragma HLS LOOP_TRIPCOUNT min=256 max=2048
-            burstbuffer[k] = a[i+k];
-        }
-
-        // Calculate and write results to DDR memory, the sequential write in a 
-        // for loop can be inferred to a memory burst access automatically
-        calc_write: for(int j=0; j < chunk_size; j++){
-        #pragma HLS LOOP_TRIPCOUNT min=256 max=2048
-        #pragma HLS PIPELINE
-            burstbuffer[j] = burstbuffer[j] + inc_value;
-            out[i+j] = burstbuffer[j];
-        }
-    }
-}

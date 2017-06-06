@@ -33,7 +33,7 @@
 
 /*****************************************************************************
     
-    This is a simple vector addition example to demonstrate burst access of 
+    This is a simple vector increment example to demonstrate burst access of 
     data from DDR to Programmable Logic
 
 ******************************************************************************/
@@ -41,30 +41,14 @@
 #include <iostream>
 #include <cstring>
 #include <stdlib.h>
-#include "vadd.h"
+#include "vec_incr.h"
+#include "sds_utils.h"
 
 // Golden implementation
-void vadd_golden(int a[DATA_SIZE], int size, int inc_value, 
-                 int output[DATA_SIZE])
+void vec_incr_golden(int *in, int *out, int size, int inc_value)
 {
-
-    int burstbuffer[BURSTBUFFERSIZE];
-
-    // Each iteration of this loop performs BURSTBUFFERSIZE vector additions
-    for(int i=0; i < size;  i+=BURSTBUFFERSIZE)
-    {
-        int chunk_size = BURSTBUFFERSIZE;
-        if ((i + BURSTBUFFERSIZE) > size)
-            chunk_size = size - i;
-
-        for(int k=0; k < chunk_size; k++){
-            burstbuffer[k] = a[i+k];
-        }
-
-        calc_write: for(int j=0; j < chunk_size; j++){
-            burstbuffer[j] = burstbuffer[j] + inc_value;
-            output[i+j] = burstbuffer[j];
-        }
+    for(int j=0; j < size; j++){
+        out[j] = in[j] + inc_value;
     }
 }
 
@@ -83,8 +67,13 @@ int main(int argc, char** argv)
     // Allocate Software Output Buffer
     int *source_sw_results  = (int *) malloc(vector_size_bytes);
 
+    if((source_input == NULL) || (source_hw_results == NULL) || (source_sw_results == NULL)){
+        std::cout << "TEST FAILED : Failed to allocate memory" << std::endl;
+        return -1;
+    }
+
     // Create the test data
-    for(int i = 0 ; i < size ; i++){
+    for(int i = 0 ; i < size ; ++i){
         source_input[i] = i;
         source_sw_results[i] = 0;
         source_hw_results[i] = 0;
@@ -94,11 +83,11 @@ int main(int argc, char** argv)
 
     hw_ctr.start();
     //Launch the Hardware Solution
-    vadd_accel(source_input, size, inc_value, source_hw_results);
+    vec_incr_accel(source_input, source_hw_results, size, inc_value);
     hw_ctr.stop();
 
     //Launch the Software Solution
-    vadd_golden(source_input, size, inc_value, source_sw_results);
+    vec_incr_golden(source_input, source_sw_results, size, inc_value);
 
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
     std::cout << "Average number of CPU cycles running mmult in hardware: "
