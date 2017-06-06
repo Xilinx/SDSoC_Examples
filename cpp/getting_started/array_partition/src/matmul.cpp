@@ -57,21 +57,15 @@ void matmul_partition_accel(int *in1,  // Read-Only Matrix 1
     #pragma HLS ARRAY_PARTITION variable=temp_sum dim=1 complete
     
     // Burst reads on input matrices from DDR memory
-    // Burst read for matrix A
+    // Burst read for matrix A and B
+    // Multiple memory interfaces are supported by default in SDSoC
+    // It is possible to fetch both A and B concurrently. 
     readA:
     for (int itr = 0, i = 0, j = 0; itr < mat_dim * mat_dim; itr++, j++) {
     #pragma HLS PIPELINE
     #pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
         if (j == mat_dim) { j = 0; i++; }
         A[i][j] = in1[itr];
-    }
-
-    // Burst read for matrix B
-    readB:
-    for (int itr = 0, i = 0, j = 0; itr < mat_dim * mat_dim; itr++, j++) {
-    #pragma HLS PIPELINE
-    #pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
-        if (j == mat_dim) { j = 0; i++; }
         B[i][j] = in2[itr];
     }
 

@@ -79,8 +79,14 @@ int main(int argc, char **argv) {
     // Allocate output buffer for software solution
     int *gold = (int *) malloc(sizeof(int) * columns * rows);
 
+    // Check for failed memory allocation
+    if((A == NULL) || (B == NULL) || (C == NULL) || (gold == NULL)){
+        std::cout << "TEST FAILED : Failed to allocate memory" << std::endl;
+        return -1;
+    }
+
     // Data Initialization
-    for(int i = 0; i < columns * rows; i++) {
+    for(int i = 0; i < columns * rows; ++i) {
         A[i] = i;
         B[i] = i + i;
         gold[i] = 0;
