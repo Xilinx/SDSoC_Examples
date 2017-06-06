@@ -30,20 +30,15 @@
 # OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 ************/
-#ifndef VADD_H_
-#define VADD_H_
-
-#include "sds_utils.h"
+#ifndef VEC_INCR_H_
+#define VEC_INCR_H_
 
 #define DATA_SIZE 2048
 #define INCR_VALUE 10
 
-// Define internal max buffer size
-#define BURSTBUFFERSIZE 256
-
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
-#pragma SDS data zero_copy(a[0:size],out[0:size])
-void vadd_accel(int *a, int size, int inc_value, int *out);
+#pragma SDS data zero_copy(in[0:size],out[0:size])
+void vec_incr_accel(int *in, int *out, int size, int inc_value);
 #endif
 

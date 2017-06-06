@@ -22,8 +22,8 @@
     },
     "accelerators": [
        {
-           "name" : "vadd_accel",
-           "location" : "vadd.cpp"
+           "name" : "vec_incr_accel",
+           "location" : "vec_incr.cpp"
        }
     ],
     "libs": [

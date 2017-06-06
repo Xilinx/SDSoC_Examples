@@ -33,43 +33,23 @@
 
 /*******************************************************************************
     
-    This is a vector addition example to demonstrate burst access between DDR 
+    This is a vector increment example to demonstrate burst access between DDR 
     and programmable logic (PL) using HLS AXI-master Interface 
         
 *******************************************************************************/
 
 #include <stdio.h>
 #include <string.h>
-#include "vadd.h"
+#include "vec_incr.h"
 
-void vadd_accel(int *a, int size, int inc_value, int *out){
+void vec_incr_accel(int *in, int *out, int size, int inc_value){
 
-    int burstbuffer[BURSTBUFFERSIZE];
-
-    // Each iteration of this loop performs BURSTBUFFERSIZE vector additions
-    for(int i=0; i < size;  i+=BURSTBUFFERSIZE)
-    {
-    #pragma HLS LOOP_TRIPCOUNT min=1 max=64
-        int chunk_size = BURSTBUFFERSIZE;
-        // Boundary check
-        if ((i + BURSTBUFFERSIZE) > size)
-            chunk_size = size - i;
-
-        // Memory copy creates a burst access to memory
-        // Memory copy requires a local buffer to store the results of 
-        // the memory transaction
-        for(int k=0; k < chunk_size; k++){
-        #pragma HLS LOOP_TRIPCOUNT min=256 max=2048
-            burstbuffer[k] = a[i+k];
-        }
-
-        // Calculate and write results to DDR memory, the sequential write in a 
-        // for loop can be inferred to a memory burst access automatically
-        calc_write: for(int j=0; j < chunk_size; j++){
-        #pragma HLS LOOP_TRIPCOUNT min=256 max=2048
-        #pragma HLS PIPELINE
-            burstbuffer[j] = burstbuffer[j] + inc_value;
-            out[i+j] = burstbuffer[j];
-        }
+    // Variables in and out utilizes multiple memory interfaces that are
+    // available. Burst read and writes can be inferred by default with the
+    // logic below. 
+    calc_write: for(int j=0; j < size; j++){
+    #pragma HLS LOOP_TRIPCOUNT min=1 max=2048
+    #pragma HLS PIPELINE
+        out[j] = in[j] + inc_value;
     }
 }
