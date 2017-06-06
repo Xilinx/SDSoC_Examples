@@ -37,9 +37,6 @@
     and programmable logic (PL) using HLS AXI-master Interface 
         
 *******************************************************************************/
-
-#include <stdio.h>
-#include <string.h>
 #include "vec_incr.h"
 
 void vec_incr_accel(int *in, int *out, int size, int inc_value){
