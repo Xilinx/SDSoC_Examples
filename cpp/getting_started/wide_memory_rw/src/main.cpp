@@ -44,13 +44,7 @@
 #include <iostream>
 #include <cstring>
 #include "vadd.h"
-
-// Software solution
-void vadd_sw(int *in1, int *in2, int *out, int size)
-{
-	for(int i = 0; i < size ; i++)
-		out[i] = in1[i] + in2[i];
-}
+#include "sds_utils.h"
 
 int main(int argc, char** argv)
 {
@@ -59,17 +53,23 @@ int main(int argc, char** argv)
     size_t vector_size_bytes = sizeof(int) * size;
 
     // Allocate buffers using sds_alloc
-    int *source_in1         = (int *) sds_alloc(vector_size_bytes);
-    int *source_in2         = (int *) sds_alloc(vector_size_bytes);
-    int *source_hw_results  = (int *) sds_alloc(vector_size_bytes);
-    int *source_sw_results  = (int *) sds_alloc(vector_size_bytes);
+    int *in1         = (int *) sds_alloc(vector_size_bytes);
+    int *in2         = (int *) sds_alloc(vector_size_bytes);
+    int *hw_results  = (int *) sds_alloc(vector_size_bytes);
+    int *sw_results  = (int *) sds_alloc(vector_size_bytes);
 
+    //Checking for failed allocation
+    if ( (in1 == NULL) || (in2 == NULL) 
+            || (hw_results== NULL)  || (sw_results == NULL)){
+        std::cout  << "TEST FAILED: Failed to allocate Memory" << std::endl;
+        return -1;
+    }
     // Create the test data
     for(int i = 0 ; i < size; i++){
-        source_in1[i] = rand();
-        source_in2[i] = rand();
-        source_sw_results[i] = 0; 
-        source_hw_results[i] = 0;
+        in1[i] = rand();
+        in2[i] = rand();
+        sw_results[i] = in1[i] + in2[i]; 
+        hw_results[i] = 0;
     }
 
 
@@ -77,18 +77,14 @@ int main(int argc, char** argv)
 
     hw_ctr.start();
 
-    //Type-Casting int* datatype to wide_dt * as Hardware Function expect 
-    //pointers to Wide DataType 
-    // Launch Hardware Solution
-    vadd_accel( (wide_dt *)source_in1, 
-                (wide_dt *)source_in2, 
-                (wide_dt *)source_hw_results, 
+    //Type-Casting int* datatype to wide_dt * to match Hardware Function 
+    //declaration 
+    vadd_accel( (wide_dt *)in1, 
+                (wide_dt *)in2, 
+                (wide_dt *)hw_results, 
                 size/NUM_ELEMENTS //changing size to number of wide_dt
-                );
+              );
     hw_ctr.stop();
-
-    // Launch Software Solution
-    vadd_sw(source_in1, source_in2, source_sw_results, size);
 
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 
@@ -98,20 +94,20 @@ int main(int argc, char** argv)
     // Compare the results of software and hardware
     int match = 0;
     for (int i = 0 ; i < size; i++){
-        if (source_hw_results[i] != source_sw_results[i]){
+        if (hw_results[i] != sw_results[i]){
             std::cout << "Error: Result mismatch" << std::endl;
-            std::cout << "i = " << i << " CPU result = " << source_sw_results[i]
-                << " Hardware result = " << source_hw_results[i] << std::endl;
+            std::cout << "i = " << i << " CPU result = " << sw_results[i]
+                << " Hardware result = " << hw_results[i] << std::endl;
             match = 1;
             break;
         }
     }
 
     // Release Memory
-    sds_free(source_in1);
-    sds_free(source_in2);
-    sds_free(source_hw_results);
-    sds_free(source_sw_results);
+    sds_free(in1);
+    sds_free(in2);
+    sds_free(hw_results);
+    sds_free(sw_results);
 
     std::cout << "TEST " << (match? "FAILED":"PASSED") << std::endl;
     return (match?-1:0);
