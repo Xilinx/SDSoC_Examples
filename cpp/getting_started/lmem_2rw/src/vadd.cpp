@@ -45,15 +45,15 @@
 #define BUFFER_SIZE 1024
 
 void vadd_accel(
-        const unsigned int *in1, // Read-Only Vector 1
-        const unsigned int *in2, // Read-Only Vector 2
-        unsigned int *out,       // Output Result
+        const int *in1, // Read-Only Vector 1
+        const int *in2, // Read-Only Vector 2
+        int *out,       // Output Result
         int size                 // Size in integer
         )
 {
-    unsigned int v1_buffer[BUFFER_SIZE];    // Local memory to store vector1
-    unsigned int v2_buffer[BUFFER_SIZE];    // Local memory to store vector2
-    unsigned int vout_buffer[BUFFER_SIZE];  // Local Memory to store result
+    int v1_buffer[BUFFER_SIZE];    // Local memory to store vector1
+    int v2_buffer[BUFFER_SIZE];    // Local memory to store vector2
+    int vout_buffer[BUFFER_SIZE];  // Local Memory to store result
 
     // Each iteration of this loop performs BUFFER_SIZE vector additions
     for(int i = 0; i < size;  i += BUFFER_SIZE)
@@ -65,15 +65,12 @@ void vadd_accel(
             chunk_size = size - i;
 
         // Burst read of v1 and v2 vector from DDR memory
+        // Utilize multiple interfaces to access data concurrently
         for (int j = 0 ; j < chunk_size ; j++){
         #pragma HLS LOOP_TRIPCOUNT min=1024 max=1024
             v1_buffer[j] = in1[i + j];
-        }
-        for (int j = 0 ; j < chunk_size ; j++){
-        #pragma HLS LOOP_TRIPCOUNT min=1024 max=1024
             v2_buffer[j] = in2[i + j];
         }
-
         // FPGA implementation, local array is mostly implemented as BRAM Memory 
         // block.
         // BRAM Memory Block contains two memory ports which allow two parallel 
@@ -96,8 +93,10 @@ void vadd_accel(
 
         // Burst write the result to DDR memory
         for (int j = 0 ; j < chunk_size ; j++){
+		#pragma HLS PIPELINE
         #pragma HLS LOOP_TRIPCOUNT min=1024 max=1024
             out[i + j] = vout_buffer[j];
         }
     }
 }
+

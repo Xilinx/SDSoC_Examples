@@ -41,9 +41,9 @@
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic
 // Design which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(in1[0:size], in2[0:size], out[0:size])
-void vadd_accel(const unsigned int *in1, 
-                const unsigned int *in2, 
-                unsigned int *out,
+void vadd_accel(const int *in1, 
+                const int *in2, 
+                int *out,
                 int size);
 
 #endif
