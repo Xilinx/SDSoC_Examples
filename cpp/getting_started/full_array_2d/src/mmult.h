@@ -34,8 +34,6 @@
 #ifndef MMULT_H_
 #define MMULT_H_
 
-#include "sds_utils.h"
-
 // Define Test Matrix Size
 #define TEST_MATRIX_DIM 64
 

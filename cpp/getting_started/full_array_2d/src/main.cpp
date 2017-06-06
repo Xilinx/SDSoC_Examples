@@ -35,6 +35,7 @@
 #include <cstring>
 #include <stdlib.h>
 #include "mmult.h"
+#include "sds_utils.h"
 
 // Software Implementation
 void mmult_sw(int *a, int *b, int *c, int dim)
@@ -54,6 +55,7 @@ int main(int argc, char** argv)
 {
     int dim = TEST_MATRIX_DIM;
     int matrix_size = dim * dim;
+
     if (dim > MAX_MATRIX_DIM) {
         std::cout << "Test Matrix Dimension is bigger than"
            << " supported by Accelerator, please use smaller"  
@@ -64,29 +66,35 @@ int main(int argc, char** argv)
     size_t matrix_size_in_bytes = sizeof(int) * matrix_size;
 
     // Allocate buffers using sds_alloc
-    int *source_input_a     = (int *) sds_alloc(matrix_size_in_bytes);
-    int *source_input_b     = (int *) sds_alloc(matrix_size_in_bytes);
-    int *source_hw_results  = (int *) sds_alloc(matrix_size_in_bytes);
+    int *input_a     = (int *) sds_alloc(matrix_size_in_bytes);
+    int *input_b     = (int *) sds_alloc(matrix_size_in_bytes);
+    int *hw_results  = (int *) sds_alloc(matrix_size_in_bytes);
 
     // Allocate software output buffer
-    int *source_sw_results  = (int *) malloc(matrix_size_in_bytes);
+    int *sw_results  = (int *) malloc(matrix_size_in_bytes);
+
+    if((input_a == NULL) || (input_b == NULL) 
+            || (hw_results == NULL) || (sw_results == NULL)){
+        std::cout << "TEST FAILED: Failed to allocate memory" << std::endl;
+        return -1;
+    }
 
     // Create the test data and Software Result
     for(int i = 0 ; i < matrix_size ; i++){
-        source_input_a[i] = i;
-        source_input_b[i] = i;
-        source_hw_results[i] = 0;
-        source_sw_results[i] = 0;
+        input_a[i] = i;
+        input_b[i] = i;
+        hw_results[i] = 0;
+        sw_results[i] = 0;
     }
 
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
     // Launch the software solution
-    mmult_sw(source_input_a, source_input_b, source_sw_results, dim);
+    mmult_sw(input_a, input_b, sw_results, dim);
 
     hw_ctr.start();
     // Launch the hardware solution
-    mmult_accel(source_input_a, source_input_b, source_hw_results, dim);
+    mmult_accel(input_a, input_b, hw_results, dim);
     hw_ctr.stop();
 
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
@@ -97,20 +105,20 @@ int main(int argc, char** argv)
     // Compare the results of the Hardware to the simulation
     int match = 0;
     for (int i = 0 ; i < matrix_size ; i++){
-        if (source_hw_results[i] != source_sw_results[i]){
+        if (hw_results[i] != sw_results[i]){
             std::cout << "Error: Result mismatch" << std::endl;
-            std::cout << "i = " << i << " CPU result = " << source_sw_results[i]
-                << " Hardware result = " << source_hw_results[i] << std::endl;
+            std::cout << "i = " << i << " CPU result = " << sw_results[i]
+                << " Hardware result = " << hw_results[i] << std::endl;
             match = 1;
             break;
         }
     }
 
     // Release Memory  
-    sds_free(source_input_a);
-    sds_free(source_input_b);
-    sds_free(source_hw_results);
-    free(source_sw_results);
+    sds_free(input_a);
+    sds_free(input_b);
+    sds_free(hw_results);
+    free(sw_results);
 
     std::cout << "TEST " << (match? "FAILED." :"PASSED.") << "\n";
     return(match?-1:0);
