@@ -42,7 +42,6 @@
 
 #include "vadd.h"
 
-
 //Memory Datawidth of accelerator is calculated based on argument type.
 //Here argument type of in1 and in2 is wide_dt which is 128bit wide, so memory
 //interface will be created to 128bit wide. 

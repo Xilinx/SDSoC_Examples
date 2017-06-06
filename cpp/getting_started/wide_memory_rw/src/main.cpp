@@ -72,7 +72,6 @@ int main(int argc, char** argv)
         hw_results[i] = 0;
     }
 
-
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
     hw_ctr.start();
@@ -89,7 +88,7 @@ int main(int argc, char** argv)
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 
     std::cout << "Average number of CPU cycles running mmult in hardware: "
-    			  << hw_cycles << std::endl;
+        << hw_cycles << std::endl;
 
     // Compare the results of software and hardware
     int match = 0;
