@@ -94,10 +94,9 @@ void vadd_accel(
 
         // Burst write the result to DDR memory
         write_output:for (int j = 0 ; j < chunk_size ; j++){
-		#pragma HLS PIPELINE
+        #pragma HLS PIPELINE
         #pragma HLS LOOP_TRIPCOUNT min=1024 max=1024
             out[i + j] = vout_buffer[j];
         }
     }
-}
-
+}   
