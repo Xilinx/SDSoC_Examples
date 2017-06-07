@@ -50,13 +50,11 @@ void mmult_accel(int *a, int *b, int *c, int dim) {
 
     // Burst Read data from DDR memory and write into 2D local buffer for a & b. 
     int x = 0, y = 0;
-    read_data_a: for (int i = 0 ; i < matrix_size ; i++){
+    read_data: for (int i = 0 ; i < matrix_size ; i++){
         #pragma HLS PIPELINE
         #pragma HLS LOOP_TRIPCOUNT min=1 max=65536
-        int tmpData_a = a[i];
-        int tmpData_b = b[i];
-        bufa[x][y] = tmpData_a;
-        bufb[x][y] = tmpData_b;
+        bufa[x][y] = a[i];
+        bufb[x][y] = b[i];
         if (y == dim-1){ x++; y = 0; } else{ y++; }
     }
     
