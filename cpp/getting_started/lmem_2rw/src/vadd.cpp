@@ -66,7 +66,8 @@ void vadd_accel(
 
         // Burst read of v1 and v2 vector from DDR memory
         // Utilize multiple interfaces to access data concurrently
-        for (int j = 0 ; j < chunk_size ; j++){
+        read_input: for (int j = 0 ; j < chunk_size ; j++){
+        #pragma HLS PIPELINE
         #pragma HLS LOOP_TRIPCOUNT min=1024 max=1024
             v1_buffer[j] = in1[i + j];
             v2_buffer[j] = in2[i + j];
@@ -92,7 +93,7 @@ void vadd_accel(
         }
 
         // Burst write the result to DDR memory
-        for (int j = 0 ; j < chunk_size ; j++){
+        write_output:for (int j = 0 ; j < chunk_size ; j++){
 		#pragma HLS PIPELINE
         #pragma HLS LOOP_TRIPCOUNT min=1024 max=1024
             out[i + j] = vout_buffer[j];
