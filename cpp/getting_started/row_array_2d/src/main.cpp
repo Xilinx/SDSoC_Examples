@@ -93,7 +93,7 @@ int main(int argc, char** argv)
 
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 
-    std::cout << "Average number of CPU cycles running mmult in hardware: "
+    std::cout << "Number of CPU cycles running application in hardware: "
 				 << hw_cycles << std::endl;
 
     // Validate software & hardware results
