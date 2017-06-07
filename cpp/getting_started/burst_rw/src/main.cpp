@@ -90,7 +90,7 @@ int main(int argc, char** argv)
     vec_incr_golden(source_input, source_sw_results, size, inc_value);
 
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
-    std::cout << "Average number of CPU cycles running mmult in hardware: "
+    std::cout << "Number of CPU cycles running application in hardware: "
               << hw_cycles << std::endl;
     
     // Compare the results of the Hardware to the simulation
