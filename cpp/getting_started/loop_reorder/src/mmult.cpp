@@ -70,76 +70,76 @@ Description :
 // Computes matrix multiply
 // C = A x B, where A, B and C are square matrices of dimension (dim x dim)
 void mmult_accel(
-				const int *in1,     // Read-Only Matrix 1
-				const int *in2,     // Read-Only Matrix 2
-				int *out,           // Output Result
-				int dim         // Size of one dimension of the matrices
-				)
+        const int *in1,     // Read-Only Matrix 1
+        const int *in2,     // Read-Only Matrix 2
+        int *out,           // Output Result
+        int dim             // Size of one dimension of the matrices
+    )
 {
-	// Local memory to store input and output matrices
-	// Local memory is implemented as BRAM memory blocks
-	int A[MAX_SIZE][MAX_SIZE];
-	int B[MAX_SIZE][MAX_SIZE];
-	int C[MAX_SIZE][MAX_SIZE];
-	int temp_sum[MAX_SIZE];
-	#pragma HLS ARRAY_PARTITION variable=B dim=2 complete
-	#pragma HLS ARRAY_PARTITION variable=C dim=2 complete
-	#pragma HLS ARRAY_PARTITION variable=temp_sum dim=1 complete
+    // Local memory to store input and output matrices
+    // Local memory is implemented as BRAM memory blocks
+    int A[MAX_SIZE][MAX_SIZE];
+    int B[MAX_SIZE][MAX_SIZE];
+    int C[MAX_SIZE][MAX_SIZE];
+    int temp_sum[MAX_SIZE];
+    #pragma HLS ARRAY_PARTITION variable=B dim=2 complete
+    #pragma HLS ARRAY_PARTITION variable=C dim=2 complete
+    #pragma HLS ARRAY_PARTITION variable=temp_sum dim=1 complete
+    
+    // Burst reads on input matrices from DDR memory
+    // Burst read for matrix A
+    read_data: for(int itr = 0 , i = 0 , j =0; itr < dim * dim; itr++, j++){
+    #pragma HLS PIPELINE
+    #pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
+        if(j == dim) { j = 0 ; i++; }
+        A[i][j] = in1[itr];
+        B[i][j] = in2[itr];
+    }
 
-	// Burst reads on input matrices from DDR memory
-	// Burst read for matrix A
-	read_data: for(int itr = 0 , i = 0 , j =0; itr < dim * dim; itr++, j++){
-	#pragma HLS PIPELINE
-	#pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
-		if(j == dim) { j = 0 ; i++; }
-		A[i][j] = in1[itr];
-		B[i][j] = in2[itr];
-	}
-
-	// Performs matrix multiply over matrices A and B and stores the result
-	// in C. All the matrices are square matrices of the form (size x size)
+    // Performs matrix multiply over matrices A and B and stores the result
+    // in C. All the matrices are square matrices of the form (size x size)
     // Typical Matrix multiplication Algorithm is as below
-	// mmult1: for (int i = 0; i < dim ; i++) {
-	//     mmult2: for (int j = 0; j < dim ; j++) {
-	//     #pragma HLS PIPELINE
+    // mmult1: for (int i = 0; i < dim ; i++) {
+    //     mmult2: for (int j = 0; j < dim ; j++) {
+    //     #pragma HLS PIPELINE
     //        int result = 0;
-	//         mmult3: for (int k = 0; k < MAX_SIZE; k++) {
+    //         mmult3: for (int k = 0; k < MAX_SIZE; k++) {
     //             result += A[i][k] * B[k][j];
-	//         }
-	//         C[i][j] = result;
-	//     }
-	// }
-	// Pipeline attribute is specified for the middle loop (mmult2), which 
+    //         }
+    //         C[i][j] = result;
+    //     }
+    // }
+    // Pipeline attribute is specified for the middle loop (mmult2), which 
     // will try to unroll lower loop mmult3. Unrolling lower loop will create
     // big adder tree to compute result. This adder tree can be avoided by 
     // reordering mmult2 and mmult3 loops as below:
-	lreorder1: for (int i = 0; i < dim; i++) {
-	#pragma HLS LOOP_TRIPCOUNT min=64 max=64
+    lreorder1: for (int i = 0; i < dim; i++) {
+    #pragma HLS LOOP_TRIPCOUNT min=64 max=64
 
         //resetting temp_sum to zero
         for (int j = 0 ; j < MAX_SIZE ; j ++){
             #pragma HLS UNROLL
             temp_sum[j] = 0;
         }
-		lreorder2: for (int k = 0; k < dim ; k++) {
-		#pragma HLS LOOP_TRIPCOUNT min=64 max=64
-		#pragma HLS PIPELINE
-			lreorder3: for (int j = 0; j < MAX_SIZE; j++) {
-				int result = temp_sum[j];
-				result += A[i][k] * B[k][j];
-				temp_sum[j] = result;
-				C[i][j] = result;
-			}
-		}
-	}
+        lreorder2: for (int k = 0; k < dim ; k++) {
+        #pragma HLS LOOP_TRIPCOUNT min=64 max=64
+        #pragma HLS PIPELINE
+            lreorder3: for (int j = 0; j < MAX_SIZE; j++) {
+                int result = temp_sum[j];
+                result += A[i][k] * B[k][j];
+                temp_sum[j] = result;
+                C[i][j] = result;
+            }
+        }
+    }
 
-	// Burst write from output matrices to DDR memory
-	// Burst write from matrix C
-	writeC: for(int itr = 0 , i = 0, j = 0; itr < dim * dim; itr++, j++) {
-		#pragma HLS PIPELINE
-		#pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
-		if(j == dim) { j = 0 ; i++; }
-		out[itr] = C[i][j];
-	}
+    // Burst write from output matrices to DDR memory
+    // Burst write from matrix C
+    writeC: for(int itr = 0 , i = 0, j = 0; itr < dim * dim; itr++, j++) {
+        #pragma HLS PIPELINE
+        #pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
+        if(j == dim) { j = 0 ; i++; }
+        out[itr] = C[i][j];
+    }
 }
 
