@@ -37,11 +37,7 @@
     access
 
 *******************************************************************************/
-
-#include <stdio.h>
-#include <string.h>
 #include "mmult.h"
-
 
 void mmult_accel(int *a, int *b, int *c, int dim) {
 
@@ -51,25 +47,17 @@ void mmult_accel(int *a, int *b, int *c, int dim) {
     int bufc[MAX_MATRIX_DIM][MAX_MATRIX_DIM];
 
     int matrix_size = dim*dim;
-    // Burst Read data from DDR memory and write into 2D local buffer for a, 
+
+    // Burst Read data from DDR memory and write into 2D local buffer for a & b. 
     int x = 0, y = 0;
-    read_data_a: for (int i = 0 ; i < matrix_size ; i++){
+    read_data: for (int i = 0 ; i < matrix_size ; i++){
         #pragma HLS PIPELINE
         #pragma HLS LOOP_TRIPCOUNT min=1 max=65536
-        int tmpData_a = a[i];
-        bufa[x][y] = tmpData_a;
+        bufa[x][y] = a[i];
+        bufb[x][y] = b[i];
         if (y == dim-1){ x++; y = 0; } else{ y++; }
     }
-
-    // Burst Read data from DDR memory and write into 2D local buffer for b, 
-    read_data_b: for (int i = 0, x=0, y=0; i < matrix_size ; i++){
-        #pragma HLS PIPELINE
-        #pragma HLS LOOP_TRIPCOUNT min=1 max=65536
-        int tmpData_b = b[i];
-        bufb[x][y] = tmpData_b;
-        if (y == dim-1){ x++; y = 0;} else{ y++;}
-    }
-
+    
     // Calculate matrix multiplication using local data buffers 
     // and write result into local buffer for c
     matrix_mult: for (int row = 0; row < dim; row++) {
@@ -85,6 +73,7 @@ void mmult_accel(int *a, int *b, int *c, int dim) {
             bufc[row][col] = result;
         }
     }
+    
     // Burst Write result to DDR memory from local buffer 
     int m = 0, n = 0;
     write_data: for (int i = 0 ; i < matrix_size ; i++){
