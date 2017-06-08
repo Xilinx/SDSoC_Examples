@@ -30,6 +30,7 @@
     "libs": [
             "sds_utils"
     ],
+    "targets": ["hw"],
     "source_dir" : "src/*.cpp",
     "os" : [
             "linux",
