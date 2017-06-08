@@ -50,18 +50,18 @@ void print_array(DTYPE *mat, const char *name, int size, int dim) {
     int i;
     printf("%s\n", name);
     for (i=0;i<size;i++) {
-      printf("%d ",mat[i]);
-      if (((i+1) % dim) == 0)
-        printf("\n");
+        printf("%d ",mat[i]);
+        if (((i+1) % dim) == 0)
+            printf("\n");
     }
 }
 
 // Software solution
 void window_array_2d_sw(DTYPE *a, DTYPE *sw_c, DTYPE alpha)
 {
-	for(int i = 0; i < BLOCK_SIZE; i++){
-		sw_c[i] = alpha * a[i];
-	}
+    for(int i = 0; i < BLOCK_SIZE; i++){
+        sw_c[i] = alpha * a[i];
+    }
 }
 
 int main(int argc, char** argv)
@@ -72,16 +72,16 @@ int main(int argc, char** argv)
     // Allocate buffers using sds_alloc
     DTYPE* a = (DTYPE*)sds_alloc(vector_size_bytes);
     DTYPE* c = (DTYPE*)sds_alloc(vector_size_bytes);
-       
+
     // Allocate software output buffer
     DTYPE* sw_c = (DTYPE*)malloc(vector_size_bytes);
 
     // Create the test data
     DTYPE alpha = 3;
     for(int i = 0; i < BLOCK_SIZE; i++) {
-      a[i] = i;
-      c[i] = 0;
-      sw_c[i] = 0;
+        a[i] = i;
+        c[i] = 0;
+        sw_c[i] = 0;
     }
 
     sds_utils::perf_counter hw_ctr, sw_ctr;
@@ -97,16 +97,16 @@ int main(int argc, char** argv)
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 
     std::cout << "Number of CPU cycles running application in hardware: "
-	    	  << hw_cycles << std::endl;
+                << hw_cycles << std::endl;
 
     // Verify correctness of software & hardware results
     unsigned int correct = 0;              
     for (int i = 0;i < BLOCK_SIZE; i++) {
-      if(c[i] == sw_c[i]) {
-        correct++;
-      } else {
-        printf("\n wrong sw %d hw %d index %d \n", sw_c[i], c[i], i);
-      }
+        if(c[i] == sw_c[i]) {
+            correct++;
+        } else {
+            printf("\n wrong sw %d hw %d index %d \n", sw_c[i], c[i], i);
+        }
     }
 
     // Print a brief summary detailing the results

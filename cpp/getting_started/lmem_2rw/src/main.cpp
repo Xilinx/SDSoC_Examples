@@ -47,9 +47,9 @@
 void vadd_sw(int *in1, int *in2, int *out, 
             int size)
 {
-	for(int i = 0; i < size; i++){
-		out[i] = in1[i] + in2[i];
-	}
+    for(int i = 0; i < size; i++){
+        out[i] = in1[i] + in2[i];
+    }
 }
 
 int main(int argc, char** argv)
@@ -94,7 +94,7 @@ int main(int argc, char** argv)
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 
     std::cout << "Number of CPU cycles running application in hardware: "
-				 << hw_cycles << std::endl;
+                << hw_cycles << std::endl;
     
     // Compare the results between PL and Simulation
     int match = 0;

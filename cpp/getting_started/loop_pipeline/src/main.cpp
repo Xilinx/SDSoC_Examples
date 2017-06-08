@@ -31,7 +31,6 @@
 #
 ************/
 
-
 /******************************************************************************
 
     This is a simple vector addition based example which showcases loop 
@@ -95,7 +94,7 @@ int main(int argc, char** argv)
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 
     std::cout << "Number of CPU cycles running application in hardware: "
-				 << hw_cycles << std::endl;
+                << hw_cycles << std::endl;
    
     sds_free(a);
     sds_free(b);
