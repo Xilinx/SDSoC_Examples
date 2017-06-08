@@ -42,7 +42,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "fir.h"
-
+#include "sds_utils.h"
 #define min(x,y) ((x) < (y) ? (x) : (y))
 
 // Software Finite Impulse Response Filter

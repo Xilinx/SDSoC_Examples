@@ -30,7 +30,6 @@
 # OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 ************/
-
 #include "vadd.h"
 
 void vadd_hw(int *a, int *b, int *c, const int len)

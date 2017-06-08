@@ -34,6 +34,7 @@
 #include <cstring>
 #include <cstdlib>
 #include "mean_value.h"
+#include "sds_utils.h"
 
 void mean_value(int in[], int out[], int n)
 {

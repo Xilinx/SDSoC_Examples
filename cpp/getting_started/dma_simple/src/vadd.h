@@ -30,11 +30,8 @@
 # OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 ************/
-
 #ifndef VECTOR_ADDITION_H_
 #define VECTOR_ADDITION_H_
-
-#include "sds_utils.h"
 
 // Pragma data data_mover is used to generate a Programmable Logic  Design with DMA IP
 // for simple DMA operation. For correct functionality of DMA, it is assumed that 

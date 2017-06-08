@@ -41,6 +41,7 @@
 #include <cstring>
 #include <cstdlib>
 #include "vadd.h"
+#include "sds_utils.h"
 
 // Software Solution
 void vadd_sw(int *in1, int *in2, int *out, 

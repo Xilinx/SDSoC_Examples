@@ -44,6 +44,7 @@
 #include <climits>
 #include <stdio.h>
 #include "nearest.h"
+#include "sds_utils.h"
 
 // Maximum possible distance between two points
 #define INFINITY ULONG_MAX

@@ -43,6 +43,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include "nearest_neighbor.h"
+#include "sds_utils.h"
 
 #define MAX_DIMS 5
 

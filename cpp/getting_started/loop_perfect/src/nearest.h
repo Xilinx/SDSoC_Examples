@@ -34,8 +34,6 @@
 #ifndef NEAREST_H_
 #define NEAREST_H_
 
-#include "sds_utils.h"
-
 // Current #Dimension and size of point array
 #define DATA_DIM 16
 #define DATA_SIZE 1024

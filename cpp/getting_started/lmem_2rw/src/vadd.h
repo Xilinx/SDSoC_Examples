@@ -34,8 +34,6 @@
 #ifndef VADD_H_
 #define VADD_H_
 
-#include "sds_utils.h"
-
 #define DATA_SIZE 4096
 
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic

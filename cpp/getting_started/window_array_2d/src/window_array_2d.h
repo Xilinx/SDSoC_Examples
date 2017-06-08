@@ -33,10 +33,6 @@
 
 #ifndef WINDOW_ARRAY_2D_H_
 #define WINDOW_ARRAY_2D_H_
-
-#include "sds_utils.h"
-
-#include <hls_stream.h>
 // Parameters Description:
 //         TILE_PER_ROW:        number of tiles/windows in each matrix row
 //         TILE_WIDTH:          number of words in each tile/window

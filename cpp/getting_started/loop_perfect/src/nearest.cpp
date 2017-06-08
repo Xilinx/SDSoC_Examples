@@ -61,8 +61,6 @@ Hardware Function Description :
         MAX_SIZE    - Size of the input array can be up to MAX_SIZE
 */
 
-#include <string.h>
-#include <stdio.h>
 #include <limits.h>
 #include "nearest.h"
 

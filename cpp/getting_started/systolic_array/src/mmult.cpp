@@ -60,8 +60,6 @@ Hardware Function Description :
     Note :
         Max Size is dependent on the available DSP resources in the FPGA
 */
-
-#include <stdio.h>
 #include "mmult.h"
 
 //Maximum Array Size

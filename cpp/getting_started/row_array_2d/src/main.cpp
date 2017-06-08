@@ -42,6 +42,7 @@
 #include <stdio.h>
 #include <math.h>
 #include "row_array_2d.h"
+#include "sds_utils.h"
 
 // Utility to print array
 void print_array(DTYPE *mat, const char *name, int size, int dim) {

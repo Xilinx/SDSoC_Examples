@@ -30,11 +30,8 @@
 # OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 ************/
-
 #ifndef MMULT_H_
 #define MMULT_H_
-
-#include "sds_utils.h"
 
 // Size of the input array
 #define DATA_SIZE 64

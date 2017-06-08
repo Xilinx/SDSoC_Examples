@@ -38,13 +38,11 @@
     DMA can be enabled for Data Transfer to/from hardware accelerator.
 
 ******************************************************************************/
-
-
-
 #include <iostream>
 #include <cstdio>
 #include <stdlib.h>
 #include "vadd.h"
+#include "sds_utils.h"
 
 const int TEST_DATA_SIZE = 1<<10;
 

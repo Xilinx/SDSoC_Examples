@@ -43,6 +43,7 @@
 #include <cstring>
 #include <stdio.h>
 #include "window_array_2d.h"
+#include "sds_utils.h"
 
 // Utility to print array
 void print_array(DTYPE *mat, const char *name, int size, int dim) {

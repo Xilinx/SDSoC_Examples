@@ -34,10 +34,6 @@
 #ifndef ROW_ARRAY_2D_H_
 #define ROW_ARRAY_2D_H_
 
-#include "sds_utils.h"
-
-#include <hls_stream.h>
-
 // Parameters Description:
 //         NUM_ROWS:            matrix height
 //         WORD_PER_ROW:        number of words in a row

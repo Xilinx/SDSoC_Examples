@@ -38,10 +38,8 @@
 
 ************************************************************************************/
 
-#include <stdio.h>
-#include <string.h>
-#include "assert.h"
 #include "row_array_2d.h"
+#include <hls_stream.h>
 
 // Read data function : Read Data from DDR Memory
 void read_data(DTYPE *inx, my_data_fifo &inFifo) {

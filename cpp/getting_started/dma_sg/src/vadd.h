@@ -34,8 +34,6 @@
 #ifndef VECTOR_ADDITION_H_
 #define VECTOR_ADDITION_H_
 
-#include "sds_utils.h"
-
 // Pragma data data_mover is used to Generate a Programmable Logic Design
 // with DMA IP (with scatter-Gather Functionality). SG DMA functionality is 
 // is helpful to transfer buffers which are not allocated continuously in 

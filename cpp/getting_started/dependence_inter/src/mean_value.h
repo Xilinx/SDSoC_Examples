@@ -33,8 +33,6 @@
 #ifndef MEAN_VALUE_H_
 #define MEAN_VALUE_H_
 
-#include "sds_utils.h"
-
 #define DATA_SIZE 256
 #define INCR_VALUE 10
 

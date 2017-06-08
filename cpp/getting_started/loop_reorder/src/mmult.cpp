@@ -58,8 +58,6 @@ Description :
 
 */
 
-#include <string.h>
-#include <stdio.h>
 #include "mmult.h"
 //Array Size to access
 #define DATA_SIZE 64

@@ -39,7 +39,6 @@
     data width using struct datatype of 128bit size
 
 *******************************************************************************/
-
 #include "vadd.h"
 
 //Memory Datawidth of accelerator is calculated based on argument type.

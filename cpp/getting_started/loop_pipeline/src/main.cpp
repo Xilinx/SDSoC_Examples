@@ -38,13 +38,11 @@
     pipelining feature of SDx tool chain.
 
 ******************************************************************************/
-
-
-
 #include <iostream>
 #include <cstdio>
 #include <stdlib.h>
 #include "vector_addition.h"
+#include "sds_utils.h"
 
 const int TEST_DATA_SIZE = 1<<10;
 

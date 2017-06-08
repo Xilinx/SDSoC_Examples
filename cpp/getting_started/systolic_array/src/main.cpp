@@ -46,6 +46,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "mmult.h"
+#include "sds_utils.h"
 
 // Software implementation of Matrix Multiplication
 // The inputs are of the size (DATA_SIZE x DATA_SIZE)
