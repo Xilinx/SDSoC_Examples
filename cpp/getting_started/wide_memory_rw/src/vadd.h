@@ -35,8 +35,9 @@
 #define VADD_H_
 
 #define NUM_ELEMENTS   4 // To make structure size 128bit
-//Structure overall width is set to 4 Integers = 4 *32 = 128bit to match to maximum
-//datawidth supported by zynq ultrascale memory interfaces
+//Structure overall width is set to 4 Integers = 4 *32 = 128bit to match to
+//Zynq ultrascale Memory Interface Datawidth to get the optimum memory access 
+//performance.
 typedef struct wide_dt_struct{
     int data[NUM_ELEMENTS];
 } __attribute__ ((packed, aligned(4))) wide_dt;
