@@ -132,18 +132,18 @@ int main(int argc, char **argv) {
     //Launch the Hardware Solution
     fir_shift_register_accel(signal, coeff, hw_out, signal_size); 
     hw_ctr.stop();
-    
+
     // Verify software and hardware results
     test_passed = verify(gold, hw_out, signal_size);
 
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
     double speedup = (double) sw_cycles / (double) hw_cycles;
-    
+
     std::cout << "Number of CPU cycles running application in software: "
-              << sw_cycles << std::endl;
+                << sw_cycles << std::endl;
     std::cout << "Number of CPU cycles running application in hardware: "
-				 << hw_cycles << std::endl;
+                << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
 
     sds_free(signal);

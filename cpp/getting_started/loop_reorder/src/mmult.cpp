@@ -68,11 +68,11 @@ Description :
 // Computes matrix multiply
 // C = A x B, where A, B and C are square matrices of dimension (dim x dim)
 void mmult_accel(
-        const int *in1,     // Read-Only Matrix 1
-        const int *in2,     // Read-Only Matrix 2
-        int *out,           // Output Result
-        int dim             // Size of one dimension of the matrices
-    )
+                    const int *in1,     // Read-Only Matrix 1
+                    const int *in2,     // Read-Only Matrix 2
+                    int *out,           // Output Result
+                    int dim             // Size of one dimension of the matrices
+                )
 {
     // Local memory to store input and output matrices
     // Local memory is implemented as BRAM memory blocks

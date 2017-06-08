@@ -48,10 +48,10 @@
 // Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(in[0:size*dim],point[0:dim],out[0:dim]) 
 void nearest_accel(
-				const int *in,      // Input Points Array
-				const int *point,   // Current Point
-				int *out,           // Output Point
-				int size,           // Size of the input array
-				int dim             // #Dimensions of the points
-			);
+                    const int *in,      // Input Points Array
+                    const int *point,   // Current Point
+                    int *out,           // Output Point
+                    int size,           // Size of the input array
+                    int dim             // #Dimensions of the points
+                  );
 #endif

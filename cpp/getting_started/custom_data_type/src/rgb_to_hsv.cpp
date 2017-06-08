@@ -45,7 +45,7 @@ void rgb_to_hsv_accel(RGBcolor *in,  // Access DDR memory as RGBcolor struct-wis
                       int image_size)
 {
     RGBcolor rgb;
-	HSVcolor hsv;
+    HSVcolor hsv;
 
     // Single loop is sufficient to read each RGB pixel from DDR memory,
     // Converting RGB pixel to HSV Pixel, and writing HSV Pixel Back to DDR
