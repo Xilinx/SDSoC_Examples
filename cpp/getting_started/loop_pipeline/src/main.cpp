@@ -47,23 +47,23 @@
 const int TEST_DATA_SIZE = 1<<10;
 
 // Compare software and hardware solutions
-static int verify(int *gold, int *out, int size) {
+bool verify(int *gold, int *out, int size) {
     for(int i = 0; i < size; i++){
         if(gold[i] != out[i]){
             std::cout<< "Result Mismatch at index=" << i
                 << " Expected=" << gold[i] 
                 << " Actual=" << out[i] << "\n";
-            return 1;
+            return false;
         }
   }
-  return 0;
+  return true;
 }
 
 
 int main(int argc, char** argv)
 {
 
-    int test_passed = 0;
+    bool test_passed;
     int test_size = TEST_DATA_SIZE;
 
     // Create buffers using sds_alloc  
@@ -73,6 +73,13 @@ int main(int argc, char** argv)
 
     // Software output buffer
     int *gold = (int *)malloc(sizeof(int) * test_size);
+
+    // Check for failed memory allocation
+    if((a == NULL) || (b == NULL) || (hw_results == NULL) || (gold == NULL)){
+        std::cout << "TEST FAILED : Failed to allocate memory" << std::endl;
+        return -1;
+    }
+
 
     //Creating Test Data and golden data
     for (int i = 0 ; i < test_size ; i++){
@@ -102,7 +109,7 @@ int main(int argc, char** argv)
     sds_free(hw_results);
     free(gold);
 
-    std::cout << "TEST " << (test_passed ? "FAILED" : "PASSED") << std::endl;
+    std::cout << "TEST " << (test_passed ? "PASSED" : "FAILED") << std::endl;
 
-    return (test_passed ? -1 : 0);
+    return (test_passed ? 0 : -1);
 }

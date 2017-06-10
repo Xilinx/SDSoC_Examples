@@ -108,6 +108,12 @@ int main(int argc, char** argv)
     // Allocate software output buffer
     int *source_sw_result = (int*) malloc(sizeof(int)*DATA_DIM);
 
+    // Check for failed memory allocation
+    if((source_in == NULL) || (source_point == NULL) || (source_hw_result == NULL) || (source_sw_result == NULL)){
+       std::cout << "TEST FAILED : Failed to allocate memory" << std::endl;
+       return -1;
+     }
+   
     // Create the test data
     for(int i = 0 ; i < DATA_SIZE*DATA_DIM; i++){
         source_in[i] = rand()%100;
