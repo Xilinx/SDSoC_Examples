@@ -53,12 +53,12 @@
 
 // Software implementation for finding nearest neighbor
 void nearest_sw(
-			    int *in,      // Input Points Array - represented as integer
-			    int *point,   // Current Point for which the neighbor is found
-			    int *out,     // Output Point
-			    int size,     // Size of the input array
-			    int dim       // #Dimensions of the points
-		       )
+                int *in,      // Input Points Array - represented as integer
+                int *point,   // Current Point for which the neighbor is found
+                int *out,     // Output Point
+                int size,     // Size of the input array
+                int dim       // #Dimensions of the points
+                )
 {
     unsigned long curr_dist, min_dist = INFINITY;
 
@@ -139,7 +139,7 @@ int main(int argc, char** argv)
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 
     std::cout << "Number of CPU cycles running application in hardware: "
-			<< hw_cycles << std::endl;
+                << hw_cycles << std::endl;
 
     // Compare the nearest distances between software and hardware
     unsigned long dist_sw = 0, dist_hw = 0;

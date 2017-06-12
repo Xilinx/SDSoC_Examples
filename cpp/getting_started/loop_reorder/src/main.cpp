@@ -115,9 +115,9 @@ int main(int argc, char** argv)
     double speedup = (double) sw_cycles / (double) hw_cycles;
 
     std::cout << "Number of CPU cycles running application in software: "
-              << sw_cycles << std::endl;
+                << sw_cycles << std::endl;
     std::cout << "Number of CPU cycles running application in hardware: "
-              << hw_cycles << std::endl;
+                << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
 
     // Compare the results 

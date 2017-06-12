@@ -47,7 +47,7 @@
 
 void vadd_pipelined_accel(int *a, int *b, int *c, const int len)
 {
-	//Loop will do burst read from A and B and will do burst write
+    //Loop will do burst read from A and B and will do burst write
     //to C due to pipeline pragma
     vadd: for(int i = 0; i < len; i++) {
         //By-Default SDSoC accelerators will create separate AXI master interface

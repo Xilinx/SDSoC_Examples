@@ -48,12 +48,12 @@ Hardware Function Description :
 
     Arguments :
 
-	    int *in     (input )    --> Input Points Array - represented as integer
-	    int *point  (input )    --> Current Point for which the nearest neighbor
-	                                is found
-	    int *out    (output)    --> Output Point
-	    int size    (input )    --> Size of the input array
-	    int dim     (input )    --> #Dimensions of the points
+    int *in     (input )    --> Input Points Array - represented as integer
+    int *point  (input )    --> Current Point for which the nearest neighbor
+                                is found
+    int *out    (output)    --> Output Point
+    int size    (input )    --> Size of the input array
+    int dim     (input )    --> #Dimensions of the points
 
     Hardware Function Configuration :
 
@@ -82,83 +82,83 @@ Hardware Function Description :
 #define DATA_SIZE 1024
 
 void nearest_accel(
-				const int in[DATA_SIZE*DATA_DIM],      // Input Points Array
-				const int point[DATA_DIM],             // Current Point
-				int out[DATA_DIM],                     // Output Point
-				int size,                              // Size of the input array
-				int dim                                // #Dimensions of the points
-			)
+                    const int in[DATA_SIZE*DATA_DIM],      // Input Points Array
+                    const int point[DATA_DIM],             // Current Point
+                    int out[DATA_DIM],                     // Output Point
+                    int size,                              // Size of the input array
+                    int dim                                // #Dimensions of the points
+                    )
 {
-	// Local memory to store input and output matrices
-	// Local memory is implemented as BRAM memory blocks
+    // Local memory to store input and output matrices
+    // Local memory is implemented as BRAM memory blocks
 
-	// Holds the input array of points
-	int in_local[MAX_SIZE][MAX_DIM];
-	#pragma HLS ARRAY_PARTITION variable=in_local complete dim=2
+    // Holds the input array of points
+    int in_local[MAX_SIZE][MAX_DIM];
+    #pragma HLS ARRAY_PARTITION variable=in_local complete dim=2
 
-	// Holds the point for which the nearest neighbor is to be found
-	int point_local[MAX_DIM];
-	#pragma HLS ARRAY_PARTITION variable=point_local complete dim=1
+    // Holds the point for which the nearest neighbor is to be found
+    int point_local[MAX_DIM];
+    #pragma HLS ARRAY_PARTITION variable=point_local complete dim=1
 
-	// Holds the current nearest point
-	int point_nearest[MAX_DIM];
-	#pragma HLS ARRAY_PARTITION variable=point_nearest complete dim=1
+    // Holds the current nearest point
+    int point_nearest[MAX_DIM];
+    #pragma HLS ARRAY_PARTITION variable=point_nearest complete dim=1
 
-	// min_dist holds the minimum distance till now
-	unsigned long min_dist = INFINITY;
+    // min_dist holds the minimum distance till now
+    unsigned long min_dist = INFINITY;
 
-	// curr_dist holds the value of distance between point_local and
-	// the current point
-	unsigned long curr_dist;
+    // curr_dist holds the value of distance between point_local and
+    // the current point
+    unsigned long curr_dist;
 
-	// Burst reads on input from DDR memory, Points are read as
-	// an array of integers and saved to in_local.
-	readInput: for(int itr = 0, i = 0, j = 0; itr < size*dim; itr++, j++){
-	#pragma HLS LOOP_TRIPCOUNT min=16384*16 max=16384*16
-	#pragma HLS PIPELINE
-		if(j == dim) { j = 0; i++;}
-		in_local[i][j] = in[itr];
-	}
+    // Burst reads on input from DDR memory, Points are read as
+    // an array of integers and saved to in_local.
+    readInput: for(int itr = 0, i = 0, j = 0; itr < size*dim; itr++, j++){
+    #pragma HLS LOOP_TRIPCOUNT min=16384*16 max=16384*16
+    #pragma HLS PIPELINE
+        if(j == dim) { j = 0; i++;}
+        in_local[i][j] = in[itr];
+    }
 
-	// Burst reads the point for which nearest neighbor is to be found
-	readCurrPt: for(int i = 0; i < dim; i++){
-	#pragma HLS LOOP_TRIPCOUNT min=16 max=16
-	#pragma HLS PIPELINE
-		point_local[i] = point[i];
-	}
+    // Burst reads the point for which nearest neighbor is to be found
+    readCurrPt: for(int i = 0; i < dim; i++){
+    #pragma HLS LOOP_TRIPCOUNT min=16 max=16
+    #pragma HLS PIPELINE
+        point_local[i] = point[i];
+    }
 
-	// Find the nearest neighbor
+    // Find the nearest neighbor
 
-	// nearest1 loop goes over all the points
-	// nearest2 loop finds the distance between point_local and the current
-	// point. Based on this the minimum distance and the closest neighbor
-	// are updated.
+    // nearest1 loop goes over all the points
+    // nearest2 loop finds the distance between point_local and the current
+    // point. Based on this the minimum distance and the closest neighbor
+    // are updated.
 
-	// In nearest2 loop, there are specific conditions like if(j==0).
-	// This is for enabling loop flatten to improve performance.
-	nearest1: for(int i = 0; i < size; i++) {
-	#pragma HLS LOOP_TRIPCOUNT min=16384 max=16384
-		nearest2: for(int j = 0; j < dim; j++) {
-		#pragma HLS LOOP_TRIPCOUNT min=16 max=16
-		#pragma HLS PIPELINE
-			if(j == 0)  curr_dist = 0;
+    // In nearest2 loop, there are specific conditions like if(j==0).
+    // This is for enabling loop flatten to improve performance.
+    nearest1: for(int i = 0; i < size; i++) {
+    #pragma HLS LOOP_TRIPCOUNT min=16384 max=16384
+        nearest2: for(int j = 0; j < dim; j++) {
+        #pragma HLS LOOP_TRIPCOUNT min=16 max=16
+        #pragma HLS PIPELINE
+            if(j == 0)  curr_dist = 0;
 
-			curr_dist += SQUARE(point_local[j] - in_local[i][j]);
+            curr_dist += SQUARE(point_local[j] - in_local[i][j]);
 
-			if(j == dim-1 && curr_dist < min_dist) {
-				min_dist = curr_dist;
-				nearest3: for(int k = 0; k < MAX_DIM; k++) {
-					point_nearest[k] = in_local[i][k];
-				}
-			}
-		}
-	}
+            if(j == dim-1 && curr_dist < min_dist) {
+                min_dist = curr_dist;
+                nearest3: for(int k = 0; k < MAX_DIM; k++) {
+                    point_nearest[k] = in_local[i][k];
+                }
+            }
+        }
+    }
 
-	// Burst writes the nearest neighbor to out
-	wirteOuput: for(int i = 0; i < dim; i++) {
-	#pragma HLS LOOP_TRIPCOUNT min=16 max=16
-	#pragma HLS PIPELINE
-		out[i] = point_nearest[i];
-	}
+    // Burst writes the nearest neighbor to out
+    wirteOuput: for(int i = 0; i < dim; i++) {
+    #pragma HLS LOOP_TRIPCOUNT min=16 max=16
+    #pragma HLS PIPELINE
+        out[i] = point_nearest[i];
+    }
 
 }

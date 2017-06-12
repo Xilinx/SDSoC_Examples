@@ -46,6 +46,7 @@
 #define TILE_HEIGHT 8
 #define BLOCK_SIZE (TILE_WIDTH*TILE_PER_ROW*TILE_PER_COLUMN*TILE_HEIGHT)
 
+#include <hls_stream.h>
 // Default data type is integer
 typedef int DTYPE;
 // use HLS stream library for easy use of AXI-stream interface
