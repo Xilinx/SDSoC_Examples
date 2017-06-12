@@ -92,13 +92,13 @@ int main(int argc, char** argv)
                 << hw_cycles << std::endl;
 
     // Compare the results of software and hardware
-    int match = 0;
+    bool match = true;
     for (int i = 0 ; i < size; i++){
         if (hw_results[i] != sw_results[i]){
             std::cout << "Error: Result mismatch" << std::endl;
             std::cout << "i = " << i << " CPU result = " << sw_results[i]
                 << " Hardware result = " << hw_results[i] << std::endl;
-            match = 1;
+            match = false;
             break;
         }
     }
@@ -109,6 +109,6 @@ int main(int argc, char** argv)
     sds_free(hw_results);
     sds_free(sw_results);
 
-    std::cout << "TEST " << (match? "FAILED":"PASSED") << std::endl;
-    return (match?-1:0);
+    std::cout << "TEST " << (match? "PASSED":"FAILED") << std::endl;
+    return (match ? 0 : -1);
 }
