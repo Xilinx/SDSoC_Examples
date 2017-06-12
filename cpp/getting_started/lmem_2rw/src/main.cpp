@@ -97,13 +97,13 @@ int main(int argc, char** argv)
                 << hw_cycles << std::endl;
     
     // Compare the results between PL and Simulation
-    int match = 0;
+    bool match = true;
     for (int i = 0 ; i < DATA_SIZE ; i++){
         if (hw_results[i] != sw_results[i]){
             std::cout << "Error: Result mismatch" << std::endl;
             std::cout << "i = " << i << " CPU result = " << sw_results[i]
                 << " Hardware result = " << hw_results[i] << std::endl;
-            match = 1;
+            match = false;
             break;
         }
     }
@@ -114,7 +114,7 @@ int main(int argc, char** argv)
     sds_free(hw_results);
     free(sw_results);
 
-    if (match){
+    if (!match){
         std::cout << "TEST FAILED" << std::endl;
         return 1;
     }
