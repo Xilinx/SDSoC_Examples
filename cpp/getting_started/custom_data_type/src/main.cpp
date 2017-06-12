@@ -96,7 +96,7 @@ int main(int argc, char* argv[])
 
     // Initialize Synthetic Input Data
     for(int i = 0;i < image_size; i++)
-    	input_bmp[i] = i * 2;
+        input_bmp[i] = i * 2;
 
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
