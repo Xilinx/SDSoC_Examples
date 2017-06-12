@@ -94,13 +94,13 @@ int main(int argc, char** argv)
               << hw_cycles << std::endl;
     
     // Compare the results of the Hardware to the simulation
-    int match = 0;
+    bool match = true;
     for (int i = 0 ; i < size ; i++){
         if (source_hw_results[i] != source_sw_results[i]){
             std::cout << "Error: Result mismatch" << std::endl;
             std::cout << "i = " << i << " CPU result = " << source_sw_results[i]
                 << " Hardware result = " << source_hw_results[i] << std::endl;
-            match = 1;
+            match = false;
             break;
         }
     }
@@ -110,7 +110,7 @@ int main(int argc, char** argv)
     sds_free(source_hw_results);
     free(source_sw_results);
 
-    if (match){
+    if (!match){
         std::cout << "TEST FAILED." << std::endl;
         return -1;
     }
