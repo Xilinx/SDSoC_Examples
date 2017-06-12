@@ -74,6 +74,12 @@ int main(int argc, char** argv)
     // Allocate software output buffer
     DTYPE* sw_c = (DTYPE*)malloc(vector_size_bytes);
 
+    // Check for failed memory allocation
+    if((a == NULL) || (c == NULL) || (sw_c == NULL)){
+        std::cout << "TEST FAILED : Failed to allocate memory" << std::endl;
+        return -1;
+    }
+
     // Create the test data and Software Result
     DTYPE alpha = 3;
     for(int i = 0; i < BLOCK_SIZE; i++) {
