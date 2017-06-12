@@ -119,11 +119,11 @@ int main(int argc, char* argv[])
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
     double speedup = (double) sw_cycles / (double) hw_cycles;
 
-	std::cout << "Number of CPU cycles running application in software: "
-		<< sw_cycles << std::endl;
-	std::cout << "Number of CPU cycles running application in hardware: "
-		<< hw_cycles << std::endl;
-	std::cout << "Speed up: " << speedup << std::endl;
+    std::cout << "Number of CPU cycles running application in software: "
+        << sw_cycles << std::endl;
+    std::cout << "Number of CPU cycles running application in hardware: "
+        << hw_cycles << std::endl;
+    std::cout << "Speed up: " << speedup << std::endl;
 
     //Compare the results of the Hardware to the Sw Solution
     int match = compareImages(swHsvImage, hwHsvImage, image_size);
