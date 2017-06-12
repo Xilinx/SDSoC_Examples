@@ -43,6 +43,7 @@
 *******************************************************************************/
 #include <iostream>
 #include <cstring>
+#include <stdlib.h>
 #include "vadd.h"
 #include "sds_utils.h"
 
