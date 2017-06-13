@@ -30,14 +30,18 @@
 # OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 ************/
-#ifndef MEAN_VALUE_H_
-#define MEAN_VALUE_H_
+#ifndef VCONV_H_
+#define VCONV_H_
 
-#define DATA_SIZE 256
-#define INCR_VALUE 10
+#define MAX_COLS 512
+#define K 11
+
+const unsigned int vcoeff[K] = {
+            36, 111, 266, 498, 724, 821, 724, 498, 266, 111, 36
+    };
 
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
-#pragma SDS data zero_copy(in[0:size], out[0:size])
-void mean_value_accel(int *in, int *out, int size);
+#pragma SDS data zero_copy(in[0:height*width], out[0:height*width])
+void vconv_hw(int *in, int *out, int height, int width);
 #endif
