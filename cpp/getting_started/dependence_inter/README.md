@@ -52,8 +52,8 @@ Makefile
 README.md
 description.json
 src/main.cpp
-src/mean_value.cpp
-src/mean_value.h
+src/vconv.cpp
+src/vconv.h
 ```
 
 ## 5. COMPILATION AND EXECUTION
@@ -105,7 +105,7 @@ This example is written by developers at
 ## 9. REVISION HISTORY
 Date | README Version | Description
 -----|----------------|------------
-MAR2017|1.0|Initial Xilinx Release
+JUNE2017|1.0|Initial Xilinx Release
 
 [3-Clause BSD License]: ../../../LICENSE.txt
 [SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc
