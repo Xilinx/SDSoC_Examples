@@ -43,6 +43,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include "nearest_neighbor.h"
+#include "sds_utils.h"
 
 #define MAX_DIMS 5
 
@@ -52,7 +53,7 @@ void find_nearest_neighbor(int *out, const int dim,
                            const int *points, const int len);
 
 // Compares software & hardware solutions
-int verify(int *gold, int *test, int size) {
+bool verify(int *gold, int *test, int size) {
     bool match = true;
 
     for(int i = 0; i < size; i++) {
@@ -61,17 +62,11 @@ int verify(int *gold, int *test, int size) {
             continue;
         else {
             match = false;
-            std::cout<< "Results: CPU " << gold[i] << " Hardware" << test[i] << std::endl;
-            break;
+            std::cout<< "Results Mismatch: CPU " << gold[i] << " Hardware" << test[i] << std::endl;
+            return match;
         }
-  
     }
-
-    if (!match) {
-        return -1;
-    }
-    else
-        return 0;
+  return match;
 }
 
 // Prints point data
@@ -86,7 +81,7 @@ void print_point(int *point, int size) {
 // This example illustrates the algorithm of nearest neighbor search for a given
 // point (x, y) from a list of points.
 int main(int argc, char **argv) {
-    int test_passed = 0;
+    bool test_passed;
     static const int num_points = 512;
     static const int num_dims = 2;
 
@@ -95,6 +90,14 @@ int main(int argc, char **argv) {
     int *input = (int *)sds_alloc(sizeof(int) * num_dims);
     int *out   = (int *)sds_alloc(sizeof(int) * num_dims);
 
+    // Check for failed memory allocation
+    if((data == NULL) || (input == NULL) || (out == NULL)){
+        std::cout << "TEST FAILED : Failed to allocate memory" << std::endl;
+        return -1;
+    }
+    
+    
+                             
     // Initialize input data
     for(int i = 0; i < num_points * num_dims; i++){
         data[i] = i  + i;
@@ -123,8 +126,8 @@ int main(int argc, char **argv) {
    
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
     
-    std::cout << "Average number of CPU cycles running mmult in hardware: "
-				 << hw_cycles << std::endl;
+    std::cout << "Number of CPU cycles running application in hardware: "
+                << hw_cycles << std::endl;
  
     printf("Nearest Neighbor: ");
     print_point(gold, num_dims);
@@ -133,9 +136,9 @@ int main(int argc, char **argv) {
     sds_free(data);
     sds_free(input);
    
-    std::cout << "TEST " << (test_passed ? "FAILED" : "PASSED") << std::endl;
+    std::cout << "TEST " << (test_passed ? "PASSED" : "FAILED") << std::endl;
 
-    return (test_passed ? -1 : 0);
+    return (test_passed ? 0 : -1);
 }
 
 void find_nearest_neighbor(int *out, const int dim,

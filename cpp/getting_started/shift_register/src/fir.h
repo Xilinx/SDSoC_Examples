@@ -34,8 +34,6 @@
 #ifndef FIR_H_
 #define FIR_H_
 
-#include "sds_utils.h"
-
 #define N_COEFF 11
 #define SIGNAL_SIZE 512
 

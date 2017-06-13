@@ -44,6 +44,7 @@
 #include <climits>
 #include <stdio.h>
 #include "nearest.h"
+#include "sds_utils.h"
 
 // Maximum possible distance between two points
 #define INFINITY ULONG_MAX
@@ -52,12 +53,12 @@
 
 // Software implementation for finding nearest neighbor
 void nearest_sw(
-			    int *in,      // Input Points Array - represented as integer
-			    int *point,   // Current Point for which the neighbor is found
-			    int *out,     // Output Point
-			    int size,     // Size of the input array
-			    int dim       // #Dimensions of the points
-		       )
+                int *in,      // Input Points Array - represented as integer
+                int *point,   // Current Point for which the neighbor is found
+                int *out,     // Output Point
+                int size,     // Size of the input array
+                int dim       // #Dimensions of the points
+                )
 {
     unsigned long curr_dist, min_dist = INFINITY;
 
@@ -107,6 +108,12 @@ int main(int argc, char** argv)
     // Allocate software output buffer
     int *source_sw_result = (int*) malloc(sizeof(int)*DATA_DIM);
 
+    // Check for failed memory allocation
+    if((source_in == NULL) || (source_point == NULL) || (source_hw_result == NULL) || (source_sw_result == NULL)){
+       std::cout << "TEST FAILED : Failed to allocate memory" << std::endl;
+       return -1;
+     }
+   
     // Create the test data
     for(int i = 0 ; i < DATA_SIZE*DATA_DIM; i++){
         source_in[i] = rand()%100;
@@ -131,8 +138,8 @@ int main(int argc, char** argv)
 
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 
-    std::cout << "Average number of CPU cycles running mmult in hardware: "
-			<< hw_cycles << std::endl;
+    std::cout << "Number of CPU cycles running application in hardware: "
+                << hw_cycles << std::endl;
 
     // Compare the nearest distances between software and hardware
     unsigned long dist_sw = 0, dist_hw = 0;

@@ -34,10 +34,6 @@
 #ifndef ROW_ARRAY_2D_H_
 #define ROW_ARRAY_2D_H_
 
-#include "sds_utils.h"
-
-#include <hls_stream.h>
-
 // Parameters Description:
 //         NUM_ROWS:            matrix height
 //         WORD_PER_ROW:        number of words in a row
@@ -46,6 +42,7 @@
 #define WORD_PER_ROW 64
 #define BLOCK_SIZE (WORD_PER_ROW*NUM_ROWS)
 
+#include <hls_stream.h>
 // Default data type is integer
 typedef int DTYPE;
 // use HLS stream library for easy use of AXI-stream interface

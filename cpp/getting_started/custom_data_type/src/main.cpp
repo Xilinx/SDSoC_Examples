@@ -44,6 +44,7 @@
 #include <stdio.h>
 #include "bitmap.h"
 #include "rgb_to_hsv.h"
+#include "sds_utils.h"
 
 #define IMAGE_SIZE 128
 
@@ -54,18 +55,18 @@ int compareImages(int * _in, int * _out, int image_size);
 
 void extract_pixel_data(int *in, RGBcolor *hardware_input, int size)
 {
-	for(int i = 0;i < size; i++){
-		hardware_input[i].r = (in[i]) & 0xff;
-		hardware_input[i].g = ( (in[i]) & 0xff00 ) >> 8;
-		hardware_input[i].b = ( (in[i]) & 0xff0000 ) >> 16;
-	}
+    for(int i = 0;i < size; i++){
+        hardware_input[i].r = (in[i]) & 0xff;
+        hardware_input[i].g = ( (in[i]) & 0xff00 ) >> 8;
+        hardware_input[i].b = ( (in[i]) & 0xff0000 ) >> 16;
+    }
 }
 
 void pack_output_int(HSVcolor *in, int *out, int size)
 {
-	for(int i = 0;i < size; i++){
-		out[i] = in[i].h | (in[i].s << 8) | (in[i].v << 16);
-	}
+    for(int i = 0;i < size; i++){
+        out[i] = in[i].h | (in[i].s << 8) | (in[i].v << 16);
+    }
 }
 
 int main(int argc, char* argv[])
@@ -75,10 +76,6 @@ int main(int argc, char* argv[])
 
     // Synthetic Image Data
     int *input_bmp   = (int*)malloc(sizeof(int) * image_size);
-    
-    // Initialize Synthetic Input Data
-    for(int i = 0;i < image_size; i++)
-    	input_bmp[i] = i * 2;
 
     // Input Data Size
     size_t image_size_bytes = sizeof(int) * image_size;
@@ -90,6 +87,16 @@ int main(int argc, char* argv[])
     // Allocate buffers using sds_alloc
     RGBcolor *hardware_input  = (RGBcolor *)(sds_alloc(sizeof(RGBcolor) * image_size));
     HSVcolor *hardware_output = (HSVcolor *)(sds_alloc(sizeof(HSVcolor) * image_size));
+
+    // Check for failed memory allocation
+    if((input_bmp == NULL) || (swHsvImage == NULL) || (hwHsvImage == NULL) || (hardware_input == NULL) || (hardware_output == NULL)){
+      std::cout << "TEST FAILED : Failed to allocate memory" << std::endl;
+      return -1;
+    }    
+
+    // Initialize Synthetic Input Data
+    for(int i = 0;i < image_size; i++)
+        input_bmp[i] = i * 2;
 
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
@@ -110,20 +117,23 @@ int main(int argc, char* argv[])
 
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
-	double speedup = (double) sw_cycles / (double) hw_cycles;
+    double speedup = (double) sw_cycles / (double) hw_cycles;
 
-	std::cout << "Average number of CPU cycles running mmult in software: "
-		   << sw_cycles << std::endl;
-	std::cout << "Average number of CPU cycles running mmult in hardware: "
-		   << hw_cycles << std::endl;
-	std::cout << "Speed up: " << speedup << std::endl;
+    std::cout << "Number of CPU cycles running application in software: "
+        << sw_cycles << std::endl;
+    std::cout << "Number of CPU cycles running application in hardware: "
+        << hw_cycles << std::endl;
+    std::cout << "Speed up: " << speedup << std::endl;
 
     //Compare the results of the Hardware to the Sw Solution
-    int match= compareImages(swHsvImage, hwHsvImage, image_size);
+    int match = compareImages(swHsvImage, hwHsvImage, image_size);
 
     // Release Memory 
-    sds_free(hwHsvImage);
+    free(input_bmp);
+    free(hwHsvImage);
     free(swHsvImage);
+    sds_free(hardware_input);
+    sds_free(hardware_output);
 
     if (match){
         std::cout << "TEST FAILED." << std::endl;

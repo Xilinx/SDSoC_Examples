@@ -41,35 +41,42 @@
 #include <cstring>
 #include <cstdlib>
 #include "vadd.h"
+#include "sds_utils.h"
 
 // Software Solution
-void vadd_sw(unsigned int *source_in1, unsigned int *source_in2, unsigned int *out, 
+void vadd_sw(int *in1, int *in2, int *out, 
             int size)
 {
-	for(int i = 0; i < size; i++){
-		out[i] = source_in1[i] + source_in2[i];
-	}
+    for(int i = 0; i < size; i++){
+        out[i] = in1[i] + in2[i];
+    }
 }
 
 int main(int argc, char** argv)
 {
     // Size of input data
-    size_t vector_size_bytes = sizeof(unsigned int) * DATA_SIZE;
+    size_t vector_size_bytes = sizeof(int) * DATA_SIZE;
 
     // Allocate buffers using sds_alloc
-    unsigned int *source_in1         = (unsigned int *) sds_alloc(vector_size_bytes);
-    unsigned int *source_in2         = (unsigned int *) sds_alloc(vector_size_bytes);
-    unsigned int *source_hw_results  = (unsigned int *) sds_alloc(vector_size_bytes);
+    int *in1         = (int *) sds_alloc(vector_size_bytes);
+    int *in2         = (int *) sds_alloc(vector_size_bytes);
+    int *hw_results  = (int *) sds_alloc(vector_size_bytes);
 
     // Allocate software output buffer
-    unsigned int *source_sw_results  = (unsigned int *) malloc(vector_size_bytes);
+    int *sw_results  = (int *) malloc(vector_size_bytes);
+
+    if((in1 == NULL) || (in2 == NULL) || (hw_results == NULL) 
+            || (sw_results == NULL)){
+        std::cout << "TEST FAILED : Failed to allocate memory" << std::endl;
+        return -1;
+    }
 
     // Create the test data 
     for(int i = 0 ; i < DATA_SIZE ; i++){
-        source_in1[i] = i;
-        source_in2[i] = i * i;
-        source_sw_results[i] = 0; 
-        source_hw_results[i] = 0;
+        in1[i] = i;
+        in2[i] = i * i;
+        sw_results[i] = 0; 
+        hw_results[i] = 0;
     }
 
     sds_utils::perf_counter hw_ctr, sw_ctr;
@@ -77,37 +84,37 @@ int main(int argc, char** argv)
     int size = DATA_SIZE;
 
     //Launch the Software Solution
-    vadd_sw(source_in1,source_in2,source_sw_results, size);
+    vadd_sw(in1,in2,sw_results, size);
 
     hw_ctr.start();
     //Launch the Hardware Solution
-    vadd_accel(source_in1,source_in2, source_hw_results,size);
+    vadd_accel(in1,in2, hw_results,size);
     hw_ctr.stop();
 
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 
-    std::cout << "Average number of CPU cycles running mmult in hardware: "
-				 << hw_cycles << std::endl;
+    std::cout << "Number of CPU cycles running application in hardware: "
+                << hw_cycles << std::endl;
     
     // Compare the results between PL and Simulation
-    int match = 0;
+    bool match = true;
     for (int i = 0 ; i < DATA_SIZE ; i++){
-        if (source_hw_results[i] != source_sw_results[i]){
+        if (hw_results[i] != sw_results[i]){
             std::cout << "Error: Result mismatch" << std::endl;
-            std::cout << "i = " << i << " CPU result = " << source_sw_results[i]
-                << " Hardware result = " << source_hw_results[i] << std::endl;
-            match = 1;
+            std::cout << "i = " << i << " CPU result = " << sw_results[i]
+                << " Hardware result = " << hw_results[i] << std::endl;
+            match = false;
             break;
         }
     }
 
     // Release Memory
-    sds_free(source_in1);
-    sds_free(source_in2);
-    sds_free(source_hw_results);
-    free(source_sw_results);
+    sds_free(in1);
+    sds_free(in2);
+    sds_free(hw_results);
+    free(sw_results);
 
-    if (match){
+    if (!match){
         std::cout << "TEST FAILED" << std::endl;
         return 1;
     }

@@ -39,7 +39,6 @@
 *******************************************************************************/
 
 #define MAX_DIMS 5
-#include <stdlib.h>
 #include <limits.h>
 #include "nearest_neighbor.h"
 

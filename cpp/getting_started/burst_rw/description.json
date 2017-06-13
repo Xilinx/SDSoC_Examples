@@ -1,7 +1,7 @@
 {
     "example": "Burst Read/Write",
     "overview": [
-        "This is simple example of using AXI4-master interface for burst read and write"
+        "This is a simple vector increment example which demonstrates usage of  AXI4-master interface for burst read and write"
     ],
     "key_concepts": [ "Burst Access"],
     "contributors" : [
@@ -12,7 +12,7 @@
     ],
     "revision" : [
         {
-            "date" : "MAR2017",
+            "date" : "JUNE2017",
             "version": "1.0",
             "description": "Initial Xilinx Release"
         }
@@ -22,8 +22,8 @@
     },
     "accelerators": [
        {
-           "name" : "vadd_accel",
-           "location" : "vadd.cpp"
+           "name" : "vec_incr_accel",
+           "location" : "vec_incr.cpp"
        }
     ],
     "libs": [

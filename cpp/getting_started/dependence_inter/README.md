@@ -15,7 +15,7 @@ This README file contains the following sections:
 
 
 ## 1. OVERVIEW
-This is a simple example to demonstrate inter dependence attribute. Using inter dependence attribute user can provide additional dependency details to compiler which allow compiler to perform unrolling/pipelining to get better performance 
+This is a simple example to demonstrate inter dependence attribute using vertical convolution example. Using inter dependence attribute user can provide additional dependency details to compiler which allow compiler to perform unrolling/pipelining to get better performance 
 
 ***KEY CONCEPTS:*** Inter Dependence
 
@@ -52,8 +52,8 @@ Makefile
 README.md
 description.json
 src/main.cpp
-src/mean_value.cpp
-src/mean_value.h
+src/vconv.cpp
+src/vconv.h
 ```
 
 ## 5. COMPILATION AND EXECUTION
@@ -105,7 +105,7 @@ This example is written by developers at
 ## 9. REVISION HISTORY
 Date | README Version | Description
 -----|----------------|------------
-MAR2017|1.0|Initial Xilinx Release
+JUNE2017|1.0|Initial Xilinx Release
 
 [3-Clause BSD License]: ../../../LICENSE.txt
 [SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc

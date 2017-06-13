@@ -42,7 +42,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "fir.h"
-
+#include "sds_utils.h"
 #define min(x,y) ((x) < (y) ? (x) : (y))
 
 // Software Finite Impulse Response Filter
@@ -72,33 +72,42 @@ void print_signal(int *hardware_output, int signal_size) {
 }
 
 // Verifies the software and hardware results
-int verify(int *gold, const int *out, const int signal_size) {
+bool verify(int *gold, const int *out, const int signal_size) {
    
-    int match = 1;
+    bool match = true;
     for(int i = 0; i < signal_size; i++){
         if (gold[i] == out[i]){
             continue;
         }
         else {
-            match = 0;
+            match = false;
             break;
         }
     } 
     if (!match) {
-        return 1;
+        return false;
     }
-    return 0;
+    return true;
 }
 
 int main(int argc, char **argv) {
     
-    int test_passed = 0;
+    bool test_passed;
     int signal_size = SIGNAL_SIZE;
 
     // Allocate buffers using sds_alloc
     int *signal = (int *) sds_alloc(sizeof(int) * signal_size);
     int *coeff  = (int *) sds_alloc(sizeof(int) * N_COEFF);
     int *hw_out = (int *) sds_alloc(sizeof(int) * signal_size);
+
+    // Allocate software output buffer
+    int *gold = (int *) malloc(sizeof(int) * signal_size);
+
+    // Check for failed memory allocation
+    if((signal == NULL) || (coeff == NULL) || (hw_out == NULL) || (gold == NULL)){
+        std::cout << "TEST FAILED : Failed to allocate memory" << std::endl;
+        return -1;
+    }
 
     coeff[0] = 53;
     coeff[1] =  0;
@@ -118,9 +127,6 @@ int main(int argc, char **argv) {
         hw_out[i] = 0 ;     
     }
 
-    // Allocate software output buffer
-    int *gold = (int *) malloc(sizeof(int) * signal_size);
-    
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
     sw_ctr.start();
@@ -132,18 +138,18 @@ int main(int argc, char **argv) {
     //Launch the Hardware Solution
     fir_shift_register_accel(signal, coeff, hw_out, signal_size); 
     hw_ctr.stop();
-    
+
     // Verify software and hardware results
     test_passed = verify(gold, hw_out, signal_size);
 
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
     double speedup = (double) sw_cycles / (double) hw_cycles;
-    
-    std::cout << "Average number of CPU cycles running mmult in software: "
-              << sw_cycles << std::endl;
-    std::cout << "Average number of CPU cycles running mmult in hardware: "
-				 << hw_cycles << std::endl;
+
+    std::cout << "Number of CPU cycles running application in software: "
+                << sw_cycles << std::endl;
+    std::cout << "Number of CPU cycles running application in hardware: "
+                << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
 
     sds_free(signal);
@@ -151,7 +157,7 @@ int main(int argc, char **argv) {
     sds_free(hw_out);
     free(gold);
     
-    std::cout << "TEST " << (test_passed ? "FAILED" : "PASSED") << std::endl;
+    std::cout << "TEST " << (test_passed ? "PASSED" : "FAILED") << std::endl;
 
-    return (test_passed ? -1 : 0);
+    return (test_passed ? 0 : -1);
 }

@@ -42,6 +42,7 @@
 #include <cstdio>
 #include <stdlib.h>
 #include "matmul.h"
+#include "sds_utils.h"
 
 // Software Matrix Multiplication 
 void matmul(int *C, int *A, int *B, int M) {
@@ -55,19 +56,19 @@ void matmul(int *C, int *A, int *B, int M) {
 }
 
 // Verify Software and Hardware Results
-int verify(int *gold, int *output, int size) {
+bool verify(int *gold, int *output, int size) {
     for (int i = 0; i < size; i++) {
         if (output[i] != gold[i]) {
             printf("Mismatch %d: gold: %d hardware: %d\n", i, gold[i], output[i]);
-            return -1;
+            return false;
         }
     }
-    return 0;
+    return true;
 }
 
 int main(int argc, char **argv) {
 
-    int test_passed = 0;
+    bool test_passed;
     static const int columns = 64;
     static const int rows = 64;
 
@@ -112,10 +113,10 @@ int main(int argc, char **argv) {
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
     double speedup = (double) sw_cycles / (double) hw_cycles;
 
-    std::cout << "Average number of CPU cycles running mmult in software: "
-			 << sw_cycles << std::endl;
-    std::cout << "Average number of CPU cycles running mmult in hardware: "
-				 << hw_cycles << std::endl;
+    std::cout << "Number of CPU cycles running application in software: "
+                << sw_cycles << std::endl;
+    std::cout << "Number of CPU cycles running application in hardware: "
+                << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
     
     sds_free(A);
@@ -123,6 +124,6 @@ int main(int argc, char **argv) {
     sds_free(C);
     free(gold);
     
-    std::cout << "TEST " << (test_passed ? "FAILED" : "PASSED") << std::endl; 
-    return (test_passed ? -1 : 0);
+    std::cout << "TEST " << (test_passed ? "PASSED" : "FAILED") << std::endl; 
+    return (test_passed ? 0 : -1);
 }

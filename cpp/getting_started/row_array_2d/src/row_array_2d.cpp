@@ -38,9 +38,6 @@
 
 ************************************************************************************/
 
-#include <stdio.h>
-#include <string.h>
-#include "assert.h"
 #include "row_array_2d.h"
 
 // Read data function : Read Data from DDR Memory
@@ -78,19 +75,19 @@ void compute(my_data_fifo &inFifo, my_data_fifo &outFifo, DTYPE alpha) {
 }
 
 void row_array_2d_accel(DTYPE *inx, DTYPE *outx, DTYPE alpha) {
-	my_data_fifo inFifo;
-	// By default the FIFO depth is 2, user can change the depth by using such 
-	// pragma: #pragma HLS stream variable=inFifo depth=256
-	my_data_fifo outFifo;
+    my_data_fifo inFifo;
+    // By default the FIFO depth is 2, user can change the depth by using such 
+    // pragma: #pragma HLS stream variable=inFifo depth=256
+    my_data_fifo outFifo;
 
     // Dataflow enables task level pipelining, allowing functions and loops to execute 
     // concurrently. Used to minimize interval. 
     #pragma HLS DATAFLOW
-	// Read data from each row of 2D array
-	read_data(inx, inFifo);
-	// Do computation with the acquired data
-	compute(inFifo, outFifo, alpha);
-	// Write data to each row of 2D array
-	write_data(outx, outFifo);
-	return;
+    // Read data from each row of 2D array
+    read_data(inx, inFifo);
+    // Do computation with the acquired data
+    compute(inFifo, outFifo, alpha);
+    // Write data to each row of 2D array
+    write_data(outx, outFifo);
+    return;
 }

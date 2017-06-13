@@ -30,11 +30,8 @@
 # OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 ************/
-
 #ifndef MMULT_H_
 #define MMULT_H_
-
-#include "sds_utils.h"
 
 // Array Size to access
 #define DATA_SIZE 12
@@ -46,11 +43,11 @@
 // Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(a[0:a_row*a_col], b[0:a_col*b_col], c[0:a_row*b_col])
 void mmult_accel(
-			    const int *a,   // Read-Only Matrix A
-			    const int *b,   // Read-Only Matrix B
-			    int *c,         // Output Result
-			    int a_row,      // Matrix A Row Size
-			    int a_col,      // Matrix A Col Size
-			    int b_col       // Matrix B Col Size
-		    );
+                    const int *a,   // Read-Only Matrix A
+                    const int *b,   // Read-Only Matrix B
+                    int *c,         // Output Result
+                    int a_row,      // Matrix A Row Size
+                    int a_col,      // Matrix A Col Size
+                    int b_col       // Matrix B Col Size
+                );
 #endif

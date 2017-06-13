@@ -50,11 +50,11 @@ BUILD_DIR := build/$(PLATFORM)_$(TARGET_OS)_$(TARGET)
 SRC_DIR := src
 OBJECTS += \
 $(pwd)/$(BUILD_DIR)/main.o \
-$(pwd)/$(BUILD_DIR)/mean_value.o
+$(pwd)/$(BUILD_DIR)/vconv.o
 
 # SDS Options
 HW_FLAGS :=
-HW_FLAGS += -sds-hw mean_value_accel mean_value.cpp -sds-end
+HW_FLAGS += -sds-hw vconv_hw vconv.cpp -sds-end
 
 EMU_FLAGS := 
 ifeq ($(TARGET), emu)

@@ -34,8 +34,6 @@
 #ifndef NEAREST_NEIGHBOR_H_
 #define NEAREST_NEIGHBOR_H_
 
-#include "sds_utils.h"
-
 #define NUM_DIMS 2
 #define NUM_POINTS 512
 

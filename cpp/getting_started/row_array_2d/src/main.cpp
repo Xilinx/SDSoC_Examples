@@ -42,6 +42,7 @@
 #include <stdio.h>
 #include <math.h>
 #include "row_array_2d.h"
+#include "sds_utils.h"
 
 // Utility to print array
 void print_array(DTYPE *mat, const char *name, int size, int dim) {
@@ -57,28 +58,34 @@ void print_array(DTYPE *mat, const char *name, int size, int dim) {
 // Software solution
 void row_array_2d_sw(DTYPE *a, DTYPE *sw_c, DTYPE alpha)
 {
-	for(int i = 0; i < BLOCK_SIZE; i++)
-		sw_c[i] = alpha * a[i];
+    for(int i = 0; i < BLOCK_SIZE; i++)
+        sw_c[i] = alpha * a[i];
 }
 
 int main(int argc, char** argv)
 {
     // Size of input data
     size_t vector_size_bytes = sizeof(DTYPE) * BLOCK_SIZE;
-   
+
     // Allocate buffers using sds_alloc
     DTYPE* a = (DTYPE*)sds_alloc(vector_size_bytes);
     DTYPE* c = (DTYPE*)sds_alloc(vector_size_bytes);
-    
+
     // Allocate software output buffer
     DTYPE* sw_c = (DTYPE*)malloc(vector_size_bytes);
+
+    // Check for failed memory allocation
+    if((a == NULL) || (c == NULL) || (sw_c == NULL)){
+        std::cout << "TEST FAILED : Failed to allocate memory" << std::endl;
+        return -1;
+    }
 
     // Create the test data and Software Result
     DTYPE alpha = 3;
     for(int i = 0; i < BLOCK_SIZE; i++) {
-      a[i] = i;
-      c[i] = 0;
-      sw_c[i] = 0;
+        a[i] = i;
+        c[i] = 0;
+        sw_c[i] = 0;
     }
 
     sds_utils::perf_counter hw_ctr, sw_ctr;
@@ -93,17 +100,17 @@ int main(int argc, char** argv)
 
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 
-    std::cout << "Average number of CPU cycles running mmult in hardware: "
-				 << hw_cycles << std::endl;
+    std::cout << "Number of CPU cycles running application in hardware: "
+                << hw_cycles << std::endl;
 
     // Validate software & hardware results
     unsigned int correct = 0;              
     for (int i = 0;i < BLOCK_SIZE; i++) {
-      if(c[i] == sw_c[i]) {
-        correct++;
-      } else {
-        printf("\n wrong sw %d hw %d index %d \n", sw_c[i], c[i], i);
-      }
+        if(c[i] == sw_c[i]) {
+            correct++;
+        } else {
+            printf("\n wrong sw %d hw %d index %d \n", sw_c[i], c[i], i);
+        }
     }
 
     // Print a brief summary detailing the results

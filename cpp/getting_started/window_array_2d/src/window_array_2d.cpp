@@ -39,9 +39,6 @@
 
 *******************************************************************************/
 
-#include <stdio.h>
-#include <string.h>
-#include "assert.h"
 #include "window_array_2d.h"
 
 // Read data function : Read tile/window of Data from DDR Memory

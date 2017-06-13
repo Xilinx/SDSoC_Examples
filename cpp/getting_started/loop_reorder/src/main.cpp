@@ -38,11 +38,11 @@
     interval(II) and better performance.
 
 *******************************************************************************/
-
 #include <iostream>
 #include <cstring>
 #include <stdlib.h>
 #include "mmult.h"
+#include "sds_utils.h"
 
 // Software implementation of Matrix Multiplication
 // The inputs are of the size (DATA_SIZE x DATA_SIZE)
@@ -83,6 +83,12 @@ int main(int argc, char** argv)
     // Allocate software output buffer
     int *source_sw_results  = (int *) malloc(matrix_size_bytes);
 
+    // Check for failed memory allocation
+    if((source_in1 == NULL) || (source_in2 == NULL) || (source_hw_results == NULL) || (source_sw_results == NULL)){
+        std::cout << "TEST FAILED : Failed to allocate memory" << std::endl;
+        return -1;
+    }
+
     // Create the test data 
     for(int i = 0 ; i < DATA_SIZE * DATA_SIZE ; i++){
         source_in1[i] = i;
@@ -108,20 +114,20 @@ int main(int argc, char** argv)
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
     double speedup = (double) sw_cycles / (double) hw_cycles;
 
-    std::cout << "Average number of CPU cycles running mmult in software: "
-              << sw_cycles << std::endl;
-    std::cout << "Average number of CPU cycles running mmult in hardware: "
-              << hw_cycles << std::endl;
+    std::cout << "Number of CPU cycles running application in software: "
+                << sw_cycles << std::endl;
+    std::cout << "Number of CPU cycles running application in hardware: "
+                << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
 
     // Compare the results 
-    int match = 0;
+    bool match = true;
     for (int i = 0 ; i < DATA_SIZE * DATA_SIZE ; i++){
         if (source_hw_results[i] != source_sw_results[i]){
             std::cout << "Error: Result mismatch" << std::endl;
             std::cout << "i = " << i << " CPU result = " << source_sw_results[i]
                 << " Hardware result = " << source_hw_results[i] << std::endl;
-            match = 1;
+            match = false;
             break;
         }
     }
@@ -132,7 +138,7 @@ int main(int argc, char** argv)
     sds_free(source_hw_results);
     free(source_sw_results);
 
-    if (match){
+    if (!match){
         std::cout << "TEST FAILED." << std::endl;
         return 1;
     }

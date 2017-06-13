@@ -33,75 +33,93 @@
 #include <iostream>
 #include <cstring>
 #include <cstdlib>
-#include "mean_value.h"
+#include "vconv.h"
+#include "sds_utils.h"
 
-void mean_value(int in[], int out[], int n)
+#define TEST_WIDTH  256
+#define TEST_HEIGHT 256
+
+void vconv_sw(int *in, int *out, int height, int width)
 {
-    out[0] = ( in[0] + in[1] ) / 2;
-    for (int i = 1 ; i < n-1 ; i++)
-    {
-        out[i] = (in[i-1] + in[i] + in[i+1]) / 3;
+    int linebuf[K - 1][MAX_COLS];
+    int outIdx = 0;
+    for(int col = 0; col < height; ++col) {
+        for(int row = 0; row < width ; ++row) {
+            int in_val = in[col * width + row];
+            int out_val = 0;
+            for(int i = 0; i < K; i++) {
+                int vwin_val = i < K - 1 ? linebuf[i][row] : in_val;
+                out_val += vwin_val * vcoeff[i];
+                if (i > 0)
+                    linebuf[i - 1][row] = vwin_val;
+            }
+            if (col >= K - 1)
+                out[outIdx++]  =  out_val;
+        }
     }
-    out[n-1] = (in[n-1] + in [n -2] )/ 2;
 }
 
 int main(int argc, char** argv)
 {
-    int size = DATA_SIZE;
-    // Size of vector
-    size_t vector_size_bytes = sizeof(int) * size;
+    int testWidth    = TEST_WIDTH;
+    int testHeight   = TEST_HEIGHT;
+    int testSize = testHeight * testWidth; 
+    //Allocate Memory in Host Memory
+    size_t test_size_bytes = sizeof(int) * testSize;
 
     // Allocate Input and Output Buffers
-    // sds_alloc must be used to allocate memory for buffers
-    int *source_input       = (int *) sds_alloc(vector_size_bytes);
-    int *source_hw_results  = (int *) sds_alloc(vector_size_bytes);
+    // sds_alloc must be used to allocate memory for PL buffers
+    int *input       = (int *) sds_alloc(test_size_bytes);
+    int *hw_results  = (int *) sds_alloc(test_size_bytes);
     
-    // Allocate memory for buffer
-    int *source_sw_results  = (int *) malloc(vector_size_bytes);
+    // Allocate memory for PS buffer
+    int *sw_results  = (int *) malloc(test_size_bytes);
+
+    // Check for failed memory allocation
+    if((input == NULL) || (hw_results == NULL) || (sw_results== NULL) ){
+        std::cout << "TEST FAILED : Failed to allocate memory" << std::endl;
+        return -1;
+    }
 
     // Create the test data and Software Result
-    for(int i = 0 ; i < size ; i++){
-        source_input[i] = rand() % size;
-        source_sw_results[i] = source_input[i];
-        source_hw_results[i] = 0;
+    for(int i = 0 ; i < testSize; i++){
+        input[i] = rand() % testSize;
+        sw_results[i] = 0;
+        hw_results[i] = 0;
     }
+
+    //Running software vconv
+    vconv_sw(input,sw_results, testHeight, testWidth);
+    
     sds_utils::perf_counter hw_ctr;
-
-    mean_value(source_input,source_sw_results, size);
-
 
     hw_ctr.start();
     // Launch the Accelerator
-    mean_value_accel(source_input, source_hw_results, size);
+    vconv_hw(input, hw_results, testHeight, testWidth);
     hw_ctr.stop();
 
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 
-    std::cout << "Average number of CPU cycles running mmult in hardware: "
-				  << hw_cycles << std::endl;
+    std::cout << "Number of CPU cycles running application in hardware: "
+       << hw_cycles << std::endl;
    
-    // Compare the results of the Hardware to the simulation
-    int match = 0;
-    std::cout << "Result = " << std::endl;
-    for (int i = 0 ; i < size; i++){
-        if (source_hw_results[i] != source_sw_results[i]){
+    // Compare the results of the Device to the simulation
+    bool match = true;
+    for (int i = 0 ; i < testSize ; i++){
+        if (hw_results[i] != sw_results[i]){
             std::cout << "Error: Result mismatch" << std::endl;
-            std::cout << "i = " << i << " CPU result = " << source_sw_results[i]
-                << " Hardware result = " << source_hw_results[i] << std::endl;
-            match = 1;
+            std::cout << "i = " << i << " CPU result = " << sw_results[i]
+                << " Device result = " << hw_results[i] << std::endl;
+            match = false;
             break;
         }
     }
 
-    // Release Memory 
-    sds_free(source_input);
-    sds_free(source_hw_results);
-    free(source_sw_results);
+    /* Release Memory from Host Memory*/
+    sds_free(input);
+    sds_free(hw_results);
+    free(sw_results);
 
-    if (match){
-        std::cout << "TEST FAILED." << std::endl;
-        return 1;
-    }
-    std::cout << "TEST PASSED." << std::endl;
-    return 0;
+    std::cout << " TEST " << (match? "PASSED": "FAILED") << std::endl;
+    return(match? 0: -1);
 }

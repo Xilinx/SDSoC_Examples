@@ -50,7 +50,7 @@ BUILD_DIR := build/$(PLATFORM)_$(TARGET_OS)_$(TARGET)
 SRC_DIR := src
 OBJECTS += \
 $(pwd)/$(BUILD_DIR)/main.o \
-$(pwd)/$(BUILD_DIR)/vadd.o
+$(pwd)/$(BUILD_DIR)/vec_incr.o
 
 # SDS Options
 HW_FLAGS :=
