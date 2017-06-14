@@ -49,7 +49,6 @@ BUILD_DIR := build/$(PLATFORM)_$(TARGET_OS)_$(TARGET)
 # Source Files
 SRC_DIR := src
 OBJECTS += \
-$(pwd)/$(BUILD_DIR)/bitmap.o \
 $(pwd)/$(BUILD_DIR)/main.o \
 $(pwd)/$(BUILD_DIR)/rgb_to_hsv.o
 

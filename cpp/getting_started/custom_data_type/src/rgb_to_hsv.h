@@ -39,7 +39,7 @@
 #define imax(X, Y) (((X) > (Y)) ? (X) : (Y))
 
 //Custom Data Type for RGB Image Pixel containing Red(r), Green(g) and Blue(b)
-//element. Extra Pad element is added to make struct size to 32bit.
+//element. Extra pad element is added to make struct size to 32bit.
 // It is recommended to make custom data type multiple of 32 bit to use global
 // memory access efficiently.
 typedef struct RGBcolor_struct
@@ -47,7 +47,7 @@ typedef struct RGBcolor_struct
   unsigned char r;
   unsigned char g;
   unsigned char b;
-  unsigned char a;
+  unsigned char pad;
  } __attribute__ ((packed, aligned(4))) RGBcolor;
 
 
@@ -60,7 +60,7 @@ typedef struct HSVcolor_struct
   unsigned char h;
   unsigned char s;
   unsigned char v;
-  unsigned char a;
+  unsigned char pad;
  } __attribute__ ((packed, aligned(4))) HSVcolor;
 
 #pragma SDS data zero_copy(in[0:image_size],out[0:image_size])
