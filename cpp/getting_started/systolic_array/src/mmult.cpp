@@ -90,19 +90,12 @@ void mmult_accel(
     #pragma HLS ARRAY_PARTITION variable=localC dim=0 complete
 
     // Burst reads on input matrices from DDR memory
-    // Read Input A
-    readA: for(int loc = 0, i = 0, j = 0; loc < a_row*a_col; loc++, j++) {
+    // Read Input 
+    read: for(int loc = 0, i = 0, j = 0; loc < a_row*a_col; loc++, j++) {
     #pragma HLS LOOP_TRIPCOUNT min=21*21 max=21*21
     #pragma HLS PIPELINE
         if(j == a_col) { i++; j = 0;}
         localA[i][j] = a[loc];
-    }
-
-    // Read Input B
-    readB: for(int loc = 0, i = 0, j = 0; loc < b_row*b_col; loc++, j++) {
-    #pragma HLS LOOP_TRIPCOUNT min=21*21 max=21*21
-    #pragma HLS PIPELINE
-        if(j == b_col) { i++; j = 0; }
         localB[i][j] = b[loc];
     }
 
