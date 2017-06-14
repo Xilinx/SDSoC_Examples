@@ -42,77 +42,50 @@
 
 #include <iostream>
 #include <stdio.h>
-#include "bitmap.h"
+#include <stdlib.h>
 #include "rgb_to_hsv.h"
 #include "sds_utils.h"
 
-#define IMAGE_SIZE 128
+#define IMAGE_DIM 128
 
 //Utility Function Declaration
-void sw_RgbToHsv(int* in, int *out, int image_size);
-void sw_HsvToRgb(int *in, int *out, int image_size);
-int compareImages(int * _in, int * _out, int image_size);
-
-void extract_pixel_data(int *in, RGBcolor *hardware_input, int size)
-{
-    for(int i = 0;i < size; i++){
-        hardware_input[i].r = (in[i]) & 0xff;
-        hardware_input[i].g = ( (in[i]) & 0xff00 ) >> 8;
-        hardware_input[i].b = ( (in[i]) & 0xff0000 ) >> 16;
-    }
-}
-
-void pack_output_int(HSVcolor *in, int *out, int size)
-{
-    for(int i = 0;i < size; i++){
-        out[i] = in[i].h | (in[i].s << 8) | (in[i].v << 16);
-    }
-}
+void sw_RgbToHsv(RGBcolor *in, HSVcolor *out, int image_size);
+void sw_HsvToRgb(HSVcolor *in, RGBcolor *out, int image_size);
+int compareImages(unsigned int *in, unsigned int *out, int image_size);
 
 int main(int argc, char* argv[])
 {
     // Size of synthetic image
-    int image_size = IMAGE_SIZE * IMAGE_SIZE;
+    int image_size = IMAGE_DIM * IMAGE_DIM;
 
-    // Synthetic Image Data
-    int *input_bmp   = (int*)malloc(sizeof(int) * image_size);
-
-    // Input Data Size
-    size_t image_size_bytes = sizeof(int) * image_size;
-
-    // Software Output Data
-    int* swHsvImage  = (int*)malloc(image_size_bytes);
-    int* hwHsvImage  = (int*)malloc(image_size_bytes);
-
-    // Allocate buffers using sds_alloc
-    RGBcolor *hardware_input  = (RGBcolor *)(sds_alloc(sizeof(RGBcolor) * image_size));
-    HSVcolor *hardware_output = (HSVcolor *)(sds_alloc(sizeof(HSVcolor) * image_size));
+    // Allocate buffers using sds_alloc and malloc
+    RGBcolor *rgbImage   = (RGBcolor *)(sds_alloc(sizeof(RGBcolor) * image_size));
+    HSVcolor *hwHsvImage = (HSVcolor *)(sds_alloc(sizeof(HSVcolor) * image_size));
+    HSVcolor *swHsvImage = (HSVcolor *)(malloc(sizeof(HSVcolor) * image_size));
 
     // Check for failed memory allocation
-    if((input_bmp == NULL) || (swHsvImage == NULL) || (hwHsvImage == NULL) || (hardware_input == NULL) || (hardware_output == NULL)){
+    if((swHsvImage == NULL) || (hwHsvImage == NULL) || (rgbImage == NULL)){
       std::cout << "TEST FAILED : Failed to allocate memory" << std::endl;
       return -1;
     }    
 
-    // Initialize Synthetic Input Data
-    for(int i = 0;i < image_size; i++)
-        input_bmp[i] = i * 2;
+    // Initialize Test Input Data randomly
+    for(int i = 0;i < image_size; i++){
+        rgbImage[i].r = rand() % 256 ;
+        rgbImage[i].g = rand() % 256 ;
+        rgbImage[i].b = rand() % 256 ;
+    }
 
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
-    extract_pixel_data(input_bmp, hardware_input, image_size);
-
     hw_ctr.start();
     //Launch the Hardware Function
-    rgb_to_hsv_accel(hardware_input, hardware_output, image_size);
+    rgb_to_hsv_accel(rgbImage, hwHsvImage, image_size);
     hw_ctr.stop();
-
-    // Pack the data
-    pack_output_int(hardware_output, hwHsvImage, image_size);
 
     //Calculating sw based HSV Image
     sw_ctr.start();
-    sw_RgbToHsv(input_bmp, swHsvImage, image_size);
+    sw_RgbToHsv(rgbImage, swHsvImage, image_size);
     sw_ctr.stop();
 
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
@@ -126,14 +99,13 @@ int main(int argc, char* argv[])
     std::cout << "Speed up: " << speedup << std::endl;
 
     //Compare the results of the Hardware to the Sw Solution
-    int match = compareImages(swHsvImage, hwHsvImage, image_size);
+    int match = compareImages((unsigned int *)swHsvImage, 
+            (unsigned int *)hwHsvImage, image_size);
 
     // Release Memory 
-    free(input_bmp);
-    free(hwHsvImage);
     free(swHsvImage);
-    sds_free(hardware_input);
-    sds_free(hardware_output);
+    sds_free(rgbImage);
+    sds_free(hwHsvImage);
 
     if (match){
         std::cout << "TEST FAILED." << std::endl;
@@ -147,16 +119,12 @@ int main(int argc, char* argv[])
 // Utility Functions Definitions Start Here
 
 // Convert RGB to HSV Format
-void sw_RgbToHsv(int* in, int *out, int image_size)
+void sw_RgbToHsv(RGBcolor* in, HSVcolor *out, int image_size)
 {
-    RGBcolor rgb;
-    HSVcolor hsv;
-    for(unsigned int i = 0 ; i < image_size ; out[i] = hsv.h | (hsv.s << 8) | (hsv.v 
-        << 16), i++){
+    for(unsigned int i = 0 ; i < image_size; i++){
+        RGBcolor rgb = in[i];
+        HSVcolor hsv;
         
-        rgb.r =  (in[i]) & 0xff;
-        rgb.g = ( (in[i]) & 0xff00 ) >> 8 ;
-        rgb.b = ( (in[i]) & 0xff0000 ) >> 16 ;
         unsigned char rgbMin, rgbMax;
 
         rgbMin = imin(rgb.r, (imin(rgb.g,rgb.b)));
@@ -183,19 +151,19 @@ void sw_RgbToHsv(int* in, int *out, int image_size)
             hsv.h = 85 + 43 * (rgb.b - rgb.r) / (rgbMax - rgbMin);
         else
             hsv.h = 171 + 43 * (rgb.r - rgb.g) / (rgbMax - rgbMin);
-        }
+
+        out[i] = hsv;
+    }
 }
 
 // Convert RGB to HSV Format
-void sw_HsvToRgb(int *in, int *out, int image_size)
+void sw_HsvToRgb(HSVcolor *in, RGBcolor *out, int image_size)
 {
     RGBcolor rgb;
     HSVcolor hsv;
-    for(int i = 0; i < image_size;out[i] = rgb.r | (rgb.g << 8) | (rgb.b << 16), i++)
+    for(int i = 0; i < image_size; i++)
     {
-        hsv.h = in[i] & 0xff;
-        hsv.s = (in[i] & 0xff00) >> 8;
-        hsv.v = (in[i] & 0xff0000) >> 16;
+        hsv = in[i];
         unsigned char region, p, q, t;
         unsigned int h, s, v, remainder;
 
@@ -252,24 +220,22 @@ void sw_HsvToRgb(int *in, int *out, int image_size)
                 rgb.b = q;
                 break;
         }
+        out[i] = rgb;
     }
 }
 
-int compareImages(int * _in, int * _out, int image_size)
+int compareImages(unsigned int *img1, unsigned int *img2, int image_size)
 {
     for (int i = 0, cnt = 0 ; i < image_size ; i++)
     {
-        int in  = _in[i];
-        int out = _out[i];
-        in  = in  & 0xffffff;
-        out = out & 0xffffff;
+        unsigned int in  = img1[i];
+        unsigned int out = img2[i];
         if (in != out ){
             cnt++;
             std::cout << "ERROR: Pixel=" << i << " mismatch Expected="
-                << in << " and Got=" << out << std::endl;
+               <<  std::hex << in << " and Got=" << out << std::endl;
             return -1;
         }
     }
     return 0;
 }
-

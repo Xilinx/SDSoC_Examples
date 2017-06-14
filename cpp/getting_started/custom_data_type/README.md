@@ -17,9 +17,9 @@ This README file contains the following sections:
 ## 1. OVERVIEW
 This is a simple example of RGB to HSV conversion to demonstrate Custom Data Type usage in hardware accelerator. Xilinx HLS compiler supports custom data type to operate within the hardware function and also it acts as a memory interface between PL to DDR
 
-***KEY CONCEPTS:*** Dataflow, Custom Data type
+***KEY CONCEPTS:*** Custom Data type
 
-***KEYWORDS:*** struct, #pragma HLS data_pack, #pragma HLS LOOP_TRIPCOUNT
+***KEYWORDS:*** struct, packed, aligned
 
 ## 2. HOW TO DOWNLOAD THE REPOSITORY
 To get a local copy of the SDSoC example repository, clone this repository to the local system with the following command:
@@ -51,8 +51,6 @@ Application code is located in the src/ directory. Application executable and ha
 Makefile
 README.md
 description.json
-src/bitmap.cpp
-src/bitmap.h
 src/main.cpp
 src/rgb_to_hsv.cpp
 src/rgb_to_hsv.h
