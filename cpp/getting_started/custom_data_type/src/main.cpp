@@ -74,6 +74,7 @@ int main(int argc, char* argv[])
         rgbImage[i].r = rand() % 256 ;
         rgbImage[i].g = rand() % 256 ;
         rgbImage[i].b = rand() % 256 ;
+        rgbImage[i].pad = 0;
     }
 
     sds_utils::perf_counter hw_ctr, sw_ctr;
@@ -152,6 +153,7 @@ void sw_RgbToHsv(RGBcolor* in, HSVcolor *out, int image_size)
         else
             hsv.h = 171 + 43 * (rgb.r - rgb.g) / (rgbMax - rgbMin);
 
+        hsv.pad = rgb.pad;
         out[i] = hsv;
     }
 }
@@ -159,11 +161,10 @@ void sw_RgbToHsv(RGBcolor* in, HSVcolor *out, int image_size)
 // Convert RGB to HSV Format
 void sw_HsvToRgb(HSVcolor *in, RGBcolor *out, int image_size)
 {
-    RGBcolor rgb;
-    HSVcolor hsv;
     for(int i = 0; i < image_size; i++)
     {
-        hsv = in[i];
+        RGBcolor rgb;
+        HSVcolor hsv = in[i];
         unsigned char region, p, q, t;
         unsigned int h, s, v, remainder;
 
@@ -220,6 +221,7 @@ void sw_HsvToRgb(HSVcolor *in, RGBcolor *out, int image_size)
                 rgb.b = q;
                 break;
         }
+        rgb.pad = hsv.pad;
         out[i] = rgb;
     }
 }
