@@ -44,9 +44,6 @@ void rgb_to_hsv_accel(RGBcolor *in,  // Access DDR memory as RGBcolor struct-wis
                       HSVcolor *out, // Access DDR Memory as HSVcolor struct-wise
                       int image_size)
 {
-    RGBcolor rgb;
-    HSVcolor hsv;
-
     // Single loop is sufficient to read each RGB pixel from DDR memory,
     // Converting RGB pixel to HSV Pixel, and writing HSV Pixel Back to DDR
     // Memory.
@@ -62,7 +59,8 @@ void rgb_to_hsv_accel(RGBcolor *in,  // Access DDR memory as RGBcolor struct-wis
 
         unsigned char rgbMin, rgbMax, tempS;
 
-        rgb = in[i];
+        RGBcolor rgb = in[i];
+        HSVcolor hsv;
 
         // Getting Minimum and Maximum value in R, G, and B element of Pixel
         rgbMin = imin(rgb.r, (imin(rgb.g,rgb.b)));
@@ -94,6 +92,7 @@ void rgb_to_hsv_accel(RGBcolor *in,  // Access DDR memory as RGBcolor struct-wis
             hsv.v = rgbMax;
         }
 
+        hsv.pad = rgb.pad;
         // Writing computed HSV Pixel value into DDR Memory
         out[i] = hsv;
     }
