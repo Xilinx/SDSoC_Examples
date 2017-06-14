@@ -38,7 +38,7 @@
                         {
                             "name": "burst_rw", 
                             "description": [
-                                "This is simple example of using AXI4-master interface for burst read and write"
+                                "This is a simple vector increment example which demonstrates usage of  AXI4-master interface for burst read and write"
                             ], 
                             "displayName": "Burst Read/Write", 
                             "key_concepts": [
@@ -55,11 +55,10 @@
                             "displayName": "Custom Data Type", 
                             "keywords": [
                                 "struct", 
-                                "#pragma HLS data_pack", 
-                                "#pragma HLS LOOP_TRIPCOUNT"
+                                "packed", 
+                                "aligned"
                             ], 
                             "key_concepts": [
-                                "Dataflow", 
                                 "Custom Data type"
                             ], 
                             "version": "1.0", 
@@ -68,7 +67,7 @@
                         {
                             "name": "dependence_inter", 
                             "description": [
-                                "This is a simple example to demonstrate inter dependence attribute. Using inter dependence attribute user can provide additional dependency details to compiler which allow compiler to perform unrolling/pipelining to get better performance "
+                                "This is a simple example to demonstrate inter dependence attribute using vertical convolution example. Using inter dependence attribute user can provide additional dependency details to compiler which allow compiler to perform unrolling/pipelining to get better performance "
                             ], 
                             "displayName": "Loop Iteration Dependency", 
                             "keywords": [
@@ -261,17 +260,16 @@
                         {
                             "name": "wide_memory_rw", 
                             "description": [
-                                "This is a simple example of vector addition to demonstrate Wide Memory Access using ap_uint<128> data type. Based on input argument type, sds++ compiler will figure out the memory bandwidth between DDR and PL."
+                                "This is a simple example of vector addition to demonstrate Wide Memory Access using structure data type of 128bit wide. Based on input argument type, sds++ compiler will figure out the memory interface datawidth of hardware accelerator."
                             ], 
                             "displayName": "Wide Memory Read/Write", 
                             "keywords": [
-                                "ap_uint<DATAWIDTH>", 
-                                "ap_int.h"
+                                "struct"
                             ], 
                             "key_concepts": [
-                                "Accelerator to Memory Access", 
                                 "wide memory access", 
-                                "burst read and write"
+                                "burst read and write", 
+                                "custom datatype"
                             ], 
                             "version": "1.0", 
                             "author": "Xilinx"
