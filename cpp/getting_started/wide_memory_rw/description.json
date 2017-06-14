@@ -35,6 +35,9 @@
     "os" : [
             "linux"
     ],
+    "runtime" : [
+            "C/C++"
+    ],
     "pass_string" : "TEST PASSED",
     "fail_string" : "TEST FAILED" 
 }

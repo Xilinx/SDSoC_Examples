@@ -34,6 +34,9 @@
             "linux",
             "standalone"
     ],
+    "runtime" : [
+            "C/C++"
+    ],
     "source_dir" : "src/*.cpp",
     "pass_string" : "TEST PASSED",
     "fail_string" : "TEST FAILED" 
