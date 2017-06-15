@@ -85,16 +85,12 @@ void nearest_accel(
                     int dim                  // #Dimensions of the points
                   )
 {
-    // Local memory to store input and output matrices
+    // Local memory to store input matrices
     // Local memory is implemented as BRAM memory blocks
-
-    // Holds the point for which the nearest neighbor is to be found
     int point_local[MAX_DIM];
-    #pragma HLS ARRAY_PARTITION variable=point_local complete dim=1
 
-    // Holds the current nearest point
-    int point_nearest[MAX_DIM];
-    #pragma HLS ARRAY_PARTITION variable=point_nearest complete dim=1
+    //holds the index of the nearest point
+    int point_nearest;
 
     // min_dist holds the minimum distance till now
     unsigned long min_dist = INFINITY;
@@ -129,10 +125,8 @@ void nearest_accel(
             curr_dist += SQUARE(point_local[j] - in[dim * i + j]);
 
             if(j == dim-1 && curr_dist < min_dist) {
+                point_nearest = i;
                 min_dist = curr_dist;
-                nearest3: for(int k = 0; k < MAX_DIM; k++) {
-                    point_nearest[k] = in[dim * i + k];
-                }
             }
         }
     }
@@ -141,7 +135,7 @@ void nearest_accel(
     wirteOuput: for(int i = 0; i < dim; i++) {
     #pragma HLS LOOP_TRIPCOUNT min=16 max=16
     #pragma HLS PIPELINE
-        out[i] = point_nearest[i];
+        out[i] = in[point_nearest*dim + i];
     }
 
 }
