@@ -119,6 +119,7 @@ int main(int argc, char** argv)
     std::cout << "Number of CPU cycles running application in hardware: "
                 << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
+    std::cout << "Note: Speed up is meaningful for real hardware execution only, not for emulation." << std::endl;
 
     // Compare the results 
     bool match = true;
