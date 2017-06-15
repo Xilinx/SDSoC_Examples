@@ -87,6 +87,8 @@ void nearest_accel(
 {
     // Local memory to store input matrices
     // Local memory is implemented as BRAM memory blocks
+
+    // Holds the point for which the nearest neighbor is to be found
     int point_local[MAX_DIM];
 
     //holds the index of the nearest point
