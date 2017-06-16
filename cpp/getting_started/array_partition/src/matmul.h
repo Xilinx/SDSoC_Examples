@@ -33,6 +33,9 @@
 #ifndef MATMUL_H_
 #define MATMUL_H_
 
+// Maximum Array Size
+#define MAX_SIZE 64
+
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(in1[0:mat_dim*mat_dim], in2[0:mat_dim*mat_dim], out[0:mat_dim*mat_dim])

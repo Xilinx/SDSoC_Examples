@@ -62,10 +62,6 @@ Hardware Function Description :
 */
 #include "mmult.h"
 
-//Maximum Array Size
-#define MAX_SIZE 12
-#define DATA_SIZE 12
-
 void mmult_accel(
                 const int *a,   // Read-Only Matrix A
                 const int *b,   // Read-Only Matrix B
