@@ -36,9 +36,6 @@
 #define MAX_COLS 512
 #define K 11
 
-#define TEST_WIDTH  256
-#define TEST_HEIGHT 256
-
 const unsigned int vcoeff[K] = {
             36, 111, 266, 498, 724, 821, 724, 498, 266, 111, 36
     };

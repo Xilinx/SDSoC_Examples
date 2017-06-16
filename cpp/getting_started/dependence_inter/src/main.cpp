@@ -36,6 +36,9 @@
 #include "vconv.h"
 #include "sds_utils.h"
 
+#define TEST_WIDTH  256
+#define TEST_HEIGHT 256
+
 void vconv_sw(int *in, int *out, int height, int width)
 {
     int linebuf[K - 1][MAX_COLS];
