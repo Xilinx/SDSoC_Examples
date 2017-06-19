@@ -69,8 +69,8 @@ bool verify(int *gold, int *output, int size) {
 int main(int argc, char **argv) {
 
     bool test_passed;
-    static const int columns = 64;
-    static const int rows = 64;
+    static const int columns = MAX_SIZE;
+    static const int rows = MAX_SIZE;
 
     // Allocate buffers using sds_alloc
     int *A    = (int *) sds_alloc(sizeof(int) * columns * rows);

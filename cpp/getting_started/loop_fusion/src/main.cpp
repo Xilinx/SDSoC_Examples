@@ -45,8 +45,6 @@
 #include "nearest_neighbor.h"
 #include "sds_utils.h"
 
-#define MAX_DIMS 5
-
 // Software solution prototype
 void find_nearest_neighbor(int *out, const int dim,
                            const int *search_points,

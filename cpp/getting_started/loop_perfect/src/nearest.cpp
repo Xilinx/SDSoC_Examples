@@ -71,12 +71,6 @@ Hardware Function Description :
 
 #define SQUARE(x) ((x)*(x))
 
-// Maximum #Dimensions for a point
-#define MAX_DIM 16
-
-// Maximum size of point array
-#define MAX_SIZE 1024
-
 void nearest_accel(
                     const int *in,           // Input Points Array
                     const int *point,         // Current Point

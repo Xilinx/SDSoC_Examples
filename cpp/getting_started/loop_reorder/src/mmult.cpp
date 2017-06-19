@@ -59,11 +59,6 @@ Description :
 */
 
 #include "mmult.h"
-//Array Size to access
-#define DATA_SIZE 64
-
-//Maximum Array Size
-#define MAX_SIZE 64
 
 // Computes matrix multiply
 // C = A x B, where A, B and C are square matrices of dimension (dim x dim)

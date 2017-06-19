@@ -37,6 +37,8 @@
 #define NUM_DIMS 2
 #define NUM_POINTS 512
 
+#define MAX_DIMS 5
+
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(out[0:dim], points[0:len*dim], search_point[0:dim])

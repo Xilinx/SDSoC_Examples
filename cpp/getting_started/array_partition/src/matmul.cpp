@@ -38,8 +38,6 @@
 
 *********************************************************************************/
 
-// Maximum Array Size
-#define MAX_SIZE 64
 #include "matmul.h"
 
 void matmul_partition_accel(int *in1,  // Read-Only Matrix 1
