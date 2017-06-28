@@ -43,11 +43,11 @@ For questions and to get help on this project or your own projects, visit the [S
 
 Date    | Readme Version | Revision Description
 --------|----------------|-------------------------
-MAR2017 | 1.0            | Initial Xilinx release
+JUNE2017 | 1.0            | Initial Xilinx release
 
 
 
 [SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc
-[SDSoC User Guides]: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2016_4/ug1027-sdsoc-user-guide.pdf
+[SDSoC User Guides]: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2017_1/ug1027-sdsoc-user-guide.pdf
 
 
