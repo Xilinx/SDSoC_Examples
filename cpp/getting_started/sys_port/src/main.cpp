@@ -53,18 +53,7 @@
 #include <cstring>
 #include <stdlib.h>
 #include "vadd.h"
-
-// Golden implementation
-void vadd_golden(int a[DATA_SIZE], 
-                 int b[DATA_SIZE],   
-                 int output[DATA_SIZE],
-                 int size)
-{
-        for(int i = 0; i < size; i++) {
-            output[i] = a[i] + b [i]; 
-        }
-
-}
+#include "sds_utils.h"
 
 int main(int argc, char** argv)
 {
@@ -91,9 +80,9 @@ int main(int argc, char** argv)
 
     // Create the test data
     for(int i = 0 ; i < size ; i++){
-        source_in1[i] = i;
-        source_in2[i] = i;
-        source_sw_results[i] = 0;
+        source_in1[i] = rand();
+        source_in2[i] = rand();
+        source_sw_results[i] = source_in1[i] + source_in2[i];
         source_hw_results[i] = 0;
     }
 
@@ -104,11 +93,8 @@ int main(int argc, char** argv)
     vadd_accel(source_in1, source_in2, source_hw_results, size);
     hw_ctr.stop();
 
-    //Launch the Software Solution
-    vadd_golden(source_in1, source_in2, source_sw_results, size);
-
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
-    std::cout << "Average number of CPU cycles running mmult in hardware: "
+    std::cout << "Average number of CPU cycles running application in hardware: "
               << hw_cycles << std::endl;
     
     // Compare the results of the Hardware to the simulation
@@ -129,11 +115,7 @@ int main(int argc, char** argv)
     sds_free(source_hw_results);
     free(source_sw_results);
 
-    if (!match){
-        std::cout << "TEST FAILED." << std::endl;
-        return -1;
-    }
-    std::cout << "All Hardware results match CPU results! " << std::endl;
-    std::cout << "TEST PASSED." << std::endl;
-    return 0;
+    std::cout << "TEST " << (match ? "PASSED" : "FAILED") << std::endl;
+
+    return (match ? 0 : 1);
 }
