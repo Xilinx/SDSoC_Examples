@@ -16,10 +16,11 @@ Example        | Description           | Key Concepts / Keywords
 [lmem_2rw/][]|This is a simple example of vector addition to demonstrate how to utilize both ports of Local Memory |__Key__ __Concepts__<br> - Hardware Function Optimization<br> - 2port BRAM Utilization<br> - Two read/write Local Memory<br>__Keywords__<br> - #pragma HLS UNROLL FACTOR=2
 [loop_fusion/][]|This example will demonstrate how to fuse two loops into one to improve the performance of a C/C++ hardware function.|__Key__ __Concepts__<br> - Hardware Function Optimization<br> - Loop Fusion<br> - Loop Pipelining<br>__Keywords__<br> - #pragma HLS PIPELINE
 [loop_perfect/][]|This nearest neighbor example is to demonstrate how to achieve better performance using perfect loop.|__Key__ __Concepts__<br> - Loop perfect<br>__Keywords__<br> - #pragma HLS PIPELINE<br> - #pragma HLS ARRAY_PARTITION
-[loop_pipeline/][]|This example demonstrates how loop pipelining can be used to improve the performance of a hardware function|__Key__ __Concepts__<br> - Hardware Function Optimization<br> - Loop Pipelining<br>__Keywords__<br> - #pragma HLS PIPELINE
+[hello_vadd/][]|This is a basic hello world kind of example which demonstrates how to achieve vector addition using hardware function.|__Key__ __Concepts__<br> - Loop Pipelining<br>__Keywords__<br> - #pragma HLS PIPELINE
 [loop_reorder/][]|This is a simple example of matrix multiplication (Row x Col) to demonstrate how to achieve better pipeline II factor by loop reordering.|__Key__ __Concepts__<br> - Hardware Function Optimization<br> - Loop Reorder to Improve II<br>__Keywords__<br> - #pragma HLS PIPELINE<br> - #pragma HLS ARRAY_PARTITION
 [row_array_2d/][]|This is a simple example of accessing each row of data from 2D array|__Key__ __Concepts__<br> - Row of 2D data array access<br>__Keywords__<br> - hls::stream
 [shift_register/][]|This example demonstrates how to shift values in each clock cycle|__Key__ __Concepts__<br> - Hardware Function Optimization<br> - Shift Register<br> - FIR<br>__Keywords__<br> - #pragma HLS ARRAY_PARTITION
+[sys_port/][]|This is a simple example which demonstrates sys_port usage|__Key__ __Concepts__<br> - sys_port<br> - memory interface<br> - memory non-caching<br>__Keywords__<br> - #pragma SDS data sys_port<br> - #pragms HLS PIPELINE<br> - sds_alloc_non_cacheable 
 [systolic_array/][]|This is a simple example of matrix multiplication (Row x Col) to help developers learn systolic array based algorithm design. Note : Systolic array based algorithm design is well suited for FPGA.|__Key__ __Concepts__<br> - Systolic Array<br>__Keywords__<br> - #pragma HLS PIPELINE<br> - #pragma HLS ARRAY_PARTITION
 [wide_memory_rw/][]|This is a simple example of vector addition to demonstrate Wide Memory Access using structure data type of 128bit wide. Based on input argument type, sds++ compiler will figure out the memory interface datawidth of hardware accelerator.|__Key__ __Concepts__<br> - wide memory access<br> - burst read and write<br> - custom datatype<br>__Keywords__<br> - struct
 [window_array_2d/][]|This is a simple example of accessing window of data from 2D array|__Key__ __Concepts__<br> - Window of 2D data array access<br>__Keywords__<br> - #pragma HLS DATAFLOW<br> - #pragma HLS PIPELINE<br> - #pragma HLS stream
@@ -35,10 +36,11 @@ Example        | Description           | Key Concepts / Keywords
 [lmem_2rw/]:lmem_2rw/
 [loop_fusion/]:loop_fusion/
 [loop_perfect/]:loop_perfect/
-[loop_pipeline/]:loop_pipeline/
+[hello_vadd/]:hello_vadd/
 [loop_reorder/]:loop_reorder/
 [row_array_2d/]:row_array_2d/
 [shift_register/]:shift_register/
+[sys_port/]:sys_port/
 [systolic_array/]:systolic_array/
 [wide_memory_rw/]:wide_memory_rw/
 [window_array_2d/]:window_array_2d/

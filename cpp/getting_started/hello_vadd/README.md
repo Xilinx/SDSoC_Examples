@@ -1,4 +1,4 @@
-Loop Pipelining
+Hello Vector Addition
 ======================
 
 This README file contains the following sections:
@@ -15,9 +15,9 @@ This README file contains the following sections:
 
 
 ## 1. OVERVIEW
-This example demonstrates how loop pipelining can be used to improve the performance of a hardware function
+This is a basic hello world kind of example which demonstrates how to achieve vector addition using hardware function.
 
-***KEY CONCEPTS:*** Hardware Function Optimization, Loop Pipelining
+***KEY CONCEPTS:*** Loop Pipelining
 
 ***KEYWORDS:*** #pragma HLS PIPELINE
 

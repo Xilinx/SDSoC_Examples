@@ -31,14 +31,30 @@
 #
 ************/
 
-#ifndef VECTOR_ADDITION_H_
-#define VECTOR_ADDITION_H_
+/**********************************************************************************
+   Loop Pipelining
 
-// Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
-// Which has Direct Memory Interface with DDR and PL.  
-#pragma SDS data zero_copy(a[0:len], b[0:len], c[0:len])
-void vadd_pipelined_accel(int *a,
-                          int *b,
-                          int *c,
-                          const int len);
-#endif
+   Pipelining is a form of parallelism that allows the FPGA to reuse the
+   hardware for the next instruction before the current instruction has finished
+   processing. This maximizes the utilization of the FPGA fabric and allows the
+   processing of multiple elements of data at the same time.
+
+   In this example we will demonstrate ways to improve the throughput of a
+   vector addition hardware function using the HLS PIPELINE pragma.
+************************************************************************************/
+
+#include "vector_addition.h"
+
+void vadd_accel(int *a, int *b, int *c, const int len)
+{
+    //Loop will do burst read from A and B and will do burst write
+    //to C due to pipeline pragma
+    vadd: for(int i = 0; i < len; i++) {
+        //By-Default SDSoC accelerators will create separate AXI master interface
+        //for each memory accessing arguments (here it is a,b, and c), so 
+        //accelerator can initiate burst request to all interfaces concurrently. 
+        #pragma HLS PIPELINE
+        #pragma HLS LOOP_TRIPCOUNT min=1024 max=1024
+        c[i] = a[i] + b[i];
+    }
+}

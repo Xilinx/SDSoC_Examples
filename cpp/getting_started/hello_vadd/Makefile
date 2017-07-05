@@ -54,7 +54,7 @@ $(pwd)/$(BUILD_DIR)/vector_addition.o
 
 # SDS Options
 HW_FLAGS :=
-HW_FLAGS += -sds-hw vadd_pipelined_accel vector_addition.cpp -sds-end
+HW_FLAGS += -sds-hw vadd_accel vector_addition.cpp -sds-end
 
 EMU_FLAGS := 
 ifeq ($(TARGET), emu)

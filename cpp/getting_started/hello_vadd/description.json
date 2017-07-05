@@ -1,9 +1,9 @@
 {
-    "example": "Loop Pipelining",
+    "example": "Hello Vector Addition",
     "overview": [
-        "This example demonstrates how loop pipelining can be used to improve the performance of a hardware function"
+        "This is a basic hello world kind of example which demonstrates how to achieve vector addition using hardware function."
     ],
-    "key_concepts": [ "Hardware Function Optimization", "Loop Pipelining"],
+    "key_concepts": ["Loop Pipelining"],
     "keywords": ["#pragma HLS PIPELINE"],
     "contributors" : [
         {
@@ -23,7 +23,7 @@
     },
     "accelerators": [
        {
-           "name" : "vadd_pipelined_accel",
+           "name" : "vadd_accel",
            "location" : "vector_addition.cpp"
        }
     ],
