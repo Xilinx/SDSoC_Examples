@@ -45,7 +45,7 @@
 
 #include "vector_addition.h"
 
-void hello_vadd_accel(int *a, int *b, int *c, const int len)
+void vadd_accel(int *a, int *b, int *c, const int len)
 {
     //Loop will do burst read from A and B and will do burst write
     //to C due to pipeline pragma

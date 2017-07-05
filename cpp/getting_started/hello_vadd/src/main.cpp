@@ -65,10 +65,9 @@ int main(int argc, char** argv)
     bool test_passed;
     int test_size = TEST_DATA_SIZE;
 
-    // Create buffers using sds_alloc. sds_alloc must be used
-    // when using zero-copy pragma for the array 
-    // when using pragmas to explicitly direct the system compiler to use Simple-DMA or 2D-DMA
-    // Simple-DMA - To obtain physical contiguous memory for each array.
+    //Create buffers using sds_alloc(). sds_alloc allocate a physical contiguous memory. 
+    //Contiguous memory allocations are needed if hardware function directly would like to 
+    //access DDR (zero_copy pragma) or when Simple DMA is required for data transfer.
     int *a = (int *) sds_alloc(sizeof(int) * test_size);
     int *b = (int *) sds_alloc(sizeof(int) * test_size);
     int *hw_results = (int *) sds_alloc(sizeof(int) * test_size);
@@ -96,7 +95,7 @@ int main(int argc, char** argv)
 
     hw_ctr.start();
     //Launch the Hardware Solution
-    hello_vadd_accel(a, b, hw_results, test_size);
+    vadd_accel(a, b, hw_results, test_size);
     hw_ctr.stop();
     
     test_passed = verify(gold, hw_results, test_size);
