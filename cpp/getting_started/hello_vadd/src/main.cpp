@@ -34,7 +34,7 @@
 /******************************************************************************
 
     This is a simple vector addition based example which showcases loop 
-    pipelining feature of SDx tool chain.
+    pipelining feature and explain about sds pragmas and APIs of SDx tool chain.
 
 ******************************************************************************/
 #include <iostream>
@@ -65,7 +65,10 @@ int main(int argc, char** argv)
     bool test_passed;
     int test_size = TEST_DATA_SIZE;
 
-    // Create buffers using sds_alloc  
+    // Create buffers using sds_alloc. sds_alloc must be used
+    // when using zero-copy pragma for the array 
+    // when using pragmas to explicitly direct the system compiler to use Simple-DMA or 2D-DMA
+    // Simple-DMA - To obtain physical contiguous memory for each array.
     int *a = (int *) sds_alloc(sizeof(int) * test_size);
     int *b = (int *) sds_alloc(sizeof(int) * test_size);
     int *hw_results = (int *) sds_alloc(sizeof(int) * test_size);
@@ -93,7 +96,7 @@ int main(int argc, char** argv)
 
     hw_ctr.start();
     //Launch the Hardware Solution
-    vadd_pipelined_accel(a, b, hw_results, test_size);
+    hello_vadd_accel(a, b, hw_results, test_size);
     hw_ctr.stop();
     
     test_passed = verify(gold, hw_results, test_size);
@@ -102,7 +105,8 @@ int main(int argc, char** argv)
 
     std::cout << "Number of CPU cycles running application in hardware: "
                 << hw_cycles << std::endl;
-   
+
+    //free the allocated memory
     sds_free(a);
     sds_free(b);
     sds_free(hw_results);
