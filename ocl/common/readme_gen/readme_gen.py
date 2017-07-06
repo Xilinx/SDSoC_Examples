@@ -33,12 +33,12 @@ def header(target,data):
 
 def download(target):
     target.write("## 2. HOW TO DOWNLOAD THE REPOSITORY\n")
-    target.write("To get a local copy of the SDAccel example repository, clone this repository to the local system with the following command:\n")
+    target.write("To get a local copy of the SDSoC example repository, clone this repository to the local system with the following command:\n")
     target.write("```\n")
-    target.write("git clone https://github.com/Xilinx/SDAccel_Examples examples\n")
+    target.write("git clone https://github.com/Xilinx/SDSoC_Examples examples\n")
     target.write("```\n")
     target.write("where examples is the name of the directory where the repository will be stored on the local system.")
-    target.write("This command needs to be executed only once to retrieve the latest version of all SDAccel examples. The only required software is a local installation of git.\n\n")
+    target.write("This command needs to be executed only once to retrieve the latest version of all SDSoC examples. The only required software is a local installation of git.\n\n")
     return
 
 def overview(target,data):
@@ -104,20 +104,11 @@ def requirements(target,data):
         target.write("\n")
     target.write("\n\n")
 #    target.write("Board targeted by default = ***%s***\n\n" %DSA)
-    target.write("*NOTE:* The board/device used for compilation can be changed by adding the DEVICES variable to the make command as shown below\n")
+    target.write("*NOTE:* The board/platform used for compilation can be changed by adding the PLATFORM environmental variable to the make command as shown below\n")
     target.write("```\n")
-    target.write("make DEVICES=<device name>\n")
+    target.write("make PLATFORM=<board name> or make all PLATFORM=<board name>\n")
     target.write("```\n")
-    target.write("where the *DEVICES* variable accepts either 1 device from the table above or a comma separated list of device names.\n\n")
-    try:
-      if data['opencv']:
-                target.write("***OpenCV for Example Applications***\n\n")
-                target.write("This application requires OpenCV runtime libraries. If the host does not have OpenCV installed use the Xilinx included libraries with the following command:\n\n")
-                target.write("```\n")
-                target.write("export LD_LIBRARY_PATH=$XILINX_SDX/Vivado_HLS/lnx64/tools/opencv/:$LD_LIBRARY_PATH\n")
-                target.write("```\n")
-    except:
-      pass
+    target.write("where the *PLATFORM* variable accepts one board.\n\n")
     return
 
 def hierarchy(target):
@@ -137,54 +128,6 @@ def hierarchy(target):
 
 def compilation(target,data):
     target.write("## 5. COMPILATION AND EXECUTION\n")
-    target.write("### Compiling for Application Emulation\n")
-    target.write("As part of the capabilities available to an application developer, SDAccel includes environments to test the correctness of an application at both a software functional level and a hardware emulated level.\n")
-    target.write("These modes, which are named sw_emu and hw_emu, allow the developer to profile and evaluate the performance of a design before compiling for board execution.\n")
-    target.write("It is recommended that all applications are executed in at least the sw_emu mode before being compiled and executed on an FPGA board.\n")
-    target.write("```\n")
-    target.write("make TARGETS=<sw_emu|hw_emu> all\n")
-    target.write("```\n")
-    target.write("where\n")
-    target.write("```\n")
-    target.write("\tsw_emu = software emulation\n")
-    target.write("\thw_emu = hardware emulation\n")
-    target.write("```\n")
-    target.write("*NOTE:* The software emulation flow is a functional correctness check only. It does not estimate the performance of the application in hardware.\n")
-    target.write("The hardware emulation flow is a cycle accurate simulation of the hardware generated for the application. As such, it is expected for this simulation to take a long time.\n")
-    target.write("It is recommended that for this example the user skips running hardware emulation or modifies the example to work on a reduced data set.\n")
-    target.write("### Executing Emulated Application \n")
-    target.write("***Recommended Execution Flow for Example Applications in Emulation*** \n\n")
-    target.write("The makefile for the application can directly executed the application with the following command:\n")
-    target.write("```\n")
-    target.write("make TARGETS=<sw_emu|hw_emu> check\n\n")
-    target.write("```\n")
-    target.write("where\n")
-    target.write("```\n")
-    target.write("\tsw_emu = software emulation\n")
-    target.write("\thw_emu = hardware emulation\n")
-    target.write("```\n")
-    target.write("If the application has not been previously compiled, the check makefile rule will compile and execute the application in the emulation mode selected by the user.\n\n")
-    target.write("***Alternative Execution Flow for Example Applications in Emulation*** \n\n")
-    target.write("An emulated application can also be executed directly from the command line without using the check makefile rule as long as the user environment has been properly configured.\n")
-    target.write("To manually configure the environment to run the application, set the following\n")
-    target.write("```\n")
-    target.write("export LD_LIBRARY_PATH=$XILINX_SDX/runtime/lib/x86_64/:$LD_LIBRARY_PATH\n")
-    target.write("export XCL_EMULATION_MODE=")
-    try:
-      if not data['xcl']:
-            target.write('true')
-      else:
-            target.write('<sw_emu|hw_emu>')
-    except:
-        target.write('<sw_emu|hw_emu>')
-    target.write('\n')
-    #target.write("emconfigutil --xdevice '" + DSA + "' --nd 1\n")
-    #target.write("```\n")
-    #target.write("Once the environment has been configured, the application can be executed by\n")
-    #target.write("```\n")
-    #target.write(data["em_cmd"])
-    #target.write("\n```\n")
-    target.write("This is the same command executed by the check makefile rule\n")
     target.write("### Compiling for Application Execution in the FPGA Accelerator Card\n")
     target.write("The command to compile the application for execution on the FPGA acceleration board is\n")
     target.write("```\n")
@@ -205,9 +148,9 @@ def power(target):
 
 def support(target):
     target.write("\n## 6. SUPPORT\n")
-    target.write("For more information about SDAccel check the [SDAccel User Guides][]\n\n")
-    target.write("For questions and to get help on this project or your own projects, visit the [SDAccel Forums][].\n\n")
-    target.write("To execute this example using the SDAccel GUI, follow the setup instructions in [SDAccel GUI README][]\n\n")
+    target.write("For more information about SDSoC check the [SDSoC user Guides][]\n\n")
+    target.write("For questions and to get help on this project or your own projects, visit the [SDSoC Forums][].\n\n")
+    #target.write("To execute this example using the SDAccel GUI, follow the setup instructions in [SDAccel GUI README][]\n\n")
     return
 
 def license(target):
@@ -263,13 +206,13 @@ def footer(target):
     relativeLevels = dirTraversal("LICENSE.txt")
     root = relativeTree(relativeLevels)
     target.write("[3-Clause BSD License]: " + root + "LICENSE.txt\n")
-    target.write("[SDAccel Forums]: https://forums.xilinx.com/t5/SDAccel/bd-p/SDx\n")
-    target.write("[SDAccel User Guides]: http://www.xilinx.com/support/documentation-navigation/development-tools/software-development/sdaccel.html?resultsTablePreSelect=documenttype:SeeAll#documentation\n")
+    target.write("[SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc\n")
+    target.write("[SDSoC User Guides]: http://www.xilinx.com/support/documentation/sw_manuals/xilinx2017_1/ug1027-sdsoc-user-guide.pdf\n")
     #target.write("[Nimbix Getting Started Guide]: http://www.xilinx.com/support/documentation/sw_manuals/xilinx2016_2/ug1240-sdaccel-nimbix-getting-started.pdf\n")
-    target.write("[Walkthrough Video]: http://bcove.me/6pp0o482\n")
+    #target.write("[Walkthrough Video]: http://bcove.me/6pp0o482\n")
     #target.write("[Nimbix Application Submission README]: " + root + "utility/nimbix/README.md\n")
     target.write("[Repository Contribution README]: " + root + "CONTRIBUTING.md\n")
-    target.write("[SDaccel GUI README]: " + root + "GUIREADME.md\n")
+    #target.write("[SDaccel GUI README]: " + root + "GUIREADME.md\n")
     #target.write("[AWS F1 Application Execution on Xilinx Virtex UltraScale Devices]: " + root + "README.md\n")
     #target.write("[Nimbix Application Execution on Xilinx Kintex UltraScale Devices]: " + root + "utility/nimbix/README.md\n")
     #target.write("[IBM SuperVessel Research Cloud on Xilinx Virtex Devices]: http://bcove.me/6pp0o482\n")
@@ -279,7 +222,7 @@ def footer(target):
 script, desc_file = argv
 
 # load the description file
-print "SDAccel README File Genarator"
+print "SDSoC README File Genarator"
 print "Opening the description file '%s'" % desc_file
 desc = open(desc_file,'r')
 
