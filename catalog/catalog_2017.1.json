@@ -1,5 +1,5 @@
 {
-    "name": ".", 
+    "name": "master", 
     "displayName": "", 
     "description": "", 
     "categories": [
@@ -20,6 +20,7 @@
                     "examples": [
                         {
                             "name": "array_partition", 
+                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
                             "description": [
                                 "This example shows how to use array partitioning to improve performance of a hardware function"
                             ], 
@@ -37,6 +38,7 @@
                         }, 
                         {
                             "name": "burst_rw", 
+                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
                             "description": [
                                 "This is a simple vector increment example which demonstrates usage of  AXI4-master interface for burst read and write"
                             ], 
@@ -49,6 +51,7 @@
                         }, 
                         {
                             "name": "custom_data_type", 
+                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
                             "description": [
                                 "This is a simple example of RGB to HSV conversion to demonstrate Custom Data Type usage in hardware accelerator. Xilinx HLS compiler supports custom data type to operate within the hardware function and also it acts as a memory interface between PL to DDR"
                             ], 
@@ -66,6 +69,7 @@
                         }, 
                         {
                             "name": "dependence_inter", 
+                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
                             "description": [
                                 "This is a simple example to demonstrate inter dependence attribute using vertical convolution example. Using inter dependence attribute user can provide additional dependency details to compiler which allow compiler to perform unrolling/pipelining to get better performance "
                             ], 
@@ -82,6 +86,7 @@
                         }, 
                         {
                             "name": "dma_sg", 
+                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
                             "description": [
                                 "This example demonstrates how to use Scatter-Gather DMAs for data transfer to/from hardware accelerator"
                             ], 
@@ -99,6 +104,7 @@
                         }, 
                         {
                             "name": "dma_simple", 
+                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
                             "description": [
                                 "This example demonstrates how to insert Simple DMAs for data transfer between User program and hardware accelerator"
                             ], 
@@ -116,6 +122,7 @@
                         }, 
                         {
                             "name": "full_array_2d", 
+                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
                             "description": [
                                 "This is a simple example of accessing full data from 2D array"
                             ], 
@@ -127,7 +134,24 @@
                             "author": "Xilinx"
                         }, 
                         {
+                            "name": "hello_vadd", 
+                            "commit_id": "37b24bb5b0a4f749f97ec5df8657201b9e62c8f6", 
+                            "description": [
+                                "This is a basic hello world kind of example which demonstrates how to achieve vector addition using hardware function."
+                            ], 
+                            "displayName": "Hello Vector Addition", 
+                            "keywords": [
+                                "#pragma HLS PIPELINE"
+                            ], 
+                            "key_concepts": [
+                                "Loop Pipelining"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
                             "name": "lmem_2rw", 
+                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
                             "description": [
                                 "This is a simple example of vector addition to demonstrate how to utilize both ports of Local Memory "
                             ], 
@@ -145,6 +169,7 @@
                         }, 
                         {
                             "name": "loop_fusion", 
+                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
                             "description": [
                                 "This example will demonstrate how to fuse two loops into one to improve the performance of a C/C++ hardware function."
                             ], 
@@ -162,6 +187,7 @@
                         }, 
                         {
                             "name": "loop_perfect", 
+                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
                             "description": [
                                 "This nearest neighbor example is to demonstrate how to achieve better performance using perfect loop."
                             ], 
@@ -177,23 +203,8 @@
                             "author": "Xilinx"
                         }, 
                         {
-                            "name": "loop_pipeline", 
-                            "description": [
-                                "This example demonstrates how loop pipelining can be used to improve the performance of a hardware function"
-                            ], 
-                            "displayName": "Loop Pipelining", 
-                            "keywords": [
-                                "#pragma HLS PIPELINE"
-                            ], 
-                            "key_concepts": [
-                                "Hardware Function Optimization", 
-                                "Loop Pipelining"
-                            ], 
-                            "version": "1.0", 
-                            "author": "Xilinx"
-                        }, 
-                        {
                             "name": "loop_reorder", 
+                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
                             "description": [
                                 "This is a simple example of matrix multiplication (Row x Col) to demonstrate how to achieve better pipeline II factor by loop reordering."
                             ], 
@@ -211,6 +222,7 @@
                         }, 
                         {
                             "name": "row_array_2d", 
+                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
                             "description": [
                                 "This is a simple example of accessing each row of data from 2D array"
                             ], 
@@ -226,6 +238,7 @@
                         }, 
                         {
                             "name": "shift_register", 
+                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
                             "description": [
                                 "This example demonstrates how to shift values in each clock cycle"
                             ], 
@@ -242,7 +255,28 @@
                             "author": "Xilinx"
                         }, 
                         {
+                            "name": "sys_port", 
+                            "commit_id": "caf4a6a07b2b69431691c6ee45553ec5ba9e467a", 
+                            "description": [
+                                "This is a simple example which demonstrates sys_port usage"
+                            ], 
+                            "displayName": "Sysport", 
+                            "keywords": [
+                                "#pragma SDS data sys_port", 
+                                "#pragms HLS PIPELINE", 
+                                "sds_alloc_non_cacheable"
+                            ], 
+                            "key_concepts": [
+                                "sys_port", 
+                                "memory interface", 
+                                "memory non-caching"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
                             "name": "systolic_array", 
+                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
                             "description": [
                                 "This is a simple example of matrix multiplication (Row x Col) to help developers learn systolic array based algorithm design. Note : Systolic array based algorithm design is well suited for FPGA."
                             ], 
@@ -259,6 +293,7 @@
                         }, 
                         {
                             "name": "wide_memory_rw", 
+                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
                             "description": [
                                 "This is a simple example of vector addition to demonstrate Wide Memory Access using structure data type of 128bit wide. Based on input argument type, sds++ compiler will figure out the memory interface datawidth of hardware accelerator."
                             ], 
@@ -276,6 +311,7 @@
                         }, 
                         {
                             "name": "window_array_2d", 
+                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
                             "description": [
                                 "This is a simple example of accessing window of data from 2D array"
                             ], 
@@ -290,6 +326,32 @@
                             ], 
                             "version": "1.0", 
                             "author": "Xilinx"
+                        }
+                    ]
+                }
+            ], 
+            "examples": []
+        }, 
+        {
+            "name": "ocl", 
+            "displayName": "", 
+            "description": "", 
+            "categories": [
+                {
+                    "name": "getting_started", 
+                    "displayName": "", 
+                    "description": "", 
+                    "categories": [], 
+                    "examples": [
+                        {
+                            "name": "hello_vadd_ocl", 
+                            "commit_id": "0d3d6164010d86e2908cc872f796c4824355a8a1", 
+                            "description": [
+                                "This is a simple OpenCL example of vector addition for MPSoC OpenCL Flow. The purpose of this code is to introduce the user to application development in SDx."
+                            ], 
+                            "displayName": "Vector Addition for Zynq MPSoC Unified Platform", 
+                            "version": "1.0", 
+                            "author": "Xilinx, Inc."
                         }
                     ]
                 }
