@@ -9,6 +9,7 @@ Example        | Description           | Key Concepts / Keywords
 [array_partition/][]|This example shows how to use array partitioning to improve performance of a hardware function|__Key__ __Concepts__<br> - Hardware Function Optimization<br> - Array Partitioning<br>__Keywords__<br> - #pragma HLS ARRAY_PARTITION<br> - complete
 [burst_rw/][]|This is a simple vector increment example which demonstrates usage of  AXI4-master interface for burst read and write|__Key__ __Concepts__<br> - Burst Access<br>
 [custom_data_type/][]|This is a simple example of RGB to HSV conversion to demonstrate Custom Data Type usage in hardware accelerator. Xilinx HLS compiler supports custom data type to operate within the hardware function and also it acts as a memory interface between PL to DDR|__Key__ __Concepts__<br> - Custom Data type<br>__Keywords__<br> - struct<br> - packed<br> - aligned
+[data_access_random/][]|This is a simple example of matrix multiplication (Row x Col) to demonstrate random data access pattern|__Key__ __Concepts__<br> - Data Access Random<br>__Keywords__<br> - #pragma HLS PIPELINE<br> - #pragma SDS access_pattern(a:RANDOM, b:RANDOM)<br> - #pragma SDS data copy
 [dependence_inter/][]|This is a simple example to demonstrate inter dependence attribute using vertical convolution example. Using inter dependence attribute user can provide additional dependency details to compiler which allow compiler to perform unrolling/pipelining to get better performance |__Key__ __Concepts__<br> - Inter Dependence<br>__Keywords__<br> - DEPENDENCE<br> - inter
 [dma_sg/][]|This example demonstrates how to use Scatter-Gather DMAs for data transfer to/from hardware accelerator|__Key__ __Concepts__<br> - Scatter Gather DMA<br>__Keywords__<br> - #pragma SDS access_parttern(a:SEQUENTIAL)<br> - #pragma SDS data_mover(a:AXIDMA_SG)<br> - #pragma SDS data copy
 [dma_simple/][]|This example demonstrates how to insert Simple DMAs for data transfer between User program and hardware accelerator|__Key__ __Concepts__<br> - Simple DMA<br>__Keywords__<br> - #pragma SDS access_parttern(a:SEQUENTIAL)<br> - #pragma SDS data_mover(a:AXIDMA_SIMPLE)<br> - #pragma SDS data copy
@@ -29,6 +30,7 @@ Example        | Description           | Key Concepts / Keywords
 [array_partition/]:array_partition/
 [burst_rw/]:burst_rw/
 [custom_data_type/]:custom_data_type/
+[data_access_random/]:data_access_random/
 [dependence_inter/]:dependence_inter/
 [dma_sg/]:dma_sg/
 [dma_simple/]:dma_simple/

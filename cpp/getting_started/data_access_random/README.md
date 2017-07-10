@@ -1,4 +1,4 @@
-DMA Simple
+Random Data Access Pattern
 ======================
 
 This README file contains the following sections:
@@ -15,11 +15,11 @@ This README file contains the following sections:
 
 
 ## 1. OVERVIEW
-This example demonstrates how to insert Simple DMAs for data transfer between User program and hardware accelerator
+This is a simple example of matrix multiplication (Row x Col) to demonstrate random data access pattern.
 
-***KEY CONCEPTS:*** Simple DMA, FIFO Interface
+***KEY CONCEPTS:*** Data Access Random
 
-***KEYWORDS:*** #pragma SDS access_parttern(a:SEQUENTIAL), #pragma SDS data_mover(a:AXIDMA_SIMPLE), #pragma SDS data copy
+***KEYWORDS:*** #pragma HLS PIPELINE, #pragma sds data access_pattern(a:RANDOM, b:RANDOM), #pragma sds data copy
 
 ## 2. HOW TO DOWNLOAD THE REPOSITORY
 To get a local copy of the SDSoC example repository, clone this repository to the local system with the following command:
@@ -48,12 +48,6 @@ where the *PLATFORM* variable accepts one board.
 ## 4. DESIGN FILE HIERARCHY
 Application code is located in the src/ directory. Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation flow, directory name is "emu" and in case of hardware flow it is named as "hw" 
 ```
-Makefile
-README.md
-description.json
-src/main.cpp
-src/vadd.cpp
-src/vadd.h
 ```
 
 ## 5. COMPILATION AND EXECUTION

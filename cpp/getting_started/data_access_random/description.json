@@ -1,12 +1,12 @@
 {
-    "example": "DMA Simple",
+    "example": "Random Data Access Pattern",
     "overview": [
-        "This example demonstrates how to insert Simple DMAs for data transfer between User program and hardware accelerator"
+        "This is a simple example of matrix multiplication (Row x Col) to demonstrate random data access pattern."
     ],
-    "key_concepts": [ "Simple DMA", "FIFO Interface"],
-    "keywords": ["#pragma SDS access_parttern(a:SEQUENTIAL)", 
-                 "#pragma SDS data_mover(a:AXIDMA_SIMPLE)",
-                 "#pragma SDS data copy"],
+    "key_concepts": [ "Data Access Random"],
+    "keywords": ["#pragma HLS PIPELINE", 
+                 "#pragma sds data access_pattern(a:RANDOM, b:RANDOM)",
+                 "#pragma sds data copy"],
     "contributors" : [
         {
             "group": "Xilinx",
@@ -25,8 +25,8 @@
     },
     "accelerators": [
        {
-           "name" : "vadd_hw",
-           "location" : "vadd.cpp"
+           "name" : "mmult_accel",
+           "location" : "mmult.cpp"
        }
     ],
     "libs": [

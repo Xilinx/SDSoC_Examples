@@ -17,7 +17,7 @@ This README file contains the following sections:
 ## 1. OVERVIEW
 This example demonstrates how to use Scatter-Gather DMAs for data transfer to/from hardware accelerator
 
-***KEY CONCEPTS:*** Scatter Gather DMA
+***KEY CONCEPTS:*** Scatter Gather DMA, FIFO Interface
 
 ***KEYWORDS:*** #pragma SDS access_parttern(a:SEQUENTIAL), #pragma SDS data_mover(a:AXIDMA_SG), #pragma SDS data copy
 
