@@ -77,9 +77,9 @@ void mmult_accel(
            mmult3: for (int k = 0; k < dim; k++) {
               #pragma HLS LOOP_TRIPCOUNT min=1 max=64
               #pragma HLS PIPELINE
-              result += in1[i * DATA_SIZE + k] * in2[k * DATA_SIZE + j];
+              result += in1[i * dim + k] * in2[k * dim + j];
            }
-           out[i * DATA_SIZE + j] = result;
+           out[i * dim + j] = result;
         }
      }
 }

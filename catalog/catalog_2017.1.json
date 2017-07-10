@@ -1,5 +1,5 @@
 {
-    "name": "apps-1", 
+    "name": "master", 
     "displayName": "", 
     "description": "", 
     "categories": [
@@ -380,5 +380,5 @@
         }
     ], 
     "examples": [], 
-    "branch": "NewExample_DataAccess_Random"
+    "branch": "master"
 }

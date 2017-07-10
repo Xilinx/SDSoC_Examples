@@ -49,15 +49,16 @@
 void m_softwareGold(
                     int *in1,   //Input Matrix 1
                     int *in2,   //Input Matrix 2
-                    int *out    //Output Matrix
+                    int *out,   //Output Matrix
+                    int dim
                    )
 {
     //Perform Matrix multiply Out = In1 x In2
-    for(int i = 0; i < DATA_SIZE; i++) {
-        for(int j = 0; j < DATA_SIZE; j++) {
-            for(int k = 0; k < DATA_SIZE; k++) {
-                out[i * DATA_SIZE + j] += in1[i * DATA_SIZE + k] * in2[k * 
-                                          DATA_SIZE + j];
+    for(int i = 0; i < dim; i++) {
+        for(int j = 0; j < dim; j++) {
+            for(int k = 0; k < dim; k++) {
+                out[i * dim + j] += in1[i * dim + k] * in2[k * 
+                                          dim + j];
             }
         }
     }
@@ -107,7 +108,7 @@ int main(int argc, char** argv)
 
     sw_ctr.start();
     // Launch Software Solution
-    m_softwareGold(source_in1, source_in2, source_sw_results);
+    m_softwareGold(source_in1, source_in2, source_sw_results,size);
     sw_ctr.stop();
 
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();

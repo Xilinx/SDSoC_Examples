@@ -48,6 +48,12 @@ where the *PLATFORM* variable accepts one board.
 ## 4. DESIGN FILE HIERARCHY
 Application code is located in the src/ directory. Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation flow, directory name is "emu" and in case of hardware flow it is named as "hw" 
 ```
+Makefile
+README.md
+description.json
+src/main.cpp
+src/mmult.cpp
+src/mmult.h
 ```
 
 ## 5. COMPILATION AND EXECUTION
@@ -99,7 +105,7 @@ This example is written by developers at
 ## 9. REVISION HISTORY
 Date | README Version | Description
 -----|----------------|------------
-JUNE2017|1.0|Initial Xilinx Release
+JUL2017|1.0|Initial Xilinx Release
 
 [3-Clause BSD License]: ../../../LICENSE.txt
 [SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc
