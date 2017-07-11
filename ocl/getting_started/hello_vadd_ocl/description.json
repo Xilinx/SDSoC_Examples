@@ -6,6 +6,9 @@
     "os": [
         "Linux"
     ],
+    "libs": [
+        "xcl2"
+    ],
     "runtime": [
         "OpenCL"
     ],
