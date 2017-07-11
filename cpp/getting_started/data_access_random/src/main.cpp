@@ -90,29 +90,48 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    // Create the test data 
-    for(int i = 0 ; i < DATA_SIZE * DATA_SIZE ; i++){
-        source_in1[i] = i;
-        source_in2[i] = i * i;
-        source_sw_results[i] = 0;
-        source_hw_results[i] = 0;
-    }
     int size = DATA_SIZE;
 
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
-    hw_ctr.start();
-    // Launch Hardware Solution 
-    mmult_accel(source_in1, source_in2, source_hw_results, size);
-    hw_ctr.stop();
+    uint64_t sw_cycles = 0;
+    uint64_t hw_cycles = 0;
 
-    sw_ctr.start();
-    // Launch Software Solution
-    m_softwareGold(source_in1, source_in2, source_sw_results,size);
-    sw_ctr.stop();
+    bool match = true;
 
-    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
-    uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
+    for(int iter = 0; iter < MAX_NUMBER_TIMES; iter++){
+        // Create the test data 
+        for(int i = 0 ; i < DATA_SIZE * DATA_SIZE ; i++){
+            source_in1[i] = rand();
+            source_in2[i] = rand();
+            source_sw_results[i] = 0;
+            source_hw_results[i] = 0;
+        }
+
+        hw_ctr.start();
+        // Launch Hardware Solution 
+        mmult_accel(source_in1, source_in2, source_hw_results, size);
+        hw_ctr.stop();
+
+        sw_ctr.start();
+        // Launch Software Solution
+        m_softwareGold(source_in1, source_in2, source_sw_results,size);
+        sw_ctr.stop();
+
+        sw_cycles += sw_ctr.avg_cpu_cycles();
+        hw_cycles += hw_ctr.avg_cpu_cycles();
+    
+        // Compare the results 
+        for (int i = 0 ; i < DATA_SIZE * DATA_SIZE ; i++){
+            if (source_hw_results[i] != source_sw_results[i]){
+                std::cout << "Error: Result mismatch" << std::endl;
+                std::cout << "i = " << i << " CPU result = " << source_sw_results[i]
+                    << " Hardware result = " << source_hw_results[i] << std::endl;
+                match = false;
+                break;
+            }
+        }
+    }
     double speedup = (double) sw_cycles / (double) hw_cycles;
 
     std::cout << "Number of CPU cycles running application in software: "
@@ -121,18 +140,6 @@ int main(int argc, char** argv)
                 << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
     std::cout << "Note: Speed up is meaningful for real hardware execution only, not for emulation." << std::endl;
-
-    // Compare the results 
-    bool match = true;
-    for (int i = 0 ; i < DATA_SIZE * DATA_SIZE ; i++){
-        if (source_hw_results[i] != source_sw_results[i]){
-            std::cout << "Error: Result mismatch" << std::endl;
-            std::cout << "i = " << i << " CPU result = " << source_sw_results[i]
-                << " Hardware result = " << source_hw_results[i] << std::endl;
-            match = false;
-            break;
-        }
-    }
 
     // Release memory
     sds_free(source_in1);
