@@ -94,9 +94,6 @@ int main(int argc, char** argv)
 
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
-    uint64_t sw_cycles = 0;
-    uint64_t hw_cycles = 0;
-
     bool match = true;
 
     for(int iter = 0; iter < MAX_NUMBER_TIMES; iter++){
@@ -118,9 +115,6 @@ int main(int argc, char** argv)
         m_softwareGold(source_in1, source_in2, source_sw_results,size);
         sw_ctr.stop();
 
-        sw_cycles += sw_ctr.avg_cpu_cycles();
-        hw_cycles += hw_ctr.avg_cpu_cycles();
-    
         // Compare the results 
         for (int i = 0 ; i < DATA_SIZE * DATA_SIZE ; i++){
             if (source_hw_results[i] != source_sw_results[i]){
@@ -132,11 +126,14 @@ int main(int argc, char** argv)
             }
         }
     }
+    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
+    uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
+
     double speedup = (double) sw_cycles / (double) hw_cycles;
 
-    std::cout << "Number of CPU cycles running application in software: "
+    std::cout << "Number of average CPU cycles running application in software: "
                 << sw_cycles << std::endl;
-    std::cout << "Number of CPU cycles running application in hardware: "
+    std::cout << "Number of average CPU cycles running application in hardware: "
                 << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
     std::cout << "Note: Speed up is meaningful for real hardware execution only, not for emulation." << std::endl;
@@ -147,10 +144,7 @@ int main(int argc, char** argv)
     sds_free(source_hw_results);
     free(source_sw_results);
 
-    if (!match){
-        std::cout << "TEST FAILED." << std::endl;
-        return 1;
-    }
-    std::cout << "TEST PASSED." << std::endl;
-    return 0;
+    std::cout << "TEST " << ((match) ? "PASSED": "FAILED") << std::endl;
+
+    return (match ? 0 : -1);
 }
