@@ -44,7 +44,7 @@
 
 // By default access_pattern is RANDOM, to highlight, the access pattern is explicitly declared
 #pragma SDS data copy(in1[0:dim*dim], in2[0:dim*dim], out[0:dim*dim])
-#pragma SDS data access_pattern(in1:RANDOM, in2:RANDOM)
+#pragma SDS data access_pattern(in1:RANDOM, in2:RANDOM, out:RANDOM)
 void mmult_accel(
                     const int in1[MAX_SIZE * MAX_SIZE],     // Read-Only Matrix 1
                     const int in2[MAX_SIZE * MAX_SIZE],     // Read-Only Matrix 2
