@@ -117,6 +117,11 @@ void mmult_accel(
         lreorder2: for (int k = 0; k < dim ; k++) {
         #pragma HLS LOOP_TRIPCOUNT min=64 max=64
         #pragma HLS PIPELINE
+            //Based on the functionality the number of iterations 
+            //to be executed for "lreorder3" must be "dim" size. 
+            //But for the pipeline to happen in the "lreorder2" the
+            //"lreorder3" must be unrolled, to unroll the size cannot be dynamic.
+            //It gives better throughput with usage additional resources.           
             lreorder3: for (int j = 0; j < MAX_SIZE; j++) {
                 int result = temp_sum[j];
                 result += A[i][k] * B[k][j];

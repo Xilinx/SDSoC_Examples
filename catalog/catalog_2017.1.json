@@ -68,6 +68,24 @@
                             "author": "Xilinx"
                         }, 
                         {
+                            "name": "data_access_random", 
+                            "commit_id": "", 
+                            "description": [
+                                "This is a simple example of matrix multiplication (Row x Col) to demonstrate random data access pattern."
+                            ], 
+                            "displayName": "Random Data Access Pattern", 
+                            "keywords": [
+                                "#pragma HLS PIPELINE", 
+                                "#pragma sds data access_pattern(a:RANDOM, b:RANDOM)", 
+                                "#pragma sds data copy"
+                            ], 
+                            "key_concepts": [
+                                "Data Access Random"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
                             "name": "dependence_inter", 
                             "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
                             "description": [
@@ -97,7 +115,8 @@
                                 "#pragma SDS data copy"
                             ], 
                             "key_concepts": [
-                                "Scatter Gather DMA"
+                                "Scatter Gather DMA", 
+                                "FIFO Interface"
                             ], 
                             "version": "1.0", 
                             "author": "Xilinx"
@@ -115,7 +134,8 @@
                                 "#pragma SDS data copy"
                             ], 
                             "key_concepts": [
-                                "Simple DMA"
+                                "Simple DMA", 
+                                "FIFO Interface"
                             ], 
                             "version": "1.0", 
                             "author": "Xilinx"
