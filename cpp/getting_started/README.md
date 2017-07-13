@@ -10,6 +10,7 @@ Example        | Description           | Key Concepts / Keywords
 [burst_rw/][]|This is a simple vector increment example which demonstrates usage of  AXI4-master interface for burst read and write|__Key__ __Concepts__<br> - Burst Access<br>
 [custom_data_type/][]|This is a simple example of RGB to HSV conversion to demonstrate Custom Data Type usage in hardware accelerator. Xilinx HLS compiler supports custom data type to operate within the hardware function and also it acts as a memory interface between PL to DDR|__Key__ __Concepts__<br> - Custom Data type<br>__Keywords__<br> - struct<br> - packed<br> - aligned
 [dependence_inter/][]|This is a simple example to demonstrate inter dependence attribute using vertical convolution example. Using inter dependence attribute user can provide additional dependency details to compiler which allow compiler to perform unrolling/pipelining to get better performance |__Key__ __Concepts__<br> - Inter Dependence<br>__Keywords__<br> - DEPENDENCE<br> - inter
+[direct_connection/][]|This is a simple example of matrix multiplication with matrix addition (Out = (A x B) + C)to demonstrate direct connectionwhich helps to achieve increasing in system parallelism and concurrency. |__Key__ __Concepts__<br> - Direct Connection<br> - Loop Unroll<br>__Keywords__<br> - #pragma HLS pipeline<br> - #pragma SDS data access_pattern(in1:SEQUENTIAL, in2:SEQUENTIAL, out:SEQUENTIAL) 
 [dma_sg/][]|This example demonstrates how to use Scatter-Gather DMAs for data transfer to/from hardware accelerator|__Key__ __Concepts__<br> - Scatter Gather DMA<br>__Keywords__<br> - #pragma SDS access_parttern(a:SEQUENTIAL)<br> - #pragma SDS data_mover(a:AXIDMA_SG)<br> - #pragma SDS data copy
 [dma_simple/][]|This example demonstrates how to insert Simple DMAs for data transfer between User program and hardware accelerator|__Key__ __Concepts__<br> - Simple DMA<br>__Keywords__<br> - #pragma SDS access_parttern(a:SEQUENTIAL)<br> - #pragma SDS data_mover(a:AXIDMA_SIMPLE)<br> - #pragma SDS data copy
 [full_array_2d/][]|This is a simple example of accessing full data from 2D array|__Key__ __Concepts__<br> - 2D data array access<br>
@@ -30,6 +31,7 @@ Example        | Description           | Key Concepts / Keywords
 [burst_rw/]:burst_rw/
 [custom_data_type/]:custom_data_type/
 [dependence_inter/]:dependence_inter/
+[direct_connect/]:direct_connect/
 [dma_sg/]:dma_sg/
 [dma_simple/]:dma_simple/
 [full_array_2d/]:full_array_2d/

@@ -1,0 +1,47 @@
+{
+    "example": "Direct Connection",
+    "overview": [
+        "This is a simple example of matrix multiplication with matrix addition (Out = (A x B) + C)to demonstrate direct connection which helps to achieve increasing in system parallelism and concurrency."
+    ],
+    "key_concepts": [ "Direct Connection", "Loop Unroll"],
+    "keywords": ["#pragma HLS PIPELINE", "#pragma SDS data access_pattern"],
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "JUL2017",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "compiler" : {
+        "options" : "-Wno-unused-label"
+    },
+    "accelerators": [
+       {
+           "name" : "mmult_accel",
+           "location" : "mmult.cpp"
+       },
+       {
+           "name" : "madd_accel",
+           "location" : "mmult.cpp"
+       }
+    ],
+    "libs": [
+            "sds_utils"
+    ],
+    "source_dir" : "src/*.cpp",
+    "os" : [
+            "linux",
+            "standalone"
+    ],
+    "runtime" : [
+            "C/C++"
+    ],
+    "pass_string" : "TEST PASSED",
+    "fail_string" : "TEST FAILED" 
+}
