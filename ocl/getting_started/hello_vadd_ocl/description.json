@@ -1,7 +1,7 @@
 {
-    "example": "Vector Addition for Zynq MPSoC Unified Platform",
+    "example": "Vector Addition",
     "overview": [
-         "This is a simple OpenCL example of vector addition for MPSoC OpenCL Flow. The purpose of this code is to introduce the user to application development in SDx."
+         "This is a simple OpenCL example of vector addition. The purpose of this code is to introduce the user to application development in SDx."
      ],
     "os": [
         "Linux"
@@ -12,12 +12,19 @@
     "runtime": [
         "OpenCL"
     ],
+    "libs": [
+        "xcl2"
+    ],
     "board": ["zcu102_es1_ocl", "zcu102_es2_ocl"],
-    "cmd_args" : "BUILD/default.xclbin",
-    "accelerators": [
+    "containers" : [
         {
-            "name": "krnl_vadd",
-            "location": "src/krnl_vadd.cl"
+            "name" : "vadd",
+            "accelerators": [
+                {
+                    "name": "vadd",
+                    "location": "src/vadd.cl"
+                }
+            ]
         }
     ],
     "contributors" : [

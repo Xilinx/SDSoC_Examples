@@ -49,13 +49,6 @@ ALL TIMES.
 
 int main(int argc, char* argv[])
 {
-    if(argc != 2) {
-		std::cout << "Usage: " << argv[0] <<" <xclbin>" << std::endl;
-		return EXIT_FAILURE;
-	}
-
-    char* xclbinFilename = argv[1];
-
     size_t vector_size_bytes = sizeof(int) * LENGTH;
     //Source Memories
     std::vector<unsigned int> source_a(LENGTH);
@@ -72,48 +65,25 @@ int main(int argc, char* argv[])
 
 // OPENCL HOST CODE AREA START
 
-    //Getting First Platform
-    std::vector<cl::Platform> platforms;
-    cl::Platform::get(&platforms);
-    cl::Platform platform = platforms[0];
-    std::cout << "Platform: " << platform.getInfo<CL_PLATFORM_NAME>() << "\n";
-
-    //Getting ACCELERATOR Devices and selecting 1st such device
-    std::vector<cl::Device> devices;
-    platform.getDevices(CL_DEVICE_TYPE_ACCELERATOR, &devices);
+    //Getting Xilinx Platform and its device
+    std::vector<cl::Device> devices = xcl::get_xil_devices();
     cl::Device device = devices[0];
-    std::cout << "Device: " << device.getInfo<CL_DEVICE_NAME>() << "\n";
+    std::string device_name = device.getInfo<CL_DEVICE_NAME>(); 
 
     //Creating Context and Command Queue for selected Device
     cl::Context context(device);
     cl::CommandQueue q(context, device);
 
     //Loading XCL Bin into char buffer
-    std::cout << "Loading: '" << xclbinFilename << "'\n";
-    std::ifstream bin_file(xclbinFilename, std::ifstream::binary);
-    bin_file.seekg (0, bin_file.end);
-    unsigned nb = bin_file.tellg();
-    bin_file.seekg (0, bin_file.beg);
-    char *buf = new char [nb];
-    bin_file.read(buf, nb);
-
-    // Creating Program from Binary File
-    cl::Program::Binaries bins;
-    bins.push_back({buf,nb});
+    std::string binaryFile = xcl::find_binary_file(device_name,"vadd");
+    cl::Program::Binaries bins = xcl::import_binary_file(binaryFile);
     devices.resize(1);
     cl::Program program(context, devices, bins);
 
     //Creating Kernel and Functor of Kernel
     int err1;
-    cl::Kernel kernel(program, "krnl_vadd", &err1);
-     if (err1 != CL_SUCCESS)
-     {
-         std::cout << "Error: Failed to create compute kernel!" << std::endl;
-         std::cout << "Test failed" << std::endl;
-         return EXIT_FAILURE;
-    }
+    cl::Kernel kernel(program, "vadd", &err1);
     auto krnl_vadd = cl::KernelFunctor<cl::Buffer&, cl::Buffer&, cl::Buffer&, int>(kernel);
-
 
     //Creating Buffers inside Device
     cl::Buffer buffer_a(context, CL_MEM_READ_ONLY,  vector_size_bytes);
