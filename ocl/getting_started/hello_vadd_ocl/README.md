@@ -8,11 +8,10 @@ This README file contains the following sections:
 3. SOFTWARE TOOLS AND SYSTEM REQUIREMENTS
 4. DESIGN FILE HIERARCHY
 5. COMPILATION AND EXECUTION
-6. EXECUTION IN CLOUD ENVIRONMENTS
-7. SUPPORT
-8. LICENSE AND CONTRIBUTING TO THE REPOSITORY
-9. ACKNOWLEDGEMENTS
-10. REVISION HISTORY
+6. SUPPORT
+7. LICENSE AND CONTRIBUTING TO THE REPOSITORY
+8. ACKNOWLEDGEMENTS
+9. REVISION HISTORY
 
 
 ## 1. OVERVIEW
@@ -39,7 +38,7 @@ make PLATFORM=<board name> or make all PLATFORM=<board name>
 where the *PLATFORM* variable accepts one board.
 
 ## 4. DESIGN FILE HIERARCHY
-Application code is located in the src directory. Accelerator binary files will be compiled to the xclbin directory. The xclbin directory is required by the Makefile and its contents will be filled during compilation. A listing of all the files in this example is shown below
+Application code is located in the src directory. Accelerator binary files will be compiled to the build directory. A listing of all the files in this example is shown below
 
 ```
 Makefile
@@ -50,12 +49,13 @@ src/vadd.cl
 ```
 
 ## 5. COMPILATION AND EXECUTION
-### Compiling for Application Execution in the FPGA Accelerator Card
+### Compiling for Application Execution on the FPGA Board
 The command to compile the application for execution on the FPGA acceleration board is
 ```
 make all
 ```
 The default target for the makefile is to compile for hardware. Therefore, setting the TARGETS option is not required.
+
 *NOTE:* Compilation for application execution in hardware generates custom logic to implement the functionality of the kernels in an application.
 It is typical for hardware compile times to range from 30 minutes to a couple of hours.
 

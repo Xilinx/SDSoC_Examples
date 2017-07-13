@@ -24,11 +24,10 @@ def header(target,data):
     target.write("3. SOFTWARE TOOLS AND SYSTEM REQUIREMENTS\n")
     target.write("4. DESIGN FILE HIERARCHY\n")
     target.write("5. COMPILATION AND EXECUTION\n")
-    target.write("6. EXECUTION IN CLOUD ENVIRONMENTS\n")
-    target.write("7. SUPPORT\n")
-    target.write("8. LICENSE AND CONTRIBUTING TO THE REPOSITORY\n")
-    target.write("9. ACKNOWLEDGEMENTS\n")
-    target.write("10. REVISION HISTORY\n\n\n")
+    target.write("6. SUPPORT\n")
+    target.write("7. LICENSE AND CONTRIBUTING TO THE REPOSITORY\n")
+    target.write("8. ACKNOWLEDGEMENTS\n")
+    target.write("9. REVISION HISTORY\n\n\n")
     return
 
 def download(target):
@@ -99,11 +98,8 @@ def requirements(target,data):
         target.write("|")
         for version in VERSION:
             target.write(version)
-#        target.write("|")
-#        target.write(DEVICES[board][1])
         target.write("\n")
     target.write("\n\n")
-#    target.write("Board targeted by default = ***%s***\n\n" %DSA)
     target.write("*NOTE:* The board/platform used for compilation can be changed by adding the PLATFORM environmental variable to the make command as shown below\n")
     target.write("```\n")
     target.write("make PLATFORM=<board name> or make all PLATFORM=<board name>\n")
@@ -114,8 +110,8 @@ def requirements(target,data):
 def hierarchy(target):
     target.write("## 4. DESIGN FILE HIERARCHY\n")
     target.write("Application code is located in the src directory. ")
-    target.write("Accelerator binary files will be compiled to the xclbin directory. ")
-    target.write("The xclbin directory is required by the Makefile and its contents will be filled during compilation. A listing of all the files ")
+    target.write("Accelerator binary files will be compiled to the build directory. ")
+    target.write("A listing of all the files ")
     target.write("in this example is shown below\n\n")
     target.write("```\n")
     tree_cmd = ['git', 'ls-files']
@@ -128,29 +124,19 @@ def hierarchy(target):
 
 def compilation(target,data):
     target.write("## 5. COMPILATION AND EXECUTION\n")
-    target.write("### Compiling for Application Execution in the FPGA Accelerator Card\n")
+    target.write("### Compiling for Application Execution on the FPGA Board\n")
     target.write("The command to compile the application for execution on the FPGA acceleration board is\n")
     target.write("```\n")
     target.write("make all\n")
     target.write("```\n")
-    target.write("The default target for the makefile is to compile for hardware. Therefore, setting the TARGETS option is not required.\n")
+    target.write("The default target for the makefile is to compile for hardware. Therefore, setting the TARGETS option is not required.\n\n")
     target.write("*NOTE:* Compilation for application execution in hardware generates custom logic to implement the functionality of the kernels in an application.\n")
     target.write("It is typical for hardware compile times to range from 30 minutes to a couple of hours.\n\n")
-
-def power(target):
-    target.write("\n## 6. COMPILATION AND EXECUTION FOR IBM POWER SERVERS\n")
-    target.write("View the SuperVessel [Walkthrough Video][] to become familiar with the environment.\n\n")
-    target.write("Compile the application with the following command\n")
-    target.write("```\n")
-    target.write("make ARCH=POWER all\n")
-    target.write("```\n")
-    return
 
 def support(target):
     target.write("\n## 6. SUPPORT\n")
     target.write("For more information about SDSoC check the [SDSoC user Guides][]\n\n")
     target.write("For questions and to get help on this project or your own projects, visit the [SDSoC Forums][].\n\n")
-    #target.write("To execute this example using the SDAccel GUI, follow the setup instructions in [SDAccel GUI README][]\n\n")
     return
 
 def license(target):
@@ -208,14 +194,7 @@ def footer(target):
     target.write("[3-Clause BSD License]: " + root + "LICENSE.txt\n")
     target.write("[SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc\n")
     target.write("[SDSoC User Guides]: http://www.xilinx.com/support/documentation/sw_manuals/xilinx2017_1/ug1027-sdsoc-user-guide.pdf\n")
-    #target.write("[Nimbix Getting Started Guide]: http://www.xilinx.com/support/documentation/sw_manuals/xilinx2016_2/ug1240-sdaccel-nimbix-getting-started.pdf\n")
-    #target.write("[Walkthrough Video]: http://bcove.me/6pp0o482\n")
-    #target.write("[Nimbix Application Submission README]: " + root + "utility/nimbix/README.md\n")
     target.write("[Repository Contribution README]: " + root + "CONTRIBUTING.md\n")
-    #target.write("[SDaccel GUI README]: " + root + "GUIREADME.md\n")
-    #target.write("[AWS F1 Application Execution on Xilinx Virtex UltraScale Devices]: " + root + "README.md\n")
-    #target.write("[Nimbix Application Execution on Xilinx Kintex UltraScale Devices]: " + root + "utility/nimbix/README.md\n")
-    #target.write("[IBM SuperVessel Research Cloud on Xilinx Virtex Devices]: http://bcove.me/6pp0o482\n")
     return
 
 # Get the argument from the description
@@ -241,9 +220,6 @@ download(target)
 requirements(target,data)
 hierarchy(target)
 compilation(target,data)
-#execution(target)
-#nimbix(target)
-#power(target)
 support(target)
 license(target)
 ack(target,data)
