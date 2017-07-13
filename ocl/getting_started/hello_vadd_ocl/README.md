@@ -1,4 +1,4 @@
-Vector Addition for Zynq MPSoC Unified Platform
+Vector Addition
 ======================
 
 This README file contains the following sections:
@@ -16,7 +16,7 @@ This README file contains the following sections:
 
 
 ## 1. OVERVIEW
-This is a simple OpenCL example of vector addition for MPSoC OpenCL Flow. The purpose of this code is to introduce the user to application development in SDx.
+This is a simple OpenCL example of vector addition. The purpose of this code is to introduce the user to application development in SDx.
 
 ## 2. HOW TO DOWNLOAD THE REPOSITORY
 To get a local copy of the SDSoC example repository, clone this repository to the local system with the following command:
@@ -45,8 +45,8 @@ Application code is located in the src directory. Accelerator binary files will 
 Makefile
 README.md
 description.json
-src/krnl_vadd.cl
-src/vadd.cpp
+src/host.cpp
+src/vadd.cl
 ```
 
 ## 5. COMPILATION AND EXECUTION
