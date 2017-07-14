@@ -15,11 +15,11 @@ This README file contains the following sections:
 
 
 ## 1. OVERVIEW
-This is a simple example of matrix multiplication with matrix addition (Out = (A x B) + C)to demonstrate direct connection which helps to achieve incresing in system parallelism and concurrency.
+This is a simple example of matrix multiplication with matrix addition (Out = (A x B) + C)to demonstrate direct connection which helps to achieve increasing in system parallelism and concurrency.
 
-***KEY CONCEPTS:*** Direct Connection, Loop Unroll
+***KEY CONCEPTS:*** Direct Connection, Multiple Accelerators
 
-***KEYWORDS:*** #pragma HLS PIPELINE, #pragma SDS data zero_copy
+***KEYWORDS:*** #pragma SDS data access_pattern
 
 ## 2. HOW TO DOWNLOAD THE REPOSITORY
 To get a local copy of the SDSoC example repository, clone this repository to the local system with the following command:
@@ -48,6 +48,12 @@ where the *PLATFORM* variable accepts one board.
 ## 4. DESIGN FILE HIERARCHY
 Application code is located in the src/ directory. Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation flow, directory name is "emu" and in case of hardware flow it is named as "hw" 
 ```
+Makefile
+README.md
+description.json
+src/main.cpp
+src/mmult.cpp
+src/mmult.h
 ```
 
 ## 5. COMPILATION AND EXECUTION

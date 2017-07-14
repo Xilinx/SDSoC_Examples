@@ -3,8 +3,8 @@
     "overview": [
         "This is a simple example of matrix multiplication with matrix addition (Out = (A x B) + C)to demonstrate direct connection which helps to achieve increasing in system parallelism and concurrency."
     ],
-    "key_concepts": [ "Direct Connection", "Loop Unroll"],
-    "keywords": ["#pragma HLS PIPELINE", "#pragma SDS data access_pattern"],
+    "key_concepts": [ "Direct Connection", "Multiple Accelerators"],
+    "keywords": ["#pragma SDS data access_pattern"],
     "contributors" : [
         {
             "group": "Xilinx",

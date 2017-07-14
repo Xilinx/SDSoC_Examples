@@ -46,16 +46,16 @@
 void mmult_accel(
                     const int *in1,     // Read-Only Matrix 1
                     const int *in2,     // Read-Only Matrix 2
-                    int *out,            // Output Matrix
+                    int *out,           // Output Matrix
                     int dim             // Size of one dimension of the matrices
                 );
 
 #pragma SDS data access_pattern(mmult_in:SEQUENTIAL, in3:SEQUENTIAL, out:SEQUENTIAL)
 void madd_accel(
-                const int mmult_in[DATA_SIZE * DATA_SIZE], // Read-Only Matrix
-                const int in3[DATA_SIZE * DATA_SIZE],      // Read-Only Matrix
-                int out[DATA_SIZE * DATA_SIZE],            // Output Matrix
-                int dim                                  // Size of one dimension
+                const int *mmult_in,    // Read-Only Matrix
+                const int *in3,         // Read-Only Matrix
+                int *out,               // Output Matrix
+                int dim                 // Size of one dimension of the matrices
                );
 
 #endif

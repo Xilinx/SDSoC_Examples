@@ -64,10 +64,10 @@ Description :
 // Out = (out + in3) , where a direct connection establishes between the
 // HLS kernels for the access of "out"(A X B)
 void madd_accel(
-                const int mmult_in[DATA_SIZE * DATA_SIZE],  // Read-Only Matrix
-                const int in3[DATA_SIZE * DATA_SIZE],       // Read-Only Matrix 3
-                int out[DATA_SIZE * DATA_SIZE],             // Output matrix
-                int dim                                   // Size of one dimension
+                const int *mmult_in,   // Read-Only Matrix
+                const int *in3,        // Read-Only Matrix 3
+                int *out,              // Output matrix
+                int dim                // Size of one dimension of the matrices
                )
 {
     // Performs matrix addition over output of (A x B) and In3 and
@@ -84,7 +84,7 @@ void madd_accel(
 void mmult_accel(
                  const int *in1,     // Read-Only Matrix 1
                  const int *in2,     // Read-Only Matrix 2
-                 int *out,     // Output Result
+                 int *out,           // Output Result
                  int dim             // Size of one dimension of the matrices
                 )
 {
