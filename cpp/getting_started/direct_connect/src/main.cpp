@@ -113,6 +113,12 @@ int main(int argc, char** argv)
             source_hw_results[i] = 0;
         }
 
+        //Two hw functions are called back to back. Output of 1st 
+        //hardware function source_mmult_out is input to 2nd hw function.
+        //For such case, SDx will make a direct connection between the 
+        //hw accelerators to directly pass source_mmult_out result to
+        //improve the overall performance.
+        
         hw_ctr.start();
         // Launch Hardware Solution 
         mmult_accel(source_in1, source_in2, source_mmult_out, size);
