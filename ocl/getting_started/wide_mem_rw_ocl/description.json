@@ -1,0 +1,42 @@
+{
+    "example": "Wide Memory Read/Write (CL)",
+    "overview": [
+         "This is simple example of vector addition to demonstrate Wide Memory Access using uint4 data type. Based on input argument type, xocc compiler will figure out the memory datawidth between Global Memory and Kernel. For this example, uint4 datatype is used, so memory datawidth will be 4 x (integer bit size) = 4 x 32 = 128 bit."
+     ],
+    "key_concepts": [ "Kernel to DDR", "wide memory access", "burst read and write"],
+    "keywords": ["uint4", "xcl_pipeline_loop"],
+    "os": [
+        "Linux"
+    ],
+    "libs": [
+        "xcl2"
+    ],
+    "runtime": [
+        "OpenCL"
+    ],
+    "board": ["zcu102_es1_ocl", "zcu102_es2_ocl"],
+    "containers" : [
+        {
+            "name" : "vadd",
+            "accelerators": [
+                {
+                    "name": "vadd",
+                    "location": "src/vadd.cl"
+                }
+            ]
+        }
+    ],
+    "contributors" : [
+        {
+            "group" : "Xilinx, Inc.",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "JUL2017",
+            "version" : "1.0",
+            "description" : "Initial revision"
+        }
+    ]
+}
