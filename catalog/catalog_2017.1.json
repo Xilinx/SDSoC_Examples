@@ -69,7 +69,7 @@
                         }, 
                         {
                             "name": "data_access_random", 
-                            "commit_id": "", 
+                            "commit_id": "4bd81de5d07657da6fdbd59380dd3fab6fb79c01", 
                             "description": [
                                 "This is a simple example of matrix multiplication (Row x Col) to demonstrate random data access pattern."
                             ], 
@@ -103,8 +103,25 @@
                             "author": "Xilinx"
                         }, 
                         {
+                            "name": "direct_connect", 
+                            "commit_id": "ca39279afd8177fe35225a264501812942730b7a", 
+                            "description": [
+                                "This is a simple example of matrix multiplication with matrix addition (Out = (A x B) + C)to demonstrate direct connection which helps to achieve increasing in system parallelism and concurrency."
+                            ], 
+                            "displayName": "Direct Connection", 
+                            "keywords": [
+                                "#pragma SDS data access_pattern"
+                            ], 
+                            "key_concepts": [
+                                "Direct Connection", 
+                                "Multiple Accelerators"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
                             "name": "dma_sg", 
-                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
+                            "commit_id": "7b2db08050cd21c1c12f78881867f4dde6f3140b", 
                             "description": [
                                 "This example demonstrates how to use Scatter-Gather DMAs for data transfer to/from hardware accelerator"
                             ], 
@@ -123,7 +140,7 @@
                         }, 
                         {
                             "name": "dma_simple", 
-                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
+                            "commit_id": "7b2db08050cd21c1c12f78881867f4dde6f3140b", 
                             "description": [
                                 "This example demonstrates how to insert Simple DMAs for data transfer between User program and hardware accelerator"
                             ], 
@@ -224,7 +241,7 @@
                         }, 
                         {
                             "name": "loop_reorder", 
-                            "commit_id": "a179bd81673f534b18f0d0c799b5c6e810de167b", 
+                            "commit_id": "7b2db08050cd21c1c12f78881867f4dde6f3140b", 
                             "description": [
                                 "This is a simple example of matrix multiplication (Row x Col) to demonstrate how to achieve better pipeline II factor by loop reordering."
                             ], 
@@ -365,11 +382,11 @@
                     "examples": [
                         {
                             "name": "hello_vadd_ocl", 
-                            "commit_id": "0d3d6164010d86e2908cc872f796c4824355a8a1", 
+                            "commit_id": "77b4c86caf326fcd7ef327d8df9b4504b77d8ca6", 
                             "description": [
-                                "This is a simple OpenCL example of vector addition for MPSoC OpenCL Flow. The purpose of this code is to introduce the user to application development in SDx."
+                                "This is a simple OpenCL example of vector addition. The purpose of this code is to introduce the user to application development in SDx."
                             ], 
-                            "displayName": "Vector Addition for Zynq MPSoC Unified Platform", 
+                            "displayName": "Vector Addition", 
                             "version": "1.0", 
                             "author": "Xilinx, Inc."
                         }
