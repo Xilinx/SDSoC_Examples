@@ -45,6 +45,11 @@ where the *PLATFORM* variable accepts one board.
 Application code is located in the src directory. Accelerator binary files will be compiled to the build directory. A listing of all the files in this example is shown below
 
 ```
+Makefile
+README.md
+description.json
+src/host.cpp
+src/vadd.cl
 ```
 
 ## 5. COMPILATION AND EXECUTION
