@@ -42,7 +42,7 @@ $(BUILD_DIR)/rgb_to_hsv.xo: ./src/rgb_to_hsv.cl
 	@mkdir -p $(BUILD_DIR)
 	-@$(RM) $@
 	@echo 'Building Target: $@'
-	$(XOCC) $(CLFLAGS) -c -k rgb_to_hsv --messageDb $(subst .xo,.mdb,$@) -I"$(<D)" --xp misc:solution_name=_xocc_compile_rgb_to_hsv -o"$@" "$<"
+	$(XOCC) $(CLFLAGS) -c -s -k rgb_to_hsv --messageDb $(subst .xo,.mdb,$@) -I"$(<D)" --xp misc:solution_name=_xocc_compile_rgb_to_hsv -o"$@" "$<"
 	@echo 'SDx Completed Building Target: $@'
 
 $(BUILD_DIR)/rgb_to_hsv.xclbin: $(BINARY_CONTAINER_1_OBJS)
