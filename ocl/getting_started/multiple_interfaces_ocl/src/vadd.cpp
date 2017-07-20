@@ -26,7 +26,6 @@ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABI
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **********/
-#define LENGTH 1024
 
 extern "C"{
 void vadd_accel(
@@ -35,7 +34,7 @@ void vadd_accel(
         int* c,
         const int length) {
 
-        const int size = LENGTH;
+        const int size = 1024;
         // Using Separate interface bundle gmem0 and gmem1 for both argument
         // a and b, same interface bundle gmem0 is used for a and c since both
         // read and write can happen simultaneously. It will allow user to 
