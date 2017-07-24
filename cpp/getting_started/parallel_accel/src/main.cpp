@@ -166,8 +166,7 @@ int main(int argc, char** argv)
     uint64_t seq_hw_cycles = seq_hw_ctr.avg_cpu_cycles();
     uint64_t par_hw_cycles = par_hw_ctr.avg_cpu_cycles();
 
-    double seq_speedup = (double) sw_cycles / (double) seq_hw_cycles;
-    double par_speedup = (double) sw_cycles / (double) par_hw_cycles;
+    double par_speedup = (double) seq_hw_cycles / (double) par_hw_cycles;
 
     std::cout << "Number of average CPU cycles running application in software: "
                 << sw_cycles << std::endl;
@@ -175,8 +174,7 @@ int main(int argc, char** argv)
         << seq_hw_cycles << std::endl;
     std::cout << "Number of average CPU cycles running application parallel in hardware: "
         << par_hw_cycles << std::endl;
-    std::cout << "Sequential speed up: " << seq_speedup << std::endl;
-    std::cout << "Parallel speed up: " << par_speedup << std::endl;
+    std::cout << "Parallel speed up compare to sequential execution is: " << par_speedup << std::endl;
     std::cout << "Note: Speed up is meaningful for real hardware execution only, not for emulation." << std::endl;
 
     // Release memory
