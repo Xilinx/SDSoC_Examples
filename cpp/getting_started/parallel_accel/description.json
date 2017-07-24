@@ -1,0 +1,47 @@
+{
+    "example": "Parallel Accelerators",
+    "overview": [
+        "This is a simple example of matrix addition and matrix multiplication (two accelerators) to demonstrate the async and wait which helps to achieve increasing in system parallelism and concurrency."
+    ],
+    "key_concepts": ["Multiple Accelerators"],
+    "keywords": ["#pragma SDS async", "#pragma SDS wait"],
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "JUL2017",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "compiler" : {
+        "options" : "-Wno-unused-label"
+    },
+    "accelerators": [
+       {
+           "name" : "vadd_accel",
+           "location" : "vadd_vmul.cpp"
+       },
+       {
+           "name" : "vmul_accel",
+           "location" : "vadd_vmul.cpp"
+       }
+    ],
+    "libs": [
+            "sds_utils"
+    ],
+    "source_dir" : "src/*.cpp",
+    "os" : [
+            "linux",
+            "standalone"
+    ],
+    "runtime" : [
+            "C/C++"
+    ],
+    "pass_string" : "TEST PASSED",
+    "fail_string" : "TEST FAILED" 
+}
