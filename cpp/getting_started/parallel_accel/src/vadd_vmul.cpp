@@ -59,7 +59,7 @@ Description :
 
 #include "vadd_vmul.h"
 
-const int size = 4096;
+const int size = TEST_DATA_SIZE;
 
 // Computes vector addition 
 // out = (in1 + in2) , where in1, in2 are of dimension (dim x dim)
