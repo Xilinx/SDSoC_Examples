@@ -1,0 +1,41 @@
+{
+    "example": "Dataflow Function OpenCL (CL)",
+    "overview": [
+         "This is simple example of vector addition to demonstrate Dataflow functionality in OpenCL Kernel. OpenCL Dataflow allows user to run multiple functions together to achieve higher throughput."
+     ],
+    "os": [
+        "Linux"
+    ],
+    "libs": [
+        "xcl2"
+    ],
+    "runtime": [
+        "OpenCL"
+    ],
+    "board": ["zcu102_es1_ocl", "zcu102_es2_ocl", "zcu102", "zc706", "zc702", "zybo", "zed", "microzed"],
+    "containers" : [
+        {
+            "name" : "adder",
+            "accelerators": [
+                {
+                    "name": "adder",
+                    "location": "src/adder.cl",
+                    "clflags"   : "--xp param:compiler.xclDataflowFifoDepth=32"
+                }
+            ]
+        }
+    ],
+    "contributors" : [
+        {
+            "group" : "Xilinx, Inc.",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "JUL2017",
+            "version" : "1.0",
+            "description" : "Initial revision"
+        }
+    ]
+}
