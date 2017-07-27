@@ -16,7 +16,7 @@ CXXFLAGS += -I $(XILINX_SDX)/runtime/include/1_2/ -I/$(XILINX_SDX)/Vivado_HLS/in
 LDFLAGS += -lxilinxopencl -lpthread -lrt -ldl -lcrypt -lstdc++ -L$(XILINX_SDX)/runtime/lib/aarch64 $(xcl2_CXXFLAGS)
 
 # kernel compiler global settings
-CLFLAGS = -t hw --platform $(PLATFORM) --save-temps  --clkid 0
+CLFLAGS = -t hw --platform $(PLATFORM) --save-temps  --clkid 0 --xp param:compiler.xclDataflowFifoDepth=32
 
 ifneq ($(REPORT),none)
 CLFLAGS += --report $(REPORT)
