@@ -1,6 +1,6 @@
 REPORT	:= none
 TARGET	:= hw
-PLATFORM:= zcu102_es2_ocl
+PLATFORM:= zcu102
 BUILD_DIR:= ./build/$(PLATFORM)_$(TARGET)
 
 CXX 	:= $(XILINX_SDX)/SDK/gnu/aarch64/lin/aarch64-linux/bin/aarch64-linux-gnu-g++
@@ -63,6 +63,7 @@ clean:
 	-$(RM) *.xml *.tcl *.bat image.ub
 	-$(RM) init.sh *.bit *.hdf $(PLATFORM)_* *.dat
 	-$(RM) platform_desc.txt *.xtxt *.ko *.hpfm *.so
+	-$(RMDIR) .Xil
 
 cleanall: clean
 	-$(RM) $(BINARY_CONTAINERS) $(ALL_KERNEL_OBJS) $(HOST_EXE)
