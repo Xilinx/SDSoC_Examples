@@ -34,10 +34,10 @@
 #define MMULT_H_
 
 // Size of the input array
-#define DATA_SIZE 64
+#define DATA_SIZE 32 
 
 // Maximum Supported Size
-#define MAX_SIZE 64
+#define MAX_SIZE 32
 
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  

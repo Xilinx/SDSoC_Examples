@@ -60,6 +60,8 @@ Description :
 
 #include "mmult.h"
 
+const int size = MAX_SIZE;
+
 // Computes matrix multiply
 // C = A x B, where A, B and C are square matrices of dimension (dim x dim)
 void mmult_accel(
@@ -83,7 +85,7 @@ void mmult_accel(
     // Burst read for matrix A
     read_data: for(int itr = 0 , i = 0 , j =0; itr < dim * dim; itr++, j++){
     #pragma HLS PIPELINE
-    #pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
+    #pragma HLS LOOP_TRIPCOUNT min=1 max=size*size
         if(j == dim) { j = 0 ; i++; }
         A[i][j] = in1[itr];
         B[i][j] = in2[itr];
@@ -107,7 +109,7 @@ void mmult_accel(
     // big adder tree to compute result. This adder tree can be avoided by 
     // reordering mmult2 and mmult3 loops as below:
     lreorder1: for (int i = 0; i < dim; i++) {
-    #pragma HLS LOOP_TRIPCOUNT min=64 max=64
+    #pragma HLS LOOP_TRIPCOUNT min=1 max=size
 
         //resetting temp_sum to zero
         for (int j = 0 ; j < MAX_SIZE ; j ++){
@@ -115,7 +117,7 @@ void mmult_accel(
             temp_sum[j] = 0;
         }
         lreorder2: for (int k = 0; k < dim ; k++) {
-        #pragma HLS LOOP_TRIPCOUNT min=64 max=64
+        #pragma HLS LOOP_TRIPCOUNT min=1 max=size
         #pragma HLS PIPELINE
             //Based on the functionality the number of iterations 
             //to be executed for "lreorder3" must be "dim" size. 
@@ -135,7 +137,7 @@ void mmult_accel(
     // Burst write from matrix C
     writeC: for(int itr = 0 , i = 0, j = 0; itr < dim * dim; itr++, j++) {
         #pragma HLS PIPELINE
-        #pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
+        #pragma HLS LOOP_TRIPCOUNT min=1 max=size*size
         if(j == dim) { j = 0 ; i++; }
         out[itr] = C[i][j];
     }
