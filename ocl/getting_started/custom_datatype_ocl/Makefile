@@ -42,7 +42,7 @@ $(BUILD_DIR)/rgb_to_hsv.xo: ./src/rgb_to_hsv.cl
 	@mkdir -p $(BUILD_DIR)
 	-@$(RM) $@
 	@echo 'Building Target: $@'
-	$(XOCC) $(CLFLAGS) -c -s -k rgb_to_hsv --messageDb $(subst .xo,.mdb,$@) -I"$(<D)" --xp misc:solution_name=_xocc_compile_rgb_to_hsv -o"$@" "$<"
+	$(XOCC) $(CLFLAGS) -c -k rgb_to_hsv --messageDb $(subst .xo,.mdb,$@) -I"$(<D)" --xp misc:solution_name=_xocc_compile_rgb_to_hsv -o"$@" "$<"
 	@echo 'SDx Completed Building Target: $@'
 
 $(BUILD_DIR)/rgb_to_hsv.xclbin: $(BINARY_CONTAINER_1_OBJS)
@@ -64,6 +64,7 @@ clean:
 	-$(RM) *.xml *.tcl *.bat image.ub
 	-$(RM) init.sh *.bit *.hdf $(PLATFORM)_* *.dat
 	-$(RM) platform_desc.txt *.xtxt *.ko *.hpfm *.so
+	-$(RMDIR) .Xil
 
 cleanall: clean
 	-$(RM) $(BINARY_CONTAINERS) $(ALL_KERNEL_OBJS) $(HOST_EXE)

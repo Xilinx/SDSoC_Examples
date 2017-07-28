@@ -41,7 +41,7 @@ $(BUILD_DIR)/vadd_accel.xo: ./src/vadd.cpp
 	@mkdir -p $(BUILD_DIR)
 	-@$(RM) $@
 	@echo 'Building Target: $@'
-	$(XOCC) $(CLFLAGS) -s -c -k vadd_accel --messageDb $(subst .xo,.mdb,$@) -I"$(<D)" --xp misc:solution_name=_xocc_compile_vadd -o"$@" "$<"
+	$(XOCC) $(CLFLAGS) -c -k vadd_accel --messageDb $(subst .xo,.mdb,$@) -I"$(<D)" --xp misc:solution_name=_xocc_compile_vadd -o"$@" "$<"
 	@echo 'SDx Completed Building Target: $@'
 
 $(BUILD_DIR)/vadd_accel.xclbin: $(BINARY_CONTAINER_1_OBJS)
@@ -63,6 +63,7 @@ clean:
 	-$(RM) *.xml *.tcl *.bat image.ub
 	-$(RM) init.sh *.bit *.hdf $(PLATFORM)_* *.dat
 	-$(RM) platform_desc.txt *.xtxt *.ko *.hpfm *.so
+	-$(RMDIR) .Xil
 
 cleanall: clean
 	-$(RM) $(BINARY_CONTAINERS) $(ALL_KERNEL_OBJS) $(HOST_EXE)
