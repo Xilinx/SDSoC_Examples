@@ -1,6 +1,6 @@
 REPORT	:= none
 TARGET	:= hw
-PLATFORM:= zcu102
+PLATFORM:= zcu102_es2_ocl
 BUILD_DIR:= ./build/$(PLATFORM)_$(TARGET)
 
 CXX 	:= $(XILINX_SDX)/SDK/gnu/aarch64/lin/aarch64-linux/bin/aarch64-linux-gnu-g++
