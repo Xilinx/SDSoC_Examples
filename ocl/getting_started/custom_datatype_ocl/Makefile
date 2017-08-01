@@ -32,10 +32,10 @@ ALL_MESSAGE_FILES = $(subst .xo,.mdb,$(ALL_KERNEL_OBJS)) $(subst .xclbin,.mdb,$(
 
 HOST_SRCS = src/host.cpp $(xcl2_SRCS) $(bitmap_SRCS)
 
-HOST_EXE = host
+EXECUTABLE = host
 
 .PHONY: all clean cleanall docs
-all: $(BINARY_CONTAINERS) $(BUILD_DIR)/$(HOST_EXE) 
+all: $(BINARY_CONTAINERS) $(BUILD_DIR)/$(EXECUTABLE) 
 
 #Building Kernel
 $(BUILD_DIR)/rgb_to_hsv.xo: ./src/rgb_to_hsv.cl
@@ -49,7 +49,7 @@ $(BUILD_DIR)/rgb_to_hsv.xclbin: $(BINARY_CONTAINER_1_OBJS)
 	$(XOCC) $(CLFLAGS) -l --nk rgb_to_hsv:1 --messageDb $(subst .xclbin,.mdb,$@) --xp misc:solution_name=_xocc_link_rgb_to_hsv -o"$@" $(+) --sys_config ocl
 
 #Building Host 
-$(BUILD_DIR)/$(HOST_EXE): $(HOST_SRCS)
+$(BUILD_DIR)/$(EXECUTABLE): $(HOST_SRCS)
 	mkdir -p $(BUILD_DIR)
 	@echo 'Building Target: $@'
 	$(CXX) -o "$@" $(HOST_SRCS) $(CXXFLAGS) $(LDFLAGS)
@@ -59,7 +59,7 @@ $(BUILD_DIR)/$(HOST_EXE): $(HOST_SRCS)
 RM = rm -f
 RMDIR = rm -rf
 clean:
-	-$(RM) $(ALL_MESSAGE_FILES) $(HOST_EXE) 
+	-$(RM) $(ALL_MESSAGE_FILES) $(EXECUTABLE) 
 	-$(RMDIR) embedded_root _xocc_* iprepo _sds
 	-$(RM) *.xml *.tcl *.bat image.ub
 	-$(RM) init.sh *.bit *.hdf $(PLATFORM)_* *.dat
@@ -67,7 +67,7 @@ clean:
 	-$(RMDIR) .Xil
 
 cleanall: clean
-	-$(RM) $(BINARY_CONTAINERS) $(ALL_KERNEL_OBJS) $(HOST_EXE)
+	-$(RM) $(BINARY_CONTAINERS) $(ALL_KERNEL_OBJS) $(EXECUTABLE)
 	-$(RMDIR) $(BUILD_DIR) ./build
 
 docs:README.md
