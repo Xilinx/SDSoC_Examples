@@ -31,10 +31,10 @@ ALL_MESSAGE_FILES = $(subst .xo,.mdb,$(ALL_KERNEL_OBJS)) $(subst .xclbin,.mdb,$(
 
 HOST_SRCS = src/host.cpp $(xcl2_SRCS)
 
-HOST_EXE = adder
+EXECUTABLE = adder
 
 .PHONY: all clean cleanall docs
-all: $(BINARY_CONTAINERS) $(BUILD_DIR)/$(HOST_EXE) 
+all: $(BINARY_CONTAINERS) $(BUILD_DIR)/$(EXECUTABLE) 
 
 #Building Kernel
 $(BUILD_DIR)/adder.xo: ./src/adder.cl
@@ -48,7 +48,7 @@ $(BUILD_DIR)/adder.xclbin: $(BINARY_CONTAINER_1_OBJS)
 	$(XOCC) $(CLFLAGS) -l --nk adder:1 --messageDb $(subst .xclbin,.mdb,$@) --xp misc:solution_name=_xocc_link_adder -o"$@" $(+) --sys_config ocl
 
 #Building Host 
-$(BUILD_DIR)/$(HOST_EXE): $(HOST_SRCS)
+$(BUILD_DIR)/$(EXECUTABLE): $(HOST_SRCS)
 	mkdir -p $(BUILD_DIR)
 	@echo 'Building Target: $@'
 	$(CXX) -o "$@" $(HOST_SRCS) $(CXXFLAGS) $(LDFLAGS)
@@ -58,7 +58,7 @@ $(BUILD_DIR)/$(HOST_EXE): $(HOST_SRCS)
 RM = rm -f
 RMDIR = rm -rf
 clean:
-	-$(RM) $(ALL_MESSAGE_FILES) $(HOST_EXE) 
+	-$(RM) $(ALL_MESSAGE_FILES) $(EXECUTABLE) 
 	-$(RMDIR) embedded_root _xocc_* iprepo _sds
 	-$(RM) *.xml *.tcl *.bat image.ub
 	-$(RM) init.sh *.bit *.hdf $(PLATFORM)_* *.dat
@@ -66,7 +66,7 @@ clean:
 	-$(RMDIR) .Xil
 
 cleanall: clean
-	-$(RM) $(BINARY_CONTAINERS) $(ALL_KERNEL_OBJS) $(HOST_EXE)
+	-$(RM) $(BINARY_CONTAINERS) $(ALL_KERNEL_OBJS) $(EXECUTABLE)
 	-$(RMDIR) $(BUILD_DIR) ./build
 
 docs:README.md
