@@ -47,6 +47,7 @@ Application code is located in the src directory. Accelerator binary files will 
 ```
 Makefile
 README.md
+data/input.bmp
 description.json
 src/host.cpp
 src/rgb_to_hsv.cl

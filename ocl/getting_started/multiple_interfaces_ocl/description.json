@@ -12,7 +12,7 @@
     "runtime": [
         "OpenCL"
     ],
-    "board": ["zcu102_es1_ocl", "zcu102_es2_ocl", "zcu102", "zc706", "zc702", "zybo", "zed", "microzed"],
+    "board": ["zcu102_es1_ocl", "zcu102_es2_ocl", "zcu102"],
     "containers" : [
         {
             "name" : "vadd_accel",
