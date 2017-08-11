@@ -1,3 +1,4 @@
+
 #+-------------------------------------------------------------------------------
 # The following parameters are assigned with default values. These parameters can
 # be overridden through the make command line
@@ -64,7 +65,6 @@ endif
 IFLAGS := -I.
 CFLAGS = -Wall -O3 -c
 CFLAGS += -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" 
-CFLAGS += -std=c++0x
 CFLAGS += -I$(sds_utils_HDRS)
 CFLAGS += $(ADDL_FLAGS)
 LFLAGS = "$@" "$<" 

@@ -54,7 +54,7 @@ $(pwd)/$(BUILD_DIR)/vec_incr.o
 
 # SDS Options
 HW_FLAGS :=
-HW_FLAGS += -sds-hw vadd_accel vadd.cpp -sds-end
+HW_FLAGS += -sds-hw vec_incr_accel vec_incr.cpp -sds-end
 
 EMU_FLAGS := 
 ifeq ($(TARGET), emu)
@@ -65,7 +65,6 @@ endif
 IFLAGS := -I.
 CFLAGS = -Wall -O3 -c
 CFLAGS += -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" 
-CFLAGS += -std=c++0x
 CFLAGS += -I$(sds_utils_HDRS)
 CFLAGS += $(ADDL_FLAGS)
 LFLAGS = "$@" "$<" 
