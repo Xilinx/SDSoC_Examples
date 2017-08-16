@@ -1,3 +1,473 @@
 {
+    "name": "apps", 
+    "displayName": "", 
+    "description": "", 
+    "categories": [
+        {
+            "name": "cpp", 
+            "displayName": "", 
+            "description": "", 
+            "categories": [
+                {
+                    "name": "getting_started", 
+                    "displayName": [
+                        "Getting Started Examples"
+                    ], 
+                    "description": [
+                        "This page contains examples for users who are new to Xilinx SDx SDSoC Flows."
+                    ], 
+                    "categories": [], 
+                    "examples": [
+                        {
+                            "name": "array_partition", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This example shows how to use array partitioning to improve performance of a hardware function"
+                            ], 
+                            "displayName": "Array Partitioning", 
+                            "keywords": [
+                                "#pragma HLS ARRAY_PARTITION", 
+                                "complete"
+                            ], 
+                            "key_concepts": [
+                                "Hardware Function Optimization", 
+                                "Array Partitioning"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "burst_rw", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This is a simple vector increment example which demonstrates usage of  AXI4-master interface for burst read and write"
+                            ], 
+                            "displayName": "Burst Read/Write", 
+                            "key_concepts": [
+                                "Burst Access"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "custom_data_type", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This is a simple example of RGB to HSV conversion to demonstrate Custom Data Type usage in hardware accelerator. Xilinx HLS compiler supports custom data type to operate within the hardware function and also it acts as a memory interface between PL to DDR"
+                            ], 
+                            "displayName": "Custom Data Type", 
+                            "keywords": [
+                                "struct", 
+                                "packed", 
+                                "aligned"
+                            ], 
+                            "key_concepts": [
+                                "Custom Data type"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "data_access_random", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This is a simple example of matrix multiplication (Row x Col) to demonstrate random data access pattern."
+                            ], 
+                            "displayName": "Random Data Access Pattern", 
+                            "keywords": [
+                                "#pragma HLS PIPELINE", 
+                                "#pragma sds data access_pattern(a:RANDOM, b:RANDOM)", 
+                                "#pragma sds data copy"
+                            ], 
+                            "key_concepts": [
+                                "Data Access Random"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "dependence_inter", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This is a simple example to demonstrate inter dependence attribute using vertical convolution example. Using inter dependence attribute user can provide additional dependency details to compiler which allow compiler to perform unrolling/pipelining to get better performance "
+                            ], 
+                            "displayName": "Loop Iteration Dependency", 
+                            "keywords": [
+                                "DEPENDENCE", 
+                                "inter"
+                            ], 
+                            "key_concepts": [
+                                "Inter Dependence"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "direct_connect", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This is a simple example of matrix multiplication with matrix addition (Out = (A x B) + C)to demonstrate direct connection which helps to achieve increasing in system parallelism and concurrency."
+                            ], 
+                            "displayName": "Direct Connection", 
+                            "keywords": [
+                                "#pragma SDS data access_pattern"
+                            ], 
+                            "key_concepts": [
+                                "Direct Connection", 
+                                "Multiple Accelerators"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "dma_sg", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This example demonstrates how to use Scatter-Gather DMAs for data transfer to/from hardware accelerator"
+                            ], 
+                            "displayName": "DMA SG(scatter-Gather)", 
+                            "keywords": [
+                                "#pragma SDS access_parttern(a:SEQUENTIAL)", 
+                                "#pragma SDS data_mover(a:AXIDMA_SG)", 
+                                "#pragma SDS data copy"
+                            ], 
+                            "key_concepts": [
+                                "Scatter Gather DMA", 
+                                "FIFO Interface"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "dma_simple", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This example demonstrates how to insert Simple DMAs for data transfer between User program and hardware accelerator"
+                            ], 
+                            "displayName": "DMA Simple", 
+                            "keywords": [
+                                "#pragma SDS access_parttern(a:SEQUENTIAL)", 
+                                "#pragma SDS data_mover(a:AXIDMA_SIMPLE)", 
+                                "#pragma SDS data copy"
+                            ], 
+                            "key_concepts": [
+                                "Simple DMA", 
+                                "FIFO Interface"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "full_array_2d", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This is a simple example of accessing full data from 2D array"
+                            ], 
+                            "displayName": "Full 2D Array Read/Write", 
+                            "key_concepts": [
+                                "2D data array access"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "hello_vadd", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This is a basic hello world kind of example which demonstrates how to achieve vector addition using hardware function."
+                            ], 
+                            "displayName": "Hello Vector Addition", 
+                            "keywords": [
+                                "#pragma HLS PIPELINE"
+                            ], 
+                            "key_concepts": [
+                                "Loop Pipelining"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "lmem_2rw", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This is a simple example of vector addition to demonstrate how to utilize both ports of Local Memory "
+                            ], 
+                            "displayName": "Two Parallel Read/Write on Local Memory", 
+                            "keywords": [
+                                "#pragma HLS UNROLL FACTOR=2"
+                            ], 
+                            "key_concepts": [
+                                "Hardware Function Optimization", 
+                                "2port BRAM Utilization", 
+                                "Two read/write Local Memory"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "loop_fusion", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This example will demonstrate how to fuse two loops into one to improve the performance of a C/C++ hardware function."
+                            ], 
+                            "displayName": "Loop Fusion", 
+                            "keywords": [
+                                "#pragma HLS PIPELINE"
+                            ], 
+                            "key_concepts": [
+                                "Hardware Function Optimization", 
+                                "Loop Fusion", 
+                                "Loop Pipelining"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "loop_perfect", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This nearest neighbor example is to demonstrate how to achieve better performance using perfect loop."
+                            ], 
+                            "displayName": "Loop Perfect", 
+                            "keywords": [
+                                "#pragma HLS PIPELINE", 
+                                "#pragma HLS ARRAY_PARTITION"
+                            ], 
+                            "key_concepts": [
+                                "Loop perfect"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "loop_reorder", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This is a simple example of matrix multiplication (Row x Col) to demonstrate how to achieve better pipeline II factor by loop reordering."
+                            ], 
+                            "displayName": "Loop Reorder for better Performance", 
+                            "keywords": [
+                                "#pragma HLS PIPELINE", 
+                                "#pragma HLS ARRAY_PARTITION"
+                            ], 
+                            "key_concepts": [
+                                "Hardware Function Optimization", 
+                                "Loop Reorder to Improve II"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "parallel_accel", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This is a simple example of matrix addition and matrix multiplication (two accelerators) to demonstrate the async and wait which helps to achieve increasing in system parallelism and concurrency."
+                            ], 
+                            "displayName": "Parallel Accelerators", 
+                            "keywords": [
+                                "#pragma SDS async", 
+                                "#pragma SDS wait"
+                            ], 
+                            "key_concepts": [
+                                "Multiple Accelerators"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "row_array_2d", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This is a simple example of accessing each row of data from 2D array"
+                            ], 
+                            "displayName": "Read/Write Row of 2D Array", 
+                            "keywords": [
+                                "hls::stream"
+                            ], 
+                            "key_concepts": [
+                                "Row of 2D data array access"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "shift_register", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This example demonstrates how to shift values in each clock cycle"
+                            ], 
+                            "displayName": "Shift Register", 
+                            "keywords": [
+                                "#pragma HLS ARRAY_PARTITION"
+                            ], 
+                            "key_concepts": [
+                                "Hardware Function Optimization", 
+                                "Shift Register", 
+                                "FIR"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "sys_port", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This is a simple example which demonstrates sys_port usage"
+                            ], 
+                            "displayName": "Sysport", 
+                            "keywords": [
+                                "#pragma SDS data sys_port", 
+                                "#pragms HLS PIPELINE", 
+                                "sds_alloc_non_cacheable"
+                            ], 
+                            "key_concepts": [
+                                "sys_port", 
+                                "memory interface", 
+                                "memory non-caching"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "systolic_array", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This is a simple example of matrix multiplication (Row x Col) to help developers learn systolic array based algorithm design. Note : Systolic array based algorithm design is well suited for FPGA."
+                            ], 
+                            "displayName": "Systolic Array Implementation", 
+                            "keywords": [
+                                "#pragma HLS PIPELINE", 
+                                "#pragma HLS ARRAY_PARTITION"
+                            ], 
+                            "key_concepts": [
+                                "Systolic Array"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "wide_memory_rw", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This is a simple example of vector addition to demonstrate Wide Memory Access using structure data type of 128bit wide. Based on input argument type, sds++ compiler will figure out the memory interface datawidth of hardware accelerator."
+                            ], 
+                            "displayName": "Wide Memory Read/Write", 
+                            "keywords": [
+                                "struct"
+                            ], 
+                            "key_concepts": [
+                                "wide memory access", 
+                                "burst read and write", 
+                                "custom datatype"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }, 
+                        {
+                            "name": "window_array_2d", 
+                            "commit_id": "1e90bf018cbcc3b2d9132a4d605c4b1166cf8354", 
+                            "description": [
+                                "This is a simple example of accessing window of data from 2D array"
+                            ], 
+                            "displayName": "Read/Write Window of 2D Array", 
+                            "keywords": [
+                                "#pragma HLS DATAFLOW", 
+                                "#pragma HLS PIPELINE", 
+                                "#pragma HLS stream"
+                            ], 
+                            "key_concepts": [
+                                "Window of 2D data array access"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx"
+                        }
+                    ]
+                }
+            ], 
+            "examples": []
+        }, 
+        {
+            "name": "ocl", 
+            "displayName": "", 
+            "description": "", 
+            "categories": [
+                {
+                    "name": "getting_started", 
+                    "displayName": "", 
+                    "description": "", 
+                    "categories": [], 
+                    "examples": [
+                        {
+                            "name": "custom_datatype_ocl", 
+                            "commit_id": "8dbe057a34b7e5753baf52e407a6e084d7311fee", 
+                            "description": [
+                                "This is simple example of RGB to HSV conversion to demonstrate Custom DATA Type usages in OpenCL Based Kernel. Xilinx HLS Compiler Supports Custom Data Type to use for operation as well as Memory Interface between Kernel and Global Memory."
+                            ], 
+                            "displayName": "Custom Data Type (CL)", 
+                            "keywords": [
+                                "struct"
+                            ], 
+                            "key_concepts": [
+                                "Custom Datatype"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx, Inc."
+                        }, 
+                        {
+                            "name": "dataflow_func_ocl", 
+                            "commit_id": "8dbe057a34b7e5753baf52e407a6e084d7311fee", 
+                            "description": [
+                                "This is simple example of vector addition to demonstrate Dataflow functionality in OpenCL Kernel. OpenCL Dataflow allows user to run multiple functions together to achieve higher throughput."
+                            ], 
+                            "displayName": "Dataflow Function OpenCL (CL)", 
+                            "version": "1.0", 
+                            "author": "Xilinx, Inc."
+                        }, 
+                        {
+                            "name": "hello_vadd_ocl", 
+                            "commit_id": "8dbe057a34b7e5753baf52e407a6e084d7311fee", 
+                            "description": [
+                                "This is a simple OpenCL example of vector addition. The purpose of this code is to introduce the user to application development in SDx."
+                            ], 
+                            "displayName": "Vector Addition", 
+                            "version": "1.0", 
+                            "author": "Xilinx, Inc."
+                        }, 
+                        {
+                            "name": "multiple_interfaces_ocl", 
+                            "commit_id": "8dbe057a34b7e5753baf52e407a6e084d7311fee", 
+                            "description": [
+                                "This is a simple example of vector addition. The purpose of this example is to demonstrate on how to use multiple interfaces and as a result allow C-kernel to access both interfaces simultaneous."
+                            ], 
+                            "displayName": "Multiple Interfaces", 
+                            "version": "1.0", 
+                            "author": "Xilinx, Inc."
+                        }, 
+                        {
+                            "name": "wide_mem_rw_ocl", 
+                            "commit_id": "8dbe057a34b7e5753baf52e407a6e084d7311fee", 
+                            "description": [
+                                "This is simple example of vector addition to demonstrate Wide Memory Access using uint4 data type. Based on input argument type, xocc compiler will figure out the memory datawidth between Global Memory and Kernel. For this example, uint4 datatype is used, so memory datawidth will be 4 x (integer bit size) = 4 x 32 = 128 bit."
+                            ], 
+                            "displayName": "Wide Memory Read/Write (CL)", 
+                            "keywords": [
+                                "uint4", 
+                                "xcl_pipeline_loop"
+                            ], 
+                            "key_concepts": [
+                                "Kernel to DDR", 
+                                "wide memory access", 
+                                "burst read and write"
+                            ], 
+                            "version": "1.0", 
+                            "author": "Xilinx, Inc."
+                        }
+                    ]
+                }
+            ], 
+            "examples": []
+        }
+    ], 
+    "examples": [], 
     "branch": "2017.1"
 }
