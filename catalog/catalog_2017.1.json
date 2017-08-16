@@ -293,7 +293,7 @@
                         }, 
                         {
                             "name": "sys_port", 
-                            "commit_id": "caf4a6a07b2b69431691c6ee45553ec5ba9e467a", 
+                            "commit_id": "d13201efeafc10cb67251ba91379a68344574d10", 
                             "description": [
                                 "This is a simple example which demonstrates sys_port usage"
                             ], 
@@ -382,7 +382,7 @@
                     "examples": [
                         {
                             "name": "custom_datatype_ocl", 
-                            "commit_id": "7d6efab71e49821d25d754d1102252fe2fe51892", 
+                            "commit_id": "d13201efeafc10cb67251ba91379a68344574d10", 
                             "description": [
                                 "This is simple example of RGB to HSV conversion to demonstrate Custom DATA Type usages in OpenCL Based Kernel. Xilinx HLS Compiler Supports Custom Data Type to use for operation as well as Memory Interface between Kernel and Global Memory."
                             ], 
@@ -408,7 +408,7 @@
                         }, 
                         {
                             "name": "multiple_interfaces_ocl", 
-                            "commit_id": "fabd340bf6dd79c6b4607c60a766afb3dd4f24d3", 
+                            "commit_id": "d13201efeafc10cb67251ba91379a68344574d10", 
                             "description": [
                                 "This is a simple example of vector addition. The purpose of this example is to demonstrate on how to use multiple interfaces and as a result allow C-kernel to access both interfaces simultaneous."
                             ], 
@@ -418,7 +418,7 @@
                         }, 
                         {
                             "name": "wide_mem_rw_ocl", 
-                            "commit_id": "03e128128fd7dd8ff5345fcc188b9bb83c39b9e0", 
+                            "commit_id": "d13201efeafc10cb67251ba91379a68344574d10", 
                             "description": [
                                 "This is simple example of vector addition to demonstrate Wide Memory Access using uint4 data type. Based on input argument type, xocc compiler will figure out the memory datawidth between Global Memory and Kernel. For this example, uint4 datatype is used, so memory datawidth will be 4 x (integer bit size) = 4 x 32 = 128 bit."
                             ], 
