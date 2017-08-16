@@ -48,6 +48,12 @@ where the *PLATFORM* variable accepts one board.
 ## 4. DESIGN FILE HIERARCHY
 Application code is located in the src/ directory. Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation flow, directory name is "emu" and in case of hardware flow it is named as "hw" 
 ```
+Makefile
+README.md
+description.json
+src/main.cpp
+src/vadd.cpp
+src/vadd.h
 ```
 
 ## 5. COMPILATION AND EXECUTION

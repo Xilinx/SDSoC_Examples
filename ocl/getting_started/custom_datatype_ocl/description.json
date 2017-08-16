@@ -16,7 +16,7 @@
     ],
     "cmd_args" : "PROJECT/data/input.bmp",
     "em_cmd": "./host ./data/input.bmp",
-    "board": ["zcu102_es1_ocl", "zcu102_es2_ocl", "zcu102"],
+    "board": ["zcu102_es1_ocl", "zcu102_es2_ocl"],
     "containers" : [
         {
             "name" : "rgb_to_hsv",

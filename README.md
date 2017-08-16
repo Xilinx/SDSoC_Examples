@@ -11,7 +11,6 @@ This repository is organized as follows internally.
 4. UTILITY
 5. OTHER INFORMATION
 6. SUPPORT
-7. REVISION HISTORY
 
 
 ### 1. CPP
@@ -45,14 +44,6 @@ For more information check here:
 
 ## 6. SUPPORT
 For questions and to get help on this project or your own projects, visit the [SDSoC Forums][].
-
-## 7. REVISION HISTORY
-
-Date    | Readme Version | Revision Description
---------|----------------|-------------------------
-JUNE2017 | 1.0            | Initial Xilinx release
-
-
 
 [SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc
 [SDSoC User Guides]: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2017_1/ug1027-sdsoc-user-guide.pdf
