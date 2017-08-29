@@ -32,12 +32,11 @@ Here *examples* is the name of the directory which is used to store the reposito
 Board | Family | Part | Flow | OS 
 ------|-------------|----------|----------|----------
 zc706|zynq|xc7z045|Emulation/Hardware|linux/standalone|
-zcu102_es2|zynquplus|xczu9eg|Hardware|linux/standalone|
-zcu102_es1|zynquplus|xczu9eg|Emulation/Hardware|linux/standalone|
+zcu102|zynquplus|xczu9eg|Emulation/Hardware|linux/standalone|
 zc702|zynq|xc7z020|Emulation/Hardware|linux/standalone|
 
 
-Board targeted by default = ***zcu102_es2***
+Board targeted by default = ***zcu102***
 
 *NOTE:* The board/platform used for compilation can be changed by adding the PLATFORM environmental variable to the make command as shown below
 ```
@@ -48,6 +47,12 @@ where the *PLATFORM* variable accepts one board.
 ## 4. DESIGN FILE HIERARCHY
 Application code is located in the src/ directory. Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation flow, directory name is "emu" and in case of hardware flow it is named as "hw" 
 ```
+Makefile
+README.md
+description.json
+src/main.cpp
+src/vadd_vmul.cpp
+src/vadd_vmul.h
 ```
 
 ## 5. COMPILATION AND EXECUTION

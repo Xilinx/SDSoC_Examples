@@ -54,9 +54,9 @@ def create_mk(target, data):
     target.write("#+-------------------------------------------------------------------------------\n")
     target.write("\n")
     
-    target.write("# FPGA Board Platform (Default ~ zcu102_es2)\n")
+    target.write("# FPGA Board Platform (Default ~ zcu102)\n")
     target.write("PLATFORM := ")
-    target.write("zcu102_es2")
+    target.write("zcu102")
     target.write("\n")
     target.write("\n")
     

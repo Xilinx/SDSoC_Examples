@@ -4,13 +4,10 @@ import json
 import os
 import subprocess
 
-VERSION = 'SDx 2017.1'
+VERSION = 'SDx 2017.2'
 DEVICES = {
-    'zcu102_es1_ocl': {
-       'name': 'ZCU102 ES1 OpenCL',
-    },
-    'zcu102_es2_ocl': {
-       'name': 'ZCU102 ES2 OpenCL',
+    'zcu102': {
+       'name': 'ZCU102 OpenCL',
     }
    }
 
