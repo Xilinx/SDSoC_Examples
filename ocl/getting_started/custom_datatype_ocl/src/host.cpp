@@ -40,12 +40,13 @@ int compareImages(int *in, int *out, size_t image_size);
 
 int main(int argc, char* argv[])
 {
-    if (argc != 2)
+    if (argc != 3)
     {
-        std::cout << "Usage: " << argv[0] << " <input bitmap>" << std::endl;
+        std::cout << "Usage: " << argv[0] << " <xclbin>" << " <input bitmap>" <<std::endl;
         return EXIT_FAILURE ;
     }
-    std::string bitmapFilename = argv[1];
+    std::string xclbinFilename = argv[1];
+    std::string bitmapFilename = argv[2];
  
     //Read the bit map file into memory
     BitmapInterface image(bitmapFilename.data());
@@ -75,8 +76,7 @@ int main(int argc, char* argv[])
     cl::CommandQueue q(context, device, CL_QUEUE_PROFILING_ENABLE);
     std::string device_name = device.getInfo<CL_DEVICE_NAME>(); 
 
-    std::string binaryFile = xcl::find_binary_file(device_name,"rgb_to_hsv");
-    cl::Program::Binaries bins = xcl::import_binary_file(binaryFile);
+    cl::Program::Binaries bins = xcl::import_binary_file(xclbinFilename);
     devices.resize(1);
     cl::Program program(context, devices, bins);
     cl::Kernel kernel(program,"rgb_to_hsv");

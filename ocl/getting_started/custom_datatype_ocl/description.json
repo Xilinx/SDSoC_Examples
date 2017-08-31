@@ -14,8 +14,7 @@
     "runtime": [
         "OpenCL"
     ],
-    "cmd_args" : "PROJECT/data/input.bmp",
-    "em_cmd": "./host ./data/input.bmp",
+    "cmd_args" : "BUILD/rgb_to_hsv.xclbin PROJECT/data/input.bmp",
     "board": ["zcu102"],
     "containers" : [
         {
