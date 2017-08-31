@@ -38,6 +38,7 @@ ADDL_FLAGS := -Wno-unused-label
 
 # Set to 1 (number one) to enable sds++ verbose output
 VERBOSE := 
+
 # Build Executable
 EXECUTABLE := run.elf 
 # Build Directory
@@ -72,7 +73,10 @@ LFLAGS = "$@" "$<"
 #+---------------------------------------------------------------------
 
 SDSFLAGS := -sds-pf $(PLATFORM) \
-	-target-os $(TARGET_OS) 
+		-target-os $(TARGET_OS) 
+ifeq ($(VERBOSE), 1)
+SDSFLAGS += -verbose 
+endif
 
 # SDS Compiler
 CC := sds++ $(SDSFLAGS)

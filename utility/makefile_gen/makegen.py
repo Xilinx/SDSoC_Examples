@@ -101,9 +101,10 @@ def create_mk(target, data):
             target.write(compiler["options"])
     target.write("\n")
     target.write("\n")
+
     target.write("# Set to 1 (number one) to enable sds++ verbose output\n")
-    target.write("VERBOSE := \n")
-    
+    target.write("VERBOSE := \n\n")
+
     target.write("# Build Executable\n")
     target.write("EXECUTABLE := run.elf ")
     target.write("\n")
@@ -123,7 +124,6 @@ desc = open(desc_file, 'r')
 data = json.load(desc)
 desc.close()
 target = open("Makefile", "w")
-#create_xlx_copyright(target)
 create_mk(target, data)
 src_dir = data.get("source_dir")
 extension = " "
@@ -151,20 +151,6 @@ os.chdir(final_dir)
 count = 0
 for file in glob.glob(extension):
     count = count + 1
-#temp = count
-#if extension == "*.cpp":
-#    target.write("CPP_SRCS += \\")
-#else:
-#    target.write("C_SRCS += \\")
-    
-#target.write("\n")
-#for result in glob.glob(extension):
-#   temp -= 1
-#    target.write("$(pwd)/$(SRC_DIR)/")
-#    target.write(result)
-#    if temp != 0:
-#        target.write(" \\\n")
-#target.write("\n\n")
 
 temp = count
 target.write("OBJECTS += \\")
@@ -181,26 +167,6 @@ for result in glob.glob(extension):
         target.write(" \\\n")
 target.write("\n\n")
 
-#temp = count
-#if extension == "*.cpp":
-#    target.write("CPP_DEPS += \\")
-#    target.write("\n")
-#else:
-#    target.write("C_DEPS += \\")
-#    target.write("\n")
-
-#for result in glob.glob(extension):
-#    temp -= 1
-#    target.write("$(pwd)/$(BUILD_DIR)/")
-#    if extension == "*.cpp":
-#        obj = result.replace(".cpp", ".d")
-#    else:
-#        obj = result.replace(".c", ".d")
-#    target.write(obj)
-#    if temp != 0:
-#        target.write(" \\\n")
-#target.write("\n\n")
-
 target.write("# SDS Options\n")
 target.write("HW_FLAGS :=")
 target.write("\n")
@@ -211,12 +177,6 @@ for acc in data["accelerators"]:
     target.write(acc["location"])    
     target.write(" -sds-end\n")
 target.write("\n")
-
-#hw_function = data.get("hw_function")
-#target.write(hw_function)
-#target.write(" ")
-#hf_file = data.get("accel_file")
-#target.write(hf_file)
 
 target.write("EMU_FLAGS := \n")
 target.write("ifeq ($(TARGET), emu)\n")
@@ -236,7 +196,12 @@ target.write("#+----------------------------------------------------------------
 target.write("\n")
 
 target.write("SDSFLAGS := -sds-pf $(PLATFORM) \\\n")
-target.write("\t-target-os $(TARGET_OS) \n")
+target.write("\t\t-target-os $(TARGET_OS) \n")
+
+target.write("ifeq ($(VERBOSE), 1)\n")
+target.write("SDSFLAGS += -verbose \n")
+target.write("endif\n")
+
 target.write("\n")
 
 target.write("# SDS Compiler\n")
