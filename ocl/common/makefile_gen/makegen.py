@@ -6,17 +6,17 @@ import os
 import subprocess
 
 def create_params(target):
-    target.write("REPORT :=none\n")
+    target.write("REPORT := none\n")
     target.write("TARGET := hw\n")
-    target.write("PLATFORM :=zcu102\n")
+    target.write("PLATFORM := zcu102\n")
     target.write("BUILD_DIR := ./build/$(PLATFORM)_$(TARGET)")
     target.write("\n")
     target.write("\n")
     
     target.write("CXX := ")
-    target.write("$(XILINX_SDX)/SDK/gnu/aarch64/lin/aarch64-linux/bin/aarch64-linux-gnu-g++\n")
-    target.write("XOCC :=")
-    target.write("$(XILINX_SDX)/bin/xocc\n")
+    target.write("aarch64-linux-gnu-g++\n")
+    target.write("XOCC := ")
+    target.write("xocc\n")
     target.write("\n")
 
     target.write("# Points to Utility Directory\n")
@@ -171,9 +171,9 @@ def mk_build_all(target, data):
     target.write("CP = cp -rf\n")
 
     args = []
-    if "em_cmd" in data:
-        args = data["em_cmd"].split(" ")
-        if any("./data" in string for string in args):
+    if "cmd_args" in data:
+        args = data["cmd_args"].split(" ")
+        if any("/data" in string for string in args):
             target.write("DATA = ./data\n")
 
     target.write("\n")
@@ -181,7 +181,7 @@ def mk_build_all(target, data):
     target.write(".PHONY: all clean cleanall docs\n")
     target.write("all: $(BUILD_DIR)/$(EXECUTABLE) $(BINARY_CONTAINERS)\n")
     target.write("\t- $(CP) $(BUILD_DIR)/$(EXECUTABLE) $(BUILD_DIR)/sd_card/\n")
-    if any("./data" in string for string in args):
+    if any("/data" in string for string in args):
         target.write("\t- if test -d $(DATA); then $(CP) $(DATA) $(BUILD_DIR)/sd_card/; fi\n")
     target.write("\n")
 

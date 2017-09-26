@@ -1,10 +1,10 @@
-REPORT :=none
+REPORT := none
 TARGET := hw
-PLATFORM :=zcu102
+PLATFORM := zcu102
 BUILD_DIR := ./build/$(PLATFORM)_$(TARGET)
 
-CXX := $(XILINX_SDX)/SDK/gnu/aarch64/lin/aarch64-linux/bin/aarch64-linux-gnu-g++
-XOCC :=$(XILINX_SDX)/bin/xocc
+CXX := aarch64-linux-gnu-g++
+XOCC := xocc
 
 # Points to Utility Directory
 COMMON_REPO = ../../../
