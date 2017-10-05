@@ -220,7 +220,7 @@ def footer(target):
     root = relativeTree(relativeLevels)
     target.write("[3-Clause BSD License]: " + root + "LICENSE.txt\n")
     target.write("[SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc\n")
-    target.write("[SDSoC User Guides]: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2017_1/ug1027-sdsoc-user-guide.pdf\n")
+    target.write("[SDSoC User Guides]: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2017_2/ug1027-sdsoc-user-guide.pdf\n")
     target.write("[Repository Contribution README]: " + root + "CONTRIBUTING.md\n")
     return
 
