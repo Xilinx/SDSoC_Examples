@@ -4,7 +4,7 @@
         "This example demonstrates how to insert Simple DMAs for data transfer between User program and hardware accelerator"
     ],
     "key_concepts": [ "Simple DMA", "FIFO Interface"],
-    "keywords": ["#pragma SDS access_parttern(a:SEQUENTIAL)", 
+    "keywords": ["#pragma SDS access_pattern(a:SEQUENTIAL)", 
                  "#pragma SDS data_mover(a:AXIDMA_SIMPLE)",
                  "#pragma SDS data copy"],
     "contributors" : [

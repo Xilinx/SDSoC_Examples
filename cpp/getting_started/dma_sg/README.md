@@ -19,7 +19,7 @@ This example demonstrates how to use Scatter-Gather DMAs for data transfer to/fr
 
 ***KEY CONCEPTS:*** Scatter Gather DMA, FIFO Interface
 
-***KEYWORDS:*** #pragma SDS access_parttern(a:SEQUENTIAL), #pragma SDS data_mover(a:AXIDMA_SG), #pragma SDS data copy
+***KEYWORDS:*** #pragma SDS access_pattern(a:SEQUENTIAL), #pragma SDS data_mover(a:AXIDMA_SG), #pragma SDS data copy
 
 ## 2. HOW TO DOWNLOAD THE REPOSITORY
 To get a local copy of the SDSoC example repository, clone this repository to the local system with the following command:

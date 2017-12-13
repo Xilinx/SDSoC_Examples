@@ -4,7 +4,7 @@
         "This example demonstrates how to use Scatter-Gather DMAs for data transfer to/from hardware accelerator"
     ],
     "key_concepts": [ "Scatter Gather DMA", "FIFO Interface"],
-    "keywords": ["#pragma SDS access_parttern(a:SEQUENTIAL)", 
+    "keywords": ["#pragma SDS access_pattern(a:SEQUENTIAL)", 
                  "#pragma SDS data_mover(a:AXIDMA_SG)",
                  "#pragma SDS data copy"],
     "contributors" : [
