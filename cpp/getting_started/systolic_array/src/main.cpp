@@ -112,13 +112,21 @@ int main(int argc, char** argv)
     mmult_accel(source_in1, source_in2, source_hw_results, a_row, a_col, b_col);
     hw_ctr.stop();
 
+    sw_ctr.start();
     //Launch the Software Solution
     m_softwareGold(source_in1, source_in2, source_sw_results);
+    sw_ctr.stop();
 
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
+    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
+    double speedup = (double) sw_cycles / (double) hw_cycles;
 
+    std::cout << "Number of CPU cycles running application in software: "
+                << sw_cycles << std::endl;
     std::cout << "Number of CPU cycles running application in hardware: "
-                << hw_cycles << std::endl;
+                        << hw_cycles << std::endl;
+    std::cout << "Speed up: " << speedup << std::endl;
+    std::cout << "Note: Speed up is meaningful for real hardware execution only, not for emulation." << std::endl;
 
     // Compare the results of the Hardware to the simulation
     bool match = true;
@@ -138,10 +146,6 @@ int main(int argc, char** argv)
     sds_free(source_hw_results);
     free(source_sw_results);
 
-    if (!match){
-        std::cout << "TEST FAILED." << std::endl;
-        return -1;
-    }
-    std::cout << "TEST PASSED." << std::endl;
-    return 0;
+    std::cout << "TEST " << ((match) ? "PASSED" : "FAILED") << std::endl;
+    return (match ? 0 : 1);
 }
