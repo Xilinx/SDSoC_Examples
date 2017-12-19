@@ -11,9 +11,6 @@ This README file contains the following sections:
 6. SUPPORT
 7. LICENSE AND CONTRIBUTING TO THE REPOSITORY
 8. ACKNOWLEDGEMENTS
-9. REVISION HISTORY
-
-
 ## 1. OVERVIEW
 This is a simple example of accessing full data from 2D array
 
@@ -97,12 +94,6 @@ To contribute to this project, follow the guidelines in the [Repository Contribu
 ## 8. ACKNOWLEDGEMENTS
 This example is written by developers at
 - [Xilinx](http://www.xilinx.com)
-
-## 9. REVISION HISTORY
-Date | README Version | Description
------|----------------|------------
-JUNE2017|1.0|Initial Xilinx Release
-
 [3-Clause BSD License]: ../../../LICENSE.txt
 [SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc
 [SDSoC User Guides]: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2017_2/ug1027-sdsoc-user-guide.pdf

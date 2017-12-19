@@ -24,7 +24,6 @@ def header(target,data):
     target.write("6. SUPPORT\n")
     target.write("7. LICENSE AND CONTRIBUTING TO THE REPOSITORY\n")
     target.write("8. ACKNOWLEDGEMENTS\n")
-    target.write("9. REVISION HISTORY\n\n\n")
     return
 
 def download(target):
@@ -184,20 +183,6 @@ def ack(target,data):
         target.write(")\n")
     return
 
-def revision(target,data):
-    target.write("\n## 9. REVISION HISTORY\n")
-    target.write("Date | README Version | Description\n")
-    target.write("-----|----------------|------------\n")
-    for rev in data["revision"]:
-        target.write(rev["date"])
-        target.write("|")
-        target.write(rev["version"])
-        target.write("|")
-        target.write(rev["description"])
-        target.write("\n")
-    target.write("\n")
-    return
-
 def dirTraversal(stop_file):
     stop_search = None
     level_count = 1
@@ -248,6 +233,5 @@ compilation(target,data)
 support(target)
 license(target)
 ack(target,data)
-revision(target,data)
 footer(target)
 target.close
