@@ -12,6 +12,17 @@ PLATFORM := zcu102
 #   emu - Compile for emulation (Default)
 TARGET := emu
 
+# Target OS:
+#     linux (Default), standalone
+TARGET_OS := linux
+
+# Build Directory
+BUILD_DIR := build/$(PLATFORM)_$(TARGET_OS)_$(TARGET)
+# Emulation Mode:
+#     debug     - Include debug data
+#     optimized - Exclude debug data (Default)
+EMU_MODE := optimized
+
 # Current Directory
 pwd := $(CURDIR)
 
@@ -22,18 +33,8 @@ ABS_COMMON_REPO = $(shell readlink -f $(COMMON_REPO))
 # Include Libraries
 include $(ABS_COMMON_REPO)/libs/sds_utils/sds_utils.mk
 
-# Target OS:
-#     linux (Default), standalone
-TARGET_OS := linux
-
-# Emulation Mode:
-#     debug     - Include debug data
-#     optimized - Exclude debug data (Default)
-EMU_MODE := optimized
-
 # Additional sds++ flags - this should be reserved for sds++ flags defined
 # at run-time. Other sds++ options should be defined in the makefile data section below
-# section below
 ADDL_FLAGS := -Wno-unused-label
 
 # Set to 1 (number one) to enable sds++ verbose output
@@ -41,8 +42,6 @@ VERBOSE :=
 
 # Build Executable
 EXECUTABLE := run.elf 
-# Build Directory
-BUILD_DIR := build/$(PLATFORM)_$(TARGET_OS)_$(TARGET)
 #+--------------------------------------------------------------------------
 # Makefile Data
 #+--------------------------------------------------------------------------
