@@ -1,0 +1,43 @@
+{
+    "example": "Matrix Multiplication with local memory and zero_copy mechanism",
+    "overview": [
+        "This example shows how matrix multiplication can be made more efficent in the same hardware function by using local buffers and direct memory interface technique using the zero_copy pragma. The local buffers are implemented as BRAM memory blocks in Programmable Logic (PL) and the zero_copy pragma allows burst read/write from/to DDR memory to/from local memory by generating a direct memory interface between DDR and hardware function via an AXI master bus interface."
+    ],
+    "key_concepts": [ "Local buffers, Zero_copy"],
+    "keywords": ["#pragma SDS data zero_copy"],
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "FEB2018",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "compiler" : {
+        "options" : "-Wno-unused-label"
+    },
+    "accelerators": [
+       {
+           "name" : "mmult_zero_copy",
+           "location" : "mmult_accel.cpp"
+       }
+    ],
+    "libs": [
+            "sds_utils"
+    ],
+    "source_dir" : "src/*.cpp",
+    "os" : [
+            "linux",
+            "standalone"
+    ],
+    "runtime" : [
+                 "C/C++"
+    ],
+    "pass_string" : "TEST PASSED",
+    "fail_string" : "TEST FAILED" 
+}

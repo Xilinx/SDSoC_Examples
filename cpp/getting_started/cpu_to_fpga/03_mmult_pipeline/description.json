@@ -1,0 +1,43 @@
+{
+    "example": "Matrix Multiplication with pipelining",
+    "overview": [
+        "This example takes the same hardware function from the previous example and highlights the pipeline kernel optimization in hardware function to achieve better performance. Pipelining a loop results in lower initiation interval(II), which is the number of clock cycles between the start times of consecutive loop iterations by allowing multiple iterations of a loop to run in parallel."
+    ],
+    "key_concepts": ["Pipelining"],
+    "keywords": ["#pragma HLS PIPIELINE"],
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "FEB2018",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "compiler" : {
+        "options" : "-Wno-unused-label"
+    },
+    "accelerators": [
+       {
+           "name" : "mmult_pipeline",
+           "location" : "mmult_accel.cpp"
+       }
+    ],
+    "libs": [
+            "sds_utils"
+    ],
+    "source_dir" : "src/*.cpp",
+    "os" : [
+            "linux",
+            "standalone"
+    ],
+    "runtime" : [
+                 "C/C++"
+    ],
+    "pass_string" : "TEST PASSED",
+    "fail_string" : "TEST FAILED" 
+}

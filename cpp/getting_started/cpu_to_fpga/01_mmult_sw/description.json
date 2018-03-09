@@ -1,0 +1,36 @@
+{
+    "example": "01_mmult_sw",
+    "overview": [
+        "This example shows how to perform matrix multiplication on software with no hardware function involved."
+    ],
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "FEB2018",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "compiler" : {
+        "options" : "-Wno-unused-label"
+    },
+    "accelerators" : [],
+    "libs": [
+            "sds_utils"
+    ],
+    "source_dir" : "src/*.cpp",
+    "os" : [
+            "linux",
+            "standalone"
+    ],
+    "runtime" : [
+                 "C/C++"
+    ],
+    "pass_string" : "TEST PASSED",
+    "fail_string" : "TEST FAILED" 
+}

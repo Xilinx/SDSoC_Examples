@@ -1,0 +1,43 @@
+{
+    "example": "Matrix Multiplication with Array Partitioning",
+    "overview": [
+        "This example shows how matrix multiplication using array partitioning technique on top of the same hardware function from previous example achieves better performance. Array partitioning results in increased number of effective read/write ports for a local BRAM array by partitioning the array into smaller arrays. Increase in number of read/write ports leads to parallel processing of the data elements."
+    ],
+    "key_concepts": [ "Array Partitioning"],
+    "keywords": ["#pragma HLS ARRAY_PARTITION"],
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "FEB2018",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "compiler" : {
+        "options" : "-Wno-unused-label"
+    },
+    "accelerators": [
+       {
+           "name" : "mmult_array_partition",
+           "location" : "mmult_accel.cpp"
+       }
+    ],
+    "libs": [
+            "sds_utils"
+    ],
+    "source_dir" : "src/*.cpp",
+    "os" : [
+            "linux",
+            "standalone"
+    ],
+    "runtime" : [
+                 "C/C++"
+    ],
+    "pass_string" : "TEST PASSED",
+    "fail_string" : "TEST FAILED" 
+}

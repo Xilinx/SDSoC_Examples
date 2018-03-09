@@ -1,0 +1,43 @@
+{
+    "example": "Matrix Multiplication on Hardware",
+    "overview": [
+        "This example shows how to perform matrix multiplication on hardware without specifying any optimizations (the same software function is taken and just targeted to hardware). This results in default random data access and DMA transfers the data to BRAM blocks. The hardware results are compared with the software results for verification and speedup is shown withrespect to running on hardware versus software."
+    ],
+    "keywords": ["#pragma HLS loop_tripcount"],
+
+    "contributors" : [
+        {
+            "group": "Xilinx",
+            "url" : "http://www.xilinx.com"
+        }
+    ],
+    "revision" : [
+        {
+            "date" : "FEB2018",
+            "version": "1.0",
+            "description": "Initial Xilinx Release"
+        }
+    ],
+    "compiler" : {
+        "options" : "-Wno-unused-label"
+    },
+    "accelerators": [
+       {
+           "name" : "mmult_hw",
+           "location" : "mmult_accel.cpp"
+       }
+    ],
+    "libs": [
+            "sds_utils"
+    ],
+    "source_dir" : "src/*.cpp",
+    "os" : [
+            "linux",
+            "standalone"
+    ],
+    "runtime" : [
+                 "C/C++"
+    ],
+    "pass_string" : "TEST PASSED",
+    "fail_string" : "TEST FAILED" 
+}
