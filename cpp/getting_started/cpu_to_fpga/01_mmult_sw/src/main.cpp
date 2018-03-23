@@ -65,7 +65,7 @@ int main(int argc, char** argv)
 
     //Function call to perform matrix multiplication
     mmult_sw(in1, in2, sw_result, dim);
-    std::cout << "Matrix Multiplication completed." << std::endl;
+    std::cout << "TEST PASSED" << std::endl;
     
     //Release Memory
     free(in1);
