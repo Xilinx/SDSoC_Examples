@@ -98,7 +98,7 @@ int main(int argc, char** argv)
 
     int size = TEST_DATA_SIZE;
 
-    sds_utils::perf_counter seq_hw_ctr, par_hw_ctr, sw_ctr;
+    sds_utils::perf_counter seq_hw_ctr, par_hw_ctr;
     
     bool match = true;
 
@@ -138,11 +138,9 @@ int main(int argc, char** argv)
         #pragma SDS wait(2)
         par_hw_ctr.stop();
 
-        sw_ctr.start();
         // Launch Software Solution
         vadd_softwareGold(source_in1, source_in2, source_vadd_sw_results, size);
         vmul_softwareGold(source_in1, source_in2, source_vmul_sw_results, size);
-        sw_ctr.stop();
 
         // Compare the results 
         for(int i = 0 ; i < TEST_DATA_SIZE; i++){
@@ -162,14 +160,11 @@ int main(int argc, char** argv)
             }
         }
     }
-    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t seq_hw_cycles = seq_hw_ctr.avg_cpu_cycles();
     uint64_t par_hw_cycles = par_hw_ctr.avg_cpu_cycles();
 
     double par_speedup = (double) seq_hw_cycles / (double) par_hw_cycles;
 
-    std::cout << "Number of average CPU cycles running application in software: "
-                << sw_cycles << std::endl;
     std::cout << "Number of average CPU cycles running application sequentially in hardware: "
         << seq_hw_cycles << std::endl;
     std::cout << "Number of average CPU cycles running application parallel in hardware: "
