@@ -1,4 +1,4 @@
-Array Partitioning
+Matrix Multiplication with Array Partitioning
 ======================
 
 This README file contains the following sections:
@@ -11,15 +11,12 @@ This README file contains the following sections:
 6. SUPPORT
 7. LICENSE AND CONTRIBUTING TO THE REPOSITORY
 8. ACKNOWLEDGEMENTS
-9. REVISION HISTORY
-
-
 ## 1. OVERVIEW
-This example shows how matrix multiplication using array partitioning technique achieves better performance.
+This example shows how matrix multiplication using array partitioning technique on top of the same hardware function from previous example achieves better performance. Array partitioning results in increased number of effective read/write ports for a local BRAM array by partitioning the array into smaller arrays. Increase in number of read/write ports leads to parallel processing of the data elements.
 
-***KEY CONCEPTS:*** Array Partitioning  
+***KEY CONCEPTS:*** Array Partitioning
 
-***KEYWORDS:*** HLS ARRAY_PARTITION
+***KEYWORDS:*** #pragma HLS ARRAY_PARTITION
 
 ## 2. HOW TO DOWNLOAD THE REPOSITORY
 To get a local copy of the SDSoC example repository, clone this repository to the local system with the following command:
@@ -100,13 +97,7 @@ To contribute to this project, follow the guidelines in the [Repository Contribu
 ## 8. ACKNOWLEDGEMENTS
 This example is written by developers at
 - [Xilinx](http://www.xilinx.com)
-
-## 9. REVISION HISTORY
-Date | README Version | Description
------|----------------|------------
-FEB2018|1.0|Initial Xilinx Release
-
-[3-Clause BSD License]: ../../../LICENSE.txt
+[3-Clause BSD License]: ../../../../LICENSE.txt
 [SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc
 [SDSoC User Guides]: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2017_2/ug1027-sdsoc-user-guide.pdf
-[Repository Contribution README]: ../../../CONTRIBUTING.md
+[Repository Contribution README]: ../../../../CONTRIBUTING.md
