@@ -1,0 +1,54 @@
+{
+    "example": "Multi Threading",
+    "overview": [
+        "Simple Multi-Threading application demonstrating performance comparision between software and hardware - with and without threads"
+     ],
+    "key_concepts": [ "Hardware Function Optimization", "Array Partitioning"],
+    "keywords": ["#pragma HLS ARRAY_PARTITION", "complete"],
+    "contributors" : [
+           {
+             "group" : "Xilinx, Inc.",
+             "url" : "http://www.xilinx.com/"
+          }
+    ],
+ "revision" : [
+        {
+            "date" : "MARCH2018",
+            "version": "1.0",
+            "desc": "Initial Xilinx Release"
+        }
+    ],
+ "compiler" : {
+        "options" : "-Wno-unused-label"
+    },
+ "board": [
+        "zcu102",
+        "zc706"
+    ],
+ "nboard": [
+        "zc702",
+        "zed"
+    ],
+    
+    "os": [
+        "Linux"
+    ],
+    "accelerators": [
+        {
+            "name": "mmult",
+            "location": "mmult_accel.cpp"
+        }
+    ],
+    "libs": [
+            "sds_utils"
+    ],
+    "source_dir" : "src/*.cpp",
+       "runtime" : [
+                 "C/C++"
+    ],
+    
+   
+   
+    "pass_string" : "TEST PASSED",
+    "fail_string" : "TEST FAILED"
+}
