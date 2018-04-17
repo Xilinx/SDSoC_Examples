@@ -54,7 +54,7 @@ $(pwd)/$(BUILD_DIR)/main.o
 
 # SDS Options
 HW_FLAGS :=
-HW_FLAGS += -sds-hw mmult mmult_accel.cpp -sds-end
+HW_FLAGS += -sds-hw mmult_accel mmult_accel.cpp -sds-end
 
 EMU_FLAGS := 
 ifeq ($(TARGET), emu)

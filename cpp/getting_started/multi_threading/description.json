@@ -35,7 +35,7 @@
     ],
     "accelerators": [
         {
-            "name": "mmult",
+            "name": "mmult_accel",
             "location": "mmult_accel.cpp"
         }
     ],
