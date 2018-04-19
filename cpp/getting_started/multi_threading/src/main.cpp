@@ -79,10 +79,10 @@ bool result_check(float *C, float *C_sw)
           if (C_sw[i] != C[i]) {
                std::cout << "Mismatch: data index=" << i << "d=" << C_sw[i] 
                          << ", dout=" << C[i] << std::endl;
-               return false;
+               return true;
           }
      }
-     return true;
+     return false;
 }
 void *hw_thrd_func1(void *ptr)
 {
