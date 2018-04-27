@@ -6,9 +6,9 @@ import subprocess
 
 DSA = 'zcu102'
 DEVICES = {
-    'zc702':['zynq','xc7z020','Emulation/Hardware','linux/standalone'],
-    'zc706':['zynq','xc7z045','Emulation/Hardware','linux/standalone'],
-    'zcu102':['zynquplus','xczu9eg','Emulation/Hardware','linux/standalone'],
+    'zc702':['zynq','xc7z020','Emulation/Hardware'],
+    'zc706':['zynq','xc7z045','Emulation/Hardware'],
+    'zcu102':['zynquplus','xczu9eg','Emulation/Hardware'],
     }
 
 def header(target,data):
@@ -96,7 +96,12 @@ def requirements(target,data):
         target.write("|")
         target.write(DEVICES[board][2])
         target.write("|")
-        target.write(DEVICES[board][3])
+        for i in data["os"]:
+	    if(i != data["os"][0]):
+                target.write("/")
+            target.write(i)
+        target.write("|")
+        target.write("\n")
         target.write("|")
         target.write("\n")
     target.write("\n\n")

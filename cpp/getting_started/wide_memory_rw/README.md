@@ -28,8 +28,8 @@ Here *examples* is the name of the directory which is used to store the reposito
 ## 3. SOFTWARE AND SYSTEM REQUIREMENTS
 Board | Family | Part | Flow | OS 
 ------|-------------|----------|----------|----------
-zc706|zynq|xc7z045|Emulation/Hardware|linux/standalone|
-zcu102|zynquplus|xczu9eg|Emulation/Hardware|linux/standalone|
+zc706|zynq|xc7z045|Emulation/Hardware|linux|
+zcu102|zynquplus|xczu9eg|Emulation/Hardware|linux|
 
 
 Board targeted by default = ***zcu102***
