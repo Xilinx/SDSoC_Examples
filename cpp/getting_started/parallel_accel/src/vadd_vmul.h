@@ -33,8 +33,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define TEST_DATA_SIZE 4096
 
 // Maximum times run example 
-#define MAX_NUM_TIMES 2
-
+#define MAX_NUM_TIMES 8 
 #pragma SDS data zero_copy(in1[0:dim], in2[0:dim], out[0:dim])
 void vadd_accel(
                     const int *in1,     // Read-Only Vector 1

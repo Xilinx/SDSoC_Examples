@@ -98,64 +98,82 @@ int main(int argc, char** argv)
     
     bool match = true;
 
-    for(int itr = 0; itr < MAX_NUM_TIMES; itr++){
-        // Create the test data 
-        for(int i = 0 ; i < TEST_DATA_SIZE; i++){
-            source_in1[i] = rand();
-            source_in2[i] = rand();
-            source_vadd_sw_results[i] = 0;
-            source_vmul_sw_results[i] = 0;
-            source_vadd_hw_results[i] = 0;
-            source_vmul_hw_results[i] = 0;
-        }
+    // Create the test data 
+    for(int i = 0 ; i < TEST_DATA_SIZE; i++){
+        source_in1[i] = rand();
+        source_in2[i] = rand();
+        source_vadd_sw_results[i] = 0;
+        source_vmul_sw_results[i] = 0;
+        source_vadd_hw_results[i] = 0;
+        source_vmul_hw_results[i] = 0;
+    }
 
-        //Two hw functions are called back to back. First the 
-        //vadd_accel is executed, then vmul_accel is executed.
-        //The execution of both accelerators is sequential here.
-        seq_hw_ctr.start();
-        // Launch Hardware Solution 
+    //Two hw functions are called back to back. First the 
+    //vadd_accel is executed, then vmul_accel is executed.
+    //The execution of both accelerators is sequential here.
+    //To prevent automatic dataflow between calls to the two
+    //hw functions, async and wait pragma is used here so as
+    //to ensure that the two hw functions will be running sequentially.
+    seq_hw_ctr.start();
+    // Launch Hardware Solution
+    for(int itr = 0; itr < MAX_NUM_TIMES; itr++)
+    {
+        #pragma SDS async(1)        
         vadd_accel(source_in1, source_in2, source_vadd_hw_results, size);
-        vmul_accel(source_in1, source_in2, source_vmul_hw_results, size);
-        seq_hw_ctr.stop();
-
-        //Two hw functions are called back to back.
-        //The program running on the hardware first transfers in1 and in2 
-        //to the vadd_accel hardware and returns immediately. Then the program 
-        //transfers in1  and in2 to the vmul_accel hardware and returns
-        //immediately. When the program later executes to the point of 
-        //#pragma SDS wait(id), it waits for the particular output to be ready.
-        par_hw_ctr.start();
-        // Launch Hardware Solution
-        #pragma SDS async(1)
-        vadd_accel(source_in1, source_in2, source_vadd_hw_results, size);
-        #pragma SDS async(2)
-        vmul_accel(source_in1, source_in2, source_vmul_hw_results, size);
         #pragma SDS wait(1)
+        #pragma SDS async(2)                        
+        vmul_accel(source_in1, source_in2, source_vmul_hw_results, size);
         #pragma SDS wait(2)
-        par_hw_ctr.stop();
+    }
+    seq_hw_ctr.stop();
 
-        // Launch Software Solution
-        vadd_softwareGold(source_in1, source_in2, source_vadd_sw_results, size);
-        vmul_softwareGold(source_in1, source_in2, source_vmul_sw_results, size);
+    //Two hw functions are called back to back.
+    //The program running on the hardware first transfers in1 and in2 
+    //to the vadd_accel hardware and returns immediately. Then the program 
+    //transfers in1  and in2 to the vmul_accel hardware and returns
+    //immediately. When the program later executes to the point of 
+    //#pragma SDS wait(id), it waits for the particular output to be ready.
+    par_hw_ctr.start();
+    // Launch Hardware Solution
+	#pragma SDS async(1)
+	vadd_accel(source_in1, source_in2, source_vadd_hw_results, size);
+	#pragma SDS async(2)
+	vmul_accel(source_in1, source_in2, source_vmul_hw_results, size);
+    for(int itr = 0; itr < MAX_NUM_TIMES; itr++)
+    {
+       	#pragma SDS wait(1)
+		#pragma SDS async(1)
+       	vadd_accel(source_in1, source_in2, source_vadd_hw_results, size);
+		#pragma SDS wait(2)
+		#pragma SDS async(2)
+      	vmul_accel(source_in1, source_in2, source_vmul_hw_results, size);
+    }
+    #pragma SDS wait(1)
+    #pragma SDS wait(2)
+    par_hw_ctr.stop(); 
 
-        // Compare the results 
-        for(int i = 0 ; i < TEST_DATA_SIZE; i++){
-            if(source_vadd_hw_results[i] != source_vadd_sw_results[i]){
-                std::cout << "Error: Result mismatch in vadd" << std::endl;
-                std::cout << "i = " << i << " CPU result = " << source_vadd_sw_results[i]
-                    << " Hardware result = " << source_vadd_hw_results[i] << std::endl;
-                match = false;
-                break;
-            }
-            if(source_vmul_hw_results[i] != source_vmul_sw_results[i]){
-                std::cout << "Error: Result mismatch in vmul" << std::endl;
-                std::cout << "i = " << i << " CPU result = " << source_vmul_sw_results[i]
-                    << " Hardware result = " << source_vmul_hw_results[i] << std::endl;
-                match = false;
-                break;
-            }
+    // Launch Software Solution
+    vadd_softwareGold(source_in1, source_in2, source_vadd_sw_results, size);
+    vmul_softwareGold(source_in1, source_in2, source_vmul_sw_results, size);
+
+    // Compare the results 
+    for(int i = 0 ; i < TEST_DATA_SIZE; i++){
+        if(source_vadd_hw_results[i] != source_vadd_sw_results[i]){
+            std::cout << "Error: Result mismatch in vadd" << std::endl;
+            std::cout << "i = " << i << " CPU result = " << source_vadd_sw_results[i]
+                << " Hardware result = " << source_vadd_hw_results[i] << std::endl;
+            match = false;
+            break;
+        }
+        if(source_vmul_hw_results[i] != source_vmul_sw_results[i]){
+            std::cout << "Error: Result mismatch in vmul" << std::endl;
+            std::cout << "i = " << i << " CPU result = " << source_vmul_sw_results[i]
+                << " Hardware result = " << source_vmul_hw_results[i] << std::endl;
+            match = false;
+            break;
         }
     }
+    
     uint64_t seq_hw_cycles = seq_hw_ctr.avg_cpu_cycles();
     uint64_t par_hw_cycles = par_hw_ctr.avg_cpu_cycles();
 
