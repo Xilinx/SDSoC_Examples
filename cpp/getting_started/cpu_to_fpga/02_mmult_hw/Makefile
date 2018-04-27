@@ -28,7 +28,7 @@ EMU_MODE := optimized
 pwd := $(CURDIR)
 
 # Points to Utility Directory
-COMMON_REPO = ../../../
+COMMON_REPO = ../../../../
 ABS_COMMON_REPO = $(shell readlink -f $(COMMON_REPO))
 
 # Include Libraries
