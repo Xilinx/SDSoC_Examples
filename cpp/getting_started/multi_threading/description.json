@@ -3,8 +3,8 @@
     "overview": [
         "Simple Multi-Threading application demonstrating performance comparision between software and hardware - with and without threads"
      ],
-    "key_concepts": [ "Hardware Function Optimization", "Array Partitioning"],
-    "keywords": ["#pragma HLS ARRAY_PARTITION", "complete"],
+    "key_concepts": [ "multi threading"],
+    "keywords": ["#pragma HLS array_partition", "#pragma HLS PIPELINE", "#pragma SDS data access_pattern"],
     "contributors" : [
            {
              "group" : "Xilinx, Inc.",

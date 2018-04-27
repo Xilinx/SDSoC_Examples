@@ -69,6 +69,13 @@ make check TARGET=emu
 ```
 If the application has not been previously compiled, the check makefile rule will compile and execute the application in the emulation mode selected by the user.
 
+### Compiling for Quick CPU Emulation
+This mode allows quick functionality check of the application code by treating all hardware functions as CPU functions and then going through the usual emulation flow.
+```
+make check TARGET=cpu_emu
+```
+*NOTE:* This is the quickest mode and is used only to verify the functional correctness of the application code. 
+
 ### Compiling for Application Execution in the FPGA Accelerator Card
 The command to deploy hardware function on programmable logic (PL)
 ```

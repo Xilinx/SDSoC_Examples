@@ -10,30 +10,32 @@ PLATFORM := zcu102
 # Run Target:
 #   hw  - Compile for hardware
 #   emu - Compile for emulation (Default)
+#   cpu_emu - Quick compile for cpu emulation trating all HW functions as CPU functions
 TARGET := emu
-
-# Current Directory
-pwd := $(CURDIR)
-
-# Points to Utility Directory
-COMMON_REPO = ../../../../
-ABS_COMMON_REPO = $(shell readlink -f $(COMMON_REPO))
-
-# Include Libraries
-include $(ABS_COMMON_REPO)/libs/sds_utils/sds_utils.mk
 
 # Target OS:
 #     linux (Default), standalone
 TARGET_OS := linux
 
+# Build Directory
+BUILD_DIR := build/$(PLATFORM)_$(TARGET_OS)_$(TARGET)
 # Emulation Mode:
 #     debug     - Include debug data
 #     optimized - Exclude debug data (Default)
 EMU_MODE := optimized
 
+# Current Directory
+pwd := $(CURDIR)
+
+# Points to Utility Directory
+COMMON_REPO = ../../../
+ABS_COMMON_REPO = $(shell readlink -f $(COMMON_REPO))
+
+# Include Libraries
+include $(ABS_COMMON_REPO)/libs/sds_utils/sds_utils.mk
+
 # Additional sds++ flags - this should be reserved for sds++ flags defined
 # at run-time. Other sds++ options should be defined in the makefile data section below
-# section below
 ADDL_FLAGS := -Wno-unused-label
 
 # Set to 1 (number one) to enable sds++ verbose output
@@ -41,8 +43,6 @@ VERBOSE :=
 
 # Build Executable
 EXECUTABLE := run.elf 
-# Build Directory
-BUILD_DIR := build/$(PLATFORM)_$(TARGET_OS)_$(TARGET)
 #+--------------------------------------------------------------------------
 # Makefile Data
 #+--------------------------------------------------------------------------
@@ -50,22 +50,23 @@ BUILD_DIR := build/$(PLATFORM)_$(TARGET_OS)_$(TARGET)
 # Source Files
 SRC_DIR := src
 OBJECTS += \
-$(pwd)/$(BUILD_DIR)/mmult_accel.o \
-$(pwd)/$(BUILD_DIR)/main.o
+$(pwd)/$(BUILD_DIR)/main.o \
+$(pwd)/$(BUILD_DIR)/mmult_accel.o
 
 # SDS Options
-HW_FLAGS :=
-HW_FLAGS += -sds-hw mmult_zero_copy mmult_accel.cpp -sds-end
+HW_FLAGS := 
+ifneq ($(TARGET), cpu_emu)
+	HW_FLAGS += -sds-hw mmult_zero_copy mmult_accel.cpp -sds-end
+endif
 
 EMU_FLAGS := 
-ifeq ($(TARGET), emu)
+ifneq ($(TARGET), hw)
 	EMU_FLAGS := -mno-bitstream -mno-boot-files -emulation $(EMU_MODE)
 endif
 
 # Compilation and Link Flags
 IFLAGS := -I.
 CFLAGS = -Wall -O3 -c
-CFLAGS += -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" 
 CFLAGS += -I$(sds_utils_HDRS)
 CFLAGS += $(ADDL_FLAGS)
 LFLAGS = "$@" "$<" 
@@ -98,10 +99,14 @@ $(pwd)/$(BUILD_DIR)/%.o: $(pwd)/$(SRC_DIR)/%.cpp
 	cd $(BUILD_DIR) ; $(CC) $(CFLAGS) -o $(LFLAGS) $(HW_FLAGS)
 	@echo 'Finished building: $<'
 	@echo ' '
+ifeq ($(TARGET), cpu_emu) 
+	@echo 'Ignore the warning which states that hw function is not a HW accelerator but has pragma applied for cpu_emu mode'
+	@echo ' '
+endif
 
 # Check Rule Builds the Sources and Executes on Specified Target
 check: all
-ifeq ($(TARGET), emu)
+ifneq ($(TARGET), hw)
 
     ifeq ($(TARGET_OS), linux)
 	    cp $(ABS_COMMON_REPO)/utility/emu_run.sh $(BUILD_DIR)/
@@ -133,16 +138,16 @@ ECHO:= @echo
 
 help::
 	$(ECHO) "Makefile Usage:"
-	$(ECHO) "	make all TARGET=<emu/hw> TARGET_OS=<linux/standalone>"
+	$(ECHO) "	make all TARGET=<cpu_emu/emu/hw> TARGET_OS=<linux/standalone>"
 	$(ECHO) "		Command to generate the design for specified Target and OS."
 	$(ECHO) ""
-	$(ECHO) "	make clean TARGET=<emu/hw> TARGET_OS=<linux/standalone>"
+	$(ECHO) "	make clean TARGET=<cpu_emu/emu/hw> TARGET_OS=<linux/standalone>"
 	$(ECHO) "		Command to remove the generated non-hardware files."
 	$(ECHO) ""
 	$(ECHO) "	make cleanall"
 	$(ECHO) "		Command to remove all the generated files."
 	$(ECHO) ""
-	$(ECHO) "	make check TARGET=<emu/hw> TARGET_OS=<linux/standalone>"
+	$(ECHO) "	make check TARGET=<cpu_emu/emu/hw> TARGET_OS=<linux/standalone>"
 	$(ECHO) "		Command to run application in emulation."
 	$(ECHO) ""
 

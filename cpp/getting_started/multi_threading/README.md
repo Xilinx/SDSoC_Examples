@@ -14,9 +14,9 @@ This README file contains the following sections:
 ## 1. OVERVIEW
 Simple Multi-Threading application demonstrating performance comparision between software and hardware - with and without threads
 
-***KEY CONCEPTS:*** Hardware Function Optimization, Array Partitioning
+***KEY CONCEPTS:*** multi threading
 
-***KEYWORDS:*** #pragma HLS ARRAY_PARTITION, complete
+***KEYWORDS:*** #pragma HLS array_partition, #pragma HLS PIPELINE, #pragma SDS data access_pattern
 
 ## 2. HOW TO DOWNLOAD THE REPOSITORY
 To get a local copy of the SDSoC example repository, clone this repository to the local system with the following command:
@@ -44,6 +44,8 @@ where the *PLATFORM* variable accepts one board.
 Application code is located in the src/ directory. Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation flow, directory name is "emu" and in case of hardware flow it is named as "hw" 
 ```
 Makefile
+Makefile
+Makefile
 README.md
 description.json
 src/main.cpp
@@ -70,6 +72,13 @@ The makefile for the application can directly execute with the following command
 make check TARGET=emu
 ```
 If the application has not been previously compiled, the check makefile rule will compile and execute the application in the emulation mode selected by the user.
+
+### Compiling for Quick CPU Emulation
+This mode allows quick functionality check of the application code by treating all hardware functions as CPU functions and then going through the usual emulation flow.
+```
+make check TARGET=cpu_emu
+```
+*NOTE:* This is the quickest mode and is used only to verify the functional correctness of the application code. 
 
 ### Compiling for Application Execution in the FPGA Accelerator Card
 The command to deploy hardware function on programmable logic (PL)

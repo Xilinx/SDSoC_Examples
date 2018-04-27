@@ -22,6 +22,7 @@ def create_params(target):
     target.write("# Run Target:\n")
     target.write("#   hw  - Compile for hardware\n")
     target.write("#   emu - Compile for emulation (Default)\n")
+    target.write("#   cpu_emu - Quick compile for cpu emulation trating all HW functions as CPU functions\n")
     target.write("TARGET := emu\n")
     target.write("\n")
     
@@ -129,18 +130,19 @@ def add_srcs(target, data):
 
 def add_kernel_flags(target, data):
     target.write("# SDS Options\n")
-    target.write("HW_FLAGS :=")
-    target.write("\n")
+    target.write("HW_FLAGS := \n")
+    target.write("ifneq ($(TARGET), cpu_emu)\n")
     for acc in data["accelerators"]:
-        target.write("HW_FLAGS += -sds-hw ")
+        target.write("\tHW_FLAGS += -sds-hw ")
         target.write(acc["name"])
         target.write(" ")
         target.write(acc["location"])    
         target.write(" -sds-end\n")
+    target.write("endif\n")
     target.write("\n")
 
     target.write("EMU_FLAGS := \n")
-    target.write("ifeq ($(TARGET), emu)\n")
+    target.write("ifneq ($(TARGET), hw)\n")
     target.write("\tEMU_FLAGS := -mno-bitstream -mno-boot-files -emulation $(EMU_MODE)\n")
     target.write("endif\n")
     target.write("\n")
@@ -148,7 +150,6 @@ def add_kernel_flags(target, data):
     target.write("# Compilation and Link Flags\n")
     target.write("IFLAGS := -I.\n")
     target.write("CFLAGS = -Wall -O3 -c\n")
-    target.write("CFLAGS += -MT\"$@\" -MMD -MP -MF\"$(@:%.o=%.d)\" -MT\"$(@)\" \n")
     target.write("CFLAGS += -I$(sds_utils_HDRS)\n")
     target.write("CFLAGS += $(ADDL_FLAGS)\n")
     target.write("LFLAGS = \"$@\" \"$<\" \n")
@@ -196,6 +197,10 @@ def mk_build_all(target, extension):
     target.write("\tcd $(BUILD_DIR) ; $(CC) $(CFLAGS) -o $(LFLAGS) $(HW_FLAGS)\n")
     target.write("\t@echo 'Finished building: $<'\n")
     target.write("\t@echo ' '\n")
+    target.write("ifeq ($(TARGET), cpu_emu) \n")
+    target.write("\t@echo 'Ignore the warning which states that hw function is not a HW accelerator but has pragma applied for cpu_emu mode'\n")
+    target.write("\t@echo ' '\n")    
+    target.write("endif\n")
     target.write("\n")
 
     return
@@ -203,7 +208,7 @@ def mk_build_all(target, extension):
 def run_emu(target):
     target.write("# Check Rule Builds the Sources and Executes on Specified Target\n")
     target.write("check: all\n")
-    target.write("ifeq ($(TARGET), emu)\n\n")
+    target.write("ifneq ($(TARGET), hw)\n\n")
     target.write("    ifeq ($(TARGET_OS), linux)\n")
     target.write("\t    cp $(ABS_COMMON_REPO)/utility/emu_run.sh $(BUILD_DIR)/\n")
     target.write("\t    cd $(BUILD_DIR) ; ./emu_run.sh $(EXECUTABLE)\n")
@@ -248,16 +253,16 @@ def mk_help(target):
     target.write("\n")
     target.write("help::\n")
     target.write("\t$(ECHO) \"Makefile Usage:\"\n")
-    target.write("\t$(ECHO) \"	make all TARGET=<emu/hw> TARGET_OS=<linux/standalone>\"\n");
+    target.write("\t$(ECHO) \"	make all TARGET=<cpu_emu/emu/hw> TARGET_OS=<linux/standalone>\"\n");
     target.write("\t$(ECHO) \"		Command to generate the design for specified Target and OS.\"\n")
     target.write("\t$(ECHO) \"\"\n")
-    target.write("\t$(ECHO) \"	make clean TARGET=<emu/hw> TARGET_OS=<linux/standalone>\"\n");
+    target.write("\t$(ECHO) \"	make clean TARGET=<cpu_emu/emu/hw> TARGET_OS=<linux/standalone>\"\n");
     target.write("\t$(ECHO) \"		Command to remove the generated non-hardware files.\"\n")
     target.write("\t$(ECHO) \"\"\n")
     target.write("\t$(ECHO) \"	make cleanall\"\n")
     target.write("\t$(ECHO) \"		Command to remove all the generated files.\"\n")
     target.write("\t$(ECHO) \"\"\n")
-    target.write("\t$(ECHO) \"	make check TARGET=<emu/hw> TARGET_OS=<linux/standalone>\"\n");
+    target.write("\t$(ECHO) \"	make check TARGET=<cpu_emu/emu/hw> TARGET_OS=<linux/standalone>\"\n");
     target.write("\t$(ECHO) \"		Command to run application in emulation.\"\n")
     target.write("\t$(ECHO) \"\"\n")
     target.write("\n")
