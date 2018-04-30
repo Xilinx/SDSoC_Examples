@@ -42,7 +42,6 @@
     "libs": [
             "sds_utils"
     ],
-    "source_dir" : "src/*.cpp",
        "runtime" : [
                  "C/C++"
     ],

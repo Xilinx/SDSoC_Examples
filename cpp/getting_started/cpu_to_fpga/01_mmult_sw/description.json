@@ -23,7 +23,6 @@
     "libs": [
             "sds_utils"
     ],
-    "source_dir" : "src/*.cpp",
     "os" : [
             "linux",
             "standalone"
