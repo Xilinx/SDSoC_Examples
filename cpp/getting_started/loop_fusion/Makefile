@@ -56,7 +56,7 @@ $(pwd)/$(BUILD_DIR)/nearest_neighbor.o
 # SDS Options
 HW_FLAGS := 
 ifneq ($(TARGET), cpu_emu)
-	HW_FLAGS += -sds-hw nearest_neighbor_loop_fusion_accel nearest_neighbor.cpp -sds-end
+	HW_FLAGS += -sds-hw nearest_neighbor_accel nearest_neighbor.cpp -sds-end
 endif
 
 EMU_FLAGS := 

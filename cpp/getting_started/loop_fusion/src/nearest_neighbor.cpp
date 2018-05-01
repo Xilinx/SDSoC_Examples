@@ -39,10 +39,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // This implementation fuses the distance calculation and the iteration through
 // the search space into one loop.
-void nearest_neighbor_loop_fusion_accel(int *out, const int *points,
-                       const int *search_point, const int len,
-                       const int dim) {
-
+void nearest_neighbor_accel(int *out, const int *points,
+                            const int *search_point, const int len,
+                            const int dim) 
+{
     int best_i = 0;
     int best_dist = INT_MAX;
     int s_point[MAX_DIMS];

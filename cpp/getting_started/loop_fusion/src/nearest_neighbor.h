@@ -38,7 +38,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(out[0:dim], points[0:len*dim], search_point[0:dim])
-void nearest_neighbor_loop_fusion_accel(int *out, const int *points,
-                       const int *search_point, const int len,
-                       const int dim);
+void nearest_neighbor_accel(int *out, const int *points,
+                            const int *search_point, const int len,
+                            const int dim);
 #endif

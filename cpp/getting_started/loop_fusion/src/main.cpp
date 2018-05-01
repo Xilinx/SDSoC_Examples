@@ -113,7 +113,7 @@ int main(int argc, char **argv) {
 
     hw_ctr.start();
     //Launch the Hardware Solution
-    nearest_neighbor_loop_fusion_accel(out, data, input, num_points, num_dims); 
+    nearest_neighbor_accel(out, data, input, num_points, num_dims); 
     hw_ctr.stop();
     
     test_passed = verify(gold, out, num_dims);
