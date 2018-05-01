@@ -87,13 +87,16 @@ int main(int argc, char **argv) {
         hw_results_2[i] = 0;
      }
 
-    sds_utils::perf_counter hw_ctr, sw_ctr;
+    sds_utils::perf_counter seq_hw_ctr, par_hw_ctr;
 
-    sw_ctr.start();
-    //Launch the Software Solution
-    mmult_sw (in1, in2, sw_results_1, dim);
-    mmult_sw (in3, in4, sw_results_2, dim);
-    sw_ctr.stop();
+    seq_hw_ctr.start();
+    //Launch the sequential hardware solution
+    //Second call to the hw function will be made 
+    //after the first call to that hw function has
+    //finished execution.
+    mmult_accel (in1, in2, hw_results_1);
+    mmult_accel (in3, in4, hw_results_2);
+    seq_hw_ctr.stop();
 
     //We want to perform two matrix multiplications, so we create two
     //separate instances of the same hardware function on the PL by
@@ -101,13 +104,19 @@ int main(int argc, char **argv) {
     //same accelerator function can be processed concurrently instead
     //of waiting for the first call to finish execution before processing
     //the second call to that hw function.
-    hw_ctr.start();
-    //Launch the Hardware Solution
+    par_hw_ctr.start();
+    //Launch the parallel hardware solution
+    //The two calls to the same hw function can
+    //be processed simultaneously in this case.
     #pragma SDS resource (1)
     mmult_accel (in1, in2, hw_results_1);
     #pragma SDS resource (2)
     mmult_accel (in3, in4, hw_results_2);
-    hw_ctr.stop();
+    par_hw_ctr.stop();
+
+    //Launch software solution
+    mmult_sw (in1, in2, sw_results_1, dim);
+    mmult_sw (in3, in4, sw_results_2, dim);
 
     //Compare the results of hardware to the CPU
     bool match = true;
@@ -115,19 +124,27 @@ int main(int argc, char **argv) {
     {
 	if( sw_results_1[i] != hw_results_1[i] )
 	{
-            std::cout << "Results Mismatch on " << "Row:" << i/dim << "Col:" << i - (i/dim)*dim << std::endl;
+            std::cout << "Results Mismatch in solution 1 on " << "Row:" << i/dim << "Col:" << i - (i/dim)*dim << std::endl;
 	    std::cout << "CPU output:" << sw_results_1[i] <<"\t Hardware output:" << hw_results_1[i] << std::endl;
 	    match = false;
 	    break;
 	}
+	if( sw_results_1[i] != hw_results_1[i] )
+	{
+            std::cout << "Results Mismatch in solution 2 on " << "Row:" << i/dim << "Col:" << i - (i/dim)*dim << std::endl;
+	    std::cout << "CPU output:" << sw_results_1[i] <<"\t Hardware output:" << hw_results_1[i] << std::endl;
+	    match = false;
+	    break;
+	}
+
     }
 
-    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
-    uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
-    double speedup = (double) sw_cycles / (double) hw_cycles;
+    uint64_t seq_hw_cycles = seq_hw_ctr.avg_cpu_cycles();
+    uint64_t par_hw_cycles = par_hw_ctr.avg_cpu_cycles();
+    double speedup = (double) seq_hw_cycles / (double) par_hw_cycles;
 
-    std::cout << "Number of CPU cycles running application in software:" << sw_cycles << std::endl;
-    std::cout << "Number of CPU cycles running application in hardware:" << hw_cycles << std::endl;
+    std::cout << "Number of CPU cycles running application in hardware with a single instance:" << seq_hw_cycles << std::endl;
+    std::cout << "Number of CPU cycles running application in hardware with two instances:" << par_hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
     std::cout << "Note: Speed up is meaningful for real hardware execution only, not for emulation." << std::endl;
 
