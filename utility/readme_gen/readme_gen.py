@@ -102,8 +102,6 @@ def requirements(target,data):
             target.write(i)
         target.write("|")
         target.write("\n")
-        target.write("|")
-        target.write("\n")
     target.write("\n\n")
     target.write("Board targeted by default = ***%s***\n\n" %DSA)
     target.write("*NOTE:* The board/platform used for compilation can be changed by adding the PLATFORM environmental variable to the make command as shown below\n")

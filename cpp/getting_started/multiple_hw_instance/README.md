@@ -1,4 +1,4 @@
-Multi Threading
+Multiple HW instance
 ======================
 
 This README file contains the following sections:
@@ -12,11 +12,11 @@ This README file contains the following sections:
 7. LICENSE AND CONTRIBUTING TO THE REPOSITORY
 8. ACKNOWLEDGEMENTS
 ## 1. OVERVIEW
-Simple Multi-Threading application demonstrating performance comparision between software and hardware - with and without threads
+This is simple matrix multiplication example which showcases how to create multiple hardware instances of a hardware function for better performance.
 
-***KEY CONCEPTS:*** multi threading
+***KEY CONCEPTS:*** Multiple instances of HW function
 
-***KEYWORDS:*** #pragma HLS array_partition, #pragma HLS PIPELINE, #pragma SDS data access_pattern
+***KEYWORDS:*** #pragma HLS resource
 
 ## 2. HOW TO DOWNLOAD THE REPOSITORY
 To get a local copy of the SDSoC example repository, clone this repository to the local system with the following command:
@@ -28,8 +28,9 @@ Here *examples* is the name of the directory which is used to store the reposito
 ## 3. SOFTWARE AND SYSTEM REQUIREMENTS
 Board | Family | Part | Flow | OS 
 ------|-------------|----------|----------|----------
-zc706|zynq|xc7z045|Emulation/Hardware|Linux|
-zcu102|zynquplus|xczu9eg|Emulation/Hardware|Linux|
+zc706|zynq|xc7z045|Emulation/Hardware|linux/standalone|
+zcu102|zynquplus|xczu9eg|Emulation/Hardware|linux/standalone|
+zc702|zynq|xc7z020|Emulation/Hardware|linux/standalone|
 
 
 Board targeted by default = ***zcu102***
@@ -43,12 +44,6 @@ where the *PLATFORM* variable accepts one board.
 ## 4. DESIGN FILE HIERARCHY
 Application code is located in the src/ directory. Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation flow, directory name is "emu" and in case of hardware flow it is named as "hw" 
 ```
-Makefile
-README.md
-description.json
-src/main.cpp
-src/mmult_accel.cpp
-src/mmult_accel.h
 ```
 
 ## 5. COMPILATION AND EXECUTION
@@ -102,7 +97,7 @@ To contribute to this project, follow the guidelines in the [Repository Contribu
 
 ## 8. ACKNOWLEDGEMENTS
 This example is written by developers at
-- [Xilinx, Inc.](http://www.xilinx.com/)
+- [Xilinx](http://www.xilinx.com)
 [3-Clause BSD License]: ../../../LICENSE.txt
 [SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc
 [SDSoC User Guides]: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2017_2/ug1027-sdsoc-user-guide.pdf
