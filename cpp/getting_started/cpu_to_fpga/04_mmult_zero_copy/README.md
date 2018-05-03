@@ -1,4 +1,4 @@
-Matrix Multiplication with local memory and zero_copy mechanism
+04_mmult_zero_copy
 ======================
 
 This README file contains the following sections:

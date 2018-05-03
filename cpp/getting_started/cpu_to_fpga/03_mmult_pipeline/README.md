@@ -1,4 +1,4 @@
-Matrix Multiplication with pipelining
+03_mmult_pipeline
 ======================
 
 This README file contains the following sections:

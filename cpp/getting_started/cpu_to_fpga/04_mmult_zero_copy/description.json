@@ -1,5 +1,5 @@
 {
-    "example": "Matrix Multiplication with local memory and zero_copy mechanism",
+    "example": "04_mmult_zero_copy",
     "overview": [
         "This example shows how matrix multiplication can be made more efficent in the same hardware function by using local buffers and direct memory interface technique using the zero_copy pragma. The local buffers are implemented as BRAM memory blocks in Programmable Logic (PL) and the zero_copy pragma allows burst read/write from/to DDR memory to/from local memory by generating a direct memory interface between DDR and hardware function via an AXI master bus interface."
     ],

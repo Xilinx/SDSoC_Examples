@@ -1,4 +1,4 @@
-Matrix Multiplication on Hardware
+02_mmult_hw
 ======================
 
 This README file contains the following sections:

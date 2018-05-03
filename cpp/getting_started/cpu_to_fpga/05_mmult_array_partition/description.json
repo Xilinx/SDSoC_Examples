@@ -1,5 +1,5 @@
 {
-    "example": "Matrix Multiplication with Array Partitioning",
+    "example": "05_mmult_array_partition",
     "overview": [
         "This example shows how matrix multiplication using array partitioning technique on top of the same hardware function from previous example achieves better performance. Array partitioning results in increased number of effective read/write ports for a local BRAM array by partitioning the array into smaller arrays. Increase in number of read/write ports leads to parallel processing of the data elements."
     ],

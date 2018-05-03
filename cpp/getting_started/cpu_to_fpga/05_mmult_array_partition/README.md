@@ -1,4 +1,4 @@
-Matrix Multiplication with Array Partitioning
+05_mmult_array_partition
 ======================
 
 This README file contains the following sections:

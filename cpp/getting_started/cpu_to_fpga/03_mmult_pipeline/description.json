@@ -1,5 +1,5 @@
 {
-    "example": "Matrix Multiplication with pipelining",
+    "example": "03_mmult_pipeline",
     "overview": [
         "This example takes the same hardware function from the previous example and highlights the pipeline kernel optimization in hardware function to achieve better performance. Pipelining a loop results in lower initiation interval(II), which is the number of clock cycles between the start times of consecutive loop iterations by allowing multiple iterations of a loop to run in parallel."
     ],
