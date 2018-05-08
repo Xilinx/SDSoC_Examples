@@ -23,7 +23,7 @@
     },
     "accelerators": [
        {
-           "name" : "nearest_neighbor_loop_fusion_accel",
+           "name" : "nearest_neighbor_accel",
            "location" : "nearest_neighbor.cpp"
        }
     ],
