@@ -4,12 +4,18 @@ import json
 import os
 import subprocess
 
-VERSION = 'SDx 2017.2'
+VERSION = 'SDx 2017.4'
 DEVICES = {
     'zcu102': {
        'name': 'ZCU102 OpenCL',
+    },
+    'zcu104': {
+       'name': 'ZCU104 OpenCL',
+    },
+    'zcu106': {
+       'name': 'ZCU106 OpenCL',
     }
-   }
+}
 
 def header(target,data):
     target.write(data["example"])

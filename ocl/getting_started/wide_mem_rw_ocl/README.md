@@ -28,7 +28,9 @@ where examples is the name of the directory where the repository will be stored 
 ## 3. SOFTWARE AND SYSTEM REQUIREMENTS
 Board | Device Name | Software Version
 ------|-------------|-----------------
-ZCU102 OpenCL|zcu102|SDx 2017.2
+ZCU102 OpenCL|zcu102|SDx 2017.4
+ZCU104 OpenCL|zcu104|SDx 2017.4
+ZCU106 OpenCL|zcu106|SDx 2017.4
 
 
 *NOTE:* The board/platform used for compilation can be changed by adding the PLATFORM environmental variable to the make command as shown below
