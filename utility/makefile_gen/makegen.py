@@ -213,7 +213,7 @@ def run_emu(target):
     target.write("\t    cp $(ABS_COMMON_REPO)/utility/emu_run.sh $(BUILD_DIR)/\n")
     target.write("\t    cd $(BUILD_DIR) ; ./emu_run.sh $(EXECUTABLE)\n")
     target.write("    else\n")
-    target.write("\t    cd $(BUILD_DIR) ; sdsoc_emulator -timeout 300\n")
+    target.write("\t    cd $(BUILD_DIR) ; sdsoc_emulator -timeout 500\n")
     target.write("    endif\n\n")
     target.write("else\n")
     target.write("\t$(info \"This Release Doesn't Support Automated Hardware Execution\")\n")

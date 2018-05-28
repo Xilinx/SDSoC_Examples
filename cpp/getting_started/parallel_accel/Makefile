@@ -113,7 +113,7 @@ ifneq ($(TARGET), hw)
 	    cp $(ABS_COMMON_REPO)/utility/emu_run.sh $(BUILD_DIR)/
 	    cd $(BUILD_DIR) ; ./emu_run.sh $(EXECUTABLE)
     else
-	    cd $(BUILD_DIR) ; sdsoc_emulator -timeout 300
+	    cd $(BUILD_DIR) ; sdsoc_emulator -timeout 500
     endif
 
 else
