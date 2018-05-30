@@ -50,6 +50,14 @@ src/main.cpp
 ### Compiling for Application Emulation
 As part of capabilities available to an application developer, SDSoC includes emulation environment to check the functional and design compatibility with selected hardware platform.
 SDSoC emulation mode is named as "emu" , this mode allows developer to profile and evaluate the performance of a design before compiling for board deployment. It is highly recommended that all the applications are executed in emulation flow.
+
+
+Platform | Supported Flow 
+------|-------------
+Linux|Makefile/GUI|
+Windows|GUI|
+
+
 ```
 make all TARGET=emu
 ```

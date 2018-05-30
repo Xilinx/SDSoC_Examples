@@ -44,12 +44,26 @@ where the *PLATFORM* variable accepts one board.
 ## 4. DESIGN FILE HIERARCHY
 Application code is located in the src/ directory. Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation flow, directory name is "emu" and in case of hardware flow it is named as "hw" 
 ```
+Makefile
+README.md
+description.json
+src/main.cpp
+src/mmult.cpp
+src/mmult.h
 ```
 
 ## 5. COMPILATION AND EXECUTION
 ### Compiling for Application Emulation
 As part of capabilities available to an application developer, SDSoC includes emulation environment to check the functional and design compatibility with selected hardware platform.
 SDSoC emulation mode is named as "emu" , this mode allows developer to profile and evaluate the performance of a design before compiling for board deployment. It is highly recommended that all the applications are executed in emulation flow.
+
+
+Platform | Supported Flow 
+------|-------------
+Linux|Makefile/GUI|
+Windows|GUI|
+
+
 ```
 make all TARGET=emu
 ```
