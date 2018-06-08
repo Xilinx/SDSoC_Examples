@@ -11,6 +11,8 @@ This README file contains the following sections:
 6. SUPPORT
 7. LICENSE AND CONTRIBUTING TO THE REPOSITORY
 8. ACKNOWLEDGEMENTS
+
+
 ## 1. OVERVIEW
 This example shows how to perform matrix multiplication on hardware without specifying any optimizations (the same software function is taken and just targeted to hardware). This results in default random data access and DMA transfers the data to BRAM blocks. The hardware results are compared with the software results for verification and speedup is shown withrespect to running on hardware versus software.
 
@@ -110,6 +112,8 @@ To contribute to this project, follow the guidelines in the [Repository Contribu
 ## 8. ACKNOWLEDGEMENTS
 This example is written by developers at
 - [Xilinx](http://www.xilinx.com)
+
+
 [3-Clause BSD License]: ../../../../LICENSE.txt
 [SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc
 [SDSoC User Guides]: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2017_2/ug1027-sdsoc-user-guide.pdf

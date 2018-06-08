@@ -11,6 +11,8 @@ This README file contains the following sections:
 6. SUPPORT
 7. LICENSE AND CONTRIBUTING TO THE REPOSITORY
 8. ACKNOWLEDGEMENTS
+
+
 ## 1. OVERVIEW
 This example takes the same hardware function from the previous example and highlights the pipeline kernel optimization in hardware function to achieve better performance. Pipelining a loop results in lower initiation interval(II), which is the number of clock cycles between the start times of consecutive loop iterations by allowing multiple iterations of a loop to run in parallel.
 
@@ -112,6 +114,8 @@ To contribute to this project, follow the guidelines in the [Repository Contribu
 ## 8. ACKNOWLEDGEMENTS
 This example is written by developers at
 - [Xilinx](http://www.xilinx.com)
+
+
 [3-Clause BSD License]: ../../../../LICENSE.txt
 [SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc
 [SDSoC User Guides]: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2017_2/ug1027-sdsoc-user-guide.pdf

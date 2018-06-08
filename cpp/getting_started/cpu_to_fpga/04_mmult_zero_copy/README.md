@@ -11,6 +11,8 @@ This README file contains the following sections:
 6. SUPPORT
 7. LICENSE AND CONTRIBUTING TO THE REPOSITORY
 8. ACKNOWLEDGEMENTS
+
+
 ## 1. OVERVIEW
 This example shows how matrix multiplication can be made more efficent in the same hardware function by using local buffers and direct memory interface technique using the zero_copy pragma. The local buffers are implemented as BRAM memory blocks in Programmable Logic (PL) and the zero_copy pragma allows burst read/write from/to DDR memory to/from local memory by generating a direct memory interface between DDR and hardware function via an AXI master bus interface.
 
@@ -112,6 +114,8 @@ To contribute to this project, follow the guidelines in the [Repository Contribu
 ## 8. ACKNOWLEDGEMENTS
 This example is written by developers at
 - [Xilinx](http://www.xilinx.com)
+
+
 [3-Clause BSD License]: ../../../../LICENSE.txt
 [SDSoC Forums]: https://forums.xilinx.com/t5/SDSoC-Development-Environment/bd-p/sdsoc
 [SDSoC User Guides]: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2017_2/ug1027-sdsoc-user-guide.pdf
