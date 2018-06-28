@@ -429,7 +429,7 @@
                             "description": [
                                 "This is a simple OpenCL example of vector addition. The purpose of this code is to introduce the user to application development in SDx."
                             ], 
-                            "displayName": "Vector Addition", 
+                            "displayName": "Vector Addition (CL)", 
                             "version": "1.0", 
                             "author": "Xilinx, Inc."
                         }, 
@@ -439,7 +439,7 @@
                             "description": [
                                 "This is a simple example of vector addition. The purpose of this example is to demonstrate on how to use multiple interfaces and as a result allow C-kernel to access both interfaces simultaneous."
                             ], 
-                            "displayName": "Multiple Interfaces", 
+                            "displayName": "Multiple Interfaces (CL)", 
                             "version": "1.0", 
                             "author": "Xilinx, Inc."
                         }, 

@@ -1,5 +1,5 @@
 {
-    "example": "Vector Addition",
+    "example": "Vector Addition (CL)",
     "overview": [
          "This is a simple OpenCL example of vector addition. The purpose of this code is to introduce the user to application development in SDx."
      ],

@@ -1,5 +1,5 @@
 {
-    "example": "Multiple Interfaces",
+    "example": "Multiple Interfaces (CL)",
     "overview": [
          "This is a simple example of vector addition. The purpose of this example is to demonstrate on how to use multiple interfaces and as a result allow C-kernel to access both interfaces simultaneous."
      ],
