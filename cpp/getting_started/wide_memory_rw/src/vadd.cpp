@@ -52,7 +52,7 @@ void vadd_accel(
         //Pipelined this loop which will eventually infer burst read/write
         //for in1, in2 and out as access pattern is sequential
         #pragma HLS pipeline
-        #pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
+        #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
         wide_dt tmpV1     = in1[i];
         wide_dt tmpV2     = in2[i];
         wide_dt tmpOut;

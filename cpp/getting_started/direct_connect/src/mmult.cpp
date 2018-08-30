@@ -70,7 +70,7 @@ void madd_accel(
     // writes the result to output
     write_out: for(int j = 0; j < dim * dim; j++) {
     #pragma HLS PIPELINE
-    #pragma HLS LOOP_TRIPCOUNT min=1 max=4096
+    #pragma HLS LOOP_TRIPCOUNT min=c_min*c_min max=c_max*c_max
         out[j] = mmult_in[j] + in3[j];
     }    
 }
@@ -95,7 +95,7 @@ void mmult_accel(
     // Burst read for matrix A, B and C
     read_data: for(int itr = 0 , i = 0 , j =0; itr < dim * dim; itr++, j++){
     #pragma HLS PIPELINE
-    #pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
+    #pragma HLS LOOP_TRIPCOUNT min=c_min*c_min max=c_max*c_max
         if(j == dim) { j = 0 ; i++; }
         A[i][j] = in1[itr];
         B[i][j] = in2[itr];
@@ -105,13 +105,13 @@ void mmult_accel(
     // in "out". All the matrices are square matrices of the form (size x size)
     // Typical Matrix multiplication Algorithm is as below
     mmult1: for (int i = 0; i < dim ; i++) {
-    #pragma HLS LOOP_TRIPCOUNT min=1 max=64
+    #pragma HLS LOOP_TRIPCOUNT min=c_min max=c_max
         mmult2: for (int j = 0; j < dim ; j++) {
         #pragma HLS PIPELINE
-        #pragma HLS LOOP_TRIPCOUNT min=1 max=64
+        #pragma HLS LOOP_TRIPCOUNT min=c_min max=c_max
            int result = 0;
            mmult3: for (int k = 0; k < DATA_SIZE; k++) {
-           #pragma HLS LOOP_TRIPCOUNT min=1 max=64
+           #pragma HLS LOOP_TRIPCOUNT min=c_min max=c_max
                result += A[i][k] * B[k][j];
            }
            out[i * dim + j] = result;

@@ -55,8 +55,6 @@ Description :
 
 #include "vadd_vmul.h"
 
-const int size = TEST_DATA_SIZE;
-
 // Computes vector addition 
 // out = (in1 + in2) , where in1, in2 are of dimension (dim x dim)
 void vadd_accel(
@@ -70,7 +68,7 @@ void vadd_accel(
     // writes the result to output
     vadd_write_out: for(int j = 0; j < dim; j++) {
     #pragma HLS PIPELINE
-    #pragma HLS LOOP_TRIPCOUNT min=1 max=size
+    #pragma HLS LOOP_TRIPCOUNT min=c_size_min max=c_size_max
         out[j] = in1[j] + in2[j];
     }    
 }
@@ -88,7 +86,7 @@ void vmul_accel(
     // writes the result to output
     vmul_write_out: for(int j = 0; j < dim; j++) {
     #pragma HLS PIPELINE
-    #pragma HLS LOOP_TRIPCOUNT min=1 max=size
+    #pragma HLS LOOP_TRIPCOUNT min=c_size_min max=c_size_max
         out[j] = in1[j] * in2[j];
     }    
 

@@ -35,6 +35,9 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // Maximum Array Size
 #define MAX_SIZE 12
 
+//TRIPCOUNT identifier
+const unsigned int c_dim = DATA_SIZE;
+
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(a[0:a_row*a_col], b[0:a_col*b_col], c[0:a_row*b_col])

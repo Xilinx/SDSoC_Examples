@@ -34,7 +34,6 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
 
 #include "rgb_to_hsv.h"
-#define IMAGE_SIZE 128
 
 void rgb_to_hsv_accel(RGBcolor *in,  // Access DDR memory as RGBcolor struct-wise
                       HSVcolor *out, // Access DDR Memory as HSVcolor struct-wise
@@ -49,7 +48,7 @@ void rgb_to_hsv_accel(RGBcolor *in,  // Access DDR memory as RGBcolor struct-wis
         // as a result, Hardware Function will be able to do burst read and 
         // burst write.
         // Hardware Function performs RGB to HSV conversion per pixel per clock.
-    #pragma HLS LOOP_TRIPCOUNT min=16384 max=16384
+    #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
         // LOOP TRIPCOUNT is added so that report estimate can provide estimated
         // latency Information
 

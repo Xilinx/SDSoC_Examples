@@ -66,12 +66,12 @@ void mmult_accel(
     // Performs matrix multiply over matrices A and B and stores the result
     // in C. All the matrices are square matrices of the form (size x size)
      mmult1: for (int i = 0; i < dim ; i++) {
-     #pragma HLS LOOP_TRIPCOUNT min=1 max=64
+     #pragma HLS LOOP_TRIPCOUNT min=c_min max=c_max
         mmult2 : for (int j = 0; j < dim ; j++) {
-        #pragma HLS LOOP_TRIPCOUNT min=1 max=64
+        #pragma HLS LOOP_TRIPCOUNT min=c_min max=c_max
            int result = 0;
            mmult3: for (int k = 0; k < dim; k++) {
-           #pragma HLS LOOP_TRIPCOUNT min=1 max=64
+           #pragma HLS LOOP_TRIPCOUNT min=c_min max=c_max
            #pragma HLS PIPELINE
               result += in1[i * dim + k] * in2[k * dim + j];
            }

@@ -38,8 +38,6 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <string.h>
 #include "vadd.h"
 
-#define BUFFER_SIZE 1024
-
 void vadd_accel(
         const int *in1, // Read-Only Vector 1
         const int *in2, // Read-Only Vector 2
@@ -54,7 +52,7 @@ void vadd_accel(
     // Each iteration of this loop performs BUFFER_SIZE vector additions
     for(int i = 0; i < size;  i += BUFFER_SIZE)
     {
-    #pragma HLS LOOP_TRIPCOUNT min=4 max=4
+    #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
         int chunk_size = BUFFER_SIZE;
         // Boundary check
         if ((i + BUFFER_SIZE) > size)
@@ -64,7 +62,7 @@ void vadd_accel(
         // Utilize multiple interfaces to access data concurrently
         read_input: for (int j = 0 ; j < chunk_size ; j++){
         #pragma HLS PIPELINE
-        #pragma HLS LOOP_TRIPCOUNT min=1024 max=1024
+        #pragma HLS LOOP_TRIPCOUNT min=c_chunk_sz max=c_chunk_sz
             v1_buffer[j] = in1[i + j];
             v2_buffer[j] = in2[i + j];
         }
@@ -83,7 +81,7 @@ void vadd_accel(
         vadd: for (int j = 0 ; j < chunk_size; j ++){
         #pragma HLS PIPELINE
         #pragma HLS UNROLL FACTOR=2
-        #pragma HLS LOOP_TRIPCOUNT min=1024 max=1024
+        #pragma HLS LOOP_TRIPCOUNT min=c_chunk_sz max=c_chunk_sz
             // Perform vector addition
             vout_buffer[j] = v1_buffer[j] + v2_buffer[j];
         }
@@ -91,7 +89,7 @@ void vadd_accel(
         // Burst write the result to DDR memory
         write_output:for (int j = 0 ; j < chunk_size ; j++){
         #pragma HLS PIPELINE
-        #pragma HLS LOOP_TRIPCOUNT min=1024 max=1024
+        #pragma HLS LOOP_TRIPCOUNT min=c_chunk_sz max=c_chunk_sz
             out[i + j] = vout_buffer[j];
         }
     }

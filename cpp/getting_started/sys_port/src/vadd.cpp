@@ -48,7 +48,7 @@ void vadd_accel(int *a,
         // AXI master interface for each array arguments (i.e., a,b and out).
         // This helps in burst access of all the memory interfaces concurrently.
         #pragma HLS PIPELINE
-        #pragma HLS LOOP_TRIPCOUNT min=2048 max=2048
+        #pragma HLS LOOP_TRIPCOUNT min=c_dim max=c_dim
         out[i] = a[i] + b[i];
     }
 }

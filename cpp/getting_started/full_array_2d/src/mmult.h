@@ -36,6 +36,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // Define max matrix dimension supported by accelerator 
 #define MAX_MATRIX_DIM 128
 
+//TRIPCOUNT identifiers
+const unsigned int c_dim_min = 1;
+const unsigned int c_dim_max = TEST_MATRIX_DIM;
+
 // Zero copy interface enabled
 #pragma SDS data zero_copy(a[0:dim*dim], b[0:dim*dim], c[0:dim*dim])
 void mmult_accel(int *a, int *b, int *c, int dim);

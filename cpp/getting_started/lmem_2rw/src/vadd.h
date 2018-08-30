@@ -31,6 +31,11 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define VADD_H_
 
 #define DATA_SIZE 4096
+#define BUFFER_SIZE 1024
+
+//TRIPCOUNT identifiers
+const unsigned int c_size = DATA_SIZE/BUFFER_SIZE;
+const unsigned int c_chunk_sz = BUFFER_SIZE;
 
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic
 // Design which has Direct Memory Interface with DDR and PL.  

@@ -40,6 +40,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // Maximum size of point array
 #define MAX_SIZE 1024
 
+//TRIPCOUNT identifiers
+const unsigned int c_dim = DATA_DIM;
+const unsigned int c_size = DATA_SIZE;
+
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(in[0:size*dim],point[0:dim],out[0:dim]) 

@@ -34,6 +34,11 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define imin(X, Y) (((X) < (Y)) ? (X) : (Y))
 #define imax(X, Y) (((X) > (Y)) ? (X) : (Y))
 
+#define IMAGE_DIM 128
+
+//TRIPCOUNT identifier
+const unsigned int c_size = IMAGE_DIM*IMAGE_DIM 
+
 //Custom Data Type for RGB Image Pixel containing Red(r), Green(g) and Blue(b)
 //element. Extra pad element is added to make struct size to 32bit.
 // It is recommended to make custom data type multiple of 32 bit to use global

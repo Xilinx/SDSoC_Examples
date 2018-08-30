@@ -35,6 +35,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // Maximum Supported Size
 #define MAX_SIZE 32
 
+//TRIPCOUNT identifiers
+const unsigned int c_size_min = 1;
+const unsigned int c_size_max = DATA_SIZE;
+
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(in1[0:dim*dim], in2[0:dim*dim], out[0:dim*dim])

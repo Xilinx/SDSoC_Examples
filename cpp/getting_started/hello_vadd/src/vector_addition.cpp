@@ -50,7 +50,7 @@ void vadd_accel(int *a, int *b, int *c, const int len)
         //for each memory accessing arguments (here it is a,b, and c), so 
         //accelerator can initiate burst request to all interfaces concurrently. 
         #pragma HLS PIPELINE
-        #pragma HLS LOOP_TRIPCOUNT min=1024 max=1024
+        #pragma HLS LOOP_TRIPCOUNT min=c_dim max=c_dim
         c[i] = a[i] + b[i];
     }
 }

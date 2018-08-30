@@ -93,7 +93,7 @@ void nearest_accel(
 
     // Burst reads the point for which nearest neighbor is to be found
     readCurrPt: for(int i = 0; i < dim; i++){
-    #pragma HLS LOOP_TRIPCOUNT min=16 max=16
+    #pragma HLS LOOP_TRIPCOUNT min=c_dim max=c_dim
     #pragma HLS PIPELINE
         point_local[i] = point[i];
     }
@@ -108,9 +108,9 @@ void nearest_accel(
     // In nearest2 loop, there are specific conditions like if(j==0).
     // This is for enabling loop flatten to improve performance.
     nearest1: for(int i = 0; i < size; i++) {
-    #pragma HLS LOOP_TRIPCOUNT min=16384 max=16384
+    #pragma HLS LOOP_TRIPCOUNT min=c_size*c_dim max=c_size*c_dim
         nearest2: for(int j = 0; j < dim; j++) {
-        #pragma HLS LOOP_TRIPCOUNT min=16 max=16
+        #pragma HLS LOOP_TRIPCOUNT min=c_dim max=c_dim
         #pragma HLS PIPELINE
             if(j == 0)  curr_dist = 0;
 
@@ -125,7 +125,7 @@ void nearest_accel(
 
     // Burst writes the nearest neighbor to out
     wirteOuput: for(int i = 0; i < dim; i++) {
-    #pragma HLS LOOP_TRIPCOUNT min=16 max=16
+    #pragma HLS LOOP_TRIPCOUNT min=c_dim max=c_dim
     #pragma HLS PIPELINE
         out[i] = in[point_nearest*dim + i];
     }

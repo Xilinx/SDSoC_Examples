@@ -33,6 +33,9 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #define DATA_SIZE 2048
 
+//TRIPCOUNT identifier
+const unsigned int c_dim = DATA_SIZE;
+
 // SDSoC "sys_port" pragma below specifies sds++ compiler to generate
 // a design which uses AFI (HP) ports for memory interfacing.
 // In this example both input and output buffers uses AFI ports.

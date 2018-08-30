@@ -29,6 +29,11 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef VECTOR_ADDITION_H_
 #define VECTOR_ADDITION_H_
 
+#define TEST_DATA_SIZE 1<<10
+
+//TRIPCOUNT identifier
+const unsigned int c_dim = TEST_DATA_SIZE;
+
 // Pragma data data_mover is used to generate a Programmable Logic  Design with DMA IP
 // for simple DMA operation. For correct functionality of DMA, it is assumed that 
 // memory buffers are allocated to continuous Physical memory Location using sds_alloc.

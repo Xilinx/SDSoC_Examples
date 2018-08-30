@@ -33,7 +33,7 @@ void vadd_hw(int *a, int *b, int *c, const int len)
 {
     vadd: for(int i = 0; i < len; i++) {
         #pragma HLS PIPELINE
-        #pragma HLS LOOP_TRIPCOUNT min=1024 max=1024
+        #pragma HLS LOOP_TRIPCOUNT min=c_dim max=c_dim
         c[i] = a[i] + b[i];
     }
 }

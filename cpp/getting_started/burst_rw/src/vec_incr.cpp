@@ -41,7 +41,7 @@ void vec_incr_accel(int *in, int *out, int size, int inc_value){
     // available. Burst read and writes can be inferred by default with the
     // logic below. 
     calc_write: for(int j=0; j < size; j++){
-    #pragma HLS LOOP_TRIPCOUNT min=1 max=2048
+    #pragma HLS LOOP_TRIPCOUNT min=c_min max=c_max
     #pragma HLS PIPELINE
         out[j] = in[j] + inc_value;
     }

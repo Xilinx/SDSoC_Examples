@@ -42,8 +42,6 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "rgb_to_hsv.h"
 #include "sds_utils.h"
 
-#define IMAGE_DIM 128
-
 //Utility Function Declaration
 void sw_RgbToHsv(RGBcolor *in, HSVcolor *out, int image_size);
 void sw_HsvToRgb(HSVcolor *in, RGBcolor *out, int image_size);

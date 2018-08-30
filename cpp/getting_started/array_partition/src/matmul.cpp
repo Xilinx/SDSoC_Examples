@@ -56,7 +56,7 @@ void matmul_partition_accel(int *in1,  // Read-Only Matrix 1
     readA:
     for (int itr = 0, i = 0, j = 0; itr < mat_dim * mat_dim; itr++, j++) {
     #pragma HLS PIPELINE
-    #pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
+    #pragma HLS LOOP_TRIPCOUNT min=c_size*c_size max=c_size*c_size
         if (j == mat_dim) { j = 0; i++; }
         A[i][j] = in1[itr];
         B[i][j] = in2[itr];
@@ -74,9 +74,9 @@ void matmul_partition_accel(int *in1,  // Read-Only Matrix 1
     // for 1st dimension. Which eventually will improve the overall performance of 
     // matrix multiplication. 
     arraypart1: for (int i = 0; i < mat_dim; i++) {
-    #pragma HLS LOOP_TRIPCOUNT min=64 max=64
+    #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
         arraypart2: for (int j = 0; j < mat_dim; j++) {
-        #pragma HLS LOOP_TRIPCOUNT min=64 max=64
+        #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
         #pragma HLS PIPELINE
             int result = 0;
             arraypart3: for (int k = 0; k < MAX_SIZE; k++) {
@@ -91,7 +91,7 @@ void matmul_partition_accel(int *in1,  // Read-Only Matrix 1
     writeC:
     for (int itr = 0, i = 0, j = 0; itr < mat_dim * mat_dim; itr++, j++) {
     #pragma HLS PIPELINE
-    #pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
+    #pragma HLS LOOP_TRIPCOUNT min=c_size*c_size max=c_size*c_size
         if (j == mat_dim) { j = 0; i++; }
         out[itr] = C[i][j];
     }

@@ -44,7 +44,7 @@ static void read_input(int *in, hls::stream<int> &inStream,
 {
     mem_rd: for (int i = 0 ; i < size ; i++){
     #pragma HLS pipeline
-    #pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
+    #pragma HLS LOOP_TRIPCOUNT min=c_image_size max=c_image_size
         //Blocking write command to inStream 
         inStream << in[i];
     }
@@ -90,7 +90,7 @@ static void write_result(int *out, hls::stream<int> &outStream ,
 {
     mem_wr: for (int i = 0 ; i < size ; i++){
     #pragma HLS pipeline
-    #pragma HLS LOOP_TRIPCOUNT min=4096 max=4096
+    #pragma HLS LOOP_TRIPCOUNT min=c_image_size max=c_image_size
         //Blocking read command to outStream 
         out[i] = outStream.read();
     }

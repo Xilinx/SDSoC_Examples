@@ -34,7 +34,9 @@ void vadd_accel(
         int* c,
         const int length) {
 
-        const int size = 1024;
+        //TRIPCOUNT identifier
+	const unsigned int c_size = length;
+
         // Using Separate interface bundle gmem0 and gmem1 for both argument
         // a and b, same interface bundle gmem0 is used for a and c since both
         // read and write can happen simultaneously. It will allow user to 
@@ -52,7 +54,7 @@ void vadd_accel(
         multiple_interfaces:
             for(int i=0; i < length; i++) {
                 #pragma HLS PIPELINE
-                #pragma HLS LOOP_TRIPCOUNT min=size max=size
+                #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
                 c[i] = a[i] + b[i];
         }
     return;

@@ -43,8 +43,6 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vadd.h"
 #include "sds_utils.h"
 
-const int TEST_DATA_SIZE = 1<<10;
-
 // Compare software and hardware solutions
 bool verify(int *gold, int *out, int size) {
     for(int i = 0; i < size; i++){

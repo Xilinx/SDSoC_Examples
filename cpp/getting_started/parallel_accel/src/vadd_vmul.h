@@ -35,6 +35,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // Maximum times run example 
 #define MAX_NUM_TIMES 4
 
+//TRIPCOUNT identifiers
+const unsigned int c_size_min = 1;
+const unsigned int c_size_max = TEST_DATA_SIZE;
+
 #pragma SDS data zero_copy(in1[0:dim], in2[0:dim], out[0:dim])
 void vadd_accel(
                     const int *in1,     // Read-Only Vector 1

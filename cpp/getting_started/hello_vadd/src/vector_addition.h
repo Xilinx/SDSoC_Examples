@@ -30,6 +30,11 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef VECTOR_ADDITION_H_
 #define VECTOR_ADDITION_H_
 
+#define TEST_DATA_SIZE 1<<10
+
+//TRIPCOUNT identifier
+const unsigned int c_dim = TEST_DATA_SIZE;
+
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(a[0:len], b[0:len], c[0:len])

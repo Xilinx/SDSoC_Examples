@@ -38,6 +38,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // Maximum times run example 
 #define MAX_NUM_TIMES 2
 
+//TRIPCOUNT identifiers
+const unsigned int c_min = 1;
+const unsigned int c_max = DATA_SIZE;
+
 #pragma SDS data access_pattern(in1:SEQUENTIAL, in2:SEQUENTIAL, out:SEQUENTIAL)
 void mmult_accel(
                     const int *in1,     // Read-Only Matrix 1

@@ -39,6 +39,9 @@ typedef struct wide_dt_struct{
 
 #define DATA_SIZE 16384
 
+//TRIPCOUNT identifier
+const unsigned int c_size = DATA_SIZE/NUM_ELEMENTS;
+
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(in1[0:size],in2[0:size],out[0:size])

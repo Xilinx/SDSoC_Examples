@@ -84,7 +84,7 @@ void mmult_accel(
     // Burst reads on input matrices from DDR memory
     // Read Input 
     read: for(int loc = 0, i = 0, j = 0; loc < a_row*a_col; loc++, j++) {
-    #pragma HLS LOOP_TRIPCOUNT min=21*21 max=21*21
+    #pragma HLS LOOP_TRIPCOUNT min=c_dim*c_dim max=c_dim*c_dim
     #pragma HLS PIPELINE
         if(j == a_col) { i++; j = 0;}
         localA[i][j] = a[loc];
@@ -131,7 +131,7 @@ void mmult_accel(
     //       |___|      |___|      |___|      |___|
 
     systolic1: for(int k = 0; k < a_col; k++) {
-    #pragma HLS LOOP_TRIPCOUNT min=16 max=16
+    #pragma HLS LOOP_TRIPCOUNT min=c_dim max=c_dim
     #pragma HLS PIPELINE
         systolic2: for(int i = 0; i < MAX_SIZE; i++) {
             systolic3: for(int j = 0; j < MAX_SIZE; j++) {
@@ -154,7 +154,7 @@ void mmult_accel(
     // Burst write from output matrices to DDR memory
     // Burst write from matrix C
     writeC: for(int loc = 0, i = 0, j = 0; loc < c_row*c_col; loc++, j++) {
-    #pragma HLS LOOP_TRIPCOUNT min=256 max=256
+    #pragma HLS LOOP_TRIPCOUNT min=c_dim*c_dim max=c_dim*c_dim
     #pragma HLS PIPELINE
         if(j == c_col) { i++; j = 0; }
         c[loc] = localC[i][j];

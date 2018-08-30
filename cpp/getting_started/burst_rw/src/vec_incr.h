@@ -32,6 +32,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define DATA_SIZE 2048
 #define INCR_VALUE 10
 
+//TRIPCOUNT indentifier
+const unsigned int c_min = 1;
+const unsigned int c_max = DATA_SIZE;
+
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
 #pragma SDS data zero_copy(in[0:size],out[0:size])
