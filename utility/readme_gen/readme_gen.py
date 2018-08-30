@@ -83,7 +83,7 @@ def requirements(target,data):
     
     boards = [word for word in DEVICES if word not in nboard]
 
-    target.write("## 3. SOFTWARE AND SYSTEM REQUIREMENTS\n")
+    target.write("## 3. SOFTWARE AND SYSTEM REQUIREMENTS\n") 
     target.write("Board | Family | Part | Flow | OS \n")
     target.write("------|-------------|----------|----------|----------\n")
 
@@ -109,6 +109,7 @@ def requirements(target,data):
     target.write("make check PLATFORM=<board name> or make all PLATFORM=<board name>\n")
     target.write("```\n")
     target.write("where the *PLATFORM* variable accepts one board.\n\n")
+    target.write("*NOTE:* The Makefiles provided by the examples do not run on Windows, but the source files could be used in the SDSoC environment GUI under Windows\n\n")
     try:
       if data['opencv']:
                 target.write("***OpenCV for Example Applications***\n\n")

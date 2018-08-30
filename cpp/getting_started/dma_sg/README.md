@@ -43,6 +43,8 @@ make check PLATFORM=<board name> or make all PLATFORM=<board name>
 ```
 where the *PLATFORM* variable accepts one board.
 
+*NOTE:* The Makefiles provided by the examples do not run on Windows, but the source files could be used in the SDSoC environment GUI under Windows
+
 ## 4. DESIGN FILE HIERARCHY
 Application code is located in the src/ directory. Application executable and hardware function binary files are placed in a folder which is flow specific. For emulation flow, directory name is "emu" and in case of hardware flow it is named as "hw" 
 ```
