@@ -117,7 +117,7 @@ int main(int argc, char* argv[])
 // Convert RGB to HSV Format
 void sw_RgbToHsv(RGBcolor* in, HSVcolor *out, int image_size)
 {
-    for(unsigned int i = 0 ; i < image_size; i++){
+    for(int i = 0 ; i < image_size; i++){
         RGBcolor rgb = in[i];
         HSVcolor hsv;
         
