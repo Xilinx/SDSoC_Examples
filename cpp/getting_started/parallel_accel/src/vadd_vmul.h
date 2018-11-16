@@ -33,7 +33,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define TEST_DATA_SIZE 4096
 
 // Maximum times run example 
-#define MAX_NUM_TIMES 4
+#define NUM_TIMES 4
 
 //TRIPCOUNT identifiers
 const unsigned int c_size_min = 1;

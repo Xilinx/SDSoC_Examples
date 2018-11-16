@@ -98,7 +98,7 @@ int main(int argc, char** argv)
     
     bool match = true;
 
-    for(int itr = 0; itr < MAX_NUM_TIMES; itr++){
+    for(int itr = 0; itr < NUM_TIMES; itr++){
         // Create the test data 
         for(int i = 0 ; i < DATA_SIZE * DATA_SIZE ; i++){
             source_in1[i] = rand();

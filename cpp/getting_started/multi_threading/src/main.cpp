@@ -35,8 +35,8 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "mmult_accel.h"
 #include "sds_utils.h"
 
-#ifndef NUM_TESTS
-#define NUM_TESTS 10  
+#ifndef NUM_TIMES
+#define NUM_TIMES 10  
 #endif
 
 
@@ -121,12 +121,12 @@ void *sw_thrd_func2(void *ptr)
 
 bool mmult_test(float *A1,  float *B1, float *C1_sw, float *C1_hw ,float *A2,  float *B2, float *C2_sw, float *C2_hw , float *C3, float *C4,float *C5 ,float *C6)
 {
-     std::cout << "Testing " << NUM_TESTS << " iterations of " << N << "x" << N 
+     std::cout << "Testing " << NUM_TIMES << " iterations of " << N << "x" << N 
                << " floating point mmult..." << std::endl;
 
      sds_utils::perf_counter hw_ctr, sw_ctr ,sw_ctr_nt,hw_ctr_nt;
      
-     for (int i = 0; i < NUM_TESTS; i++) 
+     for (int i = 0; i < NUM_TIMES; i++) 
      {
           init_arrays(A1, B1, C1_sw,C3, C1_hw,C4);
           init_arrays(A2, B2, C2_sw,C5 ,C2_hw,C6);
@@ -197,7 +197,7 @@ bool mmult_test(float *A1,  float *B1, float *C1_sw, float *C1_hw ,float *A2,  f
      double speedup_hw_sw = (double) sw_nt_cycles / (double) hw_nt_cycles;
 
      std::cout << "Average number of CPU cycles running mmult in software: "
-                    << sw_nt_cycles << std::endl;
+               << sw_nt_cycles << std::endl;
      std::cout << "Average number of CPU cycles running mmult in software with two threads: "
                << sw_cycles << std::endl;
      std::cout << "Average number of CPU cycles running mmult in hardware : "

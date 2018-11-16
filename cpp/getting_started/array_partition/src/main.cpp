@@ -40,6 +40,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "matmul.h"
 #include "sds_utils.h"
 
+#ifndef NUM_TIMES
+#define NUM_TIMES 2  
+#endif
+
 // Software Matrix Multiplication 
 void matmul(int *C, int *A, int *B, int M) {
     for (int k = 0; k < M; k++) {
@@ -64,7 +68,7 @@ bool verify(int *gold, int *output, int size) {
 
 int main(int argc, char **argv) {
 
-    bool test_passed;
+    bool test_passed = true;
     static const int columns = MAX_SIZE;
     static const int rows = MAX_SIZE;
 
@@ -82,28 +86,31 @@ int main(int argc, char **argv) {
         return -1;
     }
 
-    // Data Initialization
-    for(int i = 0; i < columns * rows; ++i) {
-        A[i] = i;
-        B[i] = i + i;
-        gold[i] = 0;
-        C[i] = 0;
-    }
-
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
-    sw_ctr.start();
-    //Launch the Software Solution
-    matmul(gold, A, B, columns);
-    sw_ctr.stop();
+    for (int i = 0; i < NUM_TIMES; i++) 
+    {
+         // Data Initialization
+        for(int i = 0; i < columns * rows; ++i) {
+            A[i] = i;
+            B[i] = i + i;
+            gold[i] = 0;
+            C[i] = 0;
+        }
 
-    hw_ctr.start();
-    //Launch the Hardware Solution
-    matmul_partition_accel(A, B, C, columns); 
-    hw_ctr.stop();
+        sw_ctr.start();
+        //Launch the Software Solution
+        matmul(gold, A, B, columns);
+        sw_ctr.stop();
 
-    // Compare the results of hardware to the simulation
-    test_passed = verify(gold, C, columns * rows);
+        hw_ctr.start();
+        //Launch the Hardware Solution
+        matmul_partition_accel(A, B, C, columns); 
+        hw_ctr.stop();
+
+        // Compare the results of hardware to the simulation
+        test_passed = verify(gold, C, columns * rows);
+    }
     
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
@@ -115,7 +122,7 @@ int main(int argc, char **argv) {
                 << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
     std::cout << "Note: Speed up is meaningful for real hardware execution only, not for emulation." << std::endl;
-    
+   
     sds_free(A);
     sds_free(B);
     sds_free(C);

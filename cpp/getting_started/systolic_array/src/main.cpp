@@ -44,6 +44,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "mmult.h"
 #include "sds_utils.h"
 
+#ifndef NUM_TIMES
+#define NUM_TIMES 2  
+#endif
+
 // Software implementation of Matrix Multiplication
 // The inputs are of the size (DATA_SIZE x DATA_SIZE)
 void m_softwareGold(
@@ -89,29 +93,44 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    // Create the test data
-    for(int i = 0 ; i < DATA_SIZE * DATA_SIZE ; i++){
-        source_in1[i] = i % 10;
-        source_in2[i] = i % 10;
-        source_sw_results[i] = 0;
-        source_hw_results[i] = 0;
-    }
-
     int a_row = DATA_SIZE;
     int a_col = DATA_SIZE;
     int b_col = DATA_SIZE;
+    bool match = true;
 
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
-    hw_ctr.start();
-    //Launch the Hardware Solution
-    mmult_accel(source_in1, source_in2, source_hw_results, a_row, a_col, b_col);
-    hw_ctr.stop();
+     for (int i = 0; i < NUM_TIMES ; i++)
+    {
+        // Create the test data
+        for(int i = 0 ; i < DATA_SIZE * DATA_SIZE ; i++){
+            source_in1[i] = i % 10;
+            source_in2[i] = i % 10;
+            source_sw_results[i] = 0;
+            source_hw_results[i] = 0;
+        }
 
-    sw_ctr.start();
-    //Launch the Software Solution
-    m_softwareGold(source_in1, source_in2, source_sw_results);
-    sw_ctr.stop();
+        hw_ctr.start();
+        //Launch the Hardware Solution
+        mmult_accel(source_in1, source_in2, source_hw_results, a_row, a_col, b_col);
+        hw_ctr.stop();
+
+        sw_ctr.start();
+        //Launch the Software Solution
+        m_softwareGold(source_in1, source_in2, source_sw_results);
+        sw_ctr.stop();
+
+        // Compare the results of the Hardware to the simulation
+        for (int i = 0 ; i < DATA_SIZE * DATA_SIZE ; i++){
+            if (source_hw_results[i] != source_sw_results[i]){
+                std::cout << "Error: Result mismatch" << std::endl;
+                std::cout << "i = " << i << " CPU result = " << source_sw_results[i]
+                    << " Hardware result = " << source_hw_results[i] << std::endl;
+                match = false;
+                break;
+            }
+        }
+    }
 
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
@@ -123,18 +142,6 @@ int main(int argc, char** argv)
                         << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
     std::cout << "Note: Speed up is meaningful for real hardware execution only, not for emulation." << std::endl;
-
-    // Compare the results of the Hardware to the simulation
-    bool match = true;
-    for (int i = 0 ; i < DATA_SIZE * DATA_SIZE ; i++){
-        if (source_hw_results[i] != source_sw_results[i]){
-            std::cout << "Error: Result mismatch" << std::endl;
-            std::cout << "i = " << i << " CPU result = " << source_sw_results[i]
-                << " Hardware result = " << source_hw_results[i] << std::endl;
-            match = false;
-            break;
-        }
-    }
 
     // Release Memory
     sds_free(source_in1);

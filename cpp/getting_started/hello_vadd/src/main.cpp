@@ -39,6 +39,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vector_addition.h"
 #include "sds_utils.h"
 
+#ifndef NUM_TIMES
+#define NUM_TIMES 2  
+#endif
+
 // Compare software and hardware solutions
 bool verify(int *gold, int *out, int size) {
     for(int i = 0; i < size; i++){
@@ -75,24 +79,26 @@ int main(int argc, char** argv)
         return -1;
     }
 
-
-    //Creating Test Data and golden data
-    for (int i = 0 ; i < test_size ; i++){
-        a[i] = rand();  
-        b[i] = rand();
-        // Calculate Golden value
-        gold[i] = a[i] + b[i]; 
-        hw_results[i] = 0 ;     
-    }
-    
     sds_utils::perf_counter hw_ctr;
 
-    hw_ctr.start();
-    //Launch the Hardware Solution
-    vadd_accel(a, b, hw_results, test_size);
-    hw_ctr.stop();
+    for (int i = 0; i < NUM_TIMES; i++)
+    {
+        //Creating Test Data and golden data
+        for (int i = 0 ; i < test_size ; i++){
+            a[i] = rand();  
+            b[i] = rand();
+            // Calculate Golden value
+            gold[i] = a[i] + b[i]; 
+            hw_results[i] = 0 ;     
+        }
     
-    test_passed = verify(gold, hw_results, test_size);
+        hw_ctr.start();
+        //Launch the Hardware Solution
+        vadd_accel(a, b, hw_results, test_size);
+        hw_ctr.stop();
+    
+        test_passed = verify(gold, hw_results, test_size);
+    }
 
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 

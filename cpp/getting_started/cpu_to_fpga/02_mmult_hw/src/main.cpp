@@ -38,6 +38,10 @@ the results are compared with the results of software matrix multiplication.
 #include "sds_utils.h"
 #include "mmult_accel.h"
 
+#ifndef NUM_TIMES
+#define NUM_TIMES 2  
+#endif
+
 void mmult_sw( int *in1,   // Input matrix 1
                int *in2,   // Input matrix 2
                int *out,   // Output matrix (out = A x B)
@@ -74,36 +78,40 @@ int main(int argc, char** argv)
             return -1;
         }
 
-    //Create test data
-    for (int i = 0; i < dim * dim; i++) {
-        in1[i] = rand() % dim;
-        in2[i] = rand() % dim;
-        sw_result[i] = 0;
-        hw_result[i] = 0;
-     }
-     
     sds_utils::perf_counter hw_ctr, sw_ctr;
-
-    sw_ctr.start();
-    //Launch the software solution
-    mmult_sw( in1, in2, sw_result, dim);
-    sw_ctr.stop();
-
-    hw_ctr.start();
-    //Launch the Hardware solution
-    mmult_hw( in1, in2, hw_result, dim);
-    hw_ctr.stop();
-
-    //Compare the results of hardware to the software 
     bool match = true;
-    for(int i=0; i< dim * dim; i++)
-    {
-        if( sw_result[i] != hw_result[i] )
+
+    for (int i = 0; i < NUM_TIMES; i++)
+    { 
+        //Create test data
+        for (int i = 0; i < dim * dim; i++) {
+            in1[i] = rand() % dim;
+            in2[i] = rand() % dim;
+            sw_result[i] = 0;
+            hw_result[i] = 0;
+        }
+     
+    
+        sw_ctr.start();
+        //Launch the software solution
+        mmult_sw( in1, in2, sw_result, dim);
+        sw_ctr.stop();
+
+        hw_ctr.start();
+        //Launch the Hardware solution
+        mmult_hw( in1, in2, hw_result, dim);
+        hw_ctr.stop();
+
+        //Compare the results of hardware to the software 
+        for(int i=0; i< dim * dim; i++)
         {
-            std::cout << "Results Mismatch on " << "Row:" << i/dim << "Col:" << i - (i/dim)*dim << std::endl;
-            std::cout << "CPU output:" << sw_result[i] <<"\t Hardware output:" << hw_result[i] << std::endl;
-            match = false;
-            break;
+            if( sw_result[i] != hw_result[i] )
+            {
+                std::cout << "Results Mismatch on " << "Row:" << i/dim << "Col:" << i - (i/dim)*dim << std::endl;
+                std::cout << "CPU output:" << sw_result[i] <<"\t Hardware output:" << hw_result[i] << std::endl;
+                match = false;
+                break;
+            }
         }
     }
 

@@ -32,6 +32,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vconv.h"
 #include "sds_utils.h"
 
+#ifndef NUM_TIMES
+#define NUM_TIMES 2  
+#endif
+
 void vconv_sw(int *in, int *out, int height, int width)
 {
     int linebuf[K - 1][MAX_COLS];
@@ -74,39 +78,51 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    // Create the test data and Software Result
-    for(int i = 0 ; i < testSize; i++){
-        input[i] = rand() % testSize;
-        sw_results[i] = 0;
-        hw_results[i] = 0;
-    }
+    sds_utils::perf_counter hw_ctr, sw_ctr;
+    bool match = true;
 
-    //Running software vconv
-    vconv_sw(input,sw_results, testHeight, testWidth);
+    for (int i = 0; i < NUM_TIMES; i++)
+    {
+        // Create the test data and Software Result
+        for(int i = 0 ; i < testSize; i++){
+            input[i] = rand() % testSize;
+            sw_results[i] = 0;
+            hw_results[i] = 0;
+        }
+        
+        sw_ctr.start();
+        //Running software vconv
+        vconv_sw(input,sw_results, testHeight, testWidth);
+        sw_ctr.stop();
     
-    sds_utils::perf_counter hw_ctr;
+        hw_ctr.start();
+        // Launch the Accelerator
+        vconv_hw(input, hw_results, testHeight, testWidth);
+        hw_ctr.stop();
 
-    hw_ctr.start();
-    // Launch the Accelerator
-    vconv_hw(input, hw_results, testHeight, testWidth);
-    hw_ctr.stop();
+        // Compare the results of the Device to the simulation
+        for (int i = 0 ; i < testSize ; i++){
+            if (hw_results[i] != sw_results[i]){
+                std::cout << "Error: Result mismatch" << std::endl;
+                std::cout << "i = " << i << " CPU result = " << sw_results[i]
+                          << " Device result = " << hw_results[i] << std::endl;
+                match = false;
+                break;
+             }
+        }
+    }   
 
+    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 
+    double speedup = (double) sw_cycles / (double) hw_cycles;
+
+    std::cout << "Number of CPU cycles running application in software: "
+       << sw_cycles << std::endl;
     std::cout << "Number of CPU cycles running application in hardware: "
        << hw_cycles << std::endl;
-   
-    // Compare the results of the Device to the simulation
-    bool match = true;
-    for (int i = 0 ; i < testSize ; i++){
-        if (hw_results[i] != sw_results[i]){
-            std::cout << "Error: Result mismatch" << std::endl;
-            std::cout << "i = " << i << " CPU result = " << sw_results[i]
-                << " Device result = " << hw_results[i] << std::endl;
-            match = false;
-            break;
-        }
-    }
+    std::cout << "Speedup : " << speedup << std::endl;
+    std::cout << "Note: Speed up is meaningful for real hardware execution only, not for emulation." << std::endl;
 
     /* Release Memory from Host Memory*/
     sds_free(input);

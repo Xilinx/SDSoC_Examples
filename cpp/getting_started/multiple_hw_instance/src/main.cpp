@@ -39,6 +39,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "mmult.h"
 #include "sds_utils.h"
 
+#ifndef NUM_TIMES
+#define NUM_TIMES 2  
+#endif
+
 void mmult_sw( int *in1,   // Input matrix 1
                int *in2,   // Input matrix 2
                int *out,   // Output matrix (out = A x B)
@@ -75,68 +79,71 @@ int main(int argc, char **argv) {
         return -1;
     }
 
-    //Create test data
-    for (int i = 0; i < dim * dim; i++) {
-        in1[i] = rand() % dim;
-        in2[i] = rand() % dim;
-        in3[i] = rand() % dim;
-        in4[i] = rand() % dim;
-        sw_results_1[i] = 0;
-        sw_results_2[i] = 0;
-        hw_results_1[i] = 0;
-        hw_results_2[i] = 0;
-     }
-
     sds_utils::perf_counter seq_hw_ctr, par_hw_ctr;
-
-    seq_hw_ctr.start();
-    //Launch the sequential hardware solution
-    //Second call to the hw function will be made 
-    //after the first call to that hw function has
-    //finished execution.
-    mmult_accel (in1, in2, hw_results_1);
-    mmult_accel (in3, in4, hw_results_2);
-    seq_hw_ctr.stop();
-
-    //We want to perform two matrix multiplications, so we create two
-    //separate instances of the same hardware function on the PL by
-    //using the pragma SDS resource (ID). Now, the two calls to the
-    //same accelerator function can be processed concurrently instead
-    //of waiting for the first call to finish execution before processing
-    //the second call to that hw function.
-    par_hw_ctr.start();
-    //Launch the parallel hardware solution
-    //The two calls to the same hw function can
-    //be processed simultaneously in this case.
-    #pragma SDS resource (1)
-    mmult_accel (in1, in2, hw_results_1);
-    #pragma SDS resource (2)
-    mmult_accel (in3, in4, hw_results_2);
-    par_hw_ctr.stop();
-
-    //Launch software solution
-    mmult_sw (in1, in2, sw_results_1, dim);
-    mmult_sw (in3, in4, sw_results_2, dim);
-
-    //Compare the results of hardware to the CPU
     bool match = true;
-    for(int i=0; i< dim * dim; i++)
-    {
-	if( sw_results_1[i] != hw_results_1[i] )
-	{
-            std::cout << "Results Mismatch in solution 1 on " << "Row:" << i/dim << "Col:" << i - (i/dim)*dim << std::endl;
-	    std::cout << "CPU output:" << sw_results_1[i] <<"\t Hardware output:" << hw_results_1[i] << std::endl;
-	    match = false;
-	    break;
-	}
-	if( sw_results_1[i] != hw_results_1[i] )
-	{
-            std::cout << "Results Mismatch in solution 2 on " << "Row:" << i/dim << "Col:" << i - (i/dim)*dim << std::endl;
-	    std::cout << "CPU output:" << sw_results_1[i] <<"\t Hardware output:" << hw_results_1[i] << std::endl;
-	    match = false;
-	    break;
-	}
 
+    for (int i = 0; i < NUM_TIMES ; i++)
+    {
+        //Create test data
+        for (int i = 0; i < dim * dim; i++) {
+            in1[i] = rand() % dim;
+            in2[i] = rand() % dim;
+            in3[i] = rand() % dim;
+            in4[i] = rand() % dim;
+            sw_results_1[i] = 0;
+            sw_results_2[i] = 0;
+            hw_results_1[i] = 0;
+            hw_results_2[i] = 0;
+        }
+
+        seq_hw_ctr.start();
+        //Launch the sequential hardware solution
+        //Second call to the hw function will be made 
+        //after the first call to that hw function has
+        //finished execution.
+        mmult_accel (in1, in2, hw_results_1);
+        mmult_accel (in3, in4, hw_results_2);
+        seq_hw_ctr.stop();
+
+        //We want to perform two matrix multiplications, so we create two
+        //separate instances of the same hardware function on the PL by
+        //using the pragma SDS resource (ID). Now, the two calls to the
+        //same accelerator function can be processed concurrently instead
+        //of waiting for the first call to finish execution before processing
+        //the second call to that hw function.
+        par_hw_ctr.start();
+        //Launch the parallel hardware solution
+        //The two calls to the same hw function can
+        //be processed simultaneously in this case.
+        #pragma SDS resource (1)
+        mmult_accel (in1, in2, hw_results_1);
+        #pragma SDS resource (2)
+        mmult_accel (in3, in4, hw_results_2);
+        par_hw_ctr.stop();
+
+        //Launch software solution
+        mmult_sw (in1, in2, sw_results_1, dim);
+        mmult_sw (in3, in4, sw_results_2, dim);
+
+        //Compare the results of hardware to the CPU   
+        for(int i=0; i< dim * dim; i++)
+        {
+	        if( sw_results_1[i] != hw_results_1[i] )
+	        {
+                std::cout << "Results Mismatch in solution 1 on " << "Row:" << i/dim << "Col:" << i - (i/dim)*dim << std::endl;
+	            std::cout << "CPU output:" << sw_results_1[i] <<"\t Hardware output:" << hw_results_1[i] << std::endl;
+	            match = false;
+	            break;
+	        }
+	        
+            if( sw_results_2[i] != hw_results_2[i] )
+	        {
+                std::cout << "Results Mismatch in solution 2 on " << "Row:" << i/dim << "Col:" << i - (i/dim)*dim << std::endl;
+	            std::cout << "CPU output:" << sw_results_1[i] <<"\t Hardware output:" << hw_results_1[i] << std::endl;
+	            match = false;
+	            break;
+	        }
+        }
     }
 
     uint64_t seq_hw_cycles = seq_hw_ctr.avg_cpu_cycles();

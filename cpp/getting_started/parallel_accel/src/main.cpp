@@ -116,7 +116,7 @@ int main(int argc, char** argv)
     //to ensure that the two hw functions will be running sequentially.
     seq_hw_ctr.start();
     // Launch Hardware Solution
-    for(int itr = 0; itr < MAX_NUM_TIMES; itr++)
+    for(int itr = 0; itr < NUM_TIMES; itr++)
     {
         #pragma SDS async(1)        
         vadd_accel(source_in1, source_in2, source_vadd_hw_results, size);
@@ -139,7 +139,7 @@ int main(int argc, char** argv)
 	vadd_accel(source_in1, source_in2, source_vadd_hw_results, size);
 	#pragma SDS async(2)
 	vmul_accel(source_in1, source_in2, source_vmul_hw_results, size);
-    for(int itr = 0; itr < MAX_NUM_TIMES; itr++)
+    for(int itr = 0; itr < NUM_TIMES; itr++)
     {
        	#pragma SDS wait(1)
 		#pragma SDS async(1)

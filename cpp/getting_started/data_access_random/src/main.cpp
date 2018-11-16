@@ -92,7 +92,7 @@ int main(int argc, char** argv)
 
     bool match = true;
 
-    for(int iter = 0; iter < MAX_NUMBER_TIMES; iter++){
+    for(int iter = 0; iter < NUM_TIMES; iter++){
         // Create the test data 
         for(int i = 0 ; i < DATA_SIZE * DATA_SIZE ; i++){
             source_in1[i] = rand();
@@ -116,12 +116,13 @@ int main(int argc, char** argv)
             if (source_hw_results[i] != source_sw_results[i]){
                 std::cout << "Error: Result mismatch" << std::endl;
                 std::cout << "i = " << i << " CPU result = " << source_sw_results[i]
-                    << " Hardware result = " << source_hw_results[i] << std::endl;
+                          << " Hardware result = " << source_hw_results[i] << std::endl;
                 match = false;
                 break;
             }
         }
     }
+
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 

@@ -42,6 +42,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "rgb_to_hsv.h"
 #include "sds_utils.h"
 
+#ifndef NUM_TIMES
+#define NUM_TIMES 2  
+#endif
+
 //Utility Function Declaration
 void sw_RgbToHsv(RGBcolor *in, HSVcolor *out, int image_size);
 void sw_HsvToRgb(HSVcolor *in, RGBcolor *out, int image_size);
@@ -63,25 +67,34 @@ int main(int argc, char* argv[])
       return -1;
     }    
 
-    // Initialize Test Input Data randomly
-    for(int i = 0;i < image_size; i++){
-        rgbImage[i].r = rand() % 256 ;
-        rgbImage[i].g = rand() % 256 ;
-        rgbImage[i].b = rand() % 256 ;
-        rgbImage[i].pad = 0;
-    }
-
     sds_utils::perf_counter hw_ctr, sw_ctr;
+    bool match;
 
-    hw_ctr.start();
-    //Launch the Hardware Function
-    rgb_to_hsv_accel(rgbImage, hwHsvImage, image_size);
-    hw_ctr.stop();
+    for (int i = 0; i < NUM_TIMES; i++)
+    {
+        // Initialize Test Input Data randomly
+        for(int i = 0;i < image_size; i++){
+            rgbImage[i].r = rand() % 256 ;
+            rgbImage[i].g = rand() % 256 ;
+            rgbImage[i].b = rand() % 256 ;
+            rgbImage[i].pad = 0;
+        }
 
-    //Calculating sw based HSV Image
-    sw_ctr.start();
-    sw_RgbToHsv(rgbImage, swHsvImage, image_size);
-    sw_ctr.stop();
+        hw_ctr.start();
+        //Launch the Hardware Function
+        rgb_to_hsv_accel(rgbImage, hwHsvImage, image_size);
+        hw_ctr.stop();
+
+        //Calculating sw based HSV Image
+        sw_ctr.start();
+        sw_RgbToHsv(rgbImage, swHsvImage, image_size);
+        sw_ctr.stop();
+
+        //Compare the results of the Hardware to the Sw Solution
+        match = compareImages((unsigned int *)swHsvImage, 
+                (unsigned int *)hwHsvImage, image_size);
+
+    }
 
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
@@ -93,10 +106,6 @@ int main(int argc, char* argv[])
         << hw_cycles << std::endl;
     std::cout << "Speed up: " << speedup << std::endl;
     std::cout << "Note: Speed up is meaningful for real hardware execution only, not for emulation." << std::endl;
-
-    //Compare the results of the Hardware to the Sw Solution
-    int match = compareImages((unsigned int *)swHsvImage, 
-            (unsigned int *)hwHsvImage, image_size);
 
     // Release Memory 
     free(swHsvImage);

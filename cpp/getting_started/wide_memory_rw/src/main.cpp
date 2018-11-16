@@ -43,6 +43,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vadd.h"
 #include "sds_utils.h"
 
+#ifndef NUM_TIMES
+#define NUM_TIMES 2  
+#endif
+
 int main(int argc, char** argv)
 {
     // Size of the input data
@@ -61,43 +65,46 @@ int main(int argc, char** argv)
         std::cout  << "TEST FAILED: Failed to allocate Memory" << std::endl;
         return -1;
     }
-    // Create the test data
-    for(int i = 0 ; i < size; i++){
-        in1[i] = rand();
-        in2[i] = rand();
-        sw_results[i] = in1[i] + in2[i]; 
-        hw_results[i] = 0;
+
+    sds_utils::perf_counter hw_ctr;
+    bool match = true;
+
+    for (int i = 0; i < NUM_TIMES ; i++)
+    {
+        // Create the test data
+        for(int i = 0 ; i < size; i++){
+            in1[i] = rand();
+            in2[i] = rand();
+            sw_results[i] = in1[i] + in2[i]; 
+            hw_results[i] = 0;
+        }
+
+        hw_ctr.start();
+        //Type-Casting int* datatype to wide_dt * to match Hardware Function 
+        //declaration 
+        vadd_accel( (wide_dt *)in1, 
+                    (wide_dt *)in2, 
+                    (wide_dt *)hw_results, 
+                    size/NUM_ELEMENTS //changing size to number of wide_dt
+                );
+        hw_ctr.stop();
+
+        // Compare the results of software and hardware
+        for (int i = 0 ; i < size; i++){
+            if (hw_results[i] != sw_results[i]){
+                std::cout << "Error: Result mismatch" << std::endl;
+                std::cout << "i = " << i << " CPU result = " << sw_results[i]
+                    << " Hardware result = " << hw_results[i] << std::endl;
+                match = false;
+                break;
+            }
+        }
     }
-
-    sds_utils::perf_counter hw_ctr, sw_ctr;
-
-    hw_ctr.start();
-
-    //Type-Casting int* datatype to wide_dt * to match Hardware Function 
-    //declaration 
-    vadd_accel( (wide_dt *)in1, 
-                (wide_dt *)in2, 
-                (wide_dt *)hw_results, 
-                size/NUM_ELEMENTS //changing size to number of wide_dt
-              );
-    hw_ctr.stop();
-
+    
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 
     std::cout << "Number of CPU cycles running application in hardware: "
                 << hw_cycles << std::endl;
-
-    // Compare the results of software and hardware
-    bool match = true;
-    for (int i = 0 ; i < size; i++){
-        if (hw_results[i] != sw_results[i]){
-            std::cout << "Error: Result mismatch" << std::endl;
-            std::cout << "i = " << i << " CPU result = " << sw_results[i]
-                << " Hardware result = " << hw_results[i] << std::endl;
-            match = false;
-            break;
-        }
-    }
 
     // Release Memory
     sds_free(in1);

@@ -41,6 +41,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "nearest_neighbor.h"
 #include "sds_utils.h"
 
+#ifndef NUM_TIMES
+#define NUM_TIMES 2  
+#endif
+
 // Software solution prototype
 void find_nearest_neighbor(int *out, const int dim,
                            const int *search_points,
@@ -108,20 +112,31 @@ int main(int argc, char **argv) {
     
     int gold[num_dims];
     
-    //Launch the Software Solution
-    find_nearest_neighbor(gold, num_dims, input, data, num_points);
+    for (int i = 0; i < NUM_TIMES ; i++)
+    {
+        sw_ctr.start();
+        //Launch the Software Solution
+        find_nearest_neighbor(gold, num_dims, input, data, num_points);
+        sw_ctr.stop();
 
-    hw_ctr.start();
-    //Launch the Hardware Solution
-    nearest_neighbor_accel(out, data, input, num_points, num_dims); 
-    hw_ctr.stop();
+        hw_ctr.start();
+        //Launch the Hardware Solution
+        nearest_neighbor_accel(out, data, input, num_points, num_dims); 
+        hw_ctr.stop();
     
-    test_passed = verify(gold, out, num_dims);
-   
+        test_passed = verify(gold, out, num_dims);
+    }
+
+    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
-    
+    double speedup = (double) sw_cycles / (double) hw_cycles;
+
+    std::cout << "Number of CPU cycles running application in software: "
+                << sw_cycles << std::endl;    
     std::cout << "Number of CPU cycles running application in hardware: "
                 << hw_cycles << std::endl;
+    std::cout << "Speedup: " << speedup << std::endl;
+    std::cout << "Note: Speed up is meaningful for real hardware execution only, not for emulation." << std::endl;
  
     printf("Nearest Neighbor: ");
     print_point(gold, num_dims);

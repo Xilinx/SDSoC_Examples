@@ -39,6 +39,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vadd.h"
 #include "sds_utils.h"
 
+#ifndef NUM_TIMES
+#define NUM_TIMES 2  
+#endif
+
 // Software Solution
 void vadd_sw(int *in1, int *in2, int *out, 
             int size)
@@ -67,43 +71,55 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    // Create the test data 
-    for(int i = 0 ; i < DATA_SIZE ; i++){
-        in1[i] = i;
-        in2[i] = i * i;
-        sw_results[i] = 0; 
-        hw_results[i] = 0;
-    }
-
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
     int size = DATA_SIZE;
-
-    //Launch the Software Solution
-    vadd_sw(in1,in2,sw_results, size);
-
-    hw_ctr.start();
-    //Launch the Hardware Solution
-    vadd_accel(in1,in2, hw_results,size);
-    hw_ctr.stop();
-
-    uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
-
-    std::cout << "Number of CPU cycles running application in hardware: "
-                << hw_cycles << std::endl;
-    
-    // Compare the results between PL and Simulation
     bool match = true;
-    for (int i = 0 ; i < DATA_SIZE ; i++){
-        if (hw_results[i] != sw_results[i]){
-            std::cout << "Error: Result mismatch" << std::endl;
-            std::cout << "i = " << i << " CPU result = " << sw_results[i]
-                << " Hardware result = " << hw_results[i] << std::endl;
-            match = false;
-            break;
+
+    for (int i = 0; i < NUM_TIMES ; i++)
+    {
+        // Create the test data 
+        for(int i = 0 ; i < DATA_SIZE ; i++){
+            in1[i] = i;
+            in2[i] = i * i;
+            sw_results[i] = 0; 
+            hw_results[i] = 0;
+        }
+
+        sw_ctr.start();
+        //Launch the Software Solution
+        vadd_sw(in1,in2,sw_results, size);
+        sw_ctr.stop();
+
+        hw_ctr.start();
+        //Launch the Hardware Solution
+        vadd_accel(in1,in2, hw_results,size);
+        hw_ctr.stop();
+
+        // Compare the results between PL and Simulation
+        for (int i = 0 ; i < DATA_SIZE ; i++){
+            if (hw_results[i] != sw_results[i]){
+                std::cout << "Error: Result mismatch" << std::endl;
+                std::cout << "i = " << i << " CPU result = " << sw_results[i]
+                        << " Hardware result = " << hw_results[i] << std::endl;
+                match = false;
+                break;
+            }
         }
     }
 
+    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
+    uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
+
+    double speedup = (double) sw_cycles / (double) hw_cycles;
+
+    std::cout << "Number of CPU cycles running application in software: "
+                << sw_cycles << std::endl;
+    std::cout << "Number of CPU cycles running application in hardware: "
+                << hw_cycles << std::endl;
+    std::cout << "Speedup: " << speedup << std::endl;
+    std::cout << "Note: Speed up is meaningful for real hardware execution only, not for emulation." << std::endl;
+    
     // Release Memory
     sds_free(in1);
     sds_free(in2);

@@ -36,7 +36,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define MAX_SIZE 64
 
 // Maximum times run example 
-#define MAX_NUM_TIMES 2
+#define NUM_TIMES 2
 
 //TRIPCOUNT identifiers
 const unsigned int c_min = 1;

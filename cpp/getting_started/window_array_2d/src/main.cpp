@@ -41,6 +41,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "window_array_2d.h"
 #include "sds_utils.h"
 
+#ifndef NUM_TIMES
+#define NUM_TIMES 2  
+#endif
+
 // Utility to print array
 void print_array(DTYPE *mat, const char *name, int size, int dim) {
     int i;
@@ -78,38 +82,44 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    // Create the test data
     DTYPE alpha = 3;
-    for(int i = 0; i < BLOCK_SIZE; i++) {
-        a[i] = i;
-        c[i] = 0;
-        sw_c[i] = 0;
-    }
-
+    unsigned int correct; 
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
-    hw_ctr.start();
-    //Launch the Hardware Solution
-    window_array_2d_accel(a, c, alpha);
-    hw_ctr.stop();
+    for (int i = 0; i < NUM_TIMES ; i++)
+    {
+       // Create the test data
+        for(int i = 0; i < BLOCK_SIZE; i++) {
+            a[i] = i;
+            c[i] = 0;
+            sw_c[i] = 0;
+        }
 
-    //Launch the Software Solution
-    window_array_2d_sw(a, sw_c, alpha);
+        hw_ctr.start();
+        //Launch the Hardware Solution
+        window_array_2d_accel(a, c, alpha);
+        hw_ctr.stop();
+    
+        sw_ctr.start();
+        //Launch the Software Solution
+        window_array_2d_sw(a, sw_c, alpha);
+        sw_ctr.stop();
 
+        // Verify correctness of software & hardware results
+        correct = 0;             
+        for (int i = 0;i < BLOCK_SIZE; i++) {
+            if(c[i] == sw_c[i]) {
+                correct++;
+            } else {
+                printf("\n wrong sw %d hw %d index %d \n", sw_c[i], c[i], i);
+            }
+        }
+    }
+    
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
 
     std::cout << "Number of CPU cycles running application in hardware: "
                 << hw_cycles << std::endl;
-
-    // Verify correctness of software & hardware results
-    unsigned int correct = 0;              
-    for (int i = 0;i < BLOCK_SIZE; i++) {
-        if(c[i] == sw_c[i]) {
-            correct++;
-        } else {
-            printf("\n wrong sw %d hw %d index %d \n", sw_c[i], c[i], i);
-        }
-    }
 
     // Print a brief summary detailing the results
     printf("Computed '%d/%d' correct values!\n", correct, BLOCK_SIZE);

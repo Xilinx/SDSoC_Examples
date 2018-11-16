@@ -39,6 +39,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vadd.h"
 #include "sds_utils.h"
 
+#ifndef NUM_TIMES
+#define NUM_TIMES 2  
+#endif
+
 // Compare software and hardware solutions
 bool verify(int *gold, int *out, int size) {
     for(int i = 0; i < size; i++){
@@ -76,28 +80,31 @@ int main(int argc, char** argv)
        return -1;
     }     
 
-    //Creating Test Data and golden data
-    for (int i = 0 ; i < test_size ; i++){
-        a[i] = rand();
-        b[i] = rand();
-        gold[i] = a[i] + b[i]; // Calculating Golden value
-        hw_results[i] = 0 ;     
-    }
-    
     sds_utils::perf_counter vadd_hw_ctr;
 
-    vadd_hw_ctr.start();
-    //Launch the Hardware Solution
-    vadd_hw(a, b, hw_results, test_size);
-    vadd_hw_ctr.stop();
+    for ( int i = 0; i < NUM_TIMES; i++)
+    {
+        //Creating Test Data and golden data
+        for (int i = 0 ; i < test_size ; i++){
+            a[i] = rand();
+            b[i] = rand();
+            gold[i] = a[i] + b[i]; // Calculating Golden value
+            hw_results[i] = 0 ;     
+        }
+    
+        vadd_hw_ctr.start();
+        //Launch the Hardware Solution
+        vadd_hw(a, b, hw_results, test_size);
+        vadd_hw_ctr.stop();
+
+        test_passed = verify(gold, hw_results, test_size);
+    }
     
     uint64_t vadd_hw_cycles = vadd_hw_ctr.avg_cpu_cycles();
 
     std::cout << "Number of CPU cycles running application in hardware: "
                 << vadd_hw_cycles << std::endl;
    
-    test_passed = verify(gold, hw_results, test_size);
-
     sds_free(a);
     sds_free(b);
     sds_free(hw_results);

@@ -41,6 +41,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "sds_utils.h"
 #define min(x,y) ((x) < (y) ? (x) : (y))
 
+#ifndef NUM_TIMES
+#define NUM_TIMES 2  
+#endif
+
 // Software Finite Impulse Response Filter
 void fir(int *output, const int *signal, const int *coeff, const int signal_length) {
 
@@ -117,26 +121,29 @@ int main(int argc, char **argv) {
     coeff[9] =   0;
     coeff[10]=  53;
 
-    //Creating Test Data 
-    for (int i = 0 ; i < signal_size; i++){
-        signal[i] = rand();
-        hw_out[i] = 0 ;     
-    }
-
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
-    sw_ctr.start();
-    //Launch the Software Solution
-    fir(gold, signal, coeff, signal_size);
-    sw_ctr.stop();
+    for (int i = 0; i < NUM_TIMES ; i++)
+    {
+        //Creating Test Data 
+        for (int i = 0 ; i < signal_size; i++){
+            signal[i] = rand();
+            hw_out[i] = 0 ;     
+        }
+    
+        sw_ctr.start();
+        //Launch the Software Solution
+        fir(gold, signal, coeff, signal_size);
+        sw_ctr.stop();
 
-    hw_ctr.start();
-    //Launch the Hardware Solution
-    fir_shift_register_accel(signal, coeff, hw_out, signal_size); 
-    hw_ctr.stop();
+        hw_ctr.start();
+        //Launch the Hardware Solution
+        fir_shift_register_accel(signal, coeff, hw_out, signal_size); 
+        hw_ctr.stop();
 
-    // Verify software and hardware results
-    test_passed = verify(gold, hw_out, signal_size);
+        // Verify software and hardware results
+        test_passed = verify(gold, hw_out, signal_size);
+    }
 
     uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
     uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();

@@ -40,6 +40,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "row_array_2d.h"
 #include "sds_utils.h"
 
+#ifndef NUM_TIMES
+#define NUM_TIMES 2  
+#endif
+
 // Utility to print array
 void print_array(DTYPE *mat, const char *name, int size, int dim) {
     int i;
@@ -76,48 +80,59 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    // Create the test data and Software Result
     DTYPE alpha = 3;
-    for(int i = 0; i < BLOCK_SIZE; i++) {
-        a[i] = i;
-        c[i] = 0;
-        sw_c[i] = 0;
-    }
+    bool match = true; 
 
     sds_utils::perf_counter hw_ctr, sw_ctr;
 
-    hw_ctr.start();
-    //Launch the Hardware Solution
-    row_array_2d_accel(a, c, alpha);
-    hw_ctr.stop();
+    for (int i = 0; i < NUM_TIMES; i++)
+    {
+        // Create the test data and Software Result
+        for(int i = 0; i < BLOCK_SIZE; i++) {
+            a[i] = i;
+            c[i] = 0;
+            sw_c[i] = 0;
+        }
 
-    //Launch the Software Solution
-    row_array_2d_sw(a, sw_c, alpha);
+        hw_ctr.start();
+        //Launch the Hardware Solution
+        row_array_2d_accel(a, c, alpha);
+        hw_ctr.stop();
 
-    uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
+        sw_ctr.start();
+        //Launch the Software Solution
+        row_array_2d_sw(a, sw_c, alpha);
+        sw_ctr.stop();
 
-    std::cout << "Number of CPU cycles running application in hardware: "
-                << hw_cycles << std::endl;
-
-    // Validate software & hardware results
-    unsigned int correct = 0;              
-    for (int i = 0;i < BLOCK_SIZE; i++) {
-        if(c[i] == sw_c[i]) {
-            correct++;
-        } else {
-            printf("\n wrong sw %d hw %d index %d \n", sw_c[i], c[i], i);
+        // Validate software & hardware results                
+        for (int i = 0;i < BLOCK_SIZE; i++) {
+            if(c[i] != sw_c[i]) {
+                printf("\n wrong sw %d hw %d index %d \n", sw_c[i], c[i], i);
+                match = false;
+                break;
+            }
         }
     }
 
-    // Print a brief summary detailing the results
-    printf("Computed '%d/%d' correct values!\n", correct, BLOCK_SIZE);
+    uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
+    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
+    double speedup = (double) sw_cycles / (double) hw_cycles;
 
+    std::cout << "Number of CPU cycles running application in software: "
+                << sw_cycles << std::endl;
+    std::cout << "Number of CPU cycles running application in hardware: "
+                << hw_cycles << std::endl;
+    std::cout << "Speed up : " << speedup << std::endl;
+    std::cout << "Note: Speed up is meaningful for real hardware execution only, not for emulation." << std::endl;
+ 
     // Release memory
     sds_free(a);
     sds_free(c);
     free(sw_c);
 
-    if(correct == BLOCK_SIZE){
+    if(match){
+        // Print a brief summary detailing the results
+        printf("Computed '%d/%d' correct values!\n", BLOCK_SIZE*NUM_TIMES, BLOCK_SIZE*NUM_TIMES);
         std::cout << "TEST PASSED." << std::endl;
         return 0;
     }

@@ -33,6 +33,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "mmult.h"
 #include "sds_utils.h"
 
+#ifndef NUM_TIMES
+#define NUM_TIMES 2  
+#endif
+
 // Software Implementation
 void mmult_sw(int *a, int *b, int *c, int dim)
 {
@@ -75,41 +79,53 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    // Create the test data and Software Result
-    for(int i = 0 ; i < matrix_size ; i++){
-        input_a[i] = i;
-        input_b[i] = i;
-        hw_results[i] = 0;
-        sw_results[i] = 0;
-    }
-
     sds_utils::perf_counter hw_ctr, sw_ctr;
-
-    // Launch the software solution
-    mmult_sw(input_a, input_b, sw_results, dim);
-
-    hw_ctr.start();
-    // Launch the hardware solution
-    mmult_accel(input_a, input_b, hw_results, dim);
-    hw_ctr.stop();
-
-    uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
-
-    std::cout << "Number of CPU cycles running application in hardware: "
-                  << hw_cycles << std::endl;
-   
-    // Compare the results of the Hardware to the simulation
     bool match = true;
-    for (int i = 0 ; i < matrix_size ; i++){
-        if (hw_results[i] != sw_results[i]){
-            std::cout << "Error: Result mismatch" << std::endl;
-            std::cout << "i = " << i << " CPU result = " << sw_results[i]
-                << " Hardware result = " << hw_results[i] << std::endl;
-            match = false;
-            break;
+
+    for (int i = 0; i < NUM_TIMES; i++)
+    {
+        // Create the test data and Software Result
+        for(int i = 0 ; i < matrix_size ; i++){
+            input_a[i] = i;
+            input_b[i] = i;
+            hw_results[i] = 0;
+            sw_results[i] = 0;
+        }
+
+        sw_ctr.start();
+        // Launch the software solution
+        mmult_sw(input_a, input_b, sw_results, dim);
+        sw_ctr.stop();
+
+        hw_ctr.start();
+        // Launch the hardware solution
+        mmult_accel(input_a, input_b, hw_results, dim);
+        hw_ctr.stop();
+
+        // Compare the results of the Hardware to the simulation
+        for (int i = 0 ; i < matrix_size ; i++){
+            if (hw_results[i] != sw_results[i]){
+                std::cout << "Error: Result mismatch" << std::endl;
+                std::cout << "i = " << i << " CPU result = " << sw_results[i]
+                        << " Hardware result = " << hw_results[i] << std::endl;
+                match = false;
+                break;
+            }
         }
     }
 
+    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
+    uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
+    
+    double speedup = (double) sw_cycles / (double) hw_cycles;
+
+    std::cout << "Number of CPU cycles running application in software: "
+                  << sw_cycles << std::endl;
+    std::cout << "Number of CPU cycles running application in hardware: "
+                  << hw_cycles << std::endl;
+    std::cout << "Speedup: " << speedup << std::endl;
+    std::cout << "Note: Speed up is meaningful for real hardware execution only, not for emulation." << std::endl;
+    
     // Release Memory  
     sds_free(input_a);
     sds_free(input_b);

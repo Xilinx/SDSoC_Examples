@@ -42,6 +42,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "nearest.h"
 #include "sds_utils.h"
 
+#ifndef NUM_TIMES
+#define NUM_TIMES 2  
+#endif
+
 // Maximum possible distance between two points
 #define INFINITY ULONG_MAX
 
@@ -110,54 +114,70 @@ int main(int argc, char** argv)
        return -1;
      }
    
-    // Create the test data
-    for(int i = 0 ; i < DATA_SIZE*DATA_DIM; i++){
-        source_in[i] = rand()%100;
-    }
-
-    for(int i = 0 ; i < DATA_DIM; i++){
-        source_point[i] = rand()%100;
-    }
-
     int size = DATA_SIZE;
     int dim = DATA_DIM;
+    
+    bool match = true;
 
     sds_utils::perf_counter hw_ctr, sw_ctr;
+    
+    for (int i = 0; i < NUM_TIMES ; i++)
+    {
+        // Create the test data
+        for(int i = 0 ; i < DATA_SIZE*DATA_DIM; i++){
+            source_in[i] = rand()%DATA_SIZE;
+        }
 
-    hw_ctr.start();
-    // Launch Hardware Solution
-    nearest_accel(source_in, source_point, source_hw_result, size, dim);
-    hw_ctr.stop();
+        for(int i = 0 ; i < DATA_DIM; i++){
+            source_point[i] = rand()%DATA_SIZE;
+        }
 
-    // Launch Software Solution
-    nearest_sw(source_in, source_point, source_sw_result, size, dim);
+        hw_ctr.start();
+        // Launch Hardware Solution
+        nearest_accel(source_in, source_point, source_hw_result, size, dim);
+        hw_ctr.stop();
 
-    uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
+        sw_ctr.start();
+        // Launch Software Solution
+        nearest_sw(source_in, source_point, source_sw_result, size, dim);
+        sw_ctr.stop();
 
-    std::cout << "Number of CPU cycles running application in hardware: "
-                << hw_cycles << std::endl;
+        // Compare the nearest distances between software and hardware
+        unsigned long dist_sw = 0, dist_hw = 0;
+        for(int i = 0; i < dim; i++) {
+            dist_sw += SQUARE(source_sw_result[i] - source_point[i]);
+            dist_hw += SQUARE(source_hw_result[i] - source_point[i]);
+        }
 
-    // Compare the nearest distances between software and hardware
-    unsigned long dist_sw = 0, dist_hw = 0;
-    for(int i = 0; i < dim; i++) {
-        dist_sw += SQUARE(source_sw_result[i] - source_point[i]);
-        dist_hw += SQUARE(source_hw_result[i] - source_point[i]);
+         if(dist_sw != dist_hw)
+        {
+            std::cout << "TEST FAILED." << std::endl;
+            std::cout << "\tSoftware Min Dist = " << dist_sw << std::endl;
+            std::cout << "\tHardware Min Dist = " << dist_hw << std::endl;
+            match = false;
+            break;
+        }
     }
 
+    uint64_t sw_cycles = sw_ctr.avg_cpu_cycles();
+    uint64_t hw_cycles = hw_ctr.avg_cpu_cycles();
+
+    double speedup = (double) sw_cycles / (double) hw_cycles;
+
+    std::cout << "Number of CPU cycles running application in software: "
+                << sw_cycles << std::endl;
+    std::cout << "Number of CPU cycles running application in hardware: "
+                << hw_cycles << std::endl;
+    std::cout << "Speed up: " << speedup << std::endl;
+    std::cout << "Note: Speed up is meaningful for real hardware execution only, not for emulation." << std::endl;
+ 
     // Release Memory 
     sds_free(source_in);
     sds_free(source_point);
     sds_free(source_hw_result);
     free(source_sw_result);
 
-    if(dist_sw != dist_hw)
-    {
-        std::cout << "TEST FAILED." << std::endl;
-        std::cout << "\tSoftware Min Dist = " << dist_sw << std::endl;
-        std::cout << "\tHardware Min Dist = " << dist_hw << std::endl;
-        return -1;
-    }
-
-    std::cout << "TEST PASSED." << std::endl;
-    return 0;
+   
+    std::cout << "TEST"<< ((match) ? "PASSED." : "FAILED.") << std::endl;
+    return (match ? 0 : 1);
 }
