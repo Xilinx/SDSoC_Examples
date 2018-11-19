@@ -178,6 +178,6 @@ int main(int argc, char** argv)
     free(source_sw_result);
 
    
-    std::cout << "TEST"<< ((match) ? "PASSED." : "FAILED.") << std::endl;
+    std::cout << "TEST "<< ((match) ? "PASSED." : "FAILED.") << std::endl;
     return (match ? 0 : 1);
 }
