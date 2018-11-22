@@ -50,31 +50,30 @@ void mmult_array_partition(int *in1, int *in2, int *out, int dim)
     //partitioned in dimension 1.
 
     //Burst read on input matrices local_in1 and local_in2 from DDR memory.
-    read_in1: for(int iter = 0, i=0, j=0; iter< dim*dim; iter++,j++){
-    #pragma HLS loop_tripcount min=c_size*c_size max=c_size*c_size
+    read_in: for(int iter = 0, i=0, j=0; iter< dim*dim; iter++,j++){
+    #pragma HLS PIPELINE
+    #pragma HLS LOOP_TRIPCOUNT min=c_size*c_size max=c_size*c_size
         if( j== dim){ j = 0; i++; }
-        local_in1[i][j] = in1[iter]; 
+        local_in1[i][j] = in1[iter];
+        local_in2[i][j] = in2[iter]; 
     }
-    read_in2: for(int iter = 0, i=0, j=0; iter< dim*dim; iter++,j++){
-    #pragma HLS loop_tripcount min=c_size*c_size max=c_size*c_size
-        if( j== dim){ j = 0; i++; }
-        local_in2[i][j] = in2[iter];
-    }
+
     //Reads the input_data from local memory, performs the
     //computations and writes the data to local memory.
     loop_1: for (int i = 0 ; i < dim ; i++){
-    #pragma HLS loop_tripcount min=c_size max=c_size
+    #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
         loop_2: for(int j = 0 ; j < dim ; j++){
-        #pragma HLS loop_tripcount min=c_size max=c_size
+        #pragma HLS LOOP_TRIPCOUNT min=c_size max=c_size
         //Pipelining a loop results in automatic unrolling of inner loops by the HLS compiler.
-        #pragma HLS pipeline
-            local_out[i][j] = 0;
+        #pragma HLS PIPELINE
+            int res = 0;
             loop_3: for(int k = 0; k < c_size; k++){
 		//To enable automatic unrolling of loop, the no. of iterations
 		//need to be a compile time constant, so 'c_size' is specified
 		//here instead of 'dim', which is not a compile time constant.
-                local_out[i][j] += local_in1[i][k]*local_in2[k][j];
+                res += local_in1[i][k]*local_in2[k][j];
             }
+            local_out[i][j] = res;
         }
     }
 
@@ -82,7 +81,8 @@ void mmult_array_partition(int *in1, int *in2, int *out, int dim)
     write_out: for(int iter = 0, i = 0, j = 0; iter < dim * dim; iter++, j++){
     //Partitioning the output matrix local_out is not useful because the same element is
     //accessed and processed in all iterations of the innermost loop.
-    #pragma HLS loop_tripcount min=c_size*c_size max=c_size*c_size
+    #pragma HLS PIPELINE
+    #pragma HLS LOOP_TRIPCOUNT min=c_size*c_size max=c_size*c_size
         if(j == dim){ j = 0; i++; }
         out[iter] = local_out[i][j];
     }

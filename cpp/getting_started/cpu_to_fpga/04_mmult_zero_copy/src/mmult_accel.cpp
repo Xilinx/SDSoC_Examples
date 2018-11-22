@@ -46,11 +46,13 @@ void mmult_zero_copy(int *in1, int *in2, int *out, int dim)
     //Burst read on input matrices local_in1 and local_in2 from DDR memory.
     read_in1: for(int iter = 0, i=0, j=0; iter< dim*dim; iter++,j++){
     #pragma HLS loop_tripcount min=c_size*c_size max=c_size*c_size
+    #pragma HLS PIPELINE
         if( j== dim){ j = 0; i++; }
         local_in1[i][j] = in1[iter]; 
     }
     read_in2: for(int iter = 0, i=0, j=0; iter< dim*dim; iter++,j++){
     #pragma HLS loop_tripcount min=c_size*c_size max=c_size*c_size
+    #pragma HLS PIPELINE
         if( j== dim){ j = 0; i++; }
         local_in2[i][j] = in2[iter];
     }
@@ -74,6 +76,7 @@ void mmult_zero_copy(int *in1, int *in2, int *out, int dim)
     //Burst write from output matrix local_out to DDR memory.
     write_out: for(int iter = 0, i = 0, j = 0; iter < dim * dim; iter++, j++){
     #pragma HLS loop_tripcount min=c_size*c_size max=c_size*c_size
+    #pragma HLS PIPELINE
         if(j == dim){ j = 0; i++; }
         out[iter] = local_out[i][j];
     }
