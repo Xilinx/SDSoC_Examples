@@ -48,7 +48,6 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 //Utility Function Declaration
 void sw_RgbToHsv(RGBcolor *in, HSVcolor *out, int image_size);
-void sw_HsvToRgb(HSVcolor *in, RGBcolor *out, int image_size);
 int compareImages(unsigned int *in, unsigned int *out, int image_size);
 
 int main(int argc, char* argv[])
@@ -127,106 +126,41 @@ int main(int argc, char* argv[])
 void sw_RgbToHsv(RGBcolor* in, HSVcolor *out, int image_size)
 {
     for(int i = 0 ; i < image_size; i++){
+        unsigned char rgbMin, rgbMax, tempS;
+
         RGBcolor rgb = in[i];
         HSVcolor hsv;
-        
-        unsigned char rgbMin, rgbMax;
 
         rgbMin = imin(rgb.r, (imin(rgb.g,rgb.b)));
         rgbMax = imax(rgb.r, (imax(rgb.g,rgb.b)));
 
-        hsv.v = rgbMax;
-        if (hsv.v == 0)
-        {
+        tempS = 255 * ((long)(rgbMax - rgbMin)) / rgbMax;
+
+        if (rgbMax == 0){
             hsv.h = 0;
             hsv.s = 0;
-            continue;
-        }
-
-        hsv.s = 255 * ((long)(rgbMax - rgbMin)) / hsv.v;
-        if (hsv.s == 0)
-        {
+            hsv.v = 0;
+        }else if (tempS == 0){
             hsv.h = 0;
-            continue;
-        }
-
-        if (rgbMax == rgb.r)
+            hsv.s = 0;
+            hsv.v = rgbMax;
+        }else if (rgbMax == rgb.r){
             hsv.h = 0 + 43 * (rgb.g - rgb.b) / (rgbMax - rgbMin);
-        else if (rgbMax == rgb.g)
+            hsv.s = tempS;
+            hsv.v = rgbMax;
+        }else if (rgbMax == rgb.g){
             hsv.h = 85 + 43 * (rgb.b - rgb.r) / (rgbMax - rgbMin);
-        else
+            hsv.s = tempS;
+            hsv.v = rgbMax;
+        }else{
             hsv.h = 171 + 43 * (rgb.r - rgb.g) / (rgbMax - rgbMin);
+            hsv.s = tempS;
+            hsv.v = rgbMax;
+        }
 
         hsv.pad = rgb.pad;
+
         out[i] = hsv;
-    }
-}
-
-// Convert RGB to HSV Format
-void sw_HsvToRgb(HSVcolor *in, RGBcolor *out, int image_size)
-{
-    for(int i = 0; i < image_size; i++)
-    {
-        RGBcolor rgb;
-        HSVcolor hsv = in[i];
-        unsigned char region, p, q, t;
-        unsigned int h, s, v, remainder;
-
-        if (hsv.s == 0)
-        {
-            rgb.r = hsv.v;
-            rgb.g = hsv.v;
-            rgb.b = hsv.v;
-            continue;
-        }
-
-        // converting to 16 bit to prevent overflow
-        h = hsv.h;
-        s = hsv.s;
-        v = hsv.v;
-
-        region = h / 43;
-        remainder = (h - (region * 43)) * 6;
-
-        p = (v * (255 - s)) >> 8;
-        q = (v * (255 - ((s * remainder) >> 8))) >> 8;
-        t = (v * (255 - ((s * (255 - remainder)) >> 8))) >> 8;
-
-        switch (region)
-        {
-            case 0:
-                rgb.r = v;
-                rgb.g = t;
-                rgb.b = p;
-                break;
-            case 1:
-                rgb.r = q;
-                rgb.g = v;
-                rgb.b = p;
-                break;
-            case 2:
-                rgb.r = p;
-                rgb.g = v;
-                rgb.b = t;
-                break;
-            case 3:
-                rgb.r = p;
-                rgb.g = q;
-                rgb.b = v;
-                break;
-            case 4:
-                rgb.r = t;
-                rgb.g = p;
-                rgb.b = v;
-                break;
-            default:
-                rgb.r = v;
-                rgb.g = p;
-                rgb.b = q;
-                break;
-        }
-        rgb.pad = hsv.pad;
-        out[i] = rgb;
     }
 }
 
