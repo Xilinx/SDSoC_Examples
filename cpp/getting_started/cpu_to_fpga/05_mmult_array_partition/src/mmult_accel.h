@@ -34,7 +34,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define MAX_SIZE 64
 
 //Array size to access
-#define DATA_SIZE 32
+#define DATA_SIZE 64
 
 #pragma SDS data zero_copy(in1[0:dim*dim], in2[0:dim*dim], out[0:dim*dim])
 void mmult_array_partition(int *in1, int *in2, int *out, int dim);

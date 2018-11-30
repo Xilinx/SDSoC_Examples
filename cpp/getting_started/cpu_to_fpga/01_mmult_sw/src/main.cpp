@@ -33,7 +33,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <stdlib.h>
 
 //Array size to access
-#define DATA_SIZE 32
+#define DATA_SIZE 64
 
 void mmult_sw( int *in1,   // Input matrix 1
                 int *in2,   // Input matrix 2
