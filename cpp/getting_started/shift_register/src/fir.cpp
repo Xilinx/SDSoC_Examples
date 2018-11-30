@@ -82,13 +82,15 @@ void fir_shift_register_accel(int *signal,
     // ports available to the array.
     int shift_reg[N_COEFF];
     #pragma HLS ARRAY_PARTITION variable=shift_reg complete dim=0
+    #pragma HLS ARRAY_PARTITION variable=coeff_reg complete dim=0
 
     init_loop:
     for (int i = 0; i < N_COEFF; i++) {
+    #pragma HLS PIPELINE
         shift_reg[i] = 0;
         coeff_reg[i] = coeff[i];
     }
-
+ 
     outer_loop:
     for(int j = 0; j < signal_length; j++) {
     #pragma HLS PIPELINE
@@ -101,15 +103,14 @@ void fir_shift_register_accel(int *signal,
         // attribute because the outer loop will be pipelined so
         // the compiler will unroll this loop in the process.
         shift_loop:
-        for (int i = N_COEFF-1; i >= 0; i--) {
-            if (i == 0) {
-                acc += x * coeff_reg[0];
-                shift_reg[0] = x;
-            } else {
-                shift_reg[i] = shift_reg[i-1];
-                acc += shift_reg[i] * coeff_reg[i];
-            }
+        for (int i = N_COEFF-1; i > 0; i--) {
+            shift_reg[i] = shift_reg[i-1];
+            acc += shift_reg[i] * coeff_reg[i];
         }
+
+        acc += x * coeff_reg[0];
+        shift_reg[0] = x;
+
         hw_out[j] = acc;
     }
 }

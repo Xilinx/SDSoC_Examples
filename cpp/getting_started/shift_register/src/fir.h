@@ -31,7 +31,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define FIR_H_
 
 #define N_COEFF 11
-#define SIGNAL_SIZE 512
+#define SIGNAL_SIZE 2048
 
 // Pragma below Specifies sds++ Compiler to Generate a Programmable Logic Design
 // Which has Direct Memory Interface with DDR and PL.  
