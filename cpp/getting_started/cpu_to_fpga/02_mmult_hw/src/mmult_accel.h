@@ -31,7 +31,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define MMULT_ACC_H
 
 //Array size to access
-#define DATA_SIZE 64
+#define DATA_SIZE 32
 
 //Declaring the hardware function
 void mmult_hw(int in1[DATA_SIZE*DATA_SIZE] , int in2[DATA_SIZE*DATA_SIZE] , int out[DATA_SIZE*DATA_SIZE] , int dim);

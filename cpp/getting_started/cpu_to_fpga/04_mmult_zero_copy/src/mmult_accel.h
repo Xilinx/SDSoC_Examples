@@ -34,7 +34,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define MAX_SIZE 64
 
 //Array size to access
-#define DATA_SIZE 64
+#define DATA_SIZE 32
 
 //The zero_copy pragma specifies the sds++ compiler to generate a Programmable Logic Design
 //which allows the hardware function to access data directly from the DDR memory. 
