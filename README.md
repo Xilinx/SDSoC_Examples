@@ -1,6 +1,8 @@
 SDSoC Example Repository 
 ===========================
 
+## Note: Please do not use this repository for Xilinx Latest Vitis Tool Chain. A entire new Repository is created here: https://github.com/Xilinx/Vitis_Accel_Examples for Xilinx new Vitis Tool chain. Use SDSoC Examples Git Repository only for Xilinx previously released product SDSoC.
+
 Welcome to the SDSoC example repository. This repository contains the latest examples to get you started with application optimization targeting Xilinx Embedded FPGA acceleration boards. All the examples are ready to be compiled and executed on boards. These examples are developed in C/C++ flow. The "cpp" directory of this repository contains SDSoC examples in C/C++ form.
 
 This repository is organized as follows internally.
